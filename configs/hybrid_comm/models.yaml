@@ -1,0 +1,22 @@
+models:
+  # 开发期 API 后端（本机彩排）。密钥通过 DEEPSEEK_API_KEY 环境变量提供，不写入本文件。
+  api:
+    provider: deepseek
+    model: ${DEEPSEEK_MODEL:-deepseek-chat}
+    base_url: ${DEEPSEEK_BASE_URL:-https://api.deepseek.com}
+    api_key_env: DEEPSEEK_API_KEY
+    temperature: 0.0
+    timeout: 120.0
+
+  # 正式 HF 本地后端（服务器）。模型 revision 与 tokenizer 在 D0 阶段确认并冻结。
+  hf:
+    planner: meta-llama/Llama-3.1-8B-Instruct
+    solver: Qwen/Qwen3-8B
+    verifier: google/gemma-2-9b-it
+    do_sample: false
+    enable_thinking: false
+
+role_output_limits:
+  planner: 256
+  solver: 256
+  verifier: 256

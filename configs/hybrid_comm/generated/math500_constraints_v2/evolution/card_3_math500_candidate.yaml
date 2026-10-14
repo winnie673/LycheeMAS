@@ -1,0 +1,62 @@
+version: CARD-3-MATH500-CONSTRAINTS-V2
+description: >
+  Evidence-evolved MATH-500 protocol card CARD-3-MATH500-CONSTRAINTS-V2, derived from
+  CARD-0-MATH500-CONSTRAINTS-V2.
+
+planner_to_solver:
+  allowed_fields: [K, G, P, C, U]
+  required_fields: [G]
+  field_rules:
+    canonical_order: [K, G, P, C, U]
+    value_representation: "Field values may use concise natural language, symbols, LaTeX, or a mixture of them. Prefer the shortest unambiguous representation. Do not use semicolons inside field values; use commas instead."
+    K: "Explicit givens or relations selected from the shared problem that are needed for the plan; omit if the solver can recover them from the problem statement. Example: a<b<2009,geometric,ratio integer"
+    G: "Exact target to obtain, stated as a mathematical object or quantity; no plan or validity conditions. Example: find a"
+    P: "Concise symbolic relations and operation direction that derive G from K; do not carry out the final computation or state the completed answer. Name the decisive identity, theorem, or relation to apply and any sign, branch, or ordering convention it requires, so the derivation is not left to an unpinned simplification. Example: b=a*r,2009=a*r^2,r^2|2009"
+    C: "Additional condition that changes solution validity, such as domain restrictions, branch choices, or inequality direction; do not repeat K, G, P, units, or output formatting. Example: r>1 integer"
+    U: "Genuine unresolved ambiguity that could change the answer; omit if none. Example: whether ratio may be negative"
+  examples:
+    - "G:solve x^2-5x-4<=10 for x;P:sub=10,quadratic<=0,roots from factoring,leading coeff>0"
+    - "K:a<b<2009,geometric,ratio integer;G:find a;P:b=a*r,2009=a*r^2,r^2|2009;C:r>1 integer"
+    - "G:maximize (a+1/b)(1/b-a);P:expand=1/b^2-a^2,monotonicity in b and |a|;C:-6<=a<=-2,3<=b<=5"
+  output_schema: "Output direct fields from [K,G,P,C,U]; required: [G]."
+
+solver_to_verifier:
+  allowed_fields: [IR, R, C, U]
+  required_fields: [R]
+  field_rules:
+    canonical_order: [IR, R, C, U]
+    value_representation: "Field values may use concise natural language, symbols, LaTeX, or a mixture of them. Prefer the shortest unambiguous representation. Do not use semicolons inside field values; use commas instead."
+    IR: "Minimal decisive intermediate relations, operations, and results that connect the givens to R; do not repeat the full question or all upstream fields. Example: 2009=7^2*41,r=7,b=287"
+    R: "Exact final mathematical answer in the form required by the problem: integer, rational, finite decimal, radical, algebraic expression, interval, set, tuple, or LaTeX expression; no explanatory prose. Example: 41"
+    C: "Additional validity condition not already represented by IR or R, such as a domain restriction or branch condition; omit if none. Example: cos x!=0,sin x!=0"
+    U: "Genuine unresolved ambiguity that could make R unreliable; omit if none. Example: whether the ratio is allowed to be negative"
+  examples:
+    - "IR:sub=10,quadratic<=0,roots=-2,7,parabola opens upward;R:[-2,7]"
+    - "IR:2009=7^2*41,r=7,b=287;R:41"
+    - "IR:sec x/sin x=1/(cos x sin x),sin x/cos x=sin^2 x/(cos x sin x),difference=cos^2 x/(cos x sin x);R:\\cot x;C:cos x!=0,sin x!=0"
+  output_schema: "Output direct fields from [IR,R,C,U]; required: [R]."
+
+verifier_to_solver:
+  allowed_fields: [CHK, E, REQ]
+  required_fields: [CHK]
+  field_rules:
+    canonical_order: [CHK, E, REQ]
+    value_representation: "Field values may use concise natural language, symbols, LaTeX, or a mixture of them. Prefer the shortest unambiguous representation. Do not use semicolons inside field values; use commas instead."
+    CHK: "Verification status: ACCEPT when sufficient evidence supports R and no concrete defect is established; REVISE when a local error or missing essential evidence is identified. Example: ACCEPT"
+    E: "Frozen error category used only for REVISE; choose the category that best describes the established defect or missing evidence. Example: ARITH"
+    REQ: "Minimal actionable revision request used only for REVISE; request the particular missing relation, operation, or correction without prescribing an unverified replacement answer. Example: recompute the modular exponent"
+  examples:
+    - "CHK:ACCEPT"
+    - "CHK:REVISE;E:ARITH;REQ:recompute 8^34 mod 11"
+    - "CHK:REVISE;E:INSUFFICIENT_INFO;REQ:provide the factorization of 2009 and the resulting integer ratio"
+  output_schema: "Output CHK:ACCEPT, or direct fields; REVISE requires CHK, E and REQ."
+
+message_format:
+  structure: fields_only
+  wire_syntax: direct
+  field_separator: ;
+
+value_policy:
+  planner_to_solver: "Use K only for selected explicit givens or relations from the shared problem; omit K when the solver can recover them. G states the exact target. P contains compact symbolic relations and operation direction, not the completed answer. C contains only additional validity conditions. U contains only genuine answer-changing ambiguity. Omit unused optional fields."
+  solver_to_verifier: "IR contains minimal decisive evidence connecting givens to R. R contains the exact final answer in the required mathematical form, with no prose. C contains only additional validity conditions. U contains only genuine unresolved ambiguity. Omit unused optional fields."
+  verifier_to_solver: "CHK is exactly ACCEPT or REVISE. E and REQ are required only for REVISE and forbidden for ACCEPT. E must be one of the frozen enum values. REQ requests only the specific missing or corrective evidence, not a replacement answer."

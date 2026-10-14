@@ -1,0 +1,51 @@
+version: CARD-0-GSM8K-V5
+description: >
+  LLM-generated GSM8K protocol card CARD-0-GSM8K-V5.
+
+planner_to_solver:
+  allowed_fields: [K, G, P, C, U]
+  required_fields: [G]
+  field_rules:
+    canonical_order: [K, G, P, C, U]
+    value_representation: "Field values may use concise natural language, symbols, LaTeX, or a mixture of them. Prefer the shortest unambiguous representation. Do not use semicolons inside field values; use commas instead."
+    K: "Explicit givens or relations selected from the shared problem that are needed for the plan; omit when the solver can recover them directly from the problem. Example: eggs=16,eaten=3,baked=4,price=2"
+    G: "Exact target quantity to solve for; required. Example: total_cost"
+    P: "Compact symbolic relations and operation direction for deriving G; contains all derivation and must not repeat K. Example: sub=10+4*20,total=1.2*sub"
+    C: "Additional condition that changes solution validity; omit when unused and never describe units or output format. Example: tip applies to pre-tip total"
+    U: "Genuine unresolved ambiguity that could change the answer; omit when none. Example: doubling applies per session or per day"
+  examples:
+    - "G:total_cost;P:sub=10+4*20,total=1.2*sub"
+  output_schema: "Output direct fields from [K,G,P,C,U]; required: [G]."
+
+solver_to_verifier:
+  allowed_fields: [IR, R, C, U]
+  required_fields: [R]
+  field_rules:
+    canonical_order: [IR, R, C, U]
+    value_representation: "Field values may use concise natural language, symbols, LaTeX, or a mixture of them. Prefer the shortest unambiguous representation. Do not use semicolons inside field values; use commas instead."
+    IR: "Minimal intermediate evidence needed to verify R; use symbolic relations, not full solution or question restatement. Example: sub=90,tip=18"
+    R: "Candidate final answer as a finite decimal without a unit. Example: 108"
+    C: "Additional validity condition not already represented by IR or R; omit when unused. Example: rounding applied at final step"
+    U: "Genuine unresolved ambiguity that could make R unreliable; omit when none. Example: interpretation of doubling remains unclear"
+  examples:
+    - "IR:sub=90,tip=18;R:108"
+  output_schema: "Output direct fields from [IR,R,C,U]; required: [R]."
+
+verifier_to_solver:
+  allowed_fields: [CHK, E, REQ]
+  required_fields: [CHK]
+  field_rules:
+    canonical_order: [CHK, E, REQ]
+    value_representation: "Field values may use concise natural language, symbols, LaTeX, or a mixture of them. Prefer the shortest unambiguous representation. Do not use semicolons inside field values; use commas instead."
+    CHK: "Verification status; required. Example: ACCEPT"
+    E: "Frozen error category used only for REVISE. Example: ARITH"
+    REQ: "Minimal actionable revision request used only for REVISE. Example: recompute tip from pre-tip total"
+  examples:
+    - "CHK:ACCEPT"
+    - "CHK:REVISE;E:ARITH;REQ:recompute tip from pre-tip total"
+  output_schema: "Output CHK:ACCEPT, or direct fields; REVISE requires CHK, E and REQ."
+
+message_format:
+  structure: fields_only
+  wire_syntax: direct
+  field_separator: ;

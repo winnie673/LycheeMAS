@@ -1,0 +1,56 @@
+version: MATH500-P0-FIELDS-ONLY
+description: >
+  Fields-only protocol derived from P0-FIELDS-ONLY for MATH-500.
+  Field values may adaptively mix concise natural language, mathematical notation, and
+  LaTeX.
+  No separate NL supplement.
+
+planner_to_solver:
+  allowed_fields: [K, G, P, C]
+  required_fields: [G, P]
+  field_rules:
+    canonical_order: [K, G, P, C]
+    value_representation: "Field values may use concise natural language, symbols, LaTeX, or a mixture of them. Prefer the shortest unambiguous representation. Do not use semicolons inside field values; use commas instead."
+    K: "Only facts, definitions, domains, and relations needed for the solution. Preserve quantifiers, signs, exponents, bounds, and multiplicity."
+    G: "Exact mathematical target, including requested form or proof objective."
+    P: "A compact solution plan with operation direction and named theorem or case split when needed. Do not include the final answer."
+    C: "Only constraints not already recoverable from K, G, or P, such as integer domain, positivity, distinctness, or required simplification."
+  examples:
+    - "K:eggs=16,eaten=3,baked=4,price=2;G:daily revenue;P:remain=eggs-eaten-baked,revenue=remain*price"
+  output_schema: "Output only FIELD:value segments separated by semicolons using the allowed fields. Include G and P. Omit unused optional fields. No JSON, markdown, or extra text."
+
+solver_to_verifier:
+  allowed_fields: [IR, R, C]
+  required_fields: [R]
+  field_rules:
+    canonical_order: [IR, R, C]
+    value_representation: "Field values may use concise natural language, symbols, LaTeX, or a mixture of them. Prefer the shortest unambiguous representation. Do not use semicolons inside field values; use commas instead."
+    answer_format: "mathematical_expression"
+    IR: "Minimal derivation sufficient to verify the result. Preserve branches, domains, equivalences, and theorem conditions."
+    R: "Final mathematical answer as an integer, rational, decimal, algebraic expression, interval, set, tuple, or LaTeX expression as required by the problem. Do not force a decimal approximation."
+    C: "Only a domain, branch, convention, or simplification condition needed to interpret R."
+  examples:
+    - "IR:remain=16-3-4=9,revenue=9*2=18;R:18"
+  output_schema: "Output only FIELD:value segments separated by semicolons using the allowed fields. Include R. Omit unused optional fields. No JSON, markdown, or extra text."
+
+verifier_to_solver:
+  allowed_fields: [CHK, E, REQ, C]
+  required_fields: [CHK]
+  field_rules:
+    canonical_order: [CHK, E, REQ, C]
+    value_representation: "Field values may use concise natural language, symbols, LaTeX, or a mixture of them. Prefer the shortest unambiguous representation. Do not use semicolons inside field values; use commas instead."
+    CHK: "ACCEPT, REVISE, FAIL, or INSUFFICIENT"
+    E: "One of ARITH, RELATION, MISSING_FACT, MISSING_UNIT, WRONG_TARGET, INSUFFICIENT_INFO, OTHER"
+    REQ: "Minimal actionable correction, including the exact invalid equality, missing branch, domain condition, or theorem condition when possible."
+    C: "Constraint relevant to the error only when CHK, E, and REQ are insufficient."
+  examples:
+    - "CHK:ACCEPT"
+    - "CHK:FAIL;E:ARITH;REQ:recompute remain=16-3-4"
+  output_schema: "Output exactly CHK:ACCEPT, or FIELD:value segments separated by semicolons with CHK, E, and REQ. Omit unused optional fields. No JSON, markdown, or extra text."
+
+message_format:
+  structure: fields_only
+  wire_syntax: direct
+  field_separator: ;
+
+

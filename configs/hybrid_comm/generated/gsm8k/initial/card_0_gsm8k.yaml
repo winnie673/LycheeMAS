@@ -1,0 +1,61 @@
+version: CARD-0-GSM8K
+description: >
+  LLM-generated GSM8K protocol card CARD-0-GSM8K.
+
+planner_to_solver:
+  allowed_fields: [K, G, P, C, U]
+  required_fields: [G]
+  field_rules:
+    canonical_order: [K, G, P, C, U]
+    K: "Extract only the quantities, relations, and unit facts needed for G; use compact symbolic or natural language, no restatement of the full problem."
+    G: "State the exact target quantity and required output form, e.g. total minutes, per-chest coins, or final numeric answer."
+    P: "Give the shortest ordered computation plan, preferably as symbolic expressions or a short sequence of operations."
+    C: "Include only validity constraints that affect the computation, such as equal distribution, pre-tip base, integer requirement, or unit consistency."
+    U: "Mention only genuine ambiguity that could change the answer, such as whether doubling applies per session or per day."
+  examples:
+    - "K:appetizer=$10,4 entrees at $20 each,tip=20% of pre-tip total;G:total spent including tip;P:food=10+4*20,tip=0.20*food,total=food+tip;C:tip applies to pre-tip total;U:none"
+    - "K:Phillip=40,Ben=Phillip+8,Tom=3/8*Ben;G:Tom apples;P:Ben=40+8,Tom=48*3/8;C:final numeric answer only;U:none"
+    - "K:snakes=15,monkeys=2*snakes,lions=monkeys-5,pandas=lions+8,dogs=pandas/3;G:total animals;P:compute each count then sum all five;C:dogs must be integer;U:none"
+  output_schema: "Output direct fields from [K,G,P,C,U]; required: [G]."
+
+solver_to_verifier:
+  allowed_fields: [IR, R, C, U]
+  required_fields: [R]
+  field_rules:
+    canonical_order: [IR, R, C, U]
+    IR: "Provide the minimal intermediate equations or values needed to verify R, not the full derivation."
+    R: "Give the candidate final answer in the exact requested form, usually a single numeric value."
+    C: "Include only a constraint that affects validity of R, such as unit consistency or integer requirement."
+    U: "Mention only unresolved uncertainty that could make R invalid or ambiguous."
+  examples:
+    - "IR:food=10+4*20=90,tip=0.20*90=18;R:108;C:total includes tip;U:none"
+    - "IR:Ben=40+8=48,Tom=48*3/8=18;R:18;C:final numeric answer;U:none"
+    - "IR:week2=5000/2=2500,week3=2500+2000=4500,total=5000+2500+4500=12000;R:12000;C:sum all three weeks;U:none"
+  output_schema: "Output direct fields from [IR,R,C,U]; required: [R]."
+
+verifier_to_solver:
+  allowed_fields: [CHK, E, REQ]
+  required_fields: [CHK]
+  field_rules:
+    canonical_order: [CHK, E, REQ]
+    CHK: "Use exactly ACCEPT when the candidate answer is correct; otherwise use REVISE."
+    E: "When CHK is REVISE, give the error category, such as arithmetic, misread relation, wrong target, or unit error."
+    REQ: "When CHK is REVISE, give the minimal actionable correction request; otherwise omit."
+  examples:
+    - "CHK:ACCEPT"
+  output_schema: "Output CHK:ACCEPT, or direct fields; REVISE requires CHK, E and REQ."
+
+message_format:
+  structure: fields_only
+  wire_syntax: direct
+  field_separator: ;
+
+value_policy:
+  wire_syntax: "FIELD:value;FIELD:value"
+  field_separator: ";"
+  no_semicolons_in_values: "True"
+  prefer_shortest_unambiguous_representation: "True"
+  symbolic_when_shorter: "True"
+  concise_natural_language_when_symbols_insufficient: "True"
+  no_repetition_between_fields: "True"
+  verifier_acceptance_exact: "CHK:ACCEPT"

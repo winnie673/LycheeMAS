@@ -405,6 +405,7 @@ def math_equal(
     include_percentage: bool = True,
     is_close: bool = True,
     timeout: bool = False,
+    exact_symbolic: bool = False,
 ) -> bool:
     """
     Exact match of math if and only if:
@@ -485,7 +486,8 @@ def math_equal(
             if all(
                 [
                     math_equal(
-                        pred_parts[i], ref_parts[i], include_percentage, is_close
+                        pred_parts[i], ref_parts[i], include_percentage, is_close,
+                        exact_symbolic=exact_symbolic,
                     )
                     for i in range(len(pred_parts))
                 ]
@@ -535,6 +537,7 @@ def math_equal(
                                 ref_parts[i],
                                 include_percentage,
                                 is_close,
+                                exact_symbolic=exact_symbolic,
                             )
                             for i in range(len(pred_parts))
                         ]
@@ -555,7 +558,9 @@ def math_equal(
         pred = f"{pred[0].strip()} - ({pred[1].strip()})"
         ref = reference.split("=")
         ref = f"{ref[0].strip()} - ({ref[1].strip()})"
-        if symbolic_equal(pred, ref) or symbolic_equal(f"-({pred})", ref):
+        if symbolic_equal(pred, ref, numeric_tolerance=not exact_symbolic) or symbolic_equal(
+            f"-({pred})", ref, numeric_tolerance=not exact_symbolic
+        ):
             return True
     elif (
         prediction.count("=") == 1
@@ -563,7 +568,8 @@ def math_equal(
         and "=" not in reference
     ):
         if math_equal(
-            prediction.split("=")[1], reference, include_percentage, is_close
+            prediction.split("=")[1], reference, include_percentage, is_close,
+            exact_symbolic=exact_symbolic,
         ):
             return True
     elif (
@@ -572,11 +578,12 @@ def math_equal(
         and "=" not in prediction
     ):
         if math_equal(
-            prediction, reference.split("=")[1], include_percentage, is_close
+            prediction, reference.split("=")[1], include_percentage, is_close,
+            exact_symbolic=exact_symbolic,
         ):
             return True
 
-    if symbolic_equal(prediction, reference):
+    if symbolic_equal(prediction, reference, numeric_tolerance=not exact_symbolic):
         return True
 
     return False
@@ -586,7 +593,7 @@ def numeric_equal(prediction: float, reference: float):
     return isclose(reference, prediction, rel_tol=1e-4)
 
 
-def symbolic_equal(a, b):
+def symbolic_equal(a, b, *, numeric_tolerance: bool = True):
     parse_latex, parse_expr, latex2sympy, simplify, N = _symbolic_tools()
 
     def _parse(s):
@@ -624,18 +631,19 @@ def symbolic_equal(a, b):
     except Exception:
         pass
 
-    try:
-        if numeric_equal(float(N(a)), float(N(b))):
-            return True
-    except Exception:
-        pass
+    if numeric_tolerance:
+        try:
+            if numeric_equal(float(N(a)), float(N(b))):
+                return True
+        except Exception:
+            pass
 
     # matrix
     try:
         # if a and b are matrix
         if a.shape == b.shape:
-            _a = a.applyfunc(lambda x: round(x, 3))
-            _b = b.applyfunc(lambda x: round(x, 3))
+            _a = a.applyfunc(lambda x: round(x, 3)) if numeric_tolerance else a
+            _b = b.applyfunc(lambda x: round(x, 3)) if numeric_tolerance else b
             if _a.equals(_b):
                 return True
     except Exception:

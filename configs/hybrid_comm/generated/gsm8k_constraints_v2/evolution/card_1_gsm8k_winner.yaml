@@ -1,0 +1,63 @@
+version: CARD-0-GSM8K-V2
+description: >
+  LLM-generated GSM8K protocol card CARD-0-GSM8K-V2.
+
+planner_to_solver:
+  allowed_fields: [K, G, P, C, U]
+  required_fields: [G]
+  field_rules:
+    canonical_order: [K, G, P, C, U]
+    value_representation: "Field values may use concise natural language, symbols, LaTeX, or a mixture of them. Prefer the shortest unambiguous representation. Do not use semicolons inside field values; use commas instead."
+    K: "Explicit facts or relations selected from the shared problem that are essential to the plan and not safely recoverable from the remaining fields. Omit when the plan can be derived directly from the problem statement without retransmitting givens. Example: eggs=16,eaten=3,baked=4,price=2"
+    G: "Exact target quantity or object to solve, stated without plan steps or validity constraints. Example: total cost"
+    P: "Concise symbolic relations and operation direction that constitute the plan for obtaining G. Do not carry the algebra through to the final value of G. Example: sub=10+4*20,total=1.2*sub"
+    C: "Additional condition that changes solution validity, not already represented in K, G, or P. Omit when no such condition exists. Example: tip applies to food subtotal only"
+    U: "Genuine unresolved ambiguity that could change the answer. Omit when no such ambiguity exists. Example: whether tip is calculated before or after tax"
+  examples:
+    - "G:total cost;P:sub=10+4*20,total=1.2*sub"
+    - "K:eggs=16,eaten=3,baked=4,price=2;G:revenue;P:remain=eggs-eaten-baked,revenue=remain*price"
+    - "K:total=180,bombed_frac=1/4,no_show_frac=1/3,low=20;G:passed;P:rest=total-total*bombed_frac,remaining=rest-rest*no_show_frac,passed=remaining-low;C:no_show applies to rest after bombed"
+  output_schema: "Output direct fields from [K,G,P,C,U]; required: [G]."
+
+solver_to_verifier:
+  allowed_fields: [IR, R, C, U]
+  required_fields: [R]
+  field_rules:
+    canonical_order: [IR, R, C, U]
+    value_representation: "Field values may use concise natural language, symbols, LaTeX, or a mixture of them. Prefer the shortest unambiguous representation. Do not use semicolons inside field values; use commas instead."
+    IR: "Minimal intermediate evidence needed to verify R: decisive operands, operations, and intermediate results that connect the plan to the final answer. Do not repeat the complete question or all upstream fields. Example: sub=10+4*20=90,tip=0.2*90=18"
+    R: "Exact candidate answer to the task target. For GSM8K, R must contain the final numeric answer without a unit, in integer or finite decimal form. Example: 108"
+    C: "Additional validity condition not already represented by IR or R. Omit when no such condition exists. Example: tip applied to food subtotal only"
+    U: "Genuine unresolved ambiguity that could make R unreliable. Omit when no such ambiguity exists. Example: whether the 20% tip applies before or after tax"
+  examples:
+    - "IR:sub=10+4*20=90,tip=0.2*90=18,total=90+18=108;R:108"
+    - "IR:ben=40+8=48,tom=48*3/8=18;R:18"
+    - "IR:weekday=5*(30+60)=450,weekend=2*2*(30+60)=360,total=450+360=810;R:810;C:weekend reading time is doubled"
+  output_schema: "Output direct fields from [IR,R,C,U]; required: [R]."
+
+verifier_to_solver:
+  allowed_fields: [CHK, E, REQ]
+  required_fields: [CHK]
+  field_rules:
+    canonical_order: [CHK, E, REQ]
+    value_representation: "Field values may use concise natural language, symbols, LaTeX, or a mixture of them. Prefer the shortest unambiguous representation. Do not use semicolons inside field values; use commas instead."
+    CHK: "Verification status: ACCEPT when sufficient evidence supports R and no concrete defect is established; REVISE when a concrete defect or missing essential evidence is identified. Example: ACCEPT"
+    E: "Frozen error category used only for REVISE. Must be one of ARITH, RELATION, MISSING_FACT, MISSING_UNIT, WRONG_TARGET, INSUFFICIENT_INFO, OTHER. Example: ARITH"
+    REQ: "Minimal actionable revision request used only for REVISE. Request only the particular missing relation, operation, or correction; do not prescribe an unverified replacement answer. Example: recompute tip as 0.2*subtotal"
+  examples:
+    - "CHK:ACCEPT"
+    - "CHK:REVISE;E:ARITH;REQ:recompute 4*20+10"
+    - "CHK:REVISE;E:INSUFFICIENT_INFO;REQ:provide the intermediate result for total gallons"
+  output_schema: "Output CHK:ACCEPT, or direct fields; REVISE requires CHK, E and REQ."
+
+message_format:
+  structure: fields_only
+  wire_syntax: direct
+  field_separator: ;
+
+value_policy:
+  wire_syntax: "FIELD:value;FIELD:value"
+  field_separator: ";"
+  optional_fields: "Omit optional fields when unused; never send placeholder values."
+  answer_representation: "R must contain the final numeric answer without a unit, in integer or finite decimal form."
+  cross_field_constraints: "['P must not repeat facts already represented in K.', 'C must not repeat G or system-level output requirements.', 'U must not state that no uncertainty exists.', 'IR must not repeat the complete question or all upstream fields.']"

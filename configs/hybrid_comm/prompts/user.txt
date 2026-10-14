@@ -1,0 +1,4 @@
+Original problem:
+$question
+
+$incoming_text

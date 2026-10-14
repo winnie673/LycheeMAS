@@ -1,0 +1,56 @@
+version: CARD-2-GSM8K
+description: >
+  Evidence-evolved GSM8K protocol card CARD-2-GSM8K, derived from CARD-0-GSM8K-V6.
+
+planner_to_solver:
+  allowed_fields: [K, G, P, C, U]
+  required_fields: [G]
+  field_rules:
+    canonical_order: [K, G, P, C, U]
+    value_representation: "Field values may use concise natural language, symbols, LaTeX, or a mixture of them. Prefer the shortest unambiguous representation. Do not use semicolons inside field values; use commas instead."
+    K: "Explicit givens or relations selected from the shared problem that are necessary for the chosen plan; never computed or derived states. Example: eggs=16,eaten=3,baked=4,price=2"
+    G: "Exact target quantity to obtain; no plan, operations, or validity constraints. Example: total spent including tip"
+    P: "Compact symbolic relations and operation direction for deriving G; contains all derivation and must not repeat K. Each relation must preserve the exact quantity and grouping stated in the problem (do not split, merge, or reassign a quantity unless the problem explicitly does so). Example: sub=10+4*20,total=1.2*sub"
+    C: "Additional condition that changes solution validity; does not repeat K, G, P, units, or output instructions. Example: tip applies to pre-tip total"
+    U: "Genuine unresolved ambiguity that could change the answer. Example: whether weekend doubling applies per session or daily total"
+  examples:
+    - "G:total spent including tip;P:sub=10+4*20,total=1.2*sub"
+    - "K:eggs=16,eaten=3,baked=4,price=2;G:revenue;P:remain=eggs-eaten-baked,revenue=remain*price"
+    - "K:units=100,occupancy=3/4,rent=400;G:annual rent;P:occupied=100*3/4,monthly=occupied*400,annual=monthly*12;C:occupancy constant all year"
+  output_schema: "Output direct fields from [K,G,P,C,U]; required: [G]."
+
+solver_to_verifier:
+  allowed_fields: [IR, R, C, U]
+  required_fields: [R]
+  field_rules:
+    canonical_order: [IR, R, C, U]
+    value_representation: "Field values may use concise natural language, symbols, LaTeX, or a mixture of them. Prefer the shortest unambiguous representation. Do not use semicolons inside field values; use commas instead."
+    IR: "Minimal intermediate evidence needed to verify R; does not repeat the question or all upstream fields. Example: sub=90,tip=18"
+    R: "Candidate final answer as a finite decimal without a unit. Example: 108"
+    C: "Additional validity condition not already represented by IR or R. Example: tip applied to pre-tip total"
+    U: "Genuine unresolved ambiguity that could make R unreliable. Example: whether weekend doubling applies per session or daily total"
+  examples:
+    - "IR:sub=90,tip=18;R:108"
+    - "IR:C=16/(2/3)=24;R:24"
+    - "IR:Ben=48,Tom=48*3/8=18;R:18;C:equal mileage per car"
+  output_schema: "Output direct fields from [IR,R,C,U]; required: [R]."
+
+verifier_to_solver:
+  allowed_fields: [CHK, E, REQ]
+  required_fields: [CHK]
+  field_rules:
+    canonical_order: [CHK, E, REQ]
+    value_representation: "Field values may use concise natural language, symbols, LaTeX, or a mixture of them. Prefer the shortest unambiguous representation. Do not use semicolons inside field values; use commas instead."
+    CHK: "Verification status; must be ACCEPT or REVISE. Example: ACCEPT"
+    E: "Frozen error category used only for REVISE. Example: ARITH"
+    REQ: "Minimal actionable revision request used only for REVISE. Example: recompute tip on pre-tip total"
+  examples:
+    - "CHK:ACCEPT"
+    - "CHK:REVISE;E:ARITH;REQ:recompute 10+4*20"
+    - "CHK:REVISE;E:RELATION;REQ:use equal mileage per car"
+  output_schema: "Output CHK:ACCEPT, or direct fields; REVISE requires CHK, E and REQ."
+
+message_format:
+  structure: fields_only
+  wire_syntax: direct
+  field_separator: ;

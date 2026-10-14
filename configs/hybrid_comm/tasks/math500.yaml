@@ -1,0 +1,34 @@
+task: math500
+display_name: MATH-500
+scorer_kind: math500
+answer_policy:
+  rule: R must contain the exact final mathematical answer in the form required by the problem.
+  allowed_forms:
+    - integer
+    - rational
+    - finite_decimal
+    - radical
+    - algebraic_expression
+    - interval
+    - set
+    - tuple
+    - latex_expression
+  requirements:
+    - Preserve an exact form when available.
+    - Do not force a decimal approximation.
+    - Do not include explanatory prose in R.
+    - Put a necessary domain or branch condition in C.
+reasoning_requirements:
+  - Preserve quantifiers, domains, signs, exponents, bounds, and multiplicity.
+  - Preserve equation direction and the conditions of equivalence transformations.
+  - Preserve necessary case distinctions and theorem preconditions.
+  - Use concise LaTeX when it is shorter or less ambiguous.
+  - Do not copy the complete problem into K or IR.
+diagnosis_issue_types:
+  - MISSING_DOMAIN
+  - MISSING_BRANCH
+  - EQUIVALENCE_LOSS
+  - EXACT_FORM_LOSS
+  - QUANTIFIER_LOSS
+  - THEOREM_CONDITION_LOSS
+  - NOTATION_AMBIGUITY

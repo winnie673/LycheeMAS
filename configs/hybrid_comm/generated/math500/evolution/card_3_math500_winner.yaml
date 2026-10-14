@@ -1,0 +1,63 @@
+version: CARD-1-MATH500-RERUN
+description: >
+  Evidence-evolved MATH-500 protocol card CARD-1-MATH500-RERUN, derived from
+  CARD-0-MATH500-RERUN.
+
+planner_to_solver:
+  allowed_fields: [K, G, P, C, U]
+  required_fields: [G]
+  field_rules:
+    canonical_order: [K, G, P, C, U]
+    value_representation: "Field values may use concise natural language, symbols, LaTeX, or a mixture of them. Prefer the shortest unambiguous representation. Do not use semicolons inside field values; use commas instead."
+    K: "Explicit givens or relations selected from the shared problem that are essential to the chosen plan and not safely recoverable from the remaining fields; omit when the plan uses only the problem statement directly. Example: x^2-x-1=0"
+    G: "Exact target to obtain, stated as a mathematical object or quantity; no plan, method, or validity condition. Example: x^3-2x+1"
+    P: "Concise symbolic relations and operation direction that derive G from K or from the shared problem; contains all derivation direction but not the completed final value of G. P must state the exact form of the requested object (e.g. quotient only, not quotient plus remainder) and must include every necessary condition that changes the answer (e.g. divisibility constraints, domain or branch restrictions); do not leave such conditions to be inferred. Example: x^2=x+1,x^3=x*x^2"
+    C: "Additional condition that changes solution validity, such as a domain restriction, branch choice, or nondegeneracy condition; omit when no such condition is needed. Example: x>0"
+    U: "Genuine unresolved ambiguity that could change the answer; omit when no such ambiguity remains. Example: principal branch of arcsin"
+  examples:
+    - "G:tan A;P:tan A=sin A/cos A"
+    - "K:sin A=2cos A;G:tan A;P:tan A=sin A/cos A"
+    - "G:arcsin(-1/2);P:sin(theta)=-1/2;U:principal branch of arcsin"
+  output_schema: "Output direct fields from [K,G,P,C,U]; required: [G]."
+
+solver_to_verifier:
+  allowed_fields: [IR, R, C, U]
+  required_fields: [R]
+  field_rules:
+    canonical_order: [IR, R, C, U]
+    value_representation: "Field values may use concise natural language, symbols, LaTeX, or a mixture of them. Prefer the shortest unambiguous representation. Do not use semicolons inside field values; use commas instead."
+    IR: "Minimal intermediate evidence needed to verify R, such as a key equation, substitution, or reduction; do not repeat the full question or all upstream fields. Example: x^2=x+1,x^3=2x+1"
+    R: "Exact final mathematical answer in the form required by the problem: integer, rational, finite decimal, radical, algebraic expression, interval, set, tuple, or LaTeX expression; no explanatory prose. Example: 2"
+    C: "Additional validity condition not already represented by IR or R, such as a domain restriction or branch condition; omit when not needed. Example: x>0"
+    U: "Genuine unresolved ambiguity that could make R unreliable; omit when none remains. Example: principal branch of arcsin"
+  examples:
+    - "IR:x^2=x+1,x^3=2x+1;R:2"
+    - "IR:sin(theta)=-1/2;R:-pi/6;C:principal branch"
+    - "IR:8x=1 mod p,gcd(8,p)|1;R:2"
+  output_schema: "Output direct fields from [IR,R,C,U]; required: [R]."
+
+verifier_to_solver:
+  allowed_fields: [CHK, E, REQ]
+  required_fields: [CHK]
+  field_rules:
+    canonical_order: [CHK, E, REQ]
+    value_representation: "Field values may use concise natural language, symbols, LaTeX, or a mixture of them. Prefer the shortest unambiguous representation. Do not use semicolons inside field values; use commas instead."
+    CHK: "Verification status; ACCEPT when R is correct and sufficiently supported, REVISE when a specific error or missing condition requires correction. Example: ACCEPT"
+    E: "Frozen error category used only with REVISE to classify the needed correction. Example: ARITH"
+    REQ: "Minimal actionable revision request used only with REVISE; state exactly what must be corrected or supplied. Example: recompute the modular reduction"
+  examples:
+    - "CHK:ACCEPT"
+    - "CHK:REVISE;E:ARITH;REQ:recompute the modular reduction"
+    - "CHK:REVISE;E:MISSING_FACT;REQ:include the domain restriction"
+  output_schema: "Output CHK:ACCEPT, or direct fields; REVISE requires CHK, E and REQ."
+
+message_format:
+  structure: fields_only
+  wire_syntax: direct
+  field_separator: ;
+
+value_policy:
+  answer_representation: "R must contain the exact final mathematical answer in the form required by the problem, preserving exact forms such as integers, rationals, radicals, intervals, sets, tuples, or LaTeX expressions; do not force decimal approximations and do not include explanatory prose."
+  field_separation: "K contains only explicit givens or relations selected from the shared problem; G states the target; P contains derivation direction; C contains validity-changing conditions; U contains genuine unresolved ambiguity. IR contains minimal verification evidence; R contains the exact candidate answer; C and U in solver_to_verifier mirror validity and ambiguity roles."
+  omission: "Omit optional fields when unused; never send placeholder values such as none, N/A, no ambiguity, unknown, or not applicable."
+  wire_syntax: "Use FIELD:value;FIELD:value with semicolons between fields; field values must not contain semicolons."

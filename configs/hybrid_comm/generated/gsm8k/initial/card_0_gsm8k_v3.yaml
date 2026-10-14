@@ -1,0 +1,83 @@
+version: CARD-0-GSM8K-V3
+description: >
+  LLM-generated GSM8K protocol card CARD-0-GSM8K-V3.
+
+planner_to_solver:
+  allowed_fields: [K, G, P, C, U]
+  required_fields: [G]
+  field_rules:
+    canonical_order: [K, G, P, C, U]
+    K:
+      usage: "Derived or selected facts that are not safely recoverable from the shared problem and are needed for the chosen plan. Omit when the solver can recover all needed facts from the problem and other fields."
+      examples: ["net decrease per day = 20 - 6 = 14", "each car drives 450/3 = 150 miles", "remaining fraction = 2/3"]
+    G:
+      usage: "Exact target quantity to solve, stated without plan steps or validity constraints."
+      examples: ["total spent including tip", "full tank capacity in gallons", "number of days until unread messages reach 0"]
+    P:
+      usage: "Concise method for obtaining G. Do not repeat K facts or restate the target."
+      examples: ["compute 10 + 4*20, then add 20% of that total", "solve (2/3)C = 16 for C", "compute 98 / 14"]
+    C:
+      usage: "Additional condition that changes solution validity and is not already in K, G, or P. Do not mention units, output format, or generic numeric-answer requirements."
+      examples: ["tip applies to pre-tip total", "use equal mileage per car, not equal gallons", "doubled reading applies to both weekend days"]
+    U:
+      usage: "Genuine unresolved ambiguity that could change the answer. Omit when no such ambiguity exists."
+      examples: ["whether weekend doubling applies per session or per day", "whether week 3 is 2000 more than week 2 or 2000 total"]
+  examples:
+    - "G:total spent including tip;P:compute 10 + 4*20, then add 20% of that total;C:tip applies to pre-tip total"
+    - "G:full tank capacity in gallons;P:solve (2/3)C = 16 for C"
+    - "K:net decrease per day = 20 - 6 = 14;G:number of days until unread messages reach 0;P:compute 98 / 14"
+  output_schema: "Output direct fields from [K,G,P,C,U]; required: [G]."
+
+solver_to_verifier:
+  allowed_fields: [IR, R, C, U]
+  required_fields: [R]
+  field_rules:
+    canonical_order: [IR, R, C, U]
+    IR:
+      usage: "Minimal intermediate evidence needed to verify R. Do not repeat the question or all upstream fields."
+      examples: ["food total = 90, tip = 18", "C = 16 * 3/2 = 24", "net decrease = 14, 98 / 14 = 7"]
+    R:
+      usage: "Candidate final answer as a finite decimal without a unit."
+      examples: ["108", "24", "7"]
+    C:
+      usage: "Additional validity condition not already represented by IR or R. Omit when unused."
+      examples: ["assumes tip is calculated on pre-tip total", "assumes equal mileage per car"]
+    U:
+      usage: "Genuine unresolved ambiguity that could make R unreliable. Omit when unused."
+      examples: ["weekend doubling interpretation could change total", "week 3 reference could change total"]
+  examples:
+    - "IR:food total = 90, tip = 18;R:108"
+    - "IR:C = 16 * 3/2 = 24;R:24"
+    - "IR:net decrease = 14, 98 / 14 = 7;R:7"
+  output_schema: "Output direct fields from [IR,R,C,U]; required: [R]."
+
+verifier_to_solver:
+  allowed_fields: [CHK, E, REQ]
+  required_fields: [CHK]
+  field_rules:
+    canonical_order: [CHK, E, REQ]
+    CHK:
+      usage: "Verification status: ACCEPT or REVISE."
+      examples: ["ACCEPT", "REVISE"]
+    E:
+      usage: "Frozen error category used only for REVISE."
+      examples: ["ARITH", "RELATION", "MISSING_FACT"]
+    REQ:
+      usage: "Minimal actionable revision request used only for REVISE."
+      examples: ["recompute tip on pre-tip total", "use week 2 as reference for week 3", "include the missing 20 low scorers"]
+  examples:
+    - "CHK:ACCEPT"
+    - "CHK:REVISE;E:ARITH;REQ:recompute 5000 + 2500 + 4500"
+    - "CHK:REVISE;E:RELATION;REQ:use week 2 as reference for week 3"
+  output_schema: "Output CHK:ACCEPT, or direct fields; REVISE requires CHK, E and REQ."
+
+message_format:
+  structure: fields_only
+  wire_syntax: direct
+  field_separator: ;
+
+value_policy:
+  wire_syntax: "FIELD:value;FIELD:value"
+  field_separator: ";"
+  optional_fields: "Omit optional fields when unused; never send placeholder values."
+  cross_field_constraints: "['P must not repeat facts already represented in K.', 'C must not repeat G or system-level output requirements.', 'U must not state that no uncertainty exists.', 'IR must not repeat the complete question or all upstream fields.']"

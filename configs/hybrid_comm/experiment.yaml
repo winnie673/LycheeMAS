@@ -1,0 +1,18 @@
+experiment:
+  task: gsm8k
+  seed: 42
+  test_size: 200
+  mode: hybrid
+  protocol_id: P0
+  max_revision_rounds: 1
+  format_retry_limit: 1
+  fallback_call_limit: 1
+
+paths:
+  protocol: configs/hybrid_comm/protocols/protocol_p0_fields_only.yaml
+  split_manifest: data/splits/gsm8k_protocol_v54_seed42.json
+  run_root: runs/hybrid_comm
+
+logging:
+  span_level: event
+  save_raw_outputs: true

@@ -1,10 +1,18 @@
 import json
+from pathlib import Path
 
 from lychee_mas import REGISTRY
-from lychee_mas.core.types import TaskQuery
 from lychee_mas.eval import benchmarks  # noqa: F401
+from lychee_mas.eval.benchmarks import (
+    aftraj,
+    agent_collab,
+    choice_qa,
+    common,
+    locomo10,
+    mast_data,
+    open_agent_traces,
+)
 from lychee_mas.eval.metrics import score, score_details
-from lychee_mas.eval.benchmarks import aftraj, agent_collab, choice_qa, common, locomo10, mast_data, open_agent_traces
 
 
 def test_extended_benchmarks_registered():
@@ -40,9 +48,9 @@ def test_benchmark_roots_prefer_new_names_and_keep_legacy_fallback(monkeypatch):
     ):
         monkeypatch.delenv(name, raising=False)
 
-    assert common.raw_root() == "data/benchmarks/raw"
-    assert common.prepared_root() == "data/benchmarks/prepared"
-    assert common.runs_root() == "runs/benchmarks"
+    assert Path(common.raw_root()).as_posix() == "data/benchmarks/raw"
+    assert Path(common.prepared_root()).as_posix() == "data/benchmarks/prepared"
+    assert Path(common.runs_root()).as_posix() == "runs/benchmarks"
 
     monkeypatch.setenv("CDM_DATA_ROOT", "/legacy/raw")
     assert common.raw_root() == "/legacy/raw"
@@ -55,7 +63,9 @@ def test_benchmark_roots_prefer_new_names_and_keep_legacy_fallback(monkeypatch):
     assert common.prepared_root() == "/new/prepared"
     assert common.runs_root() == "/new/runs"
     assert common.safe_source_id("OmniData/ARC") == "OmniData--ARC"
-    assert str(common.raw_source_dir("arc_easy", "modelscope", "OmniData/ARC")) == (
+    assert common.raw_source_dir(
+        "arc_easy", "modelscope", "OmniData/ARC"
+    ).as_posix() == (
         "/new/raw/arc_easy/modelscope/OmniData--ARC"
     )
 

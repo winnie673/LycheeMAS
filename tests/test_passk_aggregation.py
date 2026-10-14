@@ -9,6 +9,17 @@ run_mas.py --samples K 会给每个 case 落 K 份 prediction（同 case_id、�
 from lychee_mas.eval.metrics import aggregate_samples
 
 
+def test_explicit_is_correct_infers_binary_metrics_without_scorer_kind():
+    metrics = aggregate_samples(
+        [
+            {"score": 1.0, "is_correct": True},
+            {"score": 0.0, "is_correct": False},
+        ]
+    )
+    assert metrics["accuracy"] == 0.5
+    assert metrics["num_correct"] == 1
+
+
 def _s(case_id, score, k_index, num_samples, kind="exact"):
     return {
         "case_id": case_id, "score": score,

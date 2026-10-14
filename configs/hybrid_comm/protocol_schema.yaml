@@ -1,0 +1,61 @@
+schema_version: SCHEMA-3
+description: Task-independent Planner-Solver-Verifier communication schema.
+planner_to_solver:
+  allowed_fields: [K, G, P, C, U]
+  required_fields: [G]
+  field_semantics:
+    K: Explicit facts or relations selected from shared context; excludes computed or derived states.
+    G: Exact target to solve; excludes plans and validity constraints.
+    P: Concise symbolic relations and operation direction for obtaining G; contains all derivation.
+    C: Additional condition that changes solution validity; does not repeat K, G, P, units, or output instructions.
+    U: Genuine unresolved ambiguity that could change the answer.
+  optional_field_policy:
+    K: {omit_when_unused: true}
+    P: {omit_when_unused: true}
+    C: {omit_when_unused: true}
+    U:
+      omit_when_unused: true
+      forbidden_placeholder_values: [none, n/a, no ambiguity, unknown, not applicable]
+solver_to_verifier:
+  allowed_fields: [IR, R, C, U]
+  required_fields: [R]
+  field_semantics:
+    IR: Minimal intermediate evidence needed to verify R; does not repeat the question.
+    R: Exact candidate answer to the task target; task-specific representation requirements are defined by the Protocol Card.
+    C: Additional validity condition not already represented by IR or R.
+    U: Genuine unresolved ambiguity that could make R unreliable.
+  optional_field_policy:
+    IR: {omit_when_unused: true}
+    C: {omit_when_unused: true}
+    U:
+      omit_when_unused: true
+      forbidden_placeholder_values: [none, n/a, no ambiguity, unknown, not applicable]
+verifier_to_solver:
+  allowed_fields: [CHK, E, REQ]
+  required_fields: [CHK]
+  conditional_required:
+    REVISE: [E, REQ]
+  conditional_forbidden:
+    ACCEPT: [E, REQ]
+  value_constraints:
+    CHK: {allowed_values: [ACCEPT, REVISE]}
+    E:
+      allowed_values: [ARITH, RELATION, MISSING_FACT, MISSING_UNIT, WRONG_TARGET, INSUFFICIENT_INFO, OTHER]
+  field_semantics:
+    CHK: Verification status.
+    E: Frozen error category used only for REVISE.
+    REQ: Minimal actionable revision request used only for REVISE.
+message_format:
+  structure: fields_only
+  wire_syntax: direct
+  field_separator: ";"
+schema_value_policy:
+  principle: Structure is fixed; representation inside fields is flexible.
+  representation: Field values may use concise natural language, symbols, LaTeX, or a mixture.
+  preference: Prefer the shortest unambiguous representation.
+  optional_fields: Omit optional fields when unused; never send placeholder values.
+cross_field_constraints:
+  - P must not repeat facts already represented in K.
+  - C must not repeat G or system-level output requirements.
+  - U must not state that no uncertainty exists.
+  - IR must not repeat the complete question or all upstream fields.

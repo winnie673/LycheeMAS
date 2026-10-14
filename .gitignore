@@ -14,11 +14,13 @@ venv/
 
 # 实验产物 / 数据（CLAUDE.md §7：不提交 runs/ 与大产物）
 runs/
+runs/hybrid_comm/
 *.jsonl
 checkpoints/
 data/raw/
 data/processed/
 data/benchmarks/
+data/splits/
 
 # 工具缓存
 .pytest_cache/

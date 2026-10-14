@@ -1,0 +1,56 @@
+version: P0-FIELDS-ONLY
+description: >
+  Structured fields-only protocol derived from P0.
+  Field values adaptively mix symbolic and concise natural-language representations.
+  There is no separate NL supplement.
+
+planner_to_solver:
+  allowed_fields: [K, G, P, C, UNIT]
+  required_fields: [G, P]
+  field_rules:
+    canonical_order: [K, G, P, C, UNIT]
+    value_representation: "Field values may use concise natural language, symbols, LaTeX, or a mixture of them. Prefer the shortest unambiguous representation. Do not use semicolons inside field values; use commas instead."
+    K: "Known facts needed by the Solver. Use compact bindings, concise natural language, or both. Separate items with commas; field values must not contain semicolons. Example: eggs=16,eaten=3,baked=4"
+    G: "Exact target. Use a short but unambiguous variable or phrase. Example: daily revenue"
+    P: "Plan with enough relations and operation direction to recover the intended reasoning. Symbols and concise natural language may be mixed. Separate steps with commas; field values must not contain semicolons. Example: remain=eggs-eaten-baked,revenue=remain*price"
+    C: "Constraint only when it adds information not already conveyed by K, G, P, or UNIT. Do not restate the unit or answer format."
+    UNIT: "Unit only when needed to interpret or verify the target. Example: dollars per hour"
+  examples:
+    - "K:eggs=16,eaten=3,baked=4,price=2;G:daily revenue;P:remain=eggs-eaten-baked,revenue=remain*price;UNIT:dollars"
+  output_schema: "Output only FIELD:value segments separated by semicolons using the allowed fields. Include G and P. Omit unused optional fields. No JSON, markdown, or extra text."
+
+solver_to_verifier:
+  allowed_fields: [IR, R, P, C, UNIT]
+  required_fields: [R]
+  field_rules:
+    canonical_order: [IR, R, C, UNIT]
+    value_representation: "Field values may use concise natural language, symbols, LaTeX, or a mixture of them. Prefer the shortest unambiguous representation. Do not use semicolons inside field values; use commas instead."
+    IR: "Intermediate reasoning needed for verification. Mix equations with short relation labels when symbols alone would be ambiguous. Separate steps with commas; field values must not contain semicolons. Example: remain=50-18=32,revenue=32*2=64"
+    R: "Candidate final numeric answer; single finite decimal. Example: 64"
+    C: "Constraint only when it adds information not already conveyed by IR, R, or UNIT."
+    UNIT: "Unit only when needed to interpret or verify R. Example: dollars"
+  examples:
+    - "IR:remain=16-3-4=9,revenue=9*2=18;R:18;UNIT:dollars"
+  output_schema: "Output only FIELD:value segments separated by semicolons using the allowed fields. Include R. Omit unused optional fields. No JSON, markdown, or extra text."
+
+verifier_to_solver:
+  allowed_fields: [CHK, E, REQ, C]
+  required_fields: [CHK]
+  field_rules:
+    canonical_order: [CHK, E, REQ, C]
+    value_representation: "Field values may use concise natural language, symbols, LaTeX, or a mixture of them. Prefer the shortest unambiguous representation. Do not use semicolons inside field values; use commas instead."
+    CHK: "ACCEPT, REVISE, FAIL, or INSUFFICIENT"
+    E: "One of ARITH, RELATION, MISSING_FACT, MISSING_UNIT, WRONG_TARGET, INSUFFICIENT_INFO, OTHER"
+    REQ: "Minimal actionable correction request. It may mix a short instruction with symbols. Example: recompute remain=50-18"
+    C: "Constraint relevant to the error, only when CHK, E, and REQ do not already convey it."
+  examples:
+    - "CHK:ACCEPT"
+    - "CHK:FAIL;E:ARITH;REQ:recompute remain=16-3-4"
+  output_schema: "Output exactly CHK:ACCEPT, or FIELD:value segments separated by semicolons with CHK, E, and REQ. Omit unused optional fields. No JSON, markdown, or extra text."
+
+message_format:
+  structure: fields_only
+  wire_syntax: direct
+  field_separator: ;
+
+

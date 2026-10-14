@@ -1,7 +1,7 @@
 """MATH-500 loader and data preparation.
 
 MASPO（https://github.com/wangzx1219/MASPO）主实验数据集之一：HuggingFaceH4/MATH-500
-的 500 题子集（jsonl 随 MASPO 仓库发布）。评分走 kind="aime"（数值 + sympy 符号等价），
+的 500 题子集（jsonl 随 MASPO 仓库发布）。评分走任务专用 kind="math500"，
 gold 多为 LaTeX 表达式（如 ``\\frac{14}{3}``）。
 """
 
@@ -58,7 +58,7 @@ def load_math500(n: Optional[int] = None) -> List[Dict]:
             out.append(
                 {
                     "task": "math500",
-                    "kind": "aime",
+                    "kind": "math500",
                     "question": it["problem"].strip(),
                     "gold": str(it["answer"]).strip(),
                     "context": None,

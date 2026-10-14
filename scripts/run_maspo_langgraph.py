@@ -16,14 +16,14 @@ arXiv:2605.06623）；参考实现 https://github.com/wangzx1219/MASPO 的 run_m
   优化         fixed-rounds 坐标上升（depth=9, rounds_per_turn=3, beam=2）+ Beam Refresh
                + Lookahead(0.4/0.4/0.2) + Misleading Sampling；训练问题采样自同一数据集
                （免 gold 标注，与原版 load_train_for_opt 协议一致）
-  评测         MATH-500（benchmark/math500），kind="aime"（数值+sympy 符号等价）打分；
+  评测         MATH-500（benchmark/math500），kind="math500"（任务专用等价）打分；
                对比对象 = 同模型下「原始提示 vs MASPO 优化提示」的 accuracy 与 token 成本
 
 与原版的声明差异：
   - 执行引擎为 LangGraph StateGraph（节点按 graphview 契约挂 AgentSpec 元数据）；
     优化经**本框架统一接口** optimize_langgraph(sg, method="maspo", ...) 完成——
     optimize 阶段落 prompt JSON，eval 阶段 mode="apply" 即插即用挂载。
-  - 打分用本框架 aime 等价打分（原版 normalize_answer 字符串比对）；采样 seeded 可复现。
+  - 打分用本框架 MATH-500 专用等价打分（原版 normalize_answer 字符串比对）；采样 seeded 可复现。
 
 用法（三条腿：baseline 基线 → optimize 优化 → eval 挂载评测；both = optimize+eval）：
   CUDA_VISIBLE_DEVICES=0 EVALUATOR_API_KEY=... \\
@@ -48,13 +48,13 @@ sys.path.insert(0, os.path.join(os.path.dirname(os.path.dirname(os.path.abspath(
 from lychee_mas.core.types import AgentSpec  # noqa: E402
 from lychee_mas.eval import metrics as M  # noqa: E402
 from lychee_mas.eval.benchmarks import load as load_benchmark  # noqa: E402
-from lychee_mas.plugins.prerun import optimize_langgraph  # noqa: E402
 from lychee_mas.methods.prerun.maspo.executor import (  # noqa: E402
     CONTEXT_JOINER,
     format_agent_prompt,
 )
 from lychee_mas.methods.prerun.maspo.prompts import COMPRESS_PROMPT, seed_template  # noqa: E402
 from lychee_mas.methods.prerun.maspo.textops import extract_answer  # noqa: E402
+from lychee_mas.plugins.prerun import optimize_langgraph  # noqa: E402
 
 DEFAULT_MODEL = "/data/mxy/Models/Qwen/Qwen3-8B"       # MASPO 执行模型（本地权重）
 DEFAULT_EVALUATOR_MODEL = "gemini-2.5-pro"             # MASPO 评估/反思模型
@@ -264,7 +264,7 @@ def run_eval(graph: Any, records: List[Dict[str, Any]], method: str,
     model_tag = args.model_tag or os.path.basename(os.path.normpath(args.model_path))
     out_dir = M.result_dir(model_tag, method, args.task, root=args.out_root)
     summary = M.aggregate_samples(samples, {"task": args.task, "method": method,
-                                            "scorer_kind": "aime", "model": model_tag})
+                                            "scorer_kind": "math500", "model": model_tag})
     config = {"script": "run_maspo_langgraph.py", "method": method, "task": args.task,
               "nr": args.nr, "eval_n": len(samples), "seed": args.seed,
               "model_path": args.model_path, "max_new_tokens": args.max_new_tokens,

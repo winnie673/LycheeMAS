@@ -1,0 +1,86 @@
+version: CARD-0-GSM8K-V2
+description: >
+  LLM-generated GSM8K protocol card CARD-0-GSM8K-V2.
+
+planner_to_solver:
+  allowed_fields: [K, G, P, C, U]
+  required_fields: [G]
+  field_rules:
+    canonical_order: [K, G, P, C, U]
+    K:
+      usage: "Extract only the numeric facts and relations needed to solve; omit if the goal alone contains all needed facts."
+      examples: ["appetizer=$10, 4 entrees at $20 each, tip=20% of pre-tip total", "tank initially 1/3 full, adding 16 gallons fills it", "Phillip=40 apples, Ben=Phillip+8, Tom=3/8 of Ben"]
+    G:
+      usage: "State the exact quantity to compute, without plan steps or validity conditions."
+      examples: ["total spent including tip", "full tank capacity in gallons", "number of apples Tom has"]
+    P:
+      usage: "Give the shortest symbolic or natural-language computation sequence that obtains G; do not restate K."
+      examples: ["10+4*20, then +0.20*(10+4*20)", "(2/3)C=16, solve C", "Ben=40+8, Tom=Ben*3/8"]
+    C:
+      usage: "State only a non-obvious validity condition that changes the computation; omit if none."
+      examples: ["tip applies to pre-tip total", "equal mileage per car, not equal gallons", "weekend doubling applies to daily total"]
+    U:
+      usage: "State a genuine unresolved ambiguity that could change the answer; omit if none."
+      examples: ["whether weekend doubling applies per session or per day", "whether tip is calculated before or after tax"]
+  examples:
+    - "K:appetizer=$10, 4 entrees at $20 each, tip=20% of pre-tip total;G:total spent including tip;P:10+4*20, then +0.20*(10+4*20)"
+    - "K:tank initially 1/3 full, adding 16 gallons fills it;G:full tank capacity in gallons;P:(2/3)C=16, solve C"
+    - "K:Phillip=40 apples, Ben=Phillip+8, Tom=3/8 of Ben;G:number of apples Tom has;P:Ben=40+8, Tom=Ben*3/8"
+  output_schema: "Output direct fields from [K,G,P,C,U]; required: [G]."
+
+solver_to_verifier:
+  allowed_fields: [IR, R, C, U]
+  required_fields: [R]
+  field_rules:
+    canonical_order: [IR, R, C, U]
+    IR:
+      usage: "Provide the minimal intermediate equations or values needed to verify R; omit if R is self-evident from the computation."
+      examples: ["10+4*20=90, 0.20*90=18", "(2/3)C=16, C=24", "Ben=40+8=48, Tom=48*3/8=18"]
+    R:
+      usage: "Final numeric answer as a finite decimal without units."
+      examples: ["108", "24", "18"]
+    C:
+      usage: "State only a non-obvious validity condition not already in IR or R; omit if none."
+      examples: ["tip applied to pre-tip total", "equal mileage per car", "weekend doubling applied to daily total"]
+    U:
+      usage: "State a genuine unresolved ambiguity that could make R unreliable; omit if none."
+      examples: ["whether weekend doubling applies per session or per day", "whether tip is calculated before or after tax"]
+  examples:
+    - "IR:10+4*20=90, 0.20*90=18;R:108"
+    - "IR:(2/3)C=16, C=24;R:24"
+    - "IR:Ben=40+8=48, Tom=48*3/8=18;R:18"
+  output_schema: "Output direct fields from [IR,R,C,U]; required: [R]."
+
+verifier_to_solver:
+  allowed_fields: [CHK, E, REQ]
+  required_fields: [CHK]
+  field_rules:
+    canonical_order: [CHK, E, REQ]
+    CHK:
+      usage: "Verification status: ACCEPT if R is correct and supported; REVISE otherwise."
+      examples: ["ACCEPT", "REVISE"]
+    E:
+      usage: "Frozen error category; required only for REVISE."
+      examples: ["ARITH", "RELATION", "MISSING_FACT"]
+    REQ:
+      usage: "Minimal actionable revision request; required only for REVISE."
+      examples: ["recompute tip on pre-tip total", "use 2/3 of capacity equals 16", "apply 3/8 to Ben's count"]
+  examples:
+    - "CHK:ACCEPT"
+    - "CHK:REVISE;E:ARITH;REQ:recompute 0.20*90"
+    - "CHK:REVISE;E:RELATION;REQ:use 2/3 of capacity equals 16"
+  output_schema: "Output CHK:ACCEPT, or direct fields; REVISE requires CHK, E and REQ."
+
+message_format:
+  structure: fields_only
+  wire_syntax: direct
+  field_separator: ;
+
+value_policy:
+  wire_syntax: "FIELD:value;FIELD:value"
+  field_separator: ";"
+  no_semicolons_in_values: "True"
+  omit_optional_when_unused: "True"
+  no_placeholder_values: "True"
+  R_format: "finite_decimal_without_unit"
+  verifier_accept_exact: "CHK:ACCEPT"

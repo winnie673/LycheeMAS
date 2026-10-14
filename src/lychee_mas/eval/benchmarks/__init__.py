@@ -115,7 +115,7 @@ BENCHMARK_STRUCTURE = [
         "full_prepare_target": "math500",
         "prepare_targets": ["math500"],
         "runnable_tasks": ["math500"],
-        "kinds": ["aime"],
+        "kinds": ["math500"],
     },
     {
         "benchmark_source": "ARC-Easy",
@@ -225,7 +225,7 @@ BENCHMARK_MAPPINGS = {
         {"prepare_target": "aime_2024", "runnable_tasks": ["aime_2024"], "kinds": ["aime"]},
     ],
     "MATH-500": [
-        {"prepare_target": "math500", "runnable_tasks": ["math500"], "kinds": ["aime"]},
+        {"prepare_target": "math500", "runnable_tasks": ["math500"], "kinds": ["math500"]},
     ],
     "ARC-Easy": [
         {"prepare_target": "arc_easy", "runnable_tasks": ["arc_easy"], "kinds": ["mc"]},

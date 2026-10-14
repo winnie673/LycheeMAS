@@ -1,0 +1,80 @@
+version: CARD-0-GSM8K-V4
+description: >
+  LLM-generated GSM8K protocol card CARD-0-GSM8K-V4.
+
+planner_to_solver:
+  allowed_fields: [K, G, P, C, U]
+  required_fields: [G]
+  field_rules:
+    canonical_order: [K, G, P, C, U]
+    K:
+      usage: "Explicit facts or relations selected from the shared problem that are essential for the plan and not safely recoverable by the receiver. Omit when all needed facts are already visible in the problem."
+      examples: ["eggs=16,eaten=3,baked=4,price=2", "snakes=15,monkeys=2*snakes,lions=monkeys-5,pandas=lions+8,dogs=pandas/3", "intro=450,conclusion=3*intro,body_sections=4,total=5000"]
+    G:
+      usage: "Exact target to solve, stated as a quantity or expression. Required."
+      examples: ["total_spent", "full_capacity", "tom_apples"]
+    P:
+      usage: "Concise symbolic relations and operation direction for obtaining G. Contains all derivation. Must not repeat facts already in K."
+      examples: ["sub=10+4*20,total=1.2*sub", "remain=eggs-eaten-baked,revenue=remain*price", "C=16/(2/3)"]
+    C:
+      usage: "Additional condition that changes solution validity. Does not repeat K, G, P, units, or output instructions."
+      examples: ["tip applies to pre-tip total", "equal mileage per car, not equal gallons", "doubled reading applies to both weekend days"]
+    U:
+      usage: "Genuine unresolved ambiguity that could change the answer. Omit if none."
+      examples: ["whether 'doubles his reading time' means doubles each session or doubles daily total", "whether 'half as many' refers to week 1 or week 2"]
+  examples:
+    - "G:total_spent;P:sub=10+4*20,total=1.2*sub"
+    - "K:eggs=16,eaten=3,baked=4,price=2;G:revenue;P:remain=eggs-eaten-baked,revenue=remain*price"
+    - "K:snakes=15,monkeys=2*snakes,lions=monkeys-5,pandas=lions+8,dogs=pandas/3;G:total_animals;P:total=snakes+monkeys+lions+pandas+dogs"
+  output_schema: "Output direct fields from [K,G,P,C,U]; required: [G]."
+
+solver_to_verifier:
+  allowed_fields: [IR, R, C, U]
+  required_fields: [R]
+  field_rules:
+    canonical_order: [IR, R, C, U]
+    IR:
+      usage: "Minimal intermediate evidence needed to verify R. Does not repeat the question or all upstream fields."
+      examples: ["sub=90,tip=18", "C=24", "ben=48,tom=18"]
+    R:
+      usage: "Candidate final answer as a finite decimal without a unit. Required."
+      examples: ["108", "24", "18"]
+    C:
+      usage: "Additional validity condition not already represented by IR or R. Omit if none."
+      examples: ["tip applies to pre-tip total", "equal mileage per car"]
+    U:
+      usage: "Genuine unresolved ambiguity that could make R unreliable. Omit if none."
+      examples: ["whether 'doubles his reading time' means doubles each session or doubles daily total"]
+  examples:
+    - "IR:sub=90,tip=18;R:108"
+    - "IR:C=24;R:24"
+    - "IR:ben=48,tom=18;R:18"
+  output_schema: "Output direct fields from [IR,R,C,U]; required: [R]."
+
+verifier_to_solver:
+  allowed_fields: [CHK, E, REQ]
+  required_fields: [CHK]
+  field_rules:
+    canonical_order: [CHK, E, REQ]
+    CHK:
+      usage: "Verification status. Required."
+      examples: ["ACCEPT", "REVISE"]
+    E:
+      usage: "Frozen error category used only for REVISE."
+      examples: ["ARITH", "RELATION", "MISSING_FACT"]
+    REQ:
+      usage: "Minimal actionable revision request used only for REVISE."
+      examples: ["recompute tip", "use correct relation for week 3", "include missing fact"]
+  examples:
+    - "CHK:ACCEPT"
+    - "CHK:REVISE;E:ARITH;REQ:recompute tip"
+    - "CHK:REVISE;E:RELATION;REQ:use correct relation for week 3"
+  output_schema: "Output CHK:ACCEPT, or direct fields; REVISE requires CHK, E and REQ."
+
+message_format:
+  structure: fields_only
+  wire_syntax: direct
+  field_separator: ;
+
+value_policy:
+  general: "Use concise symbolic expressions when possible. Omit optional fields when unused. Never use placeholder values."

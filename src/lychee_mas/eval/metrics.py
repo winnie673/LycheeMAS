@@ -4,6 +4,7 @@
   - "mc":    选择题；预测里出现 gold 选项字母 或 gold 文本即算对。用于 medqa/arc/openbookqa。
   - "exact": 数值/短答规整后精确匹配。用于 gsm8k。
   - "aime":  数学答案等价比较（数值 + sympy 符号），支持整数/分式/根式/带符号式子。用于 aime。
+  - "math500": MATH-500 专用严格等价比较；不隐式允许百分比或近似数值匹配。
   - "f1":    token 级 F1（对 gold 列表取最大），MemGAS 口径。用于 locomo/longmemeval。
   - "human_eval": HumanEval 代码单测。
   - "gaia": GAIA 官方风格短答案规整。
@@ -32,6 +33,7 @@ from typing import Any, List, Optional
 BINARY_SCORERS = {
     "exact",
     "aime",
+    "math500",
     "mc",
     "human_eval",
     "gaia",
@@ -113,6 +115,16 @@ def score_aime(pred: str, gold: str) -> float:
         strip 分支。
         """
         s = str(s)
+        s = s.replace("π", r"\pi")
+        degree = re.fullmatch(r"\s*([+-]?\d+(?:\.\d+)?)\s*(?:°|\^?\\circ)\s*", s)
+        if degree:
+            s = degree.group(1)
+        grouped = re.fullmatch(r"\s*([+-]?\d{1,3}(?:,\\!\d{3})+)\s*", s)
+        if grouped:
+            s = grouped.group(1).replace(r"\!", "").replace(",", "")
+        # Normalize common Unicode radical notation emitted by API models.
+        s = re.sub(r"√\s*\(([^()]*)\)", r"\\sqrt{\1}", s)
+        s = re.sub(r"√\s*([A-Za-z0-9]+)", r"\\sqrt{\1}", s)
         return extract_answer(s) if "boxed" in s else strip_answer_string(s)
 
     p = _math_norm(pred)
@@ -166,6 +178,10 @@ def score(kind: str, pred: str, gold) -> float:
         return score_exact(pred, gold if isinstance(gold, str) else gold[0])
     if kind == "aime":
         return score_aime(pred, gold if isinstance(gold, str) else gold[0])
+    if kind == "math500":
+        from .math500_scoring import score_math500
+
+        return score_math500(pred, gold if isinstance(gold, str) else gold[0])
     if kind == "mc":
         gt, gl = gold if isinstance(gold, (list, tuple)) else (gold, None)  # (选项文本, 选项字母)
         return score_mc(pred, gt, gl)
@@ -264,6 +280,10 @@ def aggregate_samples(samples: List[dict], run_info: Optional[dict] = None) -> d
     n = len(samples)
     first = samples[0] if samples else {}
     kind = run_info.get("scorer_kind") or first.get("scorer_kind") or first.get("kind")
+    if kind is None and samples and all("is_correct" in sample for sample in samples):
+        # Hybrid communication records always carry an explicit binary judgement.
+        # Treat it as authoritative when the runner omitted scorer_kind.
+        kind = "exact"
     task = run_info.get("task") or first.get("task")
     method = run_info.get("method") or first.get("method")
 

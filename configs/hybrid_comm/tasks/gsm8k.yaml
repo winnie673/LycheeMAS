@@ -1,0 +1,18 @@
+task: gsm8k
+display_name: GSM8K
+scorer_kind: exact
+answer_policy:
+  rule: R must contain the final numeric answer without a unit.
+  allowed_forms: [integer, finite_decimal]
+  requirements:
+    - Preserve the exact accepted numeric form.
+    - Do not include a unit or explanatory prose in R.
+reasoning_requirements:
+  - Preserve quantities, multiplicity, temporal relations, and operation direction.
+  - Prefer compact equations to procedural prose.
+  - Do not use C for units or output instructions.
+diagnosis_issue_types:
+  - MISSING_MULTIPLICITY
+  - TEMPORAL_RELATION_LOSS
+  - OPERATION_DIRECTION_ERROR
+

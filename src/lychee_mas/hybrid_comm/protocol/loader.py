@@ -68,12 +68,15 @@ def load_protocol_from_yaml(path: str) -> ProtocolSuite:
         raise ValueError(f"protocol YAML root must be a mapping: {path}")
     if "nl_policy" in raw:
         raise ValueError("nl_policy is no longer supported; use flexible values inside fields")
+    allow_nl_field = raw.get("allow_nl_field") is True
     for edge in ("planner_to_solver", "solver_to_verifier", "verifier_to_solver"):
         card_data = raw.get(edge, {})
         if "nl_policy" in card_data:
             raise ValueError(f"{edge}: nl_policy is no longer supported")
-        if "NL" in card_data.get("allowed_fields", []):
-            raise ValueError(f"{edge}: a separate NL field is not supported")
+        if "NL" in card_data.get("allowed_fields", []) and not allow_nl_field:
+            raise ValueError(
+                f"{edge}: a separate NL field requires allow_nl_field: true"
+            )
 
     version = str(raw.get("version", "P0"))
     message_format = dict(
@@ -102,7 +105,7 @@ def load_protocol_from_yaml(path: str) -> ProtocolSuite:
         ),
         message_format=message_format,
         value_policy=dict(raw.get("value_policy", {})),
-        meta={"source": path},
+        meta={"source": path, "allow_nl_field": allow_nl_field},
     )
     suite.meta["protocol_hash"] = _hash_protocol(raw)
     return suite
@@ -128,7 +131,7 @@ def protocol_suite_to_dict(suite: ProtocolSuite) -> dict[str, Any]:
             "output_schema": card.output_schema,
         }
 
-    return {
+    result = {
         "version": suite.version,
         "planner_to_solver": _card_dict(suite.planner_to_solver),
         "solver_to_verifier": _card_dict(suite.solver_to_verifier),
@@ -137,3 +140,6 @@ def protocol_suite_to_dict(suite: ProtocolSuite) -> dict[str, Any]:
         "value_policy": suite.value_policy,
         "meta": suite.meta,
     }
+    if suite.meta.get("allow_nl_field") is True:
+        result["allow_nl_field"] = True
+    return result

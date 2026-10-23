@@ -84,6 +84,34 @@ def test_materialized_card_preserves_schema(tmp_path):
     assert suite.value_policy == {"preference": "shortest unambiguous value"}
 
 
+def test_nl_field_schema_materializes_loadable_card(tmp_path):
+    schema = load_schema(
+        "configs/hybrid_comm/generated/gsm8k_nl_field_v1/"
+        "protocol_schema_nl_field_v1.yaml"
+    )
+    generated = _generated(schema)
+    generated["cards"]["planner_to_solver"]["examples"] = [
+        "G:x;P:x=a+1",
+        "K:a=1;G:x;P:x=a+1",
+        "G:later price;P:inc=rate*base,total=base+n*inc;"
+        "NL:Each increase uses the original base.",
+    ]
+    generated["cards"]["solver_to_verifier"]["examples"] = [
+        "IR:x=1+1=2;R:2",
+        "IR:inc=.2*20=4,total=20+2*4=28;R:28;"
+        "NL:The increase always uses the original price.",
+        "IR:y=3*4=12;R:12",
+    ]
+    card = materialize_card(schema, generated, version="CARD-0-GSM8K-NL-V1")
+    assert card["allow_nl_field"] is True
+    path = tmp_path / "nl-card.yaml"
+    write_card(path, card)
+    suite = load_protocol_from_yaml(str(path))
+    assert suite.planner_to_solver.allowed_fields == ["K", "G", "P", "NL"]
+    assert suite.solver_to_verifier.allowed_fields == ["IR", "R", "NL"]
+    assert "allow_nl_field: true" in path.read_text(encoding="utf-8")
+
+
 def test_gsm8k_answer_format_is_kept_in_task_card():
     schema = load_schema("configs/hybrid_comm/protocol_schema.yaml")
     card = _load_yaml(

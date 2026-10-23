@@ -111,8 +111,10 @@ Hybrid 固定采用 `FIELD:value;FIELD:value` 直接 wire syntax：
 > Structure is fixed; representation inside fields is flexible.
 
 字段值可使用简洁自然语言、符号、LaTeX 或混合表示，并优先选择最短且无歧义的形式。
-协议不包含 `need_nl`、独立自然语言属性或特殊自然语言字段。Pure-NL 模式仍作为实验基线，
-不受 Hybrid 协议卡的输出 schema 影响。
+默认 `SCHEMA-3` 不包含 `need_nl`、独立自然语言属性或特殊自然语言字段。新实验谱系可以在
+自己的冻结 schema 中声明可选 `NL` 字段，并在卡片根节点显式设置
+`allow_nl_field: true`；加载器默认仍拒绝独立 `NL`，因此不会改变旧卡片行为。Pure-NL
+模式仍作为实验基线，不受 Hybrid 协议卡的输出 schema 影响。
 
 ## 协议初始化与进化
 

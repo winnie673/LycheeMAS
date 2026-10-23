@@ -12,6 +12,8 @@ EDGES = ("planner_to_solver", "solver_to_verifier", "verifier_to_solver")
 def dump_protocol_yaml(data: dict[str, Any]) -> str:
     """以稳定格式输出协议，避免 safe_dump 制造无意义的整文件 diff。"""
     lines = [f"version: {data.get('version', 'P0')}"]
+    if data.get("allow_nl_field") is True:
+        lines.append("allow_nl_field: true")
     description = " ".join(str(data.get("description", "")).split())
     if description:
         lines.append("description: >")

@@ -14,6 +14,12 @@ from .loader import _load_yaml
 EDGES = ("planner_to_solver", "solver_to_verifier", "verifier_to_solver")
 MUTABLE_CARD_KEYS = {"field_rules", "examples", "value_policy"}
 FORBIDDEN_PLACEHOLDERS = {"none", "n/a", "no ambiguity", "unknown", "not applicable"}
+SEMANTIC_FALLBACK_FIELDS = ("C", "U", "NL")
+
+
+def _fallback_fields(spec: dict[str, Any]) -> tuple[str, ...]:
+    allowed = set(spec.get("allowed_fields", []))
+    return tuple(field for field in SEMANTIC_FALLBACK_FIELDS if field in allowed)
 
 
 def load_jsonl(path: str | Path) -> list[dict[str, Any]]:
@@ -78,12 +84,20 @@ def validate_card(schema: dict[str, Any], card: dict[str, Any]) -> None:
                 for fields in parsed_examples
             ):
                 raise ValueError("planner K examples must not contain derived computations")
+            for fields in parsed_examples:
+                k_items = {part.strip() for part in fields.get("K", "").split(",") if part.strip()}
+                p_items = {part.strip() for part in fields.get("P", "").split(",") if part.strip()}
+                if k_items & p_items:
+                    raise ValueError("planner examples must not repeat relations across K and P")
+        fallback_fields = _fallback_fields(spec)
         if edge in {"planner_to_solver", "solver_to_verifier"} and not any(
-            "C" not in fields and "U" not in fields for fields in parsed_examples
+            not any(field in fields for field in fallback_fields)
+            for fields in parsed_examples
         ):
-            raise ValueError(f"{edge}: one full example must omit optional C and U")
+            names = " and ".join(fallback_fields)
+            raise ValueError(f"{edge}: one full example must omit optional {names}")
         if edge == "planner_to_solver" and not any(
-            "K" not in fields and "C" not in fields and "U" not in fields
+            "K" not in fields and not any(field in fields for field in fallback_fields)
             for fields in parsed_examples
         ):
             raise ValueError(
@@ -92,13 +106,15 @@ def validate_card(schema: dict[str, Any], card: dict[str, Any]) -> None:
         if edge == "planner_to_solver" and not any("K" in fields for fields in parsed_examples):
             raise ValueError("planner examples must include a case where selected K is necessary")
         if edge == "planner_to_solver" and not any(
-            "C" in fields or "U" in fields for fields in parsed_examples
+            any(field in fields for field in fallback_fields)
+            for fields in parsed_examples
         ):
-            raise ValueError("planner examples must include a constraint or ambiguity case")
+            raise ValueError("planner examples must include a semantic fallback case")
         if edge == "solver_to_verifier" and not any(
-            "C" in fields or "U" in fields for fields in parsed_examples
+            any(field in fields for field in fallback_fields)
+            for fields in parsed_examples
         ):
-            raise ValueError("solver examples must include a constraint or ambiguity case")
+            raise ValueError("solver examples must include a semantic fallback case")
         if edge == "verifier_to_solver":
             if not any(fields == {"CHK": "ACCEPT"} for fields in parsed_examples):
                 raise ValueError("verifier examples must include CHK:ACCEPT")
@@ -134,6 +150,8 @@ def materialize_card(
         "message_format": schema["message_format"],
         "value_policy": generated.get("value_policy", {}),
     }
+    if schema.get("allow_nl_field") is True:
+        result["allow_nl_field"] = True
     for edge in EDGES:
         spec = schema[edge]
         content = generated["cards"][edge]
@@ -201,6 +219,19 @@ def initialization_prompt(
         },
     }
     profile = _generation_profile(profile)
+    planner_fallback = "/".join(_fallback_fields(schema["planner_to_solver"]))
+    solver_fallback = "/".join(_fallback_fields(schema["solver_to_verifier"]))
+    if planner_fallback == "NL" and solver_fallback == "NL":
+        fallback_guidance = (
+            "NL is the single optional one-sentence natural-language fallback. Use it only "
+            "when symbolic fields would lose answer-changing meaning or when an unresolved "
+            "interpretation must be exposed."
+        )
+    else:
+        fallback_guidance = (
+            "C states an additional answer-changing validity condition. U states a genuine "
+            "unresolved ambiguity that could change the answer."
+        )
     return f"""You are a protocol-card designer for {task_name}.
 
 The communication schema is frozen. You may NOT add, delete, rename, or redefine fields,
@@ -221,8 +252,8 @@ the sender's intended target, operation, relation, or verification evidence from
 problem and remaining fields, omit the item. Each semantic item should normally occur in
 one field only. K contains only explicit givens or relations selected from the shared problem,
 never a computed or derived state. G says what to obtain; P contains every derivation and
-operation direction; C says which additional condition changes validity; U says which
-answer-changing ambiguity remains. IR is minimal verification evidence, not a full solution.
+operation direction. {fallback_guidance} IR is minimal verification evidence, not a full
+solution.
 
 Optimize for semantic sufficiency, task correctness, fewer communication tokens, no
 repetition between fields, symbolic expressions when shorter, and concise natural language
@@ -246,9 +277,10 @@ Return JSON only with this shape:
 "value_policy": {{}}}}
 Every frozen field must occur exactly once in its edge's field_rules.
 Provide exactly three diverse complete examples for every edge. Planner examples must cover:
-(1) G/P only with shared facts omitted, (2) necessary selected K, and (3) a meaningful C or
-U case. Solver examples must cover sufficient compact IR/R evidence and a meaningful C or U
-case. Verifier examples must cover CHK:ACCEPT, a locally proven error with a targeted REVISE,
+(1) G/P only with shared facts omitted, (2) necessary selected K, and (3) a meaningful
+{planner_fallback} fallback case. Solver examples must cover sufficient compact IR/R evidence
+and a meaningful {solver_fallback} fallback case. Verifier examples must cover CHK:ACCEPT,
+a locally proven error with a targeted REVISE,
 and missing essential evidence with CHK:REVISE;E:INSUFFICIENT_INFO;REQ:specific evidence.
 Each field rule must be an object with `usage` and `examples`. `examples` contains exactly
 one short example of that field's VALUE only, never a complete message. The `examples` value
@@ -261,13 +293,15 @@ Do not put explanatory text, alternatives, or multiple values in these example e
 The only valid E values are ARITH, RELATION, MISSING_FACT, MISSING_UNIT, WRONG_TARGET,
 INSUFFICIENT_INFO, and OTHER. Diagnostic issue labels are not E values and must never
 appear in verifier_to_solver.field_rules.E examples or full verifier messages.
-At least one full planner and solver example must omit both C and U. Verifier full examples
+At least one full planner and solver example must omit the optional semantic fallback field(s).
+Verifier full examples
 must include CHK:ACCEPT and a valid CHK:REVISE;E:ENUM;REQ:action. Use only the frozen
-uppercase E enum. Keep K/G/P/C/U and IR/R/C/U responsibilities non-overlapping.
+uppercase E enum. Keep all frozen field responsibilities non-overlapping.
 Infer the answer representation from the task profile, samples, and evaluator needs, and
 state it explicitly in solver_to_verifier.field_rules.R. Task-specific answer requirements
-belong to the Card, not the frozen Schema. C must not merely restate output formatting.
-At least one planner example must omit K as well as C and U, demonstrating that facts
+belong to the Card, not the frozen Schema. A semantic fallback must not merely restate output
+formatting. At least one planner example must omit K and every semantic fallback field,
+demonstrating that facts
 already visible in the shared problem are not retransmitted. Construct new minimal examples;
 use small, mathematically checkable examples rather than transcribing NL messages or using
 long worked solutions from D0. Every full example must describe one coherent problem.
@@ -293,7 +327,8 @@ Infer field rules and examples that satisfy these communication functions:
    evidence needs from the traces rather than adding a separate template for every task.
 3. R directly answers G. Extraction or combination of intermediate results belongs in IR;
    R contains one final answer object, not a derivation chain. An equation is allowed when
-   the requested answer itself is an equation. C contains validity conditions, not answers.
+   the requested answer itself is an equation. Semantic fallback fields contain preserved
+   meaning or ambiguity, not answers.
 4. P preserves the original target, conditions, transformation direction, and object
    correspondence. Do not present an unverified guess or answer-changing assumption as an
    established fact; represent unresolved constructions as quantities to solve or verify.
@@ -316,23 +351,31 @@ def card_review_prompt(
     profile = _generation_profile(
         task_profile or {"task": "gsm8k", "display_name": "GSM8K"}
     )
+    nl_fallback = "NL" in schema["planner_to_solver"].get("allowed_fields", [])
+    fallback_review = (
+        "use NL as repeated prose or make it effectively mandatory"
+        if nl_fallback
+        else "use C for target, units, or output format; use U as a placeholder"
+    )
+    fallback_name = "NL" if nl_fallback else "C/U"
     return f"""You are a strict, read-only reviewer of a {task_name} communication Card.
 Do not rewrite the Card. Decide whether it extracts minimal communication functions rather
 than transcribing shared problem text or Free-NL messages.
 
 Reject when rules or examples systematically: unnecessarily copy shared givens;
 put computed or derived states in K; replace necessary relations with vague method names;
-repeat the same facts/equations across K and P; use C for target, units, or output format;
-use U as a placeholder; expand IR beyond verification-critical evidence; or make optional
-fields effectively mandatory. A selected explicit given in K is allowed when it is needed
+repeat the same facts/equations across K and P; {fallback_review}; expand IR beyond
+verification-critical evidence; or make optional fields effectively mandatory. A selected
+explicit given in K is allowed when it is needed
 to disambiguate the chosen plan; the frozen K semantics expressly permit this. Symbolic
 equation chains are not procedural natural language. Reject only concrete violations,
 not missing repetitions of prohibitions already guaranteed by the frozen Schema.
 Reject if the R rule does not explicitly define the
 task-specific answer representation supported by the task profile, samples, and evaluator,
 or replaces an exact accepted form with an unsupported approximation.
-Also reject any full example whose fields describe different
-problems or whose C/U does not modify the IR, R, K, G, or P in that same example. Preserve
+Also reject any full example whose fields describe different problems or whose
+{fallback_name} does not preserve meaning that changes the IR, R, K, G, or P in that same
+example. Preserve
 necessary derived relations and operation direction.
 Reject planner P examples only when they explicitly state the final value of G. A plan may
 contain relations from which the Solver can readily infer the answer; this is expected and
@@ -344,8 +387,9 @@ initial conditions or a generic method but cannot support its specific R. Decisi
 from key relations to R and necessary counting, branch, filtering, or optimality evidence
 must be supported. Do not require a full solution or fixed number of equations.
 Check that R directly answers the target and contains a final answer object rather than a
-derivation chain; equations are allowed when the answer itself is an equation. C must not
-carry the answer. Reject ungrounded answer-changing assumptions or invalid transformations.
+derivation chain; equations are allowed when the answer itself is an equation. The semantic
+fallback field must not carry the answer. Reject ungrounded answer-changing assumptions or
+invalid transformations.
 Allow concise natural language when it safely expresses correspondences, case coverage, or
 verification obligations; do not reject based on procedural keywords or absence of symbols.
 Check that Verifier examples cover ACCEPT, a concrete locally proven error, and a request for
@@ -496,6 +540,8 @@ def apply_evolution_changes(
 
 
 def _validate_materialized_schema(schema: dict[str, Any], card: dict[str, Any]) -> None:
+    if schema.get("allow_nl_field") is True and card.get("allow_nl_field") is not True:
+        raise ValueError("allow_nl_field opt-in changed from frozen Schema")
     if card.get("message_format") != schema.get("message_format"):
         raise ValueError("message_format changed from frozen Schema")
     for edge in EDGES:
@@ -561,7 +607,10 @@ def _output_schema(edge: str, spec: dict[str, Any]) -> str:
 def _validate_example(edge: str, example: str, allowed: set[str]) -> None:
     if edge == "verifier_to_solver" and example.strip() == "ACCEPT":
         raise ValueError("verifier acceptance example must be CHK:ACCEPT")
-    segments = [part.strip() for part in example.split(";") if part.strip()]
+    raw_segments = example.split(";")
+    if any(not part.strip() for part in raw_segments):
+        raise ValueError(f"{edge}: empty field segment is forbidden")
+    segments = [part.strip() for part in raw_segments]
     labels = []
     for segment in segments:
         if ":" not in segment:
@@ -571,7 +620,7 @@ def _validate_example(edge: str, example: str, allowed: set[str]) -> None:
     if labels != embedded or any(label not in allowed for label in labels):
         raise ValueError(f"{edge}: example does not use valid semicolon-delimited fields")
     for field, value in _parse_example(example).items():
-        if field in {"C", "U"} and value.lower() in FORBIDDEN_PLACEHOLDERS:
+        if field in SEMANTIC_FALLBACK_FIELDS and value.lower() in FORBIDDEN_PLACEHOLDERS:
             raise ValueError(f"{edge}.{field}: placeholder values are forbidden")
 
 

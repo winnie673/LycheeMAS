@@ -1,0 +1,66 @@
+version: SCHEMA-SEED-GSM8K-NL-FIELD-V1
+allow_nl_field: true
+description: >
+  Human-authored schema seed derived from CARD-2-GSM8K-QWEN35-4B-V2. This is
+  not Card-0 and is not eligible for evaluation. Formal Card-0 must be generated
+  by the design model from the new D0 Pure-NL traces and frozen NL-field schema.
+
+planner_to_solver:
+  allowed_fields: [K, G, P, NL]
+  required_fields: [G]
+  field_rules:
+    canonical_order: [K, G, P, NL]
+    value_representation: "Use compact symbols in K/G/P. NL may contain one short natural-language sentence. Do not use semicolons inside field values."
+    K: "Explicit givens or relations selected from the shared problem only when needed to fix object correspondence, the counted set, or a relation; never computed values and never a full transcription."
+    G: "The exact quantity to obtain, stated as a target only, with no plan or arithmetic."
+    P: "Compact symbolic relations giving every answer-determining operation from the givens to G, including multiplicities, ratio direction, percentage base, and unit conversions when symbols are sufficient."
+    NL: "Optional one-sentence natural-language fallback. Use it only when symbols alone may lose answer-changing meaning, such as a percentage base, fixed-versus-compound change, strict threshold, temporal endpoint, entity reference, or genuinely unresolved interpretation. State the preserved meaning or ambiguity; omit NL when K/G/P are unambiguous."
+  examples:
+    - "G:daily revenue;P:sold=16-3-4,revenue=sold*2"
+    - "K:phillip=40;G:tom apples;P:ben=phillip+8,tom=(3/8)*ben"
+    - "K:original_price=20,rate=0.2;G:later price;P:inc=rate*original_price,later=original_price+n*inc;NL:Each increase uses the original price, so the change is fixed rather than compounded."
+    - "G:first profitable year;P:net_per_year=revenue-cost,break_even=investment/net_per_year;NL:Earning begins only when cumulative net profit is positive, not when it merely reaches zero."
+    - "G:active years;P:years=end_age-start_age;NL:The wording leaves whether both endpoint years count unresolved."
+  output_schema: "Output direct fields from [K,G,P,NL]; required: [G]."
+
+solver_to_verifier:
+  allowed_fields: [IR, R, NL]
+  required_fields: [R]
+  field_rules:
+    canonical_order: [IR, R, NL]
+    value_representation: "Use compact symbols in IR/R. NL may contain one short natural-language sentence. Do not use semicolons inside field values."
+    IR: "Minimal decisive operands, operations, and intermediate results connecting the plan to R; include enough arithmetic for independent verification."
+    R: "The exact final numeric answer as a bare integer or finite decimal, with no unit, prose, field label, or newline."
+    NL: "Optional one-sentence natural-language fallback preserving an answer-changing interpretation or unresolved ambiguity that is not safely recoverable from IR. Omit it when IR and R are unambiguous."
+  examples:
+    - "IR:used=3+4=7,sold=16-7=9,revenue=9*2=18;R:18"
+    - "IR:inc=0.2*20=4,n=18,total=20+18*4=92;R:92;NL:The repeated increase is always based on the original price, not the current price."
+    - "IR:net=7.5,break_even=90/7.5=12,first_positive=13;R:13;NL:Year 12 only breaks even, so positive profit begins in year 13."
+    - "IR:years=end-start;R:11;NL:The wording does not resolve inclusive endpoint counting."
+  output_schema: "Output direct fields from [IR,R,NL]; required: [R]."
+
+verifier_to_solver:
+  allowed_fields: [CHK, E, REQ]
+  required_fields: [CHK]
+  field_rules:
+    canonical_order: [CHK, E, REQ]
+    value_representation: "Prefer the shortest unambiguous representation. Do not use semicolons inside field values."
+    CHK: "ACCEPT only after independently checking decisive arithmetic and any NL interpretation. Use REVISE for a proven defect or when NL exposes unresolved answer-changing ambiguity."
+    E: "For REVISE only: use one frozen error category such as ARITH, RELATION, or INSUFFICIENT_INFO."
+    REQ: "For REVISE only: the minimal actionable request naming the wrong operation, relation, interpretation, or missing evidence; do not prescribe an unverified answer."
+  examples:
+    - "CHK:ACCEPT"
+    - "CHK:REVISE;E:ARITH;REQ:recompute the displayed products and sum independently"
+    - "CHK:REVISE;E:RELATION;REQ:use the original amount as the repeated percentage base"
+    - "CHK:REVISE;E:INSUFFICIENT_INFO;REQ:resolve whether both temporal endpoints count"
+  output_schema: "Output CHK:ACCEPT, or direct fields; REVISE requires CHK, E and REQ."
+
+message_format:
+  structure: fields_only
+  wire_syntax: direct
+  field_separator: ";"
+
+value_policy:
+  wire_syntax: "Fields are separated by semicolons with no semicolons inside values."
+  optional_fields: "Omit optional fields when unused; never emit placeholder values such as NL:none."
+  field_ownership: "K preserves selected givens, P gives symbolic direction, NL is the single natural-language fallback, IR gives decisive evidence, R is the bare answer, and verifier acceptance is exactly CHK:ACCEPT."

@@ -124,6 +124,23 @@ def test_fields_only_protocol_rejects_separate_nl() -> None:
         parser.parse(raw, "planner_to_solver", suite.planner_to_solver, role="planner")
 
 
+def test_opted_in_protocol_accepts_optional_nl_field() -> None:
+    suite = load_protocol_from_yaml(
+        "configs/hybrid_comm/generated/gsm8k_nl_field_v1/seed/"
+        "schema_seed_gsm8k_nl_field.yaml"
+    )
+    parser = PayloadParser(CommunicationMode.HYBRID)
+    raw = (
+        "G:later price;P:inc=.2*base,total=base+n*inc;"
+        "NL:Each increase uses the original base, not the current amount."
+    )
+    parsed = parser.parse(
+        raw, "planner_to_solver", suite.planner_to_solver, role="planner"
+    )
+    assert parsed.control["fields"]["NL"].startswith("Each increase")
+    assert parsed.payload == raw
+
+
 def test_fields_only_prompt_allows_mixed_field_values() -> None:
     from lychee_mas.hybrid_comm.agents.roles import RolePromptBuilder
 

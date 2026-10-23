@@ -63,7 +63,10 @@ def main() -> None:
             review_result = backend.generate_chat(
                 [
                     {"role": "system", "content": "Return valid JSON only."},
-                    {"role": "user", "content": card_review_prompt(schema, card)},
+                    {
+                        "role": "user",
+                        "content": card_review_prompt(schema, card, traces=traces),
+                    },
                 ],
                 max_new_tokens=2048,
             )

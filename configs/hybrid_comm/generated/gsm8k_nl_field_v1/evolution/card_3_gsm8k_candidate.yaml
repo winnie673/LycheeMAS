@@ -1,0 +1,62 @@
+version: CARD-3-GSM8K-NL-FIELD-V1
+allow_nl_field: true
+description: >
+  Evidence-evolved GSM8K protocol card CARD-3-GSM8K-NL-FIELD-V1, derived from
+  CARD-2-GSM8K-NL-FIELD-V1.
+
+planner_to_solver:
+  allowed_fields: [K, G, P, NL]
+  required_fields: [G]
+  field_rules:
+    canonical_order: [K, G, P, NL]
+    value_representation: "Field values may use concise natural language, symbols, LaTeX, or a mixture of them. Prefer the shortest unambiguous representation. Do not use semicolons inside field values; use commas instead."
+    K: "Explicit givens or relations selected from the shared problem that the plan depends on and that are not safely recoverable from G/P alone; never computed states. Every value must be grounded in the question text: do not substitute an unstated assumption (e.g., encode 'a whole week' as 7 days, not a default 5-day work week). Rate or ratio values must carry their per-unit semantics (e.g., Jane=3 towels/5 min) so the solver cannot misread a rate as a raw fraction. Example: eggs=16,eaten=3,baked=4,price=2"
+    G: "Exact quantity to obtain, stated as the target variable or quantity without the method, and anchored to the answer unit implied by the question (e.g., total_minutes, total_hours) so no ungrounded unit conversion is introduced. Example: total_minutes"
+    P: "Compact symbolic relations giving operation direction and object correspondence to reach G; a plan, not the completed numeric answer. Every answer-changing relation from the problem (each split, grouping, per-item multiplier, and aggregation over a count) must appear explicitly as its own relation; do not collapse a split or per-item factor into a single combined quantity. Example: sub=10+4*20,total=1.2*sub"
+    NL: "One short fallback sentence only when symbolic fields would lose answer-changing meaning or an unresolved interpretation must be exposed. Example: Interpret 'starts earning money' as the first year cumulative profit is positive."
+  examples:
+    - "G:total_minutes;P:puzzles=15*30,time=puzzles*3"
+    - "K:rate=4,usage=300,fee=150;G:total;P:elec=rate*usage,total=elec+fee"
+    - "K:start=23,now=34,per_year=4;G:blocks;P:years=now-start,blocks=years*per_year;NL:Count only completed years from age 23 to age 34, excluding the current partial year."
+  output_schema: "Output direct fields from [K,G,P,NL]; required: [G]."
+
+solver_to_verifier:
+  allowed_fields: [IR, R, NL]
+  required_fields: [R]
+  field_rules:
+    canonical_order: [IR, R, NL]
+    value_representation: "Field values may use concise natural language, symbols, LaTeX, or a mixture of them. Prefer the shortest unambiguous representation. Do not use semicolons inside field values; use commas instead."
+    IR: "Minimal decisive intermediate evidence: key operands, operations, and results that connect the plan to R, without repeating the question or full derivation. Example: food=10+4*20=90,tip=0.2*90=18"
+    R: "Exact final numeric answer only, no unit, no derivation chain. Example: 108"
+    NL: "One short fallback sentence preserving an answer-changing interpretation or unresolved ambiguity not recoverable from IR/R. Example: Break-even at 12 years, so first profitable year is 13."
+  examples:
+    - "IR:food=10+4*20=90,tip=0.2*90=18,total=90+18;R:108"
+    - "IR:remain=1-1/3=2/3,cap=16/(2/3);R:24"
+    - "IR:net=20-6=14,days=98/14;R:7;NL:Counts full days until unread messages reach zero."
+  output_schema: "Output direct fields from [IR,R,NL]; required: [R]."
+
+verifier_to_solver:
+  allowed_fields: [CHK, E, REQ]
+  required_fields: [CHK]
+  field_rules:
+    canonical_order: [CHK, E, REQ]
+    value_representation: "Field values may use concise natural language, symbols, LaTeX, or a mixture of them. Prefer the shortest unambiguous representation. Do not use semicolons inside field values; use commas instead."
+    CHK: "Verification status: ACCEPT when evidence supports R with no concrete defect, REVISE otherwise. Example: ACCEPT"
+    E: "Frozen error category used only with REVISE. Example: ARITH"
+    REQ: "Minimal actionable revision request used only with REVISE; names the specific relation or operation to fix or supply, never a replacement answer. Example: Recompute 90/7.5 and apply the first-profitable-year condition."
+  examples:
+    - "CHK:ACCEPT"
+    - "CHK:REVISE;E:ARITH;REQ:Recompute 90/7.5 and apply the first-profitable-year condition"
+    - "CHK:REVISE;E:INSUFFICIENT_INFO;REQ:Provide the operation linking net daily reduction to the number of days."
+  output_schema: "Output CHK:ACCEPT, or direct fields; REVISE requires CHK, E and REQ."
+
+message_format:
+  structure: fields_only
+  wire_syntax: direct
+  field_separator: ;
+
+value_policy:
+  answer_representation: "R is the exact final numeric answer without units."
+  omit_optional_when_unused: "True"
+  no_placeholder_values: "True"
+  single_semantic_home_per_item: "True"

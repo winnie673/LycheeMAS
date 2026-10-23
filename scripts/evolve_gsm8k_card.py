@@ -56,6 +56,11 @@ def main() -> None:
     parser.add_argument("--artifact", required=True)
     parser.add_argument("--schema", default="configs/hybrid_comm/protocol_schema.yaml")
     parser.add_argument("--model", default=None)
+    parser.add_argument(
+        "--bump-version-on-keep",
+        action="store_true",
+        help="Write an explicit next-generation Card on KEEP by changing only its version.",
+    )
     args = parser.parse_args()
 
     schema = load_schema(args.schema)
@@ -72,9 +77,6 @@ def main() -> None:
         and item.get("communication_related") is True
         and str(item.get("case_id")) in known_case_ids
     }
-    if not diagnosed_case_ids and diagnosis.get("case_analysis"):
-        raise ValueError("diagnosis has no evidence-bound communication-related case")
-
     attempts = []
     prompt = evolution_prompt(schema, current, diagnosis, feedback)
     candidate = None
@@ -113,6 +115,10 @@ def main() -> None:
     if action == "UPDATE":
         assert candidate is not None
         write_card(args.out, candidate)
+    elif args.bump_version_on_keep:
+        kept = dict(current)
+        kept["version"] = args.version
+        write_card(args.out, kept)
     else:
         Path(args.out).parent.mkdir(parents=True, exist_ok=True)
         shutil.copyfile(args.card, args.out)

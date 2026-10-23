@@ -49,3 +49,26 @@ def test_legacy_nl_policy_is_rejected(tmp_path) -> None:
     )
     with pytest.raises(ValueError, match="no longer supported"):
         load_protocol_from_yaml(str(path))
+
+
+def test_explicit_nl_field_seed_is_loaded_from_new_lineage() -> None:
+    suite = load_protocol_from_yaml(
+        "configs/hybrid_comm/generated/gsm8k_nl_field_v1/seed/"
+        "schema_seed_gsm8k_nl_field.yaml"
+    )
+    assert suite.planner_to_solver.allowed_fields == ["K", "G", "P", "NL"]
+    assert suite.solver_to_verifier.allowed_fields == ["IR", "R", "NL"]
+    assert "NL" not in suite.verifier_to_solver.allowed_fields
+
+
+def test_explicit_nl_field_requires_opt_in(tmp_path) -> None:
+    path = tmp_path / "nl_without_opt_in.yaml"
+    path.write_text(
+        "version: no-opt-in\n"
+        "planner_to_solver:\n"
+        "  allowed_fields: [G, NL]\n"
+        "  required_fields: [G]\n",
+        encoding="utf-8",
+    )
+    with pytest.raises(ValueError, match="requires allow_nl_field"):
+        load_protocol_from_yaml(str(path))

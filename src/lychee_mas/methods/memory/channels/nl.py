@@ -1,6 +1,8 @@
 """NLMemory —— 自然语言上下文通道（按 strategy 选方法）。
 
 可用 strategy：
+- "hybrid_protocol"：按任务卡片校验并传递最新消息，需 protocol_path 与 task。
+  节点通过 output_instructions 获取发送规则；通道不调用模型。
 - "prev_output"（默认）：把上一个 agent 的输出**原样**向下传递（不截断），加来源标志
   PREV_OUTPUT_HEADER，便于接收 agent 指认「这是上一个 agent 的输入」。无状态。
 - "simplemem"：接 **SimpleMem**（长时对话记忆 + 检索问答，`from simplemem import SimpleMem`）。
@@ -30,21 +32,34 @@ class NLMemory:
     STATEFUL_STRATEGIES = frozenset({"simplemem"})
 
     def __init__(self, tokenizer=None, strategy: str = "prev_output",
-                 simplemem_kwargs: Optional[dict] = None):
+                 simplemem_kwargs: Optional[dict] = None,
+                 protocol_path: Optional[str] = None, task: str = "gsm8k"):
         self.tok = tokenizer  # 预留（如需按 token 处理）；当前不使用
         self.strategy = strategy  # 选用哪种 NL 记忆方法
         self._sm_kwargs = simplemem_kwargs or {}  # 传给 SimpleMem(...) 的构造参数
         self._mem: Any = None  # 懒建的 SimpleMem 实例（simplemem 策略）
         self._added = 0  # 本对话已喂入 SimpleMem 的对话条数
+        self._protocol_path = protocol_path
+        self._task = task
+        self._protocol = None
+        if strategy == "hybrid_protocol" and not protocol_path:
+            raise ValueError("hybrid_protocol requires protocol_path")
 
     # ---- 生命周期（有状态策略用；prev_output 下为 no-op）----
     def reset(self) -> None:
         # 新对话 -> 丢弃旧 SimpleMem 实例（清空其记忆库），重新开始
         self._mem = None
         self._added = 0
+        if self._protocol is not None:
+            self._protocol.reset()
 
-    def observe(self, speaker: str, content: str, timestamp: Optional[str] = None) -> None:
+    def observe(self, speaker: str, content: str, timestamp: Optional[str] = None, *,
+                receiver: Optional[str] = None, message_id: Optional[str] = None) -> None:
         """把一条新对话喂进 NL 记忆。有状态策略 → add_dialogue；其它（如 prev_output）→ no-op。"""
+        if self.strategy == "hybrid_protocol":
+            self._protocol_channel().observe(speaker, content, receiver=receiver,
+                                             message_id=message_id)
+            return
         if self.strategy not in self.STATEFUL_STRATEGIES:
             return
         if not (content or "").strip():
@@ -64,7 +79,27 @@ class NLMemory:
             return f"{PREV_OUTPUT_HEADER}\n{text}" if text else ""  # 加来源标志，空内容不注入
         if self.strategy == "simplemem":
             return self._recall_simplemem(text)
+        if self.strategy == "hybrid_protocol":
+            payload = self._protocol_channel().recall()
+            return f"{PREV_OUTPUT_HEADER}\n{payload}" if payload else ""
         raise ValueError(f"unknown NL strategy {self.strategy}")
+
+    def output_instructions(self, sender: str, receiver: str) -> str:
+        """Output constraints for the sending node; existing text strategies add none."""
+        if self.strategy == "hybrid_protocol":
+            return self._protocol_channel().output_instructions(sender, receiver)
+        return ""
+
+    def metadata(self) -> dict[str, Any]:
+        """Per-message protocol metadata, never a second copy of the wire payload."""
+        return self._protocol_channel().metadata() if self.strategy == "hybrid_protocol" else {}
+
+    def _protocol_channel(self) -> Any:
+        if self._protocol is None:
+            from .hybrid_protocol import HybridProtocolMemory
+
+            self._protocol = HybridProtocolMemory(self._protocol_path, self._task, self.tok)
+        return self._protocol
 
     # ---- simplemem 内部实现（重依赖惰性）----
     def _sm(self):

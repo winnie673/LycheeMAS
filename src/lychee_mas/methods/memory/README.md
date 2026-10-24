@@ -7,7 +7,47 @@
 - **方法接缝（manager，类别 `memory_manager`）**：记忆如何存储/召回/物化——`managers/`。
 - **触发接缝（router，类别 `memory_router`）**：当前 agent 本轮用哪个通道——`routing/`。
 
-共享注入引擎（`runtime/injection.py`）在每次 agent 发言时依次调 router → manager，把产出的 `MemoryBundle` 注入生成过程。消费方只认 `MemoryBundle` / `RouteDecision`，换 manager/router 即一组对照实验。
+文本/隐空间策略由现有 manager 与 router 组合使用。原文提到的
+`runtime/injection.py` 已被移除；通用 `attach_memory` 在 origin 中仍未实现。
+当前通过建图方已有的 `node_factory` 注入通道内容，不新增任务专用执行框架。
+
+## Hybrid 文本协议策略
+
+配置：`configs/memory/gsm8k_hybrid_protocol.yaml`。与现有 cdm.yaml 一致，
+使用 `name: cdm` 和嵌套 router；`nl_strategy: hybrid_protocol` 选择 NLMemory
+的内部策略。新增实现只有 channels/hybrid_protocol.py，不需要新注册类别或改插件接口。
+
+```python
+from lychee_mas import REGISTRY
+from lychee_mas.core.types import Message
+from lychee_mas.methods.memory.routing.base import RouteDecision
+
+memory = REGISTRY.create(
+    "memory_manager", "cdm", backend=backend,
+    nl_strategy="hybrid_protocol",
+    protocol_path="configs/memory/task_cards/gsm8k_card2.yaml", task="gsm8k",
+)
+# 发送节点将约束附加到自己的 system prompt，再使用原有 backend.generate_chat。
+rules = memory.nl.output_instructions("planner", "solver")
+# raw_output 是该次原有模型调用的结果，不增加转码调用。
+memory.observe([Message(sender="planner", receiver="solver", content=raw_output)])
+bundle = memory.recall(RouteDecision(channel="nl"), question)
+# 接收节点只注入 bundle.NL_Channel；fields 元数据不再重复拼入 prompt。
+```
+
+- 任务卡片：V 集筛选的 GSM8K Card-2，字段和规则不变，增加 task/roles/edges 来源元信息。
+- observe 校验最新消息的 sender/receiver、允许/必需字段及 CHK/E/REQ；无效消息报错且
+  不覆盖上一条合法消息。core.Message 与带 sender/receiver/content 的字典均支持。
+- recall 与 prev_output 使用同一个 PREV_OUTPUT_HEADER；只转发最新已观察的 payload。
+  query 保持为任务问题，不将问题误当协议消息。reset 清空本次消息。
+- metadata 包含 fields、协议版本/指纹、收发角色、message_id 和通信 token；
+  不改变 MemoryBundle 类型。通信 token 只对完整 payload（含字段名和分隔符）计数，
+  标题属于输入开销。无 backend.tok 时明确为 None；编码异常显式传播。
+- 原有 none/nl/latent/both 路由保留；混合协议只改变文本分量，latent 策略仍归 LatentMemory。
+- 协议不决定发言顺序，不执行模型调用、重试或评分；这些职责保留在原有节点/调用方。
+  示例 examples/03_gsm8k_memory_protocol.py 使用现有 static graph 和注入式生成回调，
+  演示 P-S-V 三次通信。可选修订应由调用方安排，通道支持 V-S 反馈消息。
+- 本次没有新增通用 attach_memory 实现，不能声称给任意图调用该入口即可生效。
 
 ## 接口
 

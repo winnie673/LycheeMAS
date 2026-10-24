@@ -88,6 +88,13 @@ sg.add_node(name, node_fn, metadata={"agent_spec": spec})   # spec: core.types.A
 
 ### 4.3 memory（运行时记忆，`plugins/memory/` × `methods/memory/`）
 
+文本通道现支持 `nl_strategy="hybrid_protocol"`：作为 NLMemory 内部策略，由现有
+`memory_manager/cdm` 的 observe/recall/reset 驱动，复用 MemoryBundle 和 core.Message。
+冻结的 GSM8K Card-2 位于 configs/memory/task_cards/gsm8k_card2.yaml。发送节点从
+`memory.nl.output_instructions(sender, receiver)` 获取约束，在原模型调用后投递消息。
+不改变插件接口或路由种类，不引入独立 runner/后端/任务图；通用 attach_memory 仍为
+下述待实现入口，现阶段通过既有 node_factory 契约使用通道。详见 memory/README.md。
+
 回答「智能体之间记住什么、以什么表征传递」。`attach_memory(sg, method, backend, **kw) -> sg`：把注入六步（observe → route → recall → system 段注入 → 生成 → 记账）**重包进每个 agent 节点**（P3 全新实现中，当前显式桩）。算法库：`channels/`（NL / 隐空间 / C2C）+ `managers/`（`memory_manager/cdm` 已实现）+ `routing/`（`static`/`fixed` 已实现）+ `store.py` + `context.py`（RoutingContext 决策日志/span 落盘）。注入六步的旧引擎实现已随 runtime 兼容层删除（git 历史 `runtime/injection.py` 可作 P3 语义参照）。
 
 ### 4.4 processing（执行，`plugins/processing/` × `methods/processing/`）

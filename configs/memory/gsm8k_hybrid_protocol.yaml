@@ -1,0 +1,9 @@
+# Paths are relative to the repository root. The API backend/tokenizer is
+# supplied by the caller; no model path or credential belongs in this config.
+name: cdm
+nl_strategy: hybrid_protocol
+protocol_path: configs/memory/task_cards/gsm8k_card2.yaml
+task: gsm8k
+router:
+  name: fixed
+  channel: nl

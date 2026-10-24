@@ -33,12 +33,14 @@ class DualChannelMemoryManager(MemoryManager):
                  nl_strategy: str = "prev_output",
                  max_encode_tokens: int = 4096, include_transcript: bool = True,
                  P: int = 16, c2c_ckpt: str | None = None, c2c_gate: str = "soft",
-                 nl_simplemem: dict | None = None):
+                 nl_simplemem: dict | None = None,
+                 protocol_path: str | None = None, task: str = "gsm8k"):
         self.backend = backend
         self.latent_strategy = latent_strategy
         # 两个主接口：NL 通道 + latent 通道（latent 统管 soft_token / c2c 子策略；P 归 latent）
         self.nl = NLMemory(getattr(backend, "tok", None), strategy=nl_strategy,
-                           simplemem_kwargs=nl_simplemem)
+                           simplemem_kwargs=nl_simplemem,
+                           protocol_path=protocol_path, task=task)
         self.latent = LatentMemory(backend, latent_strategy, max_encode_tokens,
                                    P=P, c2c_ckpt=c2c_ckpt, c2c_gate=c2c_gate)
         self.include_transcript = include_transcript  # 是否把运行中的对话也并入 source
@@ -73,13 +75,21 @@ class DualChannelMemoryManager(MemoryManager):
         is_dict = isinstance(last, dict)
         role = last.get("role", "?") if is_dict else getattr(last, "source", "?")
         content = last.get("content", "") if is_dict else getattr(last, "content", "")
+        receiver = last.get("receiver") if is_dict else getattr(last, "receiver", None)
+        message_id = last.get("id") if is_dict else getattr(last, "id", None)
+        if self.nl.strategy == "hybrid_protocol":
+            role = last.get("sender", role) if is_dict else getattr(last, "sender", role)
         if not (isinstance(content, str) and content.strip()):
+            if self.nl.strategy == "hybrid_protocol":
+                raise ValueError("protocol message content must be a nonempty string")
             return
         line = f"[{role}]: {content.strip()}"
-        if line == self._last_observed:  # 与上一条相同 -> 去重（不重复喂两条通道）
+        observation_key = (f"{role}->{receiver}#{message_id}:{content.strip()}"
+                           if self.nl.strategy == "hybrid_protocol" else line)
+        if observation_key == self._last_observed:
             return
-        self._last_observed = line
-        self.nl.observe(role, content.strip())  # NL 通道观察新对话（simplemem→add_dialogue）
+        self.nl.observe(role, content.strip(), receiver=receiver, message_id=message_id)
+        self._last_observed = observation_key
         if self.include_transcript:
             self._transcript.append(line)
             self.latent.reset()  # source 变了，缓存失效
@@ -104,6 +114,7 @@ class DualChannelMemoryManager(MemoryManager):
             # NL 通道：prev_output 原样转发上一个 agent 输出 / simplemem 检索问答
             bundle.NL_Channel = self.nl.recall(query)
             bundle.NL_strategy = self.nl.strategy
+            bundle.meta.update(self.nl.metadata())
         if decision.uses_latent():  # latent / both
             # 全权交给 latent 主接口：内部按 strategy 决定 soft_token(→prefix) 或 c2c(→projector 栈)
             self.latent.materialize(bundle, self._source())

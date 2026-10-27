@@ -1,0 +1,151 @@
+{
+  "task_id": "gsm8k:train:seed42:V:00143",
+  "status": "completed",
+  "error": null,
+  "prediction": "10",
+  "messages": [
+    {
+      "sender": "planner",
+      "content": "G:number_of_cakes;P:fridge=10,used=60-fridge,cakes=used/5",
+      "receiver": "solver",
+      "round": 0,
+      "role": "assistant",
+      "prompt_tokens": 720,
+      "completion_tokens": 24,
+      "id": "e94e998f864a",
+      "ts": 1793094955.1902974,
+      "meta": {
+        "sender": "planner",
+        "receiver": "solver",
+        "message_id": "e94e998f864a",
+        "protocol_edge": "planner_to_solver",
+        "protocol_version": "CARD-0-gsm8k",
+        "protocol_hash": "eb2823227bf7889a5ca248376e410b4922fec80b12249ba4d10a3c8452604ed2",
+        "contract_hash": "ac09c03455d8af3a35273b605bb457591de11f0e22bded3325bbb626ee774caf",
+        "fields": {
+          "G": "number_of_cakes",
+          "P": "fridge=10,used=60-fridge,cakes=used/5"
+        },
+        "communication_tokens": 24,
+        "communication_tokens_exact": true,
+        "attempt_count": 1,
+        "fallback": false,
+        "tokens_include_all_attempts": true,
+        "incoming_message_ids": []
+      }
+    },
+    {
+      "sender": "solver",
+      "content": "IR:fridge=10,used=60-10=50,cakes=50/5=10;R:10",
+      "receiver": "verifier",
+      "round": 0,
+      "role": "assistant",
+      "prompt_tokens": 719,
+      "completion_tokens": 25,
+      "id": "8d119d62644d",
+      "ts": 1793094956.3341098,
+      "meta": {
+        "sender": "solver",
+        "receiver": "verifier",
+        "message_id": "8d119d62644d",
+        "protocol_edge": "solver_to_verifier",
+        "protocol_version": "CARD-0-gsm8k",
+        "protocol_hash": "eb2823227bf7889a5ca248376e410b4922fec80b12249ba4d10a3c8452604ed2",
+        "contract_hash": "ac09c03455d8af3a35273b605bb457591de11f0e22bded3325bbb626ee774caf",
+        "fields": {
+          "IR": "fridge=10,used=60-10=50,cakes=50/5=10",
+          "R": "10"
+        },
+        "communication_tokens": 25,
+        "communication_tokens_exact": true,
+        "attempt_count": 1,
+        "fallback": false,
+        "tokens_include_all_attempts": true,
+        "incoming_message_ids": [
+          "e94e998f864a"
+        ]
+      }
+    },
+    {
+      "sender": "verifier",
+      "content": "CHK:ACCEPT",
+      "receiver": "solver",
+      "round": 0,
+      "role": "assistant",
+      "prompt_tokens": 1052,
+      "completion_tokens": 5,
+      "id": "0f946f250c27",
+      "ts": 1793094957.3723934,
+      "meta": {
+        "sender": "verifier",
+        "receiver": "solver",
+        "message_id": "0f946f250c27",
+        "protocol_edge": "verifier_to_solver",
+        "protocol_version": "CARD-0-gsm8k",
+        "protocol_hash": "eb2823227bf7889a5ca248376e410b4922fec80b12249ba4d10a3c8452604ed2",
+        "contract_hash": "ac09c03455d8af3a35273b605bb457591de11f0e22bded3325bbb626ee774caf",
+        "fields": {
+          "CHK": "ACCEPT"
+        },
+        "communication_tokens": 5,
+        "communication_tokens_exact": true,
+        "attempt_count": 1,
+        "fallback": false,
+        "tokens_include_all_attempts": true,
+        "incoming_message_ids": [
+          "8d119d62644d"
+        ]
+      }
+    }
+  ],
+  "communication_tokens": 54,
+  "wall_time_s": 3.745992400101386,
+  "verified": true,
+  "revision_rounds": 0,
+  "model_calls": [
+    {
+      "role": "planner",
+      "attempt": 0,
+      "status": "delivered",
+      "error": "",
+      "raw_output": "G:number_of_cakes;P:fridge=10,used=60-fridge,cakes=used/5",
+      "finish_reason": "stop",
+      "output_tokens": 24,
+      "usage_available": true
+    },
+    {
+      "role": "solver",
+      "attempt": 0,
+      "status": "delivered",
+      "error": "",
+      "raw_output": "IR:fridge=10,used=60-10=50,cakes=50/5=10;R:10",
+      "finish_reason": "stop",
+      "output_tokens": 25,
+      "usage_available": true
+    },
+    {
+      "role": "verifier",
+      "attempt": 0,
+      "status": "delivered",
+      "error": "",
+      "raw_output": "CHK:ACCEPT",
+      "finish_reason": "stop",
+      "output_tokens": 5,
+      "usage_available": true
+    }
+  ],
+  "failed_attempts": [],
+  "calls": 3,
+  "usage_complete": true,
+  "known_input_tokens": 2491,
+  "known_output_tokens": 54,
+  "model_input_tokens": 2491,
+  "model_output_tokens": 54,
+  "format_failed_calls": 0,
+  "transport_failed_calls": 0,
+  "fallback_calls": 0,
+  "sum_model_latency_s": 3.6130881309509277,
+  "gold": "10",
+  "score": 1.0,
+  "question": "The chef has 60 eggs. He puts 10 eggs in the fridge and uses the rest to make cakes. If he used 5 eggs to make one cake, how many cakes did the chef make?\nGive the final numeric answer."
+}

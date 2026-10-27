@@ -1,0 +1,150 @@
+{
+  "task_id": "gsm8k:train:seed42:V:00006",
+  "status": "completed",
+  "error": null,
+  "prediction": "365",
+  "messages": [
+    {
+      "sender": "planner",
+      "content": "G:hours_per_year;K:morning_walk1=5,bus=20,morning_walk2=5,days_per_year=365;P:one_way=5+20+5,daily=2*one_way,yearly_minutes=daily*365,hours_per_year=yearly_minutes/60;NL:same travel time morning and evening, works every day including all 365 days",
+      "receiver": "solver",
+      "round": 0,
+      "role": "assistant",
+      "prompt_tokens": 786,
+      "completion_tokens": 89,
+      "id": "259cf3471416",
+      "ts": 1793099151.7702134,
+      "meta": {
+        "sender": "planner",
+        "receiver": "solver",
+        "message_id": "259cf3471416",
+        "protocol_edge": "planner_to_solver",
+        "protocol_version": "CARD-2-gsm8k",
+        "protocol_hash": "c152278e4a24181b874bd88cbf3adef79479b79f6539931bcd89721fa5a8a7a9",
+        "contract_hash": "ac09c03455d8af3a35273b605bb457591de11f0e22bded3325bbb626ee774caf",
+        "fields": {
+          "G": "hours_per_year",
+          "K": "morning_walk1=5,bus=20,morning_walk2=5,days_per_year=365",
+          "P": "one_way=5+20+5,daily=2*one_way,yearly_minutes=daily*365,hours_per_year=yearly_minutes/60",
+          "NL": "same travel time morning and evening, works every day including all 365 days"
+        },
+        "communication_tokens": 89,
+        "communication_tokens_exact": true,
+        "attempt_count": 1,
+        "fallback": false,
+        "tokens_include_all_attempts": true,
+        "incoming_message_ids": []
+      }
+    },
+    {
+      "sender": "solver",
+      "content": "IR:one_way=5+20+5=30,daily=2*30=60,yearly_minutes=60*365=21900,hours_per_year=21900/60=365;R:365",
+      "receiver": "verifier",
+      "round": 0,
+      "role": "assistant",
+      "prompt_tokens": 818,
+      "completion_tokens": 47,
+      "id": "8c597a601deb",
+      "ts": 1793099153.248179,
+      "meta": {
+        "sender": "solver",
+        "receiver": "verifier",
+        "message_id": "8c597a601deb",
+        "protocol_edge": "solver_to_verifier",
+        "protocol_version": "CARD-2-gsm8k",
+        "protocol_hash": "c152278e4a24181b874bd88cbf3adef79479b79f6539931bcd89721fa5a8a7a9",
+        "contract_hash": "ac09c03455d8af3a35273b605bb457591de11f0e22bded3325bbb626ee774caf",
+        "fields": {
+          "IR": "one_way=5+20+5=30,daily=2*30=60,yearly_minutes=60*365=21900,hours_per_year=21900/60=365",
+          "R": "365"
+        },
+        "communication_tokens": 47,
+        "communication_tokens_exact": true,
+        "attempt_count": 1,
+        "fallback": false,
+        "tokens_include_all_attempts": true,
+        "incoming_message_ids": [
+          "259cf3471416"
+        ]
+      }
+    },
+    {
+      "sender": "verifier",
+      "content": "CHK:ACCEPT",
+      "receiver": "solver",
+      "round": 0,
+      "role": "assistant",
+      "prompt_tokens": 1108,
+      "completion_tokens": 5,
+      "id": "e876fbd9d01a",
+      "ts": 1793099154.230029,
+      "meta": {
+        "sender": "verifier",
+        "receiver": "solver",
+        "message_id": "e876fbd9d01a",
+        "protocol_edge": "verifier_to_solver",
+        "protocol_version": "CARD-2-gsm8k",
+        "protocol_hash": "c152278e4a24181b874bd88cbf3adef79479b79f6539931bcd89721fa5a8a7a9",
+        "contract_hash": "ac09c03455d8af3a35273b605bb457591de11f0e22bded3325bbb626ee774caf",
+        "fields": {
+          "CHK": "ACCEPT"
+        },
+        "communication_tokens": 5,
+        "communication_tokens_exact": true,
+        "attempt_count": 1,
+        "fallback": false,
+        "tokens_include_all_attempts": true,
+        "incoming_message_ids": [
+          "8c597a601deb"
+        ]
+      }
+    }
+  ],
+  "communication_tokens": 141,
+  "wall_time_s": 4.101095299934968,
+  "verified": true,
+  "revision_rounds": 0,
+  "model_calls": [
+    {
+      "role": "planner",
+      "attempt": 0,
+      "status": "delivered",
+      "error": "",
+      "raw_output": "G:hours_per_year;K:morning_walk1=5,bus=20,morning_walk2=5,days_per_year=365;P:one_way=5+20+5,daily=2*one_way,yearly_minutes=daily*365,hours_per_year=yearly_minutes/60;NL:same travel time morning and evening, works every day including all 365 days",
+      "finish_reason": "stop",
+      "output_tokens": 89,
+      "usage_available": true
+    },
+    {
+      "role": "solver",
+      "attempt": 0,
+      "status": "delivered",
+      "error": "",
+      "raw_output": "IR:one_way=5+20+5=30,daily=2*30=60,yearly_minutes=60*365=21900,hours_per_year=21900/60=365;R:365",
+      "finish_reason": "stop",
+      "output_tokens": 47,
+      "usage_available": true
+    },
+    {
+      "role": "verifier",
+      "attempt": 0,
+      "status": "delivered",
+      "error": "",
+      "raw_output": "CHK:ACCEPT",
+      "finish_reason": "stop",
+      "output_tokens": 5,
+      "usage_available": true
+    }
+  ],
+  "failed_attempts": [],
+  "calls": 3,
+  "usage_complete": true,
+  "known_input_tokens": 2712,
+  "known_output_tokens": 141,
+  "model_input_tokens": 2712,
+  "model_output_tokens": 141,
+  "format_failed_calls": 0,
+  "transport_failed_calls": 0,
+  "fallback_calls": 0,
+  "sum_model_latency_s": 4.000793695449829
+}

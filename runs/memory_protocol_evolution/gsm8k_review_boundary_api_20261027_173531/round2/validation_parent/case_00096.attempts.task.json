@@ -1,0 +1,149 @@
+{
+  "task_id": "gsm8k:train:seed42:V:00096",
+  "status": "completed",
+  "error": null,
+  "prediction": "33",
+  "messages": [
+    {
+      "sender": "planner",
+      "content": "K:ties=34,belts=40,black_shirts=63,white_shirts=42;G:jeans_minus_scarves;P:shirts=black_shirts+white_shirts,jeans=2/3*shirts,accessories=ties+belts,scarves=1/2*accessories,diff=jeans-scarves",
+      "receiver": "solver",
+      "round": 0,
+      "role": "assistant",
+      "prompt_tokens": 751,
+      "completion_tokens": 81,
+      "id": "217ea3c15c1e",
+      "ts": 1793096806.332716,
+      "meta": {
+        "sender": "planner",
+        "receiver": "solver",
+        "message_id": "217ea3c15c1e",
+        "protocol_edge": "planner_to_solver",
+        "protocol_version": "CARD-0-gsm8k",
+        "protocol_hash": "eb2823227bf7889a5ca248376e410b4922fec80b12249ba4d10a3c8452604ed2",
+        "contract_hash": "ac09c03455d8af3a35273b605bb457591de11f0e22bded3325bbb626ee774caf",
+        "fields": {
+          "K": "ties=34,belts=40,black_shirts=63,white_shirts=42",
+          "G": "jeans_minus_scarves",
+          "P": "shirts=black_shirts+white_shirts,jeans=2/3*shirts,accessories=ties+belts,scarves=1/2*accessories,diff=jeans-scarves"
+        },
+        "communication_tokens": 81,
+        "communication_tokens_exact": true,
+        "attempt_count": 1,
+        "fallback": false,
+        "tokens_include_all_attempts": true,
+        "incoming_message_ids": []
+      }
+    },
+    {
+      "sender": "solver",
+      "content": "IR:shirts=63+42=105,jeans=2/3*105=70,accessories=34+40=74,scarves=1/2*74=37,diff=70-37=33;R:33",
+      "receiver": "verifier",
+      "round": 0,
+      "role": "assistant",
+      "prompt_tokens": 807,
+      "completion_tokens": 53,
+      "id": "620f2c2c75a9",
+      "ts": 1793096807.7288494,
+      "meta": {
+        "sender": "solver",
+        "receiver": "verifier",
+        "message_id": "620f2c2c75a9",
+        "protocol_edge": "solver_to_verifier",
+        "protocol_version": "CARD-0-gsm8k",
+        "protocol_hash": "eb2823227bf7889a5ca248376e410b4922fec80b12249ba4d10a3c8452604ed2",
+        "contract_hash": "ac09c03455d8af3a35273b605bb457591de11f0e22bded3325bbb626ee774caf",
+        "fields": {
+          "IR": "shirts=63+42=105,jeans=2/3*105=70,accessories=34+40=74,scarves=1/2*74=37,diff=70-37=33",
+          "R": "33"
+        },
+        "communication_tokens": 53,
+        "communication_tokens_exact": true,
+        "attempt_count": 1,
+        "fallback": false,
+        "tokens_include_all_attempts": true,
+        "incoming_message_ids": [
+          "217ea3c15c1e"
+        ]
+      }
+    },
+    {
+      "sender": "verifier",
+      "content": "CHK:ACCEPT",
+      "receiver": "solver",
+      "round": 0,
+      "role": "assistant",
+      "prompt_tokens": 1111,
+      "completion_tokens": 5,
+      "id": "89032b60c5fa",
+      "ts": 1793096808.94565,
+      "meta": {
+        "sender": "verifier",
+        "receiver": "solver",
+        "message_id": "89032b60c5fa",
+        "protocol_edge": "verifier_to_solver",
+        "protocol_version": "CARD-0-gsm8k",
+        "protocol_hash": "eb2823227bf7889a5ca248376e410b4922fec80b12249ba4d10a3c8452604ed2",
+        "contract_hash": "ac09c03455d8af3a35273b605bb457591de11f0e22bded3325bbb626ee774caf",
+        "fields": {
+          "CHK": "ACCEPT"
+        },
+        "communication_tokens": 5,
+        "communication_tokens_exact": true,
+        "attempt_count": 1,
+        "fallback": false,
+        "tokens_include_all_attempts": true,
+        "incoming_message_ids": [
+          "620f2c2c75a9"
+        ]
+      }
+    }
+  ],
+  "communication_tokens": 139,
+  "wall_time_s": 3.734236399992369,
+  "verified": true,
+  "revision_rounds": 0,
+  "model_calls": [
+    {
+      "role": "planner",
+      "attempt": 0,
+      "status": "delivered",
+      "error": "",
+      "raw_output": "K:ties=34,belts=40,black_shirts=63,white_shirts=42;G:jeans_minus_scarves;P:shirts=black_shirts+white_shirts,jeans=2/3*shirts,accessories=ties+belts,scarves=1/2*accessories,diff=jeans-scarves",
+      "finish_reason": "stop",
+      "output_tokens": 81,
+      "usage_available": true
+    },
+    {
+      "role": "solver",
+      "attempt": 0,
+      "status": "delivered",
+      "error": "",
+      "raw_output": "IR:shirts=63+42=105,jeans=2/3*105=70,accessories=34+40=74,scarves=1/2*74=37,diff=70-37=33;R:33",
+      "finish_reason": "stop",
+      "output_tokens": 53,
+      "usage_available": true
+    },
+    {
+      "role": "verifier",
+      "attempt": 0,
+      "status": "delivered",
+      "error": "",
+      "raw_output": "CHK:ACCEPT",
+      "finish_reason": "stop",
+      "output_tokens": 5,
+      "usage_available": true
+    }
+  ],
+  "failed_attempts": [],
+  "calls": 3,
+  "usage_complete": true,
+  "known_input_tokens": 2669,
+  "known_output_tokens": 139,
+  "model_input_tokens": 2669,
+  "model_output_tokens": 139,
+  "format_failed_calls": 0,
+  "transport_failed_calls": 0,
+  "fallback_calls": 0,
+  "sum_model_latency_s": 3.6252052783966064
+}

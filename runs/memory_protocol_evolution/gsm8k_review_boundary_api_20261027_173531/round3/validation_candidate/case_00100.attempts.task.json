@@ -1,0 +1,150 @@
+{
+  "task_id": "gsm8k:train:seed42:V:00100",
+  "status": "completed",
+  "error": null,
+  "prediction": "3000",
+  "messages": [
+    {
+      "sender": "planner",
+      "content": "G:number_of_pillows;K:material_per_pillow=5-3,total_material_tons=3;P:total_material_lbs=total_material_tons*2000,number_of_pillows=total_material_lbs/material_per_pillow;NL:convert tons to pounds before dividing",
+      "receiver": "solver",
+      "round": 0,
+      "role": "assistant",
+      "prompt_tokens": 754,
+      "completion_tokens": 70,
+      "id": "37d87ec85301",
+      "ts": 1793099855.4090316,
+      "meta": {
+        "sender": "planner",
+        "receiver": "solver",
+        "message_id": "37d87ec85301",
+        "protocol_edge": "planner_to_solver",
+        "protocol_version": "CARD-2-gsm8k",
+        "protocol_hash": "c152278e4a24181b874bd88cbf3adef79479b79f6539931bcd89721fa5a8a7a9",
+        "contract_hash": "ac09c03455d8af3a35273b605bb457591de11f0e22bded3325bbb626ee774caf",
+        "fields": {
+          "G": "number_of_pillows",
+          "K": "material_per_pillow=5-3,total_material_tons=3",
+          "P": "total_material_lbs=total_material_tons*2000,number_of_pillows=total_material_lbs/material_per_pillow",
+          "NL": "convert tons to pounds before dividing"
+        },
+        "communication_tokens": 70,
+        "communication_tokens_exact": true,
+        "attempt_count": 1,
+        "fallback": false,
+        "tokens_include_all_attempts": true,
+        "incoming_message_ids": []
+      }
+    },
+    {
+      "sender": "solver",
+      "content": "IR:material_per_pillow=5-3=2,total_material_lbs=3*2000=6000,number_of_pillows=6000/2=3000;R:3000",
+      "receiver": "verifier",
+      "round": 0,
+      "role": "assistant",
+      "prompt_tokens": 767,
+      "completion_tokens": 46,
+      "id": "4f5acd541bf0",
+      "ts": 1793099856.3523858,
+      "meta": {
+        "sender": "solver",
+        "receiver": "verifier",
+        "message_id": "4f5acd541bf0",
+        "protocol_edge": "solver_to_verifier",
+        "protocol_version": "CARD-2-gsm8k",
+        "protocol_hash": "c152278e4a24181b874bd88cbf3adef79479b79f6539931bcd89721fa5a8a7a9",
+        "contract_hash": "ac09c03455d8af3a35273b605bb457591de11f0e22bded3325bbb626ee774caf",
+        "fields": {
+          "IR": "material_per_pillow=5-3=2,total_material_lbs=3*2000=6000,number_of_pillows=6000/2=3000",
+          "R": "3000"
+        },
+        "communication_tokens": 46,
+        "communication_tokens_exact": true,
+        "attempt_count": 1,
+        "fallback": false,
+        "tokens_include_all_attempts": true,
+        "incoming_message_ids": [
+          "37d87ec85301"
+        ]
+      }
+    },
+    {
+      "sender": "verifier",
+      "content": "CHK:ACCEPT",
+      "receiver": "solver",
+      "round": 0,
+      "role": "assistant",
+      "prompt_tokens": 1075,
+      "completion_tokens": 5,
+      "id": "558c2323aedd",
+      "ts": 1793099858.127864,
+      "meta": {
+        "sender": "verifier",
+        "receiver": "solver",
+        "message_id": "558c2323aedd",
+        "protocol_edge": "verifier_to_solver",
+        "protocol_version": "CARD-2-gsm8k",
+        "protocol_hash": "c152278e4a24181b874bd88cbf3adef79479b79f6539931bcd89721fa5a8a7a9",
+        "contract_hash": "ac09c03455d8af3a35273b605bb457591de11f0e22bded3325bbb626ee774caf",
+        "fields": {
+          "CHK": "ACCEPT"
+        },
+        "communication_tokens": 5,
+        "communication_tokens_exact": true,
+        "attempt_count": 1,
+        "fallback": false,
+        "tokens_include_all_attempts": true,
+        "incoming_message_ids": [
+          "4f5acd541bf0"
+        ]
+      }
+    }
+  ],
+  "communication_tokens": 121,
+  "wall_time_s": 4.0810262999730185,
+  "verified": true,
+  "revision_rounds": 0,
+  "model_calls": [
+    {
+      "role": "planner",
+      "attempt": 0,
+      "status": "delivered",
+      "error": "",
+      "raw_output": "G:number_of_pillows;K:material_per_pillow=5-3,total_material_tons=3;P:total_material_lbs=total_material_tons*2000,number_of_pillows=total_material_lbs/material_per_pillow;NL:convert tons to pounds before dividing",
+      "finish_reason": "stop",
+      "output_tokens": 70,
+      "usage_available": true
+    },
+    {
+      "role": "solver",
+      "attempt": 0,
+      "status": "delivered",
+      "error": "",
+      "raw_output": "IR:material_per_pillow=5-3=2,total_material_lbs=3*2000=6000,number_of_pillows=6000/2=3000;R:3000",
+      "finish_reason": "stop",
+      "output_tokens": 46,
+      "usage_available": true
+    },
+    {
+      "role": "verifier",
+      "attempt": 0,
+      "status": "delivered",
+      "error": "",
+      "raw_output": "CHK:ACCEPT",
+      "finish_reason": "stop",
+      "output_tokens": 5,
+      "usage_available": true
+    }
+  ],
+  "failed_attempts": [],
+  "calls": 3,
+  "usage_complete": true,
+  "known_input_tokens": 2596,
+  "known_output_tokens": 121,
+  "model_input_tokens": 2596,
+  "model_output_tokens": 121,
+  "format_failed_calls": 0,
+  "transport_failed_calls": 0,
+  "fallback_calls": 0,
+  "sum_model_latency_s": 4.025583267211914
+}

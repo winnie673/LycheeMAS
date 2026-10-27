@@ -1,0 +1,170 @@
+{
+  "task_id": "gsm8k:train:seed42:V:00079",
+  "status": "completed",
+  "error": null,
+  "prediction": "3500",
+  "messages": [
+    {
+      "sender": "planner",
+      "content": "K:tables=20,cloth=25,settings_per_table=4,setting=10,roses_per_centerpiece=10,rose=5,lilies_per_centerpiece=15,lily=4;G:total_cost;P:cloth_cost=20*25,settings_cost=20*4*10,centerpiece_cost=10*5+15*4,centerpieces_cost=20*centerpiece_cost,total_cost=cloth_cost+settings_cost+centerpieces_cost",
+      "receiver": "solver",
+      "round": 0,
+      "role": "assistant",
+      "prompt_tokens": 793,
+      "completion_tokens": 103,
+      "id": "47bfbf22949e",
+      "ts": 1793099775.490369,
+      "meta": {
+        "sender": "planner",
+        "receiver": "solver",
+        "message_id": "47bfbf22949e",
+        "protocol_edge": "planner_to_solver",
+        "protocol_version": "CARD-2-gsm8k",
+        "protocol_hash": "c152278e4a24181b874bd88cbf3adef79479b79f6539931bcd89721fa5a8a7a9",
+        "contract_hash": "ac09c03455d8af3a35273b605bb457591de11f0e22bded3325bbb626ee774caf",
+        "fields": {
+          "K": "tables=20,cloth=25,settings_per_table=4,setting=10,roses_per_centerpiece=10,rose=5,lilies_per_centerpiece=15,lily=4",
+          "G": "total_cost",
+          "P": "cloth_cost=20*25,settings_cost=20*4*10,centerpiece_cost=10*5+15*4,centerpieces_cost=20*centerpiece_cost,total_cost=cloth_cost+settings_cost+centerpieces_cost"
+        },
+        "communication_tokens": 103,
+        "communication_tokens_exact": true,
+        "attempt_count": 2,
+        "fallback": false,
+        "tokens_include_all_attempts": true,
+        "incoming_message_ids": []
+      }
+    },
+    {
+      "sender": "solver",
+      "content": "IR:cloth=20*25=500,settings=20*4*10=800,centerpiece=10*5+15*4=110,centerpieces=20*110=2200,total=500+800+2200=3500;R:3500",
+      "receiver": "verifier",
+      "round": 0,
+      "role": "assistant",
+      "prompt_tokens": 829,
+      "completion_tokens": 59,
+      "id": "dc619ad1e8fd",
+      "ts": 1793099776.7105896,
+      "meta": {
+        "sender": "solver",
+        "receiver": "verifier",
+        "message_id": "dc619ad1e8fd",
+        "protocol_edge": "solver_to_verifier",
+        "protocol_version": "CARD-2-gsm8k",
+        "protocol_hash": "c152278e4a24181b874bd88cbf3adef79479b79f6539931bcd89721fa5a8a7a9",
+        "contract_hash": "ac09c03455d8af3a35273b605bb457591de11f0e22bded3325bbb626ee774caf",
+        "fields": {
+          "IR": "cloth=20*25=500,settings=20*4*10=800,centerpiece=10*5+15*4=110,centerpieces=20*110=2200,total=500+800+2200=3500",
+          "R": "3500"
+        },
+        "communication_tokens": 59,
+        "communication_tokens_exact": true,
+        "attempt_count": 1,
+        "fallback": false,
+        "tokens_include_all_attempts": true,
+        "incoming_message_ids": [
+          "47bfbf22949e"
+        ]
+      }
+    },
+    {
+      "sender": "verifier",
+      "content": "CHK:ACCEPT",
+      "receiver": "solver",
+      "round": 0,
+      "role": "assistant",
+      "prompt_tokens": 1117,
+      "completion_tokens": 5,
+      "id": "1f2ff60c692d",
+      "ts": 1793099777.7414744,
+      "meta": {
+        "sender": "verifier",
+        "receiver": "solver",
+        "message_id": "1f2ff60c692d",
+        "protocol_edge": "verifier_to_solver",
+        "protocol_version": "CARD-2-gsm8k",
+        "protocol_hash": "c152278e4a24181b874bd88cbf3adef79479b79f6539931bcd89721fa5a8a7a9",
+        "contract_hash": "ac09c03455d8af3a35273b605bb457591de11f0e22bded3325bbb626ee774caf",
+        "fields": {
+          "CHK": "ACCEPT"
+        },
+        "communication_tokens": 5,
+        "communication_tokens_exact": true,
+        "attempt_count": 1,
+        "fallback": false,
+        "tokens_include_all_attempts": true,
+        "incoming_message_ids": [
+          "dc619ad1e8fd"
+        ]
+      }
+    }
+  ],
+  "communication_tokens": 167,
+  "wall_time_s": 14.518778000026941,
+  "verified": true,
+  "revision_rounds": 0,
+  "model_calls": [
+    {
+      "role": "planner",
+      "attempt": 0,
+      "status": "transport_error",
+      "error": "Connection error.",
+      "raw_output": "",
+      "finish_reason": "unavailable",
+      "output_tokens": 0,
+      "usage_available": false
+    },
+    {
+      "role": "planner",
+      "attempt": 1,
+      "status": "delivered",
+      "error": "",
+      "raw_output": "K:tables=20,cloth=25,settings_per_table=4,setting=10,roses_per_centerpiece=10,rose=5,lilies_per_centerpiece=15,lily=4;G:total_cost;P:cloth_cost=20*25,settings_cost=20*4*10,centerpiece_cost=10*5+15*4,centerpieces_cost=20*centerpiece_cost,total_cost=cloth_cost+settings_cost+centerpieces_cost",
+      "finish_reason": "stop",
+      "output_tokens": 103,
+      "usage_available": true
+    },
+    {
+      "role": "solver",
+      "attempt": 0,
+      "status": "delivered",
+      "error": "",
+      "raw_output": "IR:cloth=20*25=500,settings=20*4*10=800,centerpiece=10*5+15*4=110,centerpieces=20*110=2200,total=500+800+2200=3500;R:3500",
+      "finish_reason": "stop",
+      "output_tokens": 59,
+      "usage_available": true
+    },
+    {
+      "role": "verifier",
+      "attempt": 0,
+      "status": "delivered",
+      "error": "",
+      "raw_output": "CHK:ACCEPT",
+      "finish_reason": "stop",
+      "output_tokens": 5,
+      "usage_available": true
+    }
+  ],
+  "failed_attempts": [
+    {
+      "status": "transport_error",
+      "error": "Connection error.",
+      "raw_output": "",
+      "attempt": 0,
+      "role": "planner"
+    }
+  ],
+  "calls": 4,
+  "usage_complete": false,
+  "known_input_tokens": 2739,
+  "known_output_tokens": 167,
+  "model_input_tokens": null,
+  "model_output_tokens": null,
+  "format_failed_calls": 0,
+  "transport_failed_calls": 1,
+  "fallback_calls": 0,
+  "sum_model_latency_s": 8.866432189941406,
+  "gold": "3500",
+  "score": 1.0,
+  "question": "Nathan is buying decorations for his wedding reception. The reception hall will have 20 tables. Each table needs a linen tablecloth ($25 to rent), 4 place settings ($10 each to rent), and a centerpiece. Each centerpiece will have 10 roses ($5 each) and 15 lilies ($4 each). How much will the decorations cost?\nGive the final numeric answer."
+}

@@ -1,0 +1,152 @@
+{
+  "task_id": "gsm8k:train:seed42:V:00082",
+  "status": "completed",
+  "error": null,
+  "prediction": "157",
+  "messages": [
+    {
+      "sender": "planner",
+      "content": "G:total_fish;K:white_ratio=5,black_ratio=10,multi_ratio=12,white_ducks=3,black_ducks=7,multi_ducks=6;P:total_fish=white_ducks*white_ratio+black_ducks*black_ratio+multi_ducks*multi_ratio",
+      "receiver": "solver",
+      "round": 0,
+      "role": "assistant",
+      "prompt_tokens": 743,
+      "completion_tokens": 79,
+      "id": "9fb55f9f770a",
+      "ts": 1793094698.719206,
+      "meta": {
+        "sender": "planner",
+        "receiver": "solver",
+        "message_id": "9fb55f9f770a",
+        "protocol_edge": "planner_to_solver",
+        "protocol_version": "CARD-0-gsm8k",
+        "protocol_hash": "eb2823227bf7889a5ca248376e410b4922fec80b12249ba4d10a3c8452604ed2",
+        "contract_hash": "ac09c03455d8af3a35273b605bb457591de11f0e22bded3325bbb626ee774caf",
+        "fields": {
+          "G": "total_fish",
+          "K": "white_ratio=5,black_ratio=10,multi_ratio=12,white_ducks=3,black_ducks=7,multi_ducks=6",
+          "P": "total_fish=white_ducks*white_ratio+black_ducks*black_ratio+multi_ducks*multi_ratio"
+        },
+        "communication_tokens": 79,
+        "communication_tokens_exact": true,
+        "attempt_count": 1,
+        "fallback": false,
+        "tokens_include_all_attempts": true,
+        "incoming_message_ids": []
+      }
+    },
+    {
+      "sender": "solver",
+      "content": "IR:white=3*5=15,black=7*10=70,multi=6*12=72,total=15+70+72=157;R:157",
+      "receiver": "verifier",
+      "round": 0,
+      "role": "assistant",
+      "prompt_tokens": 797,
+      "completion_tokens": 39,
+      "id": "b6a4c886a1c4",
+      "ts": 1793094700.1039724,
+      "meta": {
+        "sender": "solver",
+        "receiver": "verifier",
+        "message_id": "b6a4c886a1c4",
+        "protocol_edge": "solver_to_verifier",
+        "protocol_version": "CARD-0-gsm8k",
+        "protocol_hash": "eb2823227bf7889a5ca248376e410b4922fec80b12249ba4d10a3c8452604ed2",
+        "contract_hash": "ac09c03455d8af3a35273b605bb457591de11f0e22bded3325bbb626ee774caf",
+        "fields": {
+          "IR": "white=3*5=15,black=7*10=70,multi=6*12=72,total=15+70+72=157",
+          "R": "157"
+        },
+        "communication_tokens": 39,
+        "communication_tokens_exact": true,
+        "attempt_count": 1,
+        "fallback": false,
+        "tokens_include_all_attempts": true,
+        "incoming_message_ids": [
+          "9fb55f9f770a"
+        ]
+      }
+    },
+    {
+      "sender": "verifier",
+      "content": "CHK:ACCEPT",
+      "receiver": "solver",
+      "round": 0,
+      "role": "assistant",
+      "prompt_tokens": 1089,
+      "completion_tokens": 5,
+      "id": "32163713250f",
+      "ts": 1793094701.3641427,
+      "meta": {
+        "sender": "verifier",
+        "receiver": "solver",
+        "message_id": "32163713250f",
+        "protocol_edge": "verifier_to_solver",
+        "protocol_version": "CARD-0-gsm8k",
+        "protocol_hash": "eb2823227bf7889a5ca248376e410b4922fec80b12249ba4d10a3c8452604ed2",
+        "contract_hash": "ac09c03455d8af3a35273b605bb457591de11f0e22bded3325bbb626ee774caf",
+        "fields": {
+          "CHK": "ACCEPT"
+        },
+        "communication_tokens": 5,
+        "communication_tokens_exact": true,
+        "attempt_count": 1,
+        "fallback": false,
+        "tokens_include_all_attempts": true,
+        "incoming_message_ids": [
+          "b6a4c886a1c4"
+        ]
+      }
+    }
+  ],
+  "communication_tokens": 123,
+  "wall_time_s": 4.138139899936505,
+  "verified": true,
+  "revision_rounds": 0,
+  "model_calls": [
+    {
+      "role": "planner",
+      "attempt": 0,
+      "status": "delivered",
+      "error": "",
+      "raw_output": "G:total_fish;K:white_ratio=5,black_ratio=10,multi_ratio=12,white_ducks=3,black_ducks=7,multi_ducks=6;P:total_fish=white_ducks*white_ratio+black_ducks*black_ratio+multi_ducks*multi_ratio",
+      "finish_reason": "stop",
+      "output_tokens": 79,
+      "usage_available": true
+    },
+    {
+      "role": "solver",
+      "attempt": 0,
+      "status": "delivered",
+      "error": "",
+      "raw_output": "IR:white=3*5=15,black=7*10=70,multi=6*12=72,total=15+70+72=157;R:157",
+      "finish_reason": "stop",
+      "output_tokens": 39,
+      "usage_available": true
+    },
+    {
+      "role": "verifier",
+      "attempt": 0,
+      "status": "delivered",
+      "error": "",
+      "raw_output": "CHK:ACCEPT",
+      "finish_reason": "stop",
+      "output_tokens": 5,
+      "usage_available": true
+    }
+  ],
+  "failed_attempts": [],
+  "calls": 3,
+  "usage_complete": true,
+  "known_input_tokens": 2629,
+  "known_output_tokens": 123,
+  "model_input_tokens": 2629,
+  "model_output_tokens": 123,
+  "format_failed_calls": 0,
+  "transport_failed_calls": 0,
+  "fallback_calls": 0,
+  "sum_model_latency_s": 4.03216814994812,
+  "gold": "157",
+  "score": 1.0,
+  "question": "For every white duck at the lake there are 5 fish.  For every black duck there are 10 fish and for every multicolor duck there are 12 fish.  Currently there are 3 white ducks, 7 black ducks and 6 multicolored ducks.  How many fish are in the lake?\nGive the final numeric answer."
+}

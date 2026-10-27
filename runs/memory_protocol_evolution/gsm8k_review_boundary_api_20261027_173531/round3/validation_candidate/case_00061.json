@@ -1,0 +1,152 @@
+{
+  "task_id": "gsm8k:train:seed42:V:00061",
+  "status": "completed",
+  "error": null,
+  "prediction": "574",
+  "messages": [
+    {
+      "sender": "planner",
+      "content": "K:pills_per_day=9,days=14,cheap_count=4,cheap_price=1.50,extra=5.50;G:total_cost;P:expensive_price=cheap_price+extra,daily_cost=cheap_count*cheap_price+(pills_per_day-cheap_count)*expensive_price,total_cost=days*daily_cost",
+      "receiver": "solver",
+      "round": 0,
+      "role": "assistant",
+      "prompt_tokens": 761,
+      "completion_tokens": 77,
+      "id": "a439b3d8fd1d",
+      "ts": 1793099360.2387197,
+      "meta": {
+        "sender": "planner",
+        "receiver": "solver",
+        "message_id": "a439b3d8fd1d",
+        "protocol_edge": "planner_to_solver",
+        "protocol_version": "CARD-2-gsm8k",
+        "protocol_hash": "c152278e4a24181b874bd88cbf3adef79479b79f6539931bcd89721fa5a8a7a9",
+        "contract_hash": "ac09c03455d8af3a35273b605bb457591de11f0e22bded3325bbb626ee774caf",
+        "fields": {
+          "K": "pills_per_day=9,days=14,cheap_count=4,cheap_price=1.50,extra=5.50",
+          "G": "total_cost",
+          "P": "expensive_price=cheap_price+extra,daily_cost=cheap_count*cheap_price+(pills_per_day-cheap_count)*expensive_price,total_cost=days*daily_cost"
+        },
+        "communication_tokens": 77,
+        "communication_tokens_exact": true,
+        "attempt_count": 1,
+        "fallback": false,
+        "tokens_include_all_attempts": true,
+        "incoming_message_ids": []
+      }
+    },
+    {
+      "sender": "solver",
+      "content": "IR:expensive_price=1.50+5.50=7.00,daily_cost=4*1.50+5*7.00=41.00,total_cost=14*41.00=574.00;R:574",
+      "receiver": "verifier",
+      "round": 0,
+      "role": "assistant",
+      "prompt_tokens": 781,
+      "completion_tokens": 52,
+      "id": "dfd547705409",
+      "ts": 1793099361.341966,
+      "meta": {
+        "sender": "solver",
+        "receiver": "verifier",
+        "message_id": "dfd547705409",
+        "protocol_edge": "solver_to_verifier",
+        "protocol_version": "CARD-2-gsm8k",
+        "protocol_hash": "c152278e4a24181b874bd88cbf3adef79479b79f6539931bcd89721fa5a8a7a9",
+        "contract_hash": "ac09c03455d8af3a35273b605bb457591de11f0e22bded3325bbb626ee774caf",
+        "fields": {
+          "IR": "expensive_price=1.50+5.50=7.00,daily_cost=4*1.50+5*7.00=41.00,total_cost=14*41.00=574.00",
+          "R": "574"
+        },
+        "communication_tokens": 52,
+        "communication_tokens_exact": true,
+        "attempt_count": 1,
+        "fallback": false,
+        "tokens_include_all_attempts": true,
+        "incoming_message_ids": [
+          "a439b3d8fd1d"
+        ]
+      }
+    },
+    {
+      "sender": "verifier",
+      "content": "CHK:ACCEPT",
+      "receiver": "solver",
+      "round": 0,
+      "role": "assistant",
+      "prompt_tokens": 1088,
+      "completion_tokens": 5,
+      "id": "7cfb2006a67e",
+      "ts": 1793099362.3560886,
+      "meta": {
+        "sender": "verifier",
+        "receiver": "solver",
+        "message_id": "7cfb2006a67e",
+        "protocol_edge": "verifier_to_solver",
+        "protocol_version": "CARD-2-gsm8k",
+        "protocol_hash": "c152278e4a24181b874bd88cbf3adef79479b79f6539931bcd89721fa5a8a7a9",
+        "contract_hash": "ac09c03455d8af3a35273b605bb457591de11f0e22bded3325bbb626ee774caf",
+        "fields": {
+          "CHK": "ACCEPT"
+        },
+        "communication_tokens": 5,
+        "communication_tokens_exact": true,
+        "attempt_count": 1,
+        "fallback": false,
+        "tokens_include_all_attempts": true,
+        "incoming_message_ids": [
+          "dfd547705409"
+        ]
+      }
+    }
+  ],
+  "communication_tokens": 134,
+  "wall_time_s": 3.474248499958776,
+  "verified": true,
+  "revision_rounds": 0,
+  "model_calls": [
+    {
+      "role": "planner",
+      "attempt": 0,
+      "status": "delivered",
+      "error": "",
+      "raw_output": "K:pills_per_day=9,days=14,cheap_count=4,cheap_price=1.50,extra=5.50;G:total_cost;P:expensive_price=cheap_price+extra,daily_cost=cheap_count*cheap_price+(pills_per_day-cheap_count)*expensive_price,total_cost=days*daily_cost",
+      "finish_reason": "stop",
+      "output_tokens": 77,
+      "usage_available": true
+    },
+    {
+      "role": "solver",
+      "attempt": 0,
+      "status": "delivered",
+      "error": "",
+      "raw_output": "IR:expensive_price=1.50+5.50=7.00,daily_cost=4*1.50+5*7.00=41.00,total_cost=14*41.00=574.00;R:574",
+      "finish_reason": "stop",
+      "output_tokens": 52,
+      "usage_available": true
+    },
+    {
+      "role": "verifier",
+      "attempt": 0,
+      "status": "delivered",
+      "error": "",
+      "raw_output": "CHK:ACCEPT",
+      "finish_reason": "stop",
+      "output_tokens": 5,
+      "usage_available": true
+    }
+  ],
+  "failed_attempts": [],
+  "calls": 3,
+  "usage_complete": true,
+  "known_input_tokens": 2630,
+  "known_output_tokens": 134,
+  "model_input_tokens": 2630,
+  "model_output_tokens": 134,
+  "format_failed_calls": 0,
+  "transport_failed_calls": 0,
+  "fallback_calls": 0,
+  "sum_model_latency_s": 3.419165849685669,
+  "gold": "41",
+  "score": 0.0,
+  "question": "Henry took 9 pills a day for 14 days. Of these 9 pills, 4 pills cost $1.50 each, and the other pills each cost $5.50 more. How much did he spend in total on the pills?\nGive the final numeric answer."
+}

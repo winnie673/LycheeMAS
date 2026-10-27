@@ -1,0 +1,149 @@
+{
+  "task_id": "gsm8k:train:seed42:V:00045",
+  "status": "completed",
+  "error": null,
+  "prediction": "25",
+  "messages": [
+    {
+      "sender": "planner",
+      "content": "G:number_of_male_alligators;P:adult_female_fraction=1-0.4,females=15/adult_female_fraction,males=females;NL:Half are male and half female so males equal females",
+      "receiver": "solver",
+      "round": 0,
+      "role": "assistant",
+      "prompt_tokens": 759,
+      "completion_tokens": 53,
+      "id": "618d224516ea",
+      "ts": 1793098540.9723878,
+      "meta": {
+        "sender": "planner",
+        "receiver": "solver",
+        "message_id": "618d224516ea",
+        "protocol_edge": "planner_to_solver",
+        "protocol_version": "CARD-2-gsm8k",
+        "protocol_hash": "c152278e4a24181b874bd88cbf3adef79479b79f6539931bcd89721fa5a8a7a9",
+        "contract_hash": "ac09c03455d8af3a35273b605bb457591de11f0e22bded3325bbb626ee774caf",
+        "fields": {
+          "G": "number_of_male_alligators",
+          "P": "adult_female_fraction=1-0.4,females=15/adult_female_fraction,males=females",
+          "NL": "Half are male and half female so males equal females"
+        },
+        "communication_tokens": 53,
+        "communication_tokens_exact": true,
+        "attempt_count": 1,
+        "fallback": false,
+        "tokens_include_all_attempts": true,
+        "incoming_message_ids": []
+      }
+    },
+    {
+      "sender": "solver",
+      "content": "IR:adult_female_fraction=1-0.4=0.6,females=15/0.6=25,males=females=25;R:25",
+      "receiver": "verifier",
+      "round": 0,
+      "role": "assistant",
+      "prompt_tokens": 755,
+      "completion_tokens": 40,
+      "id": "ab6220c9e186",
+      "ts": 1793098542.0098245,
+      "meta": {
+        "sender": "solver",
+        "receiver": "verifier",
+        "message_id": "ab6220c9e186",
+        "protocol_edge": "solver_to_verifier",
+        "protocol_version": "CARD-2-gsm8k",
+        "protocol_hash": "c152278e4a24181b874bd88cbf3adef79479b79f6539931bcd89721fa5a8a7a9",
+        "contract_hash": "ac09c03455d8af3a35273b605bb457591de11f0e22bded3325bbb626ee774caf",
+        "fields": {
+          "IR": "adult_female_fraction=1-0.4=0.6,females=15/0.6=25,males=females=25",
+          "R": "25"
+        },
+        "communication_tokens": 40,
+        "communication_tokens_exact": true,
+        "attempt_count": 1,
+        "fallback": false,
+        "tokens_include_all_attempts": true,
+        "incoming_message_ids": [
+          "618d224516ea"
+        ]
+      }
+    },
+    {
+      "sender": "verifier",
+      "content": "CHK:ACCEPT",
+      "receiver": "solver",
+      "round": 0,
+      "role": "assistant",
+      "prompt_tokens": 1074,
+      "completion_tokens": 5,
+      "id": "02bb52d6483a",
+      "ts": 1793098543.1284897,
+      "meta": {
+        "sender": "verifier",
+        "receiver": "solver",
+        "message_id": "02bb52d6483a",
+        "protocol_edge": "verifier_to_solver",
+        "protocol_version": "CARD-2-gsm8k",
+        "protocol_hash": "c152278e4a24181b874bd88cbf3adef79479b79f6539931bcd89721fa5a8a7a9",
+        "contract_hash": "ac09c03455d8af3a35273b605bb457591de11f0e22bded3325bbb626ee774caf",
+        "fields": {
+          "CHK": "ACCEPT"
+        },
+        "communication_tokens": 5,
+        "communication_tokens_exact": true,
+        "attempt_count": 1,
+        "fallback": false,
+        "tokens_include_all_attempts": true,
+        "incoming_message_ids": [
+          "ab6220c9e186"
+        ]
+      }
+    }
+  ],
+  "communication_tokens": 98,
+  "wall_time_s": 3.460645499988459,
+  "verified": true,
+  "revision_rounds": 0,
+  "model_calls": [
+    {
+      "role": "planner",
+      "attempt": 0,
+      "status": "delivered",
+      "error": "",
+      "raw_output": "G:number_of_male_alligators;P:adult_female_fraction=1-0.4,females=15/adult_female_fraction,males=females;NL:Half are male and half female so males equal females",
+      "finish_reason": "stop",
+      "output_tokens": 53,
+      "usage_available": true
+    },
+    {
+      "role": "solver",
+      "attempt": 0,
+      "status": "delivered",
+      "error": "",
+      "raw_output": "IR:adult_female_fraction=1-0.4=0.6,females=15/0.6=25,males=females=25;R:25",
+      "finish_reason": "stop",
+      "output_tokens": 40,
+      "usage_available": true
+    },
+    {
+      "role": "verifier",
+      "attempt": 0,
+      "status": "delivered",
+      "error": "",
+      "raw_output": "CHK:ACCEPT",
+      "finish_reason": "stop",
+      "output_tokens": 5,
+      "usage_available": true
+    }
+  ],
+  "failed_attempts": [],
+  "calls": 3,
+  "usage_complete": true,
+  "known_input_tokens": 2588,
+  "known_output_tokens": 98,
+  "model_input_tokens": 2588,
+  "model_output_tokens": 98,
+  "format_failed_calls": 0,
+  "transport_failed_calls": 0,
+  "fallback_calls": 0,
+  "sum_model_latency_s": 3.3257884979248047
+}

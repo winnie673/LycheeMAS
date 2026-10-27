@@ -1,0 +1,151 @@
+{
+  "task_id": "gsm8k:train:seed42:G2:00023",
+  "status": "completed",
+  "error": null,
+  "prediction": "20",
+  "messages": [
+    {
+      "sender": "planner",
+      "content": "G:hours spent grooming in 30 days;P:minutes_per_day=2*20,total_minutes=minutes_per_day*30,hours=total_minutes/60",
+      "receiver": "solver",
+      "round": 0,
+      "role": "assistant",
+      "prompt_tokens": 722,
+      "completion_tokens": 37,
+      "id": "68e1efc68362",
+      "ts": 1793096082.3893023,
+      "meta": {
+        "sender": "planner",
+        "receiver": "solver",
+        "message_id": "68e1efc68362",
+        "protocol_edge": "planner_to_solver",
+        "protocol_version": "CARD-0-gsm8k",
+        "protocol_hash": "eb2823227bf7889a5ca248376e410b4922fec80b12249ba4d10a3c8452604ed2",
+        "contract_hash": "ac09c03455d8af3a35273b605bb457591de11f0e22bded3325bbb626ee774caf",
+        "fields": {
+          "G": "hours spent grooming in 30 days",
+          "P": "minutes_per_day=2*20,total_minutes=minutes_per_day*30,hours=total_minutes/60"
+        },
+        "communication_tokens": 37,
+        "communication_tokens_exact": true,
+        "attempt_count": 1,
+        "fallback": false,
+        "tokens_include_all_attempts": true,
+        "incoming_message_ids": []
+      }
+    },
+    {
+      "sender": "solver",
+      "content": "IR:minutes_per_day=2*20=40,total_minutes=40*30=1200,hours=1200/60=20;R:20",
+      "receiver": "verifier",
+      "round": 0,
+      "role": "assistant",
+      "prompt_tokens": 734,
+      "completion_tokens": 35,
+      "id": "449364344041",
+      "ts": 1793096083.4792454,
+      "meta": {
+        "sender": "solver",
+        "receiver": "verifier",
+        "message_id": "449364344041",
+        "protocol_edge": "solver_to_verifier",
+        "protocol_version": "CARD-0-gsm8k",
+        "protocol_hash": "eb2823227bf7889a5ca248376e410b4922fec80b12249ba4d10a3c8452604ed2",
+        "contract_hash": "ac09c03455d8af3a35273b605bb457591de11f0e22bded3325bbb626ee774caf",
+        "fields": {
+          "IR": "minutes_per_day=2*20=40,total_minutes=40*30=1200,hours=1200/60=20",
+          "R": "20"
+        },
+        "communication_tokens": 35,
+        "communication_tokens_exact": true,
+        "attempt_count": 1,
+        "fallback": false,
+        "tokens_include_all_attempts": true,
+        "incoming_message_ids": [
+          "68e1efc68362"
+        ]
+      }
+    },
+    {
+      "sender": "verifier",
+      "content": "CHK:ACCEPT",
+      "receiver": "solver",
+      "round": 0,
+      "role": "assistant",
+      "prompt_tokens": 1064,
+      "completion_tokens": 5,
+      "id": "3aaa1741e001",
+      "ts": 1793096084.9564772,
+      "meta": {
+        "sender": "verifier",
+        "receiver": "solver",
+        "message_id": "3aaa1741e001",
+        "protocol_edge": "verifier_to_solver",
+        "protocol_version": "CARD-0-gsm8k",
+        "protocol_hash": "eb2823227bf7889a5ca248376e410b4922fec80b12249ba4d10a3c8452604ed2",
+        "contract_hash": "ac09c03455d8af3a35273b605bb457591de11f0e22bded3325bbb626ee774caf",
+        "fields": {
+          "CHK": "ACCEPT"
+        },
+        "communication_tokens": 5,
+        "communication_tokens_exact": true,
+        "attempt_count": 1,
+        "fallback": false,
+        "tokens_include_all_attempts": true,
+        "incoming_message_ids": [
+          "449364344041"
+        ]
+      }
+    }
+  ],
+  "communication_tokens": 77,
+  "wall_time_s": 3.9970899999607354,
+  "verified": true,
+  "revision_rounds": 0,
+  "model_calls": [
+    {
+      "role": "planner",
+      "attempt": 0,
+      "status": "delivered",
+      "error": "",
+      "raw_output": "G:hours spent grooming in 30 days;P:minutes_per_day=2*20,total_minutes=minutes_per_day*30,hours=total_minutes/60",
+      "finish_reason": "stop",
+      "output_tokens": 37,
+      "usage_available": true
+    },
+    {
+      "role": "solver",
+      "attempt": 0,
+      "status": "delivered",
+      "error": "",
+      "raw_output": "IR:minutes_per_day=2*20=40,total_minutes=40*30=1200,hours=1200/60=20;R:20",
+      "finish_reason": "stop",
+      "output_tokens": 35,
+      "usage_available": true
+    },
+    {
+      "role": "verifier",
+      "attempt": 0,
+      "status": "delivered",
+      "error": "",
+      "raw_output": "CHK:ACCEPT",
+      "finish_reason": "stop",
+      "output_tokens": 5,
+      "usage_available": true
+    }
+  ],
+  "failed_attempts": [],
+  "calls": 3,
+  "usage_complete": true,
+  "known_input_tokens": 2520,
+  "known_output_tokens": 77,
+  "model_input_tokens": 2520,
+  "model_output_tokens": 77,
+  "format_failed_calls": 0,
+  "transport_failed_calls": 0,
+  "fallback_calls": 0,
+  "sum_model_latency_s": 3.894329071044922,
+  "gold": "20",
+  "score": 1.0,
+  "question": "It takes Jennifer 20 minutes to groom each of her 2 long hair dachshunds.  If she grooms her dogs every day, how many hours does she spend grooming her dogs in 30 days?\nGive the final numeric answer."
+}

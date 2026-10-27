@@ -1,0 +1,95 @@
+{
+  "task_id": "gsm8k:test:seed42:T:00000",
+  "mode": "nl",
+  "benchmark": "gsm8k",
+  "status": "completed",
+  "error": null,
+  "prediction": "18",
+  "gold": "18",
+  "wall_time_s": 6.540922500076704,
+  "communication_tokens": 120,
+  "communication_tokens_exact": true,
+  "revision_rounds": 0,
+  "verification_decision": "ACCEPT",
+  "verified": true,
+  "messages": [
+    {
+      "sender": "planner",
+      "content": "Goal: find Janet’s daily farmers’ market revenue in dollars.\n\nPlan: Start with 16 eggs laid per day. Subtract the 3 eggs she eats for breakfast and the 4 eggs used for muffins. Multiply the remaining eggs by the selling price of $2 per egg.\n\nConstraints: Use only the given daily quantities and price; report the daily dollar amount.",
+      "receiver": "solver",
+      "round": 0,
+      "role": "assistant",
+      "prompt_tokens": 217,
+      "completion_tokens": 74,
+      "id": "39ee8fd14d9d",
+      "ts": 1793100281.667891,
+      "meta": {
+        "fields": {},
+        "communication_tokens": 74,
+        "communication_tokens_exact": true,
+        "attempt_count": 1,
+        "fallback": false,
+        "tokens_include_all_attempts": true,
+        "incoming_message_ids": []
+      }
+    },
+    {
+      "sender": "solver",
+      "content": "She has 16 eggs, uses 3 + 4 = 7, leaving 9 eggs. At $2 each, she makes 9 × 2 = 18 dollars.\n\n\\boxed{18}",
+      "receiver": "verifier",
+      "round": 0,
+      "role": "assistant",
+      "prompt_tokens": 303,
+      "completion_tokens": 44,
+      "id": "ac085cc1357e",
+      "ts": 1793100282.751374,
+      "meta": {
+        "fields": {
+          "R": "18"
+        },
+        "communication_tokens": 44,
+        "communication_tokens_exact": true,
+        "attempt_count": 1,
+        "fallback": false,
+        "tokens_include_all_attempts": true,
+        "incoming_message_ids": [
+          "39ee8fd14d9d"
+        ]
+      }
+    },
+    {
+      "sender": "verifier",
+      "content": "ACCEPT",
+      "receiver": "solver",
+      "round": 0,
+      "role": "assistant",
+      "prompt_tokens": 650,
+      "completion_tokens": 2,
+      "id": "de35fefddfd0",
+      "ts": 1793100283.9061692,
+      "meta": {
+        "fields": {
+          "CHK": "ACCEPT"
+        },
+        "communication_tokens": 2,
+        "communication_tokens_exact": true,
+        "attempt_count": 1,
+        "fallback": false,
+        "tokens_include_all_attempts": true,
+        "incoming_message_ids": [
+          "ac085cc1357e"
+        ]
+      }
+    }
+  ],
+  "calls": 3,
+  "usage_complete": true,
+  "known_input_tokens": 1170,
+  "known_output_tokens": 120,
+  "model_input_tokens": 1170,
+  "model_output_tokens": 120,
+  "format_failed_calls": 0,
+  "transport_failed_calls": 0,
+  "fallback_calls": 0,
+  "sum_model_latency_s": 4.287832975387573
+}

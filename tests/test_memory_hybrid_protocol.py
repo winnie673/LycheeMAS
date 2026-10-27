@@ -2,6 +2,7 @@
 from __future__ import annotations
 
 import importlib.util
+import json
 import sys
 from concurrent.futures import ThreadPoolExecutor
 from types import SimpleNamespace
@@ -9,8 +10,13 @@ from types import SimpleNamespace
 import pytest
 from lychee_mas import REGISTRY
 from lychee_mas.core.types import Message
+from lychee_mas.methods.memory.channels.hybrid_protocol import (
+    HybridProtocolMemory,
+    ProtocolValidationError,
+)
 from lychee_mas.methods.memory.channels.nl import PREV_OUTPUT_HEADER, NLMemory
 from lychee_mas.methods.memory.routing.base import RouteDecision
+from scripts.hybrid_gsm8k_spec import GSM8K_PROTOCOL
 
 CARD = "configs/memory/task_cards/gsm8k_card2.yaml"
 PAYLOAD = "G:sum;P:sum=9+9;NL:Count both groups."
@@ -25,7 +31,8 @@ class Tokenizer:
 def manager(tokenizer=None):
     return REGISTRY.create(
         "memory_manager", "cdm", backend=SimpleNamespace(tok=tokenizer),
-        nl_strategy="hybrid_protocol", protocol_path=CARD,
+        nl_strategy="hybrid_protocol", protocol_path=CARD, task="gsm8k",
+        protocol_contract=GSM8K_PROTOCOL,
     )
 
 
@@ -76,7 +83,7 @@ def test_observe_recall_uses_existing_message_bundle_and_header():
     ("CHK:ACCEPT;REQ:x", "verifier", "solver"),
     ("CHK:REVISE;E:ARITH", "verifier", "solver"),
     ("CHK:REVISE;E:UNKNOWN;REQ:x", "verifier", "solver"),
-    ("CHK:FAIL;E:ARITH;REQ:x", "verifier", "solver"),
+    ("CHK:UNKNOWN;E:ARITH;REQ:x", "verifier", "solver"),
     ("G:x", "critic", "solver"),
     ("G:x", "planner", "verifier"),
     ("G:x", "planner", None),
@@ -164,7 +171,7 @@ def test_router_channels_keep_the_existing_manager_behavior(monkeypatch):
 def test_wrong_task_and_role_rejected_before_generation():
     with pytest.raises(ValueError, match="protocol_path"):
         NLMemory(strategy="hybrid_protocol")
-    wrong_task = NLMemory(strategy="hybrid_protocol", protocol_path=CARD, task="math500")
+    wrong_task = NLMemory(strategy="hybrid_protocol", protocol_path=CARD, task="unsupported_task")
     with pytest.raises(ValueError, match="does not support task"):
         wrong_task.output_instructions("planner", "solver")
     with pytest.raises(ValueError, match="unsupported"):
@@ -204,3 +211,148 @@ def test_standard_graph_and_existing_backend_callback_contract(monkeypatch):
         f"{PREV_OUTPUT_HEADER}\nG:sum;P:sum=9+9",
     )
     assert all(isinstance(message, Message) for message in result.messages)
+
+
+def demo_module():
+    spec = importlib.util.spec_from_file_location(
+        "memory_protocol_recovery_demo", "examples/03_gsm8k_memory_protocol.py",
+    )
+    module = importlib.util.module_from_spec(spec)
+    sys.modules[spec.name] = module
+    spec.loader.exec_module(module)
+    return module
+
+
+def scripted_attempts(module, scripts):
+    calls = []
+    counts = {}
+
+    def generate(messages, max_new_tokens):
+        assert max_new_tokens == 512
+        system = messages[0]["content"]
+        role = (system.splitlines()[0].removeprefix("role=") if system.startswith("role=")
+                else system.split("You are the ", 1)[1].split(" ", 1)[0])
+        index = counts.get(role, 0)
+        counts[role] = index + 1
+        calls.append((role, messages))
+        value = scripts.get(role, {}).get(index)
+        if isinstance(value, Exception):
+            raise value
+        if value is None:
+            return module.scripted_generate(messages, max_new_tokens)
+        if not isinstance(value, str):
+            return value
+        return module.APIGenResult(value, 10, 20, 0.0)
+    return generate, calls
+
+
+@pytest.mark.parametrize("payload", [
+    "G:x\nP:y", "G:x\rP:y", "G:x\nNL:y", "G:x\nC:legacy",
+    "G:x;NL:none", "G:x;NL:n/a",
+])
+def test_wire_v2_rejects_boundaries_and_placeholders(payload):
+    protocol = HybridProtocolMemory(CARD, "gsm8k", contract=GSM8K_PROTOCOL)
+    with pytest.raises(ProtocolValidationError):
+        protocol.validate(payload, "planner", "solver")
+    assert protocol.recall() == ""
+
+
+def test_node_retry_sees_rejected_text_and_keeps_all_usage():
+    module = demo_module()
+    generate, calls = scripted_attempts(module, {"planner": {0: "G:sum\nP:add"}})
+    result = module.run_demo(generate)
+    assert len(calls) == 4
+    assert result.total_tokens == 120
+    assert calls[1][1][-2] == {"role": "assistant", "content": "G:sum\nP:add"}
+    assert "missing semicolon" in calls[1][1][-1]["content"]
+    assert result.messages[0].meta["attempt_count"] == 2
+    assert result.messages[0].meta["fallback"] is False
+    assert len(result.messages) == 3
+
+
+def test_node_fallback_uses_same_card_and_redacts_failed_outputs(tmp_path, monkeypatch):
+    module = demo_module()
+    secret = "test-only-credential-not-real"
+    monkeypatch.setenv("DEEPSEEK_API_KEY", secret)
+    generate, calls = scripted_attempts(module, {"solver": {
+        0: "R:18\nIR:" + secret, 1: "R:18\nIR:9+9=18", 2: "IR:9+9=18;R:18",
+    }})
+    log = tmp_path / "attempts.jsonl"
+    result = module.run_demo(generate, benchmark="gsm8k", log_path=log)
+    assert result.final_answer.content == "18"
+    assert result.total_tokens == 150
+    fallback = calls[3][1][0]["content"]
+    assert fallback.startswith("role=solver") and "Allowed fields: IR, R, NL" in fallback
+    assert "R contains only the final answer" in fallback
+    assert "never swap R with IR or NL" in fallback
+    assert result.messages[1].meta["fallback"] is True
+    records = [json.loads(line) for line in log.read_text(encoding="utf-8").splitlines()]
+    assert len(records) == 5
+    assert records[1]["status"] == "validation_error"
+    assert "[REDACTED]" in records[1]["raw_output"]
+    assert secret not in log.read_text(encoding="utf-8")
+
+
+def test_node_exhaustion_persists_evidence_and_never_calls_verifier(tmp_path):
+    module = demo_module()
+    generate, calls = scripted_attempts(module, {"solver": dict.fromkeys(range(3), "invalid")})
+    attempts = []
+    log = tmp_path / "attempts.jsonl"
+    with pytest.raises(RuntimeError, match="solver exhausted 3 attempts"):
+        module.run_demo(generate, attempts=attempts, log_path=log)
+    assert [role for role, _ in calls] == ["planner", "solver", "solver", "solver"]
+    assert len(attempts) == 4
+    assert all(row["status"] == "validation_error" for row in attempts[1:])
+    assert all(row["raw_output"] == "invalid" and row["error"] for row in attempts[1:])
+
+
+def test_transport_error_is_separate_from_format_and_can_recover():
+    module = demo_module()
+    generate, calls = scripted_attempts(module, {"solver": {0: TimeoutError("scripted timeout")}})
+    result = module.run_demo(generate)
+    assert len(calls) == 4 and result.total_tokens == 90
+    failed = result.meta["attempts"][1]
+    assert failed["status"] == "transport_error" and failed["usage_available"] is False
+
+
+@pytest.mark.parametrize("finish,tokens", [("length", 20), ("", 512)])
+def test_length_metadata_is_audited_but_syntax_controls_delivery(finish, tokens):
+    module = demo_module()
+    truncated = SimpleNamespace(text="R:18", n_prompt_pos=10, n_gen_tokens=tokens,
+                                finish_reason=finish, latency_s=0.0)
+    generate, calls = scripted_attempts(module, {"solver": {0: truncated}})
+    result = module.run_demo(generate)
+    assert len(calls) == 3 and result.final_answer.content == "18"
+    assert result.meta["attempts"][1]["suspected_truncation"] is (finish == "length")
+    assert result.meta["attempts"][1]["length_budget_reached"] is (tokens >= 512)
+    assert result.meta["attempts"][1]["status"] == "delivered"
+
+
+def test_unexpected_backend_errors_and_tokenizer_errors_are_not_retried():
+    module = demo_module()
+    generate, calls = scripted_attempts(module, {"planner": {0: ValueError("configuration bug")}})
+    attempts = []
+    with pytest.raises(ValueError, match="configuration bug"):
+        module.run_demo(generate, attempts=attempts)
+    assert len(calls) == 1 and attempts[0]["status"] == "fatal_error"
+
+    class BrokenTokenizer:
+        def encode(self, *args, **kwargs):
+            raise RuntimeError("tokenizer bug")
+
+    generate, calls = scripted_attempts(module, {})
+    with pytest.raises(RuntimeError, match="tokenizer bug"):
+        module.run_demo(generate, backend=SimpleNamespace(tok=BrokenTokenizer()))
+    assert len(calls) == 1
+
+
+def test_demo_unknown_benchmark_and_existing_log_fail_before_generation(tmp_path):
+    module = demo_module()
+    generate, calls = scripted_attempts(module, {})
+    with pytest.raises(ValueError, match="No hybrid task card"):
+        module.run_demo(generate, benchmark="unknown")
+    path = tmp_path / "attempts.jsonl"
+    path.touch()
+    with pytest.raises(FileExistsError):
+        module.run_demo(generate, log_path=path)
+    assert not calls

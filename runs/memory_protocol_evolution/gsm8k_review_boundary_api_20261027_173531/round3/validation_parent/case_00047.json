@@ -1,0 +1,152 @@
+{
+  "task_id": "gsm8k:train:seed42:V:00047",
+  "status": "completed",
+  "error": null,
+  "prediction": "100",
+  "messages": [
+    {
+      "sender": "planner",
+      "content": "K:copper_m=10,plastic_more=5,price_per_m=4;G:total_cost;P:plastic_m=copper_m+plastic_more,total_m=copper_m+plastic_m,total_cost=total_m*price_per_m",
+      "receiver": "solver",
+      "round": 0,
+      "role": "assistant",
+      "prompt_tokens": 749,
+      "completion_tokens": 57,
+      "id": "cc69accfed1f",
+      "ts": 1793098547.7738204,
+      "meta": {
+        "sender": "planner",
+        "receiver": "solver",
+        "message_id": "cc69accfed1f",
+        "protocol_edge": "planner_to_solver",
+        "protocol_version": "CARD-2-gsm8k",
+        "protocol_hash": "c152278e4a24181b874bd88cbf3adef79479b79f6539931bcd89721fa5a8a7a9",
+        "contract_hash": "ac09c03455d8af3a35273b605bb457591de11f0e22bded3325bbb626ee774caf",
+        "fields": {
+          "K": "copper_m=10,plastic_more=5,price_per_m=4",
+          "G": "total_cost",
+          "P": "plastic_m=copper_m+plastic_more,total_m=copper_m+plastic_m,total_cost=total_m*price_per_m"
+        },
+        "communication_tokens": 57,
+        "communication_tokens_exact": true,
+        "attempt_count": 1,
+        "fallback": false,
+        "tokens_include_all_attempts": true,
+        "incoming_message_ids": []
+      }
+    },
+    {
+      "sender": "solver",
+      "content": "IR:plastic_m=10+5=15,total_m=10+15=25,total_cost=25*4=100;R:100",
+      "receiver": "verifier",
+      "round": 0,
+      "role": "assistant",
+      "prompt_tokens": 749,
+      "completion_tokens": 32,
+      "id": "add240856a57",
+      "ts": 1793098548.804667,
+      "meta": {
+        "sender": "solver",
+        "receiver": "verifier",
+        "message_id": "add240856a57",
+        "protocol_edge": "solver_to_verifier",
+        "protocol_version": "CARD-2-gsm8k",
+        "protocol_hash": "c152278e4a24181b874bd88cbf3adef79479b79f6539931bcd89721fa5a8a7a9",
+        "contract_hash": "ac09c03455d8af3a35273b605bb457591de11f0e22bded3325bbb626ee774caf",
+        "fields": {
+          "IR": "plastic_m=10+5=15,total_m=10+15=25,total_cost=25*4=100",
+          "R": "100"
+        },
+        "communication_tokens": 32,
+        "communication_tokens_exact": true,
+        "attempt_count": 1,
+        "fallback": false,
+        "tokens_include_all_attempts": true,
+        "incoming_message_ids": [
+          "cc69accfed1f"
+        ]
+      }
+    },
+    {
+      "sender": "verifier",
+      "content": "CHK:ACCEPT",
+      "receiver": "solver",
+      "round": 0,
+      "role": "assistant",
+      "prompt_tokens": 1056,
+      "completion_tokens": 5,
+      "id": "31c35fe0f4f7",
+      "ts": 1793098550.093558,
+      "meta": {
+        "sender": "verifier",
+        "receiver": "solver",
+        "message_id": "31c35fe0f4f7",
+        "protocol_edge": "verifier_to_solver",
+        "protocol_version": "CARD-2-gsm8k",
+        "protocol_hash": "c152278e4a24181b874bd88cbf3adef79479b79f6539931bcd89721fa5a8a7a9",
+        "contract_hash": "ac09c03455d8af3a35273b605bb457591de11f0e22bded3325bbb626ee774caf",
+        "fields": {
+          "CHK": "ACCEPT"
+        },
+        "communication_tokens": 5,
+        "communication_tokens_exact": true,
+        "attempt_count": 1,
+        "fallback": false,
+        "tokens_include_all_attempts": true,
+        "incoming_message_ids": [
+          "add240856a57"
+        ]
+      }
+    }
+  ],
+  "communication_tokens": 94,
+  "wall_time_s": 3.580965500092134,
+  "verified": true,
+  "revision_rounds": 0,
+  "model_calls": [
+    {
+      "role": "planner",
+      "attempt": 0,
+      "status": "delivered",
+      "error": "",
+      "raw_output": "K:copper_m=10,plastic_more=5,price_per_m=4;G:total_cost;P:plastic_m=copper_m+plastic_more,total_m=copper_m+plastic_m,total_cost=total_m*price_per_m",
+      "finish_reason": "stop",
+      "output_tokens": 57,
+      "usage_available": true
+    },
+    {
+      "role": "solver",
+      "attempt": 0,
+      "status": "delivered",
+      "error": "",
+      "raw_output": "IR:plastic_m=10+5=15,total_m=10+15=25,total_cost=25*4=100;R:100",
+      "finish_reason": "stop",
+      "output_tokens": 32,
+      "usage_available": true
+    },
+    {
+      "role": "verifier",
+      "attempt": 0,
+      "status": "delivered",
+      "error": "",
+      "raw_output": "CHK:ACCEPT",
+      "finish_reason": "stop",
+      "output_tokens": 5,
+      "usage_available": true
+    }
+  ],
+  "failed_attempts": [],
+  "calls": 3,
+  "usage_complete": true,
+  "known_input_tokens": 2554,
+  "known_output_tokens": 94,
+  "model_input_tokens": 2554,
+  "model_output_tokens": 94,
+  "format_failed_calls": 0,
+  "transport_failed_calls": 0,
+  "fallback_calls": 0,
+  "sum_model_latency_s": 3.472952365875244,
+  "gold": "100",
+  "score": 1.0,
+  "question": "A plumber bought 10 meters of copper and 5 more meters of plastic pipe. If each meter cost $4, how much did the plumber spent on the copper and plastic pipe?\nGive the final numeric answer."
+}

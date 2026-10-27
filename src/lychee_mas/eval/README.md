@@ -25,6 +25,10 @@ bench = REGISTRY.create("benchmark", "gsm8k", n=100); bench.load()   # 注册组
 
 ## `metrics.py` — 评分 + 聚合 + 落盘
 
+Hybrid 协议对照当前只保留 GSM8K，由 `scripts/run_memory_protocol_compare.py`
+使用 `strict_numeric_decimal_v1` 裸数值评分。框架原有数学 benchmark、MASPO
+以及共享数学解析器保持不变。
+
 ```python
 score(kind, pred, gold) -> float          # 统一打分入口；score_details 附细节
 aggregate_samples(samples, run_info)      # accuracy/token/latency 汇总；多采样含 pass_at_k

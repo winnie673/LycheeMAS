@@ -1,0 +1,243 @@
+{
+  "task_id": "gsm8k:train:seed42:V:00013",
+  "status": "completed",
+  "error": null,
+  "prediction": "180",
+  "messages": [
+    {
+      "sender": "planner",
+      "content": "K:school_round_trip=20,supermarket_farther=10,supermarket_afternoons=2;G:weekly_miles;P:school_one_way=20/2,supermarket_one_way=school_one_way+10,weekly=5*school_one_way+2*supermarket_one_way;NL:drives to school each weekday morning and to supermarket two afternoons",
+      "receiver": "solver",
+      "round": 0,
+      "role": "assistant",
+      "prompt_tokens": 765,
+      "completion_tokens": 90,
+      "id": "a51559f50b21",
+      "ts": 1793097272.1699376,
+      "meta": {
+        "sender": "planner",
+        "receiver": "solver",
+        "message_id": "a51559f50b21",
+        "protocol_edge": "planner_to_solver",
+        "protocol_version": "CARD-2-gsm8k",
+        "protocol_hash": "c152278e4a24181b874bd88cbf3adef79479b79f6539931bcd89721fa5a8a7a9",
+        "contract_hash": "ac09c03455d8af3a35273b605bb457591de11f0e22bded3325bbb626ee774caf",
+        "fields": {
+          "K": "school_round_trip=20,supermarket_farther=10,supermarket_afternoons=2",
+          "G": "weekly_miles",
+          "P": "school_one_way=20/2,supermarket_one_way=school_one_way+10,weekly=5*school_one_way+2*supermarket_one_way",
+          "NL": "drives to school each weekday morning and to supermarket two afternoons"
+        },
+        "communication_tokens": 90,
+        "communication_tokens_exact": true,
+        "attempt_count": 1,
+        "fallback": false,
+        "tokens_include_all_attempts": true,
+        "incoming_message_ids": []
+      }
+    },
+    {
+      "sender": "solver",
+      "content": "IR:school_one_way=20/2=10,supermarket_one_way=10+10=20,weekly=5*10+2*20=90;R:90",
+      "receiver": "verifier",
+      "round": 0,
+      "role": "assistant",
+      "prompt_tokens": 798,
+      "completion_tokens": 40,
+      "id": "f3153ca9d7a8",
+      "ts": 1793097273.5409536,
+      "meta": {
+        "sender": "solver",
+        "receiver": "verifier",
+        "message_id": "f3153ca9d7a8",
+        "protocol_edge": "solver_to_verifier",
+        "protocol_version": "CARD-2-gsm8k",
+        "protocol_hash": "c152278e4a24181b874bd88cbf3adef79479b79f6539931bcd89721fa5a8a7a9",
+        "contract_hash": "ac09c03455d8af3a35273b605bb457591de11f0e22bded3325bbb626ee774caf",
+        "fields": {
+          "IR": "school_one_way=20/2=10,supermarket_one_way=10+10=20,weekly=5*10+2*20=90",
+          "R": "90"
+        },
+        "communication_tokens": 40,
+        "communication_tokens_exact": true,
+        "attempt_count": 1,
+        "fallback": false,
+        "tokens_include_all_attempts": true,
+        "incoming_message_ids": [
+          "a51559f50b21"
+        ]
+      }
+    },
+    {
+      "sender": "verifier",
+      "content": "CHK:REVISE;E:RELATION;REQ:recompute the weekly distance using round trips, since driving to school and to the supermarket involves returning home, so the one-way distances must be doubled for each trip",
+      "receiver": "solver",
+      "round": 0,
+      "role": "assistant",
+      "prompt_tokens": 1080,
+      "completion_tokens": 47,
+      "id": "7d7159378b12",
+      "ts": 1793097274.8798537,
+      "meta": {
+        "sender": "verifier",
+        "receiver": "solver",
+        "message_id": "7d7159378b12",
+        "protocol_edge": "verifier_to_solver",
+        "protocol_version": "CARD-2-gsm8k",
+        "protocol_hash": "c152278e4a24181b874bd88cbf3adef79479b79f6539931bcd89721fa5a8a7a9",
+        "contract_hash": "ac09c03455d8af3a35273b605bb457591de11f0e22bded3325bbb626ee774caf",
+        "fields": {
+          "CHK": "REVISE",
+          "E": "RELATION",
+          "REQ": "recompute the weekly distance using round trips, since driving to school and to the supermarket involves returning home, so the one-way distances must be doubled for each trip"
+        },
+        "communication_tokens": 47,
+        "communication_tokens_exact": true,
+        "attempt_count": 1,
+        "fallback": false,
+        "tokens_include_all_attempts": true,
+        "incoming_message_ids": [
+          "f3153ca9d7a8"
+        ]
+      }
+    },
+    {
+      "sender": "solver",
+      "content": "IR:school_round_trip=20,supermarket_round_trip=20+2*10=40,weekly=5*20+2*40=180;R:180;NL:each trip is a round trip so distances are doubled",
+      "receiver": "verifier",
+      "round": 1,
+      "role": "assistant",
+      "prompt_tokens": 914,
+      "completion_tokens": 53,
+      "id": "9281abf1dffc",
+      "ts": 1793097276.3621545,
+      "meta": {
+        "sender": "solver",
+        "receiver": "verifier",
+        "message_id": "9281abf1dffc",
+        "protocol_edge": "solver_to_verifier",
+        "protocol_version": "CARD-2-gsm8k",
+        "protocol_hash": "c152278e4a24181b874bd88cbf3adef79479b79f6539931bcd89721fa5a8a7a9",
+        "contract_hash": "ac09c03455d8af3a35273b605bb457591de11f0e22bded3325bbb626ee774caf",
+        "fields": {
+          "IR": "school_round_trip=20,supermarket_round_trip=20+2*10=40,weekly=5*20+2*40=180",
+          "R": "180",
+          "NL": "each trip is a round trip so distances are doubled"
+        },
+        "communication_tokens": 53,
+        "communication_tokens_exact": true,
+        "attempt_count": 1,
+        "fallback": false,
+        "tokens_include_all_attempts": true,
+        "incoming_message_ids": [
+          "a51559f50b21",
+          "f3153ca9d7a8",
+          "7d7159378b12"
+        ]
+      }
+    },
+    {
+      "sender": "verifier",
+      "content": "CHK:REVISE;E:RELATION;REQ:recheck the supermarket round trip: if the supermarket is 10 miles farther from school than the 20-mile round trip, clarify whether 10 miles is one-way or round-trip before using 20+2*10",
+      "receiver": "solver",
+      "round": 1,
+      "role": "assistant",
+      "prompt_tokens": 1106,
+      "completion_tokens": 60,
+      "id": "e8404362e304",
+      "ts": 1793097277.756125,
+      "meta": {
+        "sender": "verifier",
+        "receiver": "solver",
+        "message_id": "e8404362e304",
+        "protocol_edge": "verifier_to_solver",
+        "protocol_version": "CARD-2-gsm8k",
+        "protocol_hash": "c152278e4a24181b874bd88cbf3adef79479b79f6539931bcd89721fa5a8a7a9",
+        "contract_hash": "ac09c03455d8af3a35273b605bb457591de11f0e22bded3325bbb626ee774caf",
+        "fields": {
+          "CHK": "REVISE",
+          "E": "RELATION",
+          "REQ": "recheck the supermarket round trip: if the supermarket is 10 miles farther from school than the 20-mile round trip, clarify whether 10 miles is one-way or round-trip before using 20+2*10"
+        },
+        "communication_tokens": 60,
+        "communication_tokens_exact": true,
+        "attempt_count": 1,
+        "fallback": false,
+        "tokens_include_all_attempts": true,
+        "incoming_message_ids": [
+          "9281abf1dffc"
+        ]
+      }
+    }
+  ],
+  "communication_tokens": 290,
+  "wall_time_s": 7.266584999975748,
+  "verified": false,
+  "revision_rounds": 1,
+  "model_calls": [
+    {
+      "role": "planner",
+      "attempt": 0,
+      "status": "delivered",
+      "error": "",
+      "raw_output": "K:school_round_trip=20,supermarket_farther=10,supermarket_afternoons=2;G:weekly_miles;P:school_one_way=20/2,supermarket_one_way=school_one_way+10,weekly=5*school_one_way+2*supermarket_one_way;NL:drives to school each weekday morning and to supermarket two afternoons",
+      "finish_reason": "stop",
+      "output_tokens": 90,
+      "usage_available": true
+    },
+    {
+      "role": "solver",
+      "attempt": 0,
+      "status": "delivered",
+      "error": "",
+      "raw_output": "IR:school_one_way=20/2=10,supermarket_one_way=10+10=20,weekly=5*10+2*20=90;R:90",
+      "finish_reason": "stop",
+      "output_tokens": 40,
+      "usage_available": true
+    },
+    {
+      "role": "verifier",
+      "attempt": 0,
+      "status": "delivered",
+      "error": "",
+      "raw_output": "CHK:REVISE;E:RELATION;REQ:recompute the weekly distance using round trips, since driving to school and to the supermarket involves returning home, so the one-way distances must be doubled for each trip",
+      "finish_reason": "stop",
+      "output_tokens": 47,
+      "usage_available": true
+    },
+    {
+      "role": "solver",
+      "attempt": 0,
+      "status": "delivered",
+      "error": "",
+      "raw_output": "IR:school_round_trip=20,supermarket_round_trip=20+2*10=40,weekly=5*20+2*40=180;R:180;NL:each trip is a round trip so distances are doubled",
+      "finish_reason": "stop",
+      "output_tokens": 53,
+      "usage_available": true
+    },
+    {
+      "role": "verifier",
+      "attempt": 0,
+      "status": "delivered",
+      "error": "",
+      "raw_output": "CHK:REVISE;E:RELATION;REQ:recheck the supermarket round trip: if the supermarket is 10 miles farther from school than the 20-mile round trip, clarify whether 10 miles is one-way or round-trip before using 20+2*10",
+      "finish_reason": "stop",
+      "output_tokens": 60,
+      "usage_available": true
+    }
+  ],
+  "failed_attempts": [],
+  "calls": 5,
+  "usage_complete": true,
+  "known_input_tokens": 4663,
+  "known_output_tokens": 290,
+  "model_input_tokens": 4663,
+  "model_output_tokens": 290,
+  "format_failed_calls": 0,
+  "transport_failed_calls": 0,
+  "fallback_calls": 0,
+  "sum_model_latency_s": 7.1531982421875,
+  "gold": "220",
+  "score": 0.0,
+  "question": "Laura’s House is a 20-mile round trip from her school. The supermarket is 10 miles farther away from the school. If Laura drives to school every morning and two afternoons a week drives to the supermarket. How many miles does Laura driver per week?\nGive the final numeric answer."
+}

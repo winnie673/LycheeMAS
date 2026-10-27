@@ -1,0 +1,95 @@
+{
+  "task_id": "gsm8k:test:seed42:T:00251",
+  "mode": "nl",
+  "benchmark": "gsm8k",
+  "status": "completed",
+  "error": null,
+  "prediction": "70",
+  "gold": "70",
+  "wall_time_s": 3.8386805000482127,
+  "communication_tokens": 82,
+  "communication_tokens_exact": true,
+  "revision_rounds": 0,
+  "verification_decision": "ACCEPT",
+  "verified": true,
+  "messages": [
+    {
+      "sender": "planner",
+      "content": "Goal: Find the number of apps on Travis’s tablet after deleting and downloading apps.\n\nPlan: Start with the original number of apps, subtract the apps he deleted, then add the apps he downloaded. Report the resulting total.",
+      "receiver": "solver",
+      "round": 0,
+      "role": "assistant",
+      "prompt_tokens": 188,
+      "completion_tokens": 46,
+      "id": "d1b0d4e5ca4b",
+      "ts": 1793101873.2106931,
+      "meta": {
+        "fields": {},
+        "communication_tokens": 46,
+        "communication_tokens_exact": true,
+        "attempt_count": 1,
+        "fallback": false,
+        "tokens_include_all_attempts": true,
+        "incoming_message_ids": []
+      }
+    },
+    {
+      "sender": "solver",
+      "content": "Travis starts with 61 apps, deletes 9, leaving 52, then downloads 18 more, giving 70 apps.\n\n\\boxed{70}",
+      "receiver": "verifier",
+      "round": 0,
+      "role": "assistant",
+      "prompt_tokens": 246,
+      "completion_tokens": 34,
+      "id": "81af5b71c6bb",
+      "ts": 1793101874.3818827,
+      "meta": {
+        "fields": {
+          "R": "70"
+        },
+        "communication_tokens": 34,
+        "communication_tokens_exact": true,
+        "attempt_count": 1,
+        "fallback": false,
+        "tokens_include_all_attempts": true,
+        "incoming_message_ids": [
+          "d1b0d4e5ca4b"
+        ]
+      }
+    },
+    {
+      "sender": "verifier",
+      "content": "ACCEPT",
+      "receiver": "solver",
+      "round": 0,
+      "role": "assistant",
+      "prompt_tokens": 611,
+      "completion_tokens": 2,
+      "id": "5c929aecb203",
+      "ts": 1793101875.4087484,
+      "meta": {
+        "fields": {
+          "CHK": "ACCEPT"
+        },
+        "communication_tokens": 2,
+        "communication_tokens_exact": true,
+        "attempt_count": 1,
+        "fallback": false,
+        "tokens_include_all_attempts": true,
+        "incoming_message_ids": [
+          "81af5b71c6bb"
+        ]
+      }
+    }
+  ],
+  "calls": 3,
+  "usage_complete": true,
+  "known_input_tokens": 1045,
+  "known_output_tokens": 82,
+  "model_input_tokens": 1045,
+  "model_output_tokens": 82,
+  "format_failed_calls": 0,
+  "transport_failed_calls": 0,
+  "fallback_calls": 0,
+  "sum_model_latency_s": 3.7750673294067383
+}

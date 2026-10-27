@@ -1,0 +1,95 @@
+{
+  "task_id": "gsm8k:test:seed42:T:00009",
+  "mode": "nl",
+  "benchmark": "gsm8k",
+  "status": "completed",
+  "error": null,
+  "prediction": "460",
+  "gold": "460",
+  "wall_time_s": 4.511776199913584,
+  "communication_tokens": 161,
+  "communication_tokens_exact": true,
+  "revision_rounds": 0,
+  "verification_decision": "ACCEPT",
+  "verified": true,
+  "messages": [
+    {
+      "sender": "planner",
+      "content": "Goal: Find Eliza's total weekly earnings given 45 hours worked.\n\nPlan: Use her regular rate of $10/hour for the first 40 hours. For the remaining 5 hours, apply the overtime rate, which is 1.2 times the regular hourly rate. Compute regular pay and overtime pay separately, then add them.\n\nConstraints: Do not exceed 40 hours at the regular rate; only hours beyond 40 are overtime. Provide the final total earnings as a numeric dollar amount.",
+      "receiver": "solver",
+      "round": 0,
+      "role": "assistant",
+      "prompt_tokens": 209,
+      "completion_tokens": 99,
+      "id": "d9152b1dd3aa",
+      "ts": 1793100357.7100744,
+      "meta": {
+        "fields": {},
+        "communication_tokens": 99,
+        "communication_tokens_exact": true,
+        "attempt_count": 1,
+        "fallback": false,
+        "tokens_include_all_attempts": true,
+        "incoming_message_ids": []
+      }
+    },
+    {
+      "sender": "solver",
+      "content": "Regular pay: 40 × $10 = $400. Overtime rate: 1.2 × $10 = $12/hour. Overtime pay: 5 × $12 = $60. Total: $400 + $60 = $460.\n\n\\boxed{460}",
+      "receiver": "verifier",
+      "round": 0,
+      "role": "assistant",
+      "prompt_tokens": 320,
+      "completion_tokens": 60,
+      "id": "7927a435253f",
+      "ts": 1793100358.9443717,
+      "meta": {
+        "fields": {
+          "R": "460"
+        },
+        "communication_tokens": 60,
+        "communication_tokens_exact": true,
+        "attempt_count": 1,
+        "fallback": false,
+        "tokens_include_all_attempts": true,
+        "incoming_message_ids": [
+          "d9152b1dd3aa"
+        ]
+      }
+    },
+    {
+      "sender": "verifier",
+      "content": "ACCEPT",
+      "receiver": "solver",
+      "round": 0,
+      "role": "assistant",
+      "prompt_tokens": 658,
+      "completion_tokens": 2,
+      "id": "ee697cde306f",
+      "ts": 1793100360.2967489,
+      "meta": {
+        "fields": {
+          "CHK": "ACCEPT"
+        },
+        "communication_tokens": 2,
+        "communication_tokens_exact": true,
+        "attempt_count": 1,
+        "fallback": false,
+        "tokens_include_all_attempts": true,
+        "incoming_message_ids": [
+          "7927a435253f"
+        ]
+      }
+    }
+  ],
+  "calls": 3,
+  "usage_complete": true,
+  "known_input_tokens": 1187,
+  "known_output_tokens": 161,
+  "model_input_tokens": 1187,
+  "model_output_tokens": 161,
+  "format_failed_calls": 0,
+  "transport_failed_calls": 0,
+  "fallback_calls": 0,
+  "sum_model_latency_s": 4.44307541847229
+}

@@ -1,0 +1,152 @@
+{
+  "task_id": "gsm8k:train:seed42:V:00179",
+  "status": "completed",
+  "error": null,
+  "prediction": "117",
+  "messages": [
+    {
+      "sender": "planner",
+      "content": "K:outline=30,writing=outline+28,practice=writing/2;G:total_time;P:total=outline+writing+practice",
+      "receiver": "solver",
+      "round": 0,
+      "role": "assistant",
+      "prompt_tokens": 749,
+      "completion_tokens": 35,
+      "id": "bbac4d87131f",
+      "ts": 1793100165.131813,
+      "meta": {
+        "sender": "planner",
+        "receiver": "solver",
+        "message_id": "bbac4d87131f",
+        "protocol_edge": "planner_to_solver",
+        "protocol_version": "CARD-2-gsm8k",
+        "protocol_hash": "c152278e4a24181b874bd88cbf3adef79479b79f6539931bcd89721fa5a8a7a9",
+        "contract_hash": "ac09c03455d8af3a35273b605bb457591de11f0e22bded3325bbb626ee774caf",
+        "fields": {
+          "K": "outline=30,writing=outline+28,practice=writing/2",
+          "G": "total_time",
+          "P": "total=outline+writing+practice"
+        },
+        "communication_tokens": 35,
+        "communication_tokens_exact": true,
+        "attempt_count": 1,
+        "fallback": false,
+        "tokens_include_all_attempts": true,
+        "incoming_message_ids": []
+      }
+    },
+    {
+      "sender": "solver",
+      "content": "IR:writing=30+28=58,practice=58/2=29,total=30+58+29=117;R:117",
+      "receiver": "verifier",
+      "round": 0,
+      "role": "assistant",
+      "prompt_tokens": 727,
+      "completion_tokens": 31,
+      "id": "d8c31cefe734",
+      "ts": 1793100166.3697467,
+      "meta": {
+        "sender": "solver",
+        "receiver": "verifier",
+        "message_id": "d8c31cefe734",
+        "protocol_edge": "solver_to_verifier",
+        "protocol_version": "CARD-2-gsm8k",
+        "protocol_hash": "c152278e4a24181b874bd88cbf3adef79479b79f6539931bcd89721fa5a8a7a9",
+        "contract_hash": "ac09c03455d8af3a35273b605bb457591de11f0e22bded3325bbb626ee774caf",
+        "fields": {
+          "IR": "writing=30+28=58,practice=58/2=29,total=30+58+29=117",
+          "R": "117"
+        },
+        "communication_tokens": 31,
+        "communication_tokens_exact": true,
+        "attempt_count": 1,
+        "fallback": false,
+        "tokens_include_all_attempts": true,
+        "incoming_message_ids": [
+          "bbac4d87131f"
+        ]
+      }
+    },
+    {
+      "sender": "verifier",
+      "content": "CHK:ACCEPT",
+      "receiver": "solver",
+      "round": 0,
+      "role": "assistant",
+      "prompt_tokens": 1055,
+      "completion_tokens": 5,
+      "id": "85290353b7f1",
+      "ts": 1793100167.2200913,
+      "meta": {
+        "sender": "verifier",
+        "receiver": "solver",
+        "message_id": "85290353b7f1",
+        "protocol_edge": "verifier_to_solver",
+        "protocol_version": "CARD-2-gsm8k",
+        "protocol_hash": "c152278e4a24181b874bd88cbf3adef79479b79f6539931bcd89721fa5a8a7a9",
+        "contract_hash": "ac09c03455d8af3a35273b605bb457591de11f0e22bded3325bbb626ee774caf",
+        "fields": {
+          "CHK": "ACCEPT"
+        },
+        "communication_tokens": 5,
+        "communication_tokens_exact": true,
+        "attempt_count": 1,
+        "fallback": false,
+        "tokens_include_all_attempts": true,
+        "incoming_message_ids": [
+          "d8c31cefe734"
+        ]
+      }
+    }
+  ],
+  "communication_tokens": 71,
+  "wall_time_s": 3.3372615999542177,
+  "verified": true,
+  "revision_rounds": 0,
+  "model_calls": [
+    {
+      "role": "planner",
+      "attempt": 0,
+      "status": "delivered",
+      "error": "",
+      "raw_output": "K:outline=30,writing=outline+28,practice=writing/2;G:total_time;P:total=outline+writing+practice",
+      "finish_reason": "stop",
+      "output_tokens": 35,
+      "usage_available": true
+    },
+    {
+      "role": "solver",
+      "attempt": 0,
+      "status": "delivered",
+      "error": "",
+      "raw_output": "IR:writing=30+28=58,practice=58/2=29,total=30+58+29=117;R:117",
+      "finish_reason": "stop",
+      "output_tokens": 31,
+      "usage_available": true
+    },
+    {
+      "role": "verifier",
+      "attempt": 0,
+      "status": "delivered",
+      "error": "",
+      "raw_output": "CHK:ACCEPT",
+      "finish_reason": "stop",
+      "output_tokens": 5,
+      "usage_available": true
+    }
+  ],
+  "failed_attempts": [],
+  "calls": 3,
+  "usage_complete": true,
+  "known_input_tokens": 2531,
+  "known_output_tokens": 71,
+  "model_input_tokens": 2531,
+  "model_output_tokens": 71,
+  "format_failed_calls": 0,
+  "transport_failed_calls": 0,
+  "fallback_calls": 0,
+  "sum_model_latency_s": 3.2266647815704346,
+  "gold": "117",
+  "score": 1.0,
+  "question": "Javier spends 30 minutes outlining his speech, 28 more minutes writing than outlining, and half as much time practicing as writing. How much time does he spend on his speech in total?\nGive the final numeric answer."
+}

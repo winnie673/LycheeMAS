@@ -1,0 +1,152 @@
+{
+  "task_id": "gsm8k:train:seed42:V:00073",
+  "status": "completed",
+  "error": null,
+  "prediction": "42.00",
+  "messages": [
+    {
+      "sender": "planner",
+      "content": "K:peanut=7.50,banana=10.00,chocolate=8.50,cherry=9.00,tip_rate=0.20;G:final_bill;P:subtotal=peanut+banana+chocolate+cherry,tip=tip_rate*subtotal,final_bill=subtotal+tip",
+      "receiver": "solver",
+      "round": 0,
+      "role": "assistant",
+      "prompt_tokens": 782,
+      "completion_tokens": 76,
+      "id": "fd741c7a1a2f",
+      "ts": 1793094661.8553839,
+      "meta": {
+        "sender": "planner",
+        "receiver": "solver",
+        "message_id": "fd741c7a1a2f",
+        "protocol_edge": "planner_to_solver",
+        "protocol_version": "CARD-0-gsm8k",
+        "protocol_hash": "eb2823227bf7889a5ca248376e410b4922fec80b12249ba4d10a3c8452604ed2",
+        "contract_hash": "ac09c03455d8af3a35273b605bb457591de11f0e22bded3325bbb626ee774caf",
+        "fields": {
+          "K": "peanut=7.50,banana=10.00,chocolate=8.50,cherry=9.00,tip_rate=0.20",
+          "G": "final_bill",
+          "P": "subtotal=peanut+banana+chocolate+cherry,tip=tip_rate*subtotal,final_bill=subtotal+tip"
+        },
+        "communication_tokens": 76,
+        "communication_tokens_exact": true,
+        "attempt_count": 1,
+        "fallback": false,
+        "tokens_include_all_attempts": true,
+        "incoming_message_ids": []
+      }
+    },
+    {
+      "sender": "solver",
+      "content": "IR:subtotal=7.50+10.00+8.50+9.00=35.00,tip=0.20*35.00=7.00,final_bill=35.00+7.00=42.00;R:42.00",
+      "receiver": "verifier",
+      "round": 0,
+      "role": "assistant",
+      "prompt_tokens": 833,
+      "completion_tokens": 60,
+      "id": "215338e04d0e",
+      "ts": 1793094663.215153,
+      "meta": {
+        "sender": "solver",
+        "receiver": "verifier",
+        "message_id": "215338e04d0e",
+        "protocol_edge": "solver_to_verifier",
+        "protocol_version": "CARD-0-gsm8k",
+        "protocol_hash": "eb2823227bf7889a5ca248376e410b4922fec80b12249ba4d10a3c8452604ed2",
+        "contract_hash": "ac09c03455d8af3a35273b605bb457591de11f0e22bded3325bbb626ee774caf",
+        "fields": {
+          "IR": "subtotal=7.50+10.00+8.50+9.00=35.00,tip=0.20*35.00=7.00,final_bill=35.00+7.00=42.00",
+          "R": "42.00"
+        },
+        "communication_tokens": 60,
+        "communication_tokens_exact": true,
+        "attempt_count": 1,
+        "fallback": false,
+        "tokens_include_all_attempts": true,
+        "incoming_message_ids": [
+          "fd741c7a1a2f"
+        ]
+      }
+    },
+    {
+      "sender": "verifier",
+      "content": "CHK:ACCEPT",
+      "receiver": "solver",
+      "round": 0,
+      "role": "assistant",
+      "prompt_tokens": 1149,
+      "completion_tokens": 5,
+      "id": "b9e51c91ee5e",
+      "ts": 1793094664.435246,
+      "meta": {
+        "sender": "verifier",
+        "receiver": "solver",
+        "message_id": "b9e51c91ee5e",
+        "protocol_edge": "verifier_to_solver",
+        "protocol_version": "CARD-0-gsm8k",
+        "protocol_hash": "eb2823227bf7889a5ca248376e410b4922fec80b12249ba4d10a3c8452604ed2",
+        "contract_hash": "ac09c03455d8af3a35273b605bb457591de11f0e22bded3325bbb626ee774caf",
+        "fields": {
+          "CHK": "ACCEPT"
+        },
+        "communication_tokens": 5,
+        "communication_tokens_exact": true,
+        "attempt_count": 1,
+        "fallback": false,
+        "tokens_include_all_attempts": true,
+        "incoming_message_ids": [
+          "215338e04d0e"
+        ]
+      }
+    }
+  ],
+  "communication_tokens": 141,
+  "wall_time_s": 4.198006100021303,
+  "verified": true,
+  "revision_rounds": 0,
+  "model_calls": [
+    {
+      "role": "planner",
+      "attempt": 0,
+      "status": "delivered",
+      "error": "",
+      "raw_output": "K:peanut=7.50,banana=10.00,chocolate=8.50,cherry=9.00,tip_rate=0.20;G:final_bill;P:subtotal=peanut+banana+chocolate+cherry,tip=tip_rate*subtotal,final_bill=subtotal+tip",
+      "finish_reason": "stop",
+      "output_tokens": 76,
+      "usage_available": true
+    },
+    {
+      "role": "solver",
+      "attempt": 0,
+      "status": "delivered",
+      "error": "",
+      "raw_output": "IR:subtotal=7.50+10.00+8.50+9.00=35.00,tip=0.20*35.00=7.00,final_bill=35.00+7.00=42.00;R:42.00",
+      "finish_reason": "stop",
+      "output_tokens": 60,
+      "usage_available": true
+    },
+    {
+      "role": "verifier",
+      "attempt": 0,
+      "status": "delivered",
+      "error": "",
+      "raw_output": "CHK:ACCEPT",
+      "finish_reason": "stop",
+      "output_tokens": 5,
+      "usage_available": true
+    }
+  ],
+  "failed_attempts": [],
+  "calls": 3,
+  "usage_complete": true,
+  "known_input_tokens": 2764,
+  "known_output_tokens": 141,
+  "model_input_tokens": 2764,
+  "model_output_tokens": 141,
+  "format_failed_calls": 0,
+  "transport_failed_calls": 0,
+  "fallback_calls": 0,
+  "sum_model_latency_s": 4.070948839187622,
+  "gold": "42",
+  "score": 1.0,
+  "question": "It's Yvette's turn to treat herself and her three best friends to a round of ice cream sundaes.  Alicia orders the peanut butter sundae for $7.50.  Brant orders the Royal banana split sundae for $10.00.  Josh orders the death by chocolate sundae for $8.50 and Yvette orders the cherry jubilee sundae for $9.00.  She leaves her waiter a 20% tip.  How much will her final bill be?\nGive the final numeric answer."
+}

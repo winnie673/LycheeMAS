@@ -1,0 +1,152 @@
+{
+  "task_id": "gsm8k:train:seed42:V:00117",
+  "status": "completed",
+  "error": null,
+  "prediction": "1670",
+  "messages": [
+    {
+      "sender": "planner",
+      "content": "K:matinee=5,evening=7,opening=10,popcorn=10,matinee_count=32,evening_count=40,opening_count=58,popcorn_fraction=1/2;G:total_revenue;P:ticket_rev=matinee*matinee_count+evening*evening_count+opening*opening_count,total_customers=matinee_count+evening_count+opening_count,popcorn_rev=popcorn*(total_customers*popcorn_fraction),total_revenue=ticket_rev+popcorn_rev",
+      "receiver": "solver",
+      "round": 0,
+      "role": "assistant",
+      "prompt_tokens": 760,
+      "completion_tokens": 129,
+      "id": "ce32663d367c",
+      "ts": 1793094842.2617087,
+      "meta": {
+        "sender": "planner",
+        "receiver": "solver",
+        "message_id": "ce32663d367c",
+        "protocol_edge": "planner_to_solver",
+        "protocol_version": "CARD-0-gsm8k",
+        "protocol_hash": "eb2823227bf7889a5ca248376e410b4922fec80b12249ba4d10a3c8452604ed2",
+        "contract_hash": "ac09c03455d8af3a35273b605bb457591de11f0e22bded3325bbb626ee774caf",
+        "fields": {
+          "K": "matinee=5,evening=7,opening=10,popcorn=10,matinee_count=32,evening_count=40,opening_count=58,popcorn_fraction=1/2",
+          "G": "total_revenue",
+          "P": "ticket_rev=matinee*matinee_count+evening*evening_count+opening*opening_count,total_customers=matinee_count+evening_count+opening_count,popcorn_rev=popcorn*(total_customers*popcorn_fraction),total_revenue=ticket_rev+popcorn_rev"
+        },
+        "communication_tokens": 129,
+        "communication_tokens_exact": true,
+        "attempt_count": 1,
+        "fallback": false,
+        "tokens_include_all_attempts": true,
+        "incoming_message_ids": []
+      }
+    },
+    {
+      "sender": "solver",
+      "content": "IR:ticket_rev=5*32+7*40+10*58=1020,total_customers=32+40+58=130,popcorn_rev=10*(130/2)=650,total_revenue=1020+650=1670;R:1670",
+      "receiver": "verifier",
+      "round": 0,
+      "role": "assistant",
+      "prompt_tokens": 864,
+      "completion_tokens": 63,
+      "id": "5d13f3e49190",
+      "ts": 1793094843.5876956,
+      "meta": {
+        "sender": "solver",
+        "receiver": "verifier",
+        "message_id": "5d13f3e49190",
+        "protocol_edge": "solver_to_verifier",
+        "protocol_version": "CARD-0-gsm8k",
+        "protocol_hash": "eb2823227bf7889a5ca248376e410b4922fec80b12249ba4d10a3c8452604ed2",
+        "contract_hash": "ac09c03455d8af3a35273b605bb457591de11f0e22bded3325bbb626ee774caf",
+        "fields": {
+          "IR": "ticket_rev=5*32+7*40+10*58=1020,total_customers=32+40+58=130,popcorn_rev=10*(130/2)=650,total_revenue=1020+650=1670",
+          "R": "1670"
+        },
+        "communication_tokens": 63,
+        "communication_tokens_exact": true,
+        "attempt_count": 1,
+        "fallback": false,
+        "tokens_include_all_attempts": true,
+        "incoming_message_ids": [
+          "ce32663d367c"
+        ]
+      }
+    },
+    {
+      "sender": "verifier",
+      "content": "CHK:ACCEPT",
+      "receiver": "solver",
+      "round": 0,
+      "role": "assistant",
+      "prompt_tokens": 1130,
+      "completion_tokens": 5,
+      "id": "d56543224457",
+      "ts": 1793094844.7211015,
+      "meta": {
+        "sender": "verifier",
+        "receiver": "solver",
+        "message_id": "d56543224457",
+        "protocol_edge": "verifier_to_solver",
+        "protocol_version": "CARD-0-gsm8k",
+        "protocol_hash": "eb2823227bf7889a5ca248376e410b4922fec80b12249ba4d10a3c8452604ed2",
+        "contract_hash": "ac09c03455d8af3a35273b605bb457591de11f0e22bded3325bbb626ee774caf",
+        "fields": {
+          "CHK": "ACCEPT"
+        },
+        "communication_tokens": 5,
+        "communication_tokens_exact": true,
+        "attempt_count": 1,
+        "fallback": false,
+        "tokens_include_all_attempts": true,
+        "incoming_message_ids": [
+          "5d13f3e49190"
+        ]
+      }
+    }
+  ],
+  "communication_tokens": 197,
+  "wall_time_s": 4.273009999888018,
+  "verified": true,
+  "revision_rounds": 0,
+  "model_calls": [
+    {
+      "role": "planner",
+      "attempt": 0,
+      "status": "delivered",
+      "error": "",
+      "raw_output": "K:matinee=5,evening=7,opening=10,popcorn=10,matinee_count=32,evening_count=40,opening_count=58,popcorn_fraction=1/2;G:total_revenue;P:ticket_rev=matinee*matinee_count+evening*evening_count+opening*opening_count,total_customers=matinee_count+evening_count+opening_count,popcorn_rev=popcorn*(total_customers*popcorn_fraction),total_revenue=ticket_rev+popcorn_rev",
+      "finish_reason": "stop",
+      "output_tokens": 129,
+      "usage_available": true
+    },
+    {
+      "role": "solver",
+      "attempt": 0,
+      "status": "delivered",
+      "error": "",
+      "raw_output": "IR:ticket_rev=5*32+7*40+10*58=1020,total_customers=32+40+58=130,popcorn_rev=10*(130/2)=650,total_revenue=1020+650=1670;R:1670",
+      "finish_reason": "stop",
+      "output_tokens": 63,
+      "usage_available": true
+    },
+    {
+      "role": "verifier",
+      "attempt": 0,
+      "status": "delivered",
+      "error": "",
+      "raw_output": "CHK:ACCEPT",
+      "finish_reason": "stop",
+      "output_tokens": 5,
+      "usage_available": true
+    }
+  ],
+  "failed_attempts": [],
+  "calls": 3,
+  "usage_complete": true,
+  "known_input_tokens": 2754,
+  "known_output_tokens": 197,
+  "model_input_tokens": 2754,
+  "model_output_tokens": 197,
+  "format_failed_calls": 0,
+  "transport_failed_calls": 0,
+  "fallback_calls": 0,
+  "sum_model_latency_s": 4.167516231536865,
+  "gold": "1670",
+  "score": 1.0,
+  "question": "A movie theater charges $5 for matinee tickets, $7 for evening tickets, and $10 for opening night tickets. A bucket of popcorn costs $10. On Friday, they had 32 matinee customers, 40 evening customers, and 58 customers for an opening night showing of a movie. If half the customers bought popcorn, how much money in dollars did the theater make on Friday night?\nGive the final numeric answer."
+}

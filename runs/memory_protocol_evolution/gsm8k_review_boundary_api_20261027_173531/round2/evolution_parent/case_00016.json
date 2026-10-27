@@ -1,0 +1,152 @@
+{
+  "task_id": "gsm8k:train:seed42:G2:00016",
+  "status": "completed",
+  "error": null,
+  "prediction": "160",
+  "messages": [
+    {
+      "sender": "planner",
+      "content": "K:hours_per_day=1,daily_pay=10,days_in_april=30,sundays=4,books=50,sister_same_as_books;G:money_left;P:paid_days=days_in_april-sundays,earned=paid_days*daily_pay,sister=books,left=earned-books-sister",
+      "receiver": "solver",
+      "round": 0,
+      "role": "assistant",
+      "prompt_tokens": 740,
+      "completion_tokens": 81,
+      "id": "e97a4e76ab88",
+      "ts": 1793096056.1489177,
+      "meta": {
+        "sender": "planner",
+        "receiver": "solver",
+        "message_id": "e97a4e76ab88",
+        "protocol_edge": "planner_to_solver",
+        "protocol_version": "CARD-0-gsm8k",
+        "protocol_hash": "eb2823227bf7889a5ca248376e410b4922fec80b12249ba4d10a3c8452604ed2",
+        "contract_hash": "ac09c03455d8af3a35273b605bb457591de11f0e22bded3325bbb626ee774caf",
+        "fields": {
+          "K": "hours_per_day=1,daily_pay=10,days_in_april=30,sundays=4,books=50,sister_same_as_books",
+          "G": "money_left",
+          "P": "paid_days=days_in_april-sundays,earned=paid_days*daily_pay,sister=books,left=earned-books-sister"
+        },
+        "communication_tokens": 81,
+        "communication_tokens_exact": true,
+        "attempt_count": 1,
+        "fallback": false,
+        "tokens_include_all_attempts": true,
+        "incoming_message_ids": []
+      }
+    },
+    {
+      "sender": "solver",
+      "content": "IR:paid_days=30-4=26,earned=26*10=260,sister=50,left=260-50-50=160;R:160",
+      "receiver": "verifier",
+      "round": 0,
+      "role": "assistant",
+      "prompt_tokens": 796,
+      "completion_tokens": 38,
+      "id": "8fd367fa7253",
+      "ts": 1793096057.332726,
+      "meta": {
+        "sender": "solver",
+        "receiver": "verifier",
+        "message_id": "8fd367fa7253",
+        "protocol_edge": "solver_to_verifier",
+        "protocol_version": "CARD-0-gsm8k",
+        "protocol_hash": "eb2823227bf7889a5ca248376e410b4922fec80b12249ba4d10a3c8452604ed2",
+        "contract_hash": "ac09c03455d8af3a35273b605bb457591de11f0e22bded3325bbb626ee774caf",
+        "fields": {
+          "IR": "paid_days=30-4=26,earned=26*10=260,sister=50,left=260-50-50=160",
+          "R": "160"
+        },
+        "communication_tokens": 38,
+        "communication_tokens_exact": true,
+        "attempt_count": 1,
+        "fallback": false,
+        "tokens_include_all_attempts": true,
+        "incoming_message_ids": [
+          "e97a4e76ab88"
+        ]
+      }
+    },
+    {
+      "sender": "verifier",
+      "content": "CHK:ACCEPT",
+      "receiver": "solver",
+      "round": 0,
+      "role": "assistant",
+      "prompt_tokens": 1085,
+      "completion_tokens": 5,
+      "id": "e1684d4814f6",
+      "ts": 1793096058.686906,
+      "meta": {
+        "sender": "verifier",
+        "receiver": "solver",
+        "message_id": "e1684d4814f6",
+        "protocol_edge": "verifier_to_solver",
+        "protocol_version": "CARD-0-gsm8k",
+        "protocol_hash": "eb2823227bf7889a5ca248376e410b4922fec80b12249ba4d10a3c8452604ed2",
+        "contract_hash": "ac09c03455d8af3a35273b605bb457591de11f0e22bded3325bbb626ee774caf",
+        "fields": {
+          "CHK": "ACCEPT"
+        },
+        "communication_tokens": 5,
+        "communication_tokens_exact": true,
+        "attempt_count": 1,
+        "fallback": false,
+        "tokens_include_all_attempts": true,
+        "incoming_message_ids": [
+          "8fd367fa7253"
+        ]
+      }
+    }
+  ],
+  "communication_tokens": 124,
+  "wall_time_s": 4.121097799972631,
+  "verified": true,
+  "revision_rounds": 0,
+  "model_calls": [
+    {
+      "role": "planner",
+      "attempt": 0,
+      "status": "delivered",
+      "error": "",
+      "raw_output": "K:hours_per_day=1,daily_pay=10,days_in_april=30,sundays=4,books=50,sister_same_as_books;G:money_left;P:paid_days=days_in_april-sundays,earned=paid_days*daily_pay,sister=books,left=earned-books-sister",
+      "finish_reason": "stop",
+      "output_tokens": 81,
+      "usage_available": true
+    },
+    {
+      "role": "solver",
+      "attempt": 0,
+      "status": "delivered",
+      "error": "",
+      "raw_output": "IR:paid_days=30-4=26,earned=26*10=260,sister=50,left=260-50-50=160;R:160",
+      "finish_reason": "stop",
+      "output_tokens": 38,
+      "usage_available": true
+    },
+    {
+      "role": "verifier",
+      "attempt": 0,
+      "status": "delivered",
+      "error": "",
+      "raw_output": "CHK:ACCEPT",
+      "finish_reason": "stop",
+      "output_tokens": 5,
+      "usage_available": true
+    }
+  ],
+  "failed_attempts": [],
+  "calls": 3,
+  "usage_complete": true,
+  "known_input_tokens": 2621,
+  "known_output_tokens": 124,
+  "model_input_tokens": 2621,
+  "model_output_tokens": 124,
+  "format_failed_calls": 0,
+  "transport_failed_calls": 0,
+  "fallback_calls": 0,
+  "sum_model_latency_s": 4.004234552383423,
+  "gold": "160",
+  "score": 1.0,
+  "question": "John's neighbor tells him to walk his dog for 1 hour each day for a total of $10. He does this for April, save for the 4 Sundays in April. He later spent $50 on books and gave his sister Kaylee the same amount. How much money did John have left?\nGive the final numeric answer."
+}

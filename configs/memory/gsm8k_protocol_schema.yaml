@@ -1,0 +1,58 @@
+schema_version: SCHEMA-NL-FIELD-V1
+allow_nl_field: true
+description: Task-independent Planner-Solver-Verifier schema with one optional natural-language fallback field.
+planner_to_solver:
+  allowed_fields: [K, G, P, NL]
+  required_fields: [G]
+  field_semantics:
+    K: Explicit facts or relations selected from shared context; excludes computed or derived states.
+    G: Exact target to solve; excludes plans and validity constraints.
+    P: Concise symbolic relations and operation direction for obtaining G; contains all derivation that symbols can preserve safely.
+    NL: One short natural-language fallback preserving answer-changing meaning or unresolved ambiguity that symbols may lose.
+  optional_field_policy:
+    K: {omit_when_unused: true}
+    P: {omit_when_unused: true}
+    NL:
+      omit_when_unused: true
+      forbidden_placeholder_values: [none, n/a, no ambiguity, unknown, not applicable]
+solver_to_verifier:
+  allowed_fields: [IR, R, NL]
+  required_fields: [R]
+  field_semantics:
+    IR: Minimal intermediate evidence needed to verify R; does not repeat the question.
+    R: Exact candidate answer to the task target; task-specific representation requirements are defined by the Protocol Card.
+    NL: One short natural-language fallback preserving an answer-changing interpretation or unresolved ambiguity not safely recoverable from IR.
+  optional_field_policy:
+    IR: {omit_when_unused: true}
+    NL:
+      omit_when_unused: true
+      forbidden_placeholder_values: [none, n/a, no ambiguity, unknown, not applicable]
+verifier_to_solver:
+  allowed_fields: [CHK, E, REQ]
+  required_fields: [CHK]
+  conditional_required:
+    REVISE: [E, REQ]
+  conditional_forbidden:
+    ACCEPT: [E, REQ]
+  value_constraints:
+    CHK: {allowed_values: [ACCEPT, REVISE]}
+    E:
+      allowed_values: [ARITH, RELATION, MISSING_FACT, MISSING_UNIT, WRONG_TARGET, INSUFFICIENT_INFO, OTHER]
+  field_semantics:
+    CHK: Verification status.
+    E: Frozen error category used only for REVISE.
+    REQ: Minimal actionable revision request used only for REVISE.
+message_format:
+  structure: fields_only
+  wire_syntax: direct
+  field_separator: ";"
+schema_value_policy:
+  principle: Structure is fixed; NL is an optional fallback inside the structured message.
+  representation: K/G/P/IR/R prefer symbols; NL contains at most one concise natural-language sentence.
+  preference: Omit NL when symbolic fields preserve all answer-changing meaning.
+  optional_fields: Omit optional fields when unused; never send placeholder values.
+cross_field_constraints:
+  - P must not repeat facts already represented in K.
+  - NL must not repeat information already unambiguous in K, G, P, IR, or R.
+  - NL must be omitted when no answer-changing meaning would be lost.
+  - IR must not repeat the complete question or all upstream fields.

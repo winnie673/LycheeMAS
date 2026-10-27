@@ -1,0 +1,152 @@
+{
+  "task_id": "gsm8k:train:seed42:G2:00046",
+  "status": "completed",
+  "error": null,
+  "prediction": "50",
+  "messages": [
+    {
+      "sender": "planner",
+      "content": "K:tiles_width=10,tiles_length=20,tile_side_in=6;G:area_sq_ft;P:tile_area_sq_in=tile_side_in^2,total_tiles=tiles_width*tiles_length,area_sq_in=total_tiles*tile_area_sq_in,area_sq_ft=area_sq_in/144",
+      "receiver": "solver",
+      "round": 0,
+      "role": "assistant",
+      "prompt_tokens": 711,
+      "completion_tokens": 79,
+      "id": "a7226e3bb4a2",
+      "ts": 1793096172.1267967,
+      "meta": {
+        "sender": "planner",
+        "receiver": "solver",
+        "message_id": "a7226e3bb4a2",
+        "protocol_edge": "planner_to_solver",
+        "protocol_version": "CARD-0-gsm8k",
+        "protocol_hash": "eb2823227bf7889a5ca248376e410b4922fec80b12249ba4d10a3c8452604ed2",
+        "contract_hash": "ac09c03455d8af3a35273b605bb457591de11f0e22bded3325bbb626ee774caf",
+        "fields": {
+          "K": "tiles_width=10,tiles_length=20,tile_side_in=6",
+          "G": "area_sq_ft",
+          "P": "tile_area_sq_in=tile_side_in^2,total_tiles=tiles_width*tiles_length,area_sq_in=total_tiles*tile_area_sq_in,area_sq_ft=area_sq_in/144"
+        },
+        "communication_tokens": 79,
+        "communication_tokens_exact": true,
+        "attempt_count": 1,
+        "fallback": false,
+        "tokens_include_all_attempts": true,
+        "incoming_message_ids": []
+      }
+    },
+    {
+      "sender": "solver",
+      "content": "IR:tile_area=6^2=36,total_tiles=10*20=200,area_sq_in=200*36=7200,area_sq_ft=7200/144=50;R:50",
+      "receiver": "verifier",
+      "round": 0,
+      "role": "assistant",
+      "prompt_tokens": 765,
+      "completion_tokens": 49,
+      "id": "bd8a2c72ac03",
+      "ts": 1793096173.2900045,
+      "meta": {
+        "sender": "solver",
+        "receiver": "verifier",
+        "message_id": "bd8a2c72ac03",
+        "protocol_edge": "solver_to_verifier",
+        "protocol_version": "CARD-0-gsm8k",
+        "protocol_hash": "eb2823227bf7889a5ca248376e410b4922fec80b12249ba4d10a3c8452604ed2",
+        "contract_hash": "ac09c03455d8af3a35273b605bb457591de11f0e22bded3325bbb626ee774caf",
+        "fields": {
+          "IR": "tile_area=6^2=36,total_tiles=10*20=200,area_sq_in=200*36=7200,area_sq_ft=7200/144=50",
+          "R": "50"
+        },
+        "communication_tokens": 49,
+        "communication_tokens_exact": true,
+        "attempt_count": 1,
+        "fallback": false,
+        "tokens_include_all_attempts": true,
+        "incoming_message_ids": [
+          "a7226e3bb4a2"
+        ]
+      }
+    },
+    {
+      "sender": "verifier",
+      "content": "CHK:ACCEPT",
+      "receiver": "solver",
+      "round": 0,
+      "role": "assistant",
+      "prompt_tokens": 1067,
+      "completion_tokens": 5,
+      "id": "fd4963cc996b",
+      "ts": 1793096174.4781983,
+      "meta": {
+        "sender": "verifier",
+        "receiver": "solver",
+        "message_id": "fd4963cc996b",
+        "protocol_edge": "verifier_to_solver",
+        "protocol_version": "CARD-0-gsm8k",
+        "protocol_hash": "eb2823227bf7889a5ca248376e410b4922fec80b12249ba4d10a3c8452604ed2",
+        "contract_hash": "ac09c03455d8af3a35273b605bb457591de11f0e22bded3325bbb626ee774caf",
+        "fields": {
+          "CHK": "ACCEPT"
+        },
+        "communication_tokens": 5,
+        "communication_tokens_exact": true,
+        "attempt_count": 1,
+        "fallback": false,
+        "tokens_include_all_attempts": true,
+        "incoming_message_ids": [
+          "bd8a2c72ac03"
+        ]
+      }
+    }
+  ],
+  "communication_tokens": 133,
+  "wall_time_s": 3.8908193999668583,
+  "verified": true,
+  "revision_rounds": 0,
+  "model_calls": [
+    {
+      "role": "planner",
+      "attempt": 0,
+      "status": "delivered",
+      "error": "",
+      "raw_output": "K:tiles_width=10,tiles_length=20,tile_side_in=6;G:area_sq_ft;P:tile_area_sq_in=tile_side_in^2,total_tiles=tiles_width*tiles_length,area_sq_in=total_tiles*tile_area_sq_in,area_sq_ft=area_sq_in/144",
+      "finish_reason": "stop",
+      "output_tokens": 79,
+      "usage_available": true
+    },
+    {
+      "role": "solver",
+      "attempt": 0,
+      "status": "delivered",
+      "error": "",
+      "raw_output": "IR:tile_area=6^2=36,total_tiles=10*20=200,area_sq_in=200*36=7200,area_sq_ft=7200/144=50;R:50",
+      "finish_reason": "stop",
+      "output_tokens": 49,
+      "usage_available": true
+    },
+    {
+      "role": "verifier",
+      "attempt": 0,
+      "status": "delivered",
+      "error": "",
+      "raw_output": "CHK:ACCEPT",
+      "finish_reason": "stop",
+      "output_tokens": 5,
+      "usage_available": true
+    }
+  ],
+  "failed_attempts": [],
+  "calls": 3,
+  "usage_complete": true,
+  "known_input_tokens": 2543,
+  "known_output_tokens": 133,
+  "model_input_tokens": 2543,
+  "model_output_tokens": 133,
+  "format_failed_calls": 0,
+  "transport_failed_calls": 0,
+  "fallback_calls": 0,
+  "sum_model_latency_s": 3.789633274078369,
+  "gold": "50",
+  "score": 1.0,
+  "question": "A bathroom has 10 6 inch tiles along its width and 20 6 inch tiles along its length.  What is the square footage of the bathroom?\nGive the final numeric answer."
+}

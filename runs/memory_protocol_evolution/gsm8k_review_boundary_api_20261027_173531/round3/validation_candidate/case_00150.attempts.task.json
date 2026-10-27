@@ -1,0 +1,149 @@
+{
+  "task_id": "gsm8k:train:seed42:V:00150",
+  "status": "completed",
+  "error": null,
+  "prediction": "19",
+  "messages": [
+    {
+      "sender": "planner",
+      "content": "K:initial=100,siblings=3,per_sibling=10,friend_fraction=1/2,keep=16;G:candies_left_to_share;P:given_siblings=siblings*per_sibling,after_siblings=initial-given_siblings,to_friend=after_siblings*friend_fraction,after_friend=after_siblings-to_friend,candies_left_to_share=after_friend-keep",
+      "receiver": "solver",
+      "round": 0,
+      "role": "assistant",
+      "prompt_tokens": 774,
+      "completion_tokens": 94,
+      "id": "edcd0192074c",
+      "ts": 1793100049.8574207,
+      "meta": {
+        "sender": "planner",
+        "receiver": "solver",
+        "message_id": "edcd0192074c",
+        "protocol_edge": "planner_to_solver",
+        "protocol_version": "CARD-2-gsm8k",
+        "protocol_hash": "c152278e4a24181b874bd88cbf3adef79479b79f6539931bcd89721fa5a8a7a9",
+        "contract_hash": "ac09c03455d8af3a35273b605bb457591de11f0e22bded3325bbb626ee774caf",
+        "fields": {
+          "K": "initial=100,siblings=3,per_sibling=10,friend_fraction=1/2,keep=16",
+          "G": "candies_left_to_share",
+          "P": "given_siblings=siblings*per_sibling,after_siblings=initial-given_siblings,to_friend=after_siblings*friend_fraction,after_friend=after_siblings-to_friend,candies_left_to_share=after_friend-keep"
+        },
+        "communication_tokens": 94,
+        "communication_tokens_exact": true,
+        "attempt_count": 1,
+        "fallback": false,
+        "tokens_include_all_attempts": true,
+        "incoming_message_ids": []
+      }
+    },
+    {
+      "sender": "solver",
+      "content": "IR:given_siblings=3*10=30,after_siblings=100-30=70,to_friend=70/2=35,after_friend=70-35=35,candies_left_to_share=35-16=19;R:19",
+      "receiver": "verifier",
+      "round": 0,
+      "role": "assistant",
+      "prompt_tokens": 811,
+      "completion_tokens": 58,
+      "id": "5f9891204570",
+      "ts": 1793100051.353334,
+      "meta": {
+        "sender": "solver",
+        "receiver": "verifier",
+        "message_id": "5f9891204570",
+        "protocol_edge": "solver_to_verifier",
+        "protocol_version": "CARD-2-gsm8k",
+        "protocol_hash": "c152278e4a24181b874bd88cbf3adef79479b79f6539931bcd89721fa5a8a7a9",
+        "contract_hash": "ac09c03455d8af3a35273b605bb457591de11f0e22bded3325bbb626ee774caf",
+        "fields": {
+          "IR": "given_siblings=3*10=30,after_siblings=100-30=70,to_friend=70/2=35,after_friend=70-35=35,candies_left_to_share=35-16=19",
+          "R": "19"
+        },
+        "communication_tokens": 58,
+        "communication_tokens_exact": true,
+        "attempt_count": 1,
+        "fallback": false,
+        "tokens_include_all_attempts": true,
+        "incoming_message_ids": [
+          "edcd0192074c"
+        ]
+      }
+    },
+    {
+      "sender": "verifier",
+      "content": "CHK:ACCEPT",
+      "receiver": "solver",
+      "round": 0,
+      "role": "assistant",
+      "prompt_tokens": 1107,
+      "completion_tokens": 5,
+      "id": "de7f978c66dd",
+      "ts": 1793100052.5337284,
+      "meta": {
+        "sender": "verifier",
+        "receiver": "solver",
+        "message_id": "de7f978c66dd",
+        "protocol_edge": "verifier_to_solver",
+        "protocol_version": "CARD-2-gsm8k",
+        "protocol_hash": "c152278e4a24181b874bd88cbf3adef79479b79f6539931bcd89721fa5a8a7a9",
+        "contract_hash": "ac09c03455d8af3a35273b605bb457591de11f0e22bded3325bbb626ee774caf",
+        "fields": {
+          "CHK": "ACCEPT"
+        },
+        "communication_tokens": 5,
+        "communication_tokens_exact": true,
+        "attempt_count": 1,
+        "fallback": false,
+        "tokens_include_all_attempts": true,
+        "incoming_message_ids": [
+          "5f9891204570"
+        ]
+      }
+    }
+  ],
+  "communication_tokens": 157,
+  "wall_time_s": 4.113560999976471,
+  "verified": true,
+  "revision_rounds": 0,
+  "model_calls": [
+    {
+      "role": "planner",
+      "attempt": 0,
+      "status": "delivered",
+      "error": "",
+      "raw_output": "K:initial=100,siblings=3,per_sibling=10,friend_fraction=1/2,keep=16;G:candies_left_to_share;P:given_siblings=siblings*per_sibling,after_siblings=initial-given_siblings,to_friend=after_siblings*friend_fraction,after_friend=after_siblings-to_friend,candies_left_to_share=after_friend-keep",
+      "finish_reason": "stop",
+      "output_tokens": 94,
+      "usage_available": true
+    },
+    {
+      "role": "solver",
+      "attempt": 0,
+      "status": "delivered",
+      "error": "",
+      "raw_output": "IR:given_siblings=3*10=30,after_siblings=100-30=70,to_friend=70/2=35,after_friend=70-35=35,candies_left_to_share=35-16=19;R:19",
+      "finish_reason": "stop",
+      "output_tokens": 58,
+      "usage_available": true
+    },
+    {
+      "role": "verifier",
+      "attempt": 0,
+      "status": "delivered",
+      "error": "",
+      "raw_output": "CHK:ACCEPT",
+      "finish_reason": "stop",
+      "output_tokens": 5,
+      "usage_available": true
+    }
+  ],
+  "failed_attempts": [],
+  "calls": 3,
+  "usage_complete": true,
+  "known_input_tokens": 2692,
+  "known_output_tokens": 157,
+  "model_input_tokens": 2692,
+  "model_output_tokens": 157,
+  "format_failed_calls": 0,
+  "transport_failed_calls": 0,
+  "fallback_calls": 0,
+  "sum_model_latency_s": 4.056674480438232
+}

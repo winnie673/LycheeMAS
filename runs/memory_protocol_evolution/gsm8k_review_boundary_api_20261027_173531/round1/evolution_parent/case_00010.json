@@ -1,0 +1,152 @@
+{
+  "task_id": "gsm8k:train:seed42:G1:00010",
+  "status": "completed",
+  "error": null,
+  "prediction": "8",
+  "messages": [
+    {
+      "sender": "planner",
+      "content": "G:green_papayas_left;K:initial_green=14,friday_yellow=2,sunday_yellow=2*friday_yellow;P:green_left=initial_green-friday_yellow-sunday_yellow",
+      "receiver": "solver",
+      "round": 0,
+      "role": "assistant",
+      "prompt_tokens": 728,
+      "completion_tokens": 48,
+      "id": "6a100527a74e",
+      "ts": 1793093923.3205593,
+      "meta": {
+        "sender": "planner",
+        "receiver": "solver",
+        "message_id": "6a100527a74e",
+        "protocol_edge": "planner_to_solver",
+        "protocol_version": "CARD-0-gsm8k",
+        "protocol_hash": "eb2823227bf7889a5ca248376e410b4922fec80b12249ba4d10a3c8452604ed2",
+        "contract_hash": "ac09c03455d8af3a35273b605bb457591de11f0e22bded3325bbb626ee774caf",
+        "fields": {
+          "G": "green_papayas_left",
+          "K": "initial_green=14,friday_yellow=2,sunday_yellow=2*friday_yellow",
+          "P": "green_left=initial_green-friday_yellow-sunday_yellow"
+        },
+        "communication_tokens": 48,
+        "communication_tokens_exact": true,
+        "attempt_count": 1,
+        "fallback": false,
+        "tokens_include_all_attempts": true,
+        "incoming_message_ids": []
+      }
+    },
+    {
+      "sender": "solver",
+      "content": "IR:friday_yellow=2,sunday_yellow=2*2=4,green_left=14-2-4=8;R:8",
+      "receiver": "verifier",
+      "round": 0,
+      "role": "assistant",
+      "prompt_tokens": 751,
+      "completion_tokens": 32,
+      "id": "444d79af60a6",
+      "ts": 1793093924.759697,
+      "meta": {
+        "sender": "solver",
+        "receiver": "verifier",
+        "message_id": "444d79af60a6",
+        "protocol_edge": "solver_to_verifier",
+        "protocol_version": "CARD-0-gsm8k",
+        "protocol_hash": "eb2823227bf7889a5ca248376e410b4922fec80b12249ba4d10a3c8452604ed2",
+        "contract_hash": "ac09c03455d8af3a35273b605bb457591de11f0e22bded3325bbb626ee774caf",
+        "fields": {
+          "IR": "friday_yellow=2,sunday_yellow=2*2=4,green_left=14-2-4=8",
+          "R": "8"
+        },
+        "communication_tokens": 32,
+        "communication_tokens_exact": true,
+        "attempt_count": 1,
+        "fallback": false,
+        "tokens_include_all_attempts": true,
+        "incoming_message_ids": [
+          "6a100527a74e"
+        ]
+      }
+    },
+    {
+      "sender": "verifier",
+      "content": "CHK:ACCEPT",
+      "receiver": "solver",
+      "round": 0,
+      "role": "assistant",
+      "prompt_tokens": 1067,
+      "completion_tokens": 5,
+      "id": "776294e8903c",
+      "ts": 1793093926.0522838,
+      "meta": {
+        "sender": "verifier",
+        "receiver": "solver",
+        "message_id": "776294e8903c",
+        "protocol_edge": "verifier_to_solver",
+        "protocol_version": "CARD-0-gsm8k",
+        "protocol_hash": "eb2823227bf7889a5ca248376e410b4922fec80b12249ba4d10a3c8452604ed2",
+        "contract_hash": "ac09c03455d8af3a35273b605bb457591de11f0e22bded3325bbb626ee774caf",
+        "fields": {
+          "CHK": "ACCEPT"
+        },
+        "communication_tokens": 5,
+        "communication_tokens_exact": true,
+        "attempt_count": 1,
+        "fallback": false,
+        "tokens_include_all_attempts": true,
+        "incoming_message_ids": [
+          "444d79af60a6"
+        ]
+      }
+    }
+  ],
+  "communication_tokens": 85,
+  "wall_time_s": 4.145348099991679,
+  "verified": true,
+  "revision_rounds": 0,
+  "model_calls": [
+    {
+      "role": "planner",
+      "attempt": 0,
+      "status": "delivered",
+      "error": "",
+      "raw_output": "G:green_papayas_left;K:initial_green=14,friday_yellow=2,sunday_yellow=2*friday_yellow;P:green_left=initial_green-friday_yellow-sunday_yellow",
+      "finish_reason": "stop",
+      "output_tokens": 48,
+      "usage_available": true
+    },
+    {
+      "role": "solver",
+      "attempt": 0,
+      "status": "delivered",
+      "error": "",
+      "raw_output": "IR:friday_yellow=2,sunday_yellow=2*2=4,green_left=14-2-4=8;R:8",
+      "finish_reason": "stop",
+      "output_tokens": 32,
+      "usage_available": true
+    },
+    {
+      "role": "verifier",
+      "attempt": 0,
+      "status": "delivered",
+      "error": "",
+      "raw_output": "CHK:ACCEPT",
+      "finish_reason": "stop",
+      "output_tokens": 5,
+      "usage_available": true
+    }
+  ],
+  "failed_attempts": [],
+  "calls": 3,
+  "usage_complete": true,
+  "known_input_tokens": 2546,
+  "known_output_tokens": 85,
+  "model_input_tokens": 2546,
+  "model_output_tokens": 85,
+  "format_failed_calls": 0,
+  "transport_failed_calls": 0,
+  "fallback_calls": 0,
+  "sum_model_latency_s": 4.081536769866943,
+  "gold": "8",
+  "score": 1.0,
+  "question": "There are 14 green papayas on the papaya tree.  On Friday, two of the fruits turned yellow.  On Sunday, twice as many fruits as on Friday turn yellow.  How many green papayas are left on the tree?\nGive the final numeric answer."
+}

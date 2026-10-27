@@ -1,0 +1,152 @@
+{
+  "task_id": "gsm8k:train:seed42:G3:00034",
+  "status": "completed",
+  "error": null,
+  "prediction": "45",
+  "messages": [
+    {
+      "sender": "planner",
+      "content": "G:total_cost;K:flower=9,pot=flower+20,soil=flower-2;P:total=flower+pot+soil",
+      "receiver": "solver",
+      "round": 0,
+      "role": "assistant",
+      "prompt_tokens": 751,
+      "completion_tokens": 32,
+      "id": "7d472f9e57da",
+      "ts": 1793098111.3693821,
+      "meta": {
+        "sender": "planner",
+        "receiver": "solver",
+        "message_id": "7d472f9e57da",
+        "protocol_edge": "planner_to_solver",
+        "protocol_version": "CARD-2-gsm8k",
+        "protocol_hash": "c152278e4a24181b874bd88cbf3adef79479b79f6539931bcd89721fa5a8a7a9",
+        "contract_hash": "ac09c03455d8af3a35273b605bb457591de11f0e22bded3325bbb626ee774caf",
+        "fields": {
+          "G": "total_cost",
+          "K": "flower=9,pot=flower+20,soil=flower-2",
+          "P": "total=flower+pot+soil"
+        },
+        "communication_tokens": 32,
+        "communication_tokens_exact": true,
+        "attempt_count": 1,
+        "fallback": false,
+        "tokens_include_all_attempts": true,
+        "incoming_message_ids": []
+      }
+    },
+    {
+      "sender": "solver",
+      "content": "IR:pot=9+20=29,soil=9-2=7,total=9+29+7=45;R:45",
+      "receiver": "verifier",
+      "round": 0,
+      "role": "assistant",
+      "prompt_tokens": 726,
+      "completion_tokens": 31,
+      "id": "a87ceab35bcb",
+      "ts": 1793098112.8494513,
+      "meta": {
+        "sender": "solver",
+        "receiver": "verifier",
+        "message_id": "a87ceab35bcb",
+        "protocol_edge": "solver_to_verifier",
+        "protocol_version": "CARD-2-gsm8k",
+        "protocol_hash": "c152278e4a24181b874bd88cbf3adef79479b79f6539931bcd89721fa5a8a7a9",
+        "contract_hash": "ac09c03455d8af3a35273b605bb457591de11f0e22bded3325bbb626ee774caf",
+        "fields": {
+          "IR": "pot=9+20=29,soil=9-2=7,total=9+29+7=45",
+          "R": "45"
+        },
+        "communication_tokens": 31,
+        "communication_tokens_exact": true,
+        "attempt_count": 1,
+        "fallback": false,
+        "tokens_include_all_attempts": true,
+        "incoming_message_ids": [
+          "7d472f9e57da"
+        ]
+      }
+    },
+    {
+      "sender": "verifier",
+      "content": "CHK:ACCEPT",
+      "receiver": "solver",
+      "round": 0,
+      "role": "assistant",
+      "prompt_tokens": 1057,
+      "completion_tokens": 5,
+      "id": "36271b462048",
+      "ts": 1793098114.148885,
+      "meta": {
+        "sender": "verifier",
+        "receiver": "solver",
+        "message_id": "36271b462048",
+        "protocol_edge": "verifier_to_solver",
+        "protocol_version": "CARD-2-gsm8k",
+        "protocol_hash": "c152278e4a24181b874bd88cbf3adef79479b79f6539931bcd89721fa5a8a7a9",
+        "contract_hash": "ac09c03455d8af3a35273b605bb457591de11f0e22bded3325bbb626ee774caf",
+        "fields": {
+          "CHK": "ACCEPT"
+        },
+        "communication_tokens": 5,
+        "communication_tokens_exact": true,
+        "attempt_count": 1,
+        "fallback": false,
+        "tokens_include_all_attempts": true,
+        "incoming_message_ids": [
+          "a87ceab35bcb"
+        ]
+      }
+    }
+  ],
+  "communication_tokens": 68,
+  "wall_time_s": 4.045861599966884,
+  "verified": true,
+  "revision_rounds": 0,
+  "model_calls": [
+    {
+      "role": "planner",
+      "attempt": 0,
+      "status": "delivered",
+      "error": "",
+      "raw_output": "G:total_cost;K:flower=9,pot=flower+20,soil=flower-2;P:total=flower+pot+soil",
+      "finish_reason": "stop",
+      "output_tokens": 32,
+      "usage_available": true
+    },
+    {
+      "role": "solver",
+      "attempt": 0,
+      "status": "delivered",
+      "error": "",
+      "raw_output": "IR:pot=9+20=29,soil=9-2=7,total=9+29+7=45;R:45",
+      "finish_reason": "stop",
+      "output_tokens": 31,
+      "usage_available": true
+    },
+    {
+      "role": "verifier",
+      "attempt": 0,
+      "status": "delivered",
+      "error": "",
+      "raw_output": "CHK:ACCEPT",
+      "finish_reason": "stop",
+      "output_tokens": 5,
+      "usage_available": true
+    }
+  ],
+  "failed_attempts": [],
+  "calls": 3,
+  "usage_complete": true,
+  "known_input_tokens": 2534,
+  "known_output_tokens": 68,
+  "model_input_tokens": 2534,
+  "model_output_tokens": 68,
+  "format_failed_calls": 0,
+  "transport_failed_calls": 0,
+  "fallback_calls": 0,
+  "sum_model_latency_s": 3.910489320755005,
+  "gold": "45",
+  "score": 1.0,
+  "question": "The flowers cost $9, the clay pot costs $20 more than the flower, and the bag of soil costs $2 less than the flower.  How much does it cost to plant the flowers?\nGive the final numeric answer."
+}

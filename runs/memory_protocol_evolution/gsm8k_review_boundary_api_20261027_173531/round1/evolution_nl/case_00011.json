@@ -1,0 +1,126 @@
+{
+  "task_id": "gsm8k:train:seed42:G1:00011",
+  "status": "completed",
+  "error": null,
+  "prediction": "201",
+  "messages": [
+    {
+      "sender": "planner",
+      "content": "Goal: Find how many of the 804 students did not pass.\n\nPlan: Since 75% passed, the remaining 25% did not pass. Compute 25% of 804, i.e., divide 804 by 4.\n\nConstraint: Provide the final numeric count of students who did not pass.",
+      "receiver": "solver",
+      "round": 0,
+      "role": "assistant",
+      "prompt_tokens": 186,
+      "completion_tokens": 63,
+      "id": "cf15fb58bdcf",
+      "ts": 1793094165.0784173,
+      "meta": {
+        "fields": {},
+        "communication_tokens": 63,
+        "communication_tokens_exact": true,
+        "attempt_count": 1,
+        "fallback": false,
+        "tokens_include_all_attempts": true,
+        "incoming_message_ids": []
+      }
+    },
+    {
+      "sender": "solver",
+      "content": "75% passed, so 25% did not pass. One quarter of 804 is 201.  \n\\boxed{201}",
+      "receiver": "verifier",
+      "round": 0,
+      "role": "assistant",
+      "prompt_tokens": 261,
+      "completion_tokens": 28,
+      "id": "24efc5746bf9",
+      "ts": 1793094166.6266193,
+      "meta": {
+        "fields": {
+          "R": "201"
+        },
+        "communication_tokens": 28,
+        "communication_tokens_exact": true,
+        "attempt_count": 1,
+        "fallback": false,
+        "tokens_include_all_attempts": true,
+        "incoming_message_ids": [
+          "cf15fb58bdcf"
+        ]
+      }
+    },
+    {
+      "sender": "verifier",
+      "content": "ACCEPT",
+      "receiver": "solver",
+      "round": 0,
+      "role": "assistant",
+      "prompt_tokens": 603,
+      "completion_tokens": 2,
+      "id": "fd4f64aba6e1",
+      "ts": 1793094168.095293,
+      "meta": {
+        "fields": {
+          "CHK": "ACCEPT"
+        },
+        "communication_tokens": 2,
+        "communication_tokens_exact": true,
+        "attempt_count": 1,
+        "fallback": false,
+        "tokens_include_all_attempts": true,
+        "incoming_message_ids": [
+          "24efc5746bf9"
+        ]
+      }
+    }
+  ],
+  "communication_tokens": 93,
+  "wall_time_s": 5.127130699926056,
+  "verified": true,
+  "revision_rounds": 0,
+  "model_calls": [
+    {
+      "role": "planner",
+      "attempt": 0,
+      "status": "delivered",
+      "error": "",
+      "raw_output": "Goal: Find how many of the 804 students did not pass.\n\nPlan: Since 75% passed, the remaining 25% did not pass. Compute 25% of 804, i.e., divide 804 by 4.\n\nConstraint: Provide the final numeric count of students who did not pass.",
+      "finish_reason": "stop",
+      "output_tokens": 63,
+      "usage_available": true
+    },
+    {
+      "role": "solver",
+      "attempt": 0,
+      "status": "delivered",
+      "error": "",
+      "raw_output": "75% passed, so 25% did not pass. One quarter of 804 is 201.  \n\\boxed{201}",
+      "finish_reason": "stop",
+      "output_tokens": 28,
+      "usage_available": true
+    },
+    {
+      "role": "verifier",
+      "attempt": 0,
+      "status": "delivered",
+      "error": "",
+      "raw_output": "ACCEPT",
+      "finish_reason": "stop",
+      "output_tokens": 2,
+      "usage_available": true
+    }
+  ],
+  "failed_attempts": [],
+  "calls": 3,
+  "usage_complete": true,
+  "known_input_tokens": 1050,
+  "known_output_tokens": 93,
+  "model_input_tokens": 1050,
+  "model_output_tokens": 93,
+  "format_failed_calls": 0,
+  "transport_failed_calls": 0,
+  "fallback_calls": 0,
+  "sum_model_latency_s": 5.041732311248779,
+  "gold": "201",
+  "score": 1.0,
+  "question": "Out of 804 senior high school students, 75% passed their exams and so got their degree. The rest failed. How many didn't pass their exams?\nGive the final numeric answer."
+}

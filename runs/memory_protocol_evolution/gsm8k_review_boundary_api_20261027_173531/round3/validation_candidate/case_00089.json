@@ -1,0 +1,153 @@
+{
+  "task_id": "gsm8k:train:seed42:V:00089",
+  "status": "completed",
+  "error": null,
+  "prediction": "3",
+  "messages": [
+    {
+      "sender": "planner",
+      "content": "G:touchdowns_per_game_needed_in_final_two_games;K:record=89,season_games=16,first_games=14,avg_first=6;P:current=avg_first*first_games,needed_total=record+1,remaining=needed_total-current,rate=remaining/2;NL:beat means strictly exceed 89 so target at least 90",
+      "receiver": "solver",
+      "round": 0,
+      "role": "assistant",
+      "prompt_tokens": 772,
+      "completion_tokens": 85,
+      "id": "ad5c84c0b00a",
+      "ts": 1793099813.435643,
+      "meta": {
+        "sender": "planner",
+        "receiver": "solver",
+        "message_id": "ad5c84c0b00a",
+        "protocol_edge": "planner_to_solver",
+        "protocol_version": "CARD-2-gsm8k",
+        "protocol_hash": "c152278e4a24181b874bd88cbf3adef79479b79f6539931bcd89721fa5a8a7a9",
+        "contract_hash": "ac09c03455d8af3a35273b605bb457591de11f0e22bded3325bbb626ee774caf",
+        "fields": {
+          "G": "touchdowns_per_game_needed_in_final_two_games",
+          "K": "record=89,season_games=16,first_games=14,avg_first=6",
+          "P": "current=avg_first*first_games,needed_total=record+1,remaining=needed_total-current,rate=remaining/2",
+          "NL": "beat means strictly exceed 89 so target at least 90"
+        },
+        "communication_tokens": 85,
+        "communication_tokens_exact": true,
+        "attempt_count": 1,
+        "fallback": false,
+        "tokens_include_all_attempts": true,
+        "incoming_message_ids": []
+      }
+    },
+    {
+      "sender": "solver",
+      "content": "IR:current=6*14=84,needed_total=89+1=90,remaining=90-84=6,rate=6/2=3;R:3",
+      "receiver": "verifier",
+      "round": 0,
+      "role": "assistant",
+      "prompt_tokens": 800,
+      "completion_tokens": 39,
+      "id": "297a6839cfe9",
+      "ts": 1793099815.0006921,
+      "meta": {
+        "sender": "solver",
+        "receiver": "verifier",
+        "message_id": "297a6839cfe9",
+        "protocol_edge": "solver_to_verifier",
+        "protocol_version": "CARD-2-gsm8k",
+        "protocol_hash": "c152278e4a24181b874bd88cbf3adef79479b79f6539931bcd89721fa5a8a7a9",
+        "contract_hash": "ac09c03455d8af3a35273b605bb457591de11f0e22bded3325bbb626ee774caf",
+        "fields": {
+          "IR": "current=6*14=84,needed_total=89+1=90,remaining=90-84=6,rate=6/2=3",
+          "R": "3"
+        },
+        "communication_tokens": 39,
+        "communication_tokens_exact": true,
+        "attempt_count": 1,
+        "fallback": false,
+        "tokens_include_all_attempts": true,
+        "incoming_message_ids": [
+          "ad5c84c0b00a"
+        ]
+      }
+    },
+    {
+      "sender": "verifier",
+      "content": "CHK:ACCEPT",
+      "receiver": "solver",
+      "round": 0,
+      "role": "assistant",
+      "prompt_tokens": 1086,
+      "completion_tokens": 5,
+      "id": "56a3236e309f",
+      "ts": 1793099816.35862,
+      "meta": {
+        "sender": "verifier",
+        "receiver": "solver",
+        "message_id": "56a3236e309f",
+        "protocol_edge": "verifier_to_solver",
+        "protocol_version": "CARD-2-gsm8k",
+        "protocol_hash": "c152278e4a24181b874bd88cbf3adef79479b79f6539931bcd89721fa5a8a7a9",
+        "contract_hash": "ac09c03455d8af3a35273b605bb457591de11f0e22bded3325bbb626ee774caf",
+        "fields": {
+          "CHK": "ACCEPT"
+        },
+        "communication_tokens": 5,
+        "communication_tokens_exact": true,
+        "attempt_count": 1,
+        "fallback": false,
+        "tokens_include_all_attempts": true,
+        "incoming_message_ids": [
+          "297a6839cfe9"
+        ]
+      }
+    }
+  ],
+  "communication_tokens": 129,
+  "wall_time_s": 4.691204900038429,
+  "verified": true,
+  "revision_rounds": 0,
+  "model_calls": [
+    {
+      "role": "planner",
+      "attempt": 0,
+      "status": "delivered",
+      "error": "",
+      "raw_output": "G:touchdowns_per_game_needed_in_final_two_games;K:record=89,season_games=16,first_games=14,avg_first=6;P:current=avg_first*first_games,needed_total=record+1,remaining=needed_total-current,rate=remaining/2;NL:beat means strictly exceed 89 so target at least 90",
+      "finish_reason": "stop",
+      "output_tokens": 85,
+      "usage_available": true
+    },
+    {
+      "role": "solver",
+      "attempt": 0,
+      "status": "delivered",
+      "error": "",
+      "raw_output": "IR:current=6*14=84,needed_total=89+1=90,remaining=90-84=6,rate=6/2=3;R:3",
+      "finish_reason": "stop",
+      "output_tokens": 39,
+      "usage_available": true
+    },
+    {
+      "role": "verifier",
+      "attempt": 0,
+      "status": "delivered",
+      "error": "",
+      "raw_output": "CHK:ACCEPT",
+      "finish_reason": "stop",
+      "output_tokens": 5,
+      "usage_available": true
+    }
+  ],
+  "failed_attempts": [],
+  "calls": 3,
+  "usage_complete": true,
+  "known_input_tokens": 2658,
+  "known_output_tokens": 129,
+  "model_input_tokens": 2658,
+  "model_output_tokens": 129,
+  "format_failed_calls": 0,
+  "transport_failed_calls": 0,
+  "fallback_calls": 0,
+  "sum_model_latency_s": 4.626675128936768,
+  "gold": "3",
+  "score": 1.0,
+  "question": "Archie holds the school record for most touchdown passes with 89 in a season of 16 games. Richard is close to breaking the record, having averaged 6 touchdowns a game in the first 14 games. How many touchdowns per game must he average in the final two games to beat Archie's record?\nGive the final numeric answer."
+}

@@ -1,0 +1,150 @@
+{
+  "task_id": "gsm8k:train:seed42:V:00155",
+  "status": "completed",
+  "error": null,
+  "prediction": "2.4",
+  "messages": [
+    {
+      "sender": "planner",
+      "content": "K:initial_gas=12,remaining_gas=2,supermarket_distance=5,farm_distance=6,turnaround_distance=2;G:fuel_efficiency_mpg;P:total_distance=2*5+2+6+6,gas_used=12-2,mpg=total_distance/gas_used;NL:the 2-mile turnaround is an extra out-and-back before reaching the farm",
+      "receiver": "solver",
+      "round": 0,
+      "role": "assistant",
+      "prompt_tokens": 781,
+      "completion_tokens": 90,
+      "id": "208fd8d2c681",
+      "ts": 1793097031.9550982,
+      "meta": {
+        "sender": "planner",
+        "receiver": "solver",
+        "message_id": "208fd8d2c681",
+        "protocol_edge": "planner_to_solver",
+        "protocol_version": "CARD-0-gsm8k",
+        "protocol_hash": "eb2823227bf7889a5ca248376e410b4922fec80b12249ba4d10a3c8452604ed2",
+        "contract_hash": "ac09c03455d8af3a35273b605bb457591de11f0e22bded3325bbb626ee774caf",
+        "fields": {
+          "K": "initial_gas=12,remaining_gas=2,supermarket_distance=5,farm_distance=6,turnaround_distance=2",
+          "G": "fuel_efficiency_mpg",
+          "P": "total_distance=2*5+2+6+6,gas_used=12-2,mpg=total_distance/gas_used",
+          "NL": "the 2-mile turnaround is an extra out-and-back before reaching the farm"
+        },
+        "communication_tokens": 90,
+        "communication_tokens_exact": true,
+        "attempt_count": 1,
+        "fallback": false,
+        "tokens_include_all_attempts": true,
+        "incoming_message_ids": []
+      }
+    },
+    {
+      "sender": "solver",
+      "content": "IR:total_distance=2*5+2+6+6=24,gas_used=12-2=10,mpg=24/10=2.4;R:2.4",
+      "receiver": "verifier",
+      "round": 0,
+      "role": "assistant",
+      "prompt_tokens": 846,
+      "completion_tokens": 43,
+      "id": "a7ddfcc10e38",
+      "ts": 1793097033.3238342,
+      "meta": {
+        "sender": "solver",
+        "receiver": "verifier",
+        "message_id": "a7ddfcc10e38",
+        "protocol_edge": "solver_to_verifier",
+        "protocol_version": "CARD-0-gsm8k",
+        "protocol_hash": "eb2823227bf7889a5ca248376e410b4922fec80b12249ba4d10a3c8452604ed2",
+        "contract_hash": "ac09c03455d8af3a35273b605bb457591de11f0e22bded3325bbb626ee774caf",
+        "fields": {
+          "IR": "total_distance=2*5+2+6+6=24,gas_used=12-2=10,mpg=24/10=2.4",
+          "R": "2.4"
+        },
+        "communication_tokens": 43,
+        "communication_tokens_exact": true,
+        "attempt_count": 1,
+        "fallback": false,
+        "tokens_include_all_attempts": true,
+        "incoming_message_ids": [
+          "208fd8d2c681"
+        ]
+      }
+    },
+    {
+      "sender": "verifier",
+      "content": "CHK:ACCEPT",
+      "receiver": "solver",
+      "round": 0,
+      "role": "assistant",
+      "prompt_tokens": 1131,
+      "completion_tokens": 5,
+      "id": "ae6e52d19c16",
+      "ts": 1793097034.9972873,
+      "meta": {
+        "sender": "verifier",
+        "receiver": "solver",
+        "message_id": "ae6e52d19c16",
+        "protocol_edge": "verifier_to_solver",
+        "protocol_version": "CARD-0-gsm8k",
+        "protocol_hash": "eb2823227bf7889a5ca248376e410b4922fec80b12249ba4d10a3c8452604ed2",
+        "contract_hash": "ac09c03455d8af3a35273b605bb457591de11f0e22bded3325bbb626ee774caf",
+        "fields": {
+          "CHK": "ACCEPT"
+        },
+        "communication_tokens": 5,
+        "communication_tokens_exact": true,
+        "attempt_count": 1,
+        "fallback": false,
+        "tokens_include_all_attempts": true,
+        "incoming_message_ids": [
+          "a7ddfcc10e38"
+        ]
+      }
+    }
+  ],
+  "communication_tokens": 138,
+  "wall_time_s": 4.7988056999165565,
+  "verified": true,
+  "revision_rounds": 0,
+  "model_calls": [
+    {
+      "role": "planner",
+      "attempt": 0,
+      "status": "delivered",
+      "error": "",
+      "raw_output": "K:initial_gas=12,remaining_gas=2,supermarket_distance=5,farm_distance=6,turnaround_distance=2;G:fuel_efficiency_mpg;P:total_distance=2*5+2+6+6,gas_used=12-2,mpg=total_distance/gas_used;NL:the 2-mile turnaround is an extra out-and-back before reaching the farm",
+      "finish_reason": "stop",
+      "output_tokens": 90,
+      "usage_available": true
+    },
+    {
+      "role": "solver",
+      "attempt": 0,
+      "status": "delivered",
+      "error": "",
+      "raw_output": "IR:total_distance=2*5+2+6+6=24,gas_used=12-2=10,mpg=24/10=2.4;R:2.4",
+      "finish_reason": "stop",
+      "output_tokens": 43,
+      "usage_available": true
+    },
+    {
+      "role": "verifier",
+      "attempt": 0,
+      "status": "delivered",
+      "error": "",
+      "raw_output": "CHK:ACCEPT",
+      "finish_reason": "stop",
+      "output_tokens": 5,
+      "usage_available": true
+    }
+  ],
+  "failed_attempts": [],
+  "calls": 3,
+  "usage_complete": true,
+  "known_input_tokens": 2758,
+  "known_output_tokens": 138,
+  "model_input_tokens": 2758,
+  "model_output_tokens": 138,
+  "format_failed_calls": 0,
+  "transport_failed_calls": 0,
+  "fallback_calls": 0,
+  "sum_model_latency_s": 4.694648027420044
+}

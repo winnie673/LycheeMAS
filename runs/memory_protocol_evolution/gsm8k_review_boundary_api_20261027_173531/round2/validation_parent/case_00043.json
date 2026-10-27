@@ -1,0 +1,151 @@
+{
+  "task_id": "gsm8k:train:seed42:V:00043",
+  "status": "completed",
+  "error": null,
+  "prediction": "123",
+  "messages": [
+    {
+      "sender": "planner",
+      "content": "G:total_cost;P:total=27+3*32",
+      "receiver": "solver",
+      "round": 0,
+      "role": "assistant",
+      "prompt_tokens": 724,
+      "completion_tokens": 14,
+      "id": "ea702de31d0d",
+      "ts": 1793096589.8872354,
+      "meta": {
+        "sender": "planner",
+        "receiver": "solver",
+        "message_id": "ea702de31d0d",
+        "protocol_edge": "planner_to_solver",
+        "protocol_version": "CARD-0-gsm8k",
+        "protocol_hash": "eb2823227bf7889a5ca248376e410b4922fec80b12249ba4d10a3c8452604ed2",
+        "contract_hash": "ac09c03455d8af3a35273b605bb457591de11f0e22bded3325bbb626ee774caf",
+        "fields": {
+          "G": "total_cost",
+          "P": "total=27+3*32"
+        },
+        "communication_tokens": 14,
+        "communication_tokens_exact": true,
+        "attempt_count": 1,
+        "fallback": false,
+        "tokens_include_all_attempts": true,
+        "incoming_message_ids": []
+      }
+    },
+    {
+      "sender": "solver",
+      "content": "IR:color=3*32=96,total=27+96=123;R:123",
+      "receiver": "verifier",
+      "round": 0,
+      "role": "assistant",
+      "prompt_tokens": 713,
+      "completion_tokens": 21,
+      "id": "8dff018e352b",
+      "ts": 1793096591.8585575,
+      "meta": {
+        "sender": "solver",
+        "receiver": "verifier",
+        "message_id": "8dff018e352b",
+        "protocol_edge": "solver_to_verifier",
+        "protocol_version": "CARD-0-gsm8k",
+        "protocol_hash": "eb2823227bf7889a5ca248376e410b4922fec80b12249ba4d10a3c8452604ed2",
+        "contract_hash": "ac09c03455d8af3a35273b605bb457591de11f0e22bded3325bbb626ee774caf",
+        "fields": {
+          "IR": "color=3*32=96,total=27+96=123",
+          "R": "123"
+        },
+        "communication_tokens": 21,
+        "communication_tokens_exact": true,
+        "attempt_count": 1,
+        "fallback": false,
+        "tokens_include_all_attempts": true,
+        "incoming_message_ids": [
+          "ea702de31d0d"
+        ]
+      }
+    },
+    {
+      "sender": "verifier",
+      "content": "CHK:ACCEPT",
+      "receiver": "solver",
+      "round": 0,
+      "role": "assistant",
+      "prompt_tokens": 1052,
+      "completion_tokens": 5,
+      "id": "3f3b91dbf7fd",
+      "ts": 1793096593.0666497,
+      "meta": {
+        "sender": "verifier",
+        "receiver": "solver",
+        "message_id": "3f3b91dbf7fd",
+        "protocol_edge": "verifier_to_solver",
+        "protocol_version": "CARD-0-gsm8k",
+        "protocol_hash": "eb2823227bf7889a5ca248376e410b4922fec80b12249ba4d10a3c8452604ed2",
+        "contract_hash": "ac09c03455d8af3a35273b605bb457591de11f0e22bded3325bbb626ee774caf",
+        "fields": {
+          "CHK": "ACCEPT"
+        },
+        "communication_tokens": 5,
+        "communication_tokens_exact": true,
+        "attempt_count": 1,
+        "fallback": false,
+        "tokens_include_all_attempts": true,
+        "incoming_message_ids": [
+          "8dff018e352b"
+        ]
+      }
+    }
+  ],
+  "communication_tokens": 40,
+  "wall_time_s": 4.3754584999987856,
+  "verified": true,
+  "revision_rounds": 0,
+  "model_calls": [
+    {
+      "role": "planner",
+      "attempt": 0,
+      "status": "delivered",
+      "error": "",
+      "raw_output": "G:total_cost;P:total=27+3*32",
+      "finish_reason": "stop",
+      "output_tokens": 14,
+      "usage_available": true
+    },
+    {
+      "role": "solver",
+      "attempt": 0,
+      "status": "delivered",
+      "error": "",
+      "raw_output": "IR:color=3*32=96,total=27+96=123;R:123",
+      "finish_reason": "stop",
+      "output_tokens": 21,
+      "usage_available": true
+    },
+    {
+      "role": "verifier",
+      "attempt": 0,
+      "status": "delivered",
+      "error": "",
+      "raw_output": "CHK:ACCEPT",
+      "finish_reason": "stop",
+      "output_tokens": 5,
+      "usage_available": true
+    }
+  ],
+  "failed_attempts": [],
+  "calls": 3,
+  "usage_complete": true,
+  "known_input_tokens": 2489,
+  "known_output_tokens": 40,
+  "model_input_tokens": 2489,
+  "model_output_tokens": 40,
+  "format_failed_calls": 0,
+  "transport_failed_calls": 0,
+  "fallback_calls": 0,
+  "sum_model_latency_s": 4.277793645858765,
+  "gold": "123",
+  "score": 1.0,
+  "question": "To get the printer to work, Jerry needs to add a black-and-white cartridge and three color cartridges. If each color cartridge costs $32 and each black-and-white cartridge costs $27, how much does he pay total?\nGive the final numeric answer."
+}

@@ -1,0 +1,153 @@
+{
+  "task_id": "gsm8k:train:seed42:V:00013",
+  "status": "completed",
+  "error": null,
+  "prediction": "180",
+  "messages": [
+    {
+      "sender": "planner",
+      "content": "K:school_round_trip=20,supermarket_farther=10,supermarket_afternoons_per_week=2;G:weekly_miles;P:school_one_way=school_round_trip/2,supermarket_one_way=school_one_way+supermarket_farther,weekly_miles=5*school_round_trip+supermarket_afternoons_per_week*2*supermarket_one_way;NL:drives to school every morning and back, plus two afternoon supermarket round trips per week",
+      "receiver": "solver",
+      "round": 0,
+      "role": "assistant",
+      "prompt_tokens": 733,
+      "completion_tokens": 117,
+      "id": "de3a89b8df0b",
+      "ts": 1793096467.6107056,
+      "meta": {
+        "sender": "planner",
+        "receiver": "solver",
+        "message_id": "de3a89b8df0b",
+        "protocol_edge": "planner_to_solver",
+        "protocol_version": "CARD-0-gsm8k",
+        "protocol_hash": "eb2823227bf7889a5ca248376e410b4922fec80b12249ba4d10a3c8452604ed2",
+        "contract_hash": "ac09c03455d8af3a35273b605bb457591de11f0e22bded3325bbb626ee774caf",
+        "fields": {
+          "K": "school_round_trip=20,supermarket_farther=10,supermarket_afternoons_per_week=2",
+          "G": "weekly_miles",
+          "P": "school_one_way=school_round_trip/2,supermarket_one_way=school_one_way+supermarket_farther,weekly_miles=5*school_round_trip+supermarket_afternoons_per_week*2*supermarket_one_way",
+          "NL": "drives to school every morning and back, plus two afternoon supermarket round trips per week"
+        },
+        "communication_tokens": 117,
+        "communication_tokens_exact": true,
+        "attempt_count": 1,
+        "fallback": false,
+        "tokens_include_all_attempts": true,
+        "incoming_message_ids": []
+      }
+    },
+    {
+      "sender": "solver",
+      "content": "IR:school_one_way=20/2=10,supermarket_one_way=10+10=20,school_weekly=5*20=100,supermarket_weekly=2*2*20=80,total=100+80=180;R:180",
+      "receiver": "verifier",
+      "round": 0,
+      "role": "assistant",
+      "prompt_tokens": 825,
+      "completion_tokens": 59,
+      "id": "cb797f9b24bc",
+      "ts": 1793096468.991675,
+      "meta": {
+        "sender": "solver",
+        "receiver": "verifier",
+        "message_id": "cb797f9b24bc",
+        "protocol_edge": "solver_to_verifier",
+        "protocol_version": "CARD-0-gsm8k",
+        "protocol_hash": "eb2823227bf7889a5ca248376e410b4922fec80b12249ba4d10a3c8452604ed2",
+        "contract_hash": "ac09c03455d8af3a35273b605bb457591de11f0e22bded3325bbb626ee774caf",
+        "fields": {
+          "IR": "school_one_way=20/2=10,supermarket_one_way=10+10=20,school_weekly=5*20=100,supermarket_weekly=2*2*20=80,total=100+80=180",
+          "R": "180"
+        },
+        "communication_tokens": 59,
+        "communication_tokens_exact": true,
+        "attempt_count": 1,
+        "fallback": false,
+        "tokens_include_all_attempts": true,
+        "incoming_message_ids": [
+          "de3a89b8df0b"
+        ]
+      }
+    },
+    {
+      "sender": "verifier",
+      "content": "CHK:ACCEPT",
+      "receiver": "solver",
+      "round": 0,
+      "role": "assistant",
+      "prompt_tokens": 1099,
+      "completion_tokens": 5,
+      "id": "16f30e2eeb38",
+      "ts": 1793096470.1437984,
+      "meta": {
+        "sender": "verifier",
+        "receiver": "solver",
+        "message_id": "16f30e2eeb38",
+        "protocol_edge": "verifier_to_solver",
+        "protocol_version": "CARD-0-gsm8k",
+        "protocol_hash": "eb2823227bf7889a5ca248376e410b4922fec80b12249ba4d10a3c8452604ed2",
+        "contract_hash": "ac09c03455d8af3a35273b605bb457591de11f0e22bded3325bbb626ee774caf",
+        "fields": {
+          "CHK": "ACCEPT"
+        },
+        "communication_tokens": 5,
+        "communication_tokens_exact": true,
+        "attempt_count": 1,
+        "fallback": false,
+        "tokens_include_all_attempts": true,
+        "incoming_message_ids": [
+          "cb797f9b24bc"
+        ]
+      }
+    }
+  ],
+  "communication_tokens": 181,
+  "wall_time_s": 4.119214799953625,
+  "verified": true,
+  "revision_rounds": 0,
+  "model_calls": [
+    {
+      "role": "planner",
+      "attempt": 0,
+      "status": "delivered",
+      "error": "",
+      "raw_output": "K:school_round_trip=20,supermarket_farther=10,supermarket_afternoons_per_week=2;G:weekly_miles;P:school_one_way=school_round_trip/2,supermarket_one_way=school_one_way+supermarket_farther,weekly_miles=5*school_round_trip+supermarket_afternoons_per_week*2*supermarket_one_way;NL:drives to school every morning and back, plus two afternoon supermarket round trips per week",
+      "finish_reason": "stop",
+      "output_tokens": 117,
+      "usage_available": true
+    },
+    {
+      "role": "solver",
+      "attempt": 0,
+      "status": "delivered",
+      "error": "",
+      "raw_output": "IR:school_one_way=20/2=10,supermarket_one_way=10+10=20,school_weekly=5*20=100,supermarket_weekly=2*2*20=80,total=100+80=180;R:180",
+      "finish_reason": "stop",
+      "output_tokens": 59,
+      "usage_available": true
+    },
+    {
+      "role": "verifier",
+      "attempt": 0,
+      "status": "delivered",
+      "error": "",
+      "raw_output": "CHK:ACCEPT",
+      "finish_reason": "stop",
+      "output_tokens": 5,
+      "usage_available": true
+    }
+  ],
+  "failed_attempts": [],
+  "calls": 3,
+  "usage_complete": true,
+  "known_input_tokens": 2657,
+  "known_output_tokens": 181,
+  "model_input_tokens": 2657,
+  "model_output_tokens": 181,
+  "format_failed_calls": 0,
+  "transport_failed_calls": 0,
+  "fallback_calls": 0,
+  "sum_model_latency_s": 4.007098436355591,
+  "gold": "220",
+  "score": 0.0,
+  "question": "Laura’s House is a 20-mile round trip from her school. The supermarket is 10 miles farther away from the school. If Laura drives to school every morning and two afternoons a week drives to the supermarket. How many miles does Laura driver per week?\nGive the final numeric answer."
+}

@@ -1,0 +1,74 @@
+{
+  "diagnosis": {
+    "case_analysis": [
+      {
+        "case_id": "gsm8k:train:seed42:G2:00000",
+        "issue_type": "TEMPORAL_RELATION_LOSS",
+        "communication_related": true,
+        "protocol_path": "planner_to_solver",
+        "evidence": "Both NL and hybrid planners encode the age offset as John-James=12 and compute James=John-12, yielding 30. Gold is 25. The 'turned 23 the same time John turned 35' relation is a simultaneous-time anchor; the correct reading is that James is 12 years older than John (James was 23 when John was 35 means James is older), so James=John+12=54? No—gold 25 implies James=John-17? Actually gold 25 means James=42-17; the offset direction is inverted. Both variants share the same operation-direction error, so it is base reasoning, not communication."
+      },
+      {
+        "case_id": "gsm8k:train:seed42:G2:00003",
+        "issue_type": "OPERATION_DIRECTION_ERROR",
+        "communication_related": false,
+        "protocol_path": "planner_to_solver",
+        "evidence": "Both NL and hybrid compute neither=50-0.40*50-0.34*50=13. Gold is 3. The problem asks how many did not support either team; the correct interpretation is that 40% and 34% are of the audience and the remainder is 26% of 50 = 13, but gold 3 suggests the percentages are of the total and the question is about a different subset. Both variants make the same arithmetic/interpretation choice, so the failure is base reasoning, not communication."
+      },
+      {
+        "case_id": "gsm8k:train:seed42:G2:00007",
+        "issue_type": "SUCCESSFUL_COMPACT_PATTERN",
+        "communication_related": false,
+        "protocol_path": "planner_to_solver",
+        "evidence": "Hybrid planner uses compact K/G/P fields with explicit overtime threshold and per-week split; solver IR reproduces the same relations and gets 472, matching gold. NL variant is correct but higher cost (172 vs 189 tokens). Compact symbolic pattern preserved successfully."
+      },
+      {
+        "case_id": "gsm8k:train:seed42:G2:00029",
+        "issue_type": "SUCCESSFUL_COMPACT_PATTERN",
+        "communication_related": false,
+        "protocol_path": "planner_to_solver",
+        "evidence": "Hybrid planner encodes floors, full_fraction, capacity_per_floor, people_per_apartment and the half-capacity relation symbolically; solver IR matches and yields 360 = gold. NL variant also correct but more verbose. Compact pattern preserved."
+      },
+      {
+        "case_id": "gsm8k:train:seed42:G2:00041",
+        "issue_type": "SUCCESSFUL_COMPACT_PATTERN",
+        "communication_related": false,
+        "protocol_path": "planner_to_solver",
+        "evidence": "Hybrid planner uses K/G/P with crackers_per_sandwich, sandwiches_per_night, sleeves_per_box, crackers_per_sleeve, boxes; solver IR reproduces and gets 56 = gold. NL variant correct but higher cost. Compact symbolic pattern preserved."
+      },
+      {
+        "case_id": "gsm8k:train:seed42:G2:00044",
+        "issue_type": "SUCCESSFUL_COMPACT_PATTERN",
+        "communication_related": false,
+        "protocol_path": "planner_to_solver",
+        "evidence": "Hybrid planner encodes cold_rate, hot_rate=2*cold_rate, weeks, cold_share; solver IR computes cold_weeks, hot_weeks, total=72 = gold. NL variant correct but more verbose. Compact pattern preserved."
+      },
+      {
+        "case_id": "gsm8k:train:seed42:G2:00016",
+        "issue_type": "OPERATION_DIRECTION_ERROR",
+        "communication_related": true,
+        "protocol_path": "planner_to_solver",
+        "evidence": "NL planner states '$10 is the total pay for the daily 1-hour walking arrangement, not a daily rate', which is a misreading; solver then computes earned=$10 and left=-90. Hybrid planner correctly encodes daily_pay=10 and paid_days=26, yielding 160 = gold. The NL planner's explicit constraint introduced the wrong interpretation, so this is a communication-induced operation-direction error."
+      },
+      {
+        "case_id": "gsm8k:train:seed42:G2:00031",
+        "issue_type": "MISSING_MULTIPLICITY",
+        "communication_related": true,
+        "protocol_path": "planner_to_solver",
+        "evidence": "Hybrid planner encodes per_dog=share-start_fee and blocks_per_dog=per_dog/per_block, then total_blocks=dogs*blocks_per_dog, yielding 3168. Gold is 128. The correct relation is total start fees = dogs*start_fee, then remaining = share - dogs*start_fee, then total_blocks = remaining/per_block. The planner omitted the multiplicity of the start fee across 20 walks, so the solver applied the start fee only once per dog's share. NL planner correctly accounts for 20 walks' start fees and gets 128. This is a communication-related missing-multiplicity error."
+      }
+    ],
+    "global_findings": [
+      "Hybrid compact symbolic messages are consistently cheaper (mean 94.64 vs 163.14 tokens) with equal accuracy (0.9), and all four hybrid_correct_high_cost cases show successful compact patterns.",
+      "The two both_incorrect cases (00000, 00003) fail identically in NL and hybrid, indicating base reasoning errors rather than communication failures.",
+      "Case 00016 shows NL planner introducing an explicit wrong constraint ('$10 total, not daily rate') that the hybrid symbolic planner avoided, demonstrating that verbose NL can inject operation-direction errors.",
+      "Case 00031 shows a hybrid planner omitting multiplicity of a per-walk fee across 20 walks, a task-specific MISSING_MULTIPLICITY communication error that the NL planner avoided.",
+      "Verifier accepted all incorrect answers in both_incorrect and hybrid_incorrect_nl_correct cases, indicating verifier sufficiency checks did not catch the underlying reasoning errors."
+    ]
+  },
+  "eligible_case_ids": [
+    "gsm8k:train:seed42:G2:00000",
+    "gsm8k:train:seed42:G2:00016",
+    "gsm8k:train:seed42:G2:00031"
+  ]
+}

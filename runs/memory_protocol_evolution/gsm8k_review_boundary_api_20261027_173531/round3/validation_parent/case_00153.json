@@ -1,0 +1,152 @@
+{
+  "task_id": "gsm8k:train:seed42:V:00153",
+  "status": "completed",
+  "error": null,
+  "prediction": "5",
+  "messages": [
+    {
+      "sender": "planner",
+      "content": "G:number_of_tripodasauruses;K:legs_per_tripodasaurus=3,heads_per_tripodasaurus=1,total_heads_and_legs=20;P:parts_per_tripodasaurus=legs_per_tripodasaurus+heads_per_tripodasaurus,number_of_tripodasauruses=total_heads_and_legs/parts_per_tripodasaurus",
+      "receiver": "solver",
+      "round": 0,
+      "role": "assistant",
+      "prompt_tokens": 752,
+      "completion_tokens": 95,
+      "id": "4dad0a8bba02",
+      "ts": 1793098963.6820529,
+      "meta": {
+        "sender": "planner",
+        "receiver": "solver",
+        "message_id": "4dad0a8bba02",
+        "protocol_edge": "planner_to_solver",
+        "protocol_version": "CARD-2-gsm8k",
+        "protocol_hash": "c152278e4a24181b874bd88cbf3adef79479b79f6539931bcd89721fa5a8a7a9",
+        "contract_hash": "ac09c03455d8af3a35273b605bb457591de11f0e22bded3325bbb626ee774caf",
+        "fields": {
+          "G": "number_of_tripodasauruses",
+          "K": "legs_per_tripodasaurus=3,heads_per_tripodasaurus=1,total_heads_and_legs=20",
+          "P": "parts_per_tripodasaurus=legs_per_tripodasaurus+heads_per_tripodasaurus,number_of_tripodasauruses=total_heads_and_legs/parts_per_tripodasaurus"
+        },
+        "communication_tokens": 95,
+        "communication_tokens_exact": true,
+        "attempt_count": 1,
+        "fallback": false,
+        "tokens_include_all_attempts": true,
+        "incoming_message_ids": []
+      }
+    },
+    {
+      "sender": "solver",
+      "content": "IR:parts_per_tripodasaurus=3+1=4,number_of_tripodasauruses=20/4=5;R:5",
+      "receiver": "verifier",
+      "round": 0,
+      "role": "assistant",
+      "prompt_tokens": 790,
+      "completion_tokens": 34,
+      "id": "f18f04c28482",
+      "ts": 1793098964.8100343,
+      "meta": {
+        "sender": "solver",
+        "receiver": "verifier",
+        "message_id": "f18f04c28482",
+        "protocol_edge": "solver_to_verifier",
+        "protocol_version": "CARD-2-gsm8k",
+        "protocol_hash": "c152278e4a24181b874bd88cbf3adef79479b79f6539931bcd89721fa5a8a7a9",
+        "contract_hash": "ac09c03455d8af3a35273b605bb457591de11f0e22bded3325bbb626ee774caf",
+        "fields": {
+          "IR": "parts_per_tripodasaurus=3+1=4,number_of_tripodasauruses=20/4=5",
+          "R": "5"
+        },
+        "communication_tokens": 34,
+        "communication_tokens_exact": true,
+        "attempt_count": 1,
+        "fallback": false,
+        "tokens_include_all_attempts": true,
+        "incoming_message_ids": [
+          "4dad0a8bba02"
+        ]
+      }
+    },
+    {
+      "sender": "verifier",
+      "content": "CHK:ACCEPT",
+      "receiver": "solver",
+      "round": 0,
+      "role": "assistant",
+      "prompt_tokens": 1061,
+      "completion_tokens": 5,
+      "id": "9d3e92e71432",
+      "ts": 1793098965.8072505,
+      "meta": {
+        "sender": "verifier",
+        "receiver": "solver",
+        "message_id": "9d3e92e71432",
+        "protocol_edge": "verifier_to_solver",
+        "protocol_version": "CARD-2-gsm8k",
+        "protocol_hash": "c152278e4a24181b874bd88cbf3adef79479b79f6539931bcd89721fa5a8a7a9",
+        "contract_hash": "ac09c03455d8af3a35273b605bb457591de11f0e22bded3325bbb626ee774caf",
+        "fields": {
+          "CHK": "ACCEPT"
+        },
+        "communication_tokens": 5,
+        "communication_tokens_exact": true,
+        "attempt_count": 1,
+        "fallback": false,
+        "tokens_include_all_attempts": true,
+        "incoming_message_ids": [
+          "f18f04c28482"
+        ]
+      }
+    }
+  ],
+  "communication_tokens": 134,
+  "wall_time_s": 3.2742159999907017,
+  "verified": true,
+  "revision_rounds": 0,
+  "model_calls": [
+    {
+      "role": "planner",
+      "attempt": 0,
+      "status": "delivered",
+      "error": "",
+      "raw_output": "G:number_of_tripodasauruses;K:legs_per_tripodasaurus=3,heads_per_tripodasaurus=1,total_heads_and_legs=20;P:parts_per_tripodasaurus=legs_per_tripodasaurus+heads_per_tripodasaurus,number_of_tripodasauruses=total_heads_and_legs/parts_per_tripodasaurus",
+      "finish_reason": "stop",
+      "output_tokens": 95,
+      "usage_available": true
+    },
+    {
+      "role": "solver",
+      "attempt": 0,
+      "status": "delivered",
+      "error": "",
+      "raw_output": "IR:parts_per_tripodasaurus=3+1=4,number_of_tripodasauruses=20/4=5;R:5",
+      "finish_reason": "stop",
+      "output_tokens": 34,
+      "usage_available": true
+    },
+    {
+      "role": "verifier",
+      "attempt": 0,
+      "status": "delivered",
+      "error": "",
+      "raw_output": "CHK:ACCEPT",
+      "finish_reason": "stop",
+      "output_tokens": 5,
+      "usage_available": true
+    }
+  ],
+  "failed_attempts": [],
+  "calls": 3,
+  "usage_complete": true,
+  "known_input_tokens": 2603,
+  "known_output_tokens": 134,
+  "model_input_tokens": 2603,
+  "model_output_tokens": 134,
+  "format_failed_calls": 0,
+  "transport_failed_calls": 0,
+  "fallback_calls": 0,
+  "sum_model_latency_s": 3.1603763103485107,
+  "gold": "5",
+  "score": 1.0,
+  "question": "The tripodasaurus has three legs. In a flock of tripodasauruses, there is a total of 20 heads and legs. How many tripodasauruses are in the flock?\nGive the final numeric answer."
+}

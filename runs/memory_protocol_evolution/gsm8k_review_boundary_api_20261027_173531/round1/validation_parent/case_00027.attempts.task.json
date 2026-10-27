@@ -1,0 +1,149 @@
+{
+  "task_id": "gsm8k:train:seed42:V:00027",
+  "status": "completed",
+  "error": null,
+  "prediction": "1040",
+  "messages": [
+    {
+      "sender": "planner",
+      "content": "K:clarinet_rate=40,clarinet_hours=3,piano_rate=28,piano_hours=5,weeks=52;G:difference_per_year;P:clarinet_week=clarinet_rate*clarinet_hours,piano_week=piano_rate*piano_hours,diff_week=piano_week-clarinet_week,difference_per_year=diff_week*weeks",
+      "receiver": "solver",
+      "round": 0,
+      "role": "assistant",
+      "prompt_tokens": 725,
+      "completion_tokens": 87,
+      "id": "b2800336f12a",
+      "ts": 1793094475.25995,
+      "meta": {
+        "sender": "planner",
+        "receiver": "solver",
+        "message_id": "b2800336f12a",
+        "protocol_edge": "planner_to_solver",
+        "protocol_version": "CARD-0-gsm8k",
+        "protocol_hash": "eb2823227bf7889a5ca248376e410b4922fec80b12249ba4d10a3c8452604ed2",
+        "contract_hash": "ac09c03455d8af3a35273b605bb457591de11f0e22bded3325bbb626ee774caf",
+        "fields": {
+          "K": "clarinet_rate=40,clarinet_hours=3,piano_rate=28,piano_hours=5,weeks=52",
+          "G": "difference_per_year",
+          "P": "clarinet_week=clarinet_rate*clarinet_hours,piano_week=piano_rate*piano_hours,diff_week=piano_week-clarinet_week,difference_per_year=diff_week*weeks"
+        },
+        "communication_tokens": 87,
+        "communication_tokens_exact": true,
+        "attempt_count": 1,
+        "fallback": false,
+        "tokens_include_all_attempts": true,
+        "incoming_message_ids": []
+      }
+    },
+    {
+      "sender": "solver",
+      "content": "IR:clarinet_week=40*3=120,piano_week=28*5=140,diff_week=140-120=20,difference_per_year=20*52=1040;R:1040",
+      "receiver": "verifier",
+      "round": 0,
+      "role": "assistant",
+      "prompt_tokens": 787,
+      "completion_tokens": 48,
+      "id": "4ca32459faa4",
+      "ts": 1793094476.2832677,
+      "meta": {
+        "sender": "solver",
+        "receiver": "verifier",
+        "message_id": "4ca32459faa4",
+        "protocol_edge": "solver_to_verifier",
+        "protocol_version": "CARD-0-gsm8k",
+        "protocol_hash": "eb2823227bf7889a5ca248376e410b4922fec80b12249ba4d10a3c8452604ed2",
+        "contract_hash": "ac09c03455d8af3a35273b605bb457591de11f0e22bded3325bbb626ee774caf",
+        "fields": {
+          "IR": "clarinet_week=40*3=120,piano_week=28*5=140,diff_week=140-120=20,difference_per_year=20*52=1040",
+          "R": "1040"
+        },
+        "communication_tokens": 48,
+        "communication_tokens_exact": true,
+        "attempt_count": 1,
+        "fallback": false,
+        "tokens_include_all_attempts": true,
+        "incoming_message_ids": [
+          "b2800336f12a"
+        ]
+      }
+    },
+    {
+      "sender": "verifier",
+      "content": "CHK:ACCEPT",
+      "receiver": "solver",
+      "round": 0,
+      "role": "assistant",
+      "prompt_tokens": 1080,
+      "completion_tokens": 5,
+      "id": "ee4ae0a8b5b6",
+      "ts": 1793094477.4293785,
+      "meta": {
+        "sender": "verifier",
+        "receiver": "solver",
+        "message_id": "ee4ae0a8b5b6",
+        "protocol_edge": "verifier_to_solver",
+        "protocol_version": "CARD-0-gsm8k",
+        "protocol_hash": "eb2823227bf7889a5ca248376e410b4922fec80b12249ba4d10a3c8452604ed2",
+        "contract_hash": "ac09c03455d8af3a35273b605bb457591de11f0e22bded3325bbb626ee774caf",
+        "fields": {
+          "CHK": "ACCEPT"
+        },
+        "communication_tokens": 5,
+        "communication_tokens_exact": true,
+        "attempt_count": 1,
+        "fallback": false,
+        "tokens_include_all_attempts": true,
+        "incoming_message_ids": [
+          "4ca32459faa4"
+        ]
+      }
+    }
+  ],
+  "communication_tokens": 140,
+  "wall_time_s": 3.8398937999736518,
+  "verified": true,
+  "revision_rounds": 0,
+  "model_calls": [
+    {
+      "role": "planner",
+      "attempt": 0,
+      "status": "delivered",
+      "error": "",
+      "raw_output": "K:clarinet_rate=40,clarinet_hours=3,piano_rate=28,piano_hours=5,weeks=52;G:difference_per_year;P:clarinet_week=clarinet_rate*clarinet_hours,piano_week=piano_rate*piano_hours,diff_week=piano_week-clarinet_week,difference_per_year=diff_week*weeks",
+      "finish_reason": "stop",
+      "output_tokens": 87,
+      "usage_available": true
+    },
+    {
+      "role": "solver",
+      "attempt": 0,
+      "status": "delivered",
+      "error": "",
+      "raw_output": "IR:clarinet_week=40*3=120,piano_week=28*5=140,diff_week=140-120=20,difference_per_year=20*52=1040;R:1040",
+      "finish_reason": "stop",
+      "output_tokens": 48,
+      "usage_available": true
+    },
+    {
+      "role": "verifier",
+      "attempt": 0,
+      "status": "delivered",
+      "error": "",
+      "raw_output": "CHK:ACCEPT",
+      "finish_reason": "stop",
+      "output_tokens": 5,
+      "usage_available": true
+    }
+  ],
+  "failed_attempts": [],
+  "calls": 3,
+  "usage_complete": true,
+  "known_input_tokens": 2592,
+  "known_output_tokens": 140,
+  "model_input_tokens": 2592,
+  "model_output_tokens": 140,
+  "format_failed_calls": 0,
+  "transport_failed_calls": 0,
+  "fallback_calls": 0,
+  "sum_model_latency_s": 3.6940011978149414
+}

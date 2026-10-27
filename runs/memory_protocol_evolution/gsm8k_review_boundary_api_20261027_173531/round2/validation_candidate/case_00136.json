@@ -1,0 +1,152 @@
+{
+  "task_id": "gsm8k:train:seed42:V:00136",
+  "status": "completed",
+  "error": null,
+  "prediction": "6",
+  "messages": [
+    {
+      "sender": "planner",
+      "content": "G:eggs_not_eaten_per_week;K:trays_per_week=2,eggs_per_tray=24,children_morning_eggs=2,adults_night_eggs=4;P:weekly_supply=2*24,daily_consumption=2+4,weekly_consumption=7*(2+4),not_eaten=2*24-7*(2+4)",
+      "receiver": "solver",
+      "round": 0,
+      "role": "assistant",
+      "prompt_tokens": 766,
+      "completion_tokens": 92,
+      "id": "fe743f6987c8",
+      "ts": 1793097742.5350902,
+      "meta": {
+        "sender": "planner",
+        "receiver": "solver",
+        "message_id": "fe743f6987c8",
+        "protocol_edge": "planner_to_solver",
+        "protocol_version": "CARD-2-gsm8k",
+        "protocol_hash": "c152278e4a24181b874bd88cbf3adef79479b79f6539931bcd89721fa5a8a7a9",
+        "contract_hash": "ac09c03455d8af3a35273b605bb457591de11f0e22bded3325bbb626ee774caf",
+        "fields": {
+          "G": "eggs_not_eaten_per_week",
+          "K": "trays_per_week=2,eggs_per_tray=24,children_morning_eggs=2,adults_night_eggs=4",
+          "P": "weekly_supply=2*24,daily_consumption=2+4,weekly_consumption=7*(2+4),not_eaten=2*24-7*(2+4)"
+        },
+        "communication_tokens": 92,
+        "communication_tokens_exact": true,
+        "attempt_count": 1,
+        "fallback": false,
+        "tokens_include_all_attempts": true,
+        "incoming_message_ids": []
+      }
+    },
+    {
+      "sender": "solver",
+      "content": "IR:supply=2*24=48,consumption=7*(2+4)=42,not_eaten=48-42=6;R:6",
+      "receiver": "verifier",
+      "round": 0,
+      "role": "assistant",
+      "prompt_tokens": 801,
+      "completion_tokens": 35,
+      "id": "eec59002c9ad",
+      "ts": 1793097744.5478969,
+      "meta": {
+        "sender": "solver",
+        "receiver": "verifier",
+        "message_id": "eec59002c9ad",
+        "protocol_edge": "solver_to_verifier",
+        "protocol_version": "CARD-2-gsm8k",
+        "protocol_hash": "c152278e4a24181b874bd88cbf3adef79479b79f6539931bcd89721fa5a8a7a9",
+        "contract_hash": "ac09c03455d8af3a35273b605bb457591de11f0e22bded3325bbb626ee774caf",
+        "fields": {
+          "IR": "supply=2*24=48,consumption=7*(2+4)=42,not_eaten=48-42=6",
+          "R": "6"
+        },
+        "communication_tokens": 35,
+        "communication_tokens_exact": true,
+        "attempt_count": 1,
+        "fallback": false,
+        "tokens_include_all_attempts": true,
+        "incoming_message_ids": [
+          "fe743f6987c8"
+        ]
+      }
+    },
+    {
+      "sender": "verifier",
+      "content": "CHK:ACCEPT",
+      "receiver": "solver",
+      "round": 0,
+      "role": "assistant",
+      "prompt_tokens": 1076,
+      "completion_tokens": 5,
+      "id": "5c0bac8bc59d",
+      "ts": 1793097745.7751718,
+      "meta": {
+        "sender": "verifier",
+        "receiver": "solver",
+        "message_id": "5c0bac8bc59d",
+        "protocol_edge": "verifier_to_solver",
+        "protocol_version": "CARD-2-gsm8k",
+        "protocol_hash": "c152278e4a24181b874bd88cbf3adef79479b79f6539931bcd89721fa5a8a7a9",
+        "contract_hash": "ac09c03455d8af3a35273b605bb457591de11f0e22bded3325bbb626ee774caf",
+        "fields": {
+          "CHK": "ACCEPT"
+        },
+        "communication_tokens": 5,
+        "communication_tokens_exact": true,
+        "attempt_count": 1,
+        "fallback": false,
+        "tokens_include_all_attempts": true,
+        "incoming_message_ids": [
+          "eec59002c9ad"
+        ]
+      }
+    }
+  ],
+  "communication_tokens": 132,
+  "wall_time_s": 5.187682199990377,
+  "verified": true,
+  "revision_rounds": 0,
+  "model_calls": [
+    {
+      "role": "planner",
+      "attempt": 0,
+      "status": "delivered",
+      "error": "",
+      "raw_output": "G:eggs_not_eaten_per_week;K:trays_per_week=2,eggs_per_tray=24,children_morning_eggs=2,adults_night_eggs=4;P:weekly_supply=2*24,daily_consumption=2+4,weekly_consumption=7*(2+4),not_eaten=2*24-7*(2+4)",
+      "finish_reason": "stop",
+      "output_tokens": 92,
+      "usage_available": true
+    },
+    {
+      "role": "solver",
+      "attempt": 0,
+      "status": "delivered",
+      "error": "",
+      "raw_output": "IR:supply=2*24=48,consumption=7*(2+4)=42,not_eaten=48-42=6;R:6",
+      "finish_reason": "stop",
+      "output_tokens": 35,
+      "usage_available": true
+    },
+    {
+      "role": "verifier",
+      "attempt": 0,
+      "status": "delivered",
+      "error": "",
+      "raw_output": "CHK:ACCEPT",
+      "finish_reason": "stop",
+      "output_tokens": 5,
+      "usage_available": true
+    }
+  ],
+  "failed_attempts": [],
+  "calls": 3,
+  "usage_complete": true,
+  "known_input_tokens": 2643,
+  "known_output_tokens": 132,
+  "model_input_tokens": 2643,
+  "model_output_tokens": 132,
+  "format_failed_calls": 0,
+  "transport_failed_calls": 0,
+  "fallback_calls": 0,
+  "sum_model_latency_s": 5.130895614624023,
+  "gold": "6",
+  "score": 1.0,
+  "question": "Rhea buys 2 trays of eggs every week for her family. Her son and daughter eat 2 eggs every morning, and Rhea and her husband eat 4 eggs every night. If each tray has 24 eggs, how many eggs are not being eaten every week?\nGive the final numeric answer."
+}

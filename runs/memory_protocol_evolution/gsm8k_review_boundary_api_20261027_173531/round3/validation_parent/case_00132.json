@@ -1,0 +1,152 @@
+{
+  "task_id": "gsm8k:train:seed42:V:00132",
+  "status": "completed",
+  "error": null,
+  "prediction": "1600",
+  "messages": [
+    {
+      "sender": "planner",
+      "content": "K:cost_per_dog=250,dogs=2,puppies=6,price_per_puppy=350;G:total_profit;P:cost=250*2,revenue=350*6,profit=revenue-cost",
+      "receiver": "solver",
+      "round": 0,
+      "role": "assistant",
+      "prompt_tokens": 759,
+      "completion_tokens": 52,
+      "id": "9cdd858dde60",
+      "ts": 1793098884.8260398,
+      "meta": {
+        "sender": "planner",
+        "receiver": "solver",
+        "message_id": "9cdd858dde60",
+        "protocol_edge": "planner_to_solver",
+        "protocol_version": "CARD-2-gsm8k",
+        "protocol_hash": "c152278e4a24181b874bd88cbf3adef79479b79f6539931bcd89721fa5a8a7a9",
+        "contract_hash": "ac09c03455d8af3a35273b605bb457591de11f0e22bded3325bbb626ee774caf",
+        "fields": {
+          "K": "cost_per_dog=250,dogs=2,puppies=6,price_per_puppy=350",
+          "G": "total_profit",
+          "P": "cost=250*2,revenue=350*6,profit=revenue-cost"
+        },
+        "communication_tokens": 52,
+        "communication_tokens_exact": true,
+        "attempt_count": 1,
+        "fallback": false,
+        "tokens_include_all_attempts": true,
+        "incoming_message_ids": []
+      }
+    },
+    {
+      "sender": "solver",
+      "content": "IR:cost=250*2=500,revenue=350*6=2100,profit=2100-500=1600;R:1600",
+      "receiver": "verifier",
+      "round": 0,
+      "role": "assistant",
+      "prompt_tokens": 754,
+      "completion_tokens": 34,
+      "id": "16a5d9b5e999",
+      "ts": 1793098885.7949064,
+      "meta": {
+        "sender": "solver",
+        "receiver": "verifier",
+        "message_id": "16a5d9b5e999",
+        "protocol_edge": "solver_to_verifier",
+        "protocol_version": "CARD-2-gsm8k",
+        "protocol_hash": "c152278e4a24181b874bd88cbf3adef79479b79f6539931bcd89721fa5a8a7a9",
+        "contract_hash": "ac09c03455d8af3a35273b605bb457591de11f0e22bded3325bbb626ee774caf",
+        "fields": {
+          "IR": "cost=250*2=500,revenue=350*6=2100,profit=2100-500=1600",
+          "R": "1600"
+        },
+        "communication_tokens": 34,
+        "communication_tokens_exact": true,
+        "attempt_count": 1,
+        "fallback": false,
+        "tokens_include_all_attempts": true,
+        "incoming_message_ids": [
+          "9cdd858dde60"
+        ]
+      }
+    },
+    {
+      "sender": "verifier",
+      "content": "CHK:ACCEPT",
+      "receiver": "solver",
+      "round": 0,
+      "role": "assistant",
+      "prompt_tokens": 1068,
+      "completion_tokens": 5,
+      "id": "e5f4168ecf2f",
+      "ts": 1793098887.0139084,
+      "meta": {
+        "sender": "verifier",
+        "receiver": "solver",
+        "message_id": "e5f4168ecf2f",
+        "protocol_edge": "verifier_to_solver",
+        "protocol_version": "CARD-2-gsm8k",
+        "protocol_hash": "c152278e4a24181b874bd88cbf3adef79479b79f6539931bcd89721fa5a8a7a9",
+        "contract_hash": "ac09c03455d8af3a35273b605bb457591de11f0e22bded3325bbb626ee774caf",
+        "fields": {
+          "CHK": "ACCEPT"
+        },
+        "communication_tokens": 5,
+        "communication_tokens_exact": true,
+        "attempt_count": 1,
+        "fallback": false,
+        "tokens_include_all_attempts": true,
+        "incoming_message_ids": [
+          "16a5d9b5e999"
+        ]
+      }
+    }
+  ],
+  "communication_tokens": 91,
+  "wall_time_s": 3.366505300044082,
+  "verified": true,
+  "revision_rounds": 0,
+  "model_calls": [
+    {
+      "role": "planner",
+      "attempt": 0,
+      "status": "delivered",
+      "error": "",
+      "raw_output": "K:cost_per_dog=250,dogs=2,puppies=6,price_per_puppy=350;G:total_profit;P:cost=250*2,revenue=350*6,profit=revenue-cost",
+      "finish_reason": "stop",
+      "output_tokens": 52,
+      "usage_available": true
+    },
+    {
+      "role": "solver",
+      "attempt": 0,
+      "status": "delivered",
+      "error": "",
+      "raw_output": "IR:cost=250*2=500,revenue=350*6=2100,profit=2100-500=1600;R:1600",
+      "finish_reason": "stop",
+      "output_tokens": 34,
+      "usage_available": true
+    },
+    {
+      "role": "verifier",
+      "attempt": 0,
+      "status": "delivered",
+      "error": "",
+      "raw_output": "CHK:ACCEPT",
+      "finish_reason": "stop",
+      "output_tokens": 5,
+      "usage_available": true
+    }
+  ],
+  "failed_attempts": [],
+  "calls": 3,
+  "usage_complete": true,
+  "known_input_tokens": 2581,
+  "known_output_tokens": 91,
+  "model_input_tokens": 2581,
+  "model_output_tokens": 91,
+  "format_failed_calls": 0,
+  "transport_failed_calls": 0,
+  "fallback_calls": 0,
+  "sum_model_latency_s": 3.2643563747406006,
+  "gold": "1600",
+  "score": 1.0,
+  "question": "Bob bought 2 show dogs for $250.00 each to breed as a side business.  The female just had a litter of 6 puppies.  If he sells each puppy for $350.00, what is his total profit?\nGive the final numeric answer."
+}

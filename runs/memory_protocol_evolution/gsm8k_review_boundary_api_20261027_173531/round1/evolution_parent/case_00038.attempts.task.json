@@ -1,0 +1,160 @@
+{
+  "task_id": "gsm8k:train:seed42:G1:00038",
+  "status": "failed",
+  "error": "verifier exhausted 3 attempts: Connection error.",
+  "prediction": "65",
+  "messages": [
+    {
+      "sender": "planner",
+      "content": "K:friends=3,gift_each=20,kept=5;G:initial_marbles;P:initial=kept+friends*gift_each",
+      "receiver": "solver",
+      "round": 0,
+      "role": "assistant",
+      "prompt_tokens": 722,
+      "completion_tokens": 36,
+      "id": "c065eada3f1e",
+      "ts": 1793094040.1653304,
+      "meta": {
+        "sender": "planner",
+        "receiver": "solver",
+        "message_id": "c065eada3f1e",
+        "protocol_edge": "planner_to_solver",
+        "protocol_version": "CARD-0-gsm8k",
+        "protocol_hash": "eb2823227bf7889a5ca248376e410b4922fec80b12249ba4d10a3c8452604ed2",
+        "contract_hash": "ac09c03455d8af3a35273b605bb457591de11f0e22bded3325bbb626ee774caf",
+        "fields": {
+          "K": "friends=3,gift_each=20,kept=5",
+          "G": "initial_marbles",
+          "P": "initial=kept+friends*gift_each"
+        },
+        "communication_tokens": 36,
+        "communication_tokens_exact": true,
+        "attempt_count": 1,
+        "fallback": false,
+        "tokens_include_all_attempts": true,
+        "incoming_message_ids": []
+      }
+    },
+    {
+      "sender": "solver",
+      "content": "IR:initial=5+3*20=65;R:65",
+      "receiver": "verifier",
+      "round": 0,
+      "role": "assistant",
+      "prompt_tokens": 733,
+      "completion_tokens": 15,
+      "id": "81ef09b013ec",
+      "ts": 1793094041.6595623,
+      "meta": {
+        "sender": "solver",
+        "receiver": "verifier",
+        "message_id": "81ef09b013ec",
+        "protocol_edge": "solver_to_verifier",
+        "protocol_version": "CARD-0-gsm8k",
+        "protocol_hash": "eb2823227bf7889a5ca248376e410b4922fec80b12249ba4d10a3c8452604ed2",
+        "contract_hash": "ac09c03455d8af3a35273b605bb457591de11f0e22bded3325bbb626ee774caf",
+        "fields": {
+          "IR": "initial=5+3*20=65",
+          "R": "65"
+        },
+        "communication_tokens": 15,
+        "communication_tokens_exact": true,
+        "attempt_count": 1,
+        "fallback": false,
+        "tokens_include_all_attempts": true,
+        "incoming_message_ids": [
+          "c065eada3f1e"
+        ]
+      }
+    }
+  ],
+  "communication_tokens": 51,
+  "wall_time_s": 13.906333500053734,
+  "verified": false,
+  "revision_rounds": 0,
+  "model_calls": [
+    {
+      "role": "planner",
+      "attempt": 0,
+      "status": "delivered",
+      "error": "",
+      "raw_output": "K:friends=3,gift_each=20,kept=5;G:initial_marbles;P:initial=kept+friends*gift_each",
+      "finish_reason": "stop",
+      "output_tokens": 36,
+      "usage_available": true
+    },
+    {
+      "role": "solver",
+      "attempt": 0,
+      "status": "delivered",
+      "error": "",
+      "raw_output": "IR:initial=5+3*20=65;R:65",
+      "finish_reason": "stop",
+      "output_tokens": 15,
+      "usage_available": true
+    },
+    {
+      "role": "verifier",
+      "attempt": 0,
+      "status": "transport_error",
+      "error": "Connection error.",
+      "raw_output": "",
+      "finish_reason": "unavailable",
+      "output_tokens": 0,
+      "usage_available": false
+    },
+    {
+      "role": "verifier",
+      "attempt": 1,
+      "status": "transport_error",
+      "error": "Connection error.",
+      "raw_output": "",
+      "finish_reason": "unavailable",
+      "output_tokens": 0,
+      "usage_available": false
+    },
+    {
+      "role": "verifier",
+      "attempt": 2,
+      "status": "transport_error",
+      "error": "Connection error.",
+      "raw_output": "",
+      "finish_reason": "unavailable",
+      "output_tokens": 0,
+      "usage_available": false
+    }
+  ],
+  "failed_attempts": [
+    {
+      "status": "transport_error",
+      "error": "Connection error.",
+      "raw_output": "",
+      "attempt": 0,
+      "role": "verifier"
+    },
+    {
+      "status": "transport_error",
+      "error": "Connection error.",
+      "raw_output": "",
+      "attempt": 1,
+      "role": "verifier"
+    },
+    {
+      "status": "transport_error",
+      "error": "Connection error.",
+      "raw_output": "",
+      "attempt": 2,
+      "role": "verifier"
+    }
+  ],
+  "calls": 5,
+  "usage_complete": false,
+  "known_input_tokens": 1455,
+  "known_output_tokens": 51,
+  "model_input_tokens": null,
+  "model_output_tokens": null,
+  "format_failed_calls": 0,
+  "transport_failed_calls": 3,
+  "fallback_calls": 0,
+  "sum_model_latency_s": 2.878061056137085
+}

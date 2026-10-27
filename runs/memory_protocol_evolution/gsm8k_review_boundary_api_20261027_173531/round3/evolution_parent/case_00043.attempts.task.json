@@ -1,0 +1,149 @@
+{
+  "task_id": "gsm8k:train:seed42:G3:00043",
+  "status": "completed",
+  "error": null,
+  "prediction": "210",
+  "messages": [
+    {
+      "sender": "planner",
+      "content": "G:total_apples;K:men=2,women=3,apples_per_man=30,women_less_by=20;P:apples_per_woman=apples_per_man+women_less_by,total=men*apples_per_man+women*apples_per_woman",
+      "receiver": "solver",
+      "round": 0,
+      "role": "assistant",
+      "prompt_tokens": 747,
+      "completion_tokens": 67,
+      "id": "31b52daa1813",
+      "ts": 1793098147.9718144,
+      "meta": {
+        "sender": "planner",
+        "receiver": "solver",
+        "message_id": "31b52daa1813",
+        "protocol_edge": "planner_to_solver",
+        "protocol_version": "CARD-2-gsm8k",
+        "protocol_hash": "c152278e4a24181b874bd88cbf3adef79479b79f6539931bcd89721fa5a8a7a9",
+        "contract_hash": "ac09c03455d8af3a35273b605bb457591de11f0e22bded3325bbb626ee774caf",
+        "fields": {
+          "G": "total_apples",
+          "K": "men=2,women=3,apples_per_man=30,women_less_by=20",
+          "P": "apples_per_woman=apples_per_man+women_less_by,total=men*apples_per_man+women*apples_per_woman"
+        },
+        "communication_tokens": 67,
+        "communication_tokens_exact": true,
+        "attempt_count": 1,
+        "fallback": false,
+        "tokens_include_all_attempts": true,
+        "incoming_message_ids": []
+      }
+    },
+    {
+      "sender": "solver",
+      "content": "IR:apples_per_woman=30+20=50,total=2*30+3*50=210;R:210",
+      "receiver": "verifier",
+      "round": 0,
+      "role": "assistant",
+      "prompt_tokens": 757,
+      "completion_tokens": 29,
+      "id": "a88c3da86bd4",
+      "ts": 1793098149.2500596,
+      "meta": {
+        "sender": "solver",
+        "receiver": "verifier",
+        "message_id": "a88c3da86bd4",
+        "protocol_edge": "solver_to_verifier",
+        "protocol_version": "CARD-2-gsm8k",
+        "protocol_hash": "c152278e4a24181b874bd88cbf3adef79479b79f6539931bcd89721fa5a8a7a9",
+        "contract_hash": "ac09c03455d8af3a35273b605bb457591de11f0e22bded3325bbb626ee774caf",
+        "fields": {
+          "IR": "apples_per_woman=30+20=50,total=2*30+3*50=210",
+          "R": "210"
+        },
+        "communication_tokens": 29,
+        "communication_tokens_exact": true,
+        "attempt_count": 1,
+        "fallback": false,
+        "tokens_include_all_attempts": true,
+        "incoming_message_ids": [
+          "31b52daa1813"
+        ]
+      }
+    },
+    {
+      "sender": "verifier",
+      "content": "CHK:ACCEPT",
+      "receiver": "solver",
+      "round": 0,
+      "role": "assistant",
+      "prompt_tokens": 1051,
+      "completion_tokens": 5,
+      "id": "8455bbe85777",
+      "ts": 1793098150.348314,
+      "meta": {
+        "sender": "verifier",
+        "receiver": "solver",
+        "message_id": "8455bbe85777",
+        "protocol_edge": "verifier_to_solver",
+        "protocol_version": "CARD-2-gsm8k",
+        "protocol_hash": "c152278e4a24181b874bd88cbf3adef79479b79f6539931bcd89721fa5a8a7a9",
+        "contract_hash": "ac09c03455d8af3a35273b605bb457591de11f0e22bded3325bbb626ee774caf",
+        "fields": {
+          "CHK": "ACCEPT"
+        },
+        "communication_tokens": 5,
+        "communication_tokens_exact": true,
+        "attempt_count": 1,
+        "fallback": false,
+        "tokens_include_all_attempts": true,
+        "incoming_message_ids": [
+          "a88c3da86bd4"
+        ]
+      }
+    }
+  ],
+  "communication_tokens": 101,
+  "wall_time_s": 4.266188399982639,
+  "verified": true,
+  "revision_rounds": 0,
+  "model_calls": [
+    {
+      "role": "planner",
+      "attempt": 0,
+      "status": "delivered",
+      "error": "",
+      "raw_output": "G:total_apples;K:men=2,women=3,apples_per_man=30,women_less_by=20;P:apples_per_woman=apples_per_man+women_less_by,total=men*apples_per_man+women*apples_per_woman",
+      "finish_reason": "stop",
+      "output_tokens": 67,
+      "usage_available": true
+    },
+    {
+      "role": "solver",
+      "attempt": 0,
+      "status": "delivered",
+      "error": "",
+      "raw_output": "IR:apples_per_woman=30+20=50,total=2*30+3*50=210;R:210",
+      "finish_reason": "stop",
+      "output_tokens": 29,
+      "usage_available": true
+    },
+    {
+      "role": "verifier",
+      "attempt": 0,
+      "status": "delivered",
+      "error": "",
+      "raw_output": "CHK:ACCEPT",
+      "finish_reason": "stop",
+      "output_tokens": 5,
+      "usage_available": true
+    }
+  ],
+  "failed_attempts": [],
+  "calls": 3,
+  "usage_complete": true,
+  "known_input_tokens": 2555,
+  "known_output_tokens": 101,
+  "model_input_tokens": 2555,
+  "model_output_tokens": 101,
+  "format_failed_calls": 0,
+  "transport_failed_calls": 0,
+  "fallback_calls": 0,
+  "sum_model_latency_s": 4.1561665534973145
+}

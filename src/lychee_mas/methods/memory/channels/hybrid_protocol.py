@@ -3,19 +3,22 @@ from __future__ import annotations
 
 import hashlib
 import json
+import re
 from pathlib import Path
 from typing import Any
+
+from ..protocol.base import ProtocolContract
+
+
+class ProtocolValidationError(ValueError):
+    """Invalid wire content, distinguishable from config/tokenizer failures."""
 
 
 class HybridProtocolMemory:
     """Validate and retain one previous-agent message, like the prev_output strategy."""
 
-    ERROR_TYPES = frozenset({
-        "ARITH", "RELATION", "MISSING_FACT", "MISSING_UNIT",
-        "WRONG_TARGET", "INSUFFICIENT_INFO", "OTHER",
-    })
-
-    def __init__(self, protocol_path: str, task: str, tokenizer: Any = None) -> None:
+    def __init__(self, protocol_path: str, task: str, tokenizer: Any = None, *,
+                 contract: ProtocolContract | dict | None = None) -> None:
         import yaml  # Config dependency, loaded only when this strategy is used.
 
         raw = yaml.safe_load(Path(protocol_path).read_text(encoding="utf-8"))
@@ -24,6 +27,18 @@ class HybridProtocolMemory:
         scope = raw.get("task_card", {})
         if not isinstance(scope, dict) or scope.get("task") != task:
             raise ValueError(f"task card does not support task {task!r}")
+        if contract is None:
+            if "validation_contract" not in raw:
+                raise ValueError("legacy task card requires an explicit protocol contract")
+            contract = ProtocolContract.from_dict(raw["validation_contract"])
+        elif isinstance(contract, dict):
+            contract = ProtocolContract.from_dict(contract)
+        if not isinstance(contract, ProtocolContract):
+            raise ValueError("protocol contract must be a contract or serialized mapping")
+        if contract.task != task:
+            raise ValueError("protocol contract does not support task")
+        contract.check_card(raw, require_identity="validation_contract" in raw)
+        self.contract = contract
         roles, edges = scope.get("roles", []), scope.get("edges", [])
         if not roles or not edges:
             raise ValueError("task card must declare roles and edges")
@@ -41,8 +56,6 @@ class HybridProtocolMemory:
             allowed, required = card.get("allowed_fields", []), card.get("required_fields", [])
             if not allowed or not set(required).issubset(allowed):
                 raise ValueError(f"invalid fields for edge {edge!r}")
-            if "NL" in allowed and raw.get("allow_nl_field") is not True:
-                raise ValueError("NL field requires allow_nl_field: true")
             self._cards[edge] = card
             self._pairs[sender, receiver] = edge
         if raw.get("message_format", {}).get("wire_syntax") != "direct":
@@ -55,9 +68,14 @@ class HybridProtocolMemory:
             material, sort_keys=True, ensure_ascii=False, separators=(",", ":"),
         ).encode()).hexdigest()
         self.task = task
+        self._raw = raw
         self._value_policy = dict(raw.get("value_policy", {}))
         self.tokenizer = tokenizer
         self._last: dict[str, Any] | None = None
+
+    def check_architecture(self, architecture: Any) -> None:
+        """Explicit caller contract; legacy cards use structural compatibility checks."""
+        architecture.check_card(self._raw, self.task)
 
     def _edge(self, sender: str, receiver: str | None) -> str:
         try:
@@ -84,8 +102,7 @@ class HybridProtocolMemory:
             lines.append(f"Value policy {name}: {rule}")
         if card.get("output_schema"):
             lines.append(card["output_schema"])
-        if "CHK" in card["allowed_fields"]:
-            lines.append(f"Error categories for E: {', '.join(sorted(self.ERROR_TYPES))}")
+        lines.extend(self.contract.validation_for(edge).instruction_lines)
         lines.extend(f"Example: {example}" for example in card.get("examples", []))
         return "\n".join(lines)
 
@@ -93,30 +110,38 @@ class HybridProtocolMemory:
         edge = self._edge(sender, receiver)
         card = self._cards[edge]
         if not isinstance(payload, str) or not payload.strip():
-            raise ValueError("protocol payload must be a nonempty string")
+            raise ProtocolValidationError("protocol payload must be a nonempty string")
         fields: dict[str, str] = {}
         for segment in payload.strip().split(";"):
+            segment = segment.strip()
             name, separator, value = segment.strip().partition(":")
             name, value = name.strip(), value.strip()
-            if not separator or not value:
-                raise ValueError(f"invalid field segment: {segment!r}")
+            if not segment or not separator:
+                raise ProtocolValidationError(f"invalid field segment: {segment!r}")
             if name not in card["allowed_fields"]:
-                raise ValueError(f"unknown field {name!r} on {edge}")
+                raise ProtocolValidationError(f"unknown field: {name!r}")
             if name in fields:
-                raise ValueError(f"duplicate field {name!r}")
+                raise ProtocolValidationError(f"duplicate field: {name!r}")
+            if not value:
+                raise ProtocolValidationError(f"empty field value: {name!r}")
+            labels = set(dict(self.contract.field_meanings)) | set(self.contract.reserved_fields)
+            pattern = "|".join(re.escape(label) for label in sorted(labels))
+            embedded = re.search(rf"(?:^|[\r\n])\s*({pattern})\s*:", value)
+            if embedded:
+                raise ProtocolValidationError(
+                    f"missing semicolon before field {embedded.group(1)!r} inside {name!r}; "
+                    "separate every field with ';', not a newline"
+                )
             fields[name] = value
         missing = set(card["required_fields"]) - fields.keys()
         if missing:
-            raise ValueError(f"missing required fields: {sorted(missing)}")
-        if "CHK" in card["allowed_fields"]:
-            if fields.get("CHK") == "ACCEPT":
-                if set(fields) != {"CHK"}:
-                    raise ValueError("ACCEPT must contain only CHK:ACCEPT")
-            elif fields.get("CHK") == "REVISE":
-                if not fields.get("REQ") or fields.get("E") not in self.ERROR_TYPES:
-                    raise ValueError("REVISE requires a valid E and a nonempty REQ")
-            else:
-                raise ValueError("CHK must be ACCEPT or REVISE")
+            raise ProtocolValidationError(f"missing required fields: {sorted(missing)}")
+        validation = self.contract.validation_for(edge)
+        try:
+            for rule in (*validation.conditions, *validation.fields):
+                rule.check(fields)
+        except ValueError as exc:
+            raise ProtocolValidationError(str(exc)) from exc
         return fields
 
     def observe(self, sender: str, payload: str, *, receiver: str | None,
@@ -131,6 +156,7 @@ class HybridProtocolMemory:
             "sender": sender, "receiver": receiver, "message_id": message_id,
             "protocol_edge": self._edge(sender, receiver),
             "protocol_version": self.version, "protocol_hash": self.protocol_hash,
+            "contract_hash": self.contract.fingerprint,
             "fields": fields, "communication_tokens": tokens,
             "communication_tokens_exact": tokens is not None, "payload": payload,
         }

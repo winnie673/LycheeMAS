@@ -1,0 +1,151 @@
+{
+  "task_id": "gsm8k:train:seed42:G1:00036",
+  "status": "completed",
+  "error": null,
+  "prediction": "22",
+  "messages": [
+    {
+      "sender": "planner",
+      "content": "G:final_chip_bags;P:final=20-4+6",
+      "receiver": "solver",
+      "round": 0,
+      "role": "assistant",
+      "prompt_tokens": 720,
+      "completion_tokens": 17,
+      "id": "53350a0731b4",
+      "ts": 1793094032.3620822,
+      "meta": {
+        "sender": "planner",
+        "receiver": "solver",
+        "message_id": "53350a0731b4",
+        "protocol_edge": "planner_to_solver",
+        "protocol_version": "CARD-0-gsm8k",
+        "protocol_hash": "eb2823227bf7889a5ca248376e410b4922fec80b12249ba4d10a3c8452604ed2",
+        "contract_hash": "ac09c03455d8af3a35273b605bb457591de11f0e22bded3325bbb626ee774caf",
+        "fields": {
+          "G": "final_chip_bags",
+          "P": "final=20-4+6"
+        },
+        "communication_tokens": 17,
+        "communication_tokens_exact": true,
+        "attempt_count": 1,
+        "fallback": false,
+        "tokens_include_all_attempts": true,
+        "incoming_message_ids": []
+      }
+    },
+    {
+      "sender": "solver",
+      "content": "IR:20-4=16,16+6=22;R:22",
+      "receiver": "verifier",
+      "round": 0,
+      "role": "assistant",
+      "prompt_tokens": 712,
+      "completion_tokens": 17,
+      "id": "663fa4d81fd8",
+      "ts": 1793094033.5035236,
+      "meta": {
+        "sender": "solver",
+        "receiver": "verifier",
+        "message_id": "663fa4d81fd8",
+        "protocol_edge": "solver_to_verifier",
+        "protocol_version": "CARD-0-gsm8k",
+        "protocol_hash": "eb2823227bf7889a5ca248376e410b4922fec80b12249ba4d10a3c8452604ed2",
+        "contract_hash": "ac09c03455d8af3a35273b605bb457591de11f0e22bded3325bbb626ee774caf",
+        "fields": {
+          "IR": "20-4=16,16+6=22",
+          "R": "22"
+        },
+        "communication_tokens": 17,
+        "communication_tokens_exact": true,
+        "attempt_count": 1,
+        "fallback": false,
+        "tokens_include_all_attempts": true,
+        "incoming_message_ids": [
+          "53350a0731b4"
+        ]
+      }
+    },
+    {
+      "sender": "verifier",
+      "content": "CHK:ACCEPT",
+      "receiver": "solver",
+      "round": 0,
+      "role": "assistant",
+      "prompt_tokens": 1044,
+      "completion_tokens": 5,
+      "id": "ca8cba1ac47d",
+      "ts": 1793094034.325793,
+      "meta": {
+        "sender": "verifier",
+        "receiver": "solver",
+        "message_id": "ca8cba1ac47d",
+        "protocol_edge": "verifier_to_solver",
+        "protocol_version": "CARD-0-gsm8k",
+        "protocol_hash": "eb2823227bf7889a5ca248376e410b4922fec80b12249ba4d10a3c8452604ed2",
+        "contract_hash": "ac09c03455d8af3a35273b605bb457591de11f0e22bded3325bbb626ee774caf",
+        "fields": {
+          "CHK": "ACCEPT"
+        },
+        "communication_tokens": 5,
+        "communication_tokens_exact": true,
+        "attempt_count": 1,
+        "fallback": false,
+        "tokens_include_all_attempts": true,
+        "incoming_message_ids": [
+          "663fa4d81fd8"
+        ]
+      }
+    }
+  ],
+  "communication_tokens": 39,
+  "wall_time_s": 3.1521312999539077,
+  "verified": true,
+  "revision_rounds": 0,
+  "model_calls": [
+    {
+      "role": "planner",
+      "attempt": 0,
+      "status": "delivered",
+      "error": "",
+      "raw_output": "G:final_chip_bags;P:final=20-4+6",
+      "finish_reason": "stop",
+      "output_tokens": 17,
+      "usage_available": true
+    },
+    {
+      "role": "solver",
+      "attempt": 0,
+      "status": "delivered",
+      "error": "",
+      "raw_output": "IR:20-4=16,16+6=22;R:22",
+      "finish_reason": "stop",
+      "output_tokens": 17,
+      "usage_available": true
+    },
+    {
+      "role": "verifier",
+      "attempt": 0,
+      "status": "delivered",
+      "error": "",
+      "raw_output": "CHK:ACCEPT",
+      "finish_reason": "stop",
+      "output_tokens": 5,
+      "usage_available": true
+    }
+  ],
+  "failed_attempts": [],
+  "calls": 3,
+  "usage_complete": true,
+  "known_input_tokens": 2476,
+  "known_output_tokens": 39,
+  "model_input_tokens": 2476,
+  "model_output_tokens": 39,
+  "format_failed_calls": 0,
+  "transport_failed_calls": 0,
+  "fallback_calls": 0,
+  "sum_model_latency_s": 3.0335137844085693,
+  "gold": "22",
+  "score": 1.0,
+  "question": "Abie had 20 bags of chips. She gave 4 bags to her friend and bought another 6 bags of chips in the store. How many bags of chips does Abie have in the end?\nGive the final numeric answer."
+}

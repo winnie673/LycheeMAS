@@ -1,0 +1,151 @@
+{
+  "task_id": "gsm8k:train:seed42:V:00005",
+  "status": "completed",
+  "error": null,
+  "prediction": "7",
+  "messages": [
+    {
+      "sender": "planner",
+      "content": "G:weeks;P:hours_per_night=4-1,pages_per_night=hours_per_night*5,weeks=735/(pages_per_night*7)",
+      "receiver": "solver",
+      "round": 0,
+      "role": "assistant",
+      "prompt_tokens": 748,
+      "completion_tokens": 40,
+      "id": "ea645cdcddd7",
+      "ts": 1793099147.7548985,
+      "meta": {
+        "sender": "planner",
+        "receiver": "solver",
+        "message_id": "ea645cdcddd7",
+        "protocol_edge": "planner_to_solver",
+        "protocol_version": "CARD-2-gsm8k",
+        "protocol_hash": "c152278e4a24181b874bd88cbf3adef79479b79f6539931bcd89721fa5a8a7a9",
+        "contract_hash": "ac09c03455d8af3a35273b605bb457591de11f0e22bded3325bbb626ee774caf",
+        "fields": {
+          "G": "weeks",
+          "P": "hours_per_night=4-1,pages_per_night=hours_per_night*5,weeks=735/(pages_per_night*7)"
+        },
+        "communication_tokens": 40,
+        "communication_tokens_exact": true,
+        "attempt_count": 1,
+        "fallback": false,
+        "tokens_include_all_attempts": true,
+        "incoming_message_ids": []
+      }
+    },
+    {
+      "sender": "solver",
+      "content": "IR:hours_per_night=4-1=3,pages_per_night=3*5=15,pages_per_week=15*7=105,weeks=735/105=7;R:7",
+      "receiver": "verifier",
+      "round": 0,
+      "role": "assistant",
+      "prompt_tokens": 731,
+      "completion_tokens": 47,
+      "id": "b3f1e67d53a8",
+      "ts": 1793099148.9520826,
+      "meta": {
+        "sender": "solver",
+        "receiver": "verifier",
+        "message_id": "b3f1e67d53a8",
+        "protocol_edge": "solver_to_verifier",
+        "protocol_version": "CARD-2-gsm8k",
+        "protocol_hash": "c152278e4a24181b874bd88cbf3adef79479b79f6539931bcd89721fa5a8a7a9",
+        "contract_hash": "ac09c03455d8af3a35273b605bb457591de11f0e22bded3325bbb626ee774caf",
+        "fields": {
+          "IR": "hours_per_night=4-1=3,pages_per_night=3*5=15,pages_per_week=15*7=105,weeks=735/105=7",
+          "R": "7"
+        },
+        "communication_tokens": 47,
+        "communication_tokens_exact": true,
+        "attempt_count": 1,
+        "fallback": false,
+        "tokens_include_all_attempts": true,
+        "incoming_message_ids": [
+          "ea645cdcddd7"
+        ]
+      }
+    },
+    {
+      "sender": "verifier",
+      "content": "CHK:ACCEPT",
+      "receiver": "solver",
+      "round": 0,
+      "role": "assistant",
+      "prompt_tokens": 1070,
+      "completion_tokens": 5,
+      "id": "d3284faa34d0",
+      "ts": 1793099150.0977466,
+      "meta": {
+        "sender": "verifier",
+        "receiver": "solver",
+        "message_id": "d3284faa34d0",
+        "protocol_edge": "verifier_to_solver",
+        "protocol_version": "CARD-2-gsm8k",
+        "protocol_hash": "c152278e4a24181b874bd88cbf3adef79479b79f6539931bcd89721fa5a8a7a9",
+        "contract_hash": "ac09c03455d8af3a35273b605bb457591de11f0e22bded3325bbb626ee774caf",
+        "fields": {
+          "CHK": "ACCEPT"
+        },
+        "communication_tokens": 5,
+        "communication_tokens_exact": true,
+        "attempt_count": 1,
+        "fallback": false,
+        "tokens_include_all_attempts": true,
+        "incoming_message_ids": [
+          "b3f1e67d53a8"
+        ]
+      }
+    }
+  ],
+  "communication_tokens": 92,
+  "wall_time_s": 3.409274799982086,
+  "verified": true,
+  "revision_rounds": 0,
+  "model_calls": [
+    {
+      "role": "planner",
+      "attempt": 0,
+      "status": "delivered",
+      "error": "",
+      "raw_output": "G:weeks;P:hours_per_night=4-1,pages_per_night=hours_per_night*5,weeks=735/(pages_per_night*7)",
+      "finish_reason": "stop",
+      "output_tokens": 40,
+      "usage_available": true
+    },
+    {
+      "role": "solver",
+      "attempt": 0,
+      "status": "delivered",
+      "error": "",
+      "raw_output": "IR:hours_per_night=4-1=3,pages_per_night=3*5=15,pages_per_week=15*7=105,weeks=735/105=7;R:7",
+      "finish_reason": "stop",
+      "output_tokens": 47,
+      "usage_available": true
+    },
+    {
+      "role": "verifier",
+      "attempt": 0,
+      "status": "delivered",
+      "error": "",
+      "raw_output": "CHK:ACCEPT",
+      "finish_reason": "stop",
+      "output_tokens": 5,
+      "usage_available": true
+    }
+  ],
+  "failed_attempts": [],
+  "calls": 3,
+  "usage_complete": true,
+  "known_input_tokens": 2549,
+  "known_output_tokens": 92,
+  "model_input_tokens": 2549,
+  "model_output_tokens": 92,
+  "format_failed_calls": 0,
+  "transport_failed_calls": 0,
+  "fallback_calls": 0,
+  "sum_model_latency_s": 3.30364990234375,
+  "gold": "7",
+  "score": 1.0,
+  "question": "James writes from 1 PM to 4 PM every night.  He can write 5 pages per hour.  How many weeks will it take to finish his 735-page book?\nGive the final numeric answer."
+}

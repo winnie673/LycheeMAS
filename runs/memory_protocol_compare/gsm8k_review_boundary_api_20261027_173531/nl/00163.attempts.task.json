@@ -1,0 +1,95 @@
+{
+  "task_id": "gsm8k:test:seed42:T:00168",
+  "mode": "nl",
+  "benchmark": "gsm8k",
+  "status": "completed",
+  "error": null,
+  "prediction": "18",
+  "gold": "18",
+  "wall_time_s": 4.268109300057404,
+  "communication_tokens": 105,
+  "communication_tokens_exact": true,
+  "revision_rounds": 0,
+  "verification_decision": "ACCEPT",
+  "verified": true,
+  "messages": [
+    {
+      "sender": "planner",
+      "content": "Goal: Find how much money Jimmy has.\n\nPlan: Use Ethel’s amount of $8. Twice Ethel’s money is 2 × 8. Jimmy has $2 more than that, so add 2 to the doubled amount.\n\nConstraint: Compute the result from the given values only.",
+      "receiver": "solver",
+      "round": 0,
+      "role": "assistant",
+      "prompt_tokens": 181,
+      "completion_tokens": 63,
+      "id": "cbb92d217359",
+      "ts": 1793101600.2104564,
+      "meta": {
+        "fields": {},
+        "communication_tokens": 63,
+        "communication_tokens_exact": true,
+        "attempt_count": 1,
+        "fallback": false,
+        "tokens_include_all_attempts": true,
+        "incoming_message_ids": []
+      }
+    },
+    {
+      "sender": "solver",
+      "content": "Twice Ethel’s money is \\(2 \\times 8 = 16\\). Jimmy has $2 more, so \\(16 + 2 = 18\\).\n\n\\boxed{18}",
+      "receiver": "verifier",
+      "round": 0,
+      "role": "assistant",
+      "prompt_tokens": 256,
+      "completion_tokens": 40,
+      "id": "213ac8eacc0d",
+      "ts": 1793101601.501714,
+      "meta": {
+        "fields": {
+          "R": "18"
+        },
+        "communication_tokens": 40,
+        "communication_tokens_exact": true,
+        "attempt_count": 1,
+        "fallback": false,
+        "tokens_include_all_attempts": true,
+        "incoming_message_ids": [
+          "cbb92d217359"
+        ]
+      }
+    },
+    {
+      "sender": "verifier",
+      "content": "ACCEPT",
+      "receiver": "solver",
+      "round": 0,
+      "role": "assistant",
+      "prompt_tokens": 610,
+      "completion_tokens": 2,
+      "id": "4d956b8c7468",
+      "ts": 1793101602.8213239,
+      "meta": {
+        "fields": {
+          "CHK": "ACCEPT"
+        },
+        "communication_tokens": 2,
+        "communication_tokens_exact": true,
+        "attempt_count": 1,
+        "fallback": false,
+        "tokens_include_all_attempts": true,
+        "incoming_message_ids": [
+          "213ac8eacc0d"
+        ]
+      }
+    }
+  ],
+  "calls": 3,
+  "usage_complete": true,
+  "known_input_tokens": 1047,
+  "known_output_tokens": 105,
+  "model_input_tokens": 1047,
+  "model_output_tokens": 105,
+  "format_failed_calls": 0,
+  "transport_failed_calls": 0,
+  "fallback_calls": 0,
+  "sum_model_latency_s": 4.208423614501953
+}

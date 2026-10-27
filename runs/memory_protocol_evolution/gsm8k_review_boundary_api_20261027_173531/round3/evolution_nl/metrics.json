@@ -1,0 +1,9 @@
+{
+  "n": 50,
+  "correct": 49.0,
+  "accuracy": 0.98,
+  "failed": 0,
+  "avg_communication_tokens": 151.96,
+  "avg_model_output_tokens": 153.68,
+  "avg_wall_time_s": 3.8794326700037347
+}

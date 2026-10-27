@@ -1,0 +1,95 @@
+{
+  "task_id": "gsm8k:test:seed42:T:00117",
+  "mode": "nl",
+  "benchmark": "gsm8k",
+  "status": "completed",
+  "error": null,
+  "prediction": "360",
+  "gold": "360",
+  "wall_time_s": 3.7706806999631226,
+  "communication_tokens": 108,
+  "communication_tokens_exact": true,
+  "revision_rounds": 0,
+  "verification_decision": "ACCEPT",
+  "verified": true,
+  "messages": [
+    {
+      "sender": "planner",
+      "content": "Goal: Find the total amount John paid.\n\nPlan: Determine how many pairs of shoes John buys in total by multiplying 2 pairs per child by 3 children. Then multiply that total number of pairs by the cost of $60 per pair.\n\nConstraints: Use only the given quantities and price; provide the final total cost.",
+      "receiver": "solver",
+      "round": 0,
+      "role": "assistant",
+      "prompt_tokens": 182,
+      "completion_tokens": 65,
+      "id": "2a11d3f5778b",
+      "ts": 1793101200.5515213,
+      "meta": {
+        "fields": {},
+        "communication_tokens": 65,
+        "communication_tokens_exact": true,
+        "attempt_count": 1,
+        "fallback": false,
+        "tokens_include_all_attempts": true,
+        "incoming_message_ids": []
+      }
+    },
+    {
+      "sender": "solver",
+      "content": "John buys \\(2 \\times 3 = 6\\) pairs of shoes.  \nAt $60 each, the total is \\(6 \\times 60 = 360\\).\n\n\\boxed{360}",
+      "receiver": "verifier",
+      "round": 0,
+      "role": "assistant",
+      "prompt_tokens": 259,
+      "completion_tokens": 41,
+      "id": "dc34e7b069b6",
+      "ts": 1793101201.4890957,
+      "meta": {
+        "fields": {
+          "R": "360"
+        },
+        "communication_tokens": 41,
+        "communication_tokens_exact": true,
+        "attempt_count": 1,
+        "fallback": false,
+        "tokens_include_all_attempts": true,
+        "incoming_message_ids": [
+          "2a11d3f5778b"
+        ]
+      }
+    },
+    {
+      "sender": "verifier",
+      "content": "ACCEPT",
+      "receiver": "solver",
+      "round": 0,
+      "role": "assistant",
+      "prompt_tokens": 612,
+      "completion_tokens": 2,
+      "id": "f5f3d2ea7766",
+      "ts": 1793101203.0534897,
+      "meta": {
+        "fields": {
+          "CHK": "ACCEPT"
+        },
+        "communication_tokens": 2,
+        "communication_tokens_exact": true,
+        "attempt_count": 1,
+        "fallback": false,
+        "tokens_include_all_attempts": true,
+        "incoming_message_ids": [
+          "dc34e7b069b6"
+        ]
+      }
+    }
+  ],
+  "calls": 3,
+  "usage_complete": true,
+  "known_input_tokens": 1053,
+  "known_output_tokens": 108,
+  "model_input_tokens": 1053,
+  "model_output_tokens": 108,
+  "format_failed_calls": 0,
+  "transport_failed_calls": 0,
+  "fallback_calls": 0,
+  "sum_model_latency_s": 3.6789934635162354
+}

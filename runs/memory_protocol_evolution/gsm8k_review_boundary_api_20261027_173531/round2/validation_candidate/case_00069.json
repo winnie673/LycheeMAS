@@ -1,0 +1,152 @@
+{
+  "task_id": "gsm8k:train:seed42:V:00069",
+  "status": "completed",
+  "error": null,
+  "prediction": "27",
+  "messages": [
+    {
+      "sender": "planner",
+      "content": "K:chips_bags=3,chips_price=1.00,creme=5.00,caviar=73.00,people=3;G:cost_per_person;P:total=chips_bags*chips_price+creme+caviar,cost_per_person=total/people",
+      "receiver": "solver",
+      "round": 0,
+      "role": "assistant",
+      "prompt_tokens": 798,
+      "completion_tokens": 69,
+      "id": "2f47d82f02b6",
+      "ts": 1793097493.7654026,
+      "meta": {
+        "sender": "planner",
+        "receiver": "solver",
+        "message_id": "2f47d82f02b6",
+        "protocol_edge": "planner_to_solver",
+        "protocol_version": "CARD-2-gsm8k",
+        "protocol_hash": "c152278e4a24181b874bd88cbf3adef79479b79f6539931bcd89721fa5a8a7a9",
+        "contract_hash": "ac09c03455d8af3a35273b605bb457591de11f0e22bded3325bbb626ee774caf",
+        "fields": {
+          "K": "chips_bags=3,chips_price=1.00,creme=5.00,caviar=73.00,people=3",
+          "G": "cost_per_person",
+          "P": "total=chips_bags*chips_price+creme+caviar,cost_per_person=total/people"
+        },
+        "communication_tokens": 69,
+        "communication_tokens_exact": true,
+        "attempt_count": 1,
+        "fallback": false,
+        "tokens_include_all_attempts": true,
+        "incoming_message_ids": []
+      }
+    },
+    {
+      "sender": "solver",
+      "content": "IR:chips=3*1=3,total=3+5+73=81,cost_per_person=81/3=27;R:27",
+      "receiver": "verifier",
+      "round": 0,
+      "role": "assistant",
+      "prompt_tokens": 810,
+      "completion_tokens": 35,
+      "id": "e54a5a8f93d3",
+      "ts": 1793097495.3734577,
+      "meta": {
+        "sender": "solver",
+        "receiver": "verifier",
+        "message_id": "e54a5a8f93d3",
+        "protocol_edge": "solver_to_verifier",
+        "protocol_version": "CARD-2-gsm8k",
+        "protocol_hash": "c152278e4a24181b874bd88cbf3adef79479b79f6539931bcd89721fa5a8a7a9",
+        "contract_hash": "ac09c03455d8af3a35273b605bb457591de11f0e22bded3325bbb626ee774caf",
+        "fields": {
+          "IR": "chips=3*1=3,total=3+5+73=81,cost_per_person=81/3=27",
+          "R": "27"
+        },
+        "communication_tokens": 35,
+        "communication_tokens_exact": true,
+        "attempt_count": 1,
+        "fallback": false,
+        "tokens_include_all_attempts": true,
+        "incoming_message_ids": [
+          "2f47d82f02b6"
+        ]
+      }
+    },
+    {
+      "sender": "verifier",
+      "content": "CHK:ACCEPT",
+      "receiver": "solver",
+      "round": 0,
+      "role": "assistant",
+      "prompt_tokens": 1108,
+      "completion_tokens": 5,
+      "id": "0c5d777475c9",
+      "ts": 1793097496.1037333,
+      "meta": {
+        "sender": "verifier",
+        "receiver": "solver",
+        "message_id": "0c5d777475c9",
+        "protocol_edge": "verifier_to_solver",
+        "protocol_version": "CARD-2-gsm8k",
+        "protocol_hash": "c152278e4a24181b874bd88cbf3adef79479b79f6539931bcd89721fa5a8a7a9",
+        "contract_hash": "ac09c03455d8af3a35273b605bb457591de11f0e22bded3325bbb626ee774caf",
+        "fields": {
+          "CHK": "ACCEPT"
+        },
+        "communication_tokens": 5,
+        "communication_tokens_exact": true,
+        "attempt_count": 1,
+        "fallback": false,
+        "tokens_include_all_attempts": true,
+        "incoming_message_ids": [
+          "e54a5a8f93d3"
+        ]
+      }
+    }
+  ],
+  "communication_tokens": 109,
+  "wall_time_s": 3.5644710999913514,
+  "verified": true,
+  "revision_rounds": 0,
+  "model_calls": [
+    {
+      "role": "planner",
+      "attempt": 0,
+      "status": "delivered",
+      "error": "",
+      "raw_output": "K:chips_bags=3,chips_price=1.00,creme=5.00,caviar=73.00,people=3;G:cost_per_person;P:total=chips_bags*chips_price+creme+caviar,cost_per_person=total/people",
+      "finish_reason": "stop",
+      "output_tokens": 69,
+      "usage_available": true
+    },
+    {
+      "role": "solver",
+      "attempt": 0,
+      "status": "delivered",
+      "error": "",
+      "raw_output": "IR:chips=3*1=3,total=3+5+73=81,cost_per_person=81/3=27;R:27",
+      "finish_reason": "stop",
+      "output_tokens": 35,
+      "usage_available": true
+    },
+    {
+      "role": "verifier",
+      "attempt": 0,
+      "status": "delivered",
+      "error": "",
+      "raw_output": "CHK:ACCEPT",
+      "finish_reason": "stop",
+      "output_tokens": 5,
+      "usage_available": true
+    }
+  ],
+  "failed_attempts": [],
+  "calls": 3,
+  "usage_complete": true,
+  "known_input_tokens": 2716,
+  "known_output_tokens": 109,
+  "model_input_tokens": 2716,
+  "model_output_tokens": 109,
+  "format_failed_calls": 0,
+  "transport_failed_calls": 0,
+  "fallback_calls": 0,
+  "sum_model_latency_s": 3.442795991897583,
+  "gold": "27",
+  "score": 1.0,
+  "question": "For a New Year’s Eve appetizer, Alex is serving caviar with potato chips and creme fraiche.  He buys 3 individual bags of potato chips for $1.00 each and dollops each chip with some creme fraiche that costs $5.00 and then the $73.00 caviar.  This appetizer will serve 3 people.  How much will this appetizer cost per person?\nGive the final numeric answer."
+}

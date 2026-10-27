@@ -1,0 +1,152 @@
+{
+  "task_id": "gsm8k:train:seed42:G3:00042",
+  "status": "completed",
+  "error": null,
+  "prediction": "30",
+  "messages": [
+    {
+      "sender": "planner",
+      "content": "G:total_water_wasted_mL;K:drips_per_minute=10,drops_per_hour=60,volume_per_drop_mL=0.05;P:total_drops=drips_per_minute*drops_per_hour,total_water_wasted_mL=total_drops*volume_per_drop_mL",
+      "receiver": "solver",
+      "round": 0,
+      "role": "assistant",
+      "prompt_tokens": 750,
+      "completion_tokens": 71,
+      "id": "da3e839356ce",
+      "ts": 1793098143.773672,
+      "meta": {
+        "sender": "planner",
+        "receiver": "solver",
+        "message_id": "da3e839356ce",
+        "protocol_edge": "planner_to_solver",
+        "protocol_version": "CARD-2-gsm8k",
+        "protocol_hash": "c152278e4a24181b874bd88cbf3adef79479b79f6539931bcd89721fa5a8a7a9",
+        "contract_hash": "ac09c03455d8af3a35273b605bb457591de11f0e22bded3325bbb626ee774caf",
+        "fields": {
+          "G": "total_water_wasted_mL",
+          "K": "drips_per_minute=10,drops_per_hour=60,volume_per_drop_mL=0.05",
+          "P": "total_drops=drips_per_minute*drops_per_hour,total_water_wasted_mL=total_drops*volume_per_drop_mL"
+        },
+        "communication_tokens": 71,
+        "communication_tokens_exact": true,
+        "attempt_count": 1,
+        "fallback": false,
+        "tokens_include_all_attempts": true,
+        "incoming_message_ids": []
+      }
+    },
+    {
+      "sender": "solver",
+      "content": "IR:total_drops=10*60=600,total_water_wasted_mL=600*0.05=30;R:30",
+      "receiver": "verifier",
+      "round": 0,
+      "role": "assistant",
+      "prompt_tokens": 764,
+      "completion_tokens": 31,
+      "id": "8272b588a656",
+      "ts": 1793098144.952998,
+      "meta": {
+        "sender": "solver",
+        "receiver": "verifier",
+        "message_id": "8272b588a656",
+        "protocol_edge": "solver_to_verifier",
+        "protocol_version": "CARD-2-gsm8k",
+        "protocol_hash": "c152278e4a24181b874bd88cbf3adef79479b79f6539931bcd89721fa5a8a7a9",
+        "contract_hash": "ac09c03455d8af3a35273b605bb457591de11f0e22bded3325bbb626ee774caf",
+        "fields": {
+          "IR": "total_drops=10*60=600,total_water_wasted_mL=600*0.05=30",
+          "R": "30"
+        },
+        "communication_tokens": 31,
+        "communication_tokens_exact": true,
+        "attempt_count": 1,
+        "fallback": false,
+        "tokens_include_all_attempts": true,
+        "incoming_message_ids": [
+          "da3e839356ce"
+        ]
+      }
+    },
+    {
+      "sender": "verifier",
+      "content": "CHK:ACCEPT",
+      "receiver": "solver",
+      "round": 0,
+      "role": "assistant",
+      "prompt_tokens": 1056,
+      "completion_tokens": 5,
+      "id": "15875c6710a0",
+      "ts": 1793098146.042048,
+      "meta": {
+        "sender": "verifier",
+        "receiver": "solver",
+        "message_id": "15875c6710a0",
+        "protocol_edge": "verifier_to_solver",
+        "protocol_version": "CARD-2-gsm8k",
+        "protocol_hash": "c152278e4a24181b874bd88cbf3adef79479b79f6539931bcd89721fa5a8a7a9",
+        "contract_hash": "ac09c03455d8af3a35273b605bb457591de11f0e22bded3325bbb626ee774caf",
+        "fields": {
+          "CHK": "ACCEPT"
+        },
+        "communication_tokens": 5,
+        "communication_tokens_exact": true,
+        "attempt_count": 1,
+        "fallback": false,
+        "tokens_include_all_attempts": true,
+        "incoming_message_ids": [
+          "8272b588a656"
+        ]
+      }
+    }
+  ],
+  "communication_tokens": 107,
+  "wall_time_s": 3.70011269999668,
+  "verified": true,
+  "revision_rounds": 0,
+  "model_calls": [
+    {
+      "role": "planner",
+      "attempt": 0,
+      "status": "delivered",
+      "error": "",
+      "raw_output": "G:total_water_wasted_mL;K:drips_per_minute=10,drops_per_hour=60,volume_per_drop_mL=0.05;P:total_drops=drips_per_minute*drops_per_hour,total_water_wasted_mL=total_drops*volume_per_drop_mL",
+      "finish_reason": "stop",
+      "output_tokens": 71,
+      "usage_available": true
+    },
+    {
+      "role": "solver",
+      "attempt": 0,
+      "status": "delivered",
+      "error": "",
+      "raw_output": "IR:total_drops=10*60=600,total_water_wasted_mL=600*0.05=30;R:30",
+      "finish_reason": "stop",
+      "output_tokens": 31,
+      "usage_available": true
+    },
+    {
+      "role": "verifier",
+      "attempt": 0,
+      "status": "delivered",
+      "error": "",
+      "raw_output": "CHK:ACCEPT",
+      "finish_reason": "stop",
+      "output_tokens": 5,
+      "usage_available": true
+    }
+  ],
+  "failed_attempts": [],
+  "calls": 3,
+  "usage_complete": true,
+  "known_input_tokens": 2570,
+  "known_output_tokens": 107,
+  "model_input_tokens": 2570,
+  "model_output_tokens": 107,
+  "format_failed_calls": 0,
+  "transport_failed_calls": 0,
+  "fallback_calls": 0,
+  "sum_model_latency_s": 3.588096857070923,
+  "gold": "30",
+  "score": 1.0,
+  "question": "The faucet in Betsy's bathroom is broken. Every minute it drips about 10 times. What amount of water is wasted during one hour if each drop contains 0.05 mL?\nGive the final numeric answer."
+}

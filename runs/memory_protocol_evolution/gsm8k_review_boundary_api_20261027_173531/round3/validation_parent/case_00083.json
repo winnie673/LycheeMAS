@@ -1,0 +1,152 @@
+{
+  "task_id": "gsm8k:train:seed42:V:00083",
+  "status": "completed",
+  "error": null,
+  "prediction": "6",
+  "messages": [
+    {
+      "sender": "planner",
+      "content": "G:difference_between_Albert_and_Joshua;K:Joshua=80,Jose=Joshua-14,Albert=Jose+20;P:difference=Albert-Joshua",
+      "receiver": "solver",
+      "round": 0,
+      "role": "assistant",
+      "prompt_tokens": 754,
+      "completion_tokens": 41,
+      "id": "add0be5d3d59",
+      "ts": 1793098679.7701511,
+      "meta": {
+        "sender": "planner",
+        "receiver": "solver",
+        "message_id": "add0be5d3d59",
+        "protocol_edge": "planner_to_solver",
+        "protocol_version": "CARD-2-gsm8k",
+        "protocol_hash": "c152278e4a24181b874bd88cbf3adef79479b79f6539931bcd89721fa5a8a7a9",
+        "contract_hash": "ac09c03455d8af3a35273b605bb457591de11f0e22bded3325bbb626ee774caf",
+        "fields": {
+          "G": "difference_between_Albert_and_Joshua",
+          "K": "Joshua=80,Jose=Joshua-14,Albert=Jose+20",
+          "P": "difference=Albert-Joshua"
+        },
+        "communication_tokens": 41,
+        "communication_tokens_exact": true,
+        "attempt_count": 1,
+        "fallback": false,
+        "tokens_include_all_attempts": true,
+        "incoming_message_ids": []
+      }
+    },
+    {
+      "sender": "solver",
+      "content": "IR:Jose=80-14=66,Albert=66+20=86,difference=86-80=6;R:6",
+      "receiver": "verifier",
+      "round": 0,
+      "role": "assistant",
+      "prompt_tokens": 738,
+      "completion_tokens": 30,
+      "id": "8e2acc4c4fd9",
+      "ts": 1793098680.576967,
+      "meta": {
+        "sender": "solver",
+        "receiver": "verifier",
+        "message_id": "8e2acc4c4fd9",
+        "protocol_edge": "solver_to_verifier",
+        "protocol_version": "CARD-2-gsm8k",
+        "protocol_hash": "c152278e4a24181b874bd88cbf3adef79479b79f6539931bcd89721fa5a8a7a9",
+        "contract_hash": "ac09c03455d8af3a35273b605bb457591de11f0e22bded3325bbb626ee774caf",
+        "fields": {
+          "IR": "Jose=80-14=66,Albert=66+20=86,difference=86-80=6",
+          "R": "6"
+        },
+        "communication_tokens": 30,
+        "communication_tokens_exact": true,
+        "attempt_count": 1,
+        "fallback": false,
+        "tokens_include_all_attempts": true,
+        "incoming_message_ids": [
+          "add0be5d3d59"
+        ]
+      }
+    },
+    {
+      "sender": "verifier",
+      "content": "CHK:ACCEPT",
+      "receiver": "solver",
+      "round": 0,
+      "role": "assistant",
+      "prompt_tokens": 1059,
+      "completion_tokens": 5,
+      "id": "0f87151b375a",
+      "ts": 1793098681.579744,
+      "meta": {
+        "sender": "verifier",
+        "receiver": "solver",
+        "message_id": "0f87151b375a",
+        "protocol_edge": "verifier_to_solver",
+        "protocol_version": "CARD-2-gsm8k",
+        "protocol_hash": "c152278e4a24181b874bd88cbf3adef79479b79f6539931bcd89721fa5a8a7a9",
+        "contract_hash": "ac09c03455d8af3a35273b605bb457591de11f0e22bded3325bbb626ee774caf",
+        "fields": {
+          "CHK": "ACCEPT"
+        },
+        "communication_tokens": 5,
+        "communication_tokens_exact": true,
+        "attempt_count": 1,
+        "fallback": false,
+        "tokens_include_all_attempts": true,
+        "incoming_message_ids": [
+          "8e2acc4c4fd9"
+        ]
+      }
+    }
+  ],
+  "communication_tokens": 76,
+  "wall_time_s": 3.1043621000135317,
+  "verified": true,
+  "revision_rounds": 0,
+  "model_calls": [
+    {
+      "role": "planner",
+      "attempt": 0,
+      "status": "delivered",
+      "error": "",
+      "raw_output": "G:difference_between_Albert_and_Joshua;K:Joshua=80,Jose=Joshua-14,Albert=Jose+20;P:difference=Albert-Joshua",
+      "finish_reason": "stop",
+      "output_tokens": 41,
+      "usage_available": true
+    },
+    {
+      "role": "solver",
+      "attempt": 0,
+      "status": "delivered",
+      "error": "",
+      "raw_output": "IR:Jose=80-14=66,Albert=66+20=86,difference=86-80=6;R:6",
+      "finish_reason": "stop",
+      "output_tokens": 30,
+      "usage_available": true
+    },
+    {
+      "role": "verifier",
+      "attempt": 0,
+      "status": "delivered",
+      "error": "",
+      "raw_output": "CHK:ACCEPT",
+      "finish_reason": "stop",
+      "output_tokens": 5,
+      "usage_available": true
+    }
+  ],
+  "failed_attempts": [],
+  "calls": 3,
+  "usage_complete": true,
+  "known_input_tokens": 2551,
+  "known_output_tokens": 76,
+  "model_input_tokens": 2551,
+  "model_output_tokens": 76,
+  "format_failed_calls": 0,
+  "transport_failed_calls": 0,
+  "fallback_calls": 0,
+  "sum_model_latency_s": 2.983907699584961,
+  "gold": "6",
+  "score": 1.0,
+  "question": "Joshua, Jose, and Albert are collecting rocks. Joshua collected 80 rocks while Jose collected 14 fewer rocks. Albert has collected 20 more rocks than Jose. How many more rocks did Albert collect than Joshua?\nGive the final numeric answer."
+}

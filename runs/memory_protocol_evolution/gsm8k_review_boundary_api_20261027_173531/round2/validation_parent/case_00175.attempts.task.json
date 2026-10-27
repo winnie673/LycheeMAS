@@ -1,0 +1,149 @@
+{
+  "task_id": "gsm8k:train:seed42:V:00175",
+  "status": "completed",
+  "error": null,
+  "prediction": "11250",
+  "messages": [
+    {
+      "sender": "planner",
+      "content": "K:refrigerators_per_hour=90,coolers_more_than_refrigerators=70,days=5,hours_per_day=9;G:total_products;P:coolers_per_hour=refrigerators_per_hour+70,products_per_hour=refrigerators_per_hour+coolers_per_hour,total_products=products_per_hour*days*hours_per_day",
+      "receiver": "solver",
+      "round": 0,
+      "role": "assistant",
+      "prompt_tokens": 722,
+      "completion_tokens": 88,
+      "id": "d85360a108ea",
+      "ts": 1793097119.0395947,
+      "meta": {
+        "sender": "planner",
+        "receiver": "solver",
+        "message_id": "d85360a108ea",
+        "protocol_edge": "planner_to_solver",
+        "protocol_version": "CARD-0-gsm8k",
+        "protocol_hash": "eb2823227bf7889a5ca248376e410b4922fec80b12249ba4d10a3c8452604ed2",
+        "contract_hash": "ac09c03455d8af3a35273b605bb457591de11f0e22bded3325bbb626ee774caf",
+        "fields": {
+          "K": "refrigerators_per_hour=90,coolers_more_than_refrigerators=70,days=5,hours_per_day=9",
+          "G": "total_products",
+          "P": "coolers_per_hour=refrigerators_per_hour+70,products_per_hour=refrigerators_per_hour+coolers_per_hour,total_products=products_per_hour*days*hours_per_day"
+        },
+        "communication_tokens": 88,
+        "communication_tokens_exact": true,
+        "attempt_count": 1,
+        "fallback": false,
+        "tokens_include_all_attempts": true,
+        "incoming_message_ids": []
+      }
+    },
+    {
+      "sender": "solver",
+      "content": "IR:coolers_per_hour=90+70=160,products_per_hour=90+160=250,total=250*5*9=11250;R:11250",
+      "receiver": "verifier",
+      "round": 0,
+      "role": "assistant",
+      "prompt_tokens": 785,
+      "completion_tokens": 40,
+      "id": "fe2a2a1318a9",
+      "ts": 1793097120.350999,
+      "meta": {
+        "sender": "solver",
+        "receiver": "verifier",
+        "message_id": "fe2a2a1318a9",
+        "protocol_edge": "solver_to_verifier",
+        "protocol_version": "CARD-0-gsm8k",
+        "protocol_hash": "eb2823227bf7889a5ca248376e410b4922fec80b12249ba4d10a3c8452604ed2",
+        "contract_hash": "ac09c03455d8af3a35273b605bb457591de11f0e22bded3325bbb626ee774caf",
+        "fields": {
+          "IR": "coolers_per_hour=90+70=160,products_per_hour=90+160=250,total=250*5*9=11250",
+          "R": "11250"
+        },
+        "communication_tokens": 40,
+        "communication_tokens_exact": true,
+        "attempt_count": 1,
+        "fallback": false,
+        "tokens_include_all_attempts": true,
+        "incoming_message_ids": [
+          "d85360a108ea"
+        ]
+      }
+    },
+    {
+      "sender": "verifier",
+      "content": "CHK:ACCEPT",
+      "receiver": "solver",
+      "round": 0,
+      "role": "assistant",
+      "prompt_tokens": 1069,
+      "completion_tokens": 5,
+      "id": "89c7008a45d7",
+      "ts": 1793097121.5368633,
+      "meta": {
+        "sender": "verifier",
+        "receiver": "solver",
+        "message_id": "89c7008a45d7",
+        "protocol_edge": "verifier_to_solver",
+        "protocol_version": "CARD-0-gsm8k",
+        "protocol_hash": "eb2823227bf7889a5ca248376e410b4922fec80b12249ba4d10a3c8452604ed2",
+        "contract_hash": "ac09c03455d8af3a35273b605bb457591de11f0e22bded3325bbb626ee774caf",
+        "fields": {
+          "CHK": "ACCEPT"
+        },
+        "communication_tokens": 5,
+        "communication_tokens_exact": true,
+        "attempt_count": 1,
+        "fallback": false,
+        "tokens_include_all_attempts": true,
+        "incoming_message_ids": [
+          "fe2a2a1318a9"
+        ]
+      }
+    }
+  ],
+  "communication_tokens": 133,
+  "wall_time_s": 4.250089199980721,
+  "verified": true,
+  "revision_rounds": 0,
+  "model_calls": [
+    {
+      "role": "planner",
+      "attempt": 0,
+      "status": "delivered",
+      "error": "",
+      "raw_output": "K:refrigerators_per_hour=90,coolers_more_than_refrigerators=70,days=5,hours_per_day=9;G:total_products;P:coolers_per_hour=refrigerators_per_hour+70,products_per_hour=refrigerators_per_hour+coolers_per_hour,total_products=products_per_hour*days*hours_per_day",
+      "finish_reason": "stop",
+      "output_tokens": 88,
+      "usage_available": true
+    },
+    {
+      "role": "solver",
+      "attempt": 0,
+      "status": "delivered",
+      "error": "",
+      "raw_output": "IR:coolers_per_hour=90+70=160,products_per_hour=90+160=250,total=250*5*9=11250;R:11250",
+      "finish_reason": "stop",
+      "output_tokens": 40,
+      "usage_available": true
+    },
+    {
+      "role": "verifier",
+      "attempt": 0,
+      "status": "delivered",
+      "error": "",
+      "raw_output": "CHK:ACCEPT",
+      "finish_reason": "stop",
+      "output_tokens": 5,
+      "usage_available": true
+    }
+  ],
+  "failed_attempts": [],
+  "calls": 3,
+  "usage_complete": true,
+  "known_input_tokens": 2576,
+  "known_output_tokens": 133,
+  "model_input_tokens": 2576,
+  "model_output_tokens": 133,
+  "format_failed_calls": 0,
+  "transport_failed_calls": 0,
+  "fallback_calls": 0,
+  "sum_model_latency_s": 4.146500825881958
+}

@@ -1,0 +1,149 @@
+{
+  "task_id": "gsm8k:train:seed42:G1:00030",
+  "status": "completed",
+  "error": null,
+  "prediction": "8",
+  "messages": [
+    {
+      "sender": "planner",
+      "content": "G:tip_amount_Billy_pays;P:meal_each=20+5,total=2*meal_each,tip20=0.2*total,billy_share=0.8*tip20;NL:Billy covers 80 percent of the 20 percent tip on both meals",
+      "receiver": "solver",
+      "round": 0,
+      "role": "assistant",
+      "prompt_tokens": 724,
+      "completion_tokens": 63,
+      "id": "6a72ef7f5954",
+      "ts": 1793094006.836461,
+      "meta": {
+        "sender": "planner",
+        "receiver": "solver",
+        "message_id": "6a72ef7f5954",
+        "protocol_edge": "planner_to_solver",
+        "protocol_version": "CARD-0-gsm8k",
+        "protocol_hash": "eb2823227bf7889a5ca248376e410b4922fec80b12249ba4d10a3c8452604ed2",
+        "contract_hash": "ac09c03455d8af3a35273b605bb457591de11f0e22bded3325bbb626ee774caf",
+        "fields": {
+          "G": "tip_amount_Billy_pays",
+          "P": "meal_each=20+5,total=2*meal_each,tip20=0.2*total,billy_share=0.8*tip20",
+          "NL": "Billy covers 80 percent of the 20 percent tip on both meals"
+        },
+        "communication_tokens": 63,
+        "communication_tokens_exact": true,
+        "attempt_count": 1,
+        "fallback": false,
+        "tokens_include_all_attempts": true,
+        "incoming_message_ids": []
+      }
+    },
+    {
+      "sender": "solver",
+      "content": "IR:meal_each=20+5=25,total=2*25=50,tip20=0.2*50=10,billy_share=0.8*10=8;R:8",
+      "receiver": "verifier",
+      "round": 0,
+      "role": "assistant",
+      "prompt_tokens": 762,
+      "completion_tokens": 46,
+      "id": "51c67e0adc16",
+      "ts": 1793094008.3107457,
+      "meta": {
+        "sender": "solver",
+        "receiver": "verifier",
+        "message_id": "51c67e0adc16",
+        "protocol_edge": "solver_to_verifier",
+        "protocol_version": "CARD-0-gsm8k",
+        "protocol_hash": "eb2823227bf7889a5ca248376e410b4922fec80b12249ba4d10a3c8452604ed2",
+        "contract_hash": "ac09c03455d8af3a35273b605bb457591de11f0e22bded3325bbb626ee774caf",
+        "fields": {
+          "IR": "meal_each=20+5=25,total=2*25=50,tip20=0.2*50=10,billy_share=0.8*10=8",
+          "R": "8"
+        },
+        "communication_tokens": 46,
+        "communication_tokens_exact": true,
+        "attempt_count": 1,
+        "fallback": false,
+        "tokens_include_all_attempts": true,
+        "incoming_message_ids": [
+          "6a72ef7f5954"
+        ]
+      }
+    },
+    {
+      "sender": "verifier",
+      "content": "CHK:ACCEPT",
+      "receiver": "solver",
+      "round": 0,
+      "role": "assistant",
+      "prompt_tokens": 1077,
+      "completion_tokens": 5,
+      "id": "cf749875f6b6",
+      "ts": 1793094009.5423427,
+      "meta": {
+        "sender": "verifier",
+        "receiver": "solver",
+        "message_id": "cf749875f6b6",
+        "protocol_edge": "verifier_to_solver",
+        "protocol_version": "CARD-0-gsm8k",
+        "protocol_hash": "eb2823227bf7889a5ca248376e410b4922fec80b12249ba4d10a3c8452604ed2",
+        "contract_hash": "ac09c03455d8af3a35273b605bb457591de11f0e22bded3325bbb626ee774caf",
+        "fields": {
+          "CHK": "ACCEPT"
+        },
+        "communication_tokens": 5,
+        "communication_tokens_exact": true,
+        "attempt_count": 1,
+        "fallback": false,
+        "tokens_include_all_attempts": true,
+        "incoming_message_ids": [
+          "51c67e0adc16"
+        ]
+      }
+    }
+  ],
+  "communication_tokens": 114,
+  "wall_time_s": 4.2491727999877185,
+  "verified": true,
+  "revision_rounds": 0,
+  "model_calls": [
+    {
+      "role": "planner",
+      "attempt": 0,
+      "status": "delivered",
+      "error": "",
+      "raw_output": "G:tip_amount_Billy_pays;P:meal_each=20+5,total=2*meal_each,tip20=0.2*total,billy_share=0.8*tip20;NL:Billy covers 80 percent of the 20 percent tip on both meals",
+      "finish_reason": "stop",
+      "output_tokens": 63,
+      "usage_available": true
+    },
+    {
+      "role": "solver",
+      "attempt": 0,
+      "status": "delivered",
+      "error": "",
+      "raw_output": "IR:meal_each=20+5=25,total=2*25=50,tip20=0.2*50=10,billy_share=0.8*10=8;R:8",
+      "finish_reason": "stop",
+      "output_tokens": 46,
+      "usage_available": true
+    },
+    {
+      "role": "verifier",
+      "attempt": 0,
+      "status": "delivered",
+      "error": "",
+      "raw_output": "CHK:ACCEPT",
+      "finish_reason": "stop",
+      "output_tokens": 5,
+      "usage_available": true
+    }
+  ],
+  "failed_attempts": [],
+  "calls": 3,
+  "usage_complete": true,
+  "known_input_tokens": 2563,
+  "known_output_tokens": 114,
+  "model_input_tokens": 2563,
+  "model_output_tokens": 114,
+  "format_failed_calls": 0,
+  "transport_failed_calls": 0,
+  "fallback_calls": 0,
+  "sum_model_latency_s": 4.1353325843811035
+}

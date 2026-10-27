@@ -35,6 +35,24 @@
 
 ## 框架总览
 
+本分支的 Hybrid 文本通道支持加载冻结任务卡。GSM8K 现有离线协议生成、G 集进化、
+V 集筛选和在线显式选卡入口，复用同一 CDM/static 图执行链路；不自动启动真实 API。
+使用方式及边界见 [memory README](src/lychee_mas/methods/memory/README.md)。
+核心协议机制不绑定任务或角色；`scripts/hybrid_gsm8k_spec.py` 统一实例化 GSM8K + PSV。
+旧冻结卡片由实验显式注入校验契约，新卡片携带契约；不等于支持任意图自动挂载。
+当前恢复版保留原实验的完整角色约束、初始语义审查与诊断驱动的有限补丁进化，
+具体边界及版本说明见 [memory README](src/lychee_mas/methods/memory/README.md)。
+默认 GSM8K 卡片现为 [gsm8k_psv_nl_field_card2_20261027.yaml](configs/memory/task_cards/gsm8k_psv_nl_field_card2_20261027.yaml)，
+由本地新流程的 V 集胜出卡显式发布；历史卡片保留，生成器不会自动覆盖默认配置。
+
+本分支仅存档最新成功结果（2026-10-27），不包含本地失败运行及其他历史产物：
+
+- [协议生成、三轮进化与 V 集筛选](runs/memory_protocol_evolution/gsm8k_review_boundary_api_20261027_173531/result.json)
+- [T 集 NL/Hybrid 对比](runs/memory_protocol_compare/gsm8k_review_boundary_api_20261027_173531/comparison.json)：
+  各 200 题，正确率分别为 98.5%/97.5%，平均通信 token 为 157.495/98.085。
+
+记录中的本地绝对路径保留原样用于审计，不代表克隆后的文件位置；模型凭据不随记录提交。
+
 五模块多智能体系统（MAS）研究框架。把整个 MAS 统一表示为一张带时序与记忆状态的有向图 **G=(V,E,W,T,M)**（载体 = LangGraph `StateGraph` + AgentSpec 节点契约）；**五个模块 = 五个挂载式接缝**，一切算法经 REGISTRY 按 `method` 名挂载。完整设计见 [`docs/DESIGN.md`](docs/DESIGN.md)：
 
 | 接缝 | 统一入口（`plugins/`） | 实现（`methods/`） | 职责 |

@@ -1,0 +1,151 @@
+{
+  "task_id": "gsm8k:train:seed42:G2:00012",
+  "status": "completed",
+  "error": null,
+  "prediction": "53",
+  "messages": [
+    {
+      "sender": "planner",
+      "content": "G:dogs_now;P:adopted=0.4*80,dogs_now=80-adopted+5",
+      "receiver": "solver",
+      "round": 0,
+      "role": "assistant",
+      "prompt_tokens": 724,
+      "completion_tokens": 24,
+      "id": "8f87268f0e1a",
+      "ts": 1793096040.1240284,
+      "meta": {
+        "sender": "planner",
+        "receiver": "solver",
+        "message_id": "8f87268f0e1a",
+        "protocol_edge": "planner_to_solver",
+        "protocol_version": "CARD-0-gsm8k",
+        "protocol_hash": "eb2823227bf7889a5ca248376e410b4922fec80b12249ba4d10a3c8452604ed2",
+        "contract_hash": "ac09c03455d8af3a35273b605bb457591de11f0e22bded3325bbb626ee774caf",
+        "fields": {
+          "G": "dogs_now",
+          "P": "adopted=0.4*80,dogs_now=80-adopted+5"
+        },
+        "communication_tokens": 24,
+        "communication_tokens_exact": true,
+        "attempt_count": 1,
+        "fallback": false,
+        "tokens_include_all_attempts": true,
+        "incoming_message_ids": []
+      }
+    },
+    {
+      "sender": "solver",
+      "content": "IR:adopted=0.4*80=32,dogs_now=80-32+5=53;R:53",
+      "receiver": "verifier",
+      "round": 0,
+      "role": "assistant",
+      "prompt_tokens": 723,
+      "completion_tokens": 27,
+      "id": "5099144188ed",
+      "ts": 1793096041.5602427,
+      "meta": {
+        "sender": "solver",
+        "receiver": "verifier",
+        "message_id": "5099144188ed",
+        "protocol_edge": "solver_to_verifier",
+        "protocol_version": "CARD-0-gsm8k",
+        "protocol_hash": "eb2823227bf7889a5ca248376e410b4922fec80b12249ba4d10a3c8452604ed2",
+        "contract_hash": "ac09c03455d8af3a35273b605bb457591de11f0e22bded3325bbb626ee774caf",
+        "fields": {
+          "IR": "adopted=0.4*80=32,dogs_now=80-32+5=53",
+          "R": "53"
+        },
+        "communication_tokens": 27,
+        "communication_tokens_exact": true,
+        "attempt_count": 1,
+        "fallback": false,
+        "tokens_include_all_attempts": true,
+        "incoming_message_ids": [
+          "8f87268f0e1a"
+        ]
+      }
+    },
+    {
+      "sender": "verifier",
+      "content": "CHK:ACCEPT",
+      "receiver": "solver",
+      "round": 0,
+      "role": "assistant",
+      "prompt_tokens": 1058,
+      "completion_tokens": 5,
+      "id": "b91104646aa2",
+      "ts": 1793096042.7905645,
+      "meta": {
+        "sender": "verifier",
+        "receiver": "solver",
+        "message_id": "b91104646aa2",
+        "protocol_edge": "verifier_to_solver",
+        "protocol_version": "CARD-0-gsm8k",
+        "protocol_hash": "eb2823227bf7889a5ca248376e410b4922fec80b12249ba4d10a3c8452604ed2",
+        "contract_hash": "ac09c03455d8af3a35273b605bb457591de11f0e22bded3325bbb626ee774caf",
+        "fields": {
+          "CHK": "ACCEPT"
+        },
+        "communication_tokens": 5,
+        "communication_tokens_exact": true,
+        "attempt_count": 1,
+        "fallback": false,
+        "tokens_include_all_attempts": true,
+        "incoming_message_ids": [
+          "5099144188ed"
+        ]
+      }
+    }
+  ],
+  "communication_tokens": 56,
+  "wall_time_s": 4.06123099999968,
+  "verified": true,
+  "revision_rounds": 0,
+  "model_calls": [
+    {
+      "role": "planner",
+      "attempt": 0,
+      "status": "delivered",
+      "error": "",
+      "raw_output": "G:dogs_now;P:adopted=0.4*80,dogs_now=80-adopted+5",
+      "finish_reason": "stop",
+      "output_tokens": 24,
+      "usage_available": true
+    },
+    {
+      "role": "solver",
+      "attempt": 0,
+      "status": "delivered",
+      "error": "",
+      "raw_output": "IR:adopted=0.4*80=32,dogs_now=80-32+5=53;R:53",
+      "finish_reason": "stop",
+      "output_tokens": 27,
+      "usage_available": true
+    },
+    {
+      "role": "verifier",
+      "attempt": 0,
+      "status": "delivered",
+      "error": "",
+      "raw_output": "CHK:ACCEPT",
+      "finish_reason": "stop",
+      "output_tokens": 5,
+      "usage_available": true
+    }
+  ],
+  "failed_attempts": [],
+  "calls": 3,
+  "usage_complete": true,
+  "known_input_tokens": 2505,
+  "known_output_tokens": 56,
+  "model_input_tokens": 2505,
+  "model_output_tokens": 56,
+  "format_failed_calls": 0,
+  "transport_failed_calls": 0,
+  "fallback_calls": 0,
+  "sum_model_latency_s": 3.9526772499084473,
+  "gold": "53",
+  "score": 1.0,
+  "question": "Harly's animal shelter has 80 dogs. She adopts out 40% of them but then has to take back 5 because of personality conflicts with other dogs in their adopted homes. How many dogs does she have now?\nGive the final numeric answer."
+}

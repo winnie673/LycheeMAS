@@ -1,0 +1,95 @@
+{
+  "task_id": "gsm8k:test:seed42:T:00196",
+  "mode": "nl",
+  "benchmark": "gsm8k",
+  "status": "completed",
+  "error": null,
+  "prediction": "120",
+  "gold": "120",
+  "wall_time_s": 3.703107099980116,
+  "communication_tokens": 102,
+  "communication_tokens_exact": true,
+  "revision_rounds": 0,
+  "verification_decision": "ACCEPT",
+  "verified": true,
+  "messages": [
+    {
+      "sender": "planner",
+      "content": "Goal: find how many pounds of carrots remain unused.\n\nPlan: Determine the total amount that will be distributed by multiplying the number of restaurants by the amount each receives, then subtract that distributed total from the original 200 pounds.\n\nConstraints: Use the given quantities only; report the unused amount in pounds.",
+      "receiver": "solver",
+      "round": 0,
+      "role": "assistant",
+      "prompt_tokens": 191,
+      "completion_tokens": 60,
+      "id": "428f785b4d63",
+      "ts": 1793101831.091257,
+      "meta": {
+        "fields": {},
+        "communication_tokens": 60,
+        "communication_tokens_exact": true,
+        "attempt_count": 1,
+        "fallback": false,
+        "tokens_include_all_attempts": true,
+        "incoming_message_ids": []
+      }
+    },
+    {
+      "sender": "solver",
+      "content": "The total distributed is \\(40 \\times 2 = 80\\) pounds. Subtract from 200 pounds: \\(200 - 80 = 120\\) pounds unused.\n\n\\boxed{120}",
+      "receiver": "verifier",
+      "round": 0,
+      "role": "assistant",
+      "prompt_tokens": 263,
+      "completion_tokens": 40,
+      "id": "5310dee11fd8",
+      "ts": 1793101832.3414338,
+      "meta": {
+        "fields": {
+          "R": "120"
+        },
+        "communication_tokens": 40,
+        "communication_tokens_exact": true,
+        "attempt_count": 1,
+        "fallback": false,
+        "tokens_include_all_attempts": true,
+        "incoming_message_ids": [
+          "428f785b4d63"
+        ]
+      }
+    },
+    {
+      "sender": "verifier",
+      "content": "ACCEPT",
+      "receiver": "solver",
+      "round": 0,
+      "role": "assistant",
+      "prompt_tokens": 620,
+      "completion_tokens": 2,
+      "id": "39b142e3986d",
+      "ts": 1793101833.43925,
+      "meta": {
+        "fields": {
+          "CHK": "ACCEPT"
+        },
+        "communication_tokens": 2,
+        "communication_tokens_exact": true,
+        "attempt_count": 1,
+        "fallback": false,
+        "tokens_include_all_attempts": true,
+        "incoming_message_ids": [
+          "5310dee11fd8"
+        ]
+      }
+    }
+  ],
+  "calls": 3,
+  "usage_complete": true,
+  "known_input_tokens": 1074,
+  "known_output_tokens": 102,
+  "model_input_tokens": 1074,
+  "model_output_tokens": 102,
+  "format_failed_calls": 0,
+  "transport_failed_calls": 0,
+  "fallback_calls": 0,
+  "sum_model_latency_s": 3.6300840377807617
+}

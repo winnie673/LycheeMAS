@@ -1,0 +1,149 @@
+{
+  "task_id": "gsm8k:train:seed42:V:00014",
+  "status": "completed",
+  "error": null,
+  "prediction": "80",
+  "messages": [
+    {
+      "sender": "planner",
+      "content": "K:lisa=12,sandra=20,cousin_frac=1/5,mom_extra=8,mom_mult=3;G:total_pairs;P:cousin=sandra*cousin_frac,mom=mom_mult*lisa+mom_extra,total=lisa+sandra+cousin+mom",
+      "receiver": "solver",
+      "round": 0,
+      "role": "assistant",
+      "prompt_tokens": 763,
+      "completion_tokens": 70,
+      "id": "3946e6115802",
+      "ts": 1793095245.5072446,
+      "meta": {
+        "sender": "planner",
+        "receiver": "solver",
+        "message_id": "3946e6115802",
+        "protocol_edge": "planner_to_solver",
+        "protocol_version": "CARD-0-gsm8k",
+        "protocol_hash": "eb2823227bf7889a5ca248376e410b4922fec80b12249ba4d10a3c8452604ed2",
+        "contract_hash": "ac09c03455d8af3a35273b605bb457591de11f0e22bded3325bbb626ee774caf",
+        "fields": {
+          "K": "lisa=12,sandra=20,cousin_frac=1/5,mom_extra=8,mom_mult=3",
+          "G": "total_pairs",
+          "P": "cousin=sandra*cousin_frac,mom=mom_mult*lisa+mom_extra,total=lisa+sandra+cousin+mom"
+        },
+        "communication_tokens": 70,
+        "communication_tokens_exact": true,
+        "attempt_count": 1,
+        "fallback": false,
+        "tokens_include_all_attempts": true,
+        "incoming_message_ids": []
+      }
+    },
+    {
+      "sender": "solver",
+      "content": "IR:cousin=20*1/5=4,mom=3*12+8=44,total=12+20+4+44=80;R:80",
+      "receiver": "verifier",
+      "round": 0,
+      "role": "assistant",
+      "prompt_tokens": 808,
+      "completion_tokens": 38,
+      "id": "73ce7a2c7dae",
+      "ts": 1793095246.9664083,
+      "meta": {
+        "sender": "solver",
+        "receiver": "verifier",
+        "message_id": "73ce7a2c7dae",
+        "protocol_edge": "solver_to_verifier",
+        "protocol_version": "CARD-0-gsm8k",
+        "protocol_hash": "eb2823227bf7889a5ca248376e410b4922fec80b12249ba4d10a3c8452604ed2",
+        "contract_hash": "ac09c03455d8af3a35273b605bb457591de11f0e22bded3325bbb626ee774caf",
+        "fields": {
+          "IR": "cousin=20*1/5=4,mom=3*12+8=44,total=12+20+4+44=80",
+          "R": "80"
+        },
+        "communication_tokens": 38,
+        "communication_tokens_exact": true,
+        "attempt_count": 1,
+        "fallback": false,
+        "tokens_include_all_attempts": true,
+        "incoming_message_ids": [
+          "3946e6115802"
+        ]
+      }
+    },
+    {
+      "sender": "verifier",
+      "content": "CHK:ACCEPT",
+      "receiver": "solver",
+      "round": 0,
+      "role": "assistant",
+      "prompt_tokens": 1108,
+      "completion_tokens": 5,
+      "id": "70b3f0ff381a",
+      "ts": 1793095248.7859614,
+      "meta": {
+        "sender": "verifier",
+        "receiver": "solver",
+        "message_id": "70b3f0ff381a",
+        "protocol_edge": "verifier_to_solver",
+        "protocol_version": "CARD-0-gsm8k",
+        "protocol_hash": "eb2823227bf7889a5ca248376e410b4922fec80b12249ba4d10a3c8452604ed2",
+        "contract_hash": "ac09c03455d8af3a35273b605bb457591de11f0e22bded3325bbb626ee774caf",
+        "fields": {
+          "CHK": "ACCEPT"
+        },
+        "communication_tokens": 5,
+        "communication_tokens_exact": true,
+        "attempt_count": 1,
+        "fallback": false,
+        "tokens_include_all_attempts": true,
+        "incoming_message_ids": [
+          "73ce7a2c7dae"
+        ]
+      }
+    }
+  ],
+  "communication_tokens": 113,
+  "wall_time_s": 4.9582899999804795,
+  "verified": true,
+  "revision_rounds": 0,
+  "model_calls": [
+    {
+      "role": "planner",
+      "attempt": 0,
+      "status": "delivered",
+      "error": "",
+      "raw_output": "K:lisa=12,sandra=20,cousin_frac=1/5,mom_extra=8,mom_mult=3;G:total_pairs;P:cousin=sandra*cousin_frac,mom=mom_mult*lisa+mom_extra,total=lisa+sandra+cousin+mom",
+      "finish_reason": "stop",
+      "output_tokens": 70,
+      "usage_available": true
+    },
+    {
+      "role": "solver",
+      "attempt": 0,
+      "status": "delivered",
+      "error": "",
+      "raw_output": "IR:cousin=20*1/5=4,mom=3*12+8=44,total=12+20+4+44=80;R:80",
+      "finish_reason": "stop",
+      "output_tokens": 38,
+      "usage_available": true
+    },
+    {
+      "role": "verifier",
+      "attempt": 0,
+      "status": "delivered",
+      "error": "",
+      "raw_output": "CHK:ACCEPT",
+      "finish_reason": "stop",
+      "output_tokens": 5,
+      "usage_available": true
+    }
+  ],
+  "failed_attempts": [],
+  "calls": 3,
+  "usage_complete": true,
+  "known_input_tokens": 2679,
+  "known_output_tokens": 113,
+  "model_input_tokens": 2679,
+  "model_output_tokens": 113,
+  "format_failed_calls": 0,
+  "transport_failed_calls": 0,
+  "fallback_calls": 0,
+  "sum_model_latency_s": 4.858520984649658
+}

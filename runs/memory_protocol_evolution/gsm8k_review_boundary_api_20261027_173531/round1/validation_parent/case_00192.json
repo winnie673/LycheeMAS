@@ -1,0 +1,152 @@
+{
+  "task_id": "gsm8k:train:seed42:V:00192",
+  "status": "completed",
+  "error": null,
+  "prediction": "35",
+  "messages": [
+    {
+      "sender": "planner",
+      "content": "G:total_coins;K:dimes_initial=2,quarters_initial=6,nickels_initial=5,dimes_added=2,quarters_added=10;P:nickels_added=2*nickels_initial,total=dimes_initial+quarters_initial+nickels_initial+dimes_added+quarters_added+nickels_added",
+      "receiver": "solver",
+      "round": 0,
+      "role": "assistant",
+      "prompt_tokens": 729,
+      "completion_tokens": 80,
+      "id": "7b2e9b761dba",
+      "ts": 1793095152.8694713,
+      "meta": {
+        "sender": "planner",
+        "receiver": "solver",
+        "message_id": "7b2e9b761dba",
+        "protocol_edge": "planner_to_solver",
+        "protocol_version": "CARD-0-gsm8k",
+        "protocol_hash": "eb2823227bf7889a5ca248376e410b4922fec80b12249ba4d10a3c8452604ed2",
+        "contract_hash": "ac09c03455d8af3a35273b605bb457591de11f0e22bded3325bbb626ee774caf",
+        "fields": {
+          "G": "total_coins",
+          "K": "dimes_initial=2,quarters_initial=6,nickels_initial=5,dimes_added=2,quarters_added=10",
+          "P": "nickels_added=2*nickels_initial,total=dimes_initial+quarters_initial+nickels_initial+dimes_added+quarters_added+nickels_added"
+        },
+        "communication_tokens": 80,
+        "communication_tokens_exact": true,
+        "attempt_count": 1,
+        "fallback": false,
+        "tokens_include_all_attempts": true,
+        "incoming_message_ids": []
+      }
+    },
+    {
+      "sender": "solver",
+      "content": "IR:nickels_added=2*5=10,total=2+6+5+2+10+10=35;R:35",
+      "receiver": "verifier",
+      "round": 0,
+      "role": "assistant",
+      "prompt_tokens": 784,
+      "completion_tokens": 32,
+      "id": "46a4104f1864",
+      "ts": 1793095153.6670568,
+      "meta": {
+        "sender": "solver",
+        "receiver": "verifier",
+        "message_id": "46a4104f1864",
+        "protocol_edge": "solver_to_verifier",
+        "protocol_version": "CARD-0-gsm8k",
+        "protocol_hash": "eb2823227bf7889a5ca248376e410b4922fec80b12249ba4d10a3c8452604ed2",
+        "contract_hash": "ac09c03455d8af3a35273b605bb457591de11f0e22bded3325bbb626ee774caf",
+        "fields": {
+          "IR": "nickels_added=2*5=10,total=2+6+5+2+10+10=35",
+          "R": "35"
+        },
+        "communication_tokens": 32,
+        "communication_tokens_exact": true,
+        "attempt_count": 1,
+        "fallback": false,
+        "tokens_include_all_attempts": true,
+        "incoming_message_ids": [
+          "7b2e9b761dba"
+        ]
+      }
+    },
+    {
+      "sender": "verifier",
+      "content": "CHK:ACCEPT",
+      "receiver": "solver",
+      "round": 0,
+      "role": "assistant",
+      "prompt_tokens": 1068,
+      "completion_tokens": 5,
+      "id": "5528983ffe94",
+      "ts": 1793095155.0453277,
+      "meta": {
+        "sender": "verifier",
+        "receiver": "solver",
+        "message_id": "5528983ffe94",
+        "protocol_edge": "verifier_to_solver",
+        "protocol_version": "CARD-0-gsm8k",
+        "protocol_hash": "eb2823227bf7889a5ca248376e410b4922fec80b12249ba4d10a3c8452604ed2",
+        "contract_hash": "ac09c03455d8af3a35273b605bb457591de11f0e22bded3325bbb626ee774caf",
+        "fields": {
+          "CHK": "ACCEPT"
+        },
+        "communication_tokens": 5,
+        "communication_tokens_exact": true,
+        "attempt_count": 1,
+        "fallback": false,
+        "tokens_include_all_attempts": true,
+        "incoming_message_ids": [
+          "46a4104f1864"
+        ]
+      }
+    }
+  ],
+  "communication_tokens": 117,
+  "wall_time_s": 3.865395799977705,
+  "verified": true,
+  "revision_rounds": 0,
+  "model_calls": [
+    {
+      "role": "planner",
+      "attempt": 0,
+      "status": "delivered",
+      "error": "",
+      "raw_output": "G:total_coins;K:dimes_initial=2,quarters_initial=6,nickels_initial=5,dimes_added=2,quarters_added=10;P:nickels_added=2*nickels_initial,total=dimes_initial+quarters_initial+nickels_initial+dimes_added+quarters_added+nickels_added",
+      "finish_reason": "stop",
+      "output_tokens": 80,
+      "usage_available": true
+    },
+    {
+      "role": "solver",
+      "attempt": 0,
+      "status": "delivered",
+      "error": "",
+      "raw_output": "IR:nickels_added=2*5=10,total=2+6+5+2+10+10=35;R:35",
+      "finish_reason": "stop",
+      "output_tokens": 32,
+      "usage_available": true
+    },
+    {
+      "role": "verifier",
+      "attempt": 0,
+      "status": "delivered",
+      "error": "",
+      "raw_output": "CHK:ACCEPT",
+      "finish_reason": "stop",
+      "output_tokens": 5,
+      "usage_available": true
+    }
+  ],
+  "failed_attempts": [],
+  "calls": 3,
+  "usage_complete": true,
+  "known_input_tokens": 2581,
+  "known_output_tokens": 117,
+  "model_input_tokens": 2581,
+  "model_output_tokens": 117,
+  "format_failed_calls": 0,
+  "transport_failed_calls": 0,
+  "fallback_calls": 0,
+  "sum_model_latency_s": 3.7561161518096924,
+  "gold": "35",
+  "score": 1.0,
+  "question": "Linda's bag has 2 dimes, 6 quarters, and 5 nickels. Her mother gives her 2 more dimes, 10 quarters, and twice as many nickels as she has. How many coins does she have altogether?\nGive the final numeric answer."
+}

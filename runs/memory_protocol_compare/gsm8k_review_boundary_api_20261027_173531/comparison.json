@@ -1,0 +1,54 @@
+{
+  "status": "completed",
+  "runtime_version": "memory-compare-v4-restored",
+  "benchmark": "gsm8k",
+  "effect_valid": true,
+  "summaries": {
+    "nl": {
+      "n": 200,
+      "correct": 197,
+      "accuracy": 0.985,
+      "failed_cases": 0,
+      "failure_rate": 0.0,
+      "unverified_cases": 0,
+      "revision_rate": 0.0,
+      "avg_communication_tokens": 157.495,
+      "avg_model_output_tokens": 157.495,
+      "avg_model_input_tokens": 1192.705,
+      "known_output_tokens_total": 31499,
+      "usage_incomplete_cases": 0,
+      "avg_calls": 3.0,
+      "avg_wall_time_s": 4.209170060997712,
+      "avg_sum_model_latency_s": 4.127455415725708,
+      "format_failed_calls": 0,
+      "fallback_calls": 0,
+      "transport_failed_calls": 0
+    },
+    "hybrid": {
+      "n": 200,
+      "correct": 195,
+      "accuracy": 0.975,
+      "failed_cases": 0,
+      "failure_rate": 0.0,
+      "unverified_cases": 1,
+      "revision_rate": 0.01,
+      "avg_communication_tokens": 98.085,
+      "avg_model_output_tokens": 98.085,
+      "avg_model_input_tokens": 2637.435,
+      "known_output_tokens_total": 19617,
+      "usage_incomplete_cases": 0,
+      "avg_calls": 3.02,
+      "avg_wall_time_s": 3.8976133934984682,
+      "avg_sum_model_latency_s": 3.7778581964969633,
+      "format_failed_calls": 0,
+      "fallback_calls": 0,
+      "transport_failed_calls": 0
+    }
+  },
+  "paired": {
+    "both_correct": 193,
+    "nl_only_correct": 4,
+    "both_incorrect": 1,
+    "hybrid_only_correct": 2
+  }
+}

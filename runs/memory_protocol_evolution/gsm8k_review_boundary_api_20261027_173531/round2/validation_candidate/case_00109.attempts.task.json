@@ -1,0 +1,149 @@
+{
+  "task_id": "gsm8k:train:seed42:V:00109",
+  "status": "completed",
+  "error": null,
+  "prediction": "25",
+  "messages": [
+    {
+      "sender": "planner",
+      "content": "G:gold_per_hour;K:chest=100,small_bags=2,hours=8;P:small_bag=chest/2,total=chest+small_bags*small_bag,gold_per_hour=total/hours",
+      "receiver": "solver",
+      "round": 0,
+      "role": "assistant",
+      "prompt_tokens": 762,
+      "completion_tokens": 56,
+      "id": "6cbfa4e9b75f",
+      "ts": 1793097640.7106352,
+      "meta": {
+        "sender": "planner",
+        "receiver": "solver",
+        "message_id": "6cbfa4e9b75f",
+        "protocol_edge": "planner_to_solver",
+        "protocol_version": "CARD-2-gsm8k",
+        "protocol_hash": "c152278e4a24181b874bd88cbf3adef79479b79f6539931bcd89721fa5a8a7a9",
+        "contract_hash": "ac09c03455d8af3a35273b605bb457591de11f0e22bded3325bbb626ee774caf",
+        "fields": {
+          "G": "gold_per_hour",
+          "K": "chest=100,small_bags=2,hours=8",
+          "P": "small_bag=chest/2,total=chest+small_bags*small_bag,gold_per_hour=total/hours"
+        },
+        "communication_tokens": 56,
+        "communication_tokens_exact": true,
+        "attempt_count": 1,
+        "fallback": false,
+        "tokens_include_all_attempts": true,
+        "incoming_message_ids": []
+      }
+    },
+    {
+      "sender": "solver",
+      "content": "IR:small_bag=100/2=50,total=100+2*50=200,gold_per_hour=200/8=25;R:25",
+      "receiver": "verifier",
+      "round": 0,
+      "role": "assistant",
+      "prompt_tokens": 761,
+      "completion_tokens": 36,
+      "id": "9d910199135a",
+      "ts": 1793097641.9066796,
+      "meta": {
+        "sender": "solver",
+        "receiver": "verifier",
+        "message_id": "9d910199135a",
+        "protocol_edge": "solver_to_verifier",
+        "protocol_version": "CARD-2-gsm8k",
+        "protocol_hash": "c152278e4a24181b874bd88cbf3adef79479b79f6539931bcd89721fa5a8a7a9",
+        "contract_hash": "ac09c03455d8af3a35273b605bb457591de11f0e22bded3325bbb626ee774caf",
+        "fields": {
+          "IR": "small_bag=100/2=50,total=100+2*50=200,gold_per_hour=200/8=25",
+          "R": "25"
+        },
+        "communication_tokens": 36,
+        "communication_tokens_exact": true,
+        "attempt_count": 1,
+        "fallback": false,
+        "tokens_include_all_attempts": true,
+        "incoming_message_ids": [
+          "6cbfa4e9b75f"
+        ]
+      }
+    },
+    {
+      "sender": "verifier",
+      "content": "CHK:ACCEPT",
+      "receiver": "solver",
+      "round": 0,
+      "role": "assistant",
+      "prompt_tokens": 1073,
+      "completion_tokens": 5,
+      "id": "2314629da2bb",
+      "ts": 1793097642.9670756,
+      "meta": {
+        "sender": "verifier",
+        "receiver": "solver",
+        "message_id": "2314629da2bb",
+        "protocol_edge": "verifier_to_solver",
+        "protocol_version": "CARD-2-gsm8k",
+        "protocol_hash": "c152278e4a24181b874bd88cbf3adef79479b79f6539931bcd89721fa5a8a7a9",
+        "contract_hash": "ac09c03455d8af3a35273b605bb457591de11f0e22bded3325bbb626ee774caf",
+        "fields": {
+          "CHK": "ACCEPT"
+        },
+        "communication_tokens": 5,
+        "communication_tokens_exact": true,
+        "attempt_count": 1,
+        "fallback": false,
+        "tokens_include_all_attempts": true,
+        "incoming_message_ids": [
+          "9d910199135a"
+        ]
+      }
+    }
+  ],
+  "communication_tokens": 97,
+  "wall_time_s": 3.4932186999358237,
+  "verified": true,
+  "revision_rounds": 0,
+  "model_calls": [
+    {
+      "role": "planner",
+      "attempt": 0,
+      "status": "delivered",
+      "error": "",
+      "raw_output": "G:gold_per_hour;K:chest=100,small_bags=2,hours=8;P:small_bag=chest/2,total=chest+small_bags*small_bag,gold_per_hour=total/hours",
+      "finish_reason": "stop",
+      "output_tokens": 56,
+      "usage_available": true
+    },
+    {
+      "role": "solver",
+      "attempt": 0,
+      "status": "delivered",
+      "error": "",
+      "raw_output": "IR:small_bag=100/2=50,total=100+2*50=200,gold_per_hour=200/8=25;R:25",
+      "finish_reason": "stop",
+      "output_tokens": 36,
+      "usage_available": true
+    },
+    {
+      "role": "verifier",
+      "attempt": 0,
+      "status": "delivered",
+      "error": "",
+      "raw_output": "CHK:ACCEPT",
+      "finish_reason": "stop",
+      "output_tokens": 5,
+      "usage_available": true
+    }
+  ],
+  "failed_attempts": [],
+  "calls": 3,
+  "usage_complete": true,
+  "known_input_tokens": 2596,
+  "known_output_tokens": 97,
+  "model_input_tokens": 2596,
+  "model_output_tokens": 97,
+  "format_failed_calls": 0,
+  "transport_failed_calls": 0,
+  "fallback_calls": 0,
+  "sum_model_latency_s": 3.431887149810791
+}

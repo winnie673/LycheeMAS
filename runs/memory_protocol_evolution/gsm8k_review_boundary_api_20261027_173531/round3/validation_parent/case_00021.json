@@ -1,0 +1,152 @@
+{
+  "task_id": "gsm8k:train:seed42:V:00021",
+  "status": "completed",
+  "error": null,
+  "prediction": "30",
+  "messages": [
+    {
+      "sender": "planner",
+      "content": "K:total=145,soccer=20,basketball=soccer+5,tennis=2*soccer,baseball=soccer+10;G:volleyballs;P:volleyballs=total-soccer-basketball-tennis-baseball",
+      "receiver": "solver",
+      "round": 0,
+      "role": "assistant",
+      "prompt_tokens": 782,
+      "completion_tokens": 53,
+      "id": "ed7bddf7028b",
+      "ts": 1793098452.0542233,
+      "meta": {
+        "sender": "planner",
+        "receiver": "solver",
+        "message_id": "ed7bddf7028b",
+        "protocol_edge": "planner_to_solver",
+        "protocol_version": "CARD-2-gsm8k",
+        "protocol_hash": "c152278e4a24181b874bd88cbf3adef79479b79f6539931bcd89721fa5a8a7a9",
+        "contract_hash": "ac09c03455d8af3a35273b605bb457591de11f0e22bded3325bbb626ee774caf",
+        "fields": {
+          "K": "total=145,soccer=20,basketball=soccer+5,tennis=2*soccer,baseball=soccer+10",
+          "G": "volleyballs",
+          "P": "volleyballs=total-soccer-basketball-tennis-baseball"
+        },
+        "communication_tokens": 53,
+        "communication_tokens_exact": true,
+        "attempt_count": 1,
+        "fallback": false,
+        "tokens_include_all_attempts": true,
+        "incoming_message_ids": []
+      }
+    },
+    {
+      "sender": "solver",
+      "content": "IR:soccer=20,basketball=20+5=25,tennis=2*20=40,baseball=20+10=30,volleyballs=145-20-25-40-30=30;R:30",
+      "receiver": "verifier",
+      "round": 0,
+      "role": "assistant",
+      "prompt_tokens": 778,
+      "completion_tokens": 52,
+      "id": "75a365b6ea55",
+      "ts": 1793098453.1246066,
+      "meta": {
+        "sender": "solver",
+        "receiver": "verifier",
+        "message_id": "75a365b6ea55",
+        "protocol_edge": "solver_to_verifier",
+        "protocol_version": "CARD-2-gsm8k",
+        "protocol_hash": "c152278e4a24181b874bd88cbf3adef79479b79f6539931bcd89721fa5a8a7a9",
+        "contract_hash": "ac09c03455d8af3a35273b605bb457591de11f0e22bded3325bbb626ee774caf",
+        "fields": {
+          "IR": "soccer=20,basketball=20+5=25,tennis=2*20=40,baseball=20+10=30,volleyballs=145-20-25-40-30=30",
+          "R": "30"
+        },
+        "communication_tokens": 52,
+        "communication_tokens_exact": true,
+        "attempt_count": 1,
+        "fallback": false,
+        "tokens_include_all_attempts": true,
+        "incoming_message_ids": [
+          "ed7bddf7028b"
+        ]
+      }
+    },
+    {
+      "sender": "verifier",
+      "content": "CHK:ACCEPT",
+      "receiver": "solver",
+      "round": 0,
+      "role": "assistant",
+      "prompt_tokens": 1109,
+      "completion_tokens": 5,
+      "id": "95bc4b95f3a8",
+      "ts": 1793098454.1207542,
+      "meta": {
+        "sender": "verifier",
+        "receiver": "solver",
+        "message_id": "95bc4b95f3a8",
+        "protocol_edge": "verifier_to_solver",
+        "protocol_version": "CARD-2-gsm8k",
+        "protocol_hash": "c152278e4a24181b874bd88cbf3adef79479b79f6539931bcd89721fa5a8a7a9",
+        "contract_hash": "ac09c03455d8af3a35273b605bb457591de11f0e22bded3325bbb626ee774caf",
+        "fields": {
+          "CHK": "ACCEPT"
+        },
+        "communication_tokens": 5,
+        "communication_tokens_exact": true,
+        "attempt_count": 1,
+        "fallback": false,
+        "tokens_include_all_attempts": true,
+        "incoming_message_ids": [
+          "75a365b6ea55"
+        ]
+      }
+    }
+  ],
+  "communication_tokens": 110,
+  "wall_time_s": 3.0730905999662355,
+  "verified": true,
+  "revision_rounds": 0,
+  "model_calls": [
+    {
+      "role": "planner",
+      "attempt": 0,
+      "status": "delivered",
+      "error": "",
+      "raw_output": "K:total=145,soccer=20,basketball=soccer+5,tennis=2*soccer,baseball=soccer+10;G:volleyballs;P:volleyballs=total-soccer-basketball-tennis-baseball",
+      "finish_reason": "stop",
+      "output_tokens": 53,
+      "usage_available": true
+    },
+    {
+      "role": "solver",
+      "attempt": 0,
+      "status": "delivered",
+      "error": "",
+      "raw_output": "IR:soccer=20,basketball=20+5=25,tennis=2*20=40,baseball=20+10=30,volleyballs=145-20-25-40-30=30;R:30",
+      "finish_reason": "stop",
+      "output_tokens": 52,
+      "usage_available": true
+    },
+    {
+      "role": "verifier",
+      "attempt": 0,
+      "status": "delivered",
+      "error": "",
+      "raw_output": "CHK:ACCEPT",
+      "finish_reason": "stop",
+      "output_tokens": 5,
+      "usage_available": true
+    }
+  ],
+  "failed_attempts": [],
+  "calls": 3,
+  "usage_complete": true,
+  "known_input_tokens": 2669,
+  "known_output_tokens": 110,
+  "model_input_tokens": 2669,
+  "model_output_tokens": 110,
+  "format_failed_calls": 0,
+  "transport_failed_calls": 0,
+  "fallback_calls": 0,
+  "sum_model_latency_s": 2.955437660217285,
+  "gold": "30",
+  "score": 1.0,
+  "question": "Reynald is the head of the varsity department, and he bought 145 balls. Twenty were soccer balls. There were five more basketballs than the soccer balls. Twice the number of soccer balls were tennis balls.  There were ten more baseballs than the soccer balls, and the rest were volleyballs. How many were volleyballs?\nGive the final numeric answer."
+}

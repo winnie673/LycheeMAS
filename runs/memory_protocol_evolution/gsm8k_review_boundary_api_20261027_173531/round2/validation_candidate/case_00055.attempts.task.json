@@ -1,0 +1,149 @@
+{
+  "task_id": "gsm8k:train:seed42:V:00055",
+  "status": "completed",
+  "error": null,
+  "prediction": "7100",
+  "messages": [
+    {
+      "sender": "planner",
+      "content": "K:credits=14,cost_per_credit=450,textbooks=5,cost_per_textbook=120,facilities_fee=200;G:total_spend;P:tuition=credits*cost_per_credit,books=textbooks*cost_per_textbook,total_spend=tuition+books+facilities_fee",
+      "receiver": "solver",
+      "round": 0,
+      "role": "assistant",
+      "prompt_tokens": 768,
+      "completion_tokens": 75,
+      "id": "fc342a10d64e",
+      "ts": 1793097441.7135453,
+      "meta": {
+        "sender": "planner",
+        "receiver": "solver",
+        "message_id": "fc342a10d64e",
+        "protocol_edge": "planner_to_solver",
+        "protocol_version": "CARD-2-gsm8k",
+        "protocol_hash": "c152278e4a24181b874bd88cbf3adef79479b79f6539931bcd89721fa5a8a7a9",
+        "contract_hash": "ac09c03455d8af3a35273b605bb457591de11f0e22bded3325bbb626ee774caf",
+        "fields": {
+          "K": "credits=14,cost_per_credit=450,textbooks=5,cost_per_textbook=120,facilities_fee=200",
+          "G": "total_spend",
+          "P": "tuition=credits*cost_per_credit,books=textbooks*cost_per_textbook,total_spend=tuition+books+facilities_fee"
+        },
+        "communication_tokens": 75,
+        "communication_tokens_exact": true,
+        "attempt_count": 1,
+        "fallback": false,
+        "tokens_include_all_attempts": true,
+        "incoming_message_ids": []
+      }
+    },
+    {
+      "sender": "solver",
+      "content": "IR:tuition=14*450=6300,books=5*120=600,total=6300+600+200=7100;R:7100",
+      "receiver": "verifier",
+      "round": 0,
+      "role": "assistant",
+      "prompt_tokens": 786,
+      "completion_tokens": 36,
+      "id": "44a72cc79d68",
+      "ts": 1793097442.9392078,
+      "meta": {
+        "sender": "solver",
+        "receiver": "verifier",
+        "message_id": "44a72cc79d68",
+        "protocol_edge": "solver_to_verifier",
+        "protocol_version": "CARD-2-gsm8k",
+        "protocol_hash": "c152278e4a24181b874bd88cbf3adef79479b79f6539931bcd89721fa5a8a7a9",
+        "contract_hash": "ac09c03455d8af3a35273b605bb457591de11f0e22bded3325bbb626ee774caf",
+        "fields": {
+          "IR": "tuition=14*450=6300,books=5*120=600,total=6300+600+200=7100",
+          "R": "7100"
+        },
+        "communication_tokens": 36,
+        "communication_tokens_exact": true,
+        "attempt_count": 1,
+        "fallback": false,
+        "tokens_include_all_attempts": true,
+        "incoming_message_ids": [
+          "fc342a10d64e"
+        ]
+      }
+    },
+    {
+      "sender": "verifier",
+      "content": "CHK:ACCEPT",
+      "receiver": "solver",
+      "round": 0,
+      "role": "assistant",
+      "prompt_tokens": 1079,
+      "completion_tokens": 5,
+      "id": "9893e4c09638",
+      "ts": 1793097444.1987479,
+      "meta": {
+        "sender": "verifier",
+        "receiver": "solver",
+        "message_id": "9893e4c09638",
+        "protocol_edge": "verifier_to_solver",
+        "protocol_version": "CARD-2-gsm8k",
+        "protocol_hash": "c152278e4a24181b874bd88cbf3adef79479b79f6539931bcd89721fa5a8a7a9",
+        "contract_hash": "ac09c03455d8af3a35273b605bb457591de11f0e22bded3325bbb626ee774caf",
+        "fields": {
+          "CHK": "ACCEPT"
+        },
+        "communication_tokens": 5,
+        "communication_tokens_exact": true,
+        "attempt_count": 1,
+        "fallback": false,
+        "tokens_include_all_attempts": true,
+        "incoming_message_ids": [
+          "44a72cc79d68"
+        ]
+      }
+    }
+  ],
+  "communication_tokens": 116,
+  "wall_time_s": 3.960486299940385,
+  "verified": true,
+  "revision_rounds": 0,
+  "model_calls": [
+    {
+      "role": "planner",
+      "attempt": 0,
+      "status": "delivered",
+      "error": "",
+      "raw_output": "K:credits=14,cost_per_credit=450,textbooks=5,cost_per_textbook=120,facilities_fee=200;G:total_spend;P:tuition=credits*cost_per_credit,books=textbooks*cost_per_textbook,total_spend=tuition+books+facilities_fee",
+      "finish_reason": "stop",
+      "output_tokens": 75,
+      "usage_available": true
+    },
+    {
+      "role": "solver",
+      "attempt": 0,
+      "status": "delivered",
+      "error": "",
+      "raw_output": "IR:tuition=14*450=6300,books=5*120=600,total=6300+600+200=7100;R:7100",
+      "finish_reason": "stop",
+      "output_tokens": 36,
+      "usage_available": true
+    },
+    {
+      "role": "verifier",
+      "attempt": 0,
+      "status": "delivered",
+      "error": "",
+      "raw_output": "CHK:ACCEPT",
+      "finish_reason": "stop",
+      "output_tokens": 5,
+      "usage_available": true
+    }
+  ],
+  "failed_attempts": [],
+  "calls": 3,
+  "usage_complete": true,
+  "known_input_tokens": 2633,
+  "known_output_tokens": 116,
+  "model_input_tokens": 2633,
+  "model_output_tokens": 116,
+  "format_failed_calls": 0,
+  "transport_failed_calls": 0,
+  "fallback_calls": 0,
+  "sum_model_latency_s": 3.852126121520996
+}

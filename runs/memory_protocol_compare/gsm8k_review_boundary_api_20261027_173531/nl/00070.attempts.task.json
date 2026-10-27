@@ -1,0 +1,95 @@
+{
+  "task_id": "gsm8k:test:seed42:T:00072",
+  "mode": "nl",
+  "benchmark": "gsm8k",
+  "status": "completed",
+  "error": null,
+  "prediction": "221",
+  "gold": "221",
+  "wall_time_s": 3.791675400105305,
+  "communication_tokens": 147,
+  "communication_tokens_exact": true,
+  "revision_rounds": 0,
+  "verification_decision": "ACCEPT",
+  "verified": true,
+  "messages": [
+    {
+      "sender": "planner",
+      "content": "Goal: find total money raised from selling brownies and cheesecake slices.\n\nPlan: Multiply the number of brownie slices sold by the price per brownie slice, multiply the number of cheesecake slices sold by the price per cheesecake slice, then add the two amounts.\n\nFacts: Brownies cost $3 per slice and Tommy sells 43 slices. Cheesecake costs $4 per slice and Tommy sells 23 slices.\n\nConstraint: Provide the final total dollar amount.",
+      "receiver": "solver",
+      "round": 0,
+      "role": "assistant",
+      "prompt_tokens": 202,
+      "completion_tokens": 100,
+      "id": "017fdf09f285",
+      "ts": 1793100850.8411694,
+      "meta": {
+        "fields": {},
+        "communication_tokens": 100,
+        "communication_tokens_exact": true,
+        "attempt_count": 1,
+        "fallback": false,
+        "tokens_include_all_attempts": true,
+        "incoming_message_ids": []
+      }
+    },
+    {
+      "sender": "solver",
+      "content": "Brownie revenue: 43 × $3 = $129. Cheesecake revenue: 23 × $4 = $92. Total: $129 + $92 = $221.\n\n\\boxed{221}",
+      "receiver": "verifier",
+      "round": 0,
+      "role": "assistant",
+      "prompt_tokens": 314,
+      "completion_tokens": 45,
+      "id": "aea76ec4c098",
+      "ts": 1793100851.9493475,
+      "meta": {
+        "fields": {
+          "R": "221"
+        },
+        "communication_tokens": 45,
+        "communication_tokens_exact": true,
+        "attempt_count": 1,
+        "fallback": false,
+        "tokens_include_all_attempts": true,
+        "incoming_message_ids": [
+          "017fdf09f285"
+        ]
+      }
+    },
+    {
+      "sender": "verifier",
+      "content": "ACCEPT",
+      "receiver": "solver",
+      "round": 0,
+      "role": "assistant",
+      "prompt_tokens": 636,
+      "completion_tokens": 2,
+      "id": "43447f26527c",
+      "ts": 1793100853.01734,
+      "meta": {
+        "fields": {
+          "CHK": "ACCEPT"
+        },
+        "communication_tokens": 2,
+        "communication_tokens_exact": true,
+        "attempt_count": 1,
+        "fallback": false,
+        "tokens_include_all_attempts": true,
+        "incoming_message_ids": [
+          "aea76ec4c098"
+        ]
+      }
+    }
+  ],
+  "calls": 3,
+  "usage_complete": true,
+  "known_input_tokens": 1152,
+  "known_output_tokens": 147,
+  "model_input_tokens": 1152,
+  "model_output_tokens": 147,
+  "format_failed_calls": 0,
+  "transport_failed_calls": 0,
+  "fallback_calls": 0,
+  "sum_model_latency_s": 3.7236111164093018
+}

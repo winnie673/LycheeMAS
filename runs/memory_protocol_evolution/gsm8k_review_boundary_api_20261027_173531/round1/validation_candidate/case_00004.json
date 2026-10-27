@@ -1,0 +1,152 @@
+{
+  "task_id": "gsm8k:train:seed42:V:00004",
+  "status": "completed",
+  "error": null,
+  "prediction": "12",
+  "messages": [
+    {
+      "sender": "planner",
+      "content": "G:average_weight;K:cat1=12,cat2=12,cat3=14.7,cat4=9.3,n=4;P:total=cat1+cat2+cat3+cat4,average_weight=total/n",
+      "receiver": "solver",
+      "round": 0,
+      "role": "assistant",
+      "prompt_tokens": 731,
+      "completion_tokens": 55,
+      "id": "f08ecd9df817",
+      "ts": 1793095199.2245004,
+      "meta": {
+        "sender": "planner",
+        "receiver": "solver",
+        "message_id": "f08ecd9df817",
+        "protocol_edge": "planner_to_solver",
+        "protocol_version": "CARD-0-gsm8k",
+        "protocol_hash": "eb2823227bf7889a5ca248376e410b4922fec80b12249ba4d10a3c8452604ed2",
+        "contract_hash": "ac09c03455d8af3a35273b605bb457591de11f0e22bded3325bbb626ee774caf",
+        "fields": {
+          "G": "average_weight",
+          "K": "cat1=12,cat2=12,cat3=14.7,cat4=9.3,n=4",
+          "P": "total=cat1+cat2+cat3+cat4,average_weight=total/n"
+        },
+        "communication_tokens": 55,
+        "communication_tokens_exact": true,
+        "attempt_count": 1,
+        "fallback": false,
+        "tokens_include_all_attempts": true,
+        "incoming_message_ids": []
+      }
+    },
+    {
+      "sender": "solver",
+      "content": "IR:total=12+12+14.7+9.3=48,average=48/4=12;R:12",
+      "receiver": "verifier",
+      "round": 0,
+      "role": "assistant",
+      "prompt_tokens": 761,
+      "completion_tokens": 29,
+      "id": "9cd5e88abdec",
+      "ts": 1793095200.268563,
+      "meta": {
+        "sender": "solver",
+        "receiver": "verifier",
+        "message_id": "9cd5e88abdec",
+        "protocol_edge": "solver_to_verifier",
+        "protocol_version": "CARD-0-gsm8k",
+        "protocol_hash": "eb2823227bf7889a5ca248376e410b4922fec80b12249ba4d10a3c8452604ed2",
+        "contract_hash": "ac09c03455d8af3a35273b605bb457591de11f0e22bded3325bbb626ee774caf",
+        "fields": {
+          "IR": "total=12+12+14.7+9.3=48,average=48/4=12",
+          "R": "12"
+        },
+        "communication_tokens": 29,
+        "communication_tokens_exact": true,
+        "attempt_count": 1,
+        "fallback": false,
+        "tokens_include_all_attempts": true,
+        "incoming_message_ids": [
+          "f08ecd9df817"
+        ]
+      }
+    },
+    {
+      "sender": "verifier",
+      "content": "CHK:ACCEPT",
+      "receiver": "solver",
+      "round": 0,
+      "role": "assistant",
+      "prompt_tokens": 1067,
+      "completion_tokens": 5,
+      "id": "406a4097aba1",
+      "ts": 1793095201.6819177,
+      "meta": {
+        "sender": "verifier",
+        "receiver": "solver",
+        "message_id": "406a4097aba1",
+        "protocol_edge": "verifier_to_solver",
+        "protocol_version": "CARD-0-gsm8k",
+        "protocol_hash": "eb2823227bf7889a5ca248376e410b4922fec80b12249ba4d10a3c8452604ed2",
+        "contract_hash": "ac09c03455d8af3a35273b605bb457591de11f0e22bded3325bbb626ee774caf",
+        "fields": {
+          "CHK": "ACCEPT"
+        },
+        "communication_tokens": 5,
+        "communication_tokens_exact": true,
+        "attempt_count": 1,
+        "fallback": false,
+        "tokens_include_all_attempts": true,
+        "incoming_message_ids": [
+          "9cd5e88abdec"
+        ]
+      }
+    }
+  ],
+  "communication_tokens": 89,
+  "wall_time_s": 3.953347099944949,
+  "verified": true,
+  "revision_rounds": 0,
+  "model_calls": [
+    {
+      "role": "planner",
+      "attempt": 0,
+      "status": "delivered",
+      "error": "",
+      "raw_output": "G:average_weight;K:cat1=12,cat2=12,cat3=14.7,cat4=9.3,n=4;P:total=cat1+cat2+cat3+cat4,average_weight=total/n",
+      "finish_reason": "stop",
+      "output_tokens": 55,
+      "usage_available": true
+    },
+    {
+      "role": "solver",
+      "attempt": 0,
+      "status": "delivered",
+      "error": "",
+      "raw_output": "IR:total=12+12+14.7+9.3=48,average=48/4=12;R:12",
+      "finish_reason": "stop",
+      "output_tokens": 29,
+      "usage_available": true
+    },
+    {
+      "role": "verifier",
+      "attempt": 0,
+      "status": "delivered",
+      "error": "",
+      "raw_output": "CHK:ACCEPT",
+      "finish_reason": "stop",
+      "output_tokens": 5,
+      "usage_available": true
+    }
+  ],
+  "failed_attempts": [],
+  "calls": 3,
+  "usage_complete": true,
+  "known_input_tokens": 2559,
+  "known_output_tokens": 89,
+  "model_input_tokens": 2559,
+  "model_output_tokens": 89,
+  "format_failed_calls": 0,
+  "transport_failed_calls": 0,
+  "fallback_calls": 0,
+  "sum_model_latency_s": 3.847661256790161,
+  "gold": "12",
+  "score": 1.0,
+  "question": "Janele wants to figure out the average weight of her cats. She has 4 of them. The first two weigh 12 pounds each. The third weighs 14.7 pounds and the fourth weighs 9.3 pounds. What is their average weight?\nGive the final numeric answer."
+}

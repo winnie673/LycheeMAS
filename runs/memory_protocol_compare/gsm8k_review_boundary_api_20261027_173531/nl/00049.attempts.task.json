@@ -1,0 +1,95 @@
+{
+  "task_id": "gsm8k:test:seed42:T:00050",
+  "mode": "nl",
+  "benchmark": "gsm8k",
+  "status": "completed",
+  "error": null,
+  "prediction": "294",
+  "gold": "294",
+  "wall_time_s": 3.9377963999286294,
+  "communication_tokens": 137,
+  "communication_tokens_exact": true,
+  "revision_rounds": 0,
+  "verification_decision": "ACCEPT",
+  "verified": true,
+  "messages": [
+    {
+      "sender": "planner",
+      "content": "Goal: Find Lloyd's weekly egg revenue.\n\nPlan: Use 252 eggs/day and a selling price of $2 per dozen. Convert daily eggs to dozens, multiply by price per dozen to get daily revenue, then multiply by 7 days for weekly revenue.\n\nConstraints: Treat a dozen as 12 eggs; assume a 7-day week. Do not round unless needed.",
+      "receiver": "solver",
+      "round": 0,
+      "role": "assistant",
+      "prompt_tokens": 188,
+      "completion_tokens": 75,
+      "id": "494fd3724055",
+      "ts": 1793100683.5066857,
+      "meta": {
+        "fields": {},
+        "communication_tokens": 75,
+        "communication_tokens_exact": true,
+        "attempt_count": 1,
+        "fallback": false,
+        "tokens_include_all_attempts": true,
+        "incoming_message_ids": []
+      }
+    },
+    {
+      "sender": "solver",
+      "content": "252 eggs per day is 252 ÷ 12 = 21 dozen per day. At $2 per dozen, that is 21 × 2 = $42 per day. Over 7 days, Lloyd makes 42 × 7 = $294 per week.\n\n\\boxed{294}",
+      "receiver": "verifier",
+      "round": 0,
+      "role": "assistant",
+      "prompt_tokens": 275,
+      "completion_tokens": 60,
+      "id": "d67a173bd6ab",
+      "ts": 1793100684.8761005,
+      "meta": {
+        "fields": {
+          "R": "294"
+        },
+        "communication_tokens": 60,
+        "communication_tokens_exact": true,
+        "attempt_count": 1,
+        "fallback": false,
+        "tokens_include_all_attempts": true,
+        "incoming_message_ids": [
+          "494fd3724055"
+        ]
+      }
+    },
+    {
+      "sender": "verifier",
+      "content": "ACCEPT",
+      "receiver": "solver",
+      "round": 0,
+      "role": "assistant",
+      "prompt_tokens": 637,
+      "completion_tokens": 2,
+      "id": "a64f12b0b986",
+      "ts": 1793100685.9469783,
+      "meta": {
+        "fields": {
+          "CHK": "ACCEPT"
+        },
+        "communication_tokens": 2,
+        "communication_tokens_exact": true,
+        "attempt_count": 1,
+        "fallback": false,
+        "tokens_include_all_attempts": true,
+        "incoming_message_ids": [
+          "d67a173bd6ab"
+        ]
+      }
+    }
+  ],
+  "calls": 3,
+  "usage_complete": true,
+  "known_input_tokens": 1100,
+  "known_output_tokens": 137,
+  "model_input_tokens": 1100,
+  "model_output_tokens": 137,
+  "format_failed_calls": 0,
+  "transport_failed_calls": 0,
+  "fallback_calls": 0,
+  "sum_model_latency_s": 3.86505389213562
+}

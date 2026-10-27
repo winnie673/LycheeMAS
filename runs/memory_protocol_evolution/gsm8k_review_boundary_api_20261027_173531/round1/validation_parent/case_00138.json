@@ -1,0 +1,151 @@
+{
+  "task_id": "gsm8k:train:seed42:V:00138",
+  "status": "completed",
+  "error": null,
+  "prediction": "160",
+  "messages": [
+    {
+      "sender": "planner",
+      "content": "G:total_gingerbreads;P:total=4*25+3*20",
+      "receiver": "solver",
+      "round": 0,
+      "role": "assistant",
+      "prompt_tokens": 715,
+      "completion_tokens": 20,
+      "id": "605639e86001",
+      "ts": 1793094933.1162565,
+      "meta": {
+        "sender": "planner",
+        "receiver": "solver",
+        "message_id": "605639e86001",
+        "protocol_edge": "planner_to_solver",
+        "protocol_version": "CARD-0-gsm8k",
+        "protocol_hash": "eb2823227bf7889a5ca248376e410b4922fec80b12249ba4d10a3c8452604ed2",
+        "contract_hash": "ac09c03455d8af3a35273b605bb457591de11f0e22bded3325bbb626ee774caf",
+        "fields": {
+          "G": "total_gingerbreads",
+          "P": "total=4*25+3*20"
+        },
+        "communication_tokens": 20,
+        "communication_tokens_exact": true,
+        "attempt_count": 1,
+        "fallback": false,
+        "tokens_include_all_attempts": true,
+        "incoming_message_ids": []
+      }
+    },
+    {
+      "sender": "solver",
+      "content": "IR:4*25=100,3*20=60,total=100+60=160;R:160",
+      "receiver": "verifier",
+      "round": 0,
+      "role": "assistant",
+      "prompt_tokens": 710,
+      "completion_tokens": 25,
+      "id": "1a0a722ef936",
+      "ts": 1793094934.3181136,
+      "meta": {
+        "sender": "solver",
+        "receiver": "verifier",
+        "message_id": "1a0a722ef936",
+        "protocol_edge": "solver_to_verifier",
+        "protocol_version": "CARD-0-gsm8k",
+        "protocol_hash": "eb2823227bf7889a5ca248376e410b4922fec80b12249ba4d10a3c8452604ed2",
+        "contract_hash": "ac09c03455d8af3a35273b605bb457591de11f0e22bded3325bbb626ee774caf",
+        "fields": {
+          "IR": "4*25=100,3*20=60,total=100+60=160",
+          "R": "160"
+        },
+        "communication_tokens": 25,
+        "communication_tokens_exact": true,
+        "attempt_count": 1,
+        "fallback": false,
+        "tokens_include_all_attempts": true,
+        "incoming_message_ids": [
+          "605639e86001"
+        ]
+      }
+    },
+    {
+      "sender": "verifier",
+      "content": "CHK:ACCEPT",
+      "receiver": "solver",
+      "round": 0,
+      "role": "assistant",
+      "prompt_tokens": 1047,
+      "completion_tokens": 5,
+      "id": "56363f148552",
+      "ts": 1793094935.4239058,
+      "meta": {
+        "sender": "verifier",
+        "receiver": "solver",
+        "message_id": "56363f148552",
+        "protocol_edge": "verifier_to_solver",
+        "protocol_version": "CARD-0-gsm8k",
+        "protocol_hash": "eb2823227bf7889a5ca248376e410b4922fec80b12249ba4d10a3c8452604ed2",
+        "contract_hash": "ac09c03455d8af3a35273b605bb457591de11f0e22bded3325bbb626ee774caf",
+        "fields": {
+          "CHK": "ACCEPT"
+        },
+        "communication_tokens": 5,
+        "communication_tokens_exact": true,
+        "attempt_count": 1,
+        "fallback": false,
+        "tokens_include_all_attempts": true,
+        "incoming_message_ids": [
+          "1a0a722ef936"
+        ]
+      }
+    }
+  ],
+  "communication_tokens": 50,
+  "wall_time_s": 3.421367199975066,
+  "verified": true,
+  "revision_rounds": 0,
+  "model_calls": [
+    {
+      "role": "planner",
+      "attempt": 0,
+      "status": "delivered",
+      "error": "",
+      "raw_output": "G:total_gingerbreads;P:total=4*25+3*20",
+      "finish_reason": "stop",
+      "output_tokens": 20,
+      "usage_available": true
+    },
+    {
+      "role": "solver",
+      "attempt": 0,
+      "status": "delivered",
+      "error": "",
+      "raw_output": "IR:4*25=100,3*20=60,total=100+60=160;R:160",
+      "finish_reason": "stop",
+      "output_tokens": 25,
+      "usage_available": true
+    },
+    {
+      "role": "verifier",
+      "attempt": 0,
+      "status": "delivered",
+      "error": "",
+      "raw_output": "CHK:ACCEPT",
+      "finish_reason": "stop",
+      "output_tokens": 5,
+      "usage_available": true
+    }
+  ],
+  "failed_attempts": [],
+  "calls": 3,
+  "usage_complete": true,
+  "known_input_tokens": 2472,
+  "known_output_tokens": 50,
+  "model_input_tokens": 2472,
+  "model_output_tokens": 50,
+  "format_failed_calls": 0,
+  "transport_failed_calls": 0,
+  "fallback_calls": 0,
+  "sum_model_latency_s": 3.332575559616089,
+  "gold": "160",
+  "score": 1.0,
+  "question": "Diane bakes four trays with 25 gingerbreads in each tray and three trays with 20 gingerbreads in each tray. How many gingerbreads does Diane bake?\nGive the final numeric answer."
+}

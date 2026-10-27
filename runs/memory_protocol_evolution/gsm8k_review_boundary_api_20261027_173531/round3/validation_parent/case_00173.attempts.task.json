@@ -1,0 +1,149 @@
+{
+  "task_id": "gsm8k:train:seed42:V:00173",
+  "status": "completed",
+  "error": null,
+  "prediction": "1944",
+  "messages": [
+    {
+      "sender": "planner",
+      "content": "K:brother=1932,sister=1936,gap_grandma_sister=2*gap_brother_sister;G:grandma_year;P:gap_brother_sister=sister-brother,gap_grandma_sister=2*gap_brother_sister,grandma_year=sister+gap_grandma_sister",
+      "receiver": "solver",
+      "round": 0,
+      "role": "assistant",
+      "prompt_tokens": 776,
+      "completion_tokens": 77,
+      "id": "01a1e4160385",
+      "ts": 1793099031.445687,
+      "meta": {
+        "sender": "planner",
+        "receiver": "solver",
+        "message_id": "01a1e4160385",
+        "protocol_edge": "planner_to_solver",
+        "protocol_version": "CARD-2-gsm8k",
+        "protocol_hash": "c152278e4a24181b874bd88cbf3adef79479b79f6539931bcd89721fa5a8a7a9",
+        "contract_hash": "ac09c03455d8af3a35273b605bb457591de11f0e22bded3325bbb626ee774caf",
+        "fields": {
+          "K": "brother=1932,sister=1936,gap_grandma_sister=2*gap_brother_sister",
+          "G": "grandma_year",
+          "P": "gap_brother_sister=sister-brother,gap_grandma_sister=2*gap_brother_sister,grandma_year=sister+gap_grandma_sister"
+        },
+        "communication_tokens": 77,
+        "communication_tokens_exact": true,
+        "attempt_count": 1,
+        "fallback": false,
+        "tokens_include_all_attempts": true,
+        "incoming_message_ids": []
+      }
+    },
+    {
+      "sender": "solver",
+      "content": "IR:gap_brother_sister=1936-1932=4,gap_grandma_sister=2*4=8,grandma_year=1936+8=1944;R:1944",
+      "receiver": "verifier",
+      "round": 0,
+      "role": "assistant",
+      "prompt_tokens": 796,
+      "completion_tokens": 46,
+      "id": "909750fcc07f",
+      "ts": 1793099032.8183098,
+      "meta": {
+        "sender": "solver",
+        "receiver": "verifier",
+        "message_id": "909750fcc07f",
+        "protocol_edge": "solver_to_verifier",
+        "protocol_version": "CARD-2-gsm8k",
+        "protocol_hash": "c152278e4a24181b874bd88cbf3adef79479b79f6539931bcd89721fa5a8a7a9",
+        "contract_hash": "ac09c03455d8af3a35273b605bb457591de11f0e22bded3325bbb626ee774caf",
+        "fields": {
+          "IR": "gap_brother_sister=1936-1932=4,gap_grandma_sister=2*4=8,grandma_year=1936+8=1944",
+          "R": "1944"
+        },
+        "communication_tokens": 46,
+        "communication_tokens_exact": true,
+        "attempt_count": 1,
+        "fallback": false,
+        "tokens_include_all_attempts": true,
+        "incoming_message_ids": [
+          "01a1e4160385"
+        ]
+      }
+    },
+    {
+      "sender": "verifier",
+      "content": "CHK:ACCEPT",
+      "receiver": "solver",
+      "round": 0,
+      "role": "assistant",
+      "prompt_tokens": 1097,
+      "completion_tokens": 5,
+      "id": "67e84c362fa1",
+      "ts": 1793099033.6396506,
+      "meta": {
+        "sender": "verifier",
+        "receiver": "solver",
+        "message_id": "67e84c362fa1",
+        "protocol_edge": "verifier_to_solver",
+        "protocol_version": "CARD-2-gsm8k",
+        "protocol_hash": "c152278e4a24181b874bd88cbf3adef79479b79f6539931bcd89721fa5a8a7a9",
+        "contract_hash": "ac09c03455d8af3a35273b605bb457591de11f0e22bded3325bbb626ee774caf",
+        "fields": {
+          "CHK": "ACCEPT"
+        },
+        "communication_tokens": 5,
+        "communication_tokens_exact": true,
+        "attempt_count": 1,
+        "fallback": false,
+        "tokens_include_all_attempts": true,
+        "incoming_message_ids": [
+          "909750fcc07f"
+        ]
+      }
+    }
+  ],
+  "communication_tokens": 128,
+  "wall_time_s": 3.2887226999737322,
+  "verified": true,
+  "revision_rounds": 0,
+  "model_calls": [
+    {
+      "role": "planner",
+      "attempt": 0,
+      "status": "delivered",
+      "error": "",
+      "raw_output": "K:brother=1932,sister=1936,gap_grandma_sister=2*gap_brother_sister;G:grandma_year;P:gap_brother_sister=sister-brother,gap_grandma_sister=2*gap_brother_sister,grandma_year=sister+gap_grandma_sister",
+      "finish_reason": "stop",
+      "output_tokens": 77,
+      "usage_available": true
+    },
+    {
+      "role": "solver",
+      "attempt": 0,
+      "status": "delivered",
+      "error": "",
+      "raw_output": "IR:gap_brother_sister=1936-1932=4,gap_grandma_sister=2*4=8,grandma_year=1936+8=1944;R:1944",
+      "finish_reason": "stop",
+      "output_tokens": 46,
+      "usage_available": true
+    },
+    {
+      "role": "verifier",
+      "attempt": 0,
+      "status": "delivered",
+      "error": "",
+      "raw_output": "CHK:ACCEPT",
+      "finish_reason": "stop",
+      "output_tokens": 5,
+      "usage_available": true
+    }
+  ],
+  "failed_attempts": [],
+  "calls": 3,
+  "usage_complete": true,
+  "known_input_tokens": 2669,
+  "known_output_tokens": 128,
+  "model_input_tokens": 2669,
+  "model_output_tokens": 128,
+  "format_failed_calls": 0,
+  "transport_failed_calls": 0,
+  "fallback_calls": 0,
+  "sum_model_latency_s": 3.174544334411621
+}

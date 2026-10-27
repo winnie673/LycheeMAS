@@ -1,0 +1,153 @@
+{
+  "task_id": "gsm8k:train:seed42:G3:00005",
+  "status": "completed",
+  "error": null,
+  "prediction": "0.24",
+  "messages": [
+    {
+      "sender": "planner",
+      "content": "G:odds_all_good;K:milk_spoiled=20%,eggs_rotten=60%,flour_weevils=1/4;P:milk_good=1-0.20,egg_good=1-0.60,flour_good=1-1/4,odds_all_good=milk_good*egg_good*flour_good;NL:assume independent random picks and good means not spoiled/rotten/weeviled",
+      "receiver": "solver",
+      "round": 0,
+      "role": "assistant",
+      "prompt_tokens": 796,
+      "completion_tokens": 105,
+      "id": "1f1d3afea8b5",
+      "ts": 1793097998.5313294,
+      "meta": {
+        "sender": "planner",
+        "receiver": "solver",
+        "message_id": "1f1d3afea8b5",
+        "protocol_edge": "planner_to_solver",
+        "protocol_version": "CARD-2-gsm8k",
+        "protocol_hash": "c152278e4a24181b874bd88cbf3adef79479b79f6539931bcd89721fa5a8a7a9",
+        "contract_hash": "ac09c03455d8af3a35273b605bb457591de11f0e22bded3325bbb626ee774caf",
+        "fields": {
+          "G": "odds_all_good",
+          "K": "milk_spoiled=20%,eggs_rotten=60%,flour_weevils=1/4",
+          "P": "milk_good=1-0.20,egg_good=1-0.60,flour_good=1-1/4,odds_all_good=milk_good*egg_good*flour_good",
+          "NL": "assume independent random picks and good means not spoiled/rotten/weeviled"
+        },
+        "communication_tokens": 105,
+        "communication_tokens_exact": true,
+        "attempt_count": 1,
+        "fallback": false,
+        "tokens_include_all_attempts": true,
+        "incoming_message_ids": []
+      }
+    },
+    {
+      "sender": "solver",
+      "content": "IR:milk_good=1-0.20=0.8,egg_good=1-0.60=0.4,flour_good=1-1/4=0.75,product=0.8*0.4*0.75=0.24;R:0.24",
+      "receiver": "verifier",
+      "round": 0,
+      "role": "assistant",
+      "prompt_tokens": 844,
+      "completion_tokens": 68,
+      "id": "c6bbfa930cf7",
+      "ts": 1793097999.843122,
+      "meta": {
+        "sender": "solver",
+        "receiver": "verifier",
+        "message_id": "c6bbfa930cf7",
+        "protocol_edge": "solver_to_verifier",
+        "protocol_version": "CARD-2-gsm8k",
+        "protocol_hash": "c152278e4a24181b874bd88cbf3adef79479b79f6539931bcd89721fa5a8a7a9",
+        "contract_hash": "ac09c03455d8af3a35273b605bb457591de11f0e22bded3325bbb626ee774caf",
+        "fields": {
+          "IR": "milk_good=1-0.20=0.8,egg_good=1-0.60=0.4,flour_good=1-1/4=0.75,product=0.8*0.4*0.75=0.24",
+          "R": "0.24"
+        },
+        "communication_tokens": 68,
+        "communication_tokens_exact": true,
+        "attempt_count": 1,
+        "fallback": false,
+        "tokens_include_all_attempts": true,
+        "incoming_message_ids": [
+          "1f1d3afea8b5"
+        ]
+      }
+    },
+    {
+      "sender": "verifier",
+      "content": "CHK:ACCEPT",
+      "receiver": "solver",
+      "round": 0,
+      "role": "assistant",
+      "prompt_tokens": 1139,
+      "completion_tokens": 5,
+      "id": "feeab10d66ed",
+      "ts": 1793098000.9935768,
+      "meta": {
+        "sender": "verifier",
+        "receiver": "solver",
+        "message_id": "feeab10d66ed",
+        "protocol_edge": "verifier_to_solver",
+        "protocol_version": "CARD-2-gsm8k",
+        "protocol_hash": "c152278e4a24181b874bd88cbf3adef79479b79f6539931bcd89721fa5a8a7a9",
+        "contract_hash": "ac09c03455d8af3a35273b605bb457591de11f0e22bded3325bbb626ee774caf",
+        "fields": {
+          "CHK": "ACCEPT"
+        },
+        "communication_tokens": 5,
+        "communication_tokens_exact": true,
+        "attempt_count": 1,
+        "fallback": false,
+        "tokens_include_all_attempts": true,
+        "incoming_message_ids": [
+          "c6bbfa930cf7"
+        ]
+      }
+    }
+  ],
+  "communication_tokens": 178,
+  "wall_time_s": 4.091094300034456,
+  "verified": true,
+  "revision_rounds": 0,
+  "model_calls": [
+    {
+      "role": "planner",
+      "attempt": 0,
+      "status": "delivered",
+      "error": "",
+      "raw_output": "G:odds_all_good;K:milk_spoiled=20%,eggs_rotten=60%,flour_weevils=1/4;P:milk_good=1-0.20,egg_good=1-0.60,flour_good=1-1/4,odds_all_good=milk_good*egg_good*flour_good;NL:assume independent random picks and good means not spoiled/rotten/weeviled",
+      "finish_reason": "stop",
+      "output_tokens": 105,
+      "usage_available": true
+    },
+    {
+      "role": "solver",
+      "attempt": 0,
+      "status": "delivered",
+      "error": "",
+      "raw_output": "IR:milk_good=1-0.20=0.8,egg_good=1-0.60=0.4,flour_good=1-1/4=0.75,product=0.8*0.4*0.75=0.24;R:0.24",
+      "finish_reason": "stop",
+      "output_tokens": 68,
+      "usage_available": true
+    },
+    {
+      "role": "verifier",
+      "attempt": 0,
+      "status": "delivered",
+      "error": "",
+      "raw_output": "CHK:ACCEPT",
+      "finish_reason": "stop",
+      "output_tokens": 5,
+      "usage_available": true
+    }
+  ],
+  "failed_attempts": [],
+  "calls": 3,
+  "usage_complete": true,
+  "known_input_tokens": 2779,
+  "known_output_tokens": 178,
+  "model_input_tokens": 2779,
+  "model_output_tokens": 178,
+  "format_failed_calls": 0,
+  "transport_failed_calls": 0,
+  "fallback_calls": 0,
+  "sum_model_latency_s": 4.030633449554443,
+  "gold": "24",
+  "score": 0.0,
+  "question": "Jackson is making pancakes with three ingredients: flour, milk and eggs. 20% of the bottles of milk are spoiled and the rest are fresh. 60% of the eggs are rotten. 1/4 of the cannisters of flour have weevils in them. If Jackson picks a bottle of milk, an egg and a canister of flour at random, what are the odds all three ingredients will be good?\nGive the final numeric answer."
+}

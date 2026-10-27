@@ -1,0 +1,153 @@
+{
+  "task_id": "gsm8k:train:seed42:V:00088",
+  "status": "completed",
+  "error": null,
+  "prediction": "80",
+  "messages": [
+    {
+      "sender": "planner",
+      "content": "G:seeds_per_row;K:row_length_ft=120,spacing_in=18;P:row_length_in=row_length_ft*12,seeds_per_row=row_length_in/spacing_in;NL:each seed occupies 18 inches of row length",
+      "receiver": "solver",
+      "round": 0,
+      "role": "assistant",
+      "prompt_tokens": 756,
+      "completion_tokens": 58,
+      "id": "189a5341bb0e",
+      "ts": 1793098697.4359922,
+      "meta": {
+        "sender": "planner",
+        "receiver": "solver",
+        "message_id": "189a5341bb0e",
+        "protocol_edge": "planner_to_solver",
+        "protocol_version": "CARD-2-gsm8k",
+        "protocol_hash": "c152278e4a24181b874bd88cbf3adef79479b79f6539931bcd89721fa5a8a7a9",
+        "contract_hash": "ac09c03455d8af3a35273b605bb457591de11f0e22bded3325bbb626ee774caf",
+        "fields": {
+          "G": "seeds_per_row",
+          "K": "row_length_ft=120,spacing_in=18",
+          "P": "row_length_in=row_length_ft*12,seeds_per_row=row_length_in/spacing_in",
+          "NL": "each seed occupies 18 inches of row length"
+        },
+        "communication_tokens": 58,
+        "communication_tokens_exact": true,
+        "attempt_count": 1,
+        "fallback": false,
+        "tokens_include_all_attempts": true,
+        "incoming_message_ids": []
+      }
+    },
+    {
+      "sender": "solver",
+      "content": "IR:row_length_in=120*12=1440,seeds_per_row=1440/18=80;R:80",
+      "receiver": "verifier",
+      "round": 0,
+      "role": "assistant",
+      "prompt_tokens": 757,
+      "completion_tokens": 28,
+      "id": "ce48041f5d8d",
+      "ts": 1793098698.5135674,
+      "meta": {
+        "sender": "solver",
+        "receiver": "verifier",
+        "message_id": "ce48041f5d8d",
+        "protocol_edge": "solver_to_verifier",
+        "protocol_version": "CARD-2-gsm8k",
+        "protocol_hash": "c152278e4a24181b874bd88cbf3adef79479b79f6539931bcd89721fa5a8a7a9",
+        "contract_hash": "ac09c03455d8af3a35273b605bb457591de11f0e22bded3325bbb626ee774caf",
+        "fields": {
+          "IR": "row_length_in=120*12=1440,seeds_per_row=1440/18=80",
+          "R": "80"
+        },
+        "communication_tokens": 28,
+        "communication_tokens_exact": true,
+        "attempt_count": 1,
+        "fallback": false,
+        "tokens_include_all_attempts": true,
+        "incoming_message_ids": [
+          "189a5341bb0e"
+        ]
+      }
+    },
+    {
+      "sender": "verifier",
+      "content": "CHK:ACCEPT",
+      "receiver": "solver",
+      "round": 0,
+      "role": "assistant",
+      "prompt_tokens": 1059,
+      "completion_tokens": 5,
+      "id": "40f7e455befc",
+      "ts": 1793098699.4991202,
+      "meta": {
+        "sender": "verifier",
+        "receiver": "solver",
+        "message_id": "40f7e455befc",
+        "protocol_edge": "verifier_to_solver",
+        "protocol_version": "CARD-2-gsm8k",
+        "protocol_hash": "c152278e4a24181b874bd88cbf3adef79479b79f6539931bcd89721fa5a8a7a9",
+        "contract_hash": "ac09c03455d8af3a35273b605bb457591de11f0e22bded3325bbb626ee774caf",
+        "fields": {
+          "CHK": "ACCEPT"
+        },
+        "communication_tokens": 5,
+        "communication_tokens_exact": true,
+        "attempt_count": 1,
+        "fallback": false,
+        "tokens_include_all_attempts": true,
+        "incoming_message_ids": [
+          "ce48041f5d8d"
+        ]
+      }
+    }
+  ],
+  "communication_tokens": 91,
+  "wall_time_s": 3.5716989999637008,
+  "verified": true,
+  "revision_rounds": 0,
+  "model_calls": [
+    {
+      "role": "planner",
+      "attempt": 0,
+      "status": "delivered",
+      "error": "",
+      "raw_output": "G:seeds_per_row;K:row_length_ft=120,spacing_in=18;P:row_length_in=row_length_ft*12,seeds_per_row=row_length_in/spacing_in;NL:each seed occupies 18 inches of row length",
+      "finish_reason": "stop",
+      "output_tokens": 58,
+      "usage_available": true
+    },
+    {
+      "role": "solver",
+      "attempt": 0,
+      "status": "delivered",
+      "error": "",
+      "raw_output": "IR:row_length_in=120*12=1440,seeds_per_row=1440/18=80;R:80",
+      "finish_reason": "stop",
+      "output_tokens": 28,
+      "usage_available": true
+    },
+    {
+      "role": "verifier",
+      "attempt": 0,
+      "status": "delivered",
+      "error": "",
+      "raw_output": "CHK:ACCEPT",
+      "finish_reason": "stop",
+      "output_tokens": 5,
+      "usage_available": true
+    }
+  ],
+  "failed_attempts": [],
+  "calls": 3,
+  "usage_complete": true,
+  "known_input_tokens": 2572,
+  "known_output_tokens": 91,
+  "model_input_tokens": 2572,
+  "model_output_tokens": 91,
+  "format_failed_calls": 0,
+  "transport_failed_calls": 0,
+  "fallback_calls": 0,
+  "sum_model_latency_s": 3.4615156650543213,
+  "gold": "80",
+  "score": 1.0,
+  "question": "Bob is going to plant corn in part of his garden. The rows are 120 feet long, and each seed needs its own dedicated space of 18 inches to its right. How many seeds can Bob plant in each row?\nGive the final numeric answer."
+}

@@ -1,0 +1,95 @@
+{
+  "task_id": "gsm8k:test:seed42:T:00108",
+  "mode": "nl",
+  "benchmark": "gsm8k",
+  "status": "completed",
+  "error": null,
+  "prediction": "50",
+  "gold": "50",
+  "wall_time_s": 3.8309702000115067,
+  "communication_tokens": 187,
+  "communication_tokens_exact": true,
+  "revision_rounds": 0,
+  "verification_decision": "ACCEPT",
+  "verified": true,
+  "messages": [
+    {
+      "sender": "planner",
+      "content": "Goal: Find how many cookies Henry baked last year.\n\nPlan: Let last year’s amount be x. This year’s intended amount is 2x. He actually baked 15 more than intended, so 2x + 15. After dropping 5, he has 110, so set up the equation 2x + 15 - 5 = 110. Solve for x.\n\nConstraints: Use the sequence of events exactly as stated; do not give the final numeric answer in the message.",
+      "receiver": "solver",
+      "round": 0,
+      "role": "assistant",
+      "prompt_tokens": 230,
+      "completion_tokens": 104,
+      "id": "f21c99f621e9",
+      "ts": 1793101133.3443813,
+      "meta": {
+        "fields": {},
+        "communication_tokens": 104,
+        "communication_tokens_exact": true,
+        "attempt_count": 1,
+        "fallback": false,
+        "tokens_include_all_attempts": true,
+        "incoming_message_ids": []
+      }
+    },
+    {
+      "sender": "solver",
+      "content": "Let last year’s amount be x. This year he intended 2x, actually baked 2x + 15, then dropped 5, leaving 110. So 2x + 15 - 5 = 110, which simplifies to 2x + 10 = 110, so 2x = 100 and x = 50.\n\n\\boxed{50}",
+      "receiver": "verifier",
+      "round": 0,
+      "role": "assistant",
+      "prompt_tokens": 346,
+      "completion_tokens": 81,
+      "id": "b240345a8ae9",
+      "ts": 1793101134.5825088,
+      "meta": {
+        "fields": {
+          "R": "50"
+        },
+        "communication_tokens": 81,
+        "communication_tokens_exact": true,
+        "attempt_count": 1,
+        "fallback": false,
+        "tokens_include_all_attempts": true,
+        "incoming_message_ids": [
+          "f21c99f621e9"
+        ]
+      }
+    },
+    {
+      "sender": "verifier",
+      "content": "ACCEPT",
+      "receiver": "solver",
+      "round": 0,
+      "role": "assistant",
+      "prompt_tokens": 700,
+      "completion_tokens": 2,
+      "id": "01cee3b26e1b",
+      "ts": 1793101135.6568573,
+      "meta": {
+        "fields": {
+          "CHK": "ACCEPT"
+        },
+        "communication_tokens": 2,
+        "communication_tokens_exact": true,
+        "attempt_count": 1,
+        "fallback": false,
+        "tokens_include_all_attempts": true,
+        "incoming_message_ids": [
+          "b240345a8ae9"
+        ]
+      }
+    }
+  ],
+  "calls": 3,
+  "usage_complete": true,
+  "known_input_tokens": 1276,
+  "known_output_tokens": 187,
+  "model_input_tokens": 1276,
+  "model_output_tokens": 187,
+  "format_failed_calls": 0,
+  "transport_failed_calls": 0,
+  "fallback_calls": 0,
+  "sum_model_latency_s": 3.754502773284912
+}

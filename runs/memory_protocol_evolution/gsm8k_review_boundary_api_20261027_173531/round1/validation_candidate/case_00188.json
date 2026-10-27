@@ -1,0 +1,152 @@
+{
+  "task_id": "gsm8k:train:seed42:V:00188",
+  "status": "completed",
+  "error": null,
+  "prediction": "146",
+  "messages": [
+    {
+      "sender": "planner",
+      "content": "K:combined=239,rodney=2*roger,roger=4*ron-7;G:rodney_weight;P:rodney=2*roger,roger=4*ron-7,rodney+roger+ron=239,solve for rodney",
+      "receiver": "solver",
+      "round": 0,
+      "role": "assistant",
+      "prompt_tokens": 730,
+      "completion_tokens": 62,
+      "id": "490a505f706c",
+      "ts": 1793095949.737503,
+      "meta": {
+        "sender": "planner",
+        "receiver": "solver",
+        "message_id": "490a505f706c",
+        "protocol_edge": "planner_to_solver",
+        "protocol_version": "CARD-0-gsm8k",
+        "protocol_hash": "eb2823227bf7889a5ca248376e410b4922fec80b12249ba4d10a3c8452604ed2",
+        "contract_hash": "ac09c03455d8af3a35273b605bb457591de11f0e22bded3325bbb626ee774caf",
+        "fields": {
+          "K": "combined=239,rodney=2*roger,roger=4*ron-7",
+          "G": "rodney_weight",
+          "P": "rodney=2*roger,roger=4*ron-7,rodney+roger+ron=239,solve for rodney"
+        },
+        "communication_tokens": 62,
+        "communication_tokens_exact": true,
+        "attempt_count": 1,
+        "fallback": false,
+        "tokens_include_all_attempts": true,
+        "incoming_message_ids": []
+      }
+    },
+    {
+      "sender": "solver",
+      "content": "IR:ron=x,roger=4x-7,rodney=8x-14,sum=13x-21=239,x=20,rodney=8*20-14=146;R:146",
+      "receiver": "verifier",
+      "round": 0,
+      "role": "assistant",
+      "prompt_tokens": 767,
+      "completion_tokens": 47,
+      "id": "ee69dcddc290",
+      "ts": 1793095951.0637376,
+      "meta": {
+        "sender": "solver",
+        "receiver": "verifier",
+        "message_id": "ee69dcddc290",
+        "protocol_edge": "solver_to_verifier",
+        "protocol_version": "CARD-0-gsm8k",
+        "protocol_hash": "eb2823227bf7889a5ca248376e410b4922fec80b12249ba4d10a3c8452604ed2",
+        "contract_hash": "ac09c03455d8af3a35273b605bb457591de11f0e22bded3325bbb626ee774caf",
+        "fields": {
+          "IR": "ron=x,roger=4x-7,rodney=8x-14,sum=13x-21=239,x=20,rodney=8*20-14=146",
+          "R": "146"
+        },
+        "communication_tokens": 47,
+        "communication_tokens_exact": true,
+        "attempt_count": 1,
+        "fallback": false,
+        "tokens_include_all_attempts": true,
+        "incoming_message_ids": [
+          "490a505f706c"
+        ]
+      }
+    },
+    {
+      "sender": "verifier",
+      "content": "CHK:ACCEPT",
+      "receiver": "solver",
+      "round": 0,
+      "role": "assistant",
+      "prompt_tokens": 1084,
+      "completion_tokens": 5,
+      "id": "79c90b6fbec2",
+      "ts": 1793095952.2191894,
+      "meta": {
+        "sender": "verifier",
+        "receiver": "solver",
+        "message_id": "79c90b6fbec2",
+        "protocol_edge": "verifier_to_solver",
+        "protocol_version": "CARD-0-gsm8k",
+        "protocol_hash": "eb2823227bf7889a5ca248376e410b4922fec80b12249ba4d10a3c8452604ed2",
+        "contract_hash": "ac09c03455d8af3a35273b605bb457591de11f0e22bded3325bbb626ee774caf",
+        "fields": {
+          "CHK": "ACCEPT"
+        },
+        "communication_tokens": 5,
+        "communication_tokens_exact": true,
+        "attempt_count": 1,
+        "fallback": false,
+        "tokens_include_all_attempts": true,
+        "incoming_message_ids": [
+          "ee69dcddc290"
+        ]
+      }
+    }
+  ],
+  "communication_tokens": 114,
+  "wall_time_s": 3.948463200009428,
+  "verified": true,
+  "revision_rounds": 0,
+  "model_calls": [
+    {
+      "role": "planner",
+      "attempt": 0,
+      "status": "delivered",
+      "error": "",
+      "raw_output": "K:combined=239,rodney=2*roger,roger=4*ron-7;G:rodney_weight;P:rodney=2*roger,roger=4*ron-7,rodney+roger+ron=239,solve for rodney",
+      "finish_reason": "stop",
+      "output_tokens": 62,
+      "usage_available": true
+    },
+    {
+      "role": "solver",
+      "attempt": 0,
+      "status": "delivered",
+      "error": "",
+      "raw_output": "IR:ron=x,roger=4x-7,rodney=8x-14,sum=13x-21=239,x=20,rodney=8*20-14=146;R:146",
+      "finish_reason": "stop",
+      "output_tokens": 47,
+      "usage_available": true
+    },
+    {
+      "role": "verifier",
+      "attempt": 0,
+      "status": "delivered",
+      "error": "",
+      "raw_output": "CHK:ACCEPT",
+      "finish_reason": "stop",
+      "output_tokens": 5,
+      "usage_available": true
+    }
+  ],
+  "failed_attempts": [],
+  "calls": 3,
+  "usage_complete": true,
+  "known_input_tokens": 2581,
+  "known_output_tokens": 114,
+  "model_input_tokens": 2581,
+  "model_output_tokens": 114,
+  "format_failed_calls": 0,
+  "transport_failed_calls": 0,
+  "fallback_calls": 0,
+  "sum_model_latency_s": 3.847292423248291,
+  "gold": "146",
+  "score": 1.0,
+  "question": "Rodney, Roger and Ron can lift a combined weight of 239 pounds.  Rodney can lift twice as much as Roger, and Roger can lift 7 pounds less than 4 times the amount that Ron can lift.  How much can Rodney lift?\nGive the final numeric answer."
+}

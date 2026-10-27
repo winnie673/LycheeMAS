@@ -1,0 +1,152 @@
+{
+  "task_id": "gsm8k:train:seed42:V:00034",
+  "status": "completed",
+  "error": null,
+  "prediction": "27",
+  "messages": [
+    {
+      "sender": "planner",
+      "content": "K:hours_initial=8,kw_initial=7.2,hours_per_day=6,days=5;G:total_kw;P:rate=kw_initial/hours_initial,total_hours=hours_per_day*days,total_kw=rate*total_hours",
+      "receiver": "solver",
+      "round": 0,
+      "role": "assistant",
+      "prompt_tokens": 720,
+      "completion_tokens": 63,
+      "id": "d0be74a2d7ca",
+      "ts": 1793096554.6081474,
+      "meta": {
+        "sender": "planner",
+        "receiver": "solver",
+        "message_id": "d0be74a2d7ca",
+        "protocol_edge": "planner_to_solver",
+        "protocol_version": "CARD-0-gsm8k",
+        "protocol_hash": "eb2823227bf7889a5ca248376e410b4922fec80b12249ba4d10a3c8452604ed2",
+        "contract_hash": "ac09c03455d8af3a35273b605bb457591de11f0e22bded3325bbb626ee774caf",
+        "fields": {
+          "K": "hours_initial=8,kw_initial=7.2,hours_per_day=6,days=5",
+          "G": "total_kw",
+          "P": "rate=kw_initial/hours_initial,total_hours=hours_per_day*days,total_kw=rate*total_hours"
+        },
+        "communication_tokens": 63,
+        "communication_tokens_exact": true,
+        "attempt_count": 1,
+        "fallback": false,
+        "tokens_include_all_attempts": true,
+        "incoming_message_ids": []
+      }
+    },
+    {
+      "sender": "solver",
+      "content": "IR:rate=7.2/8=0.9,total_hours=6*5=30,total_kw=0.9*30=27;R:27",
+      "receiver": "verifier",
+      "round": 0,
+      "role": "assistant",
+      "prompt_tokens": 758,
+      "completion_tokens": 39,
+      "id": "b193f2549653",
+      "ts": 1793096555.8897607,
+      "meta": {
+        "sender": "solver",
+        "receiver": "verifier",
+        "message_id": "b193f2549653",
+        "protocol_edge": "solver_to_verifier",
+        "protocol_version": "CARD-0-gsm8k",
+        "protocol_hash": "eb2823227bf7889a5ca248376e410b4922fec80b12249ba4d10a3c8452604ed2",
+        "contract_hash": "ac09c03455d8af3a35273b605bb457591de11f0e22bded3325bbb626ee774caf",
+        "fields": {
+          "IR": "rate=7.2/8=0.9,total_hours=6*5=30,total_kw=0.9*30=27",
+          "R": "27"
+        },
+        "communication_tokens": 39,
+        "communication_tokens_exact": true,
+        "attempt_count": 1,
+        "fallback": false,
+        "tokens_include_all_attempts": true,
+        "incoming_message_ids": [
+          "d0be74a2d7ca"
+        ]
+      }
+    },
+    {
+      "sender": "verifier",
+      "content": "CHK:ACCEPT",
+      "receiver": "solver",
+      "round": 0,
+      "role": "assistant",
+      "prompt_tokens": 1066,
+      "completion_tokens": 5,
+      "id": "66a57a0af077",
+      "ts": 1793096557.3359485,
+      "meta": {
+        "sender": "verifier",
+        "receiver": "solver",
+        "message_id": "66a57a0af077",
+        "protocol_edge": "verifier_to_solver",
+        "protocol_version": "CARD-0-gsm8k",
+        "protocol_hash": "eb2823227bf7889a5ca248376e410b4922fec80b12249ba4d10a3c8452604ed2",
+        "contract_hash": "ac09c03455d8af3a35273b605bb457591de11f0e22bded3325bbb626ee774caf",
+        "fields": {
+          "CHK": "ACCEPT"
+        },
+        "communication_tokens": 5,
+        "communication_tokens_exact": true,
+        "attempt_count": 1,
+        "fallback": false,
+        "tokens_include_all_attempts": true,
+        "incoming_message_ids": [
+          "b193f2549653"
+        ]
+      }
+    }
+  ],
+  "communication_tokens": 107,
+  "wall_time_s": 4.105275999987498,
+  "verified": true,
+  "revision_rounds": 0,
+  "model_calls": [
+    {
+      "role": "planner",
+      "attempt": 0,
+      "status": "delivered",
+      "error": "",
+      "raw_output": "K:hours_initial=8,kw_initial=7.2,hours_per_day=6,days=5;G:total_kw;P:rate=kw_initial/hours_initial,total_hours=hours_per_day*days,total_kw=rate*total_hours",
+      "finish_reason": "stop",
+      "output_tokens": 63,
+      "usage_available": true
+    },
+    {
+      "role": "solver",
+      "attempt": 0,
+      "status": "delivered",
+      "error": "",
+      "raw_output": "IR:rate=7.2/8=0.9,total_hours=6*5=30,total_kw=0.9*30=27;R:27",
+      "finish_reason": "stop",
+      "output_tokens": 39,
+      "usage_available": true
+    },
+    {
+      "role": "verifier",
+      "attempt": 0,
+      "status": "delivered",
+      "error": "",
+      "raw_output": "CHK:ACCEPT",
+      "finish_reason": "stop",
+      "output_tokens": 5,
+      "usage_available": true
+    }
+  ],
+  "failed_attempts": [],
+  "calls": 3,
+  "usage_complete": true,
+  "known_input_tokens": 2544,
+  "known_output_tokens": 107,
+  "model_input_tokens": 2544,
+  "model_output_tokens": 107,
+  "format_failed_calls": 0,
+  "transport_failed_calls": 0,
+  "fallback_calls": 0,
+  "sum_model_latency_s": 3.9874074459075928,
+  "gold": "27",
+  "score": 1.0,
+  "question": "An air conditioner running for eight hours would consume 7.2 kilowatts. How many kilowatts would the air conditioner consume if it was used for 6 hours a day for 5 days?\nGive the final numeric answer."
+}

@@ -1,0 +1,187 @@
+{
+  "task_id": "gsm8k:train:seed42:G1:00039",
+  "status": "completed",
+  "error": null,
+  "prediction": "4",
+  "messages": [
+    {
+      "sender": "planner",
+      "content": "K:packs_bought=9,per_pack=8,left=40;G:packs_opened;P:total=9*8,taken=total-left,opened=taken/per_pack",
+      "receiver": "solver",
+      "round": 0,
+      "role": "assistant",
+      "prompt_tokens": 767,
+      "completion_tokens": 44,
+      "id": "2cea9d46f7ac",
+      "ts": 1793094070.367123,
+      "meta": {
+        "sender": "planner",
+        "receiver": "solver",
+        "message_id": "2cea9d46f7ac",
+        "protocol_edge": "planner_to_solver",
+        "protocol_version": "CARD-0-gsm8k",
+        "protocol_hash": "eb2823227bf7889a5ca248376e410b4922fec80b12249ba4d10a3c8452604ed2",
+        "contract_hash": "ac09c03455d8af3a35273b605bb457591de11f0e22bded3325bbb626ee774caf",
+        "fields": {
+          "K": "packs_bought=9,per_pack=8,left=40",
+          "G": "packs_opened",
+          "P": "total=9*8,taken=total-left,opened=taken/per_pack"
+        },
+        "communication_tokens": 44,
+        "communication_tokens_exact": true,
+        "attempt_count": 3,
+        "fallback": false,
+        "tokens_include_all_attempts": true,
+        "incoming_message_ids": []
+      }
+    },
+    {
+      "sender": "solver",
+      "content": "IR:total=9*8=72,taken=72-40=32,opened=32/8=4;R:4",
+      "receiver": "verifier",
+      "round": 0,
+      "role": "assistant",
+      "prompt_tokens": 766,
+      "completion_tokens": 30,
+      "id": "7872aa889d36",
+      "ts": 1793094071.4725788,
+      "meta": {
+        "sender": "solver",
+        "receiver": "verifier",
+        "message_id": "7872aa889d36",
+        "protocol_edge": "solver_to_verifier",
+        "protocol_version": "CARD-0-gsm8k",
+        "protocol_hash": "eb2823227bf7889a5ca248376e410b4922fec80b12249ba4d10a3c8452604ed2",
+        "contract_hash": "ac09c03455d8af3a35273b605bb457591de11f0e22bded3325bbb626ee774caf",
+        "fields": {
+          "IR": "total=9*8=72,taken=72-40=32,opened=32/8=4",
+          "R": "4"
+        },
+        "communication_tokens": 30,
+        "communication_tokens_exact": true,
+        "attempt_count": 1,
+        "fallback": false,
+        "tokens_include_all_attempts": true,
+        "incoming_message_ids": [
+          "2cea9d46f7ac"
+        ]
+      }
+    },
+    {
+      "sender": "verifier",
+      "content": "CHK:ACCEPT",
+      "receiver": "solver",
+      "round": 0,
+      "role": "assistant",
+      "prompt_tokens": 1084,
+      "completion_tokens": 5,
+      "id": "df0b0344cf0a",
+      "ts": 1793094072.554523,
+      "meta": {
+        "sender": "verifier",
+        "receiver": "solver",
+        "message_id": "df0b0344cf0a",
+        "protocol_edge": "verifier_to_solver",
+        "protocol_version": "CARD-0-gsm8k",
+        "protocol_hash": "eb2823227bf7889a5ca248376e410b4922fec80b12249ba4d10a3c8452604ed2",
+        "contract_hash": "ac09c03455d8af3a35273b605bb457591de11f0e22bded3325bbb626ee774caf",
+        "fields": {
+          "CHK": "ACCEPT"
+        },
+        "communication_tokens": 5,
+        "communication_tokens_exact": true,
+        "attempt_count": 1,
+        "fallback": false,
+        "tokens_include_all_attempts": true,
+        "incoming_message_ids": [
+          "7872aa889d36"
+        ]
+      }
+    }
+  ],
+  "communication_tokens": 79,
+  "wall_time_s": 19.93359120003879,
+  "verified": true,
+  "revision_rounds": 0,
+  "model_calls": [
+    {
+      "role": "planner",
+      "attempt": 0,
+      "status": "transport_error",
+      "error": "Connection error.",
+      "raw_output": "",
+      "finish_reason": "unavailable",
+      "output_tokens": 0,
+      "usage_available": false
+    },
+    {
+      "role": "planner",
+      "attempt": 1,
+      "status": "transport_error",
+      "error": "Connection error.",
+      "raw_output": "",
+      "finish_reason": "unavailable",
+      "output_tokens": 0,
+      "usage_available": false
+    },
+    {
+      "role": "planner",
+      "attempt": 2,
+      "status": "delivered",
+      "error": "",
+      "raw_output": "K:packs_bought=9,per_pack=8,left=40;G:packs_opened;P:total=9*8,taken=total-left,opened=taken/per_pack",
+      "finish_reason": "stop",
+      "output_tokens": 44,
+      "usage_available": true
+    },
+    {
+      "role": "solver",
+      "attempt": 0,
+      "status": "delivered",
+      "error": "",
+      "raw_output": "IR:total=9*8=72,taken=72-40=32,opened=32/8=4;R:4",
+      "finish_reason": "stop",
+      "output_tokens": 30,
+      "usage_available": true
+    },
+    {
+      "role": "verifier",
+      "attempt": 0,
+      "status": "delivered",
+      "error": "",
+      "raw_output": "CHK:ACCEPT",
+      "finish_reason": "stop",
+      "output_tokens": 5,
+      "usage_available": true
+    }
+  ],
+  "failed_attempts": [
+    {
+      "status": "transport_error",
+      "error": "Connection error.",
+      "raw_output": "",
+      "attempt": 0,
+      "role": "planner"
+    },
+    {
+      "status": "transport_error",
+      "error": "Connection error.",
+      "raw_output": "",
+      "attempt": 1,
+      "role": "planner"
+    }
+  ],
+  "calls": 5,
+  "usage_complete": false,
+  "known_input_tokens": 2617,
+  "known_output_tokens": 79,
+  "model_input_tokens": null,
+  "model_output_tokens": null,
+  "format_failed_calls": 0,
+  "transport_failed_calls": 2,
+  "fallback_calls": 0,
+  "sum_model_latency_s": 8.933653354644775,
+  "gold": "4",
+  "score": 1.0,
+  "question": "Emily bought 9 packs of candy necklaces to give her classmates at school for Valentine’s Day. Each pack had 8 candy necklaces in it. Emily opened one pack at a time. After her classmates took as many as they wanted, there were 40 candy necklaces left. How many packs did Emily open for her classmates?\nGive the final numeric answer."
+}

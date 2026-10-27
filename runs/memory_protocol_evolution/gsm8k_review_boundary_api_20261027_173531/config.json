@@ -1,0 +1,322 @@
+{
+  "version": "memory-evolution-v4-review-boundary",
+  "task": "gsm8k",
+  "architecture": {
+    "name": "psv_v1",
+    "roles": {
+      "planner": "You are part of a multi-agent math problem solving system. Each agent has a distinct role and sees only the information it is allowed to see. Output only the format specified below, without surrounding text. Do not reveal or reference the gold answer or standard solution.\n\nYour role: Planner.\nYou read the original problem and produce a concise message to the Solver. You must not give the final numeric answer. Include only the facts, goal, plan, and constraints that the Solver needs.",
+      "solver": "You are part of a multi-agent math problem solving system. Each agent has a distinct role and sees only the information it is allowed to see. Output only the format specified below, without surrounding text. Do not reveal or reference the gold answer or standard solution.\n\nYour role: Solver.\nYou read the original problem and the Planner's message, then solve the problem. Output a candidate final answer and the information required by the protocol card.",
+      "verifier": "You are part of a multi-agent math problem solving system. Each agent has a distinct role and sees only the information it is allowed to see. Output only the format specified below, without surrounding text. Do not reveal or reference the gold answer or standard solution.\n\nYour role: Verifier.\nInspect the original task and the Solver's message. Do not access the gold answer.\n\nVerify in this order before deciding:\n1. Identify the exact target and any domain, branch, unit, or format constraints in the task. Check that the candidate answer addresses that target.\n2. Independently check the key relations and calculations in the Solver's explanation against the task. Recompute decisive steps when possible; do not assume that the explanation or your own first calculation is correct.\n3. Check that the available evidence supports the candidate answer and that relevant conditions or cases are respected.\n\nRequest revision only in one of two situations:\n- A specific, checkable contradiction is established in the explanation, candidate answer, or their relation to the task. Identify the exact expression, value, missing case, or violated condition and request a targeted correction. Verify the disputed step locally against the task or an explicit relation in the Solver's message before asserting an error. An alternative answer from your own calculation alone is not sufficient.\n- A specific essential step is absent and you cannot verify the candidate answer from the task and available message. Select the insufficient-information error category and request only the missing intermediate evidence; do not assert that the answer is wrong or request a different answer.\n\nIf an alleged defect requires solving a substantial new subproblem rather than checking an explicit relation or calculation, do not propose a replacement answer. Request only the particular missing derivation when it is essential for verification. Your inability to independently solve the entire task is not evidence that the Solver is wrong. Before asking for a different answer, verify why the current answer cannot satisfy the task; otherwise do not assert an answer error.\n\nIf the answer is supported and you have no established defect, accept it. Do not request a full derivation, generic rechecking, or extra detail merely because the explanation is concise. Follow the mode-specific output format below. These decision rules take precedence if a card example or field rule suggests a broader revision trigger."
+    },
+    "edges": {
+      "planner_to_solver": {
+        "allowed_fields": [
+          "K",
+          "G",
+          "P",
+          "NL"
+        ],
+        "required_fields": [
+          "G"
+        ]
+      },
+      "solver_to_verifier": {
+        "allowed_fields": [
+          "IR",
+          "R",
+          "NL"
+        ],
+        "required_fields": [
+          "R"
+        ]
+      },
+      "verifier_to_solver": {
+        "allowed_fields": [
+          "CHK",
+          "E",
+          "REQ"
+        ],
+        "required_fields": [
+          "CHK"
+        ]
+      }
+    },
+    "max_semantic_revisions": 1
+  },
+  "contract": {
+    "task": "gsm8k",
+    "architecture": {
+      "name": "psv_v1",
+      "roles": {
+        "planner": "You are part of a multi-agent math problem solving system. Each agent has a distinct role and sees only the information it is allowed to see. Output only the format specified below, without surrounding text. Do not reveal or reference the gold answer or standard solution.\n\nYour role: Planner.\nYou read the original problem and produce a concise message to the Solver. You must not give the final numeric answer. Include only the facts, goal, plan, and constraints that the Solver needs.",
+        "solver": "You are part of a multi-agent math problem solving system. Each agent has a distinct role and sees only the information it is allowed to see. Output only the format specified below, without surrounding text. Do not reveal or reference the gold answer or standard solution.\n\nYour role: Solver.\nYou read the original problem and the Planner's message, then solve the problem. Output a candidate final answer and the information required by the protocol card.",
+        "verifier": "You are part of a multi-agent math problem solving system. Each agent has a distinct role and sees only the information it is allowed to see. Output only the format specified below, without surrounding text. Do not reveal or reference the gold answer or standard solution.\n\nYour role: Verifier.\nInspect the original task and the Solver's message. Do not access the gold answer.\n\nVerify in this order before deciding:\n1. Identify the exact target and any domain, branch, unit, or format constraints in the task. Check that the candidate answer addresses that target.\n2. Independently check the key relations and calculations in the Solver's explanation against the task. Recompute decisive steps when possible; do not assume that the explanation or your own first calculation is correct.\n3. Check that the available evidence supports the candidate answer and that relevant conditions or cases are respected.\n\nRequest revision only in one of two situations:\n- A specific, checkable contradiction is established in the explanation, candidate answer, or their relation to the task. Identify the exact expression, value, missing case, or violated condition and request a targeted correction. Verify the disputed step locally against the task or an explicit relation in the Solver's message before asserting an error. An alternative answer from your own calculation alone is not sufficient.\n- A specific essential step is absent and you cannot verify the candidate answer from the task and available message. Select the insufficient-information error category and request only the missing intermediate evidence; do not assert that the answer is wrong or request a different answer.\n\nIf an alleged defect requires solving a substantial new subproblem rather than checking an explicit relation or calculation, do not propose a replacement answer. Request only the particular missing derivation when it is essential for verification. Your inability to independently solve the entire task is not evidence that the Solver is wrong. Before asking for a different answer, verify why the current answer cannot satisfy the task; otherwise do not assert an answer error.\n\nIf the answer is supported and you have no established defect, accept it. Do not request a full derivation, generic rechecking, or extra detail merely because the explanation is concise. Follow the mode-specific output format below. These decision rules take precedence if a card example or field rule suggests a broader revision trigger."
+      },
+      "edges": {
+        "planner_to_solver": {
+          "allowed_fields": [
+            "K",
+            "G",
+            "P",
+            "NL"
+          ],
+          "required_fields": [
+            "G"
+          ]
+        },
+        "solver_to_verifier": {
+          "allowed_fields": [
+            "IR",
+            "R",
+            "NL"
+          ],
+          "required_fields": [
+            "R"
+          ]
+        },
+        "verifier_to_solver": {
+          "allowed_fields": [
+            "CHK",
+            "E",
+            "REQ"
+          ],
+          "required_fields": [
+            "CHK"
+          ]
+        }
+      },
+      "max_semantic_revisions": 1
+    },
+    "field_meanings": {
+      "K": "Selected problem givens, not computed results.",
+      "G": "Exact target quantity and its intended unit.",
+      "P": "Plan and relations, not a completed final answer.",
+      "IR": "Decisive intermediate evidence supporting the answer.",
+      "R": "A bare final numeric answer, no unit or reasoning.",
+      "NL": "Optional short natural-language clarification of answer-changing meaning; omit if unused.",
+      "CHK": "ACCEPT or REVISE; ACCEPT sends CHK only.",
+      "E": "Error category on REVISE.",
+      "REQ": "Actionable revision request on REVISE, not a replacement answer."
+    },
+    "edge_validation": [
+      {
+        "edge": "planner_to_solver",
+        "fields": [
+          {
+            "name": "NL",
+            "choices": [],
+            "forbidden_values": [
+              "none",
+              "n/a",
+              "no ambiguity",
+              "unknown",
+              "not applicable"
+            ],
+            "pattern": null,
+            "error": "omit unused NL instead of sending a placeholder"
+          }
+        ],
+        "conditions": [],
+        "example_only": [],
+        "required_example_fields": [],
+        "instruction_lines": []
+      },
+      {
+        "edge": "solver_to_verifier",
+        "fields": [
+          {
+            "name": "NL",
+            "choices": [],
+            "forbidden_values": [
+              "none",
+              "n/a",
+              "no ambiguity",
+              "unknown",
+              "not applicable"
+            ],
+            "pattern": null,
+            "error": "omit unused NL instead of sending a placeholder"
+          }
+        ],
+        "conditions": [],
+        "example_only": [],
+        "required_example_fields": [],
+        "instruction_lines": []
+      },
+      {
+        "edge": "verifier_to_solver",
+        "fields": [
+          {
+            "name": "CHK",
+            "choices": [
+              "ACCEPT",
+              "REVISE",
+              "FAIL",
+              "INSUFFICIENT"
+            ],
+            "forbidden_values": [],
+            "pattern": null,
+            "error": "verifier CHK must be REVISE, FAIL or INSUFFICIENT, got {value}"
+          },
+          {
+            "name": "E",
+            "choices": [
+              "ARITH",
+              "RELATION",
+              "MISSING_FACT",
+              "MISSING_UNIT",
+              "WRONG_TARGET",
+              "INSUFFICIENT_INFO",
+              "OTHER"
+            ],
+            "forbidden_values": [],
+            "pattern": null,
+            "error": "verifier E must be a valid ErrorType, got {value}"
+          }
+        ],
+        "conditions": [
+          {
+            "field": "CHK",
+            "equals": "ACCEPT",
+            "required": [],
+            "only": [
+              "CHK"
+            ],
+            "error": "verifier ACCEPT must be CHK:ACCEPT without E or REQ"
+          },
+          {
+            "field": "CHK",
+            "equals": "REVISE",
+            "required": [
+              "E",
+              "REQ"
+            ],
+            "only": [],
+            "error": "edge=verifier_to_solver: missing required fields {missing}"
+          },
+          {
+            "field": "CHK",
+            "equals": "FAIL",
+            "required": [
+              "E",
+              "REQ"
+            ],
+            "only": [],
+            "error": "edge=verifier_to_solver: missing required fields {missing}"
+          },
+          {
+            "field": "CHK",
+            "equals": "INSUFFICIENT",
+            "required": [
+              "E",
+              "REQ"
+            ],
+            "only": [],
+            "error": "edge=verifier_to_solver: missing required fields {missing}"
+          }
+        ],
+        "example_only": [],
+        "required_example_fields": [],
+        "instruction_lines": [
+          "Error categories for E: ARITH, INSUFFICIENT_INFO, MISSING_FACT, MISSING_UNIT, OTHER, RELATION, WRONG_TARGET"
+        ]
+      }
+    ],
+    "reserved_fields": [
+      "C",
+      "U"
+    ],
+    "fixed_card_options": {
+      "allow_nl_field": true
+    },
+    "generation_guidance": "Use optional NL to preserve answer-changing meaning unsafe to symbolize; omit unused NL. R is numeric only. CHK:ACCEPT alone; REVISE requires E and REQ. Do not add legacy C/U or rename fields. Include optional NL examples for planner and solver."
+  },
+  "contract_sha256": "ac09c03455d8af3a35273b605bb457591de11f0e22bded3325bbb626ee774caf",
+  "schedule": {
+    "induction": "D0",
+    "evolution": [
+      "G1",
+      "G2",
+      "G3"
+    ],
+    "validation": "V",
+    "heldout": [
+      "T"
+    ]
+  },
+  "effect_valid": true,
+  "executor_capability": "Target executor: deepseek-chat; preserve concise explicit role and field rules, operation direction, verification evidence, and optional NL when symbols lose answer-changing meaning.",
+  "proposal_tokens": 4096,
+  "design_strategy": "evidence_bound_reviewed",
+  "selection": "accuracy_then_exact_communication_tokens_else_parent",
+  "metadata": {
+    "benchmark": "gsm8k",
+    "architecture": "psv_v1",
+    "manifest": "E:\\毕设\\LycheeMAS\\data\\splits\\gsm8k_protocol_nl_field_v1_seed42.json",
+    "out": "E:\\毕设\\LycheeMAS_memory_channel\\runs\\memory_protocol_evolution\\gsm8k_review_boundary_api_20261027_173531",
+    "backend": "api",
+    "model": "deepseek-chat",
+    "proposer_model": "deepseek-chat",
+    "proposer_base_url": null,
+    "proposer_api_key_env": null,
+    "executor_capability": "Target executor: deepseek-chat; preserve concise explicit role and field rules, operation direction, verification evidence, and optional NL when symbols lose answer-changing meaning.",
+    "tokenizer": "C:/Users/Autism/.cache/huggingface/hub/models--deepseek-ai--DeepSeek-V3/snapshots/e815299b0bcbac849fa540c768ef21845365c9eb",
+    "base_url": "https://api.deepseek.com",
+    "api_key_env": "DEEPSEEK_API_KEY",
+    "seed": 42,
+    "limit": 0,
+    "max_new_tokens": 512,
+    "proposal_tokens": 4096,
+    "manifest_sha256": "e9621424da658c4095f25152ad370e70c47e36a39e58fe74cce2ff721fd73696",
+    "source_sha256": {
+      "scripts\\run_memory_protocol_evolution.py": "91219771162f369c5d2078796873eaa98fc965b58233d02a0b3529c7b703f562",
+      "examples\\03_gsm8k_memory_protocol.py": "88370bc732842c5b1a7517bff1227beb14ee6a2d0554310eeabf06c81379352d",
+      "scripts\\run_memory_protocol_compare.py": "511cde31e592677833ec3dfeac498a7c5c7ac5d6cd763c32222734964921718f",
+      "scripts\\hybrid_gsm8k_spec.py": "319e05b2ba9f917b1c2a34b93d7652e837b0011883f508a77ab8c605736f9f1f",
+      "scripts\\hybrid_gsm8k_design.py": "e50635d69dec75ec637eb2484e4d828b45c1a0e81edcf6334b5cb8de47996949",
+      "configs\\memory\\gsm8k_protocol_schema.yaml": "41fc36f9af41830f8255fdb24df611c0e6e62ee999fb0c01175477c5fa42f3a7",
+      "src\\lychee_mas\\methods\\memory\\__init__.py": "edbd40b9f1e36213e6938f8066fe4fe4a89458ead37cb7d74a3d52fa85d929e5",
+      "src\\lychee_mas\\methods\\memory\\base.py": "25d646f9e5d12be4b0f4385c46148c490757ce3729ef94c6c83a91e826baf9b4",
+      "src\\lychee_mas\\methods\\memory\\channels\\__init__.py": "2cdce423faa6b8344f106b2dbce67d1b87291106a3a811ce8c8198874e2dbd92",
+      "src\\lychee_mas\\methods\\memory\\channels\\c2c_channel.py": "91c1a800d3125783c5012b0c25fcbb0f520e66c93f218adc3d37ffe37dbbc821",
+      "src\\lychee_mas\\methods\\memory\\channels\\c2c_projector.py": "7a2d214236a4ab72d5fe3f41452134a2acd2b24a3f221a3d2498756247fbd1b3",
+      "src\\lychee_mas\\methods\\memory\\channels\\hybrid_protocol.py": "ded70f25ef4c654cd0b6f0a44689b91fc1435a6cce71e678afaafa2c69d87730",
+      "src\\lychee_mas\\methods\\memory\\channels\\latent.py": "a9fb8d14376605b171b61ccdd4d0c142f64be7fd0c89b0571c408601913078e1",
+      "src\\lychee_mas\\methods\\memory\\channels\\nl.py": "7b65c7b2f2133c6cddcbbd37115b8f9065a3362661d9d2a6d368c986202603e4",
+      "src\\lychee_mas\\methods\\memory\\context.py": "ce268db578ead88972e8b8965f3e49a0a912641a77e325481f882fc53d9be560",
+      "src\\lychee_mas\\methods\\memory\\managers\\__init__.py": "eea24f0e5655577af29f736d124e046f0115990e997557c5d896442870922c6b",
+      "src\\lychee_mas\\methods\\memory\\managers\\DualChannelMemory.py": "e8b77c32c73a318a40bf746c0ebaacd608a97a3a59cfd7821d863984e92b32cc",
+      "src\\lychee_mas\\methods\\memory\\managers\\external.py": "c0e5bd4520b0e4de4133ee4205883e10fe7c16e524648abf647a85b9796b5c7a",
+      "src\\lychee_mas\\methods\\memory\\protocol\\__init__.py": "dc79e168c2c94c44c4b2a16c22bbe26d03b92a9068ef1d4d1edca34a218b611b",
+      "src\\lychee_mas\\methods\\memory\\protocol\\base.py": "2caf65c98d312c16e93afc3495f7063bbd37cd0576edbe3a559dd0262a10ce2a",
+      "src\\lychee_mas\\methods\\memory\\protocol\\evolution.py": "152f0648911da8d379b6bc93f3549d7f55bb093077ade8c5ea3e2eeb87b3cebc",
+      "src\\lychee_mas\\methods\\memory\\routing\\__init__.py": "b3b032ca7f19a37b5d4e45ddb49392501d1ee4a84f7672cb480219e8f8a31824",
+      "src\\lychee_mas\\methods\\memory\\routing\\base.py": "4a0f0821f99fe7ef8a239cb99dac06b250f0153935a40015523897c341e592e5",
+      "src\\lychee_mas\\methods\\memory\\routing\\learned.py": "e43dca893f94d20c7215a5d0367d5c64cb9f977e3ce47c77654ff6657aa228e8",
+      "src\\lychee_mas\\methods\\memory\\routing\\soft_gate.py": "f93f92620874084bb52616a35a5e68b0557945d9d8302f4b0e1d34279ae55a4f",
+      "src\\lychee_mas\\methods\\memory\\routing\\static.py": "c229563be13d19c298f95d42e7dcd49c50a4c5950d30562593b1c6bb0e807ad7",
+      "src\\lychee_mas\\methods\\memory\\store.py": "3f576bd395956f3cf8d07988f2063f6fee99da3f943de559368a4c2007d03312",
+      "src\\lychee_mas\\backends\\openai_api_backend.py": "62bacbf89bee3c2ffb1360ae37eabac5d913fe594f0377923f61aaa7c258ef03",
+      "src\\lychee_mas\\methods\\build\\lg_builder.py": "de6160ec9c2044f7d596c5a141a90a597f011eb7b2ad7ebc865ec86f1441b23f",
+      "configs\\memory\\gsm8k_hybrid_protocol.yaml": "0f0ae0d21cf2b0a6d95b10106bee7b7813b78b145324b87a10780a6758be85d0"
+    },
+    "python": "3.12.14",
+    "packages": {
+      "PyYAML": "6.0.3",
+      "langgraph": "1.2.16",
+      "openai": "3.17.0",
+      "transformers": "5.17.0"
+    },
+    "git_sha": "5dc7fc2da633ffb5188cd34332f6712da5f708a0",
+    "git_dirty": true,
+    "pilot": false,
+    "gold_passed_to_executor": false
+  },
+  "counts": {
+    "D0": 25,
+    "G1": 50,
+    "G2": 50,
+    "G3": 50,
+    "V": 200
+  }
+}

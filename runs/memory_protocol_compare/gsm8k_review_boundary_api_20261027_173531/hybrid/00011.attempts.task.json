@@ -1,0 +1,121 @@
+{
+  "task_id": "gsm8k:test:seed42:T:00011",
+  "mode": "hybrid",
+  "benchmark": "gsm8k",
+  "status": "completed",
+  "error": null,
+  "prediction": "694",
+  "gold": "694",
+  "wall_time_s": 3.7259064000099897,
+  "communication_tokens": 120,
+  "communication_tokens_exact": true,
+  "revision_rounds": 0,
+  "verification_decision": "ACCEPT",
+  "verified": true,
+  "messages": [
+    {
+      "sender": "planner",
+      "content": "K:donuts_dozen=3,donuts_rate=68,cupcakes_dozen=2,cupcakes_rate=80,cheesecakes_dozen=6,cheesecakes_rate=55;G:total_cost;P:total=3*68+2*80+6*55",
+      "receiver": "solver",
+      "round": 0,
+      "role": "assistant",
+      "prompt_tokens": 772,
+      "completion_tokens": 70,
+      "id": "18bd533da2fd",
+      "ts": 1793100369.5497758,
+      "meta": {
+        "sender": "planner",
+        "receiver": "solver",
+        "message_id": "18bd533da2fd",
+        "protocol_edge": "planner_to_solver",
+        "protocol_version": "CARD-2-gsm8k",
+        "protocol_hash": "c152278e4a24181b874bd88cbf3adef79479b79f6539931bcd89721fa5a8a7a9",
+        "contract_hash": "ac09c03455d8af3a35273b605bb457591de11f0e22bded3325bbb626ee774caf",
+        "fields": {
+          "K": "donuts_dozen=3,donuts_rate=68,cupcakes_dozen=2,cupcakes_rate=80,cheesecakes_dozen=6,cheesecakes_rate=55",
+          "G": "total_cost",
+          "P": "total=3*68+2*80+6*55"
+        },
+        "communication_tokens": 70,
+        "communication_tokens_exact": true,
+        "attempt_count": 1,
+        "fallback": false,
+        "tokens_include_all_attempts": true,
+        "incoming_message_ids": []
+      }
+    },
+    {
+      "sender": "solver",
+      "content": "IR:donuts=3*68=204,cupcakes=2*80=160,cheesecakes=6*55=330,total=204+160+330=694;R:694",
+      "receiver": "verifier",
+      "round": 0,
+      "role": "assistant",
+      "prompt_tokens": 785,
+      "completion_tokens": 45,
+      "id": "81a3a2e3da9f",
+      "ts": 1793100370.7434714,
+      "meta": {
+        "sender": "solver",
+        "receiver": "verifier",
+        "message_id": "81a3a2e3da9f",
+        "protocol_edge": "solver_to_verifier",
+        "protocol_version": "CARD-2-gsm8k",
+        "protocol_hash": "c152278e4a24181b874bd88cbf3adef79479b79f6539931bcd89721fa5a8a7a9",
+        "contract_hash": "ac09c03455d8af3a35273b605bb457591de11f0e22bded3325bbb626ee774caf",
+        "fields": {
+          "IR": "donuts=3*68=204,cupcakes=2*80=160,cheesecakes=6*55=330,total=204+160+330=694",
+          "R": "694"
+        },
+        "communication_tokens": 45,
+        "communication_tokens_exact": true,
+        "attempt_count": 1,
+        "fallback": false,
+        "tokens_include_all_attempts": true,
+        "incoming_message_ids": [
+          "18bd533da2fd"
+        ]
+      }
+    },
+    {
+      "sender": "verifier",
+      "content": "CHK:ACCEPT",
+      "receiver": "solver",
+      "round": 0,
+      "role": "assistant",
+      "prompt_tokens": 1092,
+      "completion_tokens": 5,
+      "id": "6e71eefde0c1",
+      "ts": 1793100371.8477826,
+      "meta": {
+        "sender": "verifier",
+        "receiver": "solver",
+        "message_id": "6e71eefde0c1",
+        "protocol_edge": "verifier_to_solver",
+        "protocol_version": "CARD-2-gsm8k",
+        "protocol_hash": "c152278e4a24181b874bd88cbf3adef79479b79f6539931bcd89721fa5a8a7a9",
+        "contract_hash": "ac09c03455d8af3a35273b605bb457591de11f0e22bded3325bbb626ee774caf",
+        "fields": {
+          "CHK": "ACCEPT"
+        },
+        "communication_tokens": 5,
+        "communication_tokens_exact": true,
+        "attempt_count": 1,
+        "fallback": false,
+        "tokens_include_all_attempts": true,
+        "incoming_message_ids": [
+          "81a3a2e3da9f"
+        ]
+      }
+    }
+  ],
+  "calls": 3,
+  "usage_complete": true,
+  "known_input_tokens": 2649,
+  "known_output_tokens": 120,
+  "model_input_tokens": 2649,
+  "model_output_tokens": 120,
+  "format_failed_calls": 0,
+  "transport_failed_calls": 0,
+  "fallback_calls": 0,
+  "sum_model_latency_s": 3.6677420139312744
+}

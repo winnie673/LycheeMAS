@@ -1,0 +1,149 @@
+{
+  "task_id": "gsm8k:train:seed42:V:00133",
+  "status": "completed",
+  "error": null,
+  "prediction": "28",
+  "messages": [
+    {
+      "sender": "planner",
+      "content": "K:bananas=4,apples=3,strawberries=24,avocados=2,banana_price=1,apple_price=2,strawberry_batch=12,strawberry_batch_price=4,avocado_price=3,half_grape_bunch_price=2;G:total_cost;P:banana_cost=4*1,apple_cost=3*2,strawberry_cost=(24/12)*4,avocado_cost=2*3,grape_bunch_cost=2*2,total_cost=banana_cost+apple_cost+strawberry_cost+avocado_cost+grape_bunch_cost",
+      "receiver": "solver",
+      "round": 0,
+      "role": "assistant",
+      "prompt_tokens": 751,
+      "completion_tokens": 142,
+      "id": "8239347bfe91",
+      "ts": 1793095730.6806104,
+      "meta": {
+        "sender": "planner",
+        "receiver": "solver",
+        "message_id": "8239347bfe91",
+        "protocol_edge": "planner_to_solver",
+        "protocol_version": "CARD-0-gsm8k",
+        "protocol_hash": "eb2823227bf7889a5ca248376e410b4922fec80b12249ba4d10a3c8452604ed2",
+        "contract_hash": "ac09c03455d8af3a35273b605bb457591de11f0e22bded3325bbb626ee774caf",
+        "fields": {
+          "K": "bananas=4,apples=3,strawberries=24,avocados=2,banana_price=1,apple_price=2,strawberry_batch=12,strawberry_batch_price=4,avocado_price=3,half_grape_bunch_price=2",
+          "G": "total_cost",
+          "P": "banana_cost=4*1,apple_cost=3*2,strawberry_cost=(24/12)*4,avocado_cost=2*3,grape_bunch_cost=2*2,total_cost=banana_cost+apple_cost+strawberry_cost+avocado_cost+grape_bunch_cost"
+        },
+        "communication_tokens": 142,
+        "communication_tokens_exact": true,
+        "attempt_count": 1,
+        "fallback": false,
+        "tokens_include_all_attempts": true,
+        "incoming_message_ids": []
+      }
+    },
+    {
+      "sender": "solver",
+      "content": "IR:banana_cost=4*1=4,apple_cost=3*2=6,strawberry_cost=(24/12)*4=8,avocado_cost=2*3=6,grape_bunch_cost=2*2=4,total=4+6+8+6+4=28;R:28",
+      "receiver": "verifier",
+      "round": 0,
+      "role": "assistant",
+      "prompt_tokens": 868,
+      "completion_tokens": 73,
+      "id": "e6b896e6a158",
+      "ts": 1793095732.1136215,
+      "meta": {
+        "sender": "solver",
+        "receiver": "verifier",
+        "message_id": "e6b896e6a158",
+        "protocol_edge": "solver_to_verifier",
+        "protocol_version": "CARD-0-gsm8k",
+        "protocol_hash": "eb2823227bf7889a5ca248376e410b4922fec80b12249ba4d10a3c8452604ed2",
+        "contract_hash": "ac09c03455d8af3a35273b605bb457591de11f0e22bded3325bbb626ee774caf",
+        "fields": {
+          "IR": "banana_cost=4*1=4,apple_cost=3*2=6,strawberry_cost=(24/12)*4=8,avocado_cost=2*3=6,grape_bunch_cost=2*2=4,total=4+6+8+6+4=28",
+          "R": "28"
+        },
+        "communication_tokens": 73,
+        "communication_tokens_exact": true,
+        "attempt_count": 1,
+        "fallback": false,
+        "tokens_include_all_attempts": true,
+        "incoming_message_ids": [
+          "8239347bfe91"
+        ]
+      }
+    },
+    {
+      "sender": "verifier",
+      "content": "CHK:ACCEPT",
+      "receiver": "solver",
+      "round": 0,
+      "role": "assistant",
+      "prompt_tokens": 1131,
+      "completion_tokens": 5,
+      "id": "4fc7406654af",
+      "ts": 1793095733.202985,
+      "meta": {
+        "sender": "verifier",
+        "receiver": "solver",
+        "message_id": "4fc7406654af",
+        "protocol_edge": "verifier_to_solver",
+        "protocol_version": "CARD-0-gsm8k",
+        "protocol_hash": "eb2823227bf7889a5ca248376e410b4922fec80b12249ba4d10a3c8452604ed2",
+        "contract_hash": "ac09c03455d8af3a35273b605bb457591de11f0e22bded3325bbb626ee774caf",
+        "fields": {
+          "CHK": "ACCEPT"
+        },
+        "communication_tokens": 5,
+        "communication_tokens_exact": true,
+        "attempt_count": 1,
+        "fallback": false,
+        "tokens_include_all_attempts": true,
+        "incoming_message_ids": [
+          "e6b896e6a158"
+        ]
+      }
+    }
+  ],
+  "communication_tokens": 220,
+  "wall_time_s": 4.265940000070259,
+  "verified": true,
+  "revision_rounds": 0,
+  "model_calls": [
+    {
+      "role": "planner",
+      "attempt": 0,
+      "status": "delivered",
+      "error": "",
+      "raw_output": "K:bananas=4,apples=3,strawberries=24,avocados=2,banana_price=1,apple_price=2,strawberry_batch=12,strawberry_batch_price=4,avocado_price=3,half_grape_bunch_price=2;G:total_cost;P:banana_cost=4*1,apple_cost=3*2,strawberry_cost=(24/12)*4,avocado_cost=2*3,grape_bunch_cost=2*2,total_cost=banana_cost+apple_cost+strawberry_cost+avocado_cost+grape_bunch_cost",
+      "finish_reason": "stop",
+      "output_tokens": 142,
+      "usage_available": true
+    },
+    {
+      "role": "solver",
+      "attempt": 0,
+      "status": "delivered",
+      "error": "",
+      "raw_output": "IR:banana_cost=4*1=4,apple_cost=3*2=6,strawberry_cost=(24/12)*4=8,avocado_cost=2*3=6,grape_bunch_cost=2*2=4,total=4+6+8+6+4=28;R:28",
+      "finish_reason": "stop",
+      "output_tokens": 73,
+      "usage_available": true
+    },
+    {
+      "role": "verifier",
+      "attempt": 0,
+      "status": "delivered",
+      "error": "",
+      "raw_output": "CHK:ACCEPT",
+      "finish_reason": "stop",
+      "output_tokens": 5,
+      "usage_available": true
+    }
+  ],
+  "failed_attempts": [],
+  "calls": 3,
+  "usage_complete": true,
+  "known_input_tokens": 2750,
+  "known_output_tokens": 220,
+  "model_input_tokens": 2750,
+  "model_output_tokens": 220,
+  "format_failed_calls": 0,
+  "transport_failed_calls": 0,
+  "fallback_calls": 0,
+  "sum_model_latency_s": 4.15917706489563
+}

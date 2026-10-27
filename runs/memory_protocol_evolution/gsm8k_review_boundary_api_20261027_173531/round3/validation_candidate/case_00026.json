@@ -1,0 +1,152 @@
+{
+  "task_id": "gsm8k:train:seed42:V:00026",
+  "status": "completed",
+  "error": null,
+  "prediction": "22",
+  "messages": [
+    {
+      "sender": "planner",
+      "content": "G:height_after_3_weeks;K:week1=2;P:week2=2*week1,week3=4*week2,height=week1+week2+week3",
+      "receiver": "solver",
+      "round": 0,
+      "role": "assistant",
+      "prompt_tokens": 785,
+      "completion_tokens": 46,
+      "id": "e25bd828e041",
+      "ts": 1793099232.2321372,
+      "meta": {
+        "sender": "planner",
+        "receiver": "solver",
+        "message_id": "e25bd828e041",
+        "protocol_edge": "planner_to_solver",
+        "protocol_version": "CARD-2-gsm8k",
+        "protocol_hash": "c152278e4a24181b874bd88cbf3adef79479b79f6539931bcd89721fa5a8a7a9",
+        "contract_hash": "ac09c03455d8af3a35273b605bb457591de11f0e22bded3325bbb626ee774caf",
+        "fields": {
+          "G": "height_after_3_weeks",
+          "K": "week1=2",
+          "P": "week2=2*week1,week3=4*week2,height=week1+week2+week3"
+        },
+        "communication_tokens": 46,
+        "communication_tokens_exact": true,
+        "attempt_count": 1,
+        "fallback": false,
+        "tokens_include_all_attempts": true,
+        "incoming_message_ids": []
+      }
+    },
+    {
+      "sender": "solver",
+      "content": "IR:week2=2*2=4,week3=4*4=16,height=2+4+16=22;R:22",
+      "receiver": "verifier",
+      "round": 0,
+      "role": "assistant",
+      "prompt_tokens": 774,
+      "completion_tokens": 33,
+      "id": "208aeb6a8863",
+      "ts": 1793099233.381244,
+      "meta": {
+        "sender": "solver",
+        "receiver": "verifier",
+        "message_id": "208aeb6a8863",
+        "protocol_edge": "solver_to_verifier",
+        "protocol_version": "CARD-2-gsm8k",
+        "protocol_hash": "c152278e4a24181b874bd88cbf3adef79479b79f6539931bcd89721fa5a8a7a9",
+        "contract_hash": "ac09c03455d8af3a35273b605bb457591de11f0e22bded3325bbb626ee774caf",
+        "fields": {
+          "IR": "week2=2*2=4,week3=4*4=16,height=2+4+16=22",
+          "R": "22"
+        },
+        "communication_tokens": 33,
+        "communication_tokens_exact": true,
+        "attempt_count": 1,
+        "fallback": false,
+        "tokens_include_all_attempts": true,
+        "incoming_message_ids": [
+          "e25bd828e041"
+        ]
+      }
+    },
+    {
+      "sender": "verifier",
+      "content": "CHK:ACCEPT",
+      "receiver": "solver",
+      "round": 0,
+      "role": "assistant",
+      "prompt_tokens": 1093,
+      "completion_tokens": 5,
+      "id": "f8565c818ebe",
+      "ts": 1793099234.5585508,
+      "meta": {
+        "sender": "verifier",
+        "receiver": "solver",
+        "message_id": "f8565c818ebe",
+        "protocol_edge": "verifier_to_solver",
+        "protocol_version": "CARD-2-gsm8k",
+        "protocol_hash": "c152278e4a24181b874bd88cbf3adef79479b79f6539931bcd89721fa5a8a7a9",
+        "contract_hash": "ac09c03455d8af3a35273b605bb457591de11f0e22bded3325bbb626ee774caf",
+        "fields": {
+          "CHK": "ACCEPT"
+        },
+        "communication_tokens": 5,
+        "communication_tokens_exact": true,
+        "attempt_count": 1,
+        "fallback": false,
+        "tokens_include_all_attempts": true,
+        "incoming_message_ids": [
+          "208aeb6a8863"
+        ]
+      }
+    }
+  ],
+  "communication_tokens": 84,
+  "wall_time_s": 3.715085299918428,
+  "verified": true,
+  "revision_rounds": 0,
+  "model_calls": [
+    {
+      "role": "planner",
+      "attempt": 0,
+      "status": "delivered",
+      "error": "",
+      "raw_output": "G:height_after_3_weeks;K:week1=2;P:week2=2*week1,week3=4*week2,height=week1+week2+week3",
+      "finish_reason": "stop",
+      "output_tokens": 46,
+      "usage_available": true
+    },
+    {
+      "role": "solver",
+      "attempt": 0,
+      "status": "delivered",
+      "error": "",
+      "raw_output": "IR:week2=2*2=4,week3=4*4=16,height=2+4+16=22;R:22",
+      "finish_reason": "stop",
+      "output_tokens": 33,
+      "usage_available": true
+    },
+    {
+      "role": "verifier",
+      "attempt": 0,
+      "status": "delivered",
+      "error": "",
+      "raw_output": "CHK:ACCEPT",
+      "finish_reason": "stop",
+      "output_tokens": 5,
+      "usage_available": true
+    }
+  ],
+  "failed_attempts": [],
+  "calls": 3,
+  "usage_complete": true,
+  "known_input_tokens": 2652,
+  "known_output_tokens": 84,
+  "model_input_tokens": 2652,
+  "model_output_tokens": 84,
+  "format_failed_calls": 0,
+  "transport_failed_calls": 0,
+  "fallback_calls": 0,
+  "sum_model_latency_s": 3.57755446434021,
+  "gold": "22",
+  "score": 1.0,
+  "question": "Bob has planted corn in his garden, and it has just started to sprout. A week after planting it, it had grown 2 inches. The next week, its height increased by twice as much as it had the first week. In the third week, it grew 4 times as much as it did the week before. How tall are the corn plants now?\nGive the final numeric answer."
+}

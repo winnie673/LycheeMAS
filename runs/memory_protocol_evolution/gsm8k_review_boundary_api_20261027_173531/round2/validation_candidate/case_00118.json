@@ -1,0 +1,152 @@
+{
+  "task_id": "gsm8k:train:seed42:V:00118",
+  "status": "completed",
+  "error": null,
+  "prediction": "97",
+  "messages": [
+    {
+      "sender": "planner",
+      "content": "K:tue=25,mon_factor=0.8,wed_extra=2,thu=10,fri=10,weekend_daily=5;G:total_cars;P:mon=tue*mon_factor,wed=mon+wed_extra,total=mon+tue+wed+thu+fri+2*weekend_daily",
+      "receiver": "solver",
+      "round": 0,
+      "role": "assistant",
+      "prompt_tokens": 796,
+      "completion_tokens": 77,
+      "id": "8d4475d709a5",
+      "ts": 1793097671.571595,
+      "meta": {
+        "sender": "planner",
+        "receiver": "solver",
+        "message_id": "8d4475d709a5",
+        "protocol_edge": "planner_to_solver",
+        "protocol_version": "CARD-2-gsm8k",
+        "protocol_hash": "c152278e4a24181b874bd88cbf3adef79479b79f6539931bcd89721fa5a8a7a9",
+        "contract_hash": "ac09c03455d8af3a35273b605bb457591de11f0e22bded3325bbb626ee774caf",
+        "fields": {
+          "K": "tue=25,mon_factor=0.8,wed_extra=2,thu=10,fri=10,weekend_daily=5",
+          "G": "total_cars",
+          "P": "mon=tue*mon_factor,wed=mon+wed_extra,total=mon+tue+wed+thu+fri+2*weekend_daily"
+        },
+        "communication_tokens": 77,
+        "communication_tokens_exact": true,
+        "attempt_count": 1,
+        "fallback": false,
+        "tokens_include_all_attempts": true,
+        "incoming_message_ids": []
+      }
+    },
+    {
+      "sender": "solver",
+      "content": "IR:mon=25*0.8=20,wed=20+2=22,total=20+25+22+10+10+2*5=97;R:97",
+      "receiver": "verifier",
+      "round": 0,
+      "role": "assistant",
+      "prompt_tokens": 816,
+      "completion_tokens": 41,
+      "id": "e0d77bdf2b38",
+      "ts": 1793097672.8064775,
+      "meta": {
+        "sender": "solver",
+        "receiver": "verifier",
+        "message_id": "e0d77bdf2b38",
+        "protocol_edge": "solver_to_verifier",
+        "protocol_version": "CARD-2-gsm8k",
+        "protocol_hash": "c152278e4a24181b874bd88cbf3adef79479b79f6539931bcd89721fa5a8a7a9",
+        "contract_hash": "ac09c03455d8af3a35273b605bb457591de11f0e22bded3325bbb626ee774caf",
+        "fields": {
+          "IR": "mon=25*0.8=20,wed=20+2=22,total=20+25+22+10+10+2*5=97",
+          "R": "97"
+        },
+        "communication_tokens": 41,
+        "communication_tokens_exact": true,
+        "attempt_count": 1,
+        "fallback": false,
+        "tokens_include_all_attempts": true,
+        "incoming_message_ids": [
+          "8d4475d709a5"
+        ]
+      }
+    },
+    {
+      "sender": "verifier",
+      "content": "CHK:ACCEPT",
+      "receiver": "solver",
+      "round": 0,
+      "role": "assistant",
+      "prompt_tokens": 1112,
+      "completion_tokens": 5,
+      "id": "08bfc7597c24",
+      "ts": 1793097673.9431348,
+      "meta": {
+        "sender": "verifier",
+        "receiver": "solver",
+        "message_id": "08bfc7597c24",
+        "protocol_edge": "verifier_to_solver",
+        "protocol_version": "CARD-2-gsm8k",
+        "protocol_hash": "c152278e4a24181b874bd88cbf3adef79479b79f6539931bcd89721fa5a8a7a9",
+        "contract_hash": "ac09c03455d8af3a35273b605bb457591de11f0e22bded3325bbb626ee774caf",
+        "fields": {
+          "CHK": "ACCEPT"
+        },
+        "communication_tokens": 5,
+        "communication_tokens_exact": true,
+        "attempt_count": 1,
+        "fallback": false,
+        "tokens_include_all_attempts": true,
+        "incoming_message_ids": [
+          "e0d77bdf2b38"
+        ]
+      }
+    }
+  ],
+  "communication_tokens": 123,
+  "wall_time_s": 3.946622099960223,
+  "verified": true,
+  "revision_rounds": 0,
+  "model_calls": [
+    {
+      "role": "planner",
+      "attempt": 0,
+      "status": "delivered",
+      "error": "",
+      "raw_output": "K:tue=25,mon_factor=0.8,wed_extra=2,thu=10,fri=10,weekend_daily=5;G:total_cars;P:mon=tue*mon_factor,wed=mon+wed_extra,total=mon+tue+wed+thu+fri+2*weekend_daily",
+      "finish_reason": "stop",
+      "output_tokens": 77,
+      "usage_available": true
+    },
+    {
+      "role": "solver",
+      "attempt": 0,
+      "status": "delivered",
+      "error": "",
+      "raw_output": "IR:mon=25*0.8=20,wed=20+2=22,total=20+25+22+10+10+2*5=97;R:97",
+      "finish_reason": "stop",
+      "output_tokens": 41,
+      "usage_available": true
+    },
+    {
+      "role": "verifier",
+      "attempt": 0,
+      "status": "delivered",
+      "error": "",
+      "raw_output": "CHK:ACCEPT",
+      "finish_reason": "stop",
+      "output_tokens": 5,
+      "usage_available": true
+    }
+  ],
+  "failed_attempts": [],
+  "calls": 3,
+  "usage_complete": true,
+  "known_input_tokens": 2724,
+  "known_output_tokens": 123,
+  "model_input_tokens": 2724,
+  "model_output_tokens": 123,
+  "format_failed_calls": 0,
+  "transport_failed_calls": 0,
+  "fallback_calls": 0,
+  "sum_model_latency_s": 3.891771078109741,
+  "gold": "97",
+  "score": 1.0,
+  "question": "There is very little car traffic on Happy Street. During the week, most cars pass it on Tuesday - 25. On Monday, 20% less than on Tuesday, and on Wednesday, 2 more cars than on Monday. On Thursday and Friday, it is about 10 cars each day. On the weekend, traffic drops to 5 cars per day. How many cars travel down Happy Street from Monday through Sunday?\nGive the final numeric answer."
+}

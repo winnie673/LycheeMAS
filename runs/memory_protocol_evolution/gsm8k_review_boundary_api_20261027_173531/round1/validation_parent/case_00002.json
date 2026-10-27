@@ -1,0 +1,153 @@
+{
+  "task_id": "gsm8k:train:seed42:V:00002",
+  "status": "completed",
+  "error": null,
+  "prediction": "850",
+  "messages": [
+    {
+      "sender": "planner",
+      "content": "K:beef_lb=3,beef_price=11,fruit_lb=8,fruit_price=4,spice_jars=3,spice_price=6,other=37,points_per_10=50,bonus=250,bonus_threshold=100;G:total_points;P:spend=3*11+8*4+3*6+37,base=spend/10*50,total=base+250;NL:add the 250 bonus only if spend exceeds 100",
+      "receiver": "solver",
+      "round": 0,
+      "role": "assistant",
+      "prompt_tokens": 766,
+      "completion_tokens": 114,
+      "id": "f7bcee0fa8bd",
+      "ts": 1793094364.9524405,
+      "meta": {
+        "sender": "planner",
+        "receiver": "solver",
+        "message_id": "f7bcee0fa8bd",
+        "protocol_edge": "planner_to_solver",
+        "protocol_version": "CARD-0-gsm8k",
+        "protocol_hash": "eb2823227bf7889a5ca248376e410b4922fec80b12249ba4d10a3c8452604ed2",
+        "contract_hash": "ac09c03455d8af3a35273b605bb457591de11f0e22bded3325bbb626ee774caf",
+        "fields": {
+          "K": "beef_lb=3,beef_price=11,fruit_lb=8,fruit_price=4,spice_jars=3,spice_price=6,other=37,points_per_10=50,bonus=250,bonus_threshold=100",
+          "G": "total_points",
+          "P": "spend=3*11+8*4+3*6+37,base=spend/10*50,total=base+250",
+          "NL": "add the 250 bonus only if spend exceeds 100"
+        },
+        "communication_tokens": 114,
+        "communication_tokens_exact": true,
+        "attempt_count": 1,
+        "fallback": false,
+        "tokens_include_all_attempts": true,
+        "incoming_message_ids": []
+      }
+    },
+    {
+      "sender": "solver",
+      "content": "IR:spend=3*11+8*4+3*6+37=120,base=120/10*50=600,bonus=250,total=600+250=850;R:850",
+      "receiver": "verifier",
+      "round": 0,
+      "role": "assistant",
+      "prompt_tokens": 855,
+      "completion_tokens": 47,
+      "id": "ce823dac26e4",
+      "ts": 1793094366.3071473,
+      "meta": {
+        "sender": "solver",
+        "receiver": "verifier",
+        "message_id": "ce823dac26e4",
+        "protocol_edge": "solver_to_verifier",
+        "protocol_version": "CARD-0-gsm8k",
+        "protocol_hash": "eb2823227bf7889a5ca248376e410b4922fec80b12249ba4d10a3c8452604ed2",
+        "contract_hash": "ac09c03455d8af3a35273b605bb457591de11f0e22bded3325bbb626ee774caf",
+        "fields": {
+          "IR": "spend=3*11+8*4+3*6+37=120,base=120/10*50=600,bonus=250,total=600+250=850",
+          "R": "850"
+        },
+        "communication_tokens": 47,
+        "communication_tokens_exact": true,
+        "attempt_count": 1,
+        "fallback": false,
+        "tokens_include_all_attempts": true,
+        "incoming_message_ids": [
+          "f7bcee0fa8bd"
+        ]
+      }
+    },
+    {
+      "sender": "verifier",
+      "content": "CHK:ACCEPT",
+      "receiver": "solver",
+      "round": 0,
+      "role": "assistant",
+      "prompt_tokens": 1120,
+      "completion_tokens": 5,
+      "id": "2ac6d06a92d1",
+      "ts": 1793094367.7478046,
+      "meta": {
+        "sender": "verifier",
+        "receiver": "solver",
+        "message_id": "2ac6d06a92d1",
+        "protocol_edge": "verifier_to_solver",
+        "protocol_version": "CARD-0-gsm8k",
+        "protocol_hash": "eb2823227bf7889a5ca248376e410b4922fec80b12249ba4d10a3c8452604ed2",
+        "contract_hash": "ac09c03455d8af3a35273b605bb457591de11f0e22bded3325bbb626ee774caf",
+        "fields": {
+          "CHK": "ACCEPT"
+        },
+        "communication_tokens": 5,
+        "communication_tokens_exact": true,
+        "attempt_count": 1,
+        "fallback": false,
+        "tokens_include_all_attempts": true,
+        "incoming_message_ids": [
+          "ce823dac26e4"
+        ]
+      }
+    }
+  ],
+  "communication_tokens": 166,
+  "wall_time_s": 4.190222500008531,
+  "verified": true,
+  "revision_rounds": 0,
+  "model_calls": [
+    {
+      "role": "planner",
+      "attempt": 0,
+      "status": "delivered",
+      "error": "",
+      "raw_output": "K:beef_lb=3,beef_price=11,fruit_lb=8,fruit_price=4,spice_jars=3,spice_price=6,other=37,points_per_10=50,bonus=250,bonus_threshold=100;G:total_points;P:spend=3*11+8*4+3*6+37,base=spend/10*50,total=base+250;NL:add the 250 bonus only if spend exceeds 100",
+      "finish_reason": "stop",
+      "output_tokens": 114,
+      "usage_available": true
+    },
+    {
+      "role": "solver",
+      "attempt": 0,
+      "status": "delivered",
+      "error": "",
+      "raw_output": "IR:spend=3*11+8*4+3*6+37=120,base=120/10*50=600,bonus=250,total=600+250=850;R:850",
+      "finish_reason": "stop",
+      "output_tokens": 47,
+      "usage_available": true
+    },
+    {
+      "role": "verifier",
+      "attempt": 0,
+      "status": "delivered",
+      "error": "",
+      "raw_output": "CHK:ACCEPT",
+      "finish_reason": "stop",
+      "output_tokens": 5,
+      "usage_available": true
+    }
+  ],
+  "failed_attempts": [],
+  "calls": 3,
+  "usage_complete": true,
+  "known_input_tokens": 2741,
+  "known_output_tokens": 166,
+  "model_input_tokens": 2741,
+  "model_output_tokens": 166,
+  "format_failed_calls": 0,
+  "transport_failed_calls": 0,
+  "fallback_calls": 0,
+  "sum_model_latency_s": 4.0804572105407715,
+  "gold": "850",
+  "score": 1.0,
+  "question": "Martha gets prize points every time she shops at her local grocery store. She gets 50 points per $10 spent, plus a 250 point bonus if she spends more than $100. Martha buys 3 pounds of beef for $11 each, 8 pounds of fruits and vegetables for $4/pound, 3 jars of spices for $6 each, and other groceries totaling $37. How many points does Martha get?\nGive the final numeric answer."
+}

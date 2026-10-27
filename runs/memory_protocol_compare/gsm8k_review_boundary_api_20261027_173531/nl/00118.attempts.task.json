@@ -1,0 +1,95 @@
+{
+  "task_id": "gsm8k:test:seed42:T:00122",
+  "mode": "nl",
+  "benchmark": "gsm8k",
+  "status": "completed",
+  "error": null,
+  "prediction": "48",
+  "gold": "48",
+  "wall_time_s": 4.1418604999780655,
+  "communication_tokens": 177,
+  "communication_tokens_exact": true,
+  "revision_rounds": 0,
+  "verification_decision": "ACCEPT",
+  "verified": true,
+  "messages": [
+    {
+      "sender": "planner",
+      "content": "Goal: find Sadie’s total sleep over the 7-day week.\n\nPlan: Use Monday as the baseline. Determine the sleep amount for the next two days by subtracting 2 hours from Monday’s amount. Then determine the sleep amount for the remaining four days by adding 1 hour to the two-day amount. Sum Monday, the two reduced days, and the four increased days.\n\nConstraints: Treat “the rest of the week” as the remaining four days after Monday and the next two days. Keep all calculations in hours.",
+      "receiver": "solver",
+      "round": 0,
+      "role": "assistant",
+      "prompt_tokens": 214,
+      "completion_tokens": 108,
+      "id": "5bc57021b2c4",
+      "ts": 1793101233.5082068,
+      "meta": {
+        "fields": {},
+        "communication_tokens": 108,
+        "communication_tokens_exact": true,
+        "attempt_count": 1,
+        "fallback": false,
+        "tokens_include_all_attempts": true,
+        "incoming_message_ids": []
+      }
+    },
+    {
+      "sender": "solver",
+      "content": "Monday: 8 hours. Next two days: 8 − 2 = 6 hours each, totaling 12. Rest of week (4 days): 6 + 1 = 7 hours each, totaling 28. Total: 8 + 12 + 28 = 48.\n\n\\boxed{48}",
+      "receiver": "verifier",
+      "round": 0,
+      "role": "assistant",
+      "prompt_tokens": 334,
+      "completion_tokens": 67,
+      "id": "e2d6187ddef7",
+      "ts": 1793101234.6862314,
+      "meta": {
+        "fields": {
+          "R": "48"
+        },
+        "communication_tokens": 67,
+        "communication_tokens_exact": true,
+        "attempt_count": 1,
+        "fallback": false,
+        "tokens_include_all_attempts": true,
+        "incoming_message_ids": [
+          "5bc57021b2c4"
+        ]
+      }
+    },
+    {
+      "sender": "verifier",
+      "content": "ACCEPT",
+      "receiver": "solver",
+      "round": 0,
+      "role": "assistant",
+      "prompt_tokens": 670,
+      "completion_tokens": 2,
+      "id": "4b1e95614e03",
+      "ts": 1793101235.8206155,
+      "meta": {
+        "fields": {
+          "CHK": "ACCEPT"
+        },
+        "communication_tokens": 2,
+        "communication_tokens_exact": true,
+        "attempt_count": 1,
+        "fallback": false,
+        "tokens_include_all_attempts": true,
+        "incoming_message_ids": [
+          "e2d6187ddef7"
+        ]
+      }
+    }
+  ],
+  "calls": 3,
+  "usage_complete": true,
+  "known_input_tokens": 1218,
+  "known_output_tokens": 177,
+  "model_input_tokens": 1218,
+  "model_output_tokens": 177,
+  "format_failed_calls": 0,
+  "transport_failed_calls": 0,
+  "fallback_calls": 0,
+  "sum_model_latency_s": 4.0584352016448975
+}

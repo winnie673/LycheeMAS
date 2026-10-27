@@ -1,0 +1,149 @@
+{
+  "task_id": "gsm8k:train:seed42:V:00156",
+  "status": "completed",
+  "error": null,
+  "prediction": "100",
+  "messages": [
+    {
+      "sender": "planner",
+      "content": "K:total=500,sold_fraction=1/2,ate_fraction=3/5;G:remaining_lychees;P:after_sale=total*(1-sold_fraction),remaining=after_sale*(1-ate_fraction)",
+      "receiver": "solver",
+      "round": 0,
+      "role": "assistant",
+      "prompt_tokens": 734,
+      "completion_tokens": 56,
+      "id": "e7071ece9649",
+      "ts": 1793095008.3522592,
+      "meta": {
+        "sender": "planner",
+        "receiver": "solver",
+        "message_id": "e7071ece9649",
+        "protocol_edge": "planner_to_solver",
+        "protocol_version": "CARD-0-gsm8k",
+        "protocol_hash": "eb2823227bf7889a5ca248376e410b4922fec80b12249ba4d10a3c8452604ed2",
+        "contract_hash": "ac09c03455d8af3a35273b605bb457591de11f0e22bded3325bbb626ee774caf",
+        "fields": {
+          "K": "total=500,sold_fraction=1/2,ate_fraction=3/5",
+          "G": "remaining_lychees",
+          "P": "after_sale=total*(1-sold_fraction),remaining=after_sale*(1-ate_fraction)"
+        },
+        "communication_tokens": 56,
+        "communication_tokens_exact": true,
+        "attempt_count": 1,
+        "fallback": false,
+        "tokens_include_all_attempts": true,
+        "incoming_message_ids": []
+      }
+    },
+    {
+      "sender": "solver",
+      "content": "IR:after_sale=500*(1-1/2)=250,remaining=250*(1-3/5)=100;R:100",
+      "receiver": "verifier",
+      "round": 0,
+      "role": "assistant",
+      "prompt_tokens": 765,
+      "completion_tokens": 31,
+      "id": "5d41cadb4b15",
+      "ts": 1793095009.3023262,
+      "meta": {
+        "sender": "solver",
+        "receiver": "verifier",
+        "message_id": "5d41cadb4b15",
+        "protocol_edge": "solver_to_verifier",
+        "protocol_version": "CARD-0-gsm8k",
+        "protocol_hash": "eb2823227bf7889a5ca248376e410b4922fec80b12249ba4d10a3c8452604ed2",
+        "contract_hash": "ac09c03455d8af3a35273b605bb457591de11f0e22bded3325bbb626ee774caf",
+        "fields": {
+          "IR": "after_sale=500*(1-1/2)=250,remaining=250*(1-3/5)=100",
+          "R": "100"
+        },
+        "communication_tokens": 31,
+        "communication_tokens_exact": true,
+        "attempt_count": 1,
+        "fallback": false,
+        "tokens_include_all_attempts": true,
+        "incoming_message_ids": [
+          "e7071ece9649"
+        ]
+      }
+    },
+    {
+      "sender": "verifier",
+      "content": "CHK:ACCEPT",
+      "receiver": "solver",
+      "round": 0,
+      "role": "assistant",
+      "prompt_tokens": 1072,
+      "completion_tokens": 5,
+      "id": "112ad6aed7bb",
+      "ts": 1793095010.6200204,
+      "meta": {
+        "sender": "verifier",
+        "receiver": "solver",
+        "message_id": "112ad6aed7bb",
+        "protocol_edge": "verifier_to_solver",
+        "protocol_version": "CARD-0-gsm8k",
+        "protocol_hash": "eb2823227bf7889a5ca248376e410b4922fec80b12249ba4d10a3c8452604ed2",
+        "contract_hash": "ac09c03455d8af3a35273b605bb457591de11f0e22bded3325bbb626ee774caf",
+        "fields": {
+          "CHK": "ACCEPT"
+        },
+        "communication_tokens": 5,
+        "communication_tokens_exact": true,
+        "attempt_count": 1,
+        "fallback": false,
+        "tokens_include_all_attempts": true,
+        "incoming_message_ids": [
+          "5d41cadb4b15"
+        ]
+      }
+    }
+  ],
+  "communication_tokens": 92,
+  "wall_time_s": 3.690309400088154,
+  "verified": true,
+  "revision_rounds": 0,
+  "model_calls": [
+    {
+      "role": "planner",
+      "attempt": 0,
+      "status": "delivered",
+      "error": "",
+      "raw_output": "K:total=500,sold_fraction=1/2,ate_fraction=3/5;G:remaining_lychees;P:after_sale=total*(1-sold_fraction),remaining=after_sale*(1-ate_fraction)",
+      "finish_reason": "stop",
+      "output_tokens": 56,
+      "usage_available": true
+    },
+    {
+      "role": "solver",
+      "attempt": 0,
+      "status": "delivered",
+      "error": "",
+      "raw_output": "IR:after_sale=500*(1-1/2)=250,remaining=250*(1-3/5)=100;R:100",
+      "finish_reason": "stop",
+      "output_tokens": 31,
+      "usage_available": true
+    },
+    {
+      "role": "verifier",
+      "attempt": 0,
+      "status": "delivered",
+      "error": "",
+      "raw_output": "CHK:ACCEPT",
+      "finish_reason": "stop",
+      "output_tokens": 5,
+      "usage_available": true
+    }
+  ],
+  "failed_attempts": [],
+  "calls": 3,
+  "usage_complete": true,
+  "known_input_tokens": 2571,
+  "known_output_tokens": 92,
+  "model_input_tokens": 2571,
+  "model_output_tokens": 92,
+  "format_failed_calls": 0,
+  "transport_failed_calls": 0,
+  "fallback_calls": 0,
+  "sum_model_latency_s": 3.584146499633789
+}

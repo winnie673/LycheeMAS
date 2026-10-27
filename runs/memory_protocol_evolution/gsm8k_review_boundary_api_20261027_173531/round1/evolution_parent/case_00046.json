@@ -1,0 +1,152 @@
+{
+  "task_id": "gsm8k:train:seed42:G1:00046",
+  "status": "completed",
+  "error": null,
+  "prediction": "32",
+  "messages": [
+    {
+      "sender": "planner",
+      "content": "G:total_cost;K:rare=19,uncommon=11,common=30,rare_price=1,uncommon_price=0.5,common_price=0.25;P:total_cost=rare*rare_price+uncommon*uncommon_price+common*common_price",
+      "receiver": "solver",
+      "round": 0,
+      "role": "assistant",
+      "prompt_tokens": 734,
+      "completion_tokens": 61,
+      "id": "4b9cdbf19b08",
+      "ts": 1793094099.9038584,
+      "meta": {
+        "sender": "planner",
+        "receiver": "solver",
+        "message_id": "4b9cdbf19b08",
+        "protocol_edge": "planner_to_solver",
+        "protocol_version": "CARD-0-gsm8k",
+        "protocol_hash": "eb2823227bf7889a5ca248376e410b4922fec80b12249ba4d10a3c8452604ed2",
+        "contract_hash": "ac09c03455d8af3a35273b605bb457591de11f0e22bded3325bbb626ee774caf",
+        "fields": {
+          "G": "total_cost",
+          "K": "rare=19,uncommon=11,common=30,rare_price=1,uncommon_price=0.5,common_price=0.25",
+          "P": "total_cost=rare*rare_price+uncommon*uncommon_price+common*common_price"
+        },
+        "communication_tokens": 61,
+        "communication_tokens_exact": true,
+        "attempt_count": 1,
+        "fallback": false,
+        "tokens_include_all_attempts": true,
+        "incoming_message_ids": []
+      }
+    },
+    {
+      "sender": "solver",
+      "content": "IR:rare_cost=19*1=19,uncommon_cost=11*0.5=5.5,common_cost=30*0.25=7.5,total=19+5.5+7.5=32;R:32",
+      "receiver": "verifier",
+      "round": 0,
+      "role": "assistant",
+      "prompt_tokens": 770,
+      "completion_tokens": 55,
+      "id": "0c7b142617ed",
+      "ts": 1793094101.1442204,
+      "meta": {
+        "sender": "solver",
+        "receiver": "verifier",
+        "message_id": "0c7b142617ed",
+        "protocol_edge": "solver_to_verifier",
+        "protocol_version": "CARD-0-gsm8k",
+        "protocol_hash": "eb2823227bf7889a5ca248376e410b4922fec80b12249ba4d10a3c8452604ed2",
+        "contract_hash": "ac09c03455d8af3a35273b605bb457591de11f0e22bded3325bbb626ee774caf",
+        "fields": {
+          "IR": "rare_cost=19*1=19,uncommon_cost=11*0.5=5.5,common_cost=30*0.25=7.5,total=19+5.5+7.5=32",
+          "R": "32"
+        },
+        "communication_tokens": 55,
+        "communication_tokens_exact": true,
+        "attempt_count": 1,
+        "fallback": false,
+        "tokens_include_all_attempts": true,
+        "incoming_message_ids": [
+          "4b9cdbf19b08"
+        ]
+      }
+    },
+    {
+      "sender": "verifier",
+      "content": "CHK:ACCEPT",
+      "receiver": "solver",
+      "round": 0,
+      "role": "assistant",
+      "prompt_tokens": 1096,
+      "completion_tokens": 5,
+      "id": "6a6949a79639",
+      "ts": 1793094102.3170893,
+      "meta": {
+        "sender": "verifier",
+        "receiver": "solver",
+        "message_id": "6a6949a79639",
+        "protocol_edge": "verifier_to_solver",
+        "protocol_version": "CARD-0-gsm8k",
+        "protocol_hash": "eb2823227bf7889a5ca248376e410b4922fec80b12249ba4d10a3c8452604ed2",
+        "contract_hash": "ac09c03455d8af3a35273b605bb457591de11f0e22bded3325bbb626ee774caf",
+        "fields": {
+          "CHK": "ACCEPT"
+        },
+        "communication_tokens": 5,
+        "communication_tokens_exact": true,
+        "attempt_count": 1,
+        "fallback": false,
+        "tokens_include_all_attempts": true,
+        "incoming_message_ids": [
+          "0c7b142617ed"
+        ]
+      }
+    }
+  ],
+  "communication_tokens": 121,
+  "wall_time_s": 3.8297940000193194,
+  "verified": true,
+  "revision_rounds": 0,
+  "model_calls": [
+    {
+      "role": "planner",
+      "attempt": 0,
+      "status": "delivered",
+      "error": "",
+      "raw_output": "G:total_cost;K:rare=19,uncommon=11,common=30,rare_price=1,uncommon_price=0.5,common_price=0.25;P:total_cost=rare*rare_price+uncommon*uncommon_price+common*common_price",
+      "finish_reason": "stop",
+      "output_tokens": 61,
+      "usage_available": true
+    },
+    {
+      "role": "solver",
+      "attempt": 0,
+      "status": "delivered",
+      "error": "",
+      "raw_output": "IR:rare_cost=19*1=19,uncommon_cost=11*0.5=5.5,common_cost=30*0.25=7.5,total=19+5.5+7.5=32;R:32",
+      "finish_reason": "stop",
+      "output_tokens": 55,
+      "usage_available": true
+    },
+    {
+      "role": "verifier",
+      "attempt": 0,
+      "status": "delivered",
+      "error": "",
+      "raw_output": "CHK:ACCEPT",
+      "finish_reason": "stop",
+      "output_tokens": 5,
+      "usage_available": true
+    }
+  ],
+  "failed_attempts": [],
+  "calls": 3,
+  "usage_complete": true,
+  "known_input_tokens": 2600,
+  "known_output_tokens": 121,
+  "model_input_tokens": 2600,
+  "model_output_tokens": 121,
+  "format_failed_calls": 0,
+  "transport_failed_calls": 0,
+  "fallback_calls": 0,
+  "sum_model_latency_s": 3.710233688354492,
+  "gold": "32",
+  "score": 1.0,
+  "question": "Tom plays an online trading card game.  His deck has 19 rare cards, 11 uncommon, and 30 commons.  The rare cards cost $1, the uncommon are $.50, and the commons are $.25 each.  How much did his deck cost?\nGive the final numeric answer."
+}

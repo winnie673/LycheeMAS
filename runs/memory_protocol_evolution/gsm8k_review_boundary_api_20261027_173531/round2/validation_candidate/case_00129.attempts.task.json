@@ -1,0 +1,239 @@
+{
+  "task_id": "gsm8k:train:seed42:V:00129",
+  "status": "completed",
+  "error": null,
+  "prediction": "50",
+  "messages": [
+    {
+      "sender": "planner",
+      "content": "G:milligrams_per_part;K:ml_per_kg=5,weight_kg=30,parts=3;P:total_ml=ml_per_kg*weight_kg,per_part_ml=total_ml/parts;NL:assume 1 ml corresponds to 1 mg for the requested milligram amount",
+      "receiver": "solver",
+      "round": 0,
+      "role": "assistant",
+      "prompt_tokens": 797,
+      "completion_tokens": 70,
+      "id": "5eaf0710e7ce",
+      "ts": 1793097713.2436075,
+      "meta": {
+        "sender": "planner",
+        "receiver": "solver",
+        "message_id": "5eaf0710e7ce",
+        "protocol_edge": "planner_to_solver",
+        "protocol_version": "CARD-2-gsm8k",
+        "protocol_hash": "c152278e4a24181b874bd88cbf3adef79479b79f6539931bcd89721fa5a8a7a9",
+        "contract_hash": "ac09c03455d8af3a35273b605bb457591de11f0e22bded3325bbb626ee774caf",
+        "fields": {
+          "G": "milligrams_per_part",
+          "K": "ml_per_kg=5,weight_kg=30,parts=3",
+          "P": "total_ml=ml_per_kg*weight_kg,per_part_ml=total_ml/parts",
+          "NL": "assume 1 ml corresponds to 1 mg for the requested milligram amount"
+        },
+        "communication_tokens": 70,
+        "communication_tokens_exact": true,
+        "attempt_count": 1,
+        "fallback": false,
+        "tokens_include_all_attempts": true,
+        "incoming_message_ids": []
+      }
+    },
+    {
+      "sender": "solver",
+      "content": "IR:total_ml=5*30=150,per_part_ml=150/3=50,mg=50*1=50;R:50;NL:assume 1 ml corresponds to 1 mg for the requested milligram amount",
+      "receiver": "verifier",
+      "round": 0,
+      "role": "assistant",
+      "prompt_tokens": 810,
+      "completion_tokens": 53,
+      "id": "ed89a5fbc633",
+      "ts": 1793097714.193678,
+      "meta": {
+        "sender": "solver",
+        "receiver": "verifier",
+        "message_id": "ed89a5fbc633",
+        "protocol_edge": "solver_to_verifier",
+        "protocol_version": "CARD-2-gsm8k",
+        "protocol_hash": "c152278e4a24181b874bd88cbf3adef79479b79f6539931bcd89721fa5a8a7a9",
+        "contract_hash": "ac09c03455d8af3a35273b605bb457591de11f0e22bded3325bbb626ee774caf",
+        "fields": {
+          "IR": "total_ml=5*30=150,per_part_ml=150/3=50,mg=50*1=50",
+          "R": "50",
+          "NL": "assume 1 ml corresponds to 1 mg for the requested milligram amount"
+        },
+        "communication_tokens": 53,
+        "communication_tokens_exact": true,
+        "attempt_count": 1,
+        "fallback": false,
+        "tokens_include_all_attempts": true,
+        "incoming_message_ids": [
+          "5eaf0710e7ce"
+        ]
+      }
+    },
+    {
+      "sender": "verifier",
+      "content": "CHK:REVISE;E:MISSING_UNIT;REQ:state the ml-to-mg conversion explicitly since the task gives dosage in ml but asks for milligrams",
+      "receiver": "solver",
+      "round": 0,
+      "role": "assistant",
+      "prompt_tokens": 1125,
+      "completion_tokens": 36,
+      "id": "c392020c4b36",
+      "ts": 1793097715.3270507,
+      "meta": {
+        "sender": "verifier",
+        "receiver": "solver",
+        "message_id": "c392020c4b36",
+        "protocol_edge": "verifier_to_solver",
+        "protocol_version": "CARD-2-gsm8k",
+        "protocol_hash": "c152278e4a24181b874bd88cbf3adef79479b79f6539931bcd89721fa5a8a7a9",
+        "contract_hash": "ac09c03455d8af3a35273b605bb457591de11f0e22bded3325bbb626ee774caf",
+        "fields": {
+          "CHK": "REVISE",
+          "E": "MISSING_UNIT",
+          "REQ": "state the ml-to-mg conversion explicitly since the task gives dosage in ml but asks for milligrams"
+        },
+        "communication_tokens": 36,
+        "communication_tokens_exact": true,
+        "attempt_count": 1,
+        "fallback": false,
+        "tokens_include_all_attempts": true,
+        "incoming_message_ids": [
+          "ed89a5fbc633"
+        ]
+      }
+    },
+    {
+      "sender": "solver",
+      "content": "IR:total_ml=5*30=150,per_part_ml=150/3=50,mg=50*1=50;R:50;NL:assume 1 ml corresponds to 1 mg since no density is given",
+      "receiver": "verifier",
+      "round": 1,
+      "role": "assistant",
+      "prompt_tokens": 928,
+      "completion_tokens": 52,
+      "id": "3ec4c367f129",
+      "ts": 1793097716.7239635,
+      "meta": {
+        "sender": "solver",
+        "receiver": "verifier",
+        "message_id": "3ec4c367f129",
+        "protocol_edge": "solver_to_verifier",
+        "protocol_version": "CARD-2-gsm8k",
+        "protocol_hash": "c152278e4a24181b874bd88cbf3adef79479b79f6539931bcd89721fa5a8a7a9",
+        "contract_hash": "ac09c03455d8af3a35273b605bb457591de11f0e22bded3325bbb626ee774caf",
+        "fields": {
+          "IR": "total_ml=5*30=150,per_part_ml=150/3=50,mg=50*1=50",
+          "R": "50",
+          "NL": "assume 1 ml corresponds to 1 mg since no density is given"
+        },
+        "communication_tokens": 52,
+        "communication_tokens_exact": true,
+        "attempt_count": 1,
+        "fallback": false,
+        "tokens_include_all_attempts": true,
+        "incoming_message_ids": [
+          "5eaf0710e7ce",
+          "ed89a5fbc633",
+          "c392020c4b36"
+        ]
+      }
+    },
+    {
+      "sender": "verifier",
+      "content": "CHK:ACCEPT",
+      "receiver": "solver",
+      "round": 1,
+      "role": "assistant",
+      "prompt_tokens": 1137,
+      "completion_tokens": 5,
+      "id": "6629c3eaba84",
+      "ts": 1793097717.5638094,
+      "meta": {
+        "sender": "verifier",
+        "receiver": "solver",
+        "message_id": "6629c3eaba84",
+        "protocol_edge": "verifier_to_solver",
+        "protocol_version": "CARD-2-gsm8k",
+        "protocol_hash": "c152278e4a24181b874bd88cbf3adef79479b79f6539931bcd89721fa5a8a7a9",
+        "contract_hash": "ac09c03455d8af3a35273b605bb457591de11f0e22bded3325bbb626ee774caf",
+        "fields": {
+          "CHK": "ACCEPT"
+        },
+        "communication_tokens": 5,
+        "communication_tokens_exact": true,
+        "attempt_count": 1,
+        "fallback": false,
+        "tokens_include_all_attempts": true,
+        "incoming_message_ids": [
+          "3ec4c367f129"
+        ]
+      }
+    }
+  ],
+  "communication_tokens": 216,
+  "wall_time_s": 6.614730100031011,
+  "verified": true,
+  "revision_rounds": 1,
+  "model_calls": [
+    {
+      "role": "planner",
+      "attempt": 0,
+      "status": "delivered",
+      "error": "",
+      "raw_output": "G:milligrams_per_part;K:ml_per_kg=5,weight_kg=30,parts=3;P:total_ml=ml_per_kg*weight_kg,per_part_ml=total_ml/parts;NL:assume 1 ml corresponds to 1 mg for the requested milligram amount",
+      "finish_reason": "stop",
+      "output_tokens": 70,
+      "usage_available": true
+    },
+    {
+      "role": "solver",
+      "attempt": 0,
+      "status": "delivered",
+      "error": "",
+      "raw_output": "IR:total_ml=5*30=150,per_part_ml=150/3=50,mg=50*1=50;R:50;NL:assume 1 ml corresponds to 1 mg for the requested milligram amount",
+      "finish_reason": "stop",
+      "output_tokens": 53,
+      "usage_available": true
+    },
+    {
+      "role": "verifier",
+      "attempt": 0,
+      "status": "delivered",
+      "error": "",
+      "raw_output": "CHK:REVISE;E:MISSING_UNIT;REQ:state the ml-to-mg conversion explicitly since the task gives dosage in ml but asks for milligrams",
+      "finish_reason": "stop",
+      "output_tokens": 36,
+      "usage_available": true
+    },
+    {
+      "role": "solver",
+      "attempt": 0,
+      "status": "delivered",
+      "error": "",
+      "raw_output": "IR:total_ml=5*30=150,per_part_ml=150/3=50,mg=50*1=50;R:50;NL:assume 1 ml corresponds to 1 mg since no density is given",
+      "finish_reason": "stop",
+      "output_tokens": 52,
+      "usage_available": true
+    },
+    {
+      "role": "verifier",
+      "attempt": 0,
+      "status": "delivered",
+      "error": "",
+      "raw_output": "CHK:ACCEPT",
+      "finish_reason": "stop",
+      "output_tokens": 5,
+      "usage_available": true
+    }
+  ],
+  "failed_attempts": [],
+  "calls": 5,
+  "usage_complete": true,
+  "known_input_tokens": 4797,
+  "known_output_tokens": 216,
+  "model_input_tokens": 4797,
+  "model_output_tokens": 216,
+  "format_failed_calls": 0,
+  "transport_failed_calls": 0,
+  "fallback_calls": 0,
+  "sum_model_latency_s": 6.550175905227661
+}

@@ -1,0 +1,153 @@
+{
+  "task_id": "gsm8k:train:seed42:V:00062",
+  "status": "completed",
+  "error": null,
+  "prediction": "40",
+  "messages": [
+    {
+      "sender": "planner",
+      "content": "K:supply_rate=0.5 pounds per mile,resupply_fraction=0.25,hike_speed=2.5 mph,hours_per_day=8,days=5;G:first_pack_weight;P:total_miles=hike_speed*hours_per_day*days,total_supplies=supply_rate*total_miles,first_pack=total_supplies/(1+resupply_fraction);NL:resupply is 25% as large as the first pack, so first pack plus 0.25 times first pack equals total supplies needed",
+      "receiver": "solver",
+      "round": 0,
+      "role": "assistant",
+      "prompt_tokens": 787,
+      "completion_tokens": 126,
+      "id": "a646a8e59427",
+      "ts": 1793096671.349241,
+      "meta": {
+        "sender": "planner",
+        "receiver": "solver",
+        "message_id": "a646a8e59427",
+        "protocol_edge": "planner_to_solver",
+        "protocol_version": "CARD-0-gsm8k",
+        "protocol_hash": "eb2823227bf7889a5ca248376e410b4922fec80b12249ba4d10a3c8452604ed2",
+        "contract_hash": "ac09c03455d8af3a35273b605bb457591de11f0e22bded3325bbb626ee774caf",
+        "fields": {
+          "K": "supply_rate=0.5 pounds per mile,resupply_fraction=0.25,hike_speed=2.5 mph,hours_per_day=8,days=5",
+          "G": "first_pack_weight",
+          "P": "total_miles=hike_speed*hours_per_day*days,total_supplies=supply_rate*total_miles,first_pack=total_supplies/(1+resupply_fraction)",
+          "NL": "resupply is 25% as large as the first pack, so first pack plus 0.25 times first pack equals total supplies needed"
+        },
+        "communication_tokens": 126,
+        "communication_tokens_exact": true,
+        "attempt_count": 1,
+        "fallback": false,
+        "tokens_include_all_attempts": true,
+        "incoming_message_ids": []
+      }
+    },
+    {
+      "sender": "solver",
+      "content": "IR:total_miles=2.5*8*5=100,total_supplies=0.5*100=50,first_pack=50/1.25=40;R:40",
+      "receiver": "verifier",
+      "round": 0,
+      "role": "assistant",
+      "prompt_tokens": 888,
+      "completion_tokens": 44,
+      "id": "2afa7eee0a72",
+      "ts": 1793096672.5923848,
+      "meta": {
+        "sender": "solver",
+        "receiver": "verifier",
+        "message_id": "2afa7eee0a72",
+        "protocol_edge": "solver_to_verifier",
+        "protocol_version": "CARD-0-gsm8k",
+        "protocol_hash": "eb2823227bf7889a5ca248376e410b4922fec80b12249ba4d10a3c8452604ed2",
+        "contract_hash": "ac09c03455d8af3a35273b605bb457591de11f0e22bded3325bbb626ee774caf",
+        "fields": {
+          "IR": "total_miles=2.5*8*5=100,total_supplies=0.5*100=50,first_pack=50/1.25=40",
+          "R": "40"
+        },
+        "communication_tokens": 44,
+        "communication_tokens_exact": true,
+        "attempt_count": 1,
+        "fallback": false,
+        "tokens_include_all_attempts": true,
+        "incoming_message_ids": [
+          "a646a8e59427"
+        ]
+      }
+    },
+    {
+      "sender": "verifier",
+      "content": "CHK:ACCEPT",
+      "receiver": "solver",
+      "round": 0,
+      "role": "assistant",
+      "prompt_tokens": 1138,
+      "completion_tokens": 5,
+      "id": "7cb99c9226e6",
+      "ts": 1793096673.854979,
+      "meta": {
+        "sender": "verifier",
+        "receiver": "solver",
+        "message_id": "7cb99c9226e6",
+        "protocol_edge": "verifier_to_solver",
+        "protocol_version": "CARD-0-gsm8k",
+        "protocol_hash": "eb2823227bf7889a5ca248376e410b4922fec80b12249ba4d10a3c8452604ed2",
+        "contract_hash": "ac09c03455d8af3a35273b605bb457591de11f0e22bded3325bbb626ee774caf",
+        "fields": {
+          "CHK": "ACCEPT"
+        },
+        "communication_tokens": 5,
+        "communication_tokens_exact": true,
+        "attempt_count": 1,
+        "fallback": false,
+        "tokens_include_all_attempts": true,
+        "incoming_message_ids": [
+          "2afa7eee0a72"
+        ]
+      }
+    }
+  ],
+  "communication_tokens": 175,
+  "wall_time_s": 4.279895600047894,
+  "verified": true,
+  "revision_rounds": 0,
+  "model_calls": [
+    {
+      "role": "planner",
+      "attempt": 0,
+      "status": "delivered",
+      "error": "",
+      "raw_output": "K:supply_rate=0.5 pounds per mile,resupply_fraction=0.25,hike_speed=2.5 mph,hours_per_day=8,days=5;G:first_pack_weight;P:total_miles=hike_speed*hours_per_day*days,total_supplies=supply_rate*total_miles,first_pack=total_supplies/(1+resupply_fraction);NL:resupply is 25% as large as the first pack, so first pack plus 0.25 times first pack equals total supplies needed",
+      "finish_reason": "stop",
+      "output_tokens": 126,
+      "usage_available": true
+    },
+    {
+      "role": "solver",
+      "attempt": 0,
+      "status": "delivered",
+      "error": "",
+      "raw_output": "IR:total_miles=2.5*8*5=100,total_supplies=0.5*100=50,first_pack=50/1.25=40;R:40",
+      "finish_reason": "stop",
+      "output_tokens": 44,
+      "usage_available": true
+    },
+    {
+      "role": "verifier",
+      "attempt": 0,
+      "status": "delivered",
+      "error": "",
+      "raw_output": "CHK:ACCEPT",
+      "finish_reason": "stop",
+      "output_tokens": 5,
+      "usage_available": true
+    }
+  ],
+  "failed_attempts": [],
+  "calls": 3,
+  "usage_complete": true,
+  "known_input_tokens": 2813,
+  "known_output_tokens": 175,
+  "model_input_tokens": 2813,
+  "model_output_tokens": 175,
+  "format_failed_calls": 0,
+  "transport_failed_calls": 0,
+  "fallback_calls": 0,
+  "sum_model_latency_s": 4.1710121631622314,
+  "gold": "40",
+  "score": 1.0,
+  "question": "A man loves to go hiking.  He knows that he has to pack about .5 pounds of supplies for every mile he hikes.  He plans to go for a very long hike.  He knows that he can get 1 resupply during the hike that will be 25% as large as his first pack.  He can hike at a rate of 2.5 mph.  He is going to hike 8 hours a day for 5 days.  How much does he need to bring with his first pack?\nGive the final numeric answer."
+}

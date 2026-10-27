@@ -1,0 +1,152 @@
+{
+  "task_id": "gsm8k:train:seed42:V:00145",
+  "status": "completed",
+  "error": null,
+  "prediction": "68000",
+  "messages": [
+    {
+      "sender": "planner",
+      "content": "K:first_soldiers=4000,first_ration=10,second_ration=first_ration-2,second_soldiers=first_soldiers-500;G:total_food_per_day;P:first_food=first_soldiers*first_ration,second_food=second_soldiers*second_ration,total_food_per_day=first_food+second_food",
+      "receiver": "solver",
+      "round": 0,
+      "role": "assistant",
+      "prompt_tokens": 793,
+      "completion_tokens": 87,
+      "id": "14227579ef29",
+      "ts": 1793100031.1838052,
+      "meta": {
+        "sender": "planner",
+        "receiver": "solver",
+        "message_id": "14227579ef29",
+        "protocol_edge": "planner_to_solver",
+        "protocol_version": "CARD-2-gsm8k",
+        "protocol_hash": "c152278e4a24181b874bd88cbf3adef79479b79f6539931bcd89721fa5a8a7a9",
+        "contract_hash": "ac09c03455d8af3a35273b605bb457591de11f0e22bded3325bbb626ee774caf",
+        "fields": {
+          "K": "first_soldiers=4000,first_ration=10,second_ration=first_ration-2,second_soldiers=first_soldiers-500",
+          "G": "total_food_per_day",
+          "P": "first_food=first_soldiers*first_ration,second_food=second_soldiers*second_ration,total_food_per_day=first_food+second_food"
+        },
+        "communication_tokens": 87,
+        "communication_tokens_exact": true,
+        "attempt_count": 1,
+        "fallback": false,
+        "tokens_include_all_attempts": true,
+        "incoming_message_ids": []
+      }
+    },
+    {
+      "sender": "solver",
+      "content": "IR:first_food=4000*10=40000,second_soldiers=4000-500=3500,second_ration=10-2=8,second_food=3500*8=28000,total=40000+28000=68000;R:68000",
+      "receiver": "verifier",
+      "round": 0,
+      "role": "assistant",
+      "prompt_tokens": 823,
+      "completion_tokens": 64,
+      "id": "69bac4d28e9e",
+      "ts": 1793100033.146872,
+      "meta": {
+        "sender": "solver",
+        "receiver": "verifier",
+        "message_id": "69bac4d28e9e",
+        "protocol_edge": "solver_to_verifier",
+        "protocol_version": "CARD-2-gsm8k",
+        "protocol_hash": "c152278e4a24181b874bd88cbf3adef79479b79f6539931bcd89721fa5a8a7a9",
+        "contract_hash": "ac09c03455d8af3a35273b605bb457591de11f0e22bded3325bbb626ee774caf",
+        "fields": {
+          "IR": "first_food=4000*10=40000,second_soldiers=4000-500=3500,second_ration=10-2=8,second_food=3500*8=28000,total=40000+28000=68000",
+          "R": "68000"
+        },
+        "communication_tokens": 64,
+        "communication_tokens_exact": true,
+        "attempt_count": 1,
+        "fallback": false,
+        "tokens_include_all_attempts": true,
+        "incoming_message_ids": [
+          "14227579ef29"
+        ]
+      }
+    },
+    {
+      "sender": "verifier",
+      "content": "CHK:ACCEPT",
+      "receiver": "solver",
+      "round": 0,
+      "role": "assistant",
+      "prompt_tokens": 1132,
+      "completion_tokens": 5,
+      "id": "af547c88f665",
+      "ts": 1793100034.1880188,
+      "meta": {
+        "sender": "verifier",
+        "receiver": "solver",
+        "message_id": "af547c88f665",
+        "protocol_edge": "verifier_to_solver",
+        "protocol_version": "CARD-2-gsm8k",
+        "protocol_hash": "c152278e4a24181b874bd88cbf3adef79479b79f6539931bcd89721fa5a8a7a9",
+        "contract_hash": "ac09c03455d8af3a35273b605bb457591de11f0e22bded3325bbb626ee774caf",
+        "fields": {
+          "CHK": "ACCEPT"
+        },
+        "communication_tokens": 5,
+        "communication_tokens_exact": true,
+        "attempt_count": 1,
+        "fallback": false,
+        "tokens_include_all_attempts": true,
+        "incoming_message_ids": [
+          "69bac4d28e9e"
+        ]
+      }
+    }
+  ],
+  "communication_tokens": 156,
+  "wall_time_s": 4.6325852000154555,
+  "verified": true,
+  "revision_rounds": 0,
+  "model_calls": [
+    {
+      "role": "planner",
+      "attempt": 0,
+      "status": "delivered",
+      "error": "",
+      "raw_output": "K:first_soldiers=4000,first_ration=10,second_ration=first_ration-2,second_soldiers=first_soldiers-500;G:total_food_per_day;P:first_food=first_soldiers*first_ration,second_food=second_soldiers*second_ration,total_food_per_day=first_food+second_food",
+      "finish_reason": "stop",
+      "output_tokens": 87,
+      "usage_available": true
+    },
+    {
+      "role": "solver",
+      "attempt": 0,
+      "status": "delivered",
+      "error": "",
+      "raw_output": "IR:first_food=4000*10=40000,second_soldiers=4000-500=3500,second_ration=10-2=8,second_food=3500*8=28000,total=40000+28000=68000;R:68000",
+      "finish_reason": "stop",
+      "output_tokens": 64,
+      "usage_available": true
+    },
+    {
+      "role": "verifier",
+      "attempt": 0,
+      "status": "delivered",
+      "error": "",
+      "raw_output": "CHK:ACCEPT",
+      "finish_reason": "stop",
+      "output_tokens": 5,
+      "usage_available": true
+    }
+  ],
+  "failed_attempts": [],
+  "calls": 3,
+  "usage_complete": true,
+  "known_input_tokens": 2748,
+  "known_output_tokens": 156,
+  "model_input_tokens": 2748,
+  "model_output_tokens": 156,
+  "format_failed_calls": 0,
+  "transport_failed_calls": 0,
+  "fallback_calls": 0,
+  "sum_model_latency_s": 4.5767364501953125,
+  "gold": "68000",
+  "score": 1.0,
+  "question": "The number of soldiers on opposite sides of a war each needs 10 pounds of food every day to continue fighting effectively. However, soldiers in the second are each given 2 pounds less food than the first side.  If the first side has 4000 soldiers and the other side 500 soldiers fewer than the first side, what's the total amount of pounds of food both sides are eating altogether every day?\nGive the final numeric answer."
+}

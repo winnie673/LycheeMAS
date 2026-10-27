@@ -1,0 +1,152 @@
+{
+  "task_id": "gsm8k:train:seed42:V:00059",
+  "status": "completed",
+  "error": null,
+  "prediction": "7",
+  "messages": [
+    {
+      "sender": "planner",
+      "content": "K:skins_per_coat=15,adult_minks=30,babies_per_mink=6,free_fraction=1/2;G:coats;P:total_minks=adult_minks+adult_minks*babies_per_mink,remaining=total_minks*(1-free_fraction),coats=remaining/skins_per_coat",
+      "receiver": "solver",
+      "round": 0,
+      "role": "assistant",
+      "prompt_tokens": 724,
+      "completion_tokens": 80,
+      "id": "3a89220fc708",
+      "ts": 1793094603.9197247,
+      "meta": {
+        "sender": "planner",
+        "receiver": "solver",
+        "message_id": "3a89220fc708",
+        "protocol_edge": "planner_to_solver",
+        "protocol_version": "CARD-0-gsm8k",
+        "protocol_hash": "eb2823227bf7889a5ca248376e410b4922fec80b12249ba4d10a3c8452604ed2",
+        "contract_hash": "ac09c03455d8af3a35273b605bb457591de11f0e22bded3325bbb626ee774caf",
+        "fields": {
+          "K": "skins_per_coat=15,adult_minks=30,babies_per_mink=6,free_fraction=1/2",
+          "G": "coats",
+          "P": "total_minks=adult_minks+adult_minks*babies_per_mink,remaining=total_minks*(1-free_fraction),coats=remaining/skins_per_coat"
+        },
+        "communication_tokens": 80,
+        "communication_tokens_exact": true,
+        "attempt_count": 1,
+        "fallback": false,
+        "tokens_include_all_attempts": true,
+        "incoming_message_ids": []
+      }
+    },
+    {
+      "sender": "solver",
+      "content": "IR:total_minks=30+30*6=210,remaining=210*(1-1/2)=105,coats=105/15=7;R:7",
+      "receiver": "verifier",
+      "round": 0,
+      "role": "assistant",
+      "prompt_tokens": 779,
+      "completion_tokens": 38,
+      "id": "95e803a3c3ec",
+      "ts": 1793094605.0354981,
+      "meta": {
+        "sender": "solver",
+        "receiver": "verifier",
+        "message_id": "95e803a3c3ec",
+        "protocol_edge": "solver_to_verifier",
+        "protocol_version": "CARD-0-gsm8k",
+        "protocol_hash": "eb2823227bf7889a5ca248376e410b4922fec80b12249ba4d10a3c8452604ed2",
+        "contract_hash": "ac09c03455d8af3a35273b605bb457591de11f0e22bded3325bbb626ee774caf",
+        "fields": {
+          "IR": "total_minks=30+30*6=210,remaining=210*(1-1/2)=105,coats=105/15=7",
+          "R": "7"
+        },
+        "communication_tokens": 38,
+        "communication_tokens_exact": true,
+        "attempt_count": 1,
+        "fallback": false,
+        "tokens_include_all_attempts": true,
+        "incoming_message_ids": [
+          "3a89220fc708"
+        ]
+      }
+    },
+    {
+      "sender": "verifier",
+      "content": "CHK:ACCEPT",
+      "receiver": "solver",
+      "round": 0,
+      "role": "assistant",
+      "prompt_tokens": 1069,
+      "completion_tokens": 5,
+      "id": "2ad3d03e3c64",
+      "ts": 1793094606.3331974,
+      "meta": {
+        "sender": "verifier",
+        "receiver": "solver",
+        "message_id": "2ad3d03e3c64",
+        "protocol_edge": "verifier_to_solver",
+        "protocol_version": "CARD-0-gsm8k",
+        "protocol_hash": "eb2823227bf7889a5ca248376e410b4922fec80b12249ba4d10a3c8452604ed2",
+        "contract_hash": "ac09c03455d8af3a35273b605bb457591de11f0e22bded3325bbb626ee774caf",
+        "fields": {
+          "CHK": "ACCEPT"
+        },
+        "communication_tokens": 5,
+        "communication_tokens_exact": true,
+        "attempt_count": 1,
+        "fallback": false,
+        "tokens_include_all_attempts": true,
+        "incoming_message_ids": [
+          "95e803a3c3ec"
+        ]
+      }
+    }
+  ],
+  "communication_tokens": 123,
+  "wall_time_s": 3.8192031000507995,
+  "verified": true,
+  "revision_rounds": 0,
+  "model_calls": [
+    {
+      "role": "planner",
+      "attempt": 0,
+      "status": "delivered",
+      "error": "",
+      "raw_output": "K:skins_per_coat=15,adult_minks=30,babies_per_mink=6,free_fraction=1/2;G:coats;P:total_minks=adult_minks+adult_minks*babies_per_mink,remaining=total_minks*(1-free_fraction),coats=remaining/skins_per_coat",
+      "finish_reason": "stop",
+      "output_tokens": 80,
+      "usage_available": true
+    },
+    {
+      "role": "solver",
+      "attempt": 0,
+      "status": "delivered",
+      "error": "",
+      "raw_output": "IR:total_minks=30+30*6=210,remaining=210*(1-1/2)=105,coats=105/15=7;R:7",
+      "finish_reason": "stop",
+      "output_tokens": 38,
+      "usage_available": true
+    },
+    {
+      "role": "verifier",
+      "attempt": 0,
+      "status": "delivered",
+      "error": "",
+      "raw_output": "CHK:ACCEPT",
+      "finish_reason": "stop",
+      "output_tokens": 5,
+      "usage_available": true
+    }
+  ],
+  "failed_attempts": [],
+  "calls": 3,
+  "usage_complete": true,
+  "known_input_tokens": 2572,
+  "known_output_tokens": 123,
+  "model_input_tokens": 2572,
+  "model_output_tokens": 123,
+  "format_failed_calls": 0,
+  "transport_failed_calls": 0,
+  "fallback_calls": 0,
+  "sum_model_latency_s": 3.686908006668091,
+  "gold": "7",
+  "score": 1.0,
+  "question": "It takes 15 mink skins to make a coat. Andy buys 30 minks and each mink has 6 babies, but half the total minks are set free by activists. How many coats can he make?\nGive the final numeric answer."
+}

@@ -1,0 +1,17 @@
+{
+  "decision": "UPDATE",
+  "reason": "Initial semantic review passed.",
+  "changed_paths": [
+    "/allow_nl_field",
+    "/description",
+    "/message_format",
+    "/planner_to_solver",
+    "/solver_to_verifier",
+    "/task_card",
+    "/validation_contract",
+    "/value_policy",
+    "/verifier_to_solver",
+    "/version"
+  ],
+  "semantic_review_approved": true
+}

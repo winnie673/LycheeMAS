@@ -1,0 +1,152 @@
+{
+  "task_id": "gsm8k:train:seed42:V:00106",
+  "status": "completed",
+  "error": null,
+  "prediction": "66",
+  "messages": [
+    {
+      "sender": "planner",
+      "content": "K:white_packs=2,blue_packs=4,white_per_pack=5,blue_per_pack=3,cost_per_shirt=3;G:total_spent;P:white=white_packs*white_per_pack,blue=blue_packs*blue_per_pack,total_shirts=white+blue,total_spent=total_shirts*cost_per_shirt",
+      "receiver": "solver",
+      "round": 0,
+      "role": "assistant",
+      "prompt_tokens": 741,
+      "completion_tokens": 85,
+      "id": "1dc385f282dd",
+      "ts": 1793094795.8535738,
+      "meta": {
+        "sender": "planner",
+        "receiver": "solver",
+        "message_id": "1dc385f282dd",
+        "protocol_edge": "planner_to_solver",
+        "protocol_version": "CARD-0-gsm8k",
+        "protocol_hash": "eb2823227bf7889a5ca248376e410b4922fec80b12249ba4d10a3c8452604ed2",
+        "contract_hash": "ac09c03455d8af3a35273b605bb457591de11f0e22bded3325bbb626ee774caf",
+        "fields": {
+          "K": "white_packs=2,blue_packs=4,white_per_pack=5,blue_per_pack=3,cost_per_shirt=3",
+          "G": "total_spent",
+          "P": "white=white_packs*white_per_pack,blue=blue_packs*blue_per_pack,total_shirts=white+blue,total_spent=total_shirts*cost_per_shirt"
+        },
+        "communication_tokens": 85,
+        "communication_tokens_exact": true,
+        "attempt_count": 1,
+        "fallback": false,
+        "tokens_include_all_attempts": true,
+        "incoming_message_ids": []
+      }
+    },
+    {
+      "sender": "solver",
+      "content": "IR:white=2*5=10,blue=4*3=12,total_shirts=10+12=22,total_spent=22*3=66;R:66",
+      "receiver": "verifier",
+      "round": 0,
+      "role": "assistant",
+      "prompt_tokens": 801,
+      "completion_tokens": 41,
+      "id": "2f9e5a3a8afb",
+      "ts": 1793094797.6135948,
+      "meta": {
+        "sender": "solver",
+        "receiver": "verifier",
+        "message_id": "2f9e5a3a8afb",
+        "protocol_edge": "solver_to_verifier",
+        "protocol_version": "CARD-0-gsm8k",
+        "protocol_hash": "eb2823227bf7889a5ca248376e410b4922fec80b12249ba4d10a3c8452604ed2",
+        "contract_hash": "ac09c03455d8af3a35273b605bb457591de11f0e22bded3325bbb626ee774caf",
+        "fields": {
+          "IR": "white=2*5=10,blue=4*3=12,total_shirts=10+12=22,total_spent=22*3=66",
+          "R": "66"
+        },
+        "communication_tokens": 41,
+        "communication_tokens_exact": true,
+        "attempt_count": 1,
+        "fallback": false,
+        "tokens_include_all_attempts": true,
+        "incoming_message_ids": [
+          "1dc385f282dd"
+        ]
+      }
+    },
+    {
+      "sender": "verifier",
+      "content": "CHK:ACCEPT",
+      "receiver": "solver",
+      "round": 0,
+      "role": "assistant",
+      "prompt_tokens": 1089,
+      "completion_tokens": 5,
+      "id": "4d626994d425",
+      "ts": 1793094798.8410687,
+      "meta": {
+        "sender": "verifier",
+        "receiver": "solver",
+        "message_id": "4d626994d425",
+        "protocol_edge": "verifier_to_solver",
+        "protocol_version": "CARD-0-gsm8k",
+        "protocol_hash": "eb2823227bf7889a5ca248376e410b4922fec80b12249ba4d10a3c8452604ed2",
+        "contract_hash": "ac09c03455d8af3a35273b605bb457591de11f0e22bded3325bbb626ee774caf",
+        "fields": {
+          "CHK": "ACCEPT"
+        },
+        "communication_tokens": 5,
+        "communication_tokens_exact": true,
+        "attempt_count": 1,
+        "fallback": false,
+        "tokens_include_all_attempts": true,
+        "incoming_message_ids": [
+          "2f9e5a3a8afb"
+        ]
+      }
+    }
+  ],
+  "communication_tokens": 131,
+  "wall_time_s": 4.486501800012775,
+  "verified": true,
+  "revision_rounds": 0,
+  "model_calls": [
+    {
+      "role": "planner",
+      "attempt": 0,
+      "status": "delivered",
+      "error": "",
+      "raw_output": "K:white_packs=2,blue_packs=4,white_per_pack=5,blue_per_pack=3,cost_per_shirt=3;G:total_spent;P:white=white_packs*white_per_pack,blue=blue_packs*blue_per_pack,total_shirts=white+blue,total_spent=total_shirts*cost_per_shirt",
+      "finish_reason": "stop",
+      "output_tokens": 85,
+      "usage_available": true
+    },
+    {
+      "role": "solver",
+      "attempt": 0,
+      "status": "delivered",
+      "error": "",
+      "raw_output": "IR:white=2*5=10,blue=4*3=12,total_shirts=10+12=22,total_spent=22*3=66;R:66",
+      "finish_reason": "stop",
+      "output_tokens": 41,
+      "usage_available": true
+    },
+    {
+      "role": "verifier",
+      "attempt": 0,
+      "status": "delivered",
+      "error": "",
+      "raw_output": "CHK:ACCEPT",
+      "finish_reason": "stop",
+      "output_tokens": 5,
+      "usage_available": true
+    }
+  ],
+  "failed_attempts": [],
+  "calls": 3,
+  "usage_complete": true,
+  "known_input_tokens": 2631,
+  "known_output_tokens": 131,
+  "model_input_tokens": 2631,
+  "model_output_tokens": 131,
+  "format_failed_calls": 0,
+  "transport_failed_calls": 0,
+  "fallback_calls": 0,
+  "sum_model_latency_s": 4.35650110244751,
+  "gold": "66",
+  "score": 1.0,
+  "question": "Maddie bought 2 packs of white T-shirts and 4 packs of blue T-shirts for her basketball team. The white T-shirts come in packs of 5, and the blue T-shirts come in packs of 3. Each T-shirt cost $3. How much did Maddie spend in all?\nGive the final numeric answer."
+}

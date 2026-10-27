@@ -1,0 +1,126 @@
+{
+  "task_id": "gsm8k:train:seed42:G1:00045",
+  "status": "completed",
+  "error": null,
+  "prediction": "28",
+  "messages": [
+    {
+      "sender": "planner",
+      "content": "Goal: find Anna’s age on their wedding day.\n\nPlan: Let Josh’s age at marriage be 22. Today is 30 years after the wedding, so Josh is 22 + 30 today. Use the condition that their combined age today is 5 times Josh’s age at marriage to determine Anna’s current age, then subtract 30 years to get Anna’s age at marriage.\n\nConstraints: Do not assume they are the same age; account for the fact that their birthdays are the same date but in different years. Provide only the final numeric age.",
+      "receiver": "solver",
+      "round": 0,
+      "role": "assistant",
+      "prompt_tokens": 224,
+      "completion_tokens": 118,
+      "id": "3905383db8e6",
+      "ts": 1793094322.017654,
+      "meta": {
+        "fields": {},
+        "communication_tokens": 118,
+        "communication_tokens_exact": true,
+        "attempt_count": 1,
+        "fallback": false,
+        "tokens_include_all_attempts": true,
+        "incoming_message_ids": []
+      }
+    },
+    {
+      "sender": "solver",
+      "content": "Josh was 22 at marriage, so today he is 52. Their combined age today is 5 × 22 = 110, so Anna is 110 − 52 = 58 today. She was 58 − 30 = 28 at marriage.\n\n\\boxed{28}",
+      "receiver": "verifier",
+      "round": 0,
+      "role": "assistant",
+      "prompt_tokens": 354,
+      "completion_tokens": 60,
+      "id": "2f0c20664da9",
+      "ts": 1793094323.4642422,
+      "meta": {
+        "fields": {
+          "R": "28"
+        },
+        "communication_tokens": 60,
+        "communication_tokens_exact": true,
+        "attempt_count": 1,
+        "fallback": false,
+        "tokens_include_all_attempts": true,
+        "incoming_message_ids": [
+          "3905383db8e6"
+        ]
+      }
+    },
+    {
+      "sender": "verifier",
+      "content": "ACCEPT",
+      "receiver": "solver",
+      "round": 0,
+      "role": "assistant",
+      "prompt_tokens": 673,
+      "completion_tokens": 2,
+      "id": "ee2a828a8a3f",
+      "ts": 1793094324.9042945,
+      "meta": {
+        "fields": {
+          "CHK": "ACCEPT"
+        },
+        "communication_tokens": 2,
+        "communication_tokens_exact": true,
+        "attempt_count": 1,
+        "fallback": false,
+        "tokens_include_all_attempts": true,
+        "incoming_message_ids": [
+          "2f0c20664da9"
+        ]
+      }
+    }
+  ],
+  "communication_tokens": 180,
+  "wall_time_s": 5.060000899946317,
+  "verified": true,
+  "revision_rounds": 0,
+  "model_calls": [
+    {
+      "role": "planner",
+      "attempt": 0,
+      "status": "delivered",
+      "error": "",
+      "raw_output": "Goal: find Anna’s age on their wedding day.\n\nPlan: Let Josh’s age at marriage be 22. Today is 30 years after the wedding, so Josh is 22 + 30 today. Use the condition that their combined age today is 5 times Josh’s age at marriage to determine Anna’s current age, then subtract 30 years to get Anna’s age at marriage.\n\nConstraints: Do not assume they are the same age; account for the fact that their birthdays are the same date but in different years. Provide only the final numeric age.",
+      "finish_reason": "stop",
+      "output_tokens": 118,
+      "usage_available": true
+    },
+    {
+      "role": "solver",
+      "attempt": 0,
+      "status": "delivered",
+      "error": "",
+      "raw_output": "Josh was 22 at marriage, so today he is 52. Their combined age today is 5 × 22 = 110, so Anna is 110 − 52 = 58 today. She was 58 − 30 = 28 at marriage.\n\n\\boxed{28}",
+      "finish_reason": "stop",
+      "output_tokens": 60,
+      "usage_available": true
+    },
+    {
+      "role": "verifier",
+      "attempt": 0,
+      "status": "delivered",
+      "error": "",
+      "raw_output": "ACCEPT",
+      "finish_reason": "stop",
+      "output_tokens": 2,
+      "usage_available": true
+    }
+  ],
+  "failed_attempts": [],
+  "calls": 3,
+  "usage_complete": true,
+  "known_input_tokens": 1251,
+  "known_output_tokens": 180,
+  "model_input_tokens": 1251,
+  "model_output_tokens": 180,
+  "format_failed_calls": 0,
+  "transport_failed_calls": 0,
+  "fallback_calls": 0,
+  "sum_model_latency_s": 4.984232664108276,
+  "gold": "28",
+  "score": 1.0,
+  "question": "Josh and Anna were both born on August 17th, but in different years. To consolidate celebrations they also got married on August 17 when Josh turned 22. If today they're celebrating 30 years of marriage and their combined age is exactly 5 times what Josh's age was when they married, how old was Anna when they got married?\nGive the final numeric answer."
+}

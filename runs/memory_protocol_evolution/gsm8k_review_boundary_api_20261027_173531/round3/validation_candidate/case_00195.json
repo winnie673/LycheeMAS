@@ -1,0 +1,152 @@
+{
+  "task_id": "gsm8k:train:seed42:V:00195",
+  "status": "completed",
+  "error": null,
+  "prediction": "20",
+  "messages": [
+    {
+      "sender": "planner",
+      "content": "G:Samir_age_in_5_years;K:Hania_in_5=45,Hania_10_ago=Hania_now-10,Samir_now=0.5*Hania_10_ago;P:Hania_now=45-5,Samir_now=0.5*(Hania_now-10),answer=Samir_now+5",
+      "receiver": "solver",
+      "round": 0,
+      "role": "assistant",
+      "prompt_tokens": 750,
+      "completion_tokens": 77,
+      "id": "ddf6e67b1637",
+      "ts": 1793100231.820229,
+      "meta": {
+        "sender": "planner",
+        "receiver": "solver",
+        "message_id": "ddf6e67b1637",
+        "protocol_edge": "planner_to_solver",
+        "protocol_version": "CARD-2-gsm8k",
+        "protocol_hash": "c152278e4a24181b874bd88cbf3adef79479b79f6539931bcd89721fa5a8a7a9",
+        "contract_hash": "ac09c03455d8af3a35273b605bb457591de11f0e22bded3325bbb626ee774caf",
+        "fields": {
+          "G": "Samir_age_in_5_years",
+          "K": "Hania_in_5=45,Hania_10_ago=Hania_now-10,Samir_now=0.5*Hania_10_ago",
+          "P": "Hania_now=45-5,Samir_now=0.5*(Hania_now-10),answer=Samir_now+5"
+        },
+        "communication_tokens": 77,
+        "communication_tokens_exact": true,
+        "attempt_count": 1,
+        "fallback": false,
+        "tokens_include_all_attempts": true,
+        "incoming_message_ids": []
+      }
+    },
+    {
+      "sender": "solver",
+      "content": "IR:Hania_now=45-5=40,Hania_10_ago=40-10=30,Samir_now=0.5*30=15,answer=15+5=20;R:20",
+      "receiver": "verifier",
+      "round": 0,
+      "role": "assistant",
+      "prompt_tokens": 770,
+      "completion_tokens": 46,
+      "id": "2a8ec50cfd30",
+      "ts": 1793100233.062599,
+      "meta": {
+        "sender": "solver",
+        "receiver": "verifier",
+        "message_id": "2a8ec50cfd30",
+        "protocol_edge": "solver_to_verifier",
+        "protocol_version": "CARD-2-gsm8k",
+        "protocol_hash": "c152278e4a24181b874bd88cbf3adef79479b79f6539931bcd89721fa5a8a7a9",
+        "contract_hash": "ac09c03455d8af3a35273b605bb457591de11f0e22bded3325bbb626ee774caf",
+        "fields": {
+          "IR": "Hania_now=45-5=40,Hania_10_ago=40-10=30,Samir_now=0.5*30=15,answer=15+5=20",
+          "R": "20"
+        },
+        "communication_tokens": 46,
+        "communication_tokens_exact": true,
+        "attempt_count": 1,
+        "fallback": false,
+        "tokens_include_all_attempts": true,
+        "incoming_message_ids": [
+          "ddf6e67b1637"
+        ]
+      }
+    },
+    {
+      "sender": "verifier",
+      "content": "CHK:ACCEPT",
+      "receiver": "solver",
+      "round": 0,
+      "role": "assistant",
+      "prompt_tokens": 1071,
+      "completion_tokens": 5,
+      "id": "8fbdc89e2c0e",
+      "ts": 1793100234.198618,
+      "meta": {
+        "sender": "verifier",
+        "receiver": "solver",
+        "message_id": "8fbdc89e2c0e",
+        "protocol_edge": "verifier_to_solver",
+        "protocol_version": "CARD-2-gsm8k",
+        "protocol_hash": "c152278e4a24181b874bd88cbf3adef79479b79f6539931bcd89721fa5a8a7a9",
+        "contract_hash": "ac09c03455d8af3a35273b605bb457591de11f0e22bded3325bbb626ee774caf",
+        "fields": {
+          "CHK": "ACCEPT"
+        },
+        "communication_tokens": 5,
+        "communication_tokens_exact": true,
+        "attempt_count": 1,
+        "fallback": false,
+        "tokens_include_all_attempts": true,
+        "incoming_message_ids": [
+          "2a8ec50cfd30"
+        ]
+      }
+    }
+  ],
+  "communication_tokens": 128,
+  "wall_time_s": 4.1221172999357805,
+  "verified": true,
+  "revision_rounds": 0,
+  "model_calls": [
+    {
+      "role": "planner",
+      "attempt": 0,
+      "status": "delivered",
+      "error": "",
+      "raw_output": "G:Samir_age_in_5_years;K:Hania_in_5=45,Hania_10_ago=Hania_now-10,Samir_now=0.5*Hania_10_ago;P:Hania_now=45-5,Samir_now=0.5*(Hania_now-10),answer=Samir_now+5",
+      "finish_reason": "stop",
+      "output_tokens": 77,
+      "usage_available": true
+    },
+    {
+      "role": "solver",
+      "attempt": 0,
+      "status": "delivered",
+      "error": "",
+      "raw_output": "IR:Hania_now=45-5=40,Hania_10_ago=40-10=30,Samir_now=0.5*30=15,answer=15+5=20;R:20",
+      "finish_reason": "stop",
+      "output_tokens": 46,
+      "usage_available": true
+    },
+    {
+      "role": "verifier",
+      "attempt": 0,
+      "status": "delivered",
+      "error": "",
+      "raw_output": "CHK:ACCEPT",
+      "finish_reason": "stop",
+      "output_tokens": 5,
+      "usage_available": true
+    }
+  ],
+  "failed_attempts": [],
+  "calls": 3,
+  "usage_complete": true,
+  "known_input_tokens": 2591,
+  "known_output_tokens": 128,
+  "model_input_tokens": 2591,
+  "model_output_tokens": 128,
+  "format_failed_calls": 0,
+  "transport_failed_calls": 0,
+  "fallback_calls": 0,
+  "sum_model_latency_s": 4.014476776123047,
+  "gold": "20",
+  "score": 1.0,
+  "question": "Samir just turned half the age Hania was 10 years ago. If in five years Hania will be 45 years old, what will Samir's age be five years from now?\nGive the final numeric answer."
+}

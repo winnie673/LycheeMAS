@@ -1,0 +1,152 @@
+{
+  "task_id": "gsm8k:train:seed42:V:00033",
+  "status": "completed",
+  "error": null,
+  "prediction": "5",
+  "messages": [
+    {
+      "sender": "planner",
+      "content": "K:pants_price=5,shorts_price=3,shirt_price=4,pants_sold=3,shorts_sold=5,new_shirt_price=10,new_shirts_bought=2,leftover=30;G:shirts_sold;P:earned=5*3+3*5+4*shirts_sold,spent=10*2,leftover=earned-spent",
+      "receiver": "solver",
+      "round": 0,
+      "role": "assistant",
+      "prompt_tokens": 809,
+      "completion_tokens": 93,
+      "id": "955b30b2bb1b",
+      "ts": 1793097357.8498769,
+      "meta": {
+        "sender": "planner",
+        "receiver": "solver",
+        "message_id": "955b30b2bb1b",
+        "protocol_edge": "planner_to_solver",
+        "protocol_version": "CARD-2-gsm8k",
+        "protocol_hash": "c152278e4a24181b874bd88cbf3adef79479b79f6539931bcd89721fa5a8a7a9",
+        "contract_hash": "ac09c03455d8af3a35273b605bb457591de11f0e22bded3325bbb626ee774caf",
+        "fields": {
+          "K": "pants_price=5,shorts_price=3,shirt_price=4,pants_sold=3,shorts_sold=5,new_shirt_price=10,new_shirts_bought=2,leftover=30",
+          "G": "shirts_sold",
+          "P": "earned=5*3+3*5+4*shirts_sold,spent=10*2,leftover=earned-spent"
+        },
+        "communication_tokens": 93,
+        "communication_tokens_exact": true,
+        "attempt_count": 1,
+        "fallback": false,
+        "tokens_include_all_attempts": true,
+        "incoming_message_ids": []
+      }
+    },
+    {
+      "sender": "solver",
+      "content": "IR:earned=5*3+3*5+4*s=15+15+4s=30+4s,spent=10*2=20,leftover=30+4s-20=10+4s=30,s=5;R:5",
+      "receiver": "verifier",
+      "round": 0,
+      "role": "assistant",
+      "prompt_tokens": 845,
+      "completion_tokens": 60,
+      "id": "9426fa56e6ac",
+      "ts": 1793097358.8385682,
+      "meta": {
+        "sender": "solver",
+        "receiver": "verifier",
+        "message_id": "9426fa56e6ac",
+        "protocol_edge": "solver_to_verifier",
+        "protocol_version": "CARD-2-gsm8k",
+        "protocol_hash": "c152278e4a24181b874bd88cbf3adef79479b79f6539931bcd89721fa5a8a7a9",
+        "contract_hash": "ac09c03455d8af3a35273b605bb457591de11f0e22bded3325bbb626ee774caf",
+        "fields": {
+          "IR": "earned=5*3+3*5+4*s=15+15+4s=30+4s,spent=10*2=20,leftover=30+4s-20=10+4s=30,s=5",
+          "R": "5"
+        },
+        "communication_tokens": 60,
+        "communication_tokens_exact": true,
+        "attempt_count": 1,
+        "fallback": false,
+        "tokens_include_all_attempts": true,
+        "incoming_message_ids": [
+          "955b30b2bb1b"
+        ]
+      }
+    },
+    {
+      "sender": "verifier",
+      "content": "CHK:ACCEPT",
+      "receiver": "solver",
+      "round": 0,
+      "role": "assistant",
+      "prompt_tokens": 1144,
+      "completion_tokens": 5,
+      "id": "a4107cddc005",
+      "ts": 1793097360.2676442,
+      "meta": {
+        "sender": "verifier",
+        "receiver": "solver",
+        "message_id": "a4107cddc005",
+        "protocol_edge": "verifier_to_solver",
+        "protocol_version": "CARD-2-gsm8k",
+        "protocol_hash": "c152278e4a24181b874bd88cbf3adef79479b79f6539931bcd89721fa5a8a7a9",
+        "contract_hash": "ac09c03455d8af3a35273b605bb457591de11f0e22bded3325bbb626ee774caf",
+        "fields": {
+          "CHK": "ACCEPT"
+        },
+        "communication_tokens": 5,
+        "communication_tokens_exact": true,
+        "attempt_count": 1,
+        "fallback": false,
+        "tokens_include_all_attempts": true,
+        "incoming_message_ids": [
+          "9426fa56e6ac"
+        ]
+      }
+    }
+  ],
+  "communication_tokens": 158,
+  "wall_time_s": 3.957524299970828,
+  "verified": true,
+  "revision_rounds": 0,
+  "model_calls": [
+    {
+      "role": "planner",
+      "attempt": 0,
+      "status": "delivered",
+      "error": "",
+      "raw_output": "K:pants_price=5,shorts_price=3,shirt_price=4,pants_sold=3,shorts_sold=5,new_shirt_price=10,new_shirts_bought=2,leftover=30;G:shirts_sold;P:earned=5*3+3*5+4*shirts_sold,spent=10*2,leftover=earned-spent",
+      "finish_reason": "stop",
+      "output_tokens": 93,
+      "usage_available": true
+    },
+    {
+      "role": "solver",
+      "attempt": 0,
+      "status": "delivered",
+      "error": "",
+      "raw_output": "IR:earned=5*3+3*5+4*s=15+15+4s=30+4s,spent=10*2=20,leftover=30+4s-20=10+4s=30,s=5;R:5",
+      "finish_reason": "stop",
+      "output_tokens": 60,
+      "usage_available": true
+    },
+    {
+      "role": "verifier",
+      "attempt": 0,
+      "status": "delivered",
+      "error": "",
+      "raw_output": "CHK:ACCEPT",
+      "finish_reason": "stop",
+      "output_tokens": 5,
+      "usage_available": true
+    }
+  ],
+  "failed_attempts": [],
+  "calls": 3,
+  "usage_complete": true,
+  "known_input_tokens": 2798,
+  "known_output_tokens": 158,
+  "model_input_tokens": 2798,
+  "model_output_tokens": 158,
+  "format_failed_calls": 0,
+  "transport_failed_calls": 0,
+  "fallback_calls": 0,
+  "sum_model_latency_s": 3.8386082649230957,
+  "gold": "5",
+  "score": 1.0,
+  "question": "Selina is selling some of her old clothes to a second-hand store. They will buy her pants for $5 each, her shorts for $3 each, and her shirts for $4 each. She sells 3 pairs of pants, 5 pairs of shorts, and some shirts. After she gets her money, she sees 2 shirts that she likes which cost $10 each and buys them. She leaves the store with $30. How many shirts did she sell to the store?\nGive the final numeric answer."
+}

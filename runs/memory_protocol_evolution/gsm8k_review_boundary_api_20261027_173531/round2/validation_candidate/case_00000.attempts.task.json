@@ -1,0 +1,149 @@
+{
+  "task_id": "gsm8k:train:seed42:V:00000",
+  "status": "completed",
+  "error": null,
+  "prediction": "30",
+  "messages": [
+    {
+      "sender": "planner",
+      "content": "G:total_cost;K:daily_cups=1/2,cups_per_pack=1,price_per_pack=2,days=30;P:packs_per_day=daily_cups/cups_per_pack,total_packs=packs_per_day*days,total_cost=total_packs*price_per_pack",
+      "receiver": "solver",
+      "round": 0,
+      "role": "assistant",
+      "prompt_tokens": 759,
+      "completion_tokens": 69,
+      "id": "26be6bf2d7ca",
+      "ts": 1793097219.7934124,
+      "meta": {
+        "sender": "planner",
+        "receiver": "solver",
+        "message_id": "26be6bf2d7ca",
+        "protocol_edge": "planner_to_solver",
+        "protocol_version": "CARD-2-gsm8k",
+        "protocol_hash": "c152278e4a24181b874bd88cbf3adef79479b79f6539931bcd89721fa5a8a7a9",
+        "contract_hash": "ac09c03455d8af3a35273b605bb457591de11f0e22bded3325bbb626ee774caf",
+        "fields": {
+          "G": "total_cost",
+          "K": "daily_cups=1/2,cups_per_pack=1,price_per_pack=2,days=30",
+          "P": "packs_per_day=daily_cups/cups_per_pack,total_packs=packs_per_day*days,total_cost=total_packs*price_per_pack"
+        },
+        "communication_tokens": 69,
+        "communication_tokens_exact": true,
+        "attempt_count": 1,
+        "fallback": false,
+        "tokens_include_all_attempts": true,
+        "incoming_message_ids": []
+      }
+    },
+    {
+      "sender": "solver",
+      "content": "IR:packs_per_day=(1/2)/1=0.5,total_packs=0.5*30=15,total_cost=15*2=30;R:30",
+      "receiver": "verifier",
+      "round": 0,
+      "role": "assistant",
+      "prompt_tokens": 771,
+      "completion_tokens": 40,
+      "id": "74feb84330c5",
+      "ts": 1793097221.0746555,
+      "meta": {
+        "sender": "solver",
+        "receiver": "verifier",
+        "message_id": "74feb84330c5",
+        "protocol_edge": "solver_to_verifier",
+        "protocol_version": "CARD-2-gsm8k",
+        "protocol_hash": "c152278e4a24181b874bd88cbf3adef79479b79f6539931bcd89721fa5a8a7a9",
+        "contract_hash": "ac09c03455d8af3a35273b605bb457591de11f0e22bded3325bbb626ee774caf",
+        "fields": {
+          "IR": "packs_per_day=(1/2)/1=0.5,total_packs=0.5*30=15,total_cost=15*2=30",
+          "R": "30"
+        },
+        "communication_tokens": 40,
+        "communication_tokens_exact": true,
+        "attempt_count": 1,
+        "fallback": false,
+        "tokens_include_all_attempts": true,
+        "incoming_message_ids": [
+          "26be6bf2d7ca"
+        ]
+      }
+    },
+    {
+      "sender": "verifier",
+      "content": "CHK:ACCEPT",
+      "receiver": "solver",
+      "round": 0,
+      "role": "assistant",
+      "prompt_tokens": 1074,
+      "completion_tokens": 5,
+      "id": "6a8fef341829",
+      "ts": 1793097222.0433428,
+      "meta": {
+        "sender": "verifier",
+        "receiver": "solver",
+        "message_id": "6a8fef341829",
+        "protocol_edge": "verifier_to_solver",
+        "protocol_version": "CARD-2-gsm8k",
+        "protocol_hash": "c152278e4a24181b874bd88cbf3adef79479b79f6539931bcd89721fa5a8a7a9",
+        "contract_hash": "ac09c03455d8af3a35273b605bb457591de11f0e22bded3325bbb626ee774caf",
+        "fields": {
+          "CHK": "ACCEPT"
+        },
+        "communication_tokens": 5,
+        "communication_tokens_exact": true,
+        "attempt_count": 1,
+        "fallback": false,
+        "tokens_include_all_attempts": true,
+        "incoming_message_ids": [
+          "74feb84330c5"
+        ]
+      }
+    }
+  ],
+  "communication_tokens": 114,
+  "wall_time_s": 3.7554436000064015,
+  "verified": true,
+  "revision_rounds": 0,
+  "model_calls": [
+    {
+      "role": "planner",
+      "attempt": 0,
+      "status": "delivered",
+      "error": "",
+      "raw_output": "G:total_cost;K:daily_cups=1/2,cups_per_pack=1,price_per_pack=2,days=30;P:packs_per_day=daily_cups/cups_per_pack,total_packs=packs_per_day*days,total_cost=total_packs*price_per_pack",
+      "finish_reason": "stop",
+      "output_tokens": 69,
+      "usage_available": true
+    },
+    {
+      "role": "solver",
+      "attempt": 0,
+      "status": "delivered",
+      "error": "",
+      "raw_output": "IR:packs_per_day=(1/2)/1=0.5,total_packs=0.5*30=15,total_cost=15*2=30;R:30",
+      "finish_reason": "stop",
+      "output_tokens": 40,
+      "usage_available": true
+    },
+    {
+      "role": "verifier",
+      "attempt": 0,
+      "status": "delivered",
+      "error": "",
+      "raw_output": "CHK:ACCEPT",
+      "finish_reason": "stop",
+      "output_tokens": 5,
+      "usage_available": true
+    }
+  ],
+  "failed_attempts": [],
+  "calls": 3,
+  "usage_complete": true,
+  "known_input_tokens": 2604,
+  "known_output_tokens": 114,
+  "model_input_tokens": 2604,
+  "model_output_tokens": 114,
+  "format_failed_calls": 0,
+  "transport_failed_calls": 0,
+  "fallback_calls": 0,
+  "sum_model_latency_s": 3.624410629272461
+}

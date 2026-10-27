@@ -1,0 +1,121 @@
+{
+  "task_id": "gsm8k:test:seed42:T:00175",
+  "mode": "hybrid",
+  "benchmark": "gsm8k",
+  "status": "completed",
+  "error": null,
+  "prediction": "15",
+  "gold": "15",
+  "wall_time_s": 3.699474300025031,
+  "communication_tokens": 158,
+  "communication_tokens_exact": true,
+  "revision_rounds": 0,
+  "verification_decision": "ACCEPT",
+  "verified": true,
+  "messages": [
+    {
+      "sender": "planner",
+      "content": "K:cost_per_gallon=3+2,price_per_glass=0.50,glasses_per_gallon=20,profit=25;G:lemon_spend;P:revenue_per_gallon=price_per_glass*glasses_per_gallon,profit_per_gallon=revenue_per_gallon-cost_per_gallon,gallons=profit/profit_per_gallon,lemon_spend=3*gallons",
+      "receiver": "solver",
+      "round": 0,
+      "role": "assistant",
+      "prompt_tokens": 772,
+      "completion_tokens": 92,
+      "id": "96d79654962d",
+      "ts": 1793101659.3691683,
+      "meta": {
+        "sender": "planner",
+        "receiver": "solver",
+        "message_id": "96d79654962d",
+        "protocol_edge": "planner_to_solver",
+        "protocol_version": "CARD-2-gsm8k",
+        "protocol_hash": "c152278e4a24181b874bd88cbf3adef79479b79f6539931bcd89721fa5a8a7a9",
+        "contract_hash": "ac09c03455d8af3a35273b605bb457591de11f0e22bded3325bbb626ee774caf",
+        "fields": {
+          "K": "cost_per_gallon=3+2,price_per_glass=0.50,glasses_per_gallon=20,profit=25",
+          "G": "lemon_spend",
+          "P": "revenue_per_gallon=price_per_glass*glasses_per_gallon,profit_per_gallon=revenue_per_gallon-cost_per_gallon,gallons=profit/profit_per_gallon,lemon_spend=3*gallons"
+        },
+        "communication_tokens": 92,
+        "communication_tokens_exact": true,
+        "attempt_count": 1,
+        "fallback": false,
+        "tokens_include_all_attempts": true,
+        "incoming_message_ids": []
+      }
+    },
+    {
+      "sender": "solver",
+      "content": "IR:revenue_per_gallon=0.50*20=10,cost_per_gallon=3+2=5,profit_per_gallon=10-5=5,gallons=25/5=5,lemon_spend=3*5=15;R:15",
+      "receiver": "verifier",
+      "round": 0,
+      "role": "assistant",
+      "prompt_tokens": 807,
+      "completion_tokens": 61,
+      "id": "86f2b56ae541",
+      "ts": 1793101660.5211432,
+      "meta": {
+        "sender": "solver",
+        "receiver": "verifier",
+        "message_id": "86f2b56ae541",
+        "protocol_edge": "solver_to_verifier",
+        "protocol_version": "CARD-2-gsm8k",
+        "protocol_hash": "c152278e4a24181b874bd88cbf3adef79479b79f6539931bcd89721fa5a8a7a9",
+        "contract_hash": "ac09c03455d8af3a35273b605bb457591de11f0e22bded3325bbb626ee774caf",
+        "fields": {
+          "IR": "revenue_per_gallon=0.50*20=10,cost_per_gallon=3+2=5,profit_per_gallon=10-5=5,gallons=25/5=5,lemon_spend=3*5=15",
+          "R": "15"
+        },
+        "communication_tokens": 61,
+        "communication_tokens_exact": true,
+        "attempt_count": 1,
+        "fallback": false,
+        "tokens_include_all_attempts": true,
+        "incoming_message_ids": [
+          "96d79654962d"
+        ]
+      }
+    },
+    {
+      "sender": "verifier",
+      "content": "CHK:ACCEPT",
+      "receiver": "solver",
+      "round": 0,
+      "role": "assistant",
+      "prompt_tokens": 1108,
+      "completion_tokens": 5,
+      "id": "c02a853362c1",
+      "ts": 1793101661.6445343,
+      "meta": {
+        "sender": "verifier",
+        "receiver": "solver",
+        "message_id": "c02a853362c1",
+        "protocol_edge": "verifier_to_solver",
+        "protocol_version": "CARD-2-gsm8k",
+        "protocol_hash": "c152278e4a24181b874bd88cbf3adef79479b79f6539931bcd89721fa5a8a7a9",
+        "contract_hash": "ac09c03455d8af3a35273b605bb457591de11f0e22bded3325bbb626ee774caf",
+        "fields": {
+          "CHK": "ACCEPT"
+        },
+        "communication_tokens": 5,
+        "communication_tokens_exact": true,
+        "attempt_count": 1,
+        "fallback": false,
+        "tokens_include_all_attempts": true,
+        "incoming_message_ids": [
+          "86f2b56ae541"
+        ]
+      }
+    }
+  ],
+  "calls": 3,
+  "usage_complete": true,
+  "known_input_tokens": 2687,
+  "known_output_tokens": 158,
+  "model_input_tokens": 2687,
+  "model_output_tokens": 158,
+  "format_failed_calls": 0,
+  "transport_failed_calls": 0,
+  "fallback_calls": 0,
+  "sum_model_latency_s": 3.5747005939483643
+}

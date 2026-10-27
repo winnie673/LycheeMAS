@@ -1,0 +1,123 @@
+{
+  "task_id": "gsm8k:test:seed42:T:00037",
+  "mode": "hybrid",
+  "benchmark": "gsm8k",
+  "status": "completed",
+  "error": null,
+  "prediction": "2",
+  "gold": "2",
+  "wall_time_s": 4.554197299992666,
+  "communication_tokens": 160,
+  "communication_tokens_exact": true,
+  "revision_rounds": 0,
+  "verification_decision": "ACCEPT",
+  "verified": true,
+  "messages": [
+    {
+      "sender": "planner",
+      "content": "G:number_of_lego_sets_still_held;K:lego_sets=13,price_per_set=15,games=8,price_per_game=20,leftover=5;P:revenue=games*price_per_game+leftover,sets_sold=revenue/price_per_set,sets_left=lego_sets-sets_sold;NL:He sells some of the 13 sets, not all, and the question asks how many sets remain unsold",
+      "receiver": "solver",
+      "round": 0,
+      "role": "assistant",
+      "prompt_tokens": 770,
+      "completion_tokens": 104,
+      "id": "22eb64a07feb",
+      "ts": 1793100578.625552,
+      "meta": {
+        "sender": "planner",
+        "receiver": "solver",
+        "message_id": "22eb64a07feb",
+        "protocol_edge": "planner_to_solver",
+        "protocol_version": "CARD-2-gsm8k",
+        "protocol_hash": "c152278e4a24181b874bd88cbf3adef79479b79f6539931bcd89721fa5a8a7a9",
+        "contract_hash": "ac09c03455d8af3a35273b605bb457591de11f0e22bded3325bbb626ee774caf",
+        "fields": {
+          "G": "number_of_lego_sets_still_held",
+          "K": "lego_sets=13,price_per_set=15,games=8,price_per_game=20,leftover=5",
+          "P": "revenue=games*price_per_game+leftover,sets_sold=revenue/price_per_set,sets_left=lego_sets-sets_sold",
+          "NL": "He sells some of the 13 sets, not all, and the question asks how many sets remain unsold"
+        },
+        "communication_tokens": 104,
+        "communication_tokens_exact": true,
+        "attempt_count": 1,
+        "fallback": false,
+        "tokens_include_all_attempts": true,
+        "incoming_message_ids": []
+      }
+    },
+    {
+      "sender": "solver",
+      "content": "IR:revenue=8*20+5=165,sets_sold=165/15=11,sets_left=13-11=2;R:2;NL:He sells 11 of the 13 sets and keeps 2",
+      "receiver": "verifier",
+      "round": 0,
+      "role": "assistant",
+      "prompt_tokens": 817,
+      "completion_tokens": 51,
+      "id": "b9c647566982",
+      "ts": 1793100580.0024037,
+      "meta": {
+        "sender": "solver",
+        "receiver": "verifier",
+        "message_id": "b9c647566982",
+        "protocol_edge": "solver_to_verifier",
+        "protocol_version": "CARD-2-gsm8k",
+        "protocol_hash": "c152278e4a24181b874bd88cbf3adef79479b79f6539931bcd89721fa5a8a7a9",
+        "contract_hash": "ac09c03455d8af3a35273b605bb457591de11f0e22bded3325bbb626ee774caf",
+        "fields": {
+          "IR": "revenue=8*20+5=165,sets_sold=165/15=11,sets_left=13-11=2",
+          "R": "2",
+          "NL": "He sells 11 of the 13 sets and keeps 2"
+        },
+        "communication_tokens": 51,
+        "communication_tokens_exact": true,
+        "attempt_count": 1,
+        "fallback": false,
+        "tokens_include_all_attempts": true,
+        "incoming_message_ids": [
+          "22eb64a07feb"
+        ]
+      }
+    },
+    {
+      "sender": "verifier",
+      "content": "CHK:ACCEPT",
+      "receiver": "solver",
+      "round": 0,
+      "role": "assistant",
+      "prompt_tokens": 1096,
+      "completion_tokens": 5,
+      "id": "90aa62b8e25f",
+      "ts": 1793100581.1321976,
+      "meta": {
+        "sender": "verifier",
+        "receiver": "solver",
+        "message_id": "90aa62b8e25f",
+        "protocol_edge": "verifier_to_solver",
+        "protocol_version": "CARD-2-gsm8k",
+        "protocol_hash": "c152278e4a24181b874bd88cbf3adef79479b79f6539931bcd89721fa5a8a7a9",
+        "contract_hash": "ac09c03455d8af3a35273b605bb457591de11f0e22bded3325bbb626ee774caf",
+        "fields": {
+          "CHK": "ACCEPT"
+        },
+        "communication_tokens": 5,
+        "communication_tokens_exact": true,
+        "attempt_count": 1,
+        "fallback": false,
+        "tokens_include_all_attempts": true,
+        "incoming_message_ids": [
+          "b9c647566982"
+        ]
+      }
+    }
+  ],
+  "calls": 3,
+  "usage_complete": true,
+  "known_input_tokens": 2683,
+  "known_output_tokens": 160,
+  "model_input_tokens": 2683,
+  "model_output_tokens": 160,
+  "format_failed_calls": 0,
+  "transport_failed_calls": 0,
+  "fallback_calls": 0,
+  "sum_model_latency_s": 4.420734643936157
+}

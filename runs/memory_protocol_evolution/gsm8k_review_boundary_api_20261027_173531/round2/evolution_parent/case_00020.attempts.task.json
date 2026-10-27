@@ -1,0 +1,149 @@
+{
+  "task_id": "gsm8k:train:seed42:G2:00020",
+  "status": "completed",
+  "error": null,
+  "prediction": "30",
+  "messages": [
+    {
+      "sender": "planner",
+      "content": "K:hotdog_oz=2,burger_oz=5,pie_oz=10,noah_burgers=8,jacob_pies=noah_burgers-3,mason_hotdogs=3*jacob_pies;G:total_weight_hotdogs;P:total_weight_hotdogs=mason_hotdogs*hotdog_oz",
+      "receiver": "solver",
+      "round": 0,
+      "role": "assistant",
+      "prompt_tokens": 813,
+      "completion_tokens": 79,
+      "id": "836fdbe055f0",
+      "ts": 1793096071.505712,
+      "meta": {
+        "sender": "planner",
+        "receiver": "solver",
+        "message_id": "836fdbe055f0",
+        "protocol_edge": "planner_to_solver",
+        "protocol_version": "CARD-0-gsm8k",
+        "protocol_hash": "eb2823227bf7889a5ca248376e410b4922fec80b12249ba4d10a3c8452604ed2",
+        "contract_hash": "ac09c03455d8af3a35273b605bb457591de11f0e22bded3325bbb626ee774caf",
+        "fields": {
+          "K": "hotdog_oz=2,burger_oz=5,pie_oz=10,noah_burgers=8,jacob_pies=noah_burgers-3,mason_hotdogs=3*jacob_pies",
+          "G": "total_weight_hotdogs",
+          "P": "total_weight_hotdogs=mason_hotdogs*hotdog_oz"
+        },
+        "communication_tokens": 79,
+        "communication_tokens_exact": true,
+        "attempt_count": 1,
+        "fallback": false,
+        "tokens_include_all_attempts": true,
+        "incoming_message_ids": []
+      }
+    },
+    {
+      "sender": "solver",
+      "content": "IR:jacob_pies=8-3=5,mason_hotdogs=3*5=15,total_weight_hotdogs=15*2=30;R:30",
+      "receiver": "verifier",
+      "round": 0,
+      "role": "assistant",
+      "prompt_tokens": 867,
+      "completion_tokens": 39,
+      "id": "26add657088e",
+      "ts": 1793096072.5701468,
+      "meta": {
+        "sender": "solver",
+        "receiver": "verifier",
+        "message_id": "26add657088e",
+        "protocol_edge": "solver_to_verifier",
+        "protocol_version": "CARD-0-gsm8k",
+        "protocol_hash": "eb2823227bf7889a5ca248376e410b4922fec80b12249ba4d10a3c8452604ed2",
+        "contract_hash": "ac09c03455d8af3a35273b605bb457591de11f0e22bded3325bbb626ee774caf",
+        "fields": {
+          "IR": "jacob_pies=8-3=5,mason_hotdogs=3*5=15,total_weight_hotdogs=15*2=30",
+          "R": "30"
+        },
+        "communication_tokens": 39,
+        "communication_tokens_exact": true,
+        "attempt_count": 1,
+        "fallback": false,
+        "tokens_include_all_attempts": true,
+        "incoming_message_ids": [
+          "836fdbe055f0"
+        ]
+      }
+    },
+    {
+      "sender": "verifier",
+      "content": "CHK:ACCEPT",
+      "receiver": "solver",
+      "round": 0,
+      "role": "assistant",
+      "prompt_tokens": 1159,
+      "completion_tokens": 5,
+      "id": "a539fc9f0d21",
+      "ts": 1793096073.8557901,
+      "meta": {
+        "sender": "verifier",
+        "receiver": "solver",
+        "message_id": "a539fc9f0d21",
+        "protocol_edge": "verifier_to_solver",
+        "protocol_version": "CARD-0-gsm8k",
+        "protocol_hash": "eb2823227bf7889a5ca248376e410b4922fec80b12249ba4d10a3c8452604ed2",
+        "contract_hash": "ac09c03455d8af3a35273b605bb457591de11f0e22bded3325bbb626ee774caf",
+        "fields": {
+          "CHK": "ACCEPT"
+        },
+        "communication_tokens": 5,
+        "communication_tokens_exact": true,
+        "attempt_count": 1,
+        "fallback": false,
+        "tokens_include_all_attempts": true,
+        "incoming_message_ids": [
+          "26add657088e"
+        ]
+      }
+    }
+  ],
+  "communication_tokens": 123,
+  "wall_time_s": 3.58077419991605,
+  "verified": true,
+  "revision_rounds": 0,
+  "model_calls": [
+    {
+      "role": "planner",
+      "attempt": 0,
+      "status": "delivered",
+      "error": "",
+      "raw_output": "K:hotdog_oz=2,burger_oz=5,pie_oz=10,noah_burgers=8,jacob_pies=noah_burgers-3,mason_hotdogs=3*jacob_pies;G:total_weight_hotdogs;P:total_weight_hotdogs=mason_hotdogs*hotdog_oz",
+      "finish_reason": "stop",
+      "output_tokens": 79,
+      "usage_available": true
+    },
+    {
+      "role": "solver",
+      "attempt": 0,
+      "status": "delivered",
+      "error": "",
+      "raw_output": "IR:jacob_pies=8-3=5,mason_hotdogs=3*5=15,total_weight_hotdogs=15*2=30;R:30",
+      "finish_reason": "stop",
+      "output_tokens": 39,
+      "usage_available": true
+    },
+    {
+      "role": "verifier",
+      "attempt": 0,
+      "status": "delivered",
+      "error": "",
+      "raw_output": "CHK:ACCEPT",
+      "finish_reason": "stop",
+      "output_tokens": 5,
+      "usage_available": true
+    }
+  ],
+  "failed_attempts": [],
+  "calls": 3,
+  "usage_complete": true,
+  "known_input_tokens": 2839,
+  "known_output_tokens": 123,
+  "model_input_tokens": 2839,
+  "model_output_tokens": 123,
+  "format_failed_calls": 0,
+  "transport_failed_calls": 0,
+  "fallback_calls": 0,
+  "sum_model_latency_s": 3.4688191413879395
+}

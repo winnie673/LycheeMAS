@@ -1,0 +1,152 @@
+{
+  "task_id": "gsm8k:train:seed42:V:00016",
+  "status": "completed",
+  "error": null,
+  "prediction": "5",
+  "messages": [
+    {
+      "sender": "planner",
+      "content": "K:people=3,meal_each=10,total_available=45;G:cost_per_scoop;P:meal_total=people*meal_each,icecream_total=total_available-meal_total,cost_per_scoop=icecream_total/people",
+      "receiver": "solver",
+      "round": 0,
+      "role": "assistant",
+      "prompt_tokens": 739,
+      "completion_tokens": 59,
+      "id": "e8296205287e",
+      "ts": 1793096479.83449,
+      "meta": {
+        "sender": "planner",
+        "receiver": "solver",
+        "message_id": "e8296205287e",
+        "protocol_edge": "planner_to_solver",
+        "protocol_version": "CARD-0-gsm8k",
+        "protocol_hash": "eb2823227bf7889a5ca248376e410b4922fec80b12249ba4d10a3c8452604ed2",
+        "contract_hash": "ac09c03455d8af3a35273b605bb457591de11f0e22bded3325bbb626ee774caf",
+        "fields": {
+          "K": "people=3,meal_each=10,total_available=45",
+          "G": "cost_per_scoop",
+          "P": "meal_total=people*meal_each,icecream_total=total_available-meal_total,cost_per_scoop=icecream_total/people"
+        },
+        "communication_tokens": 59,
+        "communication_tokens_exact": true,
+        "attempt_count": 1,
+        "fallback": false,
+        "tokens_include_all_attempts": true,
+        "incoming_message_ids": []
+      }
+    },
+    {
+      "sender": "solver",
+      "content": "IR:meal_total=3*10=30,icecream_total=45-30=15,cost_per_scoop=15/3=5;R:5",
+      "receiver": "verifier",
+      "round": 0,
+      "role": "assistant",
+      "prompt_tokens": 773,
+      "completion_tokens": 36,
+      "id": "3a28f9783ced",
+      "ts": 1793096480.6557896,
+      "meta": {
+        "sender": "solver",
+        "receiver": "verifier",
+        "message_id": "3a28f9783ced",
+        "protocol_edge": "solver_to_verifier",
+        "protocol_version": "CARD-0-gsm8k",
+        "protocol_hash": "eb2823227bf7889a5ca248376e410b4922fec80b12249ba4d10a3c8452604ed2",
+        "contract_hash": "ac09c03455d8af3a35273b605bb457591de11f0e22bded3325bbb626ee774caf",
+        "fields": {
+          "IR": "meal_total=3*10=30,icecream_total=45-30=15,cost_per_scoop=15/3=5",
+          "R": "5"
+        },
+        "communication_tokens": 36,
+        "communication_tokens_exact": true,
+        "attempt_count": 1,
+        "fallback": false,
+        "tokens_include_all_attempts": true,
+        "incoming_message_ids": [
+          "e8296205287e"
+        ]
+      }
+    },
+    {
+      "sender": "verifier",
+      "content": "CHK:ACCEPT",
+      "receiver": "solver",
+      "round": 0,
+      "role": "assistant",
+      "prompt_tokens": 1082,
+      "completion_tokens": 5,
+      "id": "e6dd9f69754f",
+      "ts": 1793096481.8630574,
+      "meta": {
+        "sender": "verifier",
+        "receiver": "solver",
+        "message_id": "e6dd9f69754f",
+        "protocol_edge": "verifier_to_solver",
+        "protocol_version": "CARD-0-gsm8k",
+        "protocol_hash": "eb2823227bf7889a5ca248376e410b4922fec80b12249ba4d10a3c8452604ed2",
+        "contract_hash": "ac09c03455d8af3a35273b605bb457591de11f0e22bded3325bbb626ee774caf",
+        "fields": {
+          "CHK": "ACCEPT"
+        },
+        "communication_tokens": 5,
+        "communication_tokens_exact": true,
+        "attempt_count": 1,
+        "fallback": false,
+        "tokens_include_all_attempts": true,
+        "incoming_message_ids": [
+          "3a28f9783ced"
+        ]
+      }
+    }
+  ],
+  "communication_tokens": 100,
+  "wall_time_s": 3.466125699924305,
+  "verified": true,
+  "revision_rounds": 0,
+  "model_calls": [
+    {
+      "role": "planner",
+      "attempt": 0,
+      "status": "delivered",
+      "error": "",
+      "raw_output": "K:people=3,meal_each=10,total_available=45;G:cost_per_scoop;P:meal_total=people*meal_each,icecream_total=total_available-meal_total,cost_per_scoop=icecream_total/people",
+      "finish_reason": "stop",
+      "output_tokens": 59,
+      "usage_available": true
+    },
+    {
+      "role": "solver",
+      "attempt": 0,
+      "status": "delivered",
+      "error": "",
+      "raw_output": "IR:meal_total=3*10=30,icecream_total=45-30=15,cost_per_scoop=15/3=5;R:5",
+      "finish_reason": "stop",
+      "output_tokens": 36,
+      "usage_available": true
+    },
+    {
+      "role": "verifier",
+      "attempt": 0,
+      "status": "delivered",
+      "error": "",
+      "raw_output": "CHK:ACCEPT",
+      "finish_reason": "stop",
+      "output_tokens": 5,
+      "usage_available": true
+    }
+  ],
+  "failed_attempts": [],
+  "calls": 3,
+  "usage_complete": true,
+  "known_input_tokens": 2594,
+  "known_output_tokens": 100,
+  "model_input_tokens": 2594,
+  "model_output_tokens": 100,
+  "format_failed_calls": 0,
+  "transport_failed_calls": 0,
+  "fallback_calls": 0,
+  "sum_model_latency_s": 3.351162910461426,
+  "gold": "5",
+  "score": 1.0,
+  "question": "Elisa and her two friends went out to dinner. Each of them ordered a meal worth $10. Afterwards, they each had a scoop of the same kind of ice cream. If the $45 Elisa had was enough to pay for everything, what was the cost of a scoop of ice cream?\nGive the final numeric answer."
+}

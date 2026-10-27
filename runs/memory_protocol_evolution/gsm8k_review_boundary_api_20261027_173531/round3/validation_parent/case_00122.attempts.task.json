@@ -1,0 +1,150 @@
+{
+  "task_id": "gsm8k:train:seed42:V:00122",
+  "status": "completed",
+  "error": null,
+  "prediction": "54",
+  "messages": [
+    {
+      "sender": "planner",
+      "content": "K:discount=10%,threshold=50,quiches=2,quiche_price=15,croissants=6,croissant_price=3,biscuits=6,biscuit_price=2;G:discounted_total;P:subtotal=quiches*quiche_price+croissants*croissant_price+biscuits*biscuit_price,discount_amount=subtotal*discount,discounted_total=subtotal-discount_amount;NL:apply 10% discount since subtotal exceeds $50",
+      "receiver": "solver",
+      "round": 0,
+      "role": "assistant",
+      "prompt_tokens": 779,
+      "completion_tokens": 109,
+      "id": "de43de2354c4",
+      "ts": 1793098839.8480155,
+      "meta": {
+        "sender": "planner",
+        "receiver": "solver",
+        "message_id": "de43de2354c4",
+        "protocol_edge": "planner_to_solver",
+        "protocol_version": "CARD-2-gsm8k",
+        "protocol_hash": "c152278e4a24181b874bd88cbf3adef79479b79f6539931bcd89721fa5a8a7a9",
+        "contract_hash": "ac09c03455d8af3a35273b605bb457591de11f0e22bded3325bbb626ee774caf",
+        "fields": {
+          "K": "discount=10%,threshold=50,quiches=2,quiche_price=15,croissants=6,croissant_price=3,biscuits=6,biscuit_price=2",
+          "G": "discounted_total",
+          "P": "subtotal=quiches*quiche_price+croissants*croissant_price+biscuits*biscuit_price,discount_amount=subtotal*discount,discounted_total=subtotal-discount_amount",
+          "NL": "apply 10% discount since subtotal exceeds $50"
+        },
+        "communication_tokens": 109,
+        "communication_tokens_exact": true,
+        "attempt_count": 1,
+        "fallback": false,
+        "tokens_include_all_attempts": true,
+        "incoming_message_ids": []
+      }
+    },
+    {
+      "sender": "solver",
+      "content": "IR:subtotal=2*15+6*3+6*2=60,discount=0.1*60=6,total=60-6=54;R:54",
+      "receiver": "verifier",
+      "round": 0,
+      "role": "assistant",
+      "prompt_tokens": 831,
+      "completion_tokens": 40,
+      "id": "951ad85dcce3",
+      "ts": 1793098840.9130106,
+      "meta": {
+        "sender": "solver",
+        "receiver": "verifier",
+        "message_id": "951ad85dcce3",
+        "protocol_edge": "solver_to_verifier",
+        "protocol_version": "CARD-2-gsm8k",
+        "protocol_hash": "c152278e4a24181b874bd88cbf3adef79479b79f6539931bcd89721fa5a8a7a9",
+        "contract_hash": "ac09c03455d8af3a35273b605bb457591de11f0e22bded3325bbb626ee774caf",
+        "fields": {
+          "IR": "subtotal=2*15+6*3+6*2=60,discount=0.1*60=6,total=60-6=54",
+          "R": "54"
+        },
+        "communication_tokens": 40,
+        "communication_tokens_exact": true,
+        "attempt_count": 1,
+        "fallback": false,
+        "tokens_include_all_attempts": true,
+        "incoming_message_ids": [
+          "de43de2354c4"
+        ]
+      }
+    },
+    {
+      "sender": "verifier",
+      "content": "CHK:ACCEPT",
+      "receiver": "solver",
+      "round": 0,
+      "role": "assistant",
+      "prompt_tokens": 1094,
+      "completion_tokens": 5,
+      "id": "fd4668e0f0d7",
+      "ts": 1793098842.404968,
+      "meta": {
+        "sender": "verifier",
+        "receiver": "solver",
+        "message_id": "fd4668e0f0d7",
+        "protocol_edge": "verifier_to_solver",
+        "protocol_version": "CARD-2-gsm8k",
+        "protocol_hash": "c152278e4a24181b874bd88cbf3adef79479b79f6539931bcd89721fa5a8a7a9",
+        "contract_hash": "ac09c03455d8af3a35273b605bb457591de11f0e22bded3325bbb626ee774caf",
+        "fields": {
+          "CHK": "ACCEPT"
+        },
+        "communication_tokens": 5,
+        "communication_tokens_exact": true,
+        "attempt_count": 1,
+        "fallback": false,
+        "tokens_include_all_attempts": true,
+        "incoming_message_ids": [
+          "951ad85dcce3"
+        ]
+      }
+    }
+  ],
+  "communication_tokens": 154,
+  "wall_time_s": 4.464363100007176,
+  "verified": true,
+  "revision_rounds": 0,
+  "model_calls": [
+    {
+      "role": "planner",
+      "attempt": 0,
+      "status": "delivered",
+      "error": "",
+      "raw_output": "K:discount=10%,threshold=50,quiches=2,quiche_price=15,croissants=6,croissant_price=3,biscuits=6,biscuit_price=2;G:discounted_total;P:subtotal=quiches*quiche_price+croissants*croissant_price+biscuits*biscuit_price,discount_amount=subtotal*discount,discounted_total=subtotal-discount_amount;NL:apply 10% discount since subtotal exceeds $50",
+      "finish_reason": "stop",
+      "output_tokens": 109,
+      "usage_available": true
+    },
+    {
+      "role": "solver",
+      "attempt": 0,
+      "status": "delivered",
+      "error": "",
+      "raw_output": "IR:subtotal=2*15+6*3+6*2=60,discount=0.1*60=6,total=60-6=54;R:54",
+      "finish_reason": "stop",
+      "output_tokens": 40,
+      "usage_available": true
+    },
+    {
+      "role": "verifier",
+      "attempt": 0,
+      "status": "delivered",
+      "error": "",
+      "raw_output": "CHK:ACCEPT",
+      "finish_reason": "stop",
+      "output_tokens": 5,
+      "usage_available": true
+    }
+  ],
+  "failed_attempts": [],
+  "calls": 3,
+  "usage_complete": true,
+  "known_input_tokens": 2704,
+  "known_output_tokens": 154,
+  "model_input_tokens": 2704,
+  "model_output_tokens": 154,
+  "format_failed_calls": 0,
+  "transport_failed_calls": 0,
+  "fallback_calls": 0,
+  "sum_model_latency_s": 4.35581374168396
+}

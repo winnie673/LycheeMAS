@@ -1,0 +1,151 @@
+{
+  "task_id": "gsm8k:train:seed42:V:00081",
+  "status": "completed",
+  "error": null,
+  "prediction": "800",
+  "messages": [
+    {
+      "sender": "planner",
+      "content": "G:monthly_salary;K:hourly_rate=5,hours_per_day=8,days_per_week=6,missed_days=1;P:days_worked=6-1,weekly_hours=days_worked*8,weekly_pay=weekly_hours*5,monthly_salary=weekly_pay*4;NL:assume 4 weeks per month and she misses one workday in the week",
+      "receiver": "solver",
+      "round": 0,
+      "role": "assistant",
+      "prompt_tokens": 758,
+      "completion_tokens": 94,
+      "id": "7265357ad8a0",
+      "ts": 1793098673.1120439,
+      "meta": {
+        "sender": "planner",
+        "receiver": "solver",
+        "message_id": "7265357ad8a0",
+        "protocol_edge": "planner_to_solver",
+        "protocol_version": "CARD-2-gsm8k",
+        "protocol_hash": "c152278e4a24181b874bd88cbf3adef79479b79f6539931bcd89721fa5a8a7a9",
+        "contract_hash": "ac09c03455d8af3a35273b605bb457591de11f0e22bded3325bbb626ee774caf",
+        "fields": {
+          "G": "monthly_salary",
+          "K": "hourly_rate=5,hours_per_day=8,days_per_week=6,missed_days=1",
+          "P": "days_worked=6-1,weekly_hours=days_worked*8,weekly_pay=weekly_hours*5,monthly_salary=weekly_pay*4",
+          "NL": "assume 4 weeks per month and she misses one workday in the week"
+        },
+        "communication_tokens": 94,
+        "communication_tokens_exact": true,
+        "attempt_count": 1,
+        "fallback": false,
+        "tokens_include_all_attempts": true,
+        "incoming_message_ids": []
+      }
+    },
+    {
+      "sender": "solver",
+      "content": "IR:days_worked=6-1=5,weekly_hours=5*8=40,weekly_pay=40*5=200,monthly_salary=200*4=800;R:800;NL:assume 4 weeks per month and she misses one workday in the week",
+      "receiver": "verifier",
+      "round": 0,
+      "role": "assistant",
+      "prompt_tokens": 795,
+      "completion_tokens": 65,
+      "id": "fff355815dad",
+      "ts": 1793098674.0549953,
+      "meta": {
+        "sender": "solver",
+        "receiver": "verifier",
+        "message_id": "fff355815dad",
+        "protocol_edge": "solver_to_verifier",
+        "protocol_version": "CARD-2-gsm8k",
+        "protocol_hash": "c152278e4a24181b874bd88cbf3adef79479b79f6539931bcd89721fa5a8a7a9",
+        "contract_hash": "ac09c03455d8af3a35273b605bb457591de11f0e22bded3325bbb626ee774caf",
+        "fields": {
+          "IR": "days_worked=6-1=5,weekly_hours=5*8=40,weekly_pay=40*5=200,monthly_salary=200*4=800",
+          "R": "800",
+          "NL": "assume 4 weeks per month and she misses one workday in the week"
+        },
+        "communication_tokens": 65,
+        "communication_tokens_exact": true,
+        "attempt_count": 1,
+        "fallback": false,
+        "tokens_include_all_attempts": true,
+        "incoming_message_ids": [
+          "7265357ad8a0"
+        ]
+      }
+    },
+    {
+      "sender": "verifier",
+      "content": "CHK:ACCEPT",
+      "receiver": "solver",
+      "round": 0,
+      "role": "assistant",
+      "prompt_tokens": 1098,
+      "completion_tokens": 5,
+      "id": "d875df9cf7e6",
+      "ts": 1793098675.0316103,
+      "meta": {
+        "sender": "verifier",
+        "receiver": "solver",
+        "message_id": "d875df9cf7e6",
+        "protocol_edge": "verifier_to_solver",
+        "protocol_version": "CARD-2-gsm8k",
+        "protocol_hash": "c152278e4a24181b874bd88cbf3adef79479b79f6539931bcd89721fa5a8a7a9",
+        "contract_hash": "ac09c03455d8af3a35273b605bb457591de11f0e22bded3325bbb626ee774caf",
+        "fields": {
+          "CHK": "ACCEPT"
+        },
+        "communication_tokens": 5,
+        "communication_tokens_exact": true,
+        "attempt_count": 1,
+        "fallback": false,
+        "tokens_include_all_attempts": true,
+        "incoming_message_ids": [
+          "fff355815dad"
+        ]
+      }
+    }
+  ],
+  "communication_tokens": 164,
+  "wall_time_s": 3.43307360005565,
+  "verified": true,
+  "revision_rounds": 0,
+  "model_calls": [
+    {
+      "role": "planner",
+      "attempt": 0,
+      "status": "delivered",
+      "error": "",
+      "raw_output": "G:monthly_salary;K:hourly_rate=5,hours_per_day=8,days_per_week=6,missed_days=1;P:days_worked=6-1,weekly_hours=days_worked*8,weekly_pay=weekly_hours*5,monthly_salary=weekly_pay*4;NL:assume 4 weeks per month and she misses one workday in the week",
+      "finish_reason": "stop",
+      "output_tokens": 94,
+      "usage_available": true
+    },
+    {
+      "role": "solver",
+      "attempt": 0,
+      "status": "delivered",
+      "error": "",
+      "raw_output": "IR:days_worked=6-1=5,weekly_hours=5*8=40,weekly_pay=40*5=200,monthly_salary=200*4=800;R:800;NL:assume 4 weeks per month and she misses one workday in the week",
+      "finish_reason": "stop",
+      "output_tokens": 65,
+      "usage_available": true
+    },
+    {
+      "role": "verifier",
+      "attempt": 0,
+      "status": "delivered",
+      "error": "",
+      "raw_output": "CHK:ACCEPT",
+      "finish_reason": "stop",
+      "output_tokens": 5,
+      "usage_available": true
+    }
+  ],
+  "failed_attempts": [],
+  "calls": 3,
+  "usage_complete": true,
+  "known_input_tokens": 2651,
+  "known_output_tokens": 164,
+  "model_input_tokens": 2651,
+  "model_output_tokens": 164,
+  "format_failed_calls": 0,
+  "transport_failed_calls": 0,
+  "fallback_calls": 0,
+  "sum_model_latency_s": 3.3240182399749756
+}

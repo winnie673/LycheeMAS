@@ -88,12 +88,44 @@ sg.add_node(name, node_fn, metadata={"agent_spec": spec})   # spec: core.types.A
 
 ### 4.3 memory（运行时记忆，`plugins/memory/` × `methods/memory/`）
 
+混合协议核心与实验配置已解耦（当前 memory-compare-v4-restored）：
+`protocol/base.py` 定义通用架构、契约、声明式校验和数据日程；进化器接受这些对象及
+生成/执行/评分回调，不包含具体任务或角色。`scripts/hybrid_gsm8k_spec.py` 在实验侧
+实例化 GSM8K + PSV；现有示例和脚本共同装配它。核心禁止导入实验脚本。
+通道执行契约声明的字段与条件约束，不识别具体字段语义。旧卡片要求调用方显式注入
+契约，新卡片内嵌契约并核对指纹；不修改既有冻结卡片或静默降低校验强度。
+架构通用性经第二种合成架构/非数值任务离线测试，不意味着通用 attach_memory 已完成。
+
+GSM8K 协议离线生成/进化由 `methods/memory/protocol/` 的内部工具负责，
+`scripts/run_memory_protocol_evolution.py` 注入已有 backend、run_demo 和评分回调。
+D0 生成初始卡，G1–G3 提候选，每轮 V 按正确率、精确通信 token 筛选，冻结为新产物。
+memory-evolution-v3 由 GSM8K 入口注入 `scripts/hybrid_gsm8k_design.py` 的设计策略：
+初始卡最多六次生成，每张结构合法卡经独立语义审查；G 集配对执行 NL/Hybrid，
+先独立诊断，再仅允许引用真实通信诊断的最多三处补丁（最多三次修正尝试）。
+无合格诊断直接 KEEP。纯设计函数保留原实现，核心只依赖注入式设计契约，
+不导入实验脚本；通用直接提案路径仍供其他实验显式使用。
+审查边界修正版将设计正文与程序注入的运行时兼容契约分离。完整卡片仍由程序
+验证；语义审查不评判不可由模型修改的运行时元数据。审查 JSON 自相矛盾、
+引用不存在路径或将可选建议当成阻断项时，对同卡最多复核一次；持续异常则停止，
+不自动放行候选。原始调用、复核及一致性检查分别落盘。
+T 评测独立启动；不覆盖旧卡、不扩展 registry。在线示例与评测器可显式选择 GSM8K
+卡片，并按 psv_v1 契约检查。通道仍不生成卡片、不调模型、不调度图。
+这不是任意架构适配，通用 attach_memory 仍未实现；MATH-500 不参与本次离线扩展。
+
 文本通道现支持 `nl_strategy="hybrid_protocol"`：作为 NLMemory 内部策略，由现有
 `memory_manager/cdm` 的 observe/recall/reset 驱动，复用 MemoryBundle 和 core.Message。
-冻结的 GSM8K Card-2 位于 configs/memory/task_cards/gsm8k_card2.yaml。发送节点从
+默认冻结的 GSM8K Card-2 为
+`configs/memory/task_cards/gsm8k_psv_nl_field_card2_20261027.yaml`，由 2026-10-27
+review-boundary 流程的 V 集胜出卡显式发布；旧 gsm8k_card2.yaml 仅保留作历史兼容。
+发布不改变源卡规则与 wire 版本，内嵌契约与来源 SHA256 随卡保存。发送节点从
 `memory.nl.output_instructions(sender, receiver)` 获取约束，在原模型调用后投递消息。
 不改变插件接口或路由种类，不引入独立 runner/后端/任务图；通用 attach_memory 仍为
 下述待实现入口，现阶段通过既有 node_factory 契约使用通道。详见 memory/README.md。
+GSM8K 批量对照由 `scripts/run_memory_protocol_compare.py` 复用同一示例单题执行函数，
+NL/Hybrid 均可按相同预算进行最多一轮修订与复核；以 memory-compare-v1 单独留档。
+有界路径通过 static 链展开并按验证决定跳过，不新增框架 runner 或修改 build 插件。
+Hybrid 任务卡、示例及配对评测当前只保留 GSM8K。框架原有数学 benchmark、
+MASPO 和共享数学解析器保持不变。
 
 回答「智能体之间记住什么、以什么表征传递」。`attach_memory(sg, method, backend, **kw) -> sg`：把注入六步（observe → route → recall → system 段注入 → 生成 → 记账）**重包进每个 agent 节点**（P3 全新实现中，当前显式桩）。算法库：`channels/`（NL / 隐空间 / C2C）+ `managers/`（`memory_manager/cdm` 已实现）+ `routing/`（`static`/`fixed` 已实现）+ `store.py` + `context.py`（RoutingContext 决策日志/span 落盘）。注入六步的旧引擎实现已随 runtime 兼容层删除（git 历史 `runtime/injection.py` 可作 P3 语义参照）。
 

@@ -1,0 +1,149 @@
+{
+  "task_id": "gsm8k:train:seed42:G2:00017",
+  "status": "completed",
+  "error": null,
+  "prediction": "0.5",
+  "messages": [
+    {
+      "sender": "planner",
+      "content": "K:before=100,percent_more=20,days=280;G:miles_added_per_week;P:target=before*(1+percent_more/100),weeks=days/7,add_per_week=(target-before)/weeks",
+      "receiver": "solver",
+      "round": 0,
+      "role": "assistant",
+      "prompt_tokens": 762,
+      "completion_tokens": 57,
+      "id": "241571ffacde",
+      "ts": 1793096060.2005966,
+      "meta": {
+        "sender": "planner",
+        "receiver": "solver",
+        "message_id": "241571ffacde",
+        "protocol_edge": "planner_to_solver",
+        "protocol_version": "CARD-0-gsm8k",
+        "protocol_hash": "eb2823227bf7889a5ca248376e410b4922fec80b12249ba4d10a3c8452604ed2",
+        "contract_hash": "ac09c03455d8af3a35273b605bb457591de11f0e22bded3325bbb626ee774caf",
+        "fields": {
+          "K": "before=100,percent_more=20,days=280",
+          "G": "miles_added_per_week",
+          "P": "target=before*(1+percent_more/100),weeks=days/7,add_per_week=(target-before)/weeks"
+        },
+        "communication_tokens": 57,
+        "communication_tokens_exact": true,
+        "attempt_count": 1,
+        "fallback": false,
+        "tokens_include_all_attempts": true,
+        "incoming_message_ids": []
+      }
+    },
+    {
+      "sender": "solver",
+      "content": "IR:target=100*1.2=120,weeks=280/7=40,add_per_week=(120-100)/40=0.5;R:0.5",
+      "receiver": "verifier",
+      "round": 0,
+      "role": "assistant",
+      "prompt_tokens": 794,
+      "completion_tokens": 41,
+      "id": "f0ed7cee7f0f",
+      "ts": 1793096061.4902275,
+      "meta": {
+        "sender": "solver",
+        "receiver": "verifier",
+        "message_id": "f0ed7cee7f0f",
+        "protocol_edge": "solver_to_verifier",
+        "protocol_version": "CARD-0-gsm8k",
+        "protocol_hash": "eb2823227bf7889a5ca248376e410b4922fec80b12249ba4d10a3c8452604ed2",
+        "contract_hash": "ac09c03455d8af3a35273b605bb457591de11f0e22bded3325bbb626ee774caf",
+        "fields": {
+          "IR": "target=100*1.2=120,weeks=280/7=40,add_per_week=(120-100)/40=0.5",
+          "R": "0.5"
+        },
+        "communication_tokens": 41,
+        "communication_tokens_exact": true,
+        "attempt_count": 1,
+        "fallback": false,
+        "tokens_include_all_attempts": true,
+        "incoming_message_ids": [
+          "241571ffacde"
+        ]
+      }
+    },
+    {
+      "sender": "verifier",
+      "content": "CHK:ACCEPT",
+      "receiver": "solver",
+      "round": 0,
+      "role": "assistant",
+      "prompt_tokens": 1110,
+      "completion_tokens": 5,
+      "id": "cc0d9ba3a510",
+      "ts": 1793096062.7444608,
+      "meta": {
+        "sender": "verifier",
+        "receiver": "solver",
+        "message_id": "cc0d9ba3a510",
+        "protocol_edge": "verifier_to_solver",
+        "protocol_version": "CARD-0-gsm8k",
+        "protocol_hash": "eb2823227bf7889a5ca248376e410b4922fec80b12249ba4d10a3c8452604ed2",
+        "contract_hash": "ac09c03455d8af3a35273b605bb457591de11f0e22bded3325bbb626ee774caf",
+        "fields": {
+          "CHK": "ACCEPT"
+        },
+        "communication_tokens": 5,
+        "communication_tokens_exact": true,
+        "attempt_count": 1,
+        "fallback": false,
+        "tokens_include_all_attempts": true,
+        "incoming_message_ids": [
+          "f0ed7cee7f0f"
+        ]
+      }
+    }
+  ],
+  "communication_tokens": 103,
+  "wall_time_s": 4.0250526000745595,
+  "verified": true,
+  "revision_rounds": 0,
+  "model_calls": [
+    {
+      "role": "planner",
+      "attempt": 0,
+      "status": "delivered",
+      "error": "",
+      "raw_output": "K:before=100,percent_more=20,days=280;G:miles_added_per_week;P:target=before*(1+percent_more/100),weeks=days/7,add_per_week=(target-before)/weeks",
+      "finish_reason": "stop",
+      "output_tokens": 57,
+      "usage_available": true
+    },
+    {
+      "role": "solver",
+      "attempt": 0,
+      "status": "delivered",
+      "error": "",
+      "raw_output": "IR:target=100*1.2=120,weeks=280/7=40,add_per_week=(120-100)/40=0.5;R:0.5",
+      "finish_reason": "stop",
+      "output_tokens": 41,
+      "usage_available": true
+    },
+    {
+      "role": "verifier",
+      "attempt": 0,
+      "status": "delivered",
+      "error": "",
+      "raw_output": "CHK:ACCEPT",
+      "finish_reason": "stop",
+      "output_tokens": 5,
+      "usage_available": true
+    }
+  ],
+  "failed_attempts": [],
+  "calls": 3,
+  "usage_complete": true,
+  "known_input_tokens": 2666,
+  "known_output_tokens": 103,
+  "model_input_tokens": 2666,
+  "model_output_tokens": 103,
+  "format_failed_calls": 0,
+  "transport_failed_calls": 0,
+  "fallback_calls": 0,
+  "sum_model_latency_s": 3.921888589859009
+}

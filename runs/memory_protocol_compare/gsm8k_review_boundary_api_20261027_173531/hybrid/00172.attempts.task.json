@@ -1,0 +1,121 @@
+{
+  "task_id": "gsm8k:test:seed42:T:00177",
+  "mode": "hybrid",
+  "benchmark": "gsm8k",
+  "status": "completed",
+  "error": null,
+  "prediction": "350",
+  "gold": "350",
+  "wall_time_s": 4.504729200038128,
+  "communication_tokens": 188,
+  "communication_tokens_exact": true,
+  "revision_rounds": 0,
+  "verification_decision": "ACCEPT",
+  "verified": true,
+  "messages": [
+    {
+      "sender": "planner",
+      "content": "K:salary=6000,rent_frac=1/4,fuel_frac=1/3,charity_frac_of_remaining=1/2,daughter=200,wife=700;G:remaining_money;P:rent=salary*rent_frac,fuel=salary*fuel_frac,after_rent_fuel=salary-rent-fuel,charity=after_rent_fuel*charity_frac_of_remaining,remaining=after_rent_fuel-charity-daughter-wife",
+      "receiver": "solver",
+      "round": 0,
+      "role": "assistant",
+      "prompt_tokens": 797,
+      "completion_tokens": 109,
+      "id": "a73d82ba1fbf",
+      "ts": 1793101675.6137702,
+      "meta": {
+        "sender": "planner",
+        "receiver": "solver",
+        "message_id": "a73d82ba1fbf",
+        "protocol_edge": "planner_to_solver",
+        "protocol_version": "CARD-2-gsm8k",
+        "protocol_hash": "c152278e4a24181b874bd88cbf3adef79479b79f6539931bcd89721fa5a8a7a9",
+        "contract_hash": "ac09c03455d8af3a35273b605bb457591de11f0e22bded3325bbb626ee774caf",
+        "fields": {
+          "K": "salary=6000,rent_frac=1/4,fuel_frac=1/3,charity_frac_of_remaining=1/2,daughter=200,wife=700",
+          "G": "remaining_money",
+          "P": "rent=salary*rent_frac,fuel=salary*fuel_frac,after_rent_fuel=salary-rent-fuel,charity=after_rent_fuel*charity_frac_of_remaining,remaining=after_rent_fuel-charity-daughter-wife"
+        },
+        "communication_tokens": 109,
+        "communication_tokens_exact": true,
+        "attempt_count": 1,
+        "fallback": false,
+        "tokens_include_all_attempts": true,
+        "incoming_message_ids": []
+      }
+    },
+    {
+      "sender": "solver",
+      "content": "IR:rent=6000*1/4=1500,fuel=6000*1/3=2000,after_rent_fuel=6000-1500-2000=2500,charity=2500*1/2=1250,remaining=2500-1250-200-700=350;R:350",
+      "receiver": "verifier",
+      "round": 0,
+      "role": "assistant",
+      "prompt_tokens": 849,
+      "completion_tokens": 74,
+      "id": "66ed18bff88f",
+      "ts": 1793101677.4648845,
+      "meta": {
+        "sender": "solver",
+        "receiver": "verifier",
+        "message_id": "66ed18bff88f",
+        "protocol_edge": "solver_to_verifier",
+        "protocol_version": "CARD-2-gsm8k",
+        "protocol_hash": "c152278e4a24181b874bd88cbf3adef79479b79f6539931bcd89721fa5a8a7a9",
+        "contract_hash": "ac09c03455d8af3a35273b605bb457591de11f0e22bded3325bbb626ee774caf",
+        "fields": {
+          "IR": "rent=6000*1/4=1500,fuel=6000*1/3=2000,after_rent_fuel=6000-1500-2000=2500,charity=2500*1/2=1250,remaining=2500-1250-200-700=350",
+          "R": "350"
+        },
+        "communication_tokens": 74,
+        "communication_tokens_exact": true,
+        "attempt_count": 1,
+        "fallback": false,
+        "tokens_include_all_attempts": true,
+        "incoming_message_ids": [
+          "a73d82ba1fbf"
+        ]
+      }
+    },
+    {
+      "sender": "verifier",
+      "content": "CHK:ACCEPT",
+      "receiver": "solver",
+      "round": 0,
+      "role": "assistant",
+      "prompt_tokens": 1146,
+      "completion_tokens": 5,
+      "id": "94bd166d354f",
+      "ts": 1793101678.6436026,
+      "meta": {
+        "sender": "verifier",
+        "receiver": "solver",
+        "message_id": "94bd166d354f",
+        "protocol_edge": "verifier_to_solver",
+        "protocol_version": "CARD-2-gsm8k",
+        "protocol_hash": "c152278e4a24181b874bd88cbf3adef79479b79f6539931bcd89721fa5a8a7a9",
+        "contract_hash": "ac09c03455d8af3a35273b605bb457591de11f0e22bded3325bbb626ee774caf",
+        "fields": {
+          "CHK": "ACCEPT"
+        },
+        "communication_tokens": 5,
+        "communication_tokens_exact": true,
+        "attempt_count": 1,
+        "fallback": false,
+        "tokens_include_all_attempts": true,
+        "incoming_message_ids": [
+          "66ed18bff88f"
+        ]
+      }
+    }
+  ],
+  "calls": 3,
+  "usage_complete": true,
+  "known_input_tokens": 2792,
+  "known_output_tokens": 188,
+  "model_input_tokens": 2792,
+  "model_output_tokens": 188,
+  "format_failed_calls": 0,
+  "transport_failed_calls": 0,
+  "fallback_calls": 0,
+  "sum_model_latency_s": 4.398519277572632
+}

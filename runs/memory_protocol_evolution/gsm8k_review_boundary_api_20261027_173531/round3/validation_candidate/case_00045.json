@@ -1,0 +1,152 @@
+{
+  "task_id": "gsm8k:train:seed42:V:00045",
+  "status": "completed",
+  "error": null,
+  "prediction": "25",
+  "messages": [
+    {
+      "sender": "planner",
+      "content": "G:number_of_male_alligators;P:adult_female_fraction=1-0.40,females=15/adult_female_fraction,males=females;NL:half are male and half female so males equal females",
+      "receiver": "solver",
+      "round": 0,
+      "role": "assistant",
+      "prompt_tokens": 759,
+      "completion_tokens": 53,
+      "id": "0a78155a9e1a",
+      "ts": 1793099301.4661965,
+      "meta": {
+        "sender": "planner",
+        "receiver": "solver",
+        "message_id": "0a78155a9e1a",
+        "protocol_edge": "planner_to_solver",
+        "protocol_version": "CARD-2-gsm8k",
+        "protocol_hash": "c152278e4a24181b874bd88cbf3adef79479b79f6539931bcd89721fa5a8a7a9",
+        "contract_hash": "ac09c03455d8af3a35273b605bb457591de11f0e22bded3325bbb626ee774caf",
+        "fields": {
+          "G": "number_of_male_alligators",
+          "P": "adult_female_fraction=1-0.40,females=15/adult_female_fraction,males=females",
+          "NL": "half are male and half female so males equal females"
+        },
+        "communication_tokens": 53,
+        "communication_tokens_exact": true,
+        "attempt_count": 1,
+        "fallback": false,
+        "tokens_include_all_attempts": true,
+        "incoming_message_ids": []
+      }
+    },
+    {
+      "sender": "solver",
+      "content": "IR:adult_female_fraction=1-0.40=0.60,females=15/0.60=25,males=females=25;R:25",
+      "receiver": "verifier",
+      "round": 0,
+      "role": "assistant",
+      "prompt_tokens": 755,
+      "completion_tokens": 40,
+      "id": "8fd1148edb41",
+      "ts": 1793099302.5567746,
+      "meta": {
+        "sender": "solver",
+        "receiver": "verifier",
+        "message_id": "8fd1148edb41",
+        "protocol_edge": "solver_to_verifier",
+        "protocol_version": "CARD-2-gsm8k",
+        "protocol_hash": "c152278e4a24181b874bd88cbf3adef79479b79f6539931bcd89721fa5a8a7a9",
+        "contract_hash": "ac09c03455d8af3a35273b605bb457591de11f0e22bded3325bbb626ee774caf",
+        "fields": {
+          "IR": "adult_female_fraction=1-0.40=0.60,females=15/0.60=25,males=females=25",
+          "R": "25"
+        },
+        "communication_tokens": 40,
+        "communication_tokens_exact": true,
+        "attempt_count": 1,
+        "fallback": false,
+        "tokens_include_all_attempts": true,
+        "incoming_message_ids": [
+          "0a78155a9e1a"
+        ]
+      }
+    },
+    {
+      "sender": "verifier",
+      "content": "CHK:ACCEPT",
+      "receiver": "solver",
+      "round": 0,
+      "role": "assistant",
+      "prompt_tokens": 1074,
+      "completion_tokens": 5,
+      "id": "65c6490328e3",
+      "ts": 1793099303.6364634,
+      "meta": {
+        "sender": "verifier",
+        "receiver": "solver",
+        "message_id": "65c6490328e3",
+        "protocol_edge": "verifier_to_solver",
+        "protocol_version": "CARD-2-gsm8k",
+        "protocol_hash": "c152278e4a24181b874bd88cbf3adef79479b79f6539931bcd89721fa5a8a7a9",
+        "contract_hash": "ac09c03455d8af3a35273b605bb457591de11f0e22bded3325bbb626ee774caf",
+        "fields": {
+          "CHK": "ACCEPT"
+        },
+        "communication_tokens": 5,
+        "communication_tokens_exact": true,
+        "attempt_count": 1,
+        "fallback": false,
+        "tokens_include_all_attempts": true,
+        "incoming_message_ids": [
+          "8fd1148edb41"
+        ]
+      }
+    }
+  ],
+  "communication_tokens": 98,
+  "wall_time_s": 3.6386791999684647,
+  "verified": true,
+  "revision_rounds": 0,
+  "model_calls": [
+    {
+      "role": "planner",
+      "attempt": 0,
+      "status": "delivered",
+      "error": "",
+      "raw_output": "G:number_of_male_alligators;P:adult_female_fraction=1-0.40,females=15/adult_female_fraction,males=females;NL:half are male and half female so males equal females",
+      "finish_reason": "stop",
+      "output_tokens": 53,
+      "usage_available": true
+    },
+    {
+      "role": "solver",
+      "attempt": 0,
+      "status": "delivered",
+      "error": "",
+      "raw_output": "IR:adult_female_fraction=1-0.40=0.60,females=15/0.60=25,males=females=25;R:25",
+      "finish_reason": "stop",
+      "output_tokens": 40,
+      "usage_available": true
+    },
+    {
+      "role": "verifier",
+      "attempt": 0,
+      "status": "delivered",
+      "error": "",
+      "raw_output": "CHK:ACCEPT",
+      "finish_reason": "stop",
+      "output_tokens": 5,
+      "usage_available": true
+    }
+  ],
+  "failed_attempts": [],
+  "calls": 3,
+  "usage_complete": true,
+  "known_input_tokens": 2588,
+  "known_output_tokens": 98,
+  "model_input_tokens": 2588,
+  "model_output_tokens": 98,
+  "format_failed_calls": 0,
+  "transport_failed_calls": 0,
+  "fallback_calls": 0,
+  "sum_model_latency_s": 3.583810806274414,
+  "gold": "25",
+  "score": 1.0,
+  "question": "Lagoon island is populated by alligators. Half the alligators are male. The rest are female. Among the females, 40% are juveniles. There are 15 adult females. How many male alligators are there?\nGive the final numeric answer."
+}

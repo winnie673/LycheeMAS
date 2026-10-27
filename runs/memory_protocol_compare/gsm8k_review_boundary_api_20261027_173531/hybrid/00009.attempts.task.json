@@ -1,0 +1,121 @@
+{
+  "task_id": "gsm8k:test:seed42:T:00009",
+  "mode": "hybrid",
+  "benchmark": "gsm8k",
+  "status": "completed",
+  "error": null,
+  "prediction": "460",
+  "gold": "460",
+  "wall_time_s": 4.022850900073536,
+  "communication_tokens": 157,
+  "communication_tokens_exact": true,
+  "revision_rounds": 0,
+  "verification_decision": "ACCEPT",
+  "verified": true,
+  "messages": [
+    {
+      "sender": "planner",
+      "content": "K:regular_rate=10,regular_hours=40,overtime_multiplier=1.2,total_hours=45;G:weekly_earnings;P:overtime_hours=total_hours-regular_hours,regular_pay=regular_rate*regular_hours,overtime_pay=regular_rate*overtime_multiplier*overtime_hours,weekly_earnings=regular_pay+overtime_pay",
+      "receiver": "solver",
+      "round": 0,
+      "role": "assistant",
+      "prompt_tokens": 766,
+      "completion_tokens": 98,
+      "id": "c204252004f3",
+      "ts": 1793100353.7699914,
+      "meta": {
+        "sender": "planner",
+        "receiver": "solver",
+        "message_id": "c204252004f3",
+        "protocol_edge": "planner_to_solver",
+        "protocol_version": "CARD-2-gsm8k",
+        "protocol_hash": "c152278e4a24181b874bd88cbf3adef79479b79f6539931bcd89721fa5a8a7a9",
+        "contract_hash": "ac09c03455d8af3a35273b605bb457591de11f0e22bded3325bbb626ee774caf",
+        "fields": {
+          "K": "regular_rate=10,regular_hours=40,overtime_multiplier=1.2,total_hours=45",
+          "G": "weekly_earnings",
+          "P": "overtime_hours=total_hours-regular_hours,regular_pay=regular_rate*regular_hours,overtime_pay=regular_rate*overtime_multiplier*overtime_hours,weekly_earnings=regular_pay+overtime_pay"
+        },
+        "communication_tokens": 98,
+        "communication_tokens_exact": true,
+        "attempt_count": 1,
+        "fallback": false,
+        "tokens_include_all_attempts": true,
+        "incoming_message_ids": []
+      }
+    },
+    {
+      "sender": "solver",
+      "content": "IR:overtime_hours=45-40=5,regular_pay=10*40=400,overtime_pay=10*1.2*5=60,weekly_earnings=400+60=460;R:460",
+      "receiver": "verifier",
+      "round": 0,
+      "role": "assistant",
+      "prompt_tokens": 807,
+      "completion_tokens": 54,
+      "id": "36053b6620bb",
+      "ts": 1793100354.751868,
+      "meta": {
+        "sender": "solver",
+        "receiver": "verifier",
+        "message_id": "36053b6620bb",
+        "protocol_edge": "solver_to_verifier",
+        "protocol_version": "CARD-2-gsm8k",
+        "protocol_hash": "c152278e4a24181b874bd88cbf3adef79479b79f6539931bcd89721fa5a8a7a9",
+        "contract_hash": "ac09c03455d8af3a35273b605bb457591de11f0e22bded3325bbb626ee774caf",
+        "fields": {
+          "IR": "overtime_hours=45-40=5,regular_pay=10*40=400,overtime_pay=10*1.2*5=60,weekly_earnings=400+60=460",
+          "R": "460"
+        },
+        "communication_tokens": 54,
+        "communication_tokens_exact": true,
+        "attempt_count": 1,
+        "fallback": false,
+        "tokens_include_all_attempts": true,
+        "incoming_message_ids": [
+          "c204252004f3"
+        ]
+      }
+    },
+    {
+      "sender": "verifier",
+      "content": "CHK:ACCEPT",
+      "receiver": "solver",
+      "round": 0,
+      "role": "assistant",
+      "prompt_tokens": 1095,
+      "completion_tokens": 5,
+      "id": "9120091aaa10",
+      "ts": 1793100355.771504,
+      "meta": {
+        "sender": "verifier",
+        "receiver": "solver",
+        "message_id": "9120091aaa10",
+        "protocol_edge": "verifier_to_solver",
+        "protocol_version": "CARD-2-gsm8k",
+        "protocol_hash": "c152278e4a24181b874bd88cbf3adef79479b79f6539931bcd89721fa5a8a7a9",
+        "contract_hash": "ac09c03455d8af3a35273b605bb457591de11f0e22bded3325bbb626ee774caf",
+        "fields": {
+          "CHK": "ACCEPT"
+        },
+        "communication_tokens": 5,
+        "communication_tokens_exact": true,
+        "attempt_count": 1,
+        "fallback": false,
+        "tokens_include_all_attempts": true,
+        "incoming_message_ids": [
+          "36053b6620bb"
+        ]
+      }
+    }
+  ],
+  "calls": 3,
+  "usage_complete": true,
+  "known_input_tokens": 2668,
+  "known_output_tokens": 157,
+  "model_input_tokens": 2668,
+  "model_output_tokens": 157,
+  "format_failed_calls": 0,
+  "transport_failed_calls": 0,
+  "fallback_calls": 0,
+  "sum_model_latency_s": 3.885836124420166
+}

@@ -1,0 +1,152 @@
+{
+  "task_id": "gsm8k:train:seed42:V:00029",
+  "status": "completed",
+  "error": null,
+  "prediction": "24",
+  "messages": [
+    {
+      "sender": "planner",
+      "content": "K:day1_mountain=3,day1_central=4,day1_eastern=2,day2_extra_each=2;G:total_hover_hours;P:day2_each=day1_each+2,total=sum(day1_mountain+day2_mountain+day1_central+day2_central+day1_eastern+day2_eastern)",
+      "receiver": "solver",
+      "round": 0,
+      "role": "assistant",
+      "prompt_tokens": 770,
+      "completion_tokens": 88,
+      "id": "bb44336c241e",
+      "ts": 1793095320.1076171,
+      "meta": {
+        "sender": "planner",
+        "receiver": "solver",
+        "message_id": "bb44336c241e",
+        "protocol_edge": "planner_to_solver",
+        "protocol_version": "CARD-0-gsm8k",
+        "protocol_hash": "eb2823227bf7889a5ca248376e410b4922fec80b12249ba4d10a3c8452604ed2",
+        "contract_hash": "ac09c03455d8af3a35273b605bb457591de11f0e22bded3325bbb626ee774caf",
+        "fields": {
+          "K": "day1_mountain=3,day1_central=4,day1_eastern=2,day2_extra_each=2",
+          "G": "total_hover_hours",
+          "P": "day2_each=day1_each+2,total=sum(day1_mountain+day2_mountain+day1_central+day2_central+day1_eastern+day2_eastern)"
+        },
+        "communication_tokens": 88,
+        "communication_tokens_exact": true,
+        "attempt_count": 1,
+        "fallback": false,
+        "tokens_include_all_attempts": true,
+        "incoming_message_ids": []
+      }
+    },
+    {
+      "sender": "solver",
+      "content": "IR:day2_mountain=3+2=5,day2_central=4+2=6,day2_eastern=2+2=4,total=3+5+4+6+2+4=24;R:24",
+      "receiver": "verifier",
+      "round": 0,
+      "role": "assistant",
+      "prompt_tokens": 833,
+      "completion_tokens": 54,
+      "id": "0674ba3e18d2",
+      "ts": 1793095321.4898627,
+      "meta": {
+        "sender": "solver",
+        "receiver": "verifier",
+        "message_id": "0674ba3e18d2",
+        "protocol_edge": "solver_to_verifier",
+        "protocol_version": "CARD-0-gsm8k",
+        "protocol_hash": "eb2823227bf7889a5ca248376e410b4922fec80b12249ba4d10a3c8452604ed2",
+        "contract_hash": "ac09c03455d8af3a35273b605bb457591de11f0e22bded3325bbb626ee774caf",
+        "fields": {
+          "IR": "day2_mountain=3+2=5,day2_central=4+2=6,day2_eastern=2+2=4,total=3+5+4+6+2+4=24",
+          "R": "24"
+        },
+        "communication_tokens": 54,
+        "communication_tokens_exact": true,
+        "attempt_count": 1,
+        "fallback": false,
+        "tokens_include_all_attempts": true,
+        "incoming_message_ids": [
+          "bb44336c241e"
+        ]
+      }
+    },
+    {
+      "sender": "verifier",
+      "content": "CHK:ACCEPT",
+      "receiver": "solver",
+      "round": 0,
+      "role": "assistant",
+      "prompt_tokens": 1131,
+      "completion_tokens": 5,
+      "id": "176c7d4225c7",
+      "ts": 1793095322.6602745,
+      "meta": {
+        "sender": "verifier",
+        "receiver": "solver",
+        "message_id": "176c7d4225c7",
+        "protocol_edge": "verifier_to_solver",
+        "protocol_version": "CARD-0-gsm8k",
+        "protocol_hash": "eb2823227bf7889a5ca248376e410b4922fec80b12249ba4d10a3c8452604ed2",
+        "contract_hash": "ac09c03455d8af3a35273b605bb457591de11f0e22bded3325bbb626ee774caf",
+        "fields": {
+          "CHK": "ACCEPT"
+        },
+        "communication_tokens": 5,
+        "communication_tokens_exact": true,
+        "attempt_count": 1,
+        "fallback": false,
+        "tokens_include_all_attempts": true,
+        "incoming_message_ids": [
+          "0674ba3e18d2"
+        ]
+      }
+    }
+  ],
+  "communication_tokens": 147,
+  "wall_time_s": 4.069723700056784,
+  "verified": true,
+  "revision_rounds": 0,
+  "model_calls": [
+    {
+      "role": "planner",
+      "attempt": 0,
+      "status": "delivered",
+      "error": "",
+      "raw_output": "K:day1_mountain=3,day1_central=4,day1_eastern=2,day2_extra_each=2;G:total_hover_hours;P:day2_each=day1_each+2,total=sum(day1_mountain+day2_mountain+day1_central+day2_central+day1_eastern+day2_eastern)",
+      "finish_reason": "stop",
+      "output_tokens": 88,
+      "usage_available": true
+    },
+    {
+      "role": "solver",
+      "attempt": 0,
+      "status": "delivered",
+      "error": "",
+      "raw_output": "IR:day2_mountain=3+2=5,day2_central=4+2=6,day2_eastern=2+2=4,total=3+5+4+6+2+4=24;R:24",
+      "finish_reason": "stop",
+      "output_tokens": 54,
+      "usage_available": true
+    },
+    {
+      "role": "verifier",
+      "attempt": 0,
+      "status": "delivered",
+      "error": "",
+      "raw_output": "CHK:ACCEPT",
+      "finish_reason": "stop",
+      "output_tokens": 5,
+      "usage_available": true
+    }
+  ],
+  "failed_attempts": [],
+  "calls": 3,
+  "usage_complete": true,
+  "known_input_tokens": 2734,
+  "known_output_tokens": 147,
+  "model_input_tokens": 2734,
+  "model_output_tokens": 147,
+  "format_failed_calls": 0,
+  "transport_failed_calls": 0,
+  "fallback_calls": 0,
+  "sum_model_latency_s": 3.9531948566436768,
+  "gold": "24",
+  "score": 1.0,
+  "question": "An airplane took a trip along the Eastern Coast of the USA. During the trip, the plane hovered in Mountain time for 3 hours, Central time for 4 hrs, and Eastern time for 2 hrs. The next day it took 2 more hours to hover in each of the places it passed through the previous day. Calculate the total time it took the plane to hover over Mountain time, Central time, and Eastern time in the two days.\nGive the final numeric answer."
+}

@@ -1,0 +1,121 @@
+{
+  "task_id": "gsm8k:test:seed42:T:00093",
+  "mode": "hybrid",
+  "benchmark": "gsm8k",
+  "status": "completed",
+  "error": null,
+  "prediction": "36.36363636363637",
+  "gold": "36",
+  "wall_time_s": 3.9885241000447422,
+  "communication_tokens": 99,
+  "communication_tokens_exact": true,
+  "revision_rounds": 0,
+  "verification_decision": "ACCEPT",
+  "verified": true,
+  "messages": [
+    {
+      "sender": "planner",
+      "content": "K:Lee_time=38,Lee_was_2s_faster,Gerald_improvement=10%;G:Gerald_improved_time;P:old_Gerald=Lee_time+2,improved_Gerald=old_Gerald/1.1",
+      "receiver": "solver",
+      "round": 0,
+      "role": "assistant",
+      "prompt_tokens": 784,
+      "completion_tokens": 54,
+      "id": "abc46f646e1f",
+      "ts": 1793101013.7039943,
+      "meta": {
+        "sender": "planner",
+        "receiver": "solver",
+        "message_id": "abc46f646e1f",
+        "protocol_edge": "planner_to_solver",
+        "protocol_version": "CARD-2-gsm8k",
+        "protocol_hash": "c152278e4a24181b874bd88cbf3adef79479b79f6539931bcd89721fa5a8a7a9",
+        "contract_hash": "ac09c03455d8af3a35273b605bb457591de11f0e22bded3325bbb626ee774caf",
+        "fields": {
+          "K": "Lee_time=38,Lee_was_2s_faster,Gerald_improvement=10%",
+          "G": "Gerald_improved_time",
+          "P": "old_Gerald=Lee_time+2,improved_Gerald=old_Gerald/1.1"
+        },
+        "communication_tokens": 54,
+        "communication_tokens_exact": true,
+        "attempt_count": 1,
+        "fallback": false,
+        "tokens_include_all_attempts": true,
+        "incoming_message_ids": []
+      }
+    },
+    {
+      "sender": "solver",
+      "content": "IR:old_Gerald=38+2=40,improved_Gerald=40/1.1=36.36363636363637;R:36.36363636363637",
+      "receiver": "verifier",
+      "round": 0,
+      "role": "assistant",
+      "prompt_tokens": 781,
+      "completion_tokens": 40,
+      "id": "ea154f7c6686",
+      "ts": 1793101015.0663986,
+      "meta": {
+        "sender": "solver",
+        "receiver": "verifier",
+        "message_id": "ea154f7c6686",
+        "protocol_edge": "solver_to_verifier",
+        "protocol_version": "CARD-2-gsm8k",
+        "protocol_hash": "c152278e4a24181b874bd88cbf3adef79479b79f6539931bcd89721fa5a8a7a9",
+        "contract_hash": "ac09c03455d8af3a35273b605bb457591de11f0e22bded3325bbb626ee774caf",
+        "fields": {
+          "IR": "old_Gerald=38+2=40,improved_Gerald=40/1.1=36.36363636363637",
+          "R": "36.36363636363637"
+        },
+        "communication_tokens": 40,
+        "communication_tokens_exact": true,
+        "attempt_count": 1,
+        "fallback": false,
+        "tokens_include_all_attempts": true,
+        "incoming_message_ids": [
+          "abc46f646e1f"
+        ]
+      }
+    },
+    {
+      "sender": "verifier",
+      "content": "CHK:ACCEPT",
+      "receiver": "solver",
+      "round": 0,
+      "role": "assistant",
+      "prompt_tokens": 1099,
+      "completion_tokens": 5,
+      "id": "0fef29d9886e",
+      "ts": 1793101016.4472356,
+      "meta": {
+        "sender": "verifier",
+        "receiver": "solver",
+        "message_id": "0fef29d9886e",
+        "protocol_edge": "verifier_to_solver",
+        "protocol_version": "CARD-2-gsm8k",
+        "protocol_hash": "c152278e4a24181b874bd88cbf3adef79479b79f6539931bcd89721fa5a8a7a9",
+        "contract_hash": "ac09c03455d8af3a35273b605bb457591de11f0e22bded3325bbb626ee774caf",
+        "fields": {
+          "CHK": "ACCEPT"
+        },
+        "communication_tokens": 5,
+        "communication_tokens_exact": true,
+        "attempt_count": 1,
+        "fallback": false,
+        "tokens_include_all_attempts": true,
+        "incoming_message_ids": [
+          "ea154f7c6686"
+        ]
+      }
+    }
+  ],
+  "calls": 3,
+  "usage_complete": true,
+  "known_input_tokens": 2664,
+  "known_output_tokens": 99,
+  "model_input_tokens": 2664,
+  "model_output_tokens": 99,
+  "format_failed_calls": 0,
+  "transport_failed_calls": 0,
+  "fallback_calls": 0,
+  "sum_model_latency_s": 3.882322072982788
+}

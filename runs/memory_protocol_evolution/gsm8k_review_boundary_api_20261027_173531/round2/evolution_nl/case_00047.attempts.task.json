@@ -1,0 +1,123 @@
+{
+  "task_id": "gsm8k:train:seed42:G2:00047",
+  "status": "completed",
+  "error": null,
+  "prediction": "22",
+  "messages": [
+    {
+      "sender": "planner",
+      "content": "Goal: find how many paper boats remain after losses.\n\nPlan: Start with 30 boats. Compute 20% of 30 as the number eaten by fish, then subtract that from 30. From the remaining boats, subtract the 2 that Madison shoots. Report the final count.\n\nConstraints: Use the given percentages and counts exactly; do not provide the final number in this message.",
+      "receiver": "solver",
+      "round": 0,
+      "role": "assistant",
+      "prompt_tokens": 190,
+      "completion_tokens": 78,
+      "id": "416730e4d9a8",
+      "ts": 1793096389.5637946,
+      "meta": {
+        "fields": {},
+        "communication_tokens": 78,
+        "communication_tokens_exact": true,
+        "attempt_count": 1,
+        "fallback": false,
+        "tokens_include_all_attempts": true,
+        "incoming_message_ids": []
+      }
+    },
+    {
+      "sender": "solver",
+      "content": "20% of 30 is 6 boats eaten by fish, leaving 24. Shooting 2 more leaves 22.  \n\\boxed{22}",
+      "receiver": "verifier",
+      "round": 0,
+      "role": "assistant",
+      "prompt_tokens": 280,
+      "completion_tokens": 32,
+      "id": "a6d7b47f2910",
+      "ts": 1793096390.747867,
+      "meta": {
+        "fields": {
+          "R": "22"
+        },
+        "communication_tokens": 32,
+        "communication_tokens_exact": true,
+        "attempt_count": 1,
+        "fallback": false,
+        "tokens_include_all_attempts": true,
+        "incoming_message_ids": [
+          "416730e4d9a8"
+        ]
+      }
+    },
+    {
+      "sender": "verifier",
+      "content": "ACCEPT",
+      "receiver": "solver",
+      "round": 0,
+      "role": "assistant",
+      "prompt_tokens": 611,
+      "completion_tokens": 2,
+      "id": "e75865cc90e1",
+      "ts": 1793096391.8372009,
+      "meta": {
+        "fields": {
+          "CHK": "ACCEPT"
+        },
+        "communication_tokens": 2,
+        "communication_tokens_exact": true,
+        "attempt_count": 1,
+        "fallback": false,
+        "tokens_include_all_attempts": true,
+        "incoming_message_ids": [
+          "a6d7b47f2910"
+        ]
+      }
+    }
+  ],
+  "communication_tokens": 112,
+  "wall_time_s": 4.1444665000308305,
+  "verified": true,
+  "revision_rounds": 0,
+  "model_calls": [
+    {
+      "role": "planner",
+      "attempt": 0,
+      "status": "delivered",
+      "error": "",
+      "raw_output": "Goal: find how many paper boats remain after losses.\n\nPlan: Start with 30 boats. Compute 20% of 30 as the number eaten by fish, then subtract that from 30. From the remaining boats, subtract the 2 that Madison shoots. Report the final count.\n\nConstraints: Use the given percentages and counts exactly; do not provide the final number in this message.",
+      "finish_reason": "stop",
+      "output_tokens": 78,
+      "usage_available": true
+    },
+    {
+      "role": "solver",
+      "attempt": 0,
+      "status": "delivered",
+      "error": "",
+      "raw_output": "20% of 30 is 6 boats eaten by fish, leaving 24. Shooting 2 more leaves 22.  \n\\boxed{22}",
+      "finish_reason": "stop",
+      "output_tokens": 32,
+      "usage_available": true
+    },
+    {
+      "role": "verifier",
+      "attempt": 0,
+      "status": "delivered",
+      "error": "",
+      "raw_output": "ACCEPT",
+      "finish_reason": "stop",
+      "output_tokens": 2,
+      "usage_available": true
+    }
+  ],
+  "failed_attempts": [],
+  "calls": 3,
+  "usage_complete": true,
+  "known_input_tokens": 1081,
+  "known_output_tokens": 112,
+  "model_input_tokens": 1081,
+  "model_output_tokens": 112,
+  "format_failed_calls": 0,
+  "transport_failed_calls": 0,
+  "fallback_calls": 0,
+  "sum_model_latency_s": 4.082901954650879
+}

@@ -34,13 +34,15 @@ class DualChannelMemoryManager(MemoryManager):
                  max_encode_tokens: int = 4096, include_transcript: bool = True,
                  P: int = 16, c2c_ckpt: str | None = None, c2c_gate: str = "soft",
                  nl_simplemem: dict | None = None,
-                 protocol_path: str | None = None, task: str = "gsm8k"):
+                 protocol_path: str | None = None, task: str | None = None,
+                 protocol_contract: object | None = None):
         self.backend = backend
         self.latent_strategy = latent_strategy
         # 两个主接口：NL 通道 + latent 通道（latent 统管 soft_token / c2c 子策略；P 归 latent）
         self.nl = NLMemory(getattr(backend, "tok", None), strategy=nl_strategy,
                            simplemem_kwargs=nl_simplemem,
-                           protocol_path=protocol_path, task=task)
+                           protocol_path=protocol_path, task=task,
+                           protocol_contract=protocol_contract)
         self.latent = LatentMemory(backend, latent_strategy, max_encode_tokens,
                                    P=P, c2c_ckpt=c2c_ckpt, c2c_gate=c2c_gate)
         self.include_transcript = include_transcript  # 是否把运行中的对话也并入 source

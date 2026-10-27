@@ -1,0 +1,121 @@
+{
+  "task_id": "gsm8k:test:seed42:T:00189",
+  "mode": "hybrid",
+  "benchmark": "gsm8k",
+  "status": "completed",
+  "error": null,
+  "prediction": "34",
+  "gold": "34",
+  "wall_time_s": 3.7856661999830976,
+  "communication_tokens": 122,
+  "communication_tokens_exact": true,
+  "revision_rounds": 0,
+  "verification_decision": "ACCEPT",
+  "verified": true,
+  "messages": [
+    {
+      "sender": "planner",
+      "content": "K:tickets=20.25,food_less=4.50,rides=2,ride_cost=33,friends=3;G:each_pays;P:food=tickets-food_less,total=tickets+food+rides*ride_cost,each_pays=total/friends",
+      "receiver": "solver",
+      "round": 0,
+      "role": "assistant",
+      "prompt_tokens": 774,
+      "completion_tokens": 62,
+      "id": "6fdf3841ce2f",
+      "ts": 1793101775.1218328,
+      "meta": {
+        "sender": "planner",
+        "receiver": "solver",
+        "message_id": "6fdf3841ce2f",
+        "protocol_edge": "planner_to_solver",
+        "protocol_version": "CARD-2-gsm8k",
+        "protocol_hash": "c152278e4a24181b874bd88cbf3adef79479b79f6539931bcd89721fa5a8a7a9",
+        "contract_hash": "ac09c03455d8af3a35273b605bb457591de11f0e22bded3325bbb626ee774caf",
+        "fields": {
+          "K": "tickets=20.25,food_less=4.50,rides=2,ride_cost=33,friends=3",
+          "G": "each_pays",
+          "P": "food=tickets-food_less,total=tickets+food+rides*ride_cost,each_pays=total/friends"
+        },
+        "communication_tokens": 62,
+        "communication_tokens_exact": true,
+        "attempt_count": 1,
+        "fallback": false,
+        "tokens_include_all_attempts": true,
+        "incoming_message_ids": []
+      }
+    },
+    {
+      "sender": "solver",
+      "content": "IR:tickets=20.25,food=20.25-4.50=15.75,rides=2*33=66,total=20.25+15.75+66=102,each=102/3=34;R:34",
+      "receiver": "verifier",
+      "round": 0,
+      "role": "assistant",
+      "prompt_tokens": 779,
+      "completion_tokens": 55,
+      "id": "60a6a8277d79",
+      "ts": 1793101776.477262,
+      "meta": {
+        "sender": "solver",
+        "receiver": "verifier",
+        "message_id": "60a6a8277d79",
+        "protocol_edge": "solver_to_verifier",
+        "protocol_version": "CARD-2-gsm8k",
+        "protocol_hash": "c152278e4a24181b874bd88cbf3adef79479b79f6539931bcd89721fa5a8a7a9",
+        "contract_hash": "ac09c03455d8af3a35273b605bb457591de11f0e22bded3325bbb626ee774caf",
+        "fields": {
+          "IR": "tickets=20.25,food=20.25-4.50=15.75,rides=2*33=66,total=20.25+15.75+66=102,each=102/3=34",
+          "R": "34"
+        },
+        "communication_tokens": 55,
+        "communication_tokens_exact": true,
+        "attempt_count": 1,
+        "fallback": false,
+        "tokens_include_all_attempts": true,
+        "incoming_message_ids": [
+          "6fdf3841ce2f"
+        ]
+      }
+    },
+    {
+      "sender": "verifier",
+      "content": "CHK:ACCEPT",
+      "receiver": "solver",
+      "round": 0,
+      "role": "assistant",
+      "prompt_tokens": 1104,
+      "completion_tokens": 5,
+      "id": "19dd2c0dd2df",
+      "ts": 1793101777.3284457,
+      "meta": {
+        "sender": "verifier",
+        "receiver": "solver",
+        "message_id": "19dd2c0dd2df",
+        "protocol_edge": "verifier_to_solver",
+        "protocol_version": "CARD-2-gsm8k",
+        "protocol_hash": "c152278e4a24181b874bd88cbf3adef79479b79f6539931bcd89721fa5a8a7a9",
+        "contract_hash": "ac09c03455d8af3a35273b605bb457591de11f0e22bded3325bbb626ee774caf",
+        "fields": {
+          "CHK": "ACCEPT"
+        },
+        "communication_tokens": 5,
+        "communication_tokens_exact": true,
+        "attempt_count": 1,
+        "fallback": false,
+        "tokens_include_all_attempts": true,
+        "incoming_message_ids": [
+          "60a6a8277d79"
+        ]
+      }
+    }
+  ],
+  "calls": 3,
+  "usage_complete": true,
+  "known_input_tokens": 2657,
+  "known_output_tokens": 122,
+  "model_input_tokens": 2657,
+  "model_output_tokens": 122,
+  "format_failed_calls": 0,
+  "transport_failed_calls": 0,
+  "fallback_calls": 0,
+  "sum_model_latency_s": 3.6761155128479004
+}

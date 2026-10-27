@@ -1,0 +1,153 @@
+{
+  "task_id": "gsm8k:train:seed42:V:00102",
+  "status": "completed",
+  "error": null,
+  "prediction": "7",
+  "messages": [
+    {
+      "sender": "planner",
+      "content": "K:day1=135,day2=day1+124,day3=159,day4=189,charge_interval=106;G:total_charges;P:total_miles=day1+day2+day3+day4,total_charges=total_miles/charge_interval;NL:charge count is total miles divided by 106 miles per charge",
+      "receiver": "solver",
+      "round": 0,
+      "role": "assistant",
+      "prompt_tokens": 773,
+      "completion_tokens": 83,
+      "id": "b22eb8f75f5c",
+      "ts": 1793098754.1481662,
+      "meta": {
+        "sender": "planner",
+        "receiver": "solver",
+        "message_id": "b22eb8f75f5c",
+        "protocol_edge": "planner_to_solver",
+        "protocol_version": "CARD-2-gsm8k",
+        "protocol_hash": "c152278e4a24181b874bd88cbf3adef79479b79f6539931bcd89721fa5a8a7a9",
+        "contract_hash": "ac09c03455d8af3a35273b605bb457591de11f0e22bded3325bbb626ee774caf",
+        "fields": {
+          "K": "day1=135,day2=day1+124,day3=159,day4=189,charge_interval=106",
+          "G": "total_charges",
+          "P": "total_miles=day1+day2+day3+day4,total_charges=total_miles/charge_interval",
+          "NL": "charge count is total miles divided by 106 miles per charge"
+        },
+        "communication_tokens": 83,
+        "communication_tokens_exact": true,
+        "attempt_count": 1,
+        "fallback": false,
+        "tokens_include_all_attempts": true,
+        "incoming_message_ids": []
+      }
+    },
+    {
+      "sender": "solver",
+      "content": "IR:day2=135+124=259,total=135+259+159+189=742,charges=742/106=7;R:7",
+      "receiver": "verifier",
+      "round": 0,
+      "role": "assistant",
+      "prompt_tokens": 799,
+      "completion_tokens": 35,
+      "id": "7389f25d2c20",
+      "ts": 1793098755.3337548,
+      "meta": {
+        "sender": "solver",
+        "receiver": "verifier",
+        "message_id": "7389f25d2c20",
+        "protocol_edge": "solver_to_verifier",
+        "protocol_version": "CARD-2-gsm8k",
+        "protocol_hash": "c152278e4a24181b874bd88cbf3adef79479b79f6539931bcd89721fa5a8a7a9",
+        "contract_hash": "ac09c03455d8af3a35273b605bb457591de11f0e22bded3325bbb626ee774caf",
+        "fields": {
+          "IR": "day2=135+124=259,total=135+259+159+189=742,charges=742/106=7",
+          "R": "7"
+        },
+        "communication_tokens": 35,
+        "communication_tokens_exact": true,
+        "attempt_count": 1,
+        "fallback": false,
+        "tokens_include_all_attempts": true,
+        "incoming_message_ids": [
+          "b22eb8f75f5c"
+        ]
+      }
+    },
+    {
+      "sender": "verifier",
+      "content": "CHK:ACCEPT",
+      "receiver": "solver",
+      "round": 0,
+      "role": "assistant",
+      "prompt_tokens": 1083,
+      "completion_tokens": 5,
+      "id": "a60ef7281c58",
+      "ts": 1793098756.4139626,
+      "meta": {
+        "sender": "verifier",
+        "receiver": "solver",
+        "message_id": "a60ef7281c58",
+        "protocol_edge": "verifier_to_solver",
+        "protocol_version": "CARD-2-gsm8k",
+        "protocol_hash": "c152278e4a24181b874bd88cbf3adef79479b79f6539931bcd89721fa5a8a7a9",
+        "contract_hash": "ac09c03455d8af3a35273b605bb457591de11f0e22bded3325bbb626ee774caf",
+        "fields": {
+          "CHK": "ACCEPT"
+        },
+        "communication_tokens": 5,
+        "communication_tokens_exact": true,
+        "attempt_count": 1,
+        "fallback": false,
+        "tokens_include_all_attempts": true,
+        "incoming_message_ids": [
+          "7389f25d2c20"
+        ]
+      }
+    }
+  ],
+  "communication_tokens": 123,
+  "wall_time_s": 3.802246200037189,
+  "verified": true,
+  "revision_rounds": 0,
+  "model_calls": [
+    {
+      "role": "planner",
+      "attempt": 0,
+      "status": "delivered",
+      "error": "",
+      "raw_output": "K:day1=135,day2=day1+124,day3=159,day4=189,charge_interval=106;G:total_charges;P:total_miles=day1+day2+day3+day4,total_charges=total_miles/charge_interval;NL:charge count is total miles divided by 106 miles per charge",
+      "finish_reason": "stop",
+      "output_tokens": 83,
+      "usage_available": true
+    },
+    {
+      "role": "solver",
+      "attempt": 0,
+      "status": "delivered",
+      "error": "",
+      "raw_output": "IR:day2=135+124=259,total=135+259+159+189=742,charges=742/106=7;R:7",
+      "finish_reason": "stop",
+      "output_tokens": 35,
+      "usage_available": true
+    },
+    {
+      "role": "verifier",
+      "attempt": 0,
+      "status": "delivered",
+      "error": "",
+      "raw_output": "CHK:ACCEPT",
+      "finish_reason": "stop",
+      "output_tokens": 5,
+      "usage_available": true
+    }
+  ],
+  "failed_attempts": [],
+  "calls": 3,
+  "usage_complete": true,
+  "known_input_tokens": 2655,
+  "known_output_tokens": 123,
+  "model_input_tokens": 2655,
+  "model_output_tokens": 123,
+  "format_failed_calls": 0,
+  "transport_failed_calls": 0,
+  "fallback_calls": 0,
+  "sum_model_latency_s": 3.6609761714935303,
+  "gold": "7",
+  "score": 1.0,
+  "question": "On a four-day trip, Carrie drove 135 miles the first day, 124 miles more the second day, 159 miles the third day, and 189 miles the fourth day. If she had to charge her phone every 106 miles, how many times did she charge her phone for the whole trip?\nGive the final numeric answer."
+}

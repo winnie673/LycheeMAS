@@ -1,0 +1,151 @@
+{
+  "task_id": "gsm8k:train:seed42:V:00063",
+  "status": "completed",
+  "error": null,
+  "prediction": "64",
+  "messages": [
+    {
+      "sender": "planner",
+      "content": "K:paintings=10,painting_cost=40,toys=8,toy_cost=20,painting_discount=10%,toy_discount=15%;G:total_loss;P:cost=10*40+8*20,loss=10*40*0.10+8*20*0.15;NL:the discounted items are the paintings and the wooden toys (called hats in the problem)",
+      "receiver": "solver",
+      "round": 0,
+      "role": "assistant",
+      "prompt_tokens": 757,
+      "completion_tokens": 89,
+      "id": "d52eb7b090fc",
+      "ts": 1793094620.8711233,
+      "meta": {
+        "sender": "planner",
+        "receiver": "solver",
+        "message_id": "d52eb7b090fc",
+        "protocol_edge": "planner_to_solver",
+        "protocol_version": "CARD-0-gsm8k",
+        "protocol_hash": "eb2823227bf7889a5ca248376e410b4922fec80b12249ba4d10a3c8452604ed2",
+        "contract_hash": "ac09c03455d8af3a35273b605bb457591de11f0e22bded3325bbb626ee774caf",
+        "fields": {
+          "K": "paintings=10,painting_cost=40,toys=8,toy_cost=20,painting_discount=10%,toy_discount=15%",
+          "G": "total_loss",
+          "P": "cost=10*40+8*20,loss=10*40*0.10+8*20*0.15",
+          "NL": "the discounted items are the paintings and the wooden toys (called hats in the problem)"
+        },
+        "communication_tokens": 89,
+        "communication_tokens_exact": true,
+        "attempt_count": 1,
+        "fallback": false,
+        "tokens_include_all_attempts": true,
+        "incoming_message_ids": []
+      }
+    },
+    {
+      "sender": "solver",
+      "content": "IR:cost=10*40+8*20=560,loss=10*40*0.10+8*20*0.15=40+24=64;R:64;NL:the discounted items are the paintings and the wooden toys (called hats in the problem)",
+      "receiver": "verifier",
+      "round": 0,
+      "role": "assistant",
+      "prompt_tokens": 821,
+      "completion_tokens": 61,
+      "id": "de0e01ae1323",
+      "ts": 1793094622.3098729,
+      "meta": {
+        "sender": "solver",
+        "receiver": "verifier",
+        "message_id": "de0e01ae1323",
+        "protocol_edge": "solver_to_verifier",
+        "protocol_version": "CARD-0-gsm8k",
+        "protocol_hash": "eb2823227bf7889a5ca248376e410b4922fec80b12249ba4d10a3c8452604ed2",
+        "contract_hash": "ac09c03455d8af3a35273b605bb457591de11f0e22bded3325bbb626ee774caf",
+        "fields": {
+          "IR": "cost=10*40+8*20=560,loss=10*40*0.10+8*20*0.15=40+24=64",
+          "R": "64",
+          "NL": "the discounted items are the paintings and the wooden toys (called hats in the problem)"
+        },
+        "communication_tokens": 61,
+        "communication_tokens_exact": true,
+        "attempt_count": 1,
+        "fallback": false,
+        "tokens_include_all_attempts": true,
+        "incoming_message_ids": [
+          "d52eb7b090fc"
+        ]
+      }
+    },
+    {
+      "sender": "verifier",
+      "content": "CHK:ACCEPT",
+      "receiver": "solver",
+      "round": 0,
+      "role": "assistant",
+      "prompt_tokens": 1125,
+      "completion_tokens": 5,
+      "id": "4b1b5cbbec68",
+      "ts": 1793094623.2707121,
+      "meta": {
+        "sender": "verifier",
+        "receiver": "solver",
+        "message_id": "4b1b5cbbec68",
+        "protocol_edge": "verifier_to_solver",
+        "protocol_version": "CARD-0-gsm8k",
+        "protocol_hash": "eb2823227bf7889a5ca248376e410b4922fec80b12249ba4d10a3c8452604ed2",
+        "contract_hash": "ac09c03455d8af3a35273b605bb457591de11f0e22bded3325bbb626ee774caf",
+        "fields": {
+          "CHK": "ACCEPT"
+        },
+        "communication_tokens": 5,
+        "communication_tokens_exact": true,
+        "attempt_count": 1,
+        "fallback": false,
+        "tokens_include_all_attempts": true,
+        "incoming_message_ids": [
+          "de0e01ae1323"
+        ]
+      }
+    }
+  ],
+  "communication_tokens": 155,
+  "wall_time_s": 4.15056119998917,
+  "verified": true,
+  "revision_rounds": 0,
+  "model_calls": [
+    {
+      "role": "planner",
+      "attempt": 0,
+      "status": "delivered",
+      "error": "",
+      "raw_output": "K:paintings=10,painting_cost=40,toys=8,toy_cost=20,painting_discount=10%,toy_discount=15%;G:total_loss;P:cost=10*40+8*20,loss=10*40*0.10+8*20*0.15;NL:the discounted items are the paintings and the wooden toys (called hats in the problem)",
+      "finish_reason": "stop",
+      "output_tokens": 89,
+      "usage_available": true
+    },
+    {
+      "role": "solver",
+      "attempt": 0,
+      "status": "delivered",
+      "error": "",
+      "raw_output": "IR:cost=10*40+8*20=560,loss=10*40*0.10+8*20*0.15=40+24=64;R:64;NL:the discounted items are the paintings and the wooden toys (called hats in the problem)",
+      "finish_reason": "stop",
+      "output_tokens": 61,
+      "usage_available": true
+    },
+    {
+      "role": "verifier",
+      "attempt": 0,
+      "status": "delivered",
+      "error": "",
+      "raw_output": "CHK:ACCEPT",
+      "finish_reason": "stop",
+      "output_tokens": 5,
+      "usage_available": true
+    }
+  ],
+  "failed_attempts": [],
+  "calls": 3,
+  "usage_complete": true,
+  "known_input_tokens": 2703,
+  "known_output_tokens": 155,
+  "model_input_tokens": 2703,
+  "model_output_tokens": 155,
+  "format_failed_calls": 0,
+  "transport_failed_calls": 0,
+  "fallback_calls": 0,
+  "sum_model_latency_s": 4.036646842956543
+}

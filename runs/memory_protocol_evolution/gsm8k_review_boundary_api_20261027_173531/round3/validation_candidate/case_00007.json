@@ -1,0 +1,153 @@
+{
+  "task_id": "gsm8k:train:seed42:V:00007",
+  "status": "completed",
+  "error": null,
+  "prediction": "11.25",
+  "messages": [
+    {
+      "sender": "planner",
+      "content": "G:number_below_surface;K:surface_fraction=25%,counted=15;P:below_fraction=1-0.25,number_below_surface=below_fraction*counted",
+      "receiver": "solver",
+      "round": 0,
+      "role": "assistant",
+      "prompt_tokens": 765,
+      "completion_tokens": 45,
+      "id": "877ddcc47acd",
+      "ts": 1793099155.4213412,
+      "meta": {
+        "sender": "planner",
+        "receiver": "solver",
+        "message_id": "877ddcc47acd",
+        "protocol_edge": "planner_to_solver",
+        "protocol_version": "CARD-2-gsm8k",
+        "protocol_hash": "c152278e4a24181b874bd88cbf3adef79479b79f6539931bcd89721fa5a8a7a9",
+        "contract_hash": "ac09c03455d8af3a35273b605bb457591de11f0e22bded3325bbb626ee774caf",
+        "fields": {
+          "G": "number_below_surface",
+          "K": "surface_fraction=25%,counted=15",
+          "P": "below_fraction=1-0.25,number_below_surface=below_fraction*counted"
+        },
+        "communication_tokens": 45,
+        "communication_tokens_exact": true,
+        "attempt_count": 1,
+        "fallback": false,
+        "tokens_include_all_attempts": true,
+        "incoming_message_ids": []
+      }
+    },
+    {
+      "sender": "solver",
+      "content": "IR:below_fraction=1-0.25=0.75,number_below_surface=0.75*15=11.25;R:11.25;NL:counted 15 are total goldfish so below-surface count is 75% of 15",
+      "receiver": "verifier",
+      "round": 0,
+      "role": "assistant",
+      "prompt_tokens": 753,
+      "completion_tokens": 59,
+      "id": "f6ea808e8706",
+      "ts": 1793099156.9231963,
+      "meta": {
+        "sender": "solver",
+        "receiver": "verifier",
+        "message_id": "f6ea808e8706",
+        "protocol_edge": "solver_to_verifier",
+        "protocol_version": "CARD-2-gsm8k",
+        "protocol_hash": "c152278e4a24181b874bd88cbf3adef79479b79f6539931bcd89721fa5a8a7a9",
+        "contract_hash": "ac09c03455d8af3a35273b605bb457591de11f0e22bded3325bbb626ee774caf",
+        "fields": {
+          "IR": "below_fraction=1-0.25=0.75,number_below_surface=0.75*15=11.25",
+          "R": "11.25",
+          "NL": "counted 15 are total goldfish so below-surface count is 75% of 15"
+        },
+        "communication_tokens": 59,
+        "communication_tokens_exact": true,
+        "attempt_count": 1,
+        "fallback": false,
+        "tokens_include_all_attempts": true,
+        "incoming_message_ids": [
+          "877ddcc47acd"
+        ]
+      }
+    },
+    {
+      "sender": "verifier",
+      "content": "CHK:ACCEPT",
+      "receiver": "solver",
+      "round": 0,
+      "role": "assistant",
+      "prompt_tokens": 1099,
+      "completion_tokens": 5,
+      "id": "f54b3a60c1a0",
+      "ts": 1793099158.0831194,
+      "meta": {
+        "sender": "verifier",
+        "receiver": "solver",
+        "message_id": "f54b3a60c1a0",
+        "protocol_edge": "verifier_to_solver",
+        "protocol_version": "CARD-2-gsm8k",
+        "protocol_hash": "c152278e4a24181b874bd88cbf3adef79479b79f6539931bcd89721fa5a8a7a9",
+        "contract_hash": "ac09c03455d8af3a35273b605bb457591de11f0e22bded3325bbb626ee774caf",
+        "fields": {
+          "CHK": "ACCEPT"
+        },
+        "communication_tokens": 5,
+        "communication_tokens_exact": true,
+        "attempt_count": 1,
+        "fallback": false,
+        "tokens_include_all_attempts": true,
+        "incoming_message_ids": [
+          "f6ea808e8706"
+        ]
+      }
+    }
+  ],
+  "communication_tokens": 109,
+  "wall_time_s": 3.8141147000715137,
+  "verified": true,
+  "revision_rounds": 0,
+  "model_calls": [
+    {
+      "role": "planner",
+      "attempt": 0,
+      "status": "delivered",
+      "error": "",
+      "raw_output": "G:number_below_surface;K:surface_fraction=25%,counted=15;P:below_fraction=1-0.25,number_below_surface=below_fraction*counted",
+      "finish_reason": "stop",
+      "output_tokens": 45,
+      "usage_available": true
+    },
+    {
+      "role": "solver",
+      "attempt": 0,
+      "status": "delivered",
+      "error": "",
+      "raw_output": "IR:below_fraction=1-0.25=0.75,number_below_surface=0.75*15=11.25;R:11.25;NL:counted 15 are total goldfish so below-surface count is 75% of 15",
+      "finish_reason": "stop",
+      "output_tokens": 59,
+      "usage_available": true
+    },
+    {
+      "role": "verifier",
+      "attempt": 0,
+      "status": "delivered",
+      "error": "",
+      "raw_output": "CHK:ACCEPT",
+      "finish_reason": "stop",
+      "output_tokens": 5,
+      "usage_available": true
+    }
+  ],
+  "failed_attempts": [],
+  "calls": 3,
+  "usage_complete": true,
+  "known_input_tokens": 2617,
+  "known_output_tokens": 109,
+  "model_input_tokens": 2617,
+  "model_output_tokens": 109,
+  "format_failed_calls": 0,
+  "transport_failed_calls": 0,
+  "fallback_calls": 0,
+  "sum_model_latency_s": 3.6998140811920166,
+  "gold": "45",
+  "score": 0.0,
+  "question": "Toby is counting goldfish in the local pond. He knows that only 25% of goldfish are at the surface and the rest are too deep below the surface to be able to see. If he counts 15 goldfish, how many are below the surface?\nGive the final numeric answer."
+}

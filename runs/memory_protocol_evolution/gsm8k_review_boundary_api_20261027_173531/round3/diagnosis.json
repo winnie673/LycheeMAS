@@ -1,0 +1,48 @@
+{
+  "diagnosis": {
+    "case_analysis": [
+      {
+        "case_id": "gsm8k:train:seed42:G3:00005",
+        "issue_type": "OPERATION_DIRECTION_ERROR",
+        "communication_related": false,
+        "protocol_path": "planner_to_solver->solver_to_verifier",
+        "evidence": "Both NL and hybrid compute the correct joint probability 6/25=0.24 but the task asks for odds, and gold is 24 (odds in favor = 6:19 expressed as 24? actually gold 24). The NL planner explicitly instructed 'convert that probability to odds in favor' and solver produced 6:19; hybrid planner set G:odds_all_good but P computed only the probability product and solver returned 0.24. The failure is a base-reasoning/answer-form error (probability vs odds), not a communication gap: the NL path had explicit odds instruction yet still failed, and the hybrid path's G label 'odds_all_good' was not honored by the solver. No missing multiplicity or temporal loss."
+      },
+      {
+        "case_id": "gsm8k:train:seed42:G3:00033",
+        "issue_type": "NONE",
+        "communication_related": false,
+        "protocol_path": "planner_to_solver->solver_to_verifier",
+        "evidence": "Both paths correct (47). Hybrid compactly encodes temporal relations (at_30_diane_half_alex, at_30_diane_twice_allison) and the shift (30-16) in P, preserving temporal relation and operation direction. Successful compact pattern; no defect."
+      },
+      {
+        "case_id": "gsm8k:train:seed42:G3:00016",
+        "issue_type": "NONE",
+        "communication_related": false,
+        "protocol_path": "planner_to_solver->solver_to_verifier",
+        "evidence": "Both correct (17). Hybrid P preserves multiplicity (2*60, 4*remaining_days) and the ceil rounding via NL 'bags must be whole'. Successful compact pattern; no defect."
+      },
+      {
+        "case_id": "gsm8k:train:seed42:G3:00011",
+        "issue_type": "NONE",
+        "communication_related": false,
+        "protocol_path": "planner_to_solver->solver_to_verifier",
+        "evidence": "Both correct (15). Hybrid K/P explicitly carry per-unit prices and quantities (beef_kg=1/4, beef_price_per_kg=8) preserving multiplicity and operation direction. Successful compact pattern; no defect."
+      },
+      {
+        "case_id": "gsm8k:train:seed42:G3:00036",
+        "issue_type": "NONE",
+        "communication_related": false,
+        "protocol_path": "planner_to_solver->solver_to_verifier",
+        "evidence": "Both correct (10). Hybrid P preserves multiplicity (three_melon_total=3*3) and operation direction (subtract then divide by 2). Successful compact pattern; no defect."
+      }
+    ],
+    "global_findings": [
+      "The only failing paired case (00005) is a base-reasoning/answer-form error (probability vs odds), not a communication failure; the NL path had explicit odds instruction and still failed, and the hybrid G label 'odds_all_good' was not honored.",
+      "Hybrid compact symbolic patterns (K/P/IR) successfully preserved multiplicity, temporal relations, and operation direction in all four correct cases, with lower communication tokens than NL.",
+      "No evidence of MISSING_MULTIPLICITY, TEMPORAL_RELATION_LOSS, or OPERATION_DIRECTION_ERROR in the correct cases; the card's compact field discipline is working as intended.",
+      "Verifier ACCEPT was appropriate in all cases given the evidence; no revision was triggered, consistent with the frozen verifier rules."
+    ]
+  },
+  "eligible_case_ids": []
+}

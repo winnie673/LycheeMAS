@@ -1,0 +1,152 @@
+{
+  "task_id": "gsm8k:train:seed42:V:00104",
+  "status": "completed",
+  "error": null,
+  "prediction": "2500",
+  "messages": [
+    {
+      "sender": "planner",
+      "content": "K:new_price=30000,shortfall=4000,sale_fraction=0.8;G:original_price-new_price;P:proceeds=new_price-shortfall,original=proceeds/sale_fraction,difference=original-new_price",
+      "receiver": "solver",
+      "round": 0,
+      "role": "assistant",
+      "prompt_tokens": 735,
+      "completion_tokens": 53,
+      "id": "a7d66aeece4c",
+      "ts": 1793094787.1688871,
+      "meta": {
+        "sender": "planner",
+        "receiver": "solver",
+        "message_id": "a7d66aeece4c",
+        "protocol_edge": "planner_to_solver",
+        "protocol_version": "CARD-0-gsm8k",
+        "protocol_hash": "eb2823227bf7889a5ca248376e410b4922fec80b12249ba4d10a3c8452604ed2",
+        "contract_hash": "ac09c03455d8af3a35273b605bb457591de11f0e22bded3325bbb626ee774caf",
+        "fields": {
+          "K": "new_price=30000,shortfall=4000,sale_fraction=0.8",
+          "G": "original_price-new_price",
+          "P": "proceeds=new_price-shortfall,original=proceeds/sale_fraction,difference=original-new_price"
+        },
+        "communication_tokens": 53,
+        "communication_tokens_exact": true,
+        "attempt_count": 1,
+        "fallback": false,
+        "tokens_include_all_attempts": true,
+        "incoming_message_ids": []
+      }
+    },
+    {
+      "sender": "solver",
+      "content": "IR:proceeds=30000-4000=26000,original=26000/0.8=32500,difference=32500-30000=2500;R:2500",
+      "receiver": "verifier",
+      "round": 0,
+      "role": "assistant",
+      "prompt_tokens": 763,
+      "completion_tokens": 41,
+      "id": "227291e5ca1a",
+      "ts": 1793094788.5149531,
+      "meta": {
+        "sender": "solver",
+        "receiver": "verifier",
+        "message_id": "227291e5ca1a",
+        "protocol_edge": "solver_to_verifier",
+        "protocol_version": "CARD-0-gsm8k",
+        "protocol_hash": "eb2823227bf7889a5ca248376e410b4922fec80b12249ba4d10a3c8452604ed2",
+        "contract_hash": "ac09c03455d8af3a35273b605bb457591de11f0e22bded3325bbb626ee774caf",
+        "fields": {
+          "IR": "proceeds=30000-4000=26000,original=26000/0.8=32500,difference=32500-30000=2500",
+          "R": "2500"
+        },
+        "communication_tokens": 41,
+        "communication_tokens_exact": true,
+        "attempt_count": 1,
+        "fallback": false,
+        "tokens_include_all_attempts": true,
+        "incoming_message_ids": [
+          "a7d66aeece4c"
+        ]
+      }
+    },
+    {
+      "sender": "verifier",
+      "content": "CHK:ACCEPT",
+      "receiver": "solver",
+      "round": 0,
+      "role": "assistant",
+      "prompt_tokens": 1083,
+      "completion_tokens": 5,
+      "id": "ab83093e8801",
+      "ts": 1793094789.8013494,
+      "meta": {
+        "sender": "verifier",
+        "receiver": "solver",
+        "message_id": "ab83093e8801",
+        "protocol_edge": "verifier_to_solver",
+        "protocol_version": "CARD-0-gsm8k",
+        "protocol_hash": "eb2823227bf7889a5ca248376e410b4922fec80b12249ba4d10a3c8452604ed2",
+        "contract_hash": "ac09c03455d8af3a35273b605bb457591de11f0e22bded3325bbb626ee774caf",
+        "fields": {
+          "CHK": "ACCEPT"
+        },
+        "communication_tokens": 5,
+        "communication_tokens_exact": true,
+        "attempt_count": 1,
+        "fallback": false,
+        "tokens_include_all_attempts": true,
+        "incoming_message_ids": [
+          "227291e5ca1a"
+        ]
+      }
+    }
+  ],
+  "communication_tokens": 99,
+  "wall_time_s": 4.017336899996735,
+  "verified": true,
+  "revision_rounds": 0,
+  "model_calls": [
+    {
+      "role": "planner",
+      "attempt": 0,
+      "status": "delivered",
+      "error": "",
+      "raw_output": "K:new_price=30000,shortfall=4000,sale_fraction=0.8;G:original_price-new_price;P:proceeds=new_price-shortfall,original=proceeds/sale_fraction,difference=original-new_price",
+      "finish_reason": "stop",
+      "output_tokens": 53,
+      "usage_available": true
+    },
+    {
+      "role": "solver",
+      "attempt": 0,
+      "status": "delivered",
+      "error": "",
+      "raw_output": "IR:proceeds=30000-4000=26000,original=26000/0.8=32500,difference=32500-30000=2500;R:2500",
+      "finish_reason": "stop",
+      "output_tokens": 41,
+      "usage_available": true
+    },
+    {
+      "role": "verifier",
+      "attempt": 0,
+      "status": "delivered",
+      "error": "",
+      "raw_output": "CHK:ACCEPT",
+      "finish_reason": "stop",
+      "output_tokens": 5,
+      "usage_available": true
+    }
+  ],
+  "failed_attempts": [],
+  "calls": 3,
+  "usage_complete": true,
+  "known_input_tokens": 2581,
+  "known_output_tokens": 99,
+  "model_input_tokens": 2581,
+  "model_output_tokens": 99,
+  "format_failed_calls": 0,
+  "transport_failed_calls": 0,
+  "fallback_calls": 0,
+  "sum_model_latency_s": 3.899728536605835,
+  "gold": "2500",
+  "score": 1.0,
+  "question": "Liz sold her car at 80% of what she originally paid. She uses the proceeds of that sale and needs only $4,000 to buy herself a new $30,000 car. How much cheaper is her new car versus what she originally paid for her old one?\nGive the final numeric answer."
+}

@@ -1,0 +1,152 @@
+{
+  "task_id": "gsm8k:train:seed42:V:00193",
+  "status": "completed",
+  "error": null,
+  "prediction": "33",
+  "messages": [
+    {
+      "sender": "planner",
+      "content": "K:goats=66,chickens=2*goats,ducks=(goats+chickens)/2,pigs=ducks/3;G:goats_minus_pigs;P:diff=goats-pigs",
+      "receiver": "solver",
+      "round": 0,
+      "role": "assistant",
+      "prompt_tokens": 763,
+      "completion_tokens": 52,
+      "id": "945b7c846e60",
+      "ts": 1793097951.9626212,
+      "meta": {
+        "sender": "planner",
+        "receiver": "solver",
+        "message_id": "945b7c846e60",
+        "protocol_edge": "planner_to_solver",
+        "protocol_version": "CARD-2-gsm8k",
+        "protocol_hash": "c152278e4a24181b874bd88cbf3adef79479b79f6539931bcd89721fa5a8a7a9",
+        "contract_hash": "ac09c03455d8af3a35273b605bb457591de11f0e22bded3325bbb626ee774caf",
+        "fields": {
+          "K": "goats=66,chickens=2*goats,ducks=(goats+chickens)/2,pigs=ducks/3",
+          "G": "goats_minus_pigs",
+          "P": "diff=goats-pigs"
+        },
+        "communication_tokens": 52,
+        "communication_tokens_exact": true,
+        "attempt_count": 1,
+        "fallback": false,
+        "tokens_include_all_attempts": true,
+        "incoming_message_ids": []
+      }
+    },
+    {
+      "sender": "solver",
+      "content": "IR:chickens=2*66=132,ducks=(66+132)/2=99,pigs=99/3=33,diff=66-33=33;R:33",
+      "receiver": "verifier",
+      "round": 0,
+      "role": "assistant",
+      "prompt_tokens": 758,
+      "completion_tokens": 42,
+      "id": "30632b4b7084",
+      "ts": 1793097953.1645386,
+      "meta": {
+        "sender": "solver",
+        "receiver": "verifier",
+        "message_id": "30632b4b7084",
+        "protocol_edge": "solver_to_verifier",
+        "protocol_version": "CARD-2-gsm8k",
+        "protocol_hash": "c152278e4a24181b874bd88cbf3adef79479b79f6539931bcd89721fa5a8a7a9",
+        "contract_hash": "ac09c03455d8af3a35273b605bb457591de11f0e22bded3325bbb626ee774caf",
+        "fields": {
+          "IR": "chickens=2*66=132,ducks=(66+132)/2=99,pigs=99/3=33,diff=66-33=33",
+          "R": "33"
+        },
+        "communication_tokens": 42,
+        "communication_tokens_exact": true,
+        "attempt_count": 1,
+        "fallback": false,
+        "tokens_include_all_attempts": true,
+        "incoming_message_ids": [
+          "945b7c846e60"
+        ]
+      }
+    },
+    {
+      "sender": "verifier",
+      "content": "CHK:ACCEPT",
+      "receiver": "solver",
+      "round": 0,
+      "role": "assistant",
+      "prompt_tokens": 1080,
+      "completion_tokens": 5,
+      "id": "8e1424973692",
+      "ts": 1793097954.3835247,
+      "meta": {
+        "sender": "verifier",
+        "receiver": "solver",
+        "message_id": "8e1424973692",
+        "protocol_edge": "verifier_to_solver",
+        "protocol_version": "CARD-2-gsm8k",
+        "protocol_hash": "c152278e4a24181b874bd88cbf3adef79479b79f6539931bcd89721fa5a8a7a9",
+        "contract_hash": "ac09c03455d8af3a35273b605bb457591de11f0e22bded3325bbb626ee774caf",
+        "fields": {
+          "CHK": "ACCEPT"
+        },
+        "communication_tokens": 5,
+        "communication_tokens_exact": true,
+        "attempt_count": 1,
+        "fallback": false,
+        "tokens_include_all_attempts": true,
+        "incoming_message_ids": [
+          "30632b4b7084"
+        ]
+      }
+    }
+  ],
+  "communication_tokens": 99,
+  "wall_time_s": 3.649369499995373,
+  "verified": true,
+  "revision_rounds": 0,
+  "model_calls": [
+    {
+      "role": "planner",
+      "attempt": 0,
+      "status": "delivered",
+      "error": "",
+      "raw_output": "K:goats=66,chickens=2*goats,ducks=(goats+chickens)/2,pigs=ducks/3;G:goats_minus_pigs;P:diff=goats-pigs",
+      "finish_reason": "stop",
+      "output_tokens": 52,
+      "usage_available": true
+    },
+    {
+      "role": "solver",
+      "attempt": 0,
+      "status": "delivered",
+      "error": "",
+      "raw_output": "IR:chickens=2*66=132,ducks=(66+132)/2=99,pigs=99/3=33,diff=66-33=33;R:33",
+      "finish_reason": "stop",
+      "output_tokens": 42,
+      "usage_available": true
+    },
+    {
+      "role": "verifier",
+      "attempt": 0,
+      "status": "delivered",
+      "error": "",
+      "raw_output": "CHK:ACCEPT",
+      "finish_reason": "stop",
+      "output_tokens": 5,
+      "usage_available": true
+    }
+  ],
+  "failed_attempts": [],
+  "calls": 3,
+  "usage_complete": true,
+  "known_input_tokens": 2601,
+  "known_output_tokens": 99,
+  "model_input_tokens": 2601,
+  "model_output_tokens": 99,
+  "format_failed_calls": 0,
+  "transport_failed_calls": 0,
+  "fallback_calls": 0,
+  "sum_model_latency_s": 3.5961666107177734,
+  "gold": "33",
+  "score": 1.0,
+  "question": "There are 66 goats at a farm and twice as many chickens. If the number of ducks is half of the total of the goats and chickens, and the number of pigs is a third of the number of ducks, how many more goats are there than pigs?\nGive the final numeric answer."
+}

@@ -1,0 +1,154 @@
+{
+  "task_id": "gsm8k:train:seed42:V:00169",
+  "status": "completed",
+  "error": null,
+  "prediction": "5.5",
+  "messages": [
+    {
+      "sender": "planner",
+      "content": "K:Bailey=half_of_Sienna,Jen=half_of_Bailey,Molly=Molly_ate_2,Harmony=Harmony_kept_3,Taylor=Taylor_ate_1,Callie=5;G:Jen_ate;P:Taylor_before=1+5,Harmony_before=3+Taylor_before,Molly_before=2+Harmony_before,Jen_ate=Molly_before/2;NL:Each person receives the remainder after the previous person's eating or keeping.",
+      "receiver": "solver",
+      "round": 0,
+      "role": "assistant",
+      "prompt_tokens": 741,
+      "completion_tokens": 114,
+      "id": "32b24b5e951a",
+      "ts": 1793095874.0406811,
+      "meta": {
+        "sender": "planner",
+        "receiver": "solver",
+        "message_id": "32b24b5e951a",
+        "protocol_edge": "planner_to_solver",
+        "protocol_version": "CARD-0-gsm8k",
+        "protocol_hash": "eb2823227bf7889a5ca248376e410b4922fec80b12249ba4d10a3c8452604ed2",
+        "contract_hash": "ac09c03455d8af3a35273b605bb457591de11f0e22bded3325bbb626ee774caf",
+        "fields": {
+          "K": "Bailey=half_of_Sienna,Jen=half_of_Bailey,Molly=Molly_ate_2,Harmony=Harmony_kept_3,Taylor=Taylor_ate_1,Callie=5",
+          "G": "Jen_ate",
+          "P": "Taylor_before=1+5,Harmony_before=3+Taylor_before,Molly_before=2+Harmony_before,Jen_ate=Molly_before/2",
+          "NL": "Each person receives the remainder after the previous person's eating or keeping."
+        },
+        "communication_tokens": 114,
+        "communication_tokens_exact": true,
+        "attempt_count": 1,
+        "fallback": false,
+        "tokens_include_all_attempts": true,
+        "incoming_message_ids": []
+      }
+    },
+    {
+      "sender": "solver",
+      "content": "IR:Taylor_before=1+5=6,Harmony_before=3+6=9,Molly_before=2+9=11,Jen_ate=11/2=5.5;R:5.5;NL:Jen ate half of what she received and gave the other half to Molly, so the amount Jen ate is half of Molly's received amount.",
+      "receiver": "verifier",
+      "round": 0,
+      "role": "assistant",
+      "prompt_tokens": 830,
+      "completion_tokens": 81,
+      "id": "874e69471da0",
+      "ts": 1793095875.750684,
+      "meta": {
+        "sender": "solver",
+        "receiver": "verifier",
+        "message_id": "874e69471da0",
+        "protocol_edge": "solver_to_verifier",
+        "protocol_version": "CARD-0-gsm8k",
+        "protocol_hash": "eb2823227bf7889a5ca248376e410b4922fec80b12249ba4d10a3c8452604ed2",
+        "contract_hash": "ac09c03455d8af3a35273b605bb457591de11f0e22bded3325bbb626ee774caf",
+        "fields": {
+          "IR": "Taylor_before=1+5=6,Harmony_before=3+6=9,Molly_before=2+9=11,Jen_ate=11/2=5.5",
+          "R": "5.5",
+          "NL": "Jen ate half of what she received and gave the other half to Molly, so the amount Jen ate is half of Molly's received amount."
+        },
+        "communication_tokens": 81,
+        "communication_tokens_exact": true,
+        "attempt_count": 1,
+        "fallback": false,
+        "tokens_include_all_attempts": true,
+        "incoming_message_ids": [
+          "32b24b5e951a"
+        ]
+      }
+    },
+    {
+      "sender": "verifier",
+      "content": "CHK:ACCEPT",
+      "receiver": "solver",
+      "round": 0,
+      "role": "assistant",
+      "prompt_tokens": 1129,
+      "completion_tokens": 5,
+      "id": "1309dd195e64",
+      "ts": 1793095876.8382373,
+      "meta": {
+        "sender": "verifier",
+        "receiver": "solver",
+        "message_id": "1309dd195e64",
+        "protocol_edge": "verifier_to_solver",
+        "protocol_version": "CARD-0-gsm8k",
+        "protocol_hash": "eb2823227bf7889a5ca248376e410b4922fec80b12249ba4d10a3c8452604ed2",
+        "contract_hash": "ac09c03455d8af3a35273b605bb457591de11f0e22bded3325bbb626ee774caf",
+        "fields": {
+          "CHK": "ACCEPT"
+        },
+        "communication_tokens": 5,
+        "communication_tokens_exact": true,
+        "attempt_count": 1,
+        "fallback": false,
+        "tokens_include_all_attempts": true,
+        "incoming_message_ids": [
+          "874e69471da0"
+        ]
+      }
+    }
+  ],
+  "communication_tokens": 200,
+  "wall_time_s": 4.939901700010523,
+  "verified": true,
+  "revision_rounds": 0,
+  "model_calls": [
+    {
+      "role": "planner",
+      "attempt": 0,
+      "status": "delivered",
+      "error": "",
+      "raw_output": "K:Bailey=half_of_Sienna,Jen=half_of_Bailey,Molly=Molly_ate_2,Harmony=Harmony_kept_3,Taylor=Taylor_ate_1,Callie=5;G:Jen_ate;P:Taylor_before=1+5,Harmony_before=3+Taylor_before,Molly_before=2+Harmony_before,Jen_ate=Molly_before/2;NL:Each person receives the remainder after the previous person's eating or keeping.",
+      "finish_reason": "stop",
+      "output_tokens": 114,
+      "usage_available": true
+    },
+    {
+      "role": "solver",
+      "attempt": 0,
+      "status": "delivered",
+      "error": "",
+      "raw_output": "IR:Taylor_before=1+5=6,Harmony_before=3+6=9,Molly_before=2+9=11,Jen_ate=11/2=5.5;R:5.5;NL:Jen ate half of what she received and gave the other half to Molly, so the amount Jen ate is half of Molly's received amount.",
+      "finish_reason": "stop",
+      "output_tokens": 81,
+      "usage_available": true
+    },
+    {
+      "role": "verifier",
+      "attempt": 0,
+      "status": "delivered",
+      "error": "",
+      "raw_output": "CHK:ACCEPT",
+      "finish_reason": "stop",
+      "output_tokens": 5,
+      "usage_available": true
+    }
+  ],
+  "failed_attempts": [],
+  "calls": 3,
+  "usage_complete": true,
+  "known_input_tokens": 2700,
+  "known_output_tokens": 200,
+  "model_input_tokens": 2700,
+  "model_output_tokens": 200,
+  "format_failed_calls": 0,
+  "transport_failed_calls": 0,
+  "fallback_calls": 0,
+  "sum_model_latency_s": 4.83597731590271,
+  "gold": "11",
+  "score": 0.0,
+  "question": "Sienna gave Bailey half of her suckers. Jen ate half and gave the rest to Molly. Molly ate 2 and gave the rest to Harmony. Harmony kept 3 and passed the remainder to Taylor. Taylor ate one and gave the last 5 to Callie. How many suckers did Jen eat?\nGive the final numeric answer."
+}

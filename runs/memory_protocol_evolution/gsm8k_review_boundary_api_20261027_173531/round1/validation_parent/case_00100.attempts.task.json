@@ -1,0 +1,149 @@
+{
+  "task_id": "gsm8k:train:seed42:V:00100",
+  "status": "completed",
+  "error": null,
+  "prediction": "3000",
+  "messages": [
+    {
+      "sender": "planner",
+      "content": "K:foam_per_pillow=5-3,total_foam_tons=3,pounds_per_ton=2000;G:pillows;P:total_foam_lbs=total_foam_tons*pounds_per_ton,pillows=total_foam_lbs/foam_per_pillow",
+      "receiver": "solver",
+      "round": 0,
+      "role": "assistant",
+      "prompt_tokens": 722,
+      "completion_tokens": 72,
+      "id": "ab8dbf8df1c8",
+      "ts": 1793094772.4219928,
+      "meta": {
+        "sender": "planner",
+        "receiver": "solver",
+        "message_id": "ab8dbf8df1c8",
+        "protocol_edge": "planner_to_solver",
+        "protocol_version": "CARD-0-gsm8k",
+        "protocol_hash": "eb2823227bf7889a5ca248376e410b4922fec80b12249ba4d10a3c8452604ed2",
+        "contract_hash": "ac09c03455d8af3a35273b605bb457591de11f0e22bded3325bbb626ee774caf",
+        "fields": {
+          "K": "foam_per_pillow=5-3,total_foam_tons=3,pounds_per_ton=2000",
+          "G": "pillows",
+          "P": "total_foam_lbs=total_foam_tons*pounds_per_ton,pillows=total_foam_lbs/foam_per_pillow"
+        },
+        "communication_tokens": 72,
+        "communication_tokens_exact": true,
+        "attempt_count": 1,
+        "fallback": false,
+        "tokens_include_all_attempts": true,
+        "incoming_message_ids": []
+      }
+    },
+    {
+      "sender": "solver",
+      "content": "IR:foam_per_pillow=5-3=2,total_foam_lbs=3*2000=6000,pillows=6000/2=3000;R:3000",
+      "receiver": "verifier",
+      "round": 0,
+      "role": "assistant",
+      "prompt_tokens": 769,
+      "completion_tokens": 45,
+      "id": "6813c5504e6b",
+      "ts": 1793094773.6508307,
+      "meta": {
+        "sender": "solver",
+        "receiver": "verifier",
+        "message_id": "6813c5504e6b",
+        "protocol_edge": "solver_to_verifier",
+        "protocol_version": "CARD-0-gsm8k",
+        "protocol_hash": "eb2823227bf7889a5ca248376e410b4922fec80b12249ba4d10a3c8452604ed2",
+        "contract_hash": "ac09c03455d8af3a35273b605bb457591de11f0e22bded3325bbb626ee774caf",
+        "fields": {
+          "IR": "foam_per_pillow=5-3=2,total_foam_lbs=3*2000=6000,pillows=6000/2=3000",
+          "R": "3000"
+        },
+        "communication_tokens": 45,
+        "communication_tokens_exact": true,
+        "attempt_count": 1,
+        "fallback": false,
+        "tokens_include_all_attempts": true,
+        "incoming_message_ids": [
+          "ab8dbf8df1c8"
+        ]
+      }
+    },
+    {
+      "sender": "verifier",
+      "content": "CHK:ACCEPT",
+      "receiver": "solver",
+      "round": 0,
+      "role": "assistant",
+      "prompt_tokens": 1074,
+      "completion_tokens": 5,
+      "id": "347b70f5cd29",
+      "ts": 1793094774.7968028,
+      "meta": {
+        "sender": "verifier",
+        "receiver": "solver",
+        "message_id": "347b70f5cd29",
+        "protocol_edge": "verifier_to_solver",
+        "protocol_version": "CARD-0-gsm8k",
+        "protocol_hash": "eb2823227bf7889a5ca248376e410b4922fec80b12249ba4d10a3c8452604ed2",
+        "contract_hash": "ac09c03455d8af3a35273b605bb457591de11f0e22bded3325bbb626ee774caf",
+        "fields": {
+          "CHK": "ACCEPT"
+        },
+        "communication_tokens": 5,
+        "communication_tokens_exact": true,
+        "attempt_count": 1,
+        "fallback": false,
+        "tokens_include_all_attempts": true,
+        "incoming_message_ids": [
+          "6813c5504e6b"
+        ]
+      }
+    }
+  ],
+  "communication_tokens": 122,
+  "wall_time_s": 4.101215299917385,
+  "verified": true,
+  "revision_rounds": 0,
+  "model_calls": [
+    {
+      "role": "planner",
+      "attempt": 0,
+      "status": "delivered",
+      "error": "",
+      "raw_output": "K:foam_per_pillow=5-3,total_foam_tons=3,pounds_per_ton=2000;G:pillows;P:total_foam_lbs=total_foam_tons*pounds_per_ton,pillows=total_foam_lbs/foam_per_pillow",
+      "finish_reason": "stop",
+      "output_tokens": 72,
+      "usage_available": true
+    },
+    {
+      "role": "solver",
+      "attempt": 0,
+      "status": "delivered",
+      "error": "",
+      "raw_output": "IR:foam_per_pillow=5-3=2,total_foam_lbs=3*2000=6000,pillows=6000/2=3000;R:3000",
+      "finish_reason": "stop",
+      "output_tokens": 45,
+      "usage_available": true
+    },
+    {
+      "role": "verifier",
+      "attempt": 0,
+      "status": "delivered",
+      "error": "",
+      "raw_output": "CHK:ACCEPT",
+      "finish_reason": "stop",
+      "output_tokens": 5,
+      "usage_available": true
+    }
+  ],
+  "failed_attempts": [],
+  "calls": 3,
+  "usage_complete": true,
+  "known_input_tokens": 2565,
+  "known_output_tokens": 122,
+  "model_input_tokens": 2565,
+  "model_output_tokens": 122,
+  "format_failed_calls": 0,
+  "transport_failed_calls": 0,
+  "fallback_calls": 0,
+  "sum_model_latency_s": 3.9958200454711914
+}

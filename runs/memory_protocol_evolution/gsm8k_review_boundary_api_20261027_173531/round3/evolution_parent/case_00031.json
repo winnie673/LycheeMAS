@@ -1,0 +1,152 @@
+{
+  "task_id": "gsm8k:train:seed42:G3:00031",
+  "status": "completed",
+  "error": null,
+  "prediction": "20",
+  "messages": [
+    {
+      "sender": "planner",
+      "content": "G:December_savings;K:jan_jul_rate=10,aug_nov_rate=15,total_goal=150;P:jan_jul=7*10,aug_nov=4*15,December_savings=total_goal-jan_jul-aug_nov",
+      "receiver": "solver",
+      "round": 0,
+      "role": "assistant",
+      "prompt_tokens": 753,
+      "completion_tokens": 63,
+      "id": "f764efe95b48",
+      "ts": 1793098098.0391865,
+      "meta": {
+        "sender": "planner",
+        "receiver": "solver",
+        "message_id": "f764efe95b48",
+        "protocol_edge": "planner_to_solver",
+        "protocol_version": "CARD-2-gsm8k",
+        "protocol_hash": "c152278e4a24181b874bd88cbf3adef79479b79f6539931bcd89721fa5a8a7a9",
+        "contract_hash": "ac09c03455d8af3a35273b605bb457591de11f0e22bded3325bbb626ee774caf",
+        "fields": {
+          "G": "December_savings",
+          "K": "jan_jul_rate=10,aug_nov_rate=15,total_goal=150",
+          "P": "jan_jul=7*10,aug_nov=4*15,December_savings=total_goal-jan_jul-aug_nov"
+        },
+        "communication_tokens": 63,
+        "communication_tokens_exact": true,
+        "attempt_count": 1,
+        "fallback": false,
+        "tokens_include_all_attempts": true,
+        "incoming_message_ids": []
+      }
+    },
+    {
+      "sender": "solver",
+      "content": "IR:jan_jul=7*10=70,aug_nov=4*15=60,december=150-70-60=20;R:20",
+      "receiver": "verifier",
+      "round": 0,
+      "role": "assistant",
+      "prompt_tokens": 759,
+      "completion_tokens": 36,
+      "id": "a5679bbec17e",
+      "ts": 1793098099.5984807,
+      "meta": {
+        "sender": "solver",
+        "receiver": "verifier",
+        "message_id": "a5679bbec17e",
+        "protocol_edge": "solver_to_verifier",
+        "protocol_version": "CARD-2-gsm8k",
+        "protocol_hash": "c152278e4a24181b874bd88cbf3adef79479b79f6539931bcd89721fa5a8a7a9",
+        "contract_hash": "ac09c03455d8af3a35273b605bb457591de11f0e22bded3325bbb626ee774caf",
+        "fields": {
+          "IR": "jan_jul=7*10=70,aug_nov=4*15=60,december=150-70-60=20",
+          "R": "20"
+        },
+        "communication_tokens": 36,
+        "communication_tokens_exact": true,
+        "attempt_count": 1,
+        "fallback": false,
+        "tokens_include_all_attempts": true,
+        "incoming_message_ids": [
+          "f764efe95b48"
+        ]
+      }
+    },
+    {
+      "sender": "verifier",
+      "content": "CHK:ACCEPT",
+      "receiver": "solver",
+      "round": 0,
+      "role": "assistant",
+      "prompt_tokens": 1064,
+      "completion_tokens": 5,
+      "id": "ffd78f4580a2",
+      "ts": 1793098100.8220527,
+      "meta": {
+        "sender": "verifier",
+        "receiver": "solver",
+        "message_id": "ffd78f4580a2",
+        "protocol_edge": "verifier_to_solver",
+        "protocol_version": "CARD-2-gsm8k",
+        "protocol_hash": "c152278e4a24181b874bd88cbf3adef79479b79f6539931bcd89721fa5a8a7a9",
+        "contract_hash": "ac09c03455d8af3a35273b605bb457591de11f0e22bded3325bbb626ee774caf",
+        "fields": {
+          "CHK": "ACCEPT"
+        },
+        "communication_tokens": 5,
+        "communication_tokens_exact": true,
+        "attempt_count": 1,
+        "fallback": false,
+        "tokens_include_all_attempts": true,
+        "incoming_message_ids": [
+          "a5679bbec17e"
+        ]
+      }
+    }
+  ],
+  "communication_tokens": 104,
+  "wall_time_s": 4.147813800023869,
+  "verified": true,
+  "revision_rounds": 0,
+  "model_calls": [
+    {
+      "role": "planner",
+      "attempt": 0,
+      "status": "delivered",
+      "error": "",
+      "raw_output": "G:December_savings;K:jan_jul_rate=10,aug_nov_rate=15,total_goal=150;P:jan_jul=7*10,aug_nov=4*15,December_savings=total_goal-jan_jul-aug_nov",
+      "finish_reason": "stop",
+      "output_tokens": 63,
+      "usage_available": true
+    },
+    {
+      "role": "solver",
+      "attempt": 0,
+      "status": "delivered",
+      "error": "",
+      "raw_output": "IR:jan_jul=7*10=70,aug_nov=4*15=60,december=150-70-60=20;R:20",
+      "finish_reason": "stop",
+      "output_tokens": 36,
+      "usage_available": true
+    },
+    {
+      "role": "verifier",
+      "attempt": 0,
+      "status": "delivered",
+      "error": "",
+      "raw_output": "CHK:ACCEPT",
+      "finish_reason": "stop",
+      "output_tokens": 5,
+      "usage_available": true
+    }
+  ],
+  "failed_attempts": [],
+  "calls": 3,
+  "usage_complete": true,
+  "known_input_tokens": 2576,
+  "known_output_tokens": 104,
+  "model_input_tokens": 2576,
+  "model_output_tokens": 104,
+  "format_failed_calls": 0,
+  "transport_failed_calls": 0,
+  "fallback_calls": 0,
+  "sum_model_latency_s": 4.0373663902282715,
+  "gold": "20",
+  "score": 1.0,
+  "question": "Roe saved $10 per month from January to July and saved $15 per month from August to November. How much should she save in December so she will have a total savings of $150 in the year?\nGive the final numeric answer."
+}

@@ -1,0 +1,152 @@
+{
+  "task_id": "gsm8k:train:seed42:V:00097",
+  "status": "completed",
+  "error": null,
+  "prediction": "17",
+  "messages": [
+    {
+      "sender": "planner",
+      "content": "K:day1_gina=2,day1_gina_is_3_less_than_tom,day2_tom=6,day2_gina_is_2_less_than_tom;G:total_goals_both_days;P:day1_tom=day1_gina+3,day2_gina=day2_tom-2,total=day1_gina+day1_tom+day2_gina+day2_tom",
+      "receiver": "solver",
+      "round": 0,
+      "role": "assistant",
+      "prompt_tokens": 765,
+      "completion_tokens": 102,
+      "id": "3491a2417ebc",
+      "ts": 1793099844.7611973,
+      "meta": {
+        "sender": "planner",
+        "receiver": "solver",
+        "message_id": "3491a2417ebc",
+        "protocol_edge": "planner_to_solver",
+        "protocol_version": "CARD-2-gsm8k",
+        "protocol_hash": "c152278e4a24181b874bd88cbf3adef79479b79f6539931bcd89721fa5a8a7a9",
+        "contract_hash": "ac09c03455d8af3a35273b605bb457591de11f0e22bded3325bbb626ee774caf",
+        "fields": {
+          "K": "day1_gina=2,day1_gina_is_3_less_than_tom,day2_tom=6,day2_gina_is_2_less_than_tom",
+          "G": "total_goals_both_days",
+          "P": "day1_tom=day1_gina+3,day2_gina=day2_tom-2,total=day1_gina+day1_tom+day2_gina+day2_tom"
+        },
+        "communication_tokens": 102,
+        "communication_tokens_exact": true,
+        "attempt_count": 1,
+        "fallback": false,
+        "tokens_include_all_attempts": true,
+        "incoming_message_ids": []
+      }
+    },
+    {
+      "sender": "solver",
+      "content": "IR:day1_tom=2+3=5,day2_gina=6-2=4,total=2+5+4+6=17;R:17",
+      "receiver": "verifier",
+      "round": 0,
+      "role": "assistant",
+      "prompt_tokens": 810,
+      "completion_tokens": 39,
+      "id": "eb1b25dfcb43",
+      "ts": 1793099845.8409965,
+      "meta": {
+        "sender": "solver",
+        "receiver": "verifier",
+        "message_id": "eb1b25dfcb43",
+        "protocol_edge": "solver_to_verifier",
+        "protocol_version": "CARD-2-gsm8k",
+        "protocol_hash": "c152278e4a24181b874bd88cbf3adef79479b79f6539931bcd89721fa5a8a7a9",
+        "contract_hash": "ac09c03455d8af3a35273b605bb457591de11f0e22bded3325bbb626ee774caf",
+        "fields": {
+          "IR": "day1_tom=2+3=5,day2_gina=6-2=4,total=2+5+4+6=17",
+          "R": "17"
+        },
+        "communication_tokens": 39,
+        "communication_tokens_exact": true,
+        "attempt_count": 1,
+        "fallback": false,
+        "tokens_include_all_attempts": true,
+        "incoming_message_ids": [
+          "3491a2417ebc"
+        ]
+      }
+    },
+    {
+      "sender": "verifier",
+      "content": "CHK:ACCEPT",
+      "receiver": "solver",
+      "round": 0,
+      "role": "assistant",
+      "prompt_tokens": 1079,
+      "completion_tokens": 5,
+      "id": "c8e21fdc34bf",
+      "ts": 1793099846.8639228,
+      "meta": {
+        "sender": "verifier",
+        "receiver": "solver",
+        "message_id": "c8e21fdc34bf",
+        "protocol_edge": "verifier_to_solver",
+        "protocol_version": "CARD-2-gsm8k",
+        "protocol_hash": "c152278e4a24181b874bd88cbf3adef79479b79f6539931bcd89721fa5a8a7a9",
+        "contract_hash": "ac09c03455d8af3a35273b605bb457591de11f0e22bded3325bbb626ee774caf",
+        "fields": {
+          "CHK": "ACCEPT"
+        },
+        "communication_tokens": 5,
+        "communication_tokens_exact": true,
+        "attempt_count": 1,
+        "fallback": false,
+        "tokens_include_all_attempts": true,
+        "incoming_message_ids": [
+          "eb1b25dfcb43"
+        ]
+      }
+    }
+  ],
+  "communication_tokens": 146,
+  "wall_time_s": 3.4586743999971077,
+  "verified": true,
+  "revision_rounds": 0,
+  "model_calls": [
+    {
+      "role": "planner",
+      "attempt": 0,
+      "status": "delivered",
+      "error": "",
+      "raw_output": "K:day1_gina=2,day1_gina_is_3_less_than_tom,day2_tom=6,day2_gina_is_2_less_than_tom;G:total_goals_both_days;P:day1_tom=day1_gina+3,day2_gina=day2_tom-2,total=day1_gina+day1_tom+day2_gina+day2_tom",
+      "finish_reason": "stop",
+      "output_tokens": 102,
+      "usage_available": true
+    },
+    {
+      "role": "solver",
+      "attempt": 0,
+      "status": "delivered",
+      "error": "",
+      "raw_output": "IR:day1_tom=2+3=5,day2_gina=6-2=4,total=2+5+4+6=17;R:17",
+      "finish_reason": "stop",
+      "output_tokens": 39,
+      "usage_available": true
+    },
+    {
+      "role": "verifier",
+      "attempt": 0,
+      "status": "delivered",
+      "error": "",
+      "raw_output": "CHK:ACCEPT",
+      "finish_reason": "stop",
+      "output_tokens": 5,
+      "usage_available": true
+    }
+  ],
+  "failed_attempts": [],
+  "calls": 3,
+  "usage_complete": true,
+  "known_input_tokens": 2654,
+  "known_output_tokens": 146,
+  "model_input_tokens": 2654,
+  "model_output_tokens": 146,
+  "format_failed_calls": 0,
+  "transport_failed_calls": 0,
+  "fallback_calls": 0,
+  "sum_model_latency_s": 3.404812812805176,
+  "gold": "17",
+  "score": 1.0,
+  "question": "Gina and Tom were playing football. On the first day, Gina scored two goals, which was three less than Tom. On the second day, Gina scored two goals less than Tom who scored six goals. How many goals did Gina and Tom score during these two days?\nGive the final numeric answer."
+}

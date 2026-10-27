@@ -1,0 +1,152 @@
+{
+  "task_id": "gsm8k:train:seed42:V:00183",
+  "status": "completed",
+  "error": null,
+  "prediction": "240",
+  "messages": [
+    {
+      "sender": "planner",
+      "content": "G:grill_run_minutes;K:burn_rate=15 coals per 20 min,bags=3,coals_per_bag=60;P:total_coals=bags*coals_per_bag,minutes=total_coals/15*20",
+      "receiver": "solver",
+      "round": 0,
+      "role": "assistant",
+      "prompt_tokens": 757,
+      "completion_tokens": 56,
+      "id": "5456b183927f",
+      "ts": 1793099066.5740213,
+      "meta": {
+        "sender": "planner",
+        "receiver": "solver",
+        "message_id": "5456b183927f",
+        "protocol_edge": "planner_to_solver",
+        "protocol_version": "CARD-2-gsm8k",
+        "protocol_hash": "c152278e4a24181b874bd88cbf3adef79479b79f6539931bcd89721fa5a8a7a9",
+        "contract_hash": "ac09c03455d8af3a35273b605bb457591de11f0e22bded3325bbb626ee774caf",
+        "fields": {
+          "G": "grill_run_minutes",
+          "K": "burn_rate=15 coals per 20 min,bags=3,coals_per_bag=60",
+          "P": "total_coals=bags*coals_per_bag,minutes=total_coals/15*20"
+        },
+        "communication_tokens": 56,
+        "communication_tokens_exact": true,
+        "attempt_count": 1,
+        "fallback": false,
+        "tokens_include_all_attempts": true,
+        "incoming_message_ids": []
+      }
+    },
+    {
+      "sender": "solver",
+      "content": "IR:total_coals=3*60=180,minutes=180/15*20=240;R:240",
+      "receiver": "verifier",
+      "round": 0,
+      "role": "assistant",
+      "prompt_tokens": 756,
+      "completion_tokens": 25,
+      "id": "de9f2bef76b5",
+      "ts": 1793099067.6866016,
+      "meta": {
+        "sender": "solver",
+        "receiver": "verifier",
+        "message_id": "de9f2bef76b5",
+        "protocol_edge": "solver_to_verifier",
+        "protocol_version": "CARD-2-gsm8k",
+        "protocol_hash": "c152278e4a24181b874bd88cbf3adef79479b79f6539931bcd89721fa5a8a7a9",
+        "contract_hash": "ac09c03455d8af3a35273b605bb457591de11f0e22bded3325bbb626ee774caf",
+        "fields": {
+          "IR": "total_coals=3*60=180,minutes=180/15*20=240",
+          "R": "240"
+        },
+        "communication_tokens": 25,
+        "communication_tokens_exact": true,
+        "attempt_count": 1,
+        "fallback": false,
+        "tokens_include_all_attempts": true,
+        "incoming_message_ids": [
+          "5456b183927f"
+        ]
+      }
+    },
+    {
+      "sender": "verifier",
+      "content": "CHK:ACCEPT",
+      "receiver": "solver",
+      "round": 0,
+      "role": "assistant",
+      "prompt_tokens": 1057,
+      "completion_tokens": 5,
+      "id": "6f5834c7b9ad",
+      "ts": 1793099068.7433524,
+      "meta": {
+        "sender": "verifier",
+        "receiver": "solver",
+        "message_id": "6f5834c7b9ad",
+        "protocol_edge": "verifier_to_solver",
+        "protocol_version": "CARD-2-gsm8k",
+        "protocol_hash": "c152278e4a24181b874bd88cbf3adef79479b79f6539931bcd89721fa5a8a7a9",
+        "contract_hash": "ac09c03455d8af3a35273b605bb457591de11f0e22bded3325bbb626ee774caf",
+        "fields": {
+          "CHK": "ACCEPT"
+        },
+        "communication_tokens": 5,
+        "communication_tokens_exact": true,
+        "attempt_count": 1,
+        "fallback": false,
+        "tokens_include_all_attempts": true,
+        "incoming_message_ids": [
+          "de9f2bef76b5"
+        ]
+      }
+    }
+  ],
+  "communication_tokens": 86,
+  "wall_time_s": 3.4517696000402793,
+  "verified": true,
+  "revision_rounds": 0,
+  "model_calls": [
+    {
+      "role": "planner",
+      "attempt": 0,
+      "status": "delivered",
+      "error": "",
+      "raw_output": "G:grill_run_minutes;K:burn_rate=15 coals per 20 min,bags=3,coals_per_bag=60;P:total_coals=bags*coals_per_bag,minutes=total_coals/15*20",
+      "finish_reason": "stop",
+      "output_tokens": 56,
+      "usage_available": true
+    },
+    {
+      "role": "solver",
+      "attempt": 0,
+      "status": "delivered",
+      "error": "",
+      "raw_output": "IR:total_coals=3*60=180,minutes=180/15*20=240;R:240",
+      "finish_reason": "stop",
+      "output_tokens": 25,
+      "usage_available": true
+    },
+    {
+      "role": "verifier",
+      "attempt": 0,
+      "status": "delivered",
+      "error": "",
+      "raw_output": "CHK:ACCEPT",
+      "finish_reason": "stop",
+      "output_tokens": 5,
+      "usage_available": true
+    }
+  ],
+  "failed_attempts": [],
+  "calls": 3,
+  "usage_complete": true,
+  "known_input_tokens": 2570,
+  "known_output_tokens": 86,
+  "model_input_tokens": 2570,
+  "model_output_tokens": 86,
+  "format_failed_calls": 0,
+  "transport_failed_calls": 0,
+  "fallback_calls": 0,
+  "sum_model_latency_s": 3.3326544761657715,
+  "gold": "240",
+  "score": 1.0,
+  "question": "A charcoal grill burns fifteen coals to ash every twenty minutes of grilling. The grill ran for long enough to burn three bags of coals. Each bag of coal contains 60 coals. How long did the grill run?\nGive the final numeric answer."
+}

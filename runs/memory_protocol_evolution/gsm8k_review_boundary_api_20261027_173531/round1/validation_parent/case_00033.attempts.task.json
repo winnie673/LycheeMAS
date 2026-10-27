@@ -1,0 +1,149 @@
+{
+  "task_id": "gsm8k:train:seed42:V:00033",
+  "status": "completed",
+  "error": null,
+  "prediction": "5",
+  "messages": [
+    {
+      "sender": "planner",
+      "content": "K:pants_price=5,shorts_price=3,shirt_price=4,pants_sold=3,shorts_sold=5,new_shirt_cost=10,new_shirts_bought=2,leftover=30;G:shirts_sold;P:earned=pants_price*pants_sold+shorts_price*shorts_sold+shirt_price*shirts_sold,spent=new_shirt_cost*new_shirts_bought,earned-spent=leftover",
+      "receiver": "solver",
+      "round": 0,
+      "role": "assistant",
+      "prompt_tokens": 777,
+      "completion_tokens": 109,
+      "id": "21ff58da0bd2",
+      "ts": 1793094499.2784085,
+      "meta": {
+        "sender": "planner",
+        "receiver": "solver",
+        "message_id": "21ff58da0bd2",
+        "protocol_edge": "planner_to_solver",
+        "protocol_version": "CARD-0-gsm8k",
+        "protocol_hash": "eb2823227bf7889a5ca248376e410b4922fec80b12249ba4d10a3c8452604ed2",
+        "contract_hash": "ac09c03455d8af3a35273b605bb457591de11f0e22bded3325bbb626ee774caf",
+        "fields": {
+          "K": "pants_price=5,shorts_price=3,shirt_price=4,pants_sold=3,shorts_sold=5,new_shirt_cost=10,new_shirts_bought=2,leftover=30",
+          "G": "shirts_sold",
+          "P": "earned=pants_price*pants_sold+shorts_price*shorts_sold+shirt_price*shirts_sold,spent=new_shirt_cost*new_shirts_bought,earned-spent=leftover"
+        },
+        "communication_tokens": 109,
+        "communication_tokens_exact": true,
+        "attempt_count": 1,
+        "fallback": false,
+        "tokens_include_all_attempts": true,
+        "incoming_message_ids": []
+      }
+    },
+    {
+      "sender": "solver",
+      "content": "IR:earned_before_shirts=5*3+3*5=30,spent=10*2=20,shirt_revenue=30+20-30=20,shirts_sold=20/4=5;R:5",
+      "receiver": "verifier",
+      "round": 0,
+      "role": "assistant",
+      "prompt_tokens": 861,
+      "completion_tokens": 55,
+      "id": "4991b9b60758",
+      "ts": 1793094500.4568691,
+      "meta": {
+        "sender": "solver",
+        "receiver": "verifier",
+        "message_id": "4991b9b60758",
+        "protocol_edge": "solver_to_verifier",
+        "protocol_version": "CARD-0-gsm8k",
+        "protocol_hash": "eb2823227bf7889a5ca248376e410b4922fec80b12249ba4d10a3c8452604ed2",
+        "contract_hash": "ac09c03455d8af3a35273b605bb457591de11f0e22bded3325bbb626ee774caf",
+        "fields": {
+          "IR": "earned_before_shirts=5*3+3*5=30,spent=10*2=20,shirt_revenue=30+20-30=20,shirts_sold=20/4=5",
+          "R": "5"
+        },
+        "communication_tokens": 55,
+        "communication_tokens_exact": true,
+        "attempt_count": 1,
+        "fallback": false,
+        "tokens_include_all_attempts": true,
+        "incoming_message_ids": [
+          "21ff58da0bd2"
+        ]
+      }
+    },
+    {
+      "sender": "verifier",
+      "content": "CHK:ACCEPT",
+      "receiver": "solver",
+      "round": 0,
+      "role": "assistant",
+      "prompt_tokens": 1139,
+      "completion_tokens": 5,
+      "id": "91501958bd11",
+      "ts": 1793094501.4729242,
+      "meta": {
+        "sender": "verifier",
+        "receiver": "solver",
+        "message_id": "91501958bd11",
+        "protocol_edge": "verifier_to_solver",
+        "protocol_version": "CARD-0-gsm8k",
+        "protocol_hash": "eb2823227bf7889a5ca248376e410b4922fec80b12249ba4d10a3c8452604ed2",
+        "contract_hash": "ac09c03455d8af3a35273b605bb457591de11f0e22bded3325bbb626ee774caf",
+        "fields": {
+          "CHK": "ACCEPT"
+        },
+        "communication_tokens": 5,
+        "communication_tokens_exact": true,
+        "attempt_count": 1,
+        "fallback": false,
+        "tokens_include_all_attempts": true,
+        "incoming_message_ids": [
+          "4991b9b60758"
+        ]
+      }
+    }
+  ],
+  "communication_tokens": 169,
+  "wall_time_s": 3.5979232999961823,
+  "verified": true,
+  "revision_rounds": 0,
+  "model_calls": [
+    {
+      "role": "planner",
+      "attempt": 0,
+      "status": "delivered",
+      "error": "",
+      "raw_output": "K:pants_price=5,shorts_price=3,shirt_price=4,pants_sold=3,shorts_sold=5,new_shirt_cost=10,new_shirts_bought=2,leftover=30;G:shirts_sold;P:earned=pants_price*pants_sold+shorts_price*shorts_sold+shirt_price*shirts_sold,spent=new_shirt_cost*new_shirts_bought,earned-spent=leftover",
+      "finish_reason": "stop",
+      "output_tokens": 109,
+      "usage_available": true
+    },
+    {
+      "role": "solver",
+      "attempt": 0,
+      "status": "delivered",
+      "error": "",
+      "raw_output": "IR:earned_before_shirts=5*3+3*5=30,spent=10*2=20,shirt_revenue=30+20-30=20,shirts_sold=20/4=5;R:5",
+      "finish_reason": "stop",
+      "output_tokens": 55,
+      "usage_available": true
+    },
+    {
+      "role": "verifier",
+      "attempt": 0,
+      "status": "delivered",
+      "error": "",
+      "raw_output": "CHK:ACCEPT",
+      "finish_reason": "stop",
+      "output_tokens": 5,
+      "usage_available": true
+    }
+  ],
+  "failed_attempts": [],
+  "calls": 3,
+  "usage_complete": true,
+  "known_input_tokens": 2777,
+  "known_output_tokens": 169,
+  "model_input_tokens": 2777,
+  "model_output_tokens": 169,
+  "format_failed_calls": 0,
+  "transport_failed_calls": 0,
+  "fallback_calls": 0,
+  "sum_model_latency_s": 3.4602956771850586
+}

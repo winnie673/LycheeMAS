@@ -1,0 +1,95 @@
+{
+  "task_id": "gsm8k:test:seed42:T:00109",
+  "mode": "nl",
+  "benchmark": "gsm8k",
+  "status": "completed",
+  "error": null,
+  "prediction": "28.00",
+  "gold": "28",
+  "wall_time_s": 3.4797010999172926,
+  "communication_tokens": 133,
+  "communication_tokens_exact": true,
+  "revision_rounds": 0,
+  "verification_decision": "ACCEPT",
+  "verified": true,
+  "messages": [
+    {
+      "sender": "planner",
+      "content": "Goal: find the net cost for 10 gallons after cashback.\n\nPlan: Compute the base cost at $3.00 per gallon for 10 gallons. Compute the cashback at $0.20 per gallon for 10 gallons. Subtract the cashback from the base cost.\n\nConstraints: Use the given prices and quantity only; report the final dollar amount.",
+      "receiver": "solver",
+      "round": 0,
+      "role": "assistant",
+      "prompt_tokens": 211,
+      "completion_tokens": 73,
+      "id": "04c0ede3e491",
+      "ts": 1793101137.0427637,
+      "meta": {
+        "fields": {},
+        "communication_tokens": 73,
+        "communication_tokens_exact": true,
+        "attempt_count": 1,
+        "fallback": false,
+        "tokens_include_all_attempts": true,
+        "incoming_message_ids": []
+      }
+    },
+    {
+      "sender": "solver",
+      "content": "Base cost: 10 × $3.00 = $30.00. Cashback: 10 × $0.20 = $2.00. Net cost: $30.00 − $2.00 = $28.00.\n\n\\boxed{28.00}",
+      "receiver": "verifier",
+      "round": 0,
+      "role": "assistant",
+      "prompt_tokens": 296,
+      "completion_tokens": 58,
+      "id": "32d8a4934849",
+      "ts": 1793101138.288921,
+      "meta": {
+        "fields": {
+          "R": "28.00"
+        },
+        "communication_tokens": 58,
+        "communication_tokens_exact": true,
+        "attempt_count": 1,
+        "fallback": false,
+        "tokens_include_all_attempts": true,
+        "incoming_message_ids": [
+          "04c0ede3e491"
+        ]
+      }
+    },
+    {
+      "sender": "verifier",
+      "content": "ACCEPT",
+      "receiver": "solver",
+      "round": 0,
+      "role": "assistant",
+      "prompt_tokens": 658,
+      "completion_tokens": 2,
+      "id": "439ddf1604bc",
+      "ts": 1793101139.147903,
+      "meta": {
+        "fields": {
+          "CHK": "ACCEPT"
+        },
+        "communication_tokens": 2,
+        "communication_tokens_exact": true,
+        "attempt_count": 1,
+        "fallback": false,
+        "tokens_include_all_attempts": true,
+        "incoming_message_ids": [
+          "32d8a4934849"
+        ]
+      }
+    }
+  ],
+  "calls": 3,
+  "usage_complete": true,
+  "known_input_tokens": 1165,
+  "known_output_tokens": 133,
+  "model_input_tokens": 1165,
+  "model_output_tokens": 133,
+  "format_failed_calls": 0,
+  "transport_failed_calls": 0,
+  "fallback_calls": 0,
+  "sum_model_latency_s": 3.401399850845337
+}

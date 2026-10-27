@@ -1,0 +1,152 @@
+{
+  "task_id": "gsm8k:train:seed42:V:00191",
+  "status": "completed",
+  "error": null,
+  "prediction": "8",
+  "messages": [
+    {
+      "sender": "planner",
+      "content": "G:oatmeal_raisin_cookies;K:students=40,cookies_per_student=2,oatmeal_fraction=10%;P:total_cookies=students*cookies_per_student,oatmeal_cookies=total_cookies*oatmeal_fraction",
+      "receiver": "solver",
+      "round": 0,
+      "role": "assistant",
+      "prompt_tokens": 760,
+      "completion_tokens": 56,
+      "id": "17ded0a0fe9c",
+      "ts": 1793100216.550965,
+      "meta": {
+        "sender": "planner",
+        "receiver": "solver",
+        "message_id": "17ded0a0fe9c",
+        "protocol_edge": "planner_to_solver",
+        "protocol_version": "CARD-2-gsm8k",
+        "protocol_hash": "c152278e4a24181b874bd88cbf3adef79479b79f6539931bcd89721fa5a8a7a9",
+        "contract_hash": "ac09c03455d8af3a35273b605bb457591de11f0e22bded3325bbb626ee774caf",
+        "fields": {
+          "G": "oatmeal_raisin_cookies",
+          "K": "students=40,cookies_per_student=2,oatmeal_fraction=10%",
+          "P": "total_cookies=students*cookies_per_student,oatmeal_cookies=total_cookies*oatmeal_fraction"
+        },
+        "communication_tokens": 56,
+        "communication_tokens_exact": true,
+        "attempt_count": 1,
+        "fallback": false,
+        "tokens_include_all_attempts": true,
+        "incoming_message_ids": []
+      }
+    },
+    {
+      "sender": "solver",
+      "content": "IR:total=40*2=80,oatmeal=0.1*80=8;R:8",
+      "receiver": "verifier",
+      "round": 0,
+      "role": "assistant",
+      "prompt_tokens": 759,
+      "completion_tokens": 24,
+      "id": "f9dfcf947555",
+      "ts": 1793100217.7591295,
+      "meta": {
+        "sender": "solver",
+        "receiver": "verifier",
+        "message_id": "f9dfcf947555",
+        "protocol_edge": "solver_to_verifier",
+        "protocol_version": "CARD-2-gsm8k",
+        "protocol_hash": "c152278e4a24181b874bd88cbf3adef79479b79f6539931bcd89721fa5a8a7a9",
+        "contract_hash": "ac09c03455d8af3a35273b605bb457591de11f0e22bded3325bbb626ee774caf",
+        "fields": {
+          "IR": "total=40*2=80,oatmeal=0.1*80=8",
+          "R": "8"
+        },
+        "communication_tokens": 24,
+        "communication_tokens_exact": true,
+        "attempt_count": 1,
+        "fallback": false,
+        "tokens_include_all_attempts": true,
+        "incoming_message_ids": [
+          "17ded0a0fe9c"
+        ]
+      }
+    },
+    {
+      "sender": "verifier",
+      "content": "CHK:ACCEPT",
+      "receiver": "solver",
+      "round": 0,
+      "role": "assistant",
+      "prompt_tokens": 1059,
+      "completion_tokens": 5,
+      "id": "168bb8a794dc",
+      "ts": 1793100218.5755599,
+      "meta": {
+        "sender": "verifier",
+        "receiver": "solver",
+        "message_id": "168bb8a794dc",
+        "protocol_edge": "verifier_to_solver",
+        "protocol_version": "CARD-2-gsm8k",
+        "protocol_hash": "c152278e4a24181b874bd88cbf3adef79479b79f6539931bcd89721fa5a8a7a9",
+        "contract_hash": "ac09c03455d8af3a35273b605bb457591de11f0e22bded3325bbb626ee774caf",
+        "fields": {
+          "CHK": "ACCEPT"
+        },
+        "communication_tokens": 5,
+        "communication_tokens_exact": true,
+        "attempt_count": 1,
+        "fallback": false,
+        "tokens_include_all_attempts": true,
+        "incoming_message_ids": [
+          "f9dfcf947555"
+        ]
+      }
+    }
+  ],
+  "communication_tokens": 85,
+  "wall_time_s": 3.0701581001048908,
+  "verified": true,
+  "revision_rounds": 0,
+  "model_calls": [
+    {
+      "role": "planner",
+      "attempt": 0,
+      "status": "delivered",
+      "error": "",
+      "raw_output": "G:oatmeal_raisin_cookies;K:students=40,cookies_per_student=2,oatmeal_fraction=10%;P:total_cookies=students*cookies_per_student,oatmeal_cookies=total_cookies*oatmeal_fraction",
+      "finish_reason": "stop",
+      "output_tokens": 56,
+      "usage_available": true
+    },
+    {
+      "role": "solver",
+      "attempt": 0,
+      "status": "delivered",
+      "error": "",
+      "raw_output": "IR:total=40*2=80,oatmeal=0.1*80=8;R:8",
+      "finish_reason": "stop",
+      "output_tokens": 24,
+      "usage_available": true
+    },
+    {
+      "role": "verifier",
+      "attempt": 0,
+      "status": "delivered",
+      "error": "",
+      "raw_output": "CHK:ACCEPT",
+      "finish_reason": "stop",
+      "output_tokens": 5,
+      "usage_available": true
+    }
+  ],
+  "failed_attempts": [],
+  "calls": 3,
+  "usage_complete": true,
+  "known_input_tokens": 2578,
+  "known_output_tokens": 85,
+  "model_input_tokens": 2578,
+  "model_output_tokens": 85,
+  "format_failed_calls": 0,
+  "transport_failed_calls": 0,
+  "fallback_calls": 0,
+  "sum_model_latency_s": 2.9661128520965576,
+  "gold": "8",
+  "score": 1.0,
+  "question": "Giorgio plans to make cookies for his class. There are 40 students and he plans to make 2 cookies per student. If 10% of his classmates want oatmeal raisin, then how many oatmeal raisin cookies will Giorgio make?\nGive the final numeric answer."
+}

@@ -1,0 +1,153 @@
+{
+  "task_id": "gsm8k:train:seed42:V:00070",
+  "status": "completed",
+  "error": null,
+  "prediction": "6",
+  "messages": [
+    {
+      "sender": "planner",
+      "content": "K:magnet=3,stuffed_count=2;G:single_stuffed_cost;P:stuffed_total=4*magnet,single=stuffed_total/stuffed_count;NL:magnet is one quarter of the combined price of the two stuffed animals",
+      "receiver": "solver",
+      "round": 0,
+      "role": "assistant",
+      "prompt_tokens": 795,
+      "completion_tokens": 53,
+      "id": "21293fde798e",
+      "ts": 1793099392.9033275,
+      "meta": {
+        "sender": "planner",
+        "receiver": "solver",
+        "message_id": "21293fde798e",
+        "protocol_edge": "planner_to_solver",
+        "protocol_version": "CARD-2-gsm8k",
+        "protocol_hash": "c152278e4a24181b874bd88cbf3adef79479b79f6539931bcd89721fa5a8a7a9",
+        "contract_hash": "ac09c03455d8af3a35273b605bb457591de11f0e22bded3325bbb626ee774caf",
+        "fields": {
+          "K": "magnet=3,stuffed_count=2",
+          "G": "single_stuffed_cost",
+          "P": "stuffed_total=4*magnet,single=stuffed_total/stuffed_count",
+          "NL": "magnet is one quarter of the combined price of the two stuffed animals"
+        },
+        "communication_tokens": 53,
+        "communication_tokens_exact": true,
+        "attempt_count": 1,
+        "fallback": false,
+        "tokens_include_all_attempts": true,
+        "incoming_message_ids": []
+      }
+    },
+    {
+      "sender": "solver",
+      "content": "IR:magnet=3,stuffed_total=4*3=12,single=12/2=6;R:6",
+      "receiver": "verifier",
+      "round": 0,
+      "role": "assistant",
+      "prompt_tokens": 791,
+      "completion_tokens": 27,
+      "id": "e6ac6b8725b6",
+      "ts": 1793099394.1052845,
+      "meta": {
+        "sender": "solver",
+        "receiver": "verifier",
+        "message_id": "e6ac6b8725b6",
+        "protocol_edge": "solver_to_verifier",
+        "protocol_version": "CARD-2-gsm8k",
+        "protocol_hash": "c152278e4a24181b874bd88cbf3adef79479b79f6539931bcd89721fa5a8a7a9",
+        "contract_hash": "ac09c03455d8af3a35273b605bb457591de11f0e22bded3325bbb626ee774caf",
+        "fields": {
+          "IR": "magnet=3,stuffed_total=4*3=12,single=12/2=6",
+          "R": "6"
+        },
+        "communication_tokens": 27,
+        "communication_tokens_exact": true,
+        "attempt_count": 1,
+        "fallback": false,
+        "tokens_include_all_attempts": true,
+        "incoming_message_ids": [
+          "21293fde798e"
+        ]
+      }
+    },
+    {
+      "sender": "verifier",
+      "content": "CHK:ACCEPT",
+      "receiver": "solver",
+      "round": 0,
+      "role": "assistant",
+      "prompt_tokens": 1097,
+      "completion_tokens": 5,
+      "id": "390b05c3a158",
+      "ts": 1793099395.3384578,
+      "meta": {
+        "sender": "verifier",
+        "receiver": "solver",
+        "message_id": "390b05c3a158",
+        "protocol_edge": "verifier_to_solver",
+        "protocol_version": "CARD-2-gsm8k",
+        "protocol_hash": "c152278e4a24181b874bd88cbf3adef79479b79f6539931bcd89721fa5a8a7a9",
+        "contract_hash": "ac09c03455d8af3a35273b605bb457591de11f0e22bded3325bbb626ee774caf",
+        "fields": {
+          "CHK": "ACCEPT"
+        },
+        "communication_tokens": 5,
+        "communication_tokens_exact": true,
+        "attempt_count": 1,
+        "fallback": false,
+        "tokens_include_all_attempts": true,
+        "incoming_message_ids": [
+          "e6ac6b8725b6"
+        ]
+      }
+    }
+  ],
+  "communication_tokens": 85,
+  "wall_time_s": 4.048251999891363,
+  "verified": true,
+  "revision_rounds": 0,
+  "model_calls": [
+    {
+      "role": "planner",
+      "attempt": 0,
+      "status": "delivered",
+      "error": "",
+      "raw_output": "K:magnet=3,stuffed_count=2;G:single_stuffed_cost;P:stuffed_total=4*magnet,single=stuffed_total/stuffed_count;NL:magnet is one quarter of the combined price of the two stuffed animals",
+      "finish_reason": "stop",
+      "output_tokens": 53,
+      "usage_available": true
+    },
+    {
+      "role": "solver",
+      "attempt": 0,
+      "status": "delivered",
+      "error": "",
+      "raw_output": "IR:magnet=3,stuffed_total=4*3=12,single=12/2=6;R:6",
+      "finish_reason": "stop",
+      "output_tokens": 27,
+      "usage_available": true
+    },
+    {
+      "role": "verifier",
+      "attempt": 0,
+      "status": "delivered",
+      "error": "",
+      "raw_output": "CHK:ACCEPT",
+      "finish_reason": "stop",
+      "output_tokens": 5,
+      "usage_available": true
+    }
+  ],
+  "failed_attempts": [],
+  "calls": 3,
+  "usage_complete": true,
+  "known_input_tokens": 2683,
+  "known_output_tokens": 85,
+  "model_input_tokens": 2683,
+  "model_output_tokens": 85,
+  "format_failed_calls": 0,
+  "transport_failed_calls": 0,
+  "fallback_calls": 0,
+  "sum_model_latency_s": 3.9810163974761963,
+  "gold": "6",
+  "score": 1.0,
+  "question": "At a garage sale, Tish bought 4 items: a red horseshoe magnet, two stuffed animals, and a large sticker which read, \"Why can't teachers solve their own math problems?\"  The magnet cost three times more than the sticker, but only one quarter the price of the two stuffed animals combined.  If the Magnet cost $3, how much, in dollars, did a single stuffed animal cost?\nGive the final numeric answer."
+}

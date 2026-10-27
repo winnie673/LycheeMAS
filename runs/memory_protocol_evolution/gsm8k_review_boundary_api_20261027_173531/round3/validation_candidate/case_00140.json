@@ -1,0 +1,152 @@
+{
+  "task_id": "gsm8k:train:seed42:V:00140",
+  "status": "completed",
+  "error": null,
+  "prediction": "15",
+  "messages": [
+    {
+      "sender": "planner",
+      "content": "K:cameras_each=3,buy_price=20,maddox_sell=28,theo_sell=23;G:profit_difference;P:maddox_profit=3*(28-20),theo_profit=3*(23-20),profit_difference=maddox_profit-theo_profit",
+      "receiver": "solver",
+      "round": 0,
+      "role": "assistant",
+      "prompt_tokens": 779,
+      "completion_tokens": 69,
+      "id": "64f6687dde4c",
+      "ts": 1793100012.693936,
+      "meta": {
+        "sender": "planner",
+        "receiver": "solver",
+        "message_id": "64f6687dde4c",
+        "protocol_edge": "planner_to_solver",
+        "protocol_version": "CARD-2-gsm8k",
+        "protocol_hash": "c152278e4a24181b874bd88cbf3adef79479b79f6539931bcd89721fa5a8a7a9",
+        "contract_hash": "ac09c03455d8af3a35273b605bb457591de11f0e22bded3325bbb626ee774caf",
+        "fields": {
+          "K": "cameras_each=3,buy_price=20,maddox_sell=28,theo_sell=23",
+          "G": "profit_difference",
+          "P": "maddox_profit=3*(28-20),theo_profit=3*(23-20),profit_difference=maddox_profit-theo_profit"
+        },
+        "communication_tokens": 69,
+        "communication_tokens_exact": true,
+        "attempt_count": 1,
+        "fallback": false,
+        "tokens_include_all_attempts": true,
+        "incoming_message_ids": []
+      }
+    },
+    {
+      "sender": "solver",
+      "content": "IR:maddox_profit=3*(28-20)=24,theo_profit=3*(23-20)=9,difference=24-9=15;R:15",
+      "receiver": "verifier",
+      "round": 0,
+      "role": "assistant",
+      "prompt_tokens": 791,
+      "completion_tokens": 38,
+      "id": "82a3a32bd284",
+      "ts": 1793100013.943329,
+      "meta": {
+        "sender": "solver",
+        "receiver": "verifier",
+        "message_id": "82a3a32bd284",
+        "protocol_edge": "solver_to_verifier",
+        "protocol_version": "CARD-2-gsm8k",
+        "protocol_hash": "c152278e4a24181b874bd88cbf3adef79479b79f6539931bcd89721fa5a8a7a9",
+        "contract_hash": "ac09c03455d8af3a35273b605bb457591de11f0e22bded3325bbb626ee774caf",
+        "fields": {
+          "IR": "maddox_profit=3*(28-20)=24,theo_profit=3*(23-20)=9,difference=24-9=15",
+          "R": "15"
+        },
+        "communication_tokens": 38,
+        "communication_tokens_exact": true,
+        "attempt_count": 1,
+        "fallback": false,
+        "tokens_include_all_attempts": true,
+        "incoming_message_ids": [
+          "64f6687dde4c"
+        ]
+      }
+    },
+    {
+      "sender": "verifier",
+      "content": "CHK:ACCEPT",
+      "receiver": "solver",
+      "round": 0,
+      "role": "assistant",
+      "prompt_tokens": 1092,
+      "completion_tokens": 5,
+      "id": "04115a2683a8",
+      "ts": 1793100015.1986387,
+      "meta": {
+        "sender": "verifier",
+        "receiver": "solver",
+        "message_id": "04115a2683a8",
+        "protocol_edge": "verifier_to_solver",
+        "protocol_version": "CARD-2-gsm8k",
+        "protocol_hash": "c152278e4a24181b874bd88cbf3adef79479b79f6539931bcd89721fa5a8a7a9",
+        "contract_hash": "ac09c03455d8af3a35273b605bb457591de11f0e22bded3325bbb626ee774caf",
+        "fields": {
+          "CHK": "ACCEPT"
+        },
+        "communication_tokens": 5,
+        "communication_tokens_exact": true,
+        "attempt_count": 1,
+        "fallback": false,
+        "tokens_include_all_attempts": true,
+        "incoming_message_ids": [
+          "82a3a32bd284"
+        ]
+      }
+    }
+  ],
+  "communication_tokens": 112,
+  "wall_time_s": 3.8627594000427052,
+  "verified": true,
+  "revision_rounds": 0,
+  "model_calls": [
+    {
+      "role": "planner",
+      "attempt": 0,
+      "status": "delivered",
+      "error": "",
+      "raw_output": "K:cameras_each=3,buy_price=20,maddox_sell=28,theo_sell=23;G:profit_difference;P:maddox_profit=3*(28-20),theo_profit=3*(23-20),profit_difference=maddox_profit-theo_profit",
+      "finish_reason": "stop",
+      "output_tokens": 69,
+      "usage_available": true
+    },
+    {
+      "role": "solver",
+      "attempt": 0,
+      "status": "delivered",
+      "error": "",
+      "raw_output": "IR:maddox_profit=3*(28-20)=24,theo_profit=3*(23-20)=9,difference=24-9=15;R:15",
+      "finish_reason": "stop",
+      "output_tokens": 38,
+      "usage_available": true
+    },
+    {
+      "role": "verifier",
+      "attempt": 0,
+      "status": "delivered",
+      "error": "",
+      "raw_output": "CHK:ACCEPT",
+      "finish_reason": "stop",
+      "output_tokens": 5,
+      "usage_available": true
+    }
+  ],
+  "failed_attempts": [],
+  "calls": 3,
+  "usage_complete": true,
+  "known_input_tokens": 2662,
+  "known_output_tokens": 112,
+  "model_input_tokens": 2662,
+  "model_output_tokens": 112,
+  "format_failed_calls": 0,
+  "transport_failed_calls": 0,
+  "fallback_calls": 0,
+  "sum_model_latency_s": 3.798225164413452,
+  "gold": "15",
+  "score": 1.0,
+  "question": "Maddox and Theo both bought 3 Polaroid Cameras, each sold at $20 per camera from Amazon, and decided to sell them on eBay. Maddox sold his cameras at $28 each, while Theo sold his cameras at $23 each. How much more profit did Maddox get from the sale of his cameras than Theo?\nGive the final numeric answer."
+}

@@ -1,0 +1,152 @@
+{
+  "task_id": "gsm8k:train:seed42:V:00011",
+  "status": "completed",
+  "error": null,
+  "prediction": "48",
+  "messages": [
+    {
+      "sender": "planner",
+      "content": "K:cat_packages=6,dog_packages=2,cans_per_cat_package=9,cans_per_dog_package=3;G:difference_cat_minus_dog;P:cat_cans=cat_packages*cans_per_cat_package,dog_cans=dog_packages*cans_per_dog_package,difference_cat_minus_dog=cat_cans-dog_cans",
+      "receiver": "solver",
+      "round": 0,
+      "role": "assistant",
+      "prompt_tokens": 730,
+      "completion_tokens": 89,
+      "id": "a22a47b8a5f6",
+      "ts": 1793096459.3560245,
+      "meta": {
+        "sender": "planner",
+        "receiver": "solver",
+        "message_id": "a22a47b8a5f6",
+        "protocol_edge": "planner_to_solver",
+        "protocol_version": "CARD-0-gsm8k",
+        "protocol_hash": "eb2823227bf7889a5ca248376e410b4922fec80b12249ba4d10a3c8452604ed2",
+        "contract_hash": "ac09c03455d8af3a35273b605bb457591de11f0e22bded3325bbb626ee774caf",
+        "fields": {
+          "K": "cat_packages=6,dog_packages=2,cans_per_cat_package=9,cans_per_dog_package=3",
+          "G": "difference_cat_minus_dog",
+          "P": "cat_cans=cat_packages*cans_per_cat_package,dog_cans=dog_packages*cans_per_dog_package,difference_cat_minus_dog=cat_cans-dog_cans"
+        },
+        "communication_tokens": 89,
+        "communication_tokens_exact": true,
+        "attempt_count": 1,
+        "fallback": false,
+        "tokens_include_all_attempts": true,
+        "incoming_message_ids": []
+      }
+    },
+    {
+      "sender": "solver",
+      "content": "IR:cat_cans=6*9=54,dog_cans=2*3=6,difference=54-6=48;R:48",
+      "receiver": "verifier",
+      "round": 0,
+      "role": "assistant",
+      "prompt_tokens": 794,
+      "completion_tokens": 33,
+      "id": "a9ad867e758a",
+      "ts": 1793096460.7871242,
+      "meta": {
+        "sender": "solver",
+        "receiver": "verifier",
+        "message_id": "a9ad867e758a",
+        "protocol_edge": "solver_to_verifier",
+        "protocol_version": "CARD-0-gsm8k",
+        "protocol_hash": "eb2823227bf7889a5ca248376e410b4922fec80b12249ba4d10a3c8452604ed2",
+        "contract_hash": "ac09c03455d8af3a35273b605bb457591de11f0e22bded3325bbb626ee774caf",
+        "fields": {
+          "IR": "cat_cans=6*9=54,dog_cans=2*3=6,difference=54-6=48",
+          "R": "48"
+        },
+        "communication_tokens": 33,
+        "communication_tokens_exact": true,
+        "attempt_count": 1,
+        "fallback": false,
+        "tokens_include_all_attempts": true,
+        "incoming_message_ids": [
+          "a22a47b8a5f6"
+        ]
+      }
+    },
+    {
+      "sender": "verifier",
+      "content": "CHK:ACCEPT",
+      "receiver": "solver",
+      "round": 0,
+      "role": "assistant",
+      "prompt_tokens": 1070,
+      "completion_tokens": 5,
+      "id": "409ca96f4ef7",
+      "ts": 1793096461.951386,
+      "meta": {
+        "sender": "verifier",
+        "receiver": "solver",
+        "message_id": "409ca96f4ef7",
+        "protocol_edge": "verifier_to_solver",
+        "protocol_version": "CARD-0-gsm8k",
+        "protocol_hash": "eb2823227bf7889a5ca248376e410b4922fec80b12249ba4d10a3c8452604ed2",
+        "contract_hash": "ac09c03455d8af3a35273b605bb457591de11f0e22bded3325bbb626ee774caf",
+        "fields": {
+          "CHK": "ACCEPT"
+        },
+        "communication_tokens": 5,
+        "communication_tokens_exact": true,
+        "attempt_count": 1,
+        "fallback": false,
+        "tokens_include_all_attempts": true,
+        "incoming_message_ids": [
+          "a9ad867e758a"
+        ]
+      }
+    }
+  ],
+  "communication_tokens": 127,
+  "wall_time_s": 3.9972690999275073,
+  "verified": true,
+  "revision_rounds": 0,
+  "model_calls": [
+    {
+      "role": "planner",
+      "attempt": 0,
+      "status": "delivered",
+      "error": "",
+      "raw_output": "K:cat_packages=6,dog_packages=2,cans_per_cat_package=9,cans_per_dog_package=3;G:difference_cat_minus_dog;P:cat_cans=cat_packages*cans_per_cat_package,dog_cans=dog_packages*cans_per_dog_package,difference_cat_minus_dog=cat_cans-dog_cans",
+      "finish_reason": "stop",
+      "output_tokens": 89,
+      "usage_available": true
+    },
+    {
+      "role": "solver",
+      "attempt": 0,
+      "status": "delivered",
+      "error": "",
+      "raw_output": "IR:cat_cans=6*9=54,dog_cans=2*3=6,difference=54-6=48;R:48",
+      "finish_reason": "stop",
+      "output_tokens": 33,
+      "usage_available": true
+    },
+    {
+      "role": "verifier",
+      "attempt": 0,
+      "status": "delivered",
+      "error": "",
+      "raw_output": "CHK:ACCEPT",
+      "finish_reason": "stop",
+      "output_tokens": 5,
+      "usage_available": true
+    }
+  ],
+  "failed_attempts": [],
+  "calls": 3,
+  "usage_complete": true,
+  "known_input_tokens": 2594,
+  "known_output_tokens": 127,
+  "model_input_tokens": 2594,
+  "model_output_tokens": 127,
+  "format_failed_calls": 0,
+  "transport_failed_calls": 0,
+  "fallback_calls": 0,
+  "sum_model_latency_s": 3.8787779808044434,
+  "gold": "48",
+  "score": 1.0,
+  "question": "Chad bought 6 packages of cat food and 2 packages of dog food. Each package of cat food contained 9 cans, and each package of dog food contained 3 cans. How many more cans of cat food than dog food did Chad buy?\nGive the final numeric answer."
+}

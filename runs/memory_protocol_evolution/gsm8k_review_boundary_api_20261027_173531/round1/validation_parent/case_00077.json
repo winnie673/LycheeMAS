@@ -1,0 +1,152 @@
+{
+  "task_id": "gsm8k:train:seed42:V:00077",
+  "status": "completed",
+  "error": null,
+  "prediction": "6",
+  "messages": [
+    {
+      "sender": "planner",
+      "content": "K:pages=248,rate=16,hours_mon=3,hours_tue=6.5;G:remaining_hours;P:read=(hours_mon+hours_tue)*rate,left=pages-read,remaining_hours=left/rate",
+      "receiver": "solver",
+      "round": 0,
+      "role": "assistant",
+      "prompt_tokens": 732,
+      "completion_tokens": 54,
+      "id": "cc2fda1e0f9e",
+      "ts": 1793094678.2152138,
+      "meta": {
+        "sender": "planner",
+        "receiver": "solver",
+        "message_id": "cc2fda1e0f9e",
+        "protocol_edge": "planner_to_solver",
+        "protocol_version": "CARD-0-gsm8k",
+        "protocol_hash": "eb2823227bf7889a5ca248376e410b4922fec80b12249ba4d10a3c8452604ed2",
+        "contract_hash": "ac09c03455d8af3a35273b605bb457591de11f0e22bded3325bbb626ee774caf",
+        "fields": {
+          "K": "pages=248,rate=16,hours_mon=3,hours_tue=6.5",
+          "G": "remaining_hours",
+          "P": "read=(hours_mon+hours_tue)*rate,left=pages-read,remaining_hours=left/rate"
+        },
+        "communication_tokens": 54,
+        "communication_tokens_exact": true,
+        "attempt_count": 1,
+        "fallback": false,
+        "tokens_include_all_attempts": true,
+        "incoming_message_ids": []
+      }
+    },
+    {
+      "sender": "solver",
+      "content": "IR:read=(3+6.5)*16=152,left=248-152=96,remaining_hours=96/16=6;R:6",
+      "receiver": "verifier",
+      "round": 0,
+      "role": "assistant",
+      "prompt_tokens": 761,
+      "completion_tokens": 35,
+      "id": "6ab4474d00d0",
+      "ts": 1793094679.508056,
+      "meta": {
+        "sender": "solver",
+        "receiver": "verifier",
+        "message_id": "6ab4474d00d0",
+        "protocol_edge": "solver_to_verifier",
+        "protocol_version": "CARD-0-gsm8k",
+        "protocol_hash": "eb2823227bf7889a5ca248376e410b4922fec80b12249ba4d10a3c8452604ed2",
+        "contract_hash": "ac09c03455d8af3a35273b605bb457591de11f0e22bded3325bbb626ee774caf",
+        "fields": {
+          "IR": "read=(3+6.5)*16=152,left=248-152=96,remaining_hours=96/16=6",
+          "R": "6"
+        },
+        "communication_tokens": 35,
+        "communication_tokens_exact": true,
+        "attempt_count": 1,
+        "fallback": false,
+        "tokens_include_all_attempts": true,
+        "incoming_message_ids": [
+          "cc2fda1e0f9e"
+        ]
+      }
+    },
+    {
+      "sender": "verifier",
+      "content": "CHK:ACCEPT",
+      "receiver": "solver",
+      "round": 0,
+      "role": "assistant",
+      "prompt_tokens": 1074,
+      "completion_tokens": 5,
+      "id": "0a2a953ac4c9",
+      "ts": 1793094680.7055342,
+      "meta": {
+        "sender": "verifier",
+        "receiver": "solver",
+        "message_id": "0a2a953ac4c9",
+        "protocol_edge": "verifier_to_solver",
+        "protocol_version": "CARD-0-gsm8k",
+        "protocol_hash": "eb2823227bf7889a5ca248376e410b4922fec80b12249ba4d10a3c8452604ed2",
+        "contract_hash": "ac09c03455d8af3a35273b605bb457591de11f0e22bded3325bbb626ee774caf",
+        "fields": {
+          "CHK": "ACCEPT"
+        },
+        "communication_tokens": 5,
+        "communication_tokens_exact": true,
+        "attempt_count": 1,
+        "fallback": false,
+        "tokens_include_all_attempts": true,
+        "incoming_message_ids": [
+          "6ab4474d00d0"
+        ]
+      }
+    }
+  ],
+  "communication_tokens": 94,
+  "wall_time_s": 3.8880333999404684,
+  "verified": true,
+  "revision_rounds": 0,
+  "model_calls": [
+    {
+      "role": "planner",
+      "attempt": 0,
+      "status": "delivered",
+      "error": "",
+      "raw_output": "K:pages=248,rate=16,hours_mon=3,hours_tue=6.5;G:remaining_hours;P:read=(hours_mon+hours_tue)*rate,left=pages-read,remaining_hours=left/rate",
+      "finish_reason": "stop",
+      "output_tokens": 54,
+      "usage_available": true
+    },
+    {
+      "role": "solver",
+      "attempt": 0,
+      "status": "delivered",
+      "error": "",
+      "raw_output": "IR:read=(3+6.5)*16=152,left=248-152=96,remaining_hours=96/16=6;R:6",
+      "finish_reason": "stop",
+      "output_tokens": 35,
+      "usage_available": true
+    },
+    {
+      "role": "verifier",
+      "attempt": 0,
+      "status": "delivered",
+      "error": "",
+      "raw_output": "CHK:ACCEPT",
+      "finish_reason": "stop",
+      "output_tokens": 5,
+      "usage_available": true
+    }
+  ],
+  "failed_attempts": [],
+  "calls": 3,
+  "usage_complete": true,
+  "known_input_tokens": 2567,
+  "known_output_tokens": 94,
+  "model_input_tokens": 2567,
+  "model_output_tokens": 94,
+  "format_failed_calls": 0,
+  "transport_failed_calls": 0,
+  "fallback_calls": 0,
+  "sum_model_latency_s": 3.781925678253174,
+  "gold": "6",
+  "score": 1.0,
+  "question": "There are 248 pages in a book. Joanna can read 16 pages per hour. On Monday, she reads for 3 hours. On Tuesday, she reads for 6.5 hours. How many more hours does she need to read to finish the book?\nGive the final numeric answer."
+}

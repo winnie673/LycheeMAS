@@ -1,0 +1,126 @@
+{
+  "task_id": "gsm8k:train:seed42:G2:00038",
+  "status": "completed",
+  "error": null,
+  "prediction": "80",
+  "messages": [
+    {
+      "sender": "planner",
+      "content": "Goal: find how many more employees drive to work than take public transportation.\n\nPlan: First compute 60% of 200 to get the number who drive. Then find the number who don’t drive by subtracting drivers from 200. Take half of the non-drivers as public transportation users. Finally, subtract the public transportation count from the driving count.\n\nConstraints: Use the given total of 200 employees and the stated percentages/halves exactly; report the difference as a single number.",
+      "receiver": "solver",
+      "round": 0,
+      "role": "assistant",
+      "prompt_tokens": 198,
+      "completion_tokens": 99,
+      "id": "5db72acb5926",
+      "ts": 1793096350.619543,
+      "meta": {
+        "fields": {},
+        "communication_tokens": 99,
+        "communication_tokens_exact": true,
+        "attempt_count": 1,
+        "fallback": false,
+        "tokens_include_all_attempts": true,
+        "incoming_message_ids": []
+      }
+    },
+    {
+      "sender": "solver",
+      "content": "60% of 200 drive: 120. Non-drivers: 200 − 120 = 80. Half take public transportation: 40. Difference: 120 − 40 = 80.\n\n\\boxed{80}",
+      "receiver": "verifier",
+      "round": 0,
+      "role": "assistant",
+      "prompt_tokens": 309,
+      "completion_tokens": 48,
+      "id": "defd2a140721",
+      "ts": 1793096352.1066597,
+      "meta": {
+        "fields": {
+          "R": "80"
+        },
+        "communication_tokens": 48,
+        "communication_tokens_exact": true,
+        "attempt_count": 1,
+        "fallback": false,
+        "tokens_include_all_attempts": true,
+        "incoming_message_ids": [
+          "5db72acb5926"
+        ]
+      }
+    },
+    {
+      "sender": "verifier",
+      "content": "ACCEPT",
+      "receiver": "solver",
+      "round": 0,
+      "role": "assistant",
+      "prompt_tokens": 635,
+      "completion_tokens": 2,
+      "id": "d420394ab965",
+      "ts": 1793096353.22113,
+      "meta": {
+        "fields": {
+          "CHK": "ACCEPT"
+        },
+        "communication_tokens": 2,
+        "communication_tokens_exact": true,
+        "attempt_count": 1,
+        "fallback": false,
+        "tokens_include_all_attempts": true,
+        "incoming_message_ids": [
+          "defd2a140721"
+        ]
+      }
+    }
+  ],
+  "communication_tokens": 149,
+  "wall_time_s": 4.432913700002246,
+  "verified": true,
+  "revision_rounds": 0,
+  "model_calls": [
+    {
+      "role": "planner",
+      "attempt": 0,
+      "status": "delivered",
+      "error": "",
+      "raw_output": "Goal: find how many more employees drive to work than take public transportation.\n\nPlan: First compute 60% of 200 to get the number who drive. Then find the number who don’t drive by subtracting drivers from 200. Take half of the non-drivers as public transportation users. Finally, subtract the public transportation count from the driving count.\n\nConstraints: Use the given total of 200 employees and the stated percentages/halves exactly; report the difference as a single number.",
+      "finish_reason": "stop",
+      "output_tokens": 99,
+      "usage_available": true
+    },
+    {
+      "role": "solver",
+      "attempt": 0,
+      "status": "delivered",
+      "error": "",
+      "raw_output": "60% of 200 drive: 120. Non-drivers: 200 − 120 = 80. Half take public transportation: 40. Difference: 120 − 40 = 80.\n\n\\boxed{80}",
+      "finish_reason": "stop",
+      "output_tokens": 48,
+      "usage_available": true
+    },
+    {
+      "role": "verifier",
+      "attempt": 0,
+      "status": "delivered",
+      "error": "",
+      "raw_output": "ACCEPT",
+      "finish_reason": "stop",
+      "output_tokens": 2,
+      "usage_available": true
+    }
+  ],
+  "failed_attempts": [],
+  "calls": 3,
+  "usage_complete": true,
+  "known_input_tokens": 1142,
+  "known_output_tokens": 149,
+  "model_input_tokens": 1142,
+  "model_output_tokens": 149,
+  "format_failed_calls": 0,
+  "transport_failed_calls": 0,
+  "fallback_calls": 0,
+  "sum_model_latency_s": 4.377239942550659,
+  "gold": "40",
+  "score": 0.0,
+  "question": "A company has 200 employees.  60% of the employees drive to work.  Of the employees who don't drive to work, half take public transportation. How many more employees drive to work than take public transportation?\nGive the final numeric answer."
+}

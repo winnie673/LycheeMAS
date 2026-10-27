@@ -1,0 +1,152 @@
+{
+  "task_id": "gsm8k:train:seed42:G2:00029",
+  "status": "completed",
+  "error": null,
+  "prediction": "360",
+  "messages": [
+    {
+      "sender": "planner",
+      "content": "K:floors=12,full_fraction=1/2,capacity_per_floor=10,people_per_apartment=4;G:total_people;P:full_floors=floors*full_fraction,half_floors=floors-full_floors,full_people=full_floors*capacity_per_floor*people_per_apartment,half_people=half_floors*(capacity_per_floor/2)*people_per_apartment,total_people=full_people+half_people",
+      "receiver": "solver",
+      "round": 0,
+      "role": "assistant",
+      "prompt_tokens": 724,
+      "completion_tokens": 110,
+      "id": "fbe1cdca0232",
+      "ts": 1793096106.4844682,
+      "meta": {
+        "sender": "planner",
+        "receiver": "solver",
+        "message_id": "fbe1cdca0232",
+        "protocol_edge": "planner_to_solver",
+        "protocol_version": "CARD-0-gsm8k",
+        "protocol_hash": "eb2823227bf7889a5ca248376e410b4922fec80b12249ba4d10a3c8452604ed2",
+        "contract_hash": "ac09c03455d8af3a35273b605bb457591de11f0e22bded3325bbb626ee774caf",
+        "fields": {
+          "K": "floors=12,full_fraction=1/2,capacity_per_floor=10,people_per_apartment=4",
+          "G": "total_people",
+          "P": "full_floors=floors*full_fraction,half_floors=floors-full_floors,full_people=full_floors*capacity_per_floor*people_per_apartment,half_people=half_floors*(capacity_per_floor/2)*people_per_apartment,total_people=full_people+half_people"
+        },
+        "communication_tokens": 110,
+        "communication_tokens_exact": true,
+        "attempt_count": 1,
+        "fallback": false,
+        "tokens_include_all_attempts": true,
+        "incoming_message_ids": []
+      }
+    },
+    {
+      "sender": "solver",
+      "content": "IR:full_floors=12*1/2=6,half_floors=12-6=6,full_people=6*10*4=240,half_people=6*5*4=120,total=240+120=360;R:360",
+      "receiver": "verifier",
+      "round": 0,
+      "role": "assistant",
+      "prompt_tokens": 809,
+      "completion_tokens": 59,
+      "id": "8c5d27fddd88",
+      "ts": 1793096107.7811966,
+      "meta": {
+        "sender": "solver",
+        "receiver": "verifier",
+        "message_id": "8c5d27fddd88",
+        "protocol_edge": "solver_to_verifier",
+        "protocol_version": "CARD-0-gsm8k",
+        "protocol_hash": "eb2823227bf7889a5ca248376e410b4922fec80b12249ba4d10a3c8452604ed2",
+        "contract_hash": "ac09c03455d8af3a35273b605bb457591de11f0e22bded3325bbb626ee774caf",
+        "fields": {
+          "IR": "full_floors=12*1/2=6,half_floors=12-6=6,full_people=6*10*4=240,half_people=6*5*4=120,total=240+120=360",
+          "R": "360"
+        },
+        "communication_tokens": 59,
+        "communication_tokens_exact": true,
+        "attempt_count": 1,
+        "fallback": false,
+        "tokens_include_all_attempts": true,
+        "incoming_message_ids": [
+          "fbe1cdca0232"
+        ]
+      }
+    },
+    {
+      "sender": "verifier",
+      "content": "CHK:ACCEPT",
+      "receiver": "solver",
+      "round": 0,
+      "role": "assistant",
+      "prompt_tokens": 1090,
+      "completion_tokens": 5,
+      "id": "3bccd2036754",
+      "ts": 1793096108.9460626,
+      "meta": {
+        "sender": "verifier",
+        "receiver": "solver",
+        "message_id": "3bccd2036754",
+        "protocol_edge": "verifier_to_solver",
+        "protocol_version": "CARD-0-gsm8k",
+        "protocol_hash": "eb2823227bf7889a5ca248376e410b4922fec80b12249ba4d10a3c8452604ed2",
+        "contract_hash": "ac09c03455d8af3a35273b605bb457591de11f0e22bded3325bbb626ee774caf",
+        "fields": {
+          "CHK": "ACCEPT"
+        },
+        "communication_tokens": 5,
+        "communication_tokens_exact": true,
+        "attempt_count": 1,
+        "fallback": false,
+        "tokens_include_all_attempts": true,
+        "incoming_message_ids": [
+          "8c5d27fddd88"
+        ]
+      }
+    }
+  ],
+  "communication_tokens": 174,
+  "wall_time_s": 4.056429499993101,
+  "verified": true,
+  "revision_rounds": 0,
+  "model_calls": [
+    {
+      "role": "planner",
+      "attempt": 0,
+      "status": "delivered",
+      "error": "",
+      "raw_output": "K:floors=12,full_fraction=1/2,capacity_per_floor=10,people_per_apartment=4;G:total_people;P:full_floors=floors*full_fraction,half_floors=floors-full_floors,full_people=full_floors*capacity_per_floor*people_per_apartment,half_people=half_floors*(capacity_per_floor/2)*people_per_apartment,total_people=full_people+half_people",
+      "finish_reason": "stop",
+      "output_tokens": 110,
+      "usage_available": true
+    },
+    {
+      "role": "solver",
+      "attempt": 0,
+      "status": "delivered",
+      "error": "",
+      "raw_output": "IR:full_floors=12*1/2=6,half_floors=12-6=6,full_people=6*10*4=240,half_people=6*5*4=120,total=240+120=360;R:360",
+      "finish_reason": "stop",
+      "output_tokens": 59,
+      "usage_available": true
+    },
+    {
+      "role": "verifier",
+      "attempt": 0,
+      "status": "delivered",
+      "error": "",
+      "raw_output": "CHK:ACCEPT",
+      "finish_reason": "stop",
+      "output_tokens": 5,
+      "usage_available": true
+    }
+  ],
+  "failed_attempts": [],
+  "calls": 3,
+  "usage_complete": true,
+  "known_input_tokens": 2623,
+  "known_output_tokens": 174,
+  "model_input_tokens": 2623,
+  "model_output_tokens": 174,
+  "format_failed_calls": 0,
+  "transport_failed_calls": 0,
+  "fallback_calls": 0,
+  "sum_model_latency_s": 3.957306385040283,
+  "gold": "360",
+  "score": 1.0,
+  "question": "An apartment building has 12 floors and half of them are full. The remaining floors are all at half-capacity. If each floor has 10 apartments and each apartment has four people, how many people are in the building?\nGive the final numeric answer."
+}

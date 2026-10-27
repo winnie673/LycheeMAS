@@ -1,0 +1,152 @@
+{
+  "task_id": "gsm8k:train:seed42:V:00149",
+  "status": "completed",
+  "error": null,
+  "prediction": "18",
+  "messages": [
+    {
+      "sender": "planner",
+      "content": "K:tuition=90,job_monthly=15,scholarship_rate=0.30,months=3;G:remaining_amount;P:scholarship=0.30*90,job_total=15*3,remaining=90-scholarship-job_total",
+      "receiver": "solver",
+      "round": 0,
+      "role": "assistant",
+      "prompt_tokens": 739,
+      "completion_tokens": 59,
+      "id": "8d9347443592",
+      "ts": 1793097005.2366376,
+      "meta": {
+        "sender": "planner",
+        "receiver": "solver",
+        "message_id": "8d9347443592",
+        "protocol_edge": "planner_to_solver",
+        "protocol_version": "CARD-0-gsm8k",
+        "protocol_hash": "eb2823227bf7889a5ca248376e410b4922fec80b12249ba4d10a3c8452604ed2",
+        "contract_hash": "ac09c03455d8af3a35273b605bb457591de11f0e22bded3325bbb626ee774caf",
+        "fields": {
+          "K": "tuition=90,job_monthly=15,scholarship_rate=0.30,months=3",
+          "G": "remaining_amount",
+          "P": "scholarship=0.30*90,job_total=15*3,remaining=90-scholarship-job_total"
+        },
+        "communication_tokens": 59,
+        "communication_tokens_exact": true,
+        "attempt_count": 1,
+        "fallback": false,
+        "tokens_include_all_attempts": true,
+        "incoming_message_ids": []
+      }
+    },
+    {
+      "sender": "solver",
+      "content": "IR:scholarship=0.30*90=27,job_total=15*3=45,remaining=90-27-45=18;R:18",
+      "receiver": "verifier",
+      "round": 0,
+      "role": "assistant",
+      "prompt_tokens": 773,
+      "completion_tokens": 36,
+      "id": "153c959c3f98",
+      "ts": 1793097006.3083844,
+      "meta": {
+        "sender": "solver",
+        "receiver": "verifier",
+        "message_id": "153c959c3f98",
+        "protocol_edge": "solver_to_verifier",
+        "protocol_version": "CARD-0-gsm8k",
+        "protocol_hash": "eb2823227bf7889a5ca248376e410b4922fec80b12249ba4d10a3c8452604ed2",
+        "contract_hash": "ac09c03455d8af3a35273b605bb457591de11f0e22bded3325bbb626ee774caf",
+        "fields": {
+          "IR": "scholarship=0.30*90=27,job_total=15*3=45,remaining=90-27-45=18",
+          "R": "18"
+        },
+        "communication_tokens": 36,
+        "communication_tokens_exact": true,
+        "attempt_count": 1,
+        "fallback": false,
+        "tokens_include_all_attempts": true,
+        "incoming_message_ids": [
+          "8d9347443592"
+        ]
+      }
+    },
+    {
+      "sender": "verifier",
+      "content": "CHK:ACCEPT",
+      "receiver": "solver",
+      "round": 0,
+      "role": "assistant",
+      "prompt_tokens": 1082,
+      "completion_tokens": 5,
+      "id": "9df3d9b67b9b",
+      "ts": 1793097007.2415993,
+      "meta": {
+        "sender": "verifier",
+        "receiver": "solver",
+        "message_id": "9df3d9b67b9b",
+        "protocol_edge": "verifier_to_solver",
+        "protocol_version": "CARD-0-gsm8k",
+        "protocol_hash": "eb2823227bf7889a5ca248376e410b4922fec80b12249ba4d10a3c8452604ed2",
+        "contract_hash": "ac09c03455d8af3a35273b605bb457591de11f0e22bded3325bbb626ee774caf",
+        "fields": {
+          "CHK": "ACCEPT"
+        },
+        "communication_tokens": 5,
+        "communication_tokens_exact": true,
+        "attempt_count": 1,
+        "fallback": false,
+        "tokens_include_all_attempts": true,
+        "incoming_message_ids": [
+          "153c959c3f98"
+        ]
+      }
+    }
+  ],
+  "communication_tokens": 100,
+  "wall_time_s": 4.09960429999046,
+  "verified": true,
+  "revision_rounds": 0,
+  "model_calls": [
+    {
+      "role": "planner",
+      "attempt": 0,
+      "status": "delivered",
+      "error": "",
+      "raw_output": "K:tuition=90,job_monthly=15,scholarship_rate=0.30,months=3;G:remaining_amount;P:scholarship=0.30*90,job_total=15*3,remaining=90-scholarship-job_total",
+      "finish_reason": "stop",
+      "output_tokens": 59,
+      "usage_available": true
+    },
+    {
+      "role": "solver",
+      "attempt": 0,
+      "status": "delivered",
+      "error": "",
+      "raw_output": "IR:scholarship=0.30*90=27,job_total=15*3=45,remaining=90-27-45=18;R:18",
+      "finish_reason": "stop",
+      "output_tokens": 36,
+      "usage_available": true
+    },
+    {
+      "role": "verifier",
+      "attempt": 0,
+      "status": "delivered",
+      "error": "",
+      "raw_output": "CHK:ACCEPT",
+      "finish_reason": "stop",
+      "output_tokens": 5,
+      "usage_available": true
+    }
+  ],
+  "failed_attempts": [],
+  "calls": 3,
+  "usage_complete": true,
+  "known_input_tokens": 2594,
+  "known_output_tokens": 100,
+  "model_input_tokens": 2594,
+  "model_output_tokens": 100,
+  "format_failed_calls": 0,
+  "transport_failed_calls": 0,
+  "fallback_calls": 0,
+  "sum_model_latency_s": 3.9870049953460693,
+  "gold": "18",
+  "score": 1.0,
+  "question": "Bran's tuition fee is $90. He does a part-time job that pays him $15 per month and he has a scholarship that takes care of 30% of his tuition fee. If he needs to pay his tuition fee within 3 months, how much does Bran still need to pay?\nGive the final numeric answer."
+}

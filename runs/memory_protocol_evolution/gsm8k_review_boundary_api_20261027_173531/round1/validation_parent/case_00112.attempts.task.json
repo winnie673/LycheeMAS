@@ -1,0 +1,149 @@
+{
+  "task_id": "gsm8k:train:seed42:V:00112",
+  "status": "completed",
+  "error": null,
+  "prediction": "9",
+  "messages": [
+    {
+      "sender": "planner",
+      "content": "G:lemons_needed;K:juice_per_dozen=12,juice_per_lemon=4,dozens=3;P:total_juice=juice_per_dozen*dozens,lemons_needed=total_juice/juice_per_lemon",
+      "receiver": "solver",
+      "round": 0,
+      "role": "assistant",
+      "prompt_tokens": 726,
+      "completion_tokens": 63,
+      "id": "30b811e85241",
+      "ts": 1793094820.7954037,
+      "meta": {
+        "sender": "planner",
+        "receiver": "solver",
+        "message_id": "30b811e85241",
+        "protocol_edge": "planner_to_solver",
+        "protocol_version": "CARD-0-gsm8k",
+        "protocol_hash": "eb2823227bf7889a5ca248376e410b4922fec80b12249ba4d10a3c8452604ed2",
+        "contract_hash": "ac09c03455d8af3a35273b605bb457591de11f0e22bded3325bbb626ee774caf",
+        "fields": {
+          "G": "lemons_needed",
+          "K": "juice_per_dozen=12,juice_per_lemon=4,dozens=3",
+          "P": "total_juice=juice_per_dozen*dozens,lemons_needed=total_juice/juice_per_lemon"
+        },
+        "communication_tokens": 63,
+        "communication_tokens_exact": true,
+        "attempt_count": 1,
+        "fallback": false,
+        "tokens_include_all_attempts": true,
+        "incoming_message_ids": []
+      }
+    },
+    {
+      "sender": "solver",
+      "content": "IR:total_juice=12*3=36,lemons_needed=36/4=9;R:9",
+      "receiver": "verifier",
+      "round": 0,
+      "role": "assistant",
+      "prompt_tokens": 764,
+      "completion_tokens": 27,
+      "id": "07b141a74c20",
+      "ts": 1793094822.0477848,
+      "meta": {
+        "sender": "solver",
+        "receiver": "verifier",
+        "message_id": "07b141a74c20",
+        "protocol_edge": "solver_to_verifier",
+        "protocol_version": "CARD-0-gsm8k",
+        "protocol_hash": "eb2823227bf7889a5ca248376e410b4922fec80b12249ba4d10a3c8452604ed2",
+        "contract_hash": "ac09c03455d8af3a35273b605bb457591de11f0e22bded3325bbb626ee774caf",
+        "fields": {
+          "IR": "total_juice=12*3=36,lemons_needed=36/4=9",
+          "R": "9"
+        },
+        "communication_tokens": 27,
+        "communication_tokens_exact": true,
+        "attempt_count": 1,
+        "fallback": false,
+        "tokens_include_all_attempts": true,
+        "incoming_message_ids": [
+          "30b811e85241"
+        ]
+      }
+    },
+    {
+      "sender": "verifier",
+      "content": "CHK:ACCEPT",
+      "receiver": "solver",
+      "round": 0,
+      "role": "assistant",
+      "prompt_tokens": 1060,
+      "completion_tokens": 5,
+      "id": "fb58ed759d6c",
+      "ts": 1793094823.2573793,
+      "meta": {
+        "sender": "verifier",
+        "receiver": "solver",
+        "message_id": "fb58ed759d6c",
+        "protocol_edge": "verifier_to_solver",
+        "protocol_version": "CARD-0-gsm8k",
+        "protocol_hash": "eb2823227bf7889a5ca248376e410b4922fec80b12249ba4d10a3c8452604ed2",
+        "contract_hash": "ac09c03455d8af3a35273b605bb457591de11f0e22bded3325bbb626ee774caf",
+        "fields": {
+          "CHK": "ACCEPT"
+        },
+        "communication_tokens": 5,
+        "communication_tokens_exact": true,
+        "attempt_count": 1,
+        "fallback": false,
+        "tokens_include_all_attempts": true,
+        "incoming_message_ids": [
+          "07b141a74c20"
+        ]
+      }
+    }
+  ],
+  "communication_tokens": 95,
+  "wall_time_s": 3.8986397000262514,
+  "verified": true,
+  "revision_rounds": 0,
+  "model_calls": [
+    {
+      "role": "planner",
+      "attempt": 0,
+      "status": "delivered",
+      "error": "",
+      "raw_output": "G:lemons_needed;K:juice_per_dozen=12,juice_per_lemon=4,dozens=3;P:total_juice=juice_per_dozen*dozens,lemons_needed=total_juice/juice_per_lemon",
+      "finish_reason": "stop",
+      "output_tokens": 63,
+      "usage_available": true
+    },
+    {
+      "role": "solver",
+      "attempt": 0,
+      "status": "delivered",
+      "error": "",
+      "raw_output": "IR:total_juice=12*3=36,lemons_needed=36/4=9;R:9",
+      "finish_reason": "stop",
+      "output_tokens": 27,
+      "usage_available": true
+    },
+    {
+      "role": "verifier",
+      "attempt": 0,
+      "status": "delivered",
+      "error": "",
+      "raw_output": "CHK:ACCEPT",
+      "finish_reason": "stop",
+      "output_tokens": 5,
+      "usage_available": true
+    }
+  ],
+  "failed_attempts": [],
+  "calls": 3,
+  "usage_complete": true,
+  "known_input_tokens": 2550,
+  "known_output_tokens": 95,
+  "model_input_tokens": 2550,
+  "model_output_tokens": 95,
+  "format_failed_calls": 0,
+  "transport_failed_calls": 0,
+  "fallback_calls": 0,
+  "sum_model_latency_s": 3.7792186737060547
+}

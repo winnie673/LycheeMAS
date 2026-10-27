@@ -1,0 +1,152 @@
+{
+  "task_id": "gsm8k:train:seed42:V:00068",
+  "status": "completed",
+  "error": null,
+  "prediction": "67",
+  "messages": [
+    {
+      "sender": "planner",
+      "content": "K:total=75,hens=9*roosters-5;G:hens;P:roosters+hens=total,hens=9*roosters-5",
+      "receiver": "solver",
+      "round": 0,
+      "role": "assistant",
+      "prompt_tokens": 712,
+      "completion_tokens": 39,
+      "id": "0794f93e69d8",
+      "ts": 1793094640.6628463,
+      "meta": {
+        "sender": "planner",
+        "receiver": "solver",
+        "message_id": "0794f93e69d8",
+        "protocol_edge": "planner_to_solver",
+        "protocol_version": "CARD-0-gsm8k",
+        "protocol_hash": "eb2823227bf7889a5ca248376e410b4922fec80b12249ba4d10a3c8452604ed2",
+        "contract_hash": "ac09c03455d8af3a35273b605bb457591de11f0e22bded3325bbb626ee774caf",
+        "fields": {
+          "K": "total=75,hens=9*roosters-5",
+          "G": "hens",
+          "P": "roosters+hens=total,hens=9*roosters-5"
+        },
+        "communication_tokens": 39,
+        "communication_tokens_exact": true,
+        "attempt_count": 1,
+        "fallback": false,
+        "tokens_include_all_attempts": true,
+        "incoming_message_ids": []
+      }
+    },
+    {
+      "sender": "solver",
+      "content": "IR:r+h=75,h=9r-5,10r=80,r=8,h=67;R:67",
+      "receiver": "verifier",
+      "round": 0,
+      "role": "assistant",
+      "prompt_tokens": 726,
+      "completion_tokens": 27,
+      "id": "bf3298878e1c",
+      "ts": 1793094642.2119644,
+      "meta": {
+        "sender": "solver",
+        "receiver": "verifier",
+        "message_id": "bf3298878e1c",
+        "protocol_edge": "solver_to_verifier",
+        "protocol_version": "CARD-0-gsm8k",
+        "protocol_hash": "eb2823227bf7889a5ca248376e410b4922fec80b12249ba4d10a3c8452604ed2",
+        "contract_hash": "ac09c03455d8af3a35273b605bb457591de11f0e22bded3325bbb626ee774caf",
+        "fields": {
+          "IR": "r+h=75,h=9r-5,10r=80,r=8,h=67",
+          "R": "67"
+        },
+        "communication_tokens": 27,
+        "communication_tokens_exact": true,
+        "attempt_count": 1,
+        "fallback": false,
+        "tokens_include_all_attempts": true,
+        "incoming_message_ids": [
+          "0794f93e69d8"
+        ]
+      }
+    },
+    {
+      "sender": "verifier",
+      "content": "CHK:ACCEPT",
+      "receiver": "solver",
+      "round": 0,
+      "role": "assistant",
+      "prompt_tokens": 1046,
+      "completion_tokens": 5,
+      "id": "c008311c8110",
+      "ts": 1793094643.607272,
+      "meta": {
+        "sender": "verifier",
+        "receiver": "solver",
+        "message_id": "c008311c8110",
+        "protocol_edge": "verifier_to_solver",
+        "protocol_version": "CARD-0-gsm8k",
+        "protocol_hash": "eb2823227bf7889a5ca248376e410b4922fec80b12249ba4d10a3c8452604ed2",
+        "contract_hash": "ac09c03455d8af3a35273b605bb457591de11f0e22bded3325bbb626ee774caf",
+        "fields": {
+          "CHK": "ACCEPT"
+        },
+        "communication_tokens": 5,
+        "communication_tokens_exact": true,
+        "attempt_count": 1,
+        "fallback": false,
+        "tokens_include_all_attempts": true,
+        "incoming_message_ids": [
+          "bf3298878e1c"
+        ]
+      }
+    }
+  ],
+  "communication_tokens": 71,
+  "wall_time_s": 4.269027400063351,
+  "verified": true,
+  "revision_rounds": 0,
+  "model_calls": [
+    {
+      "role": "planner",
+      "attempt": 0,
+      "status": "delivered",
+      "error": "",
+      "raw_output": "K:total=75,hens=9*roosters-5;G:hens;P:roosters+hens=total,hens=9*roosters-5",
+      "finish_reason": "stop",
+      "output_tokens": 39,
+      "usage_available": true
+    },
+    {
+      "role": "solver",
+      "attempt": 0,
+      "status": "delivered",
+      "error": "",
+      "raw_output": "IR:r+h=75,h=9r-5,10r=80,r=8,h=67;R:67",
+      "finish_reason": "stop",
+      "output_tokens": 27,
+      "usage_available": true
+    },
+    {
+      "role": "verifier",
+      "attempt": 0,
+      "status": "delivered",
+      "error": "",
+      "raw_output": "CHK:ACCEPT",
+      "finish_reason": "stop",
+      "output_tokens": 5,
+      "usage_available": true
+    }
+  ],
+  "failed_attempts": [],
+  "calls": 3,
+  "usage_complete": true,
+  "known_input_tokens": 2484,
+  "known_output_tokens": 71,
+  "model_input_tokens": 2484,
+  "model_output_tokens": 71,
+  "format_failed_calls": 0,
+  "transport_failed_calls": 0,
+  "fallback_calls": 0,
+  "sum_model_latency_s": 4.164484977722168,
+  "gold": "67",
+  "score": 1.0,
+  "question": "A farm has 5 less than 9 times the amount of hens as roosters.  If there are 75 total chickens, how many hens are there?\nGive the final numeric answer."
+}

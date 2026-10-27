@@ -1,0 +1,12 @@
+{
+  "decision": "UPDATE",
+  "reason": "Case 00031 shows a communication-related MISSING_MULTIPLICITY error: the hybrid planner applied the per-walk start fee only once per dog's share instead of across all 20 walks, while the NL planner correctly accounted for all 20 start fees. Case 00016 shows the converse risk: verbose NL injected a wrong operation-direction constraint ('$10 total, not daily rate') that the compact symbolic planner avoided. The minimal fix is to tighten the P field rule so per-walk/per-item fees and rates are explicitly multiplied by their multiplicity before being subtracted or combined, without adding new fields or clauses.",
+  "changed_paths": [
+    "planner_to_solver.field_rules.P"
+  ],
+  "eligible_case_ids": [
+    "gsm8k:train:seed42:G2:00000",
+    "gsm8k:train:seed42:G2:00016",
+    "gsm8k:train:seed42:G2:00031"
+  ]
+}

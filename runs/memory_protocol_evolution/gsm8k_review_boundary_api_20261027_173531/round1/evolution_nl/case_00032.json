@@ -1,0 +1,126 @@
+{
+  "task_id": "gsm8k:train:seed42:G1:00032",
+  "status": "completed",
+  "error": null,
+  "prediction": "14",
+  "messages": [
+    {
+      "sender": "planner",
+      "content": "Goal: find Bart’s total earnings from Monday and Tuesday surveys.\n\nPlan: Determine how many surveys he completed in total across the two days, then determine how many questions that represents, then multiply by the pay per question.\n\nFacts: Pay is $0.20 per question. Each survey has 10 questions. Monday: 3 surveys. Tuesday: 4 surveys.",
+      "receiver": "solver",
+      "round": 0,
+      "role": "assistant",
+      "prompt_tokens": 209,
+      "completion_tokens": 76,
+      "id": "f4c52785b1b8",
+      "ts": 1793094261.94075,
+      "meta": {
+        "fields": {},
+        "communication_tokens": 76,
+        "communication_tokens_exact": true,
+        "attempt_count": 1,
+        "fallback": false,
+        "tokens_include_all_attempts": true,
+        "incoming_message_ids": []
+      }
+    },
+    {
+      "sender": "solver",
+      "content": "Bart completed 3 + 4 = 7 surveys total. That is 7 × 10 = 70 questions. At $0.20 per question, he earned 70 × 0.20 = 14 dollars.\n\n\\boxed{14}",
+      "receiver": "verifier",
+      "round": 0,
+      "role": "assistant",
+      "prompt_tokens": 297,
+      "completion_tokens": 53,
+      "id": "0f272340dd61",
+      "ts": 1793094263.4991283,
+      "meta": {
+        "fields": {
+          "R": "14"
+        },
+        "communication_tokens": 53,
+        "communication_tokens_exact": true,
+        "attempt_count": 1,
+        "fallback": false,
+        "tokens_include_all_attempts": true,
+        "incoming_message_ids": [
+          "f4c52785b1b8"
+        ]
+      }
+    },
+    {
+      "sender": "verifier",
+      "content": "ACCEPT",
+      "receiver": "solver",
+      "round": 0,
+      "role": "assistant",
+      "prompt_tokens": 651,
+      "completion_tokens": 2,
+      "id": "35a18fcdd851",
+      "ts": 1793094264.5518978,
+      "meta": {
+        "fields": {
+          "CHK": "ACCEPT"
+        },
+        "communication_tokens": 2,
+        "communication_tokens_exact": true,
+        "attempt_count": 1,
+        "fallback": false,
+        "tokens_include_all_attempts": true,
+        "incoming_message_ids": [
+          "0f272340dd61"
+        ]
+      }
+    }
+  ],
+  "communication_tokens": 131,
+  "wall_time_s": 4.371962200035341,
+  "verified": true,
+  "revision_rounds": 0,
+  "model_calls": [
+    {
+      "role": "planner",
+      "attempt": 0,
+      "status": "delivered",
+      "error": "",
+      "raw_output": "Goal: find Bart’s total earnings from Monday and Tuesday surveys.\n\nPlan: Determine how many surveys he completed in total across the two days, then determine how many questions that represents, then multiply by the pay per question.\n\nFacts: Pay is $0.20 per question. Each survey has 10 questions. Monday: 3 surveys. Tuesday: 4 surveys.",
+      "finish_reason": "stop",
+      "output_tokens": 76,
+      "usage_available": true
+    },
+    {
+      "role": "solver",
+      "attempt": 0,
+      "status": "delivered",
+      "error": "",
+      "raw_output": "Bart completed 3 + 4 = 7 surveys total. That is 7 × 10 = 70 questions. At $0.20 per question, he earned 70 × 0.20 = 14 dollars.\n\n\\boxed{14}",
+      "finish_reason": "stop",
+      "output_tokens": 53,
+      "usage_available": true
+    },
+    {
+      "role": "verifier",
+      "attempt": 0,
+      "status": "delivered",
+      "error": "",
+      "raw_output": "ACCEPT",
+      "finish_reason": "stop",
+      "output_tokens": 2,
+      "usage_available": true
+    }
+  ],
+  "failed_attempts": [],
+  "calls": 3,
+  "usage_complete": true,
+  "known_input_tokens": 1157,
+  "known_output_tokens": 131,
+  "model_input_tokens": 1157,
+  "model_output_tokens": 131,
+  "format_failed_calls": 0,
+  "transport_failed_calls": 0,
+  "fallback_calls": 0,
+  "sum_model_latency_s": 4.304358720779419,
+  "gold": "14",
+  "score": 1.0,
+  "question": "Bart fills out surveys to earn money. He receives $0.2 for every question he answers in the survey. Each survey has 10 questions. On Monday he finished 3 surveys, and on Tuesday 4 surveys. How much money did he earn during these two days?\nGive the final numeric answer."
+}

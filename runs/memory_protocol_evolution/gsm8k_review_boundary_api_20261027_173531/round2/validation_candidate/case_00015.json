@@ -1,0 +1,151 @@
+{
+  "task_id": "gsm8k:train:seed42:V:00015",
+  "status": "completed",
+  "error": null,
+  "prediction": "150",
+  "messages": [
+    {
+      "sender": "planner",
+      "content": "G:money_left;P:after_clothes=600-600/2,after_books=after_clothes-after_clothes/2",
+      "receiver": "solver",
+      "round": 0,
+      "role": "assistant",
+      "prompt_tokens": 751,
+      "completion_tokens": 29,
+      "id": "03d81b7d902b",
+      "ts": 1793097282.8709922,
+      "meta": {
+        "sender": "planner",
+        "receiver": "solver",
+        "message_id": "03d81b7d902b",
+        "protocol_edge": "planner_to_solver",
+        "protocol_version": "CARD-2-gsm8k",
+        "protocol_hash": "c152278e4a24181b874bd88cbf3adef79479b79f6539931bcd89721fa5a8a7a9",
+        "contract_hash": "ac09c03455d8af3a35273b605bb457591de11f0e22bded3325bbb626ee774caf",
+        "fields": {
+          "G": "money_left",
+          "P": "after_clothes=600-600/2,after_books=after_clothes-after_clothes/2"
+        },
+        "communication_tokens": 29,
+        "communication_tokens_exact": true,
+        "attempt_count": 1,
+        "fallback": false,
+        "tokens_include_all_attempts": true,
+        "incoming_message_ids": []
+      }
+    },
+    {
+      "sender": "solver",
+      "content": "IR:after_clothes=600-600/2=300,after_books=300-300/2=150;R:150",
+      "receiver": "verifier",
+      "round": 0,
+      "role": "assistant",
+      "prompt_tokens": 723,
+      "completion_tokens": 29,
+      "id": "b0a0b4e0bb65",
+      "ts": 1793097283.9967225,
+      "meta": {
+        "sender": "solver",
+        "receiver": "verifier",
+        "message_id": "b0a0b4e0bb65",
+        "protocol_edge": "solver_to_verifier",
+        "protocol_version": "CARD-2-gsm8k",
+        "protocol_hash": "c152278e4a24181b874bd88cbf3adef79479b79f6539931bcd89721fa5a8a7a9",
+        "contract_hash": "ac09c03455d8af3a35273b605bb457591de11f0e22bded3325bbb626ee774caf",
+        "fields": {
+          "IR": "after_clothes=600-600/2=300,after_books=300-300/2=150",
+          "R": "150"
+        },
+        "communication_tokens": 29,
+        "communication_tokens_exact": true,
+        "attempt_count": 1,
+        "fallback": false,
+        "tokens_include_all_attempts": true,
+        "incoming_message_ids": [
+          "03d81b7d902b"
+        ]
+      }
+    },
+    {
+      "sender": "verifier",
+      "content": "CHK:ACCEPT",
+      "receiver": "solver",
+      "round": 0,
+      "role": "assistant",
+      "prompt_tokens": 1055,
+      "completion_tokens": 5,
+      "id": "7e2fc6f3396c",
+      "ts": 1793097284.997629,
+      "meta": {
+        "sender": "verifier",
+        "receiver": "solver",
+        "message_id": "7e2fc6f3396c",
+        "protocol_edge": "verifier_to_solver",
+        "protocol_version": "CARD-2-gsm8k",
+        "protocol_hash": "c152278e4a24181b874bd88cbf3adef79479b79f6539931bcd89721fa5a8a7a9",
+        "contract_hash": "ac09c03455d8af3a35273b605bb457591de11f0e22bded3325bbb626ee774caf",
+        "fields": {
+          "CHK": "ACCEPT"
+        },
+        "communication_tokens": 5,
+        "communication_tokens_exact": true,
+        "attempt_count": 1,
+        "fallback": false,
+        "tokens_include_all_attempts": true,
+        "incoming_message_ids": [
+          "b0a0b4e0bb65"
+        ]
+      }
+    }
+  ],
+  "communication_tokens": 63,
+  "wall_time_s": 3.4295697999186814,
+  "verified": true,
+  "revision_rounds": 0,
+  "model_calls": [
+    {
+      "role": "planner",
+      "attempt": 0,
+      "status": "delivered",
+      "error": "",
+      "raw_output": "G:money_left;P:after_clothes=600-600/2,after_books=after_clothes-after_clothes/2",
+      "finish_reason": "stop",
+      "output_tokens": 29,
+      "usage_available": true
+    },
+    {
+      "role": "solver",
+      "attempt": 0,
+      "status": "delivered",
+      "error": "",
+      "raw_output": "IR:after_clothes=600-600/2=300,after_books=300-300/2=150;R:150",
+      "finish_reason": "stop",
+      "output_tokens": 29,
+      "usage_available": true
+    },
+    {
+      "role": "verifier",
+      "attempt": 0,
+      "status": "delivered",
+      "error": "",
+      "raw_output": "CHK:ACCEPT",
+      "finish_reason": "stop",
+      "output_tokens": 5,
+      "usage_available": true
+    }
+  ],
+  "failed_attempts": [],
+  "calls": 3,
+  "usage_complete": true,
+  "known_input_tokens": 2529,
+  "known_output_tokens": 63,
+  "model_input_tokens": 2529,
+  "model_output_tokens": 63,
+  "format_failed_calls": 0,
+  "transport_failed_calls": 0,
+  "fallback_calls": 0,
+  "sum_model_latency_s": 3.308403968811035,
+  "gold": "150",
+  "score": 1.0,
+  "question": "Susan earned $600 from babysitting over the summer. She went shopping and spent half of it on clothes. Then she spent half of what was left on books. How much money did she have left?\nGive the final numeric answer."
+}

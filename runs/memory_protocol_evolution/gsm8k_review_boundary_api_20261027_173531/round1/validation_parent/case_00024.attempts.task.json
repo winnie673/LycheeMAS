@@ -1,0 +1,150 @@
+{
+  "task_id": "gsm8k:train:seed42:V:00024",
+  "status": "completed",
+  "error": null,
+  "prediction": "24",
+  "messages": [
+    {
+      "sender": "planner",
+      "content": "K:side_salad=2,cheesy_fries=4,diet_cola=2,mike_bill=2*john_bill;G:combined_total;P:mike_bill=2*john_bill,combined_total=mike_bill+john_bill;NL:Mike's extra items add to his bill, and his total is twice John's total",
+      "receiver": "solver",
+      "round": 0,
+      "role": "assistant",
+      "prompt_tokens": 770,
+      "completion_tokens": 79,
+      "id": "41afe039541f",
+      "ts": 1793094463.7885811,
+      "meta": {
+        "sender": "planner",
+        "receiver": "solver",
+        "message_id": "41afe039541f",
+        "protocol_edge": "planner_to_solver",
+        "protocol_version": "CARD-0-gsm8k",
+        "protocol_hash": "eb2823227bf7889a5ca248376e410b4922fec80b12249ba4d10a3c8452604ed2",
+        "contract_hash": "ac09c03455d8af3a35273b605bb457591de11f0e22bded3325bbb626ee774caf",
+        "fields": {
+          "K": "side_salad=2,cheesy_fries=4,diet_cola=2,mike_bill=2*john_bill",
+          "G": "combined_total",
+          "P": "mike_bill=2*john_bill,combined_total=mike_bill+john_bill",
+          "NL": "Mike's extra items add to his bill, and his total is twice John's total"
+        },
+        "communication_tokens": 79,
+        "communication_tokens_exact": true,
+        "attempt_count": 1,
+        "fallback": false,
+        "tokens_include_all_attempts": true,
+        "incoming_message_ids": []
+      }
+    },
+    {
+      "sender": "solver",
+      "content": "IR:mike_extras=2+4+2=8,mike_bill=john_bill+8,2*john_bill=john_bill+8,john_bill=8,mike_bill=16,total=16+8=24;R:24",
+      "receiver": "verifier",
+      "round": 0,
+      "role": "assistant",
+      "prompt_tokens": 824,
+      "completion_tokens": 59,
+      "id": "85e9856e64dd",
+      "ts": 1793094465.2282217,
+      "meta": {
+        "sender": "solver",
+        "receiver": "verifier",
+        "message_id": "85e9856e64dd",
+        "protocol_edge": "solver_to_verifier",
+        "protocol_version": "CARD-0-gsm8k",
+        "protocol_hash": "eb2823227bf7889a5ca248376e410b4922fec80b12249ba4d10a3c8452604ed2",
+        "contract_hash": "ac09c03455d8af3a35273b605bb457591de11f0e22bded3325bbb626ee774caf",
+        "fields": {
+          "IR": "mike_extras=2+4+2=8,mike_bill=john_bill+8,2*john_bill=john_bill+8,john_bill=8,mike_bill=16,total=16+8=24",
+          "R": "24"
+        },
+        "communication_tokens": 59,
+        "communication_tokens_exact": true,
+        "attempt_count": 1,
+        "fallback": false,
+        "tokens_include_all_attempts": true,
+        "incoming_message_ids": [
+          "41afe039541f"
+        ]
+      }
+    },
+    {
+      "sender": "verifier",
+      "content": "CHK:ACCEPT",
+      "receiver": "solver",
+      "round": 0,
+      "role": "assistant",
+      "prompt_tokens": 1136,
+      "completion_tokens": 5,
+      "id": "3a8aedec2e12",
+      "ts": 1793094466.4379447,
+      "meta": {
+        "sender": "verifier",
+        "receiver": "solver",
+        "message_id": "3a8aedec2e12",
+        "protocol_edge": "verifier_to_solver",
+        "protocol_version": "CARD-0-gsm8k",
+        "protocol_hash": "eb2823227bf7889a5ca248376e410b4922fec80b12249ba4d10a3c8452604ed2",
+        "contract_hash": "ac09c03455d8af3a35273b605bb457591de11f0e22bded3325bbb626ee774caf",
+        "fields": {
+          "CHK": "ACCEPT"
+        },
+        "communication_tokens": 5,
+        "communication_tokens_exact": true,
+        "attempt_count": 1,
+        "fallback": false,
+        "tokens_include_all_attempts": true,
+        "incoming_message_ids": [
+          "85e9856e64dd"
+        ]
+      }
+    }
+  ],
+  "communication_tokens": 143,
+  "wall_time_s": 4.927463500062004,
+  "verified": true,
+  "revision_rounds": 0,
+  "model_calls": [
+    {
+      "role": "planner",
+      "attempt": 0,
+      "status": "delivered",
+      "error": "",
+      "raw_output": "K:side_salad=2,cheesy_fries=4,diet_cola=2,mike_bill=2*john_bill;G:combined_total;P:mike_bill=2*john_bill,combined_total=mike_bill+john_bill;NL:Mike's extra items add to his bill, and his total is twice John's total",
+      "finish_reason": "stop",
+      "output_tokens": 79,
+      "usage_available": true
+    },
+    {
+      "role": "solver",
+      "attempt": 0,
+      "status": "delivered",
+      "error": "",
+      "raw_output": "IR:mike_extras=2+4+2=8,mike_bill=john_bill+8,2*john_bill=john_bill+8,john_bill=8,mike_bill=16,total=16+8=24;R:24",
+      "finish_reason": "stop",
+      "output_tokens": 59,
+      "usage_available": true
+    },
+    {
+      "role": "verifier",
+      "attempt": 0,
+      "status": "delivered",
+      "error": "",
+      "raw_output": "CHK:ACCEPT",
+      "finish_reason": "stop",
+      "output_tokens": 5,
+      "usage_available": true
+    }
+  ],
+  "failed_attempts": [],
+  "calls": 3,
+  "usage_complete": true,
+  "known_input_tokens": 2730,
+  "known_output_tokens": 143,
+  "model_input_tokens": 2730,
+  "model_output_tokens": 143,
+  "format_failed_calls": 0,
+  "transport_failed_calls": 0,
+  "fallback_calls": 0,
+  "sum_model_latency_s": 4.801244735717773
+}

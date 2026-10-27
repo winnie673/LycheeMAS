@@ -1,0 +1,153 @@
+{
+  "task_id": "gsm8k:train:seed42:V:00155",
+  "status": "completed",
+  "error": null,
+  "prediction": "2.6",
+  "messages": [
+    {
+      "sender": "planner",
+      "content": "K:initial_gas=12,remaining_gas=2,supermarket_distance=5,farm_distance=6,turnaround_distance=2;G:fuel_rate_mpg;P:supermarket_roundtrip=2*5,first_farm_attempt=2+2,farm_roundtrip=2*6,total_distance=supermarket_roundtrip+first_farm_attempt+farm_roundtrip,gas_used=initial_gas-remaining_gas,fuel_rate_mpg=total_distance/gas_used;NL:the 2-mile turnaround is driven out and back before the full farm round trip",
+      "receiver": "solver",
+      "round": 0,
+      "role": "assistant",
+      "prompt_tokens": 813,
+      "completion_tokens": 137,
+      "id": "fd8291f8e020",
+      "ts": 1793098970.9579458,
+      "meta": {
+        "sender": "planner",
+        "receiver": "solver",
+        "message_id": "fd8291f8e020",
+        "protocol_edge": "planner_to_solver",
+        "protocol_version": "CARD-2-gsm8k",
+        "protocol_hash": "c152278e4a24181b874bd88cbf3adef79479b79f6539931bcd89721fa5a8a7a9",
+        "contract_hash": "ac09c03455d8af3a35273b605bb457591de11f0e22bded3325bbb626ee774caf",
+        "fields": {
+          "K": "initial_gas=12,remaining_gas=2,supermarket_distance=5,farm_distance=6,turnaround_distance=2",
+          "G": "fuel_rate_mpg",
+          "P": "supermarket_roundtrip=2*5,first_farm_attempt=2+2,farm_roundtrip=2*6,total_distance=supermarket_roundtrip+first_farm_attempt+farm_roundtrip,gas_used=initial_gas-remaining_gas,fuel_rate_mpg=total_distance/gas_used",
+          "NL": "the 2-mile turnaround is driven out and back before the full farm round trip"
+        },
+        "communication_tokens": 137,
+        "communication_tokens_exact": true,
+        "attempt_count": 1,
+        "fallback": false,
+        "tokens_include_all_attempts": true,
+        "incoming_message_ids": []
+      }
+    },
+    {
+      "sender": "solver",
+      "content": "IR:supermarket_roundtrip=2*5=10,first_farm_attempt=2+2=4,farm_roundtrip=2*6=12,total_distance=10+4+12=26,gas_used=12-2=10,rate=26/10=2.6;R:2.6",
+      "receiver": "verifier",
+      "round": 0,
+      "role": "assistant",
+      "prompt_tokens": 893,
+      "completion_tokens": 75,
+      "id": "c751b756ea3e",
+      "ts": 1793098972.480437,
+      "meta": {
+        "sender": "solver",
+        "receiver": "verifier",
+        "message_id": "c751b756ea3e",
+        "protocol_edge": "solver_to_verifier",
+        "protocol_version": "CARD-2-gsm8k",
+        "protocol_hash": "c152278e4a24181b874bd88cbf3adef79479b79f6539931bcd89721fa5a8a7a9",
+        "contract_hash": "ac09c03455d8af3a35273b605bb457591de11f0e22bded3325bbb626ee774caf",
+        "fields": {
+          "IR": "supermarket_roundtrip=2*5=10,first_farm_attempt=2+2=4,farm_roundtrip=2*6=12,total_distance=10+4+12=26,gas_used=12-2=10,rate=26/10=2.6",
+          "R": "2.6"
+        },
+        "communication_tokens": 75,
+        "communication_tokens_exact": true,
+        "attempt_count": 1,
+        "fallback": false,
+        "tokens_include_all_attempts": true,
+        "incoming_message_ids": [
+          "fd8291f8e020"
+        ]
+      }
+    },
+    {
+      "sender": "verifier",
+      "content": "CHK:ACCEPT",
+      "receiver": "solver",
+      "round": 0,
+      "role": "assistant",
+      "prompt_tokens": 1163,
+      "completion_tokens": 5,
+      "id": "cf5077ac74bc",
+      "ts": 1793098973.6461852,
+      "meta": {
+        "sender": "verifier",
+        "receiver": "solver",
+        "message_id": "cf5077ac74bc",
+        "protocol_edge": "verifier_to_solver",
+        "protocol_version": "CARD-2-gsm8k",
+        "protocol_hash": "c152278e4a24181b874bd88cbf3adef79479b79f6539931bcd89721fa5a8a7a9",
+        "contract_hash": "ac09c03455d8af3a35273b605bb457591de11f0e22bded3325bbb626ee774caf",
+        "fields": {
+          "CHK": "ACCEPT"
+        },
+        "communication_tokens": 5,
+        "communication_tokens_exact": true,
+        "attempt_count": 1,
+        "fallback": false,
+        "tokens_include_all_attempts": true,
+        "incoming_message_ids": [
+          "c751b756ea3e"
+        ]
+      }
+    }
+  ],
+  "communication_tokens": 217,
+  "wall_time_s": 4.548855800065212,
+  "verified": true,
+  "revision_rounds": 0,
+  "model_calls": [
+    {
+      "role": "planner",
+      "attempt": 0,
+      "status": "delivered",
+      "error": "",
+      "raw_output": "K:initial_gas=12,remaining_gas=2,supermarket_distance=5,farm_distance=6,turnaround_distance=2;G:fuel_rate_mpg;P:supermarket_roundtrip=2*5,first_farm_attempt=2+2,farm_roundtrip=2*6,total_distance=supermarket_roundtrip+first_farm_attempt+farm_roundtrip,gas_used=initial_gas-remaining_gas,fuel_rate_mpg=total_distance/gas_used;NL:the 2-mile turnaround is driven out and back before the full farm round trip",
+      "finish_reason": "stop",
+      "output_tokens": 137,
+      "usage_available": true
+    },
+    {
+      "role": "solver",
+      "attempt": 0,
+      "status": "delivered",
+      "error": "",
+      "raw_output": "IR:supermarket_roundtrip=2*5=10,first_farm_attempt=2+2=4,farm_roundtrip=2*6=12,total_distance=10+4+12=26,gas_used=12-2=10,rate=26/10=2.6;R:2.6",
+      "finish_reason": "stop",
+      "output_tokens": 75,
+      "usage_available": true
+    },
+    {
+      "role": "verifier",
+      "attempt": 0,
+      "status": "delivered",
+      "error": "",
+      "raw_output": "CHK:ACCEPT",
+      "finish_reason": "stop",
+      "output_tokens": 5,
+      "usage_available": true
+    }
+  ],
+  "failed_attempts": [],
+  "calls": 3,
+  "usage_complete": true,
+  "known_input_tokens": 2869,
+  "known_output_tokens": 217,
+  "model_input_tokens": 2869,
+  "model_output_tokens": 217,
+  "format_failed_calls": 0,
+  "transport_failed_calls": 0,
+  "fallback_calls": 0,
+  "sum_model_latency_s": 4.43833065032959,
+  "gold": "2",
+  "score": 0.0,
+  "question": "Bobby needed to make some trips with his truck and had only 12 gallons of gasoline. He drives to a supermarket 5 miles away and then drives back home. Then he headed to his farm which was 6 miles away. Two miles into the journey, he turned around and drove back home to retrieve some farming tools he forgot to take earlier and drove down to the farm. If he now has exactly 2 gallons of gasoline left, at what rate in miles per gallon has his truck been consuming gasoline?\nGive the final numeric answer."
+}

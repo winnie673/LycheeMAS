@@ -1,0 +1,6 @@
+{
+  "attempt": 0,
+  "raw_response": "{\"action\":\"KEEP\",\"reason\":\"The only communication-related failure (00019) is an NL planner prose omission of a required additive term; the hybrid K/P path already preserved it correctly, and the card's NL rule already says to omit NL when symbols suffice. Case 00031 is a base reasoning/operation-direction error shared by both paths and is not a protocol encoding defect. No minimal field-rule, examples, or value_policy change is justified by diagnosed evidence.\"}",
+  "error": null,
+  "status": "valid"
+}

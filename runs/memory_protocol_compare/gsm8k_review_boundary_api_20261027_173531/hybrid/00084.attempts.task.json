@@ -1,0 +1,123 @@
+{
+  "task_id": "gsm8k:test:seed42:T:00087",
+  "mode": "hybrid",
+  "benchmark": "gsm8k",
+  "status": "completed",
+  "error": null,
+  "prediction": "9360",
+  "gold": "9360",
+  "wall_time_s": 4.022437199950218,
+  "communication_tokens": 156,
+  "communication_tokens_exact": true,
+  "revision_rounds": 0,
+  "verification_decision": "ACCEPT",
+  "verified": true,
+  "messages": [
+    {
+      "sender": "planner",
+      "content": "K:initial_monthly=600,raise_rate=0.10,raise_years=3;G:Sylvie_annual_salary_after_3_more_years;P:initial_annual=600*12,raise_per_year=0.10*initial_annual,total=initial_annual+raise_years*raise_per_year;NL:raises are 10% of the initial salary each year, not compounded",
+      "receiver": "solver",
+      "round": 0,
+      "role": "assistant",
+      "prompt_tokens": 786,
+      "completion_tokens": 91,
+      "id": "52d3efb43d13",
+      "ts": 1793100966.4317777,
+      "meta": {
+        "sender": "planner",
+        "receiver": "solver",
+        "message_id": "52d3efb43d13",
+        "protocol_edge": "planner_to_solver",
+        "protocol_version": "CARD-2-gsm8k",
+        "protocol_hash": "c152278e4a24181b874bd88cbf3adef79479b79f6539931bcd89721fa5a8a7a9",
+        "contract_hash": "ac09c03455d8af3a35273b605bb457591de11f0e22bded3325bbb626ee774caf",
+        "fields": {
+          "K": "initial_monthly=600,raise_rate=0.10,raise_years=3",
+          "G": "Sylvie_annual_salary_after_3_more_years",
+          "P": "initial_annual=600*12,raise_per_year=0.10*initial_annual,total=initial_annual+raise_years*raise_per_year",
+          "NL": "raises are 10% of the initial salary each year, not compounded"
+        },
+        "communication_tokens": 91,
+        "communication_tokens_exact": true,
+        "attempt_count": 1,
+        "fallback": false,
+        "tokens_include_all_attempts": true,
+        "incoming_message_ids": []
+      }
+    },
+    {
+      "sender": "solver",
+      "content": "IR:initial_annual=600*12=7200,raise_per_year=0.10*7200=720,total=7200+3*720=9360;R:9360;NL:raises are 10% of the initial salary each year, not compounded",
+      "receiver": "verifier",
+      "round": 0,
+      "role": "assistant",
+      "prompt_tokens": 820,
+      "completion_tokens": 60,
+      "id": "c16597283005",
+      "ts": 1793100967.7566319,
+      "meta": {
+        "sender": "solver",
+        "receiver": "verifier",
+        "message_id": "c16597283005",
+        "protocol_edge": "solver_to_verifier",
+        "protocol_version": "CARD-2-gsm8k",
+        "protocol_hash": "c152278e4a24181b874bd88cbf3adef79479b79f6539931bcd89721fa5a8a7a9",
+        "contract_hash": "ac09c03455d8af3a35273b605bb457591de11f0e22bded3325bbb626ee774caf",
+        "fields": {
+          "IR": "initial_annual=600*12=7200,raise_per_year=0.10*7200=720,total=7200+3*720=9360",
+          "R": "9360",
+          "NL": "raises are 10% of the initial salary each year, not compounded"
+        },
+        "communication_tokens": 60,
+        "communication_tokens_exact": true,
+        "attempt_count": 1,
+        "fallback": false,
+        "tokens_include_all_attempts": true,
+        "incoming_message_ids": [
+          "52d3efb43d13"
+        ]
+      }
+    },
+    {
+      "sender": "verifier",
+      "content": "CHK:ACCEPT",
+      "receiver": "solver",
+      "round": 0,
+      "role": "assistant",
+      "prompt_tokens": 1121,
+      "completion_tokens": 5,
+      "id": "ee91adbca204",
+      "ts": 1793100968.6739192,
+      "meta": {
+        "sender": "verifier",
+        "receiver": "solver",
+        "message_id": "ee91adbca204",
+        "protocol_edge": "verifier_to_solver",
+        "protocol_version": "CARD-2-gsm8k",
+        "protocol_hash": "c152278e4a24181b874bd88cbf3adef79479b79f6539931bcd89721fa5a8a7a9",
+        "contract_hash": "ac09c03455d8af3a35273b605bb457591de11f0e22bded3325bbb626ee774caf",
+        "fields": {
+          "CHK": "ACCEPT"
+        },
+        "communication_tokens": 5,
+        "communication_tokens_exact": true,
+        "attempt_count": 1,
+        "fallback": false,
+        "tokens_include_all_attempts": true,
+        "incoming_message_ids": [
+          "c16597283005"
+        ]
+      }
+    }
+  ],
+  "calls": 3,
+  "usage_complete": true,
+  "known_input_tokens": 2727,
+  "known_output_tokens": 156,
+  "model_input_tokens": 2727,
+  "model_output_tokens": 156,
+  "format_failed_calls": 0,
+  "transport_failed_calls": 0,
+  "fallback_calls": 0,
+  "sum_model_latency_s": 3.9098927974700928
+}

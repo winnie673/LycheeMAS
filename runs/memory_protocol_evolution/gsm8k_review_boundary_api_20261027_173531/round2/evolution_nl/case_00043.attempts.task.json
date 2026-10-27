@@ -1,0 +1,123 @@
+{
+  "task_id": "gsm8k:train:seed42:G2:00043",
+  "status": "completed",
+  "error": null,
+  "prediction": "10",
+  "messages": [
+    {
+      "sender": "planner",
+      "content": "Goal: find how many tortilla chips Nancy keeps.\n\nPlan: Start with the total of 22 chips. Subtract the 7 chips given to her brother, then subtract the 5 chips given to her sister. The remaining amount is what she keeps.\n\nConstraints: Use only the given numbers; report a single numeric result.",
+      "receiver": "solver",
+      "round": 0,
+      "role": "assistant",
+      "prompt_tokens": 198,
+      "completion_tokens": 65,
+      "id": "35ee3c8e5350",
+      "ts": 1793096372.6032703,
+      "meta": {
+        "fields": {},
+        "communication_tokens": 65,
+        "communication_tokens_exact": true,
+        "attempt_count": 1,
+        "fallback": false,
+        "tokens_include_all_attempts": true,
+        "incoming_message_ids": []
+      }
+    },
+    {
+      "sender": "solver",
+      "content": "Nancy starts with 22 chips. She gives away 7 + 5 = 12 chips. She keeps 22 − 12 = 10 chips.\n\n\\boxed{10}",
+      "receiver": "verifier",
+      "round": 0,
+      "role": "assistant",
+      "prompt_tokens": 275,
+      "completion_tokens": 38,
+      "id": "1743749d23f1",
+      "ts": 1793096373.7861974,
+      "meta": {
+        "fields": {
+          "R": "10"
+        },
+        "communication_tokens": 38,
+        "communication_tokens_exact": true,
+        "attempt_count": 1,
+        "fallback": false,
+        "tokens_include_all_attempts": true,
+        "incoming_message_ids": [
+          "35ee3c8e5350"
+        ]
+      }
+    },
+    {
+      "sender": "verifier",
+      "content": "ACCEPT",
+      "receiver": "solver",
+      "round": 0,
+      "role": "assistant",
+      "prompt_tokens": 625,
+      "completion_tokens": 2,
+      "id": "bf068d57d9d3",
+      "ts": 1793096375.0002465,
+      "meta": {
+        "fields": {
+          "CHK": "ACCEPT"
+        },
+        "communication_tokens": 2,
+        "communication_tokens_exact": true,
+        "attempt_count": 1,
+        "fallback": false,
+        "tokens_include_all_attempts": true,
+        "incoming_message_ids": [
+          "1743749d23f1"
+        ]
+      }
+    }
+  ],
+  "communication_tokens": 105,
+  "wall_time_s": 3.859384899958968,
+  "verified": true,
+  "revision_rounds": 0,
+  "model_calls": [
+    {
+      "role": "planner",
+      "attempt": 0,
+      "status": "delivered",
+      "error": "",
+      "raw_output": "Goal: find how many tortilla chips Nancy keeps.\n\nPlan: Start with the total of 22 chips. Subtract the 7 chips given to her brother, then subtract the 5 chips given to her sister. The remaining amount is what she keeps.\n\nConstraints: Use only the given numbers; report a single numeric result.",
+      "finish_reason": "stop",
+      "output_tokens": 65,
+      "usage_available": true
+    },
+    {
+      "role": "solver",
+      "attempt": 0,
+      "status": "delivered",
+      "error": "",
+      "raw_output": "Nancy starts with 22 chips. She gives away 7 + 5 = 12 chips. She keeps 22 − 12 = 10 chips.\n\n\\boxed{10}",
+      "finish_reason": "stop",
+      "output_tokens": 38,
+      "usage_available": true
+    },
+    {
+      "role": "verifier",
+      "attempt": 0,
+      "status": "delivered",
+      "error": "",
+      "raw_output": "ACCEPT",
+      "finish_reason": "stop",
+      "output_tokens": 2,
+      "usage_available": true
+    }
+  ],
+  "failed_attempts": [],
+  "calls": 3,
+  "usage_complete": true,
+  "known_input_tokens": 1098,
+  "known_output_tokens": 105,
+  "model_input_tokens": 1098,
+  "model_output_tokens": 105,
+  "format_failed_calls": 0,
+  "transport_failed_calls": 0,
+  "fallback_calls": 0,
+  "sum_model_latency_s": 3.7927281856536865
+}

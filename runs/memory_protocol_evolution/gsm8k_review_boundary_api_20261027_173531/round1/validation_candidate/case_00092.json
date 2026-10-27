@@ -1,0 +1,152 @@
+{
+  "task_id": "gsm8k:train:seed42:V:00092",
+  "status": "completed",
+  "error": null,
+  "prediction": "2400",
+  "messages": [
+    {
+      "sender": "planner",
+      "content": "K:computer=1500,peripherals_fraction=1/5,video_base=300,video_multiplier=2;G:total_spend;P:peripherals=computer*peripherals_fraction,video_upgrade=video_base*video_multiplier,total_spend=computer+peripherals+video_upgrade",
+      "receiver": "solver",
+      "round": 0,
+      "role": "assistant",
+      "prompt_tokens": 737,
+      "completion_tokens": 74,
+      "id": "200a424bc3ff",
+      "ts": 1793095568.55438,
+      "meta": {
+        "sender": "planner",
+        "receiver": "solver",
+        "message_id": "200a424bc3ff",
+        "protocol_edge": "planner_to_solver",
+        "protocol_version": "CARD-0-gsm8k",
+        "protocol_hash": "eb2823227bf7889a5ca248376e410b4922fec80b12249ba4d10a3c8452604ed2",
+        "contract_hash": "ac09c03455d8af3a35273b605bb457591de11f0e22bded3325bbb626ee774caf",
+        "fields": {
+          "K": "computer=1500,peripherals_fraction=1/5,video_base=300,video_multiplier=2",
+          "G": "total_spend",
+          "P": "peripherals=computer*peripherals_fraction,video_upgrade=video_base*video_multiplier,total_spend=computer+peripherals+video_upgrade"
+        },
+        "communication_tokens": 74,
+        "communication_tokens_exact": true,
+        "attempt_count": 1,
+        "fallback": false,
+        "tokens_include_all_attempts": true,
+        "incoming_message_ids": []
+      }
+    },
+    {
+      "sender": "solver",
+      "content": "IR:peripherals=1500*1/5=300,video_upgrade=300*2=600,total=1500+300+600=2400;R:2400",
+      "receiver": "verifier",
+      "round": 0,
+      "role": "assistant",
+      "prompt_tokens": 786,
+      "completion_tokens": 41,
+      "id": "08d71890c835",
+      "ts": 1793095569.9100513,
+      "meta": {
+        "sender": "solver",
+        "receiver": "verifier",
+        "message_id": "08d71890c835",
+        "protocol_edge": "solver_to_verifier",
+        "protocol_version": "CARD-0-gsm8k",
+        "protocol_hash": "eb2823227bf7889a5ca248376e410b4922fec80b12249ba4d10a3c8452604ed2",
+        "contract_hash": "ac09c03455d8af3a35273b605bb457591de11f0e22bded3325bbb626ee774caf",
+        "fields": {
+          "IR": "peripherals=1500*1/5=300,video_upgrade=300*2=600,total=1500+300+600=2400",
+          "R": "2400"
+        },
+        "communication_tokens": 41,
+        "communication_tokens_exact": true,
+        "attempt_count": 1,
+        "fallback": false,
+        "tokens_include_all_attempts": true,
+        "incoming_message_ids": [
+          "200a424bc3ff"
+        ]
+      }
+    },
+    {
+      "sender": "verifier",
+      "content": "CHK:ACCEPT",
+      "receiver": "solver",
+      "round": 0,
+      "role": "assistant",
+      "prompt_tokens": 1085,
+      "completion_tokens": 5,
+      "id": "ed2f53cfc28b",
+      "ts": 1793095570.9345548,
+      "meta": {
+        "sender": "verifier",
+        "receiver": "solver",
+        "message_id": "ed2f53cfc28b",
+        "protocol_edge": "verifier_to_solver",
+        "protocol_version": "CARD-0-gsm8k",
+        "protocol_hash": "eb2823227bf7889a5ca248376e410b4922fec80b12249ba4d10a3c8452604ed2",
+        "contract_hash": "ac09c03455d8af3a35273b605bb457591de11f0e22bded3325bbb626ee774caf",
+        "fields": {
+          "CHK": "ACCEPT"
+        },
+        "communication_tokens": 5,
+        "communication_tokens_exact": true,
+        "attempt_count": 1,
+        "fallback": false,
+        "tokens_include_all_attempts": true,
+        "incoming_message_ids": [
+          "08d71890c835"
+        ]
+      }
+    }
+  ],
+  "communication_tokens": 120,
+  "wall_time_s": 4.085039300029166,
+  "verified": true,
+  "revision_rounds": 0,
+  "model_calls": [
+    {
+      "role": "planner",
+      "attempt": 0,
+      "status": "delivered",
+      "error": "",
+      "raw_output": "K:computer=1500,peripherals_fraction=1/5,video_base=300,video_multiplier=2;G:total_spend;P:peripherals=computer*peripherals_fraction,video_upgrade=video_base*video_multiplier,total_spend=computer+peripherals+video_upgrade",
+      "finish_reason": "stop",
+      "output_tokens": 74,
+      "usage_available": true
+    },
+    {
+      "role": "solver",
+      "attempt": 0,
+      "status": "delivered",
+      "error": "",
+      "raw_output": "IR:peripherals=1500*1/5=300,video_upgrade=300*2=600,total=1500+300+600=2400;R:2400",
+      "finish_reason": "stop",
+      "output_tokens": 41,
+      "usage_available": true
+    },
+    {
+      "role": "verifier",
+      "attempt": 0,
+      "status": "delivered",
+      "error": "",
+      "raw_output": "CHK:ACCEPT",
+      "finish_reason": "stop",
+      "output_tokens": 5,
+      "usage_available": true
+    }
+  ],
+  "failed_attempts": [],
+  "calls": 3,
+  "usage_complete": true,
+  "known_input_tokens": 2608,
+  "known_output_tokens": 120,
+  "model_input_tokens": 2608,
+  "model_output_tokens": 120,
+  "format_failed_calls": 0,
+  "transport_failed_calls": 0,
+  "fallback_calls": 0,
+  "sum_model_latency_s": 3.9814584255218506,
+  "gold": "2100",
+  "score": 0.0,
+  "question": "John's new computer cost $1500.  He needs to get a monitor and other peripherals that cost 1/5 that much.  He also wants to upgrade the $300 video card in the base computer with one that costs twice as much.  How much did he spend?\nGive the final numeric answer."
+}

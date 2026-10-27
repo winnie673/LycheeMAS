@@ -1,0 +1,152 @@
+{
+  "task_id": "gsm8k:train:seed42:G1:00001",
+  "status": "completed",
+  "error": null,
+  "prediction": "1",
+  "messages": [
+    {
+      "sender": "planner",
+      "content": "K:games=5,found=5,ticket_value=3,total_value=30;G:tickets_won_per_game;P:total_tickets=total_value/ticket_value,won_total=total_tickets-found,per_game=won_total/games",
+      "receiver": "solver",
+      "round": 0,
+      "role": "assistant",
+      "prompt_tokens": 752,
+      "completion_tokens": 55,
+      "id": "fbc5189be050",
+      "ts": 1793093887.7511864,
+      "meta": {
+        "sender": "planner",
+        "receiver": "solver",
+        "message_id": "fbc5189be050",
+        "protocol_edge": "planner_to_solver",
+        "protocol_version": "CARD-0-gsm8k",
+        "protocol_hash": "eb2823227bf7889a5ca248376e410b4922fec80b12249ba4d10a3c8452604ed2",
+        "contract_hash": "ac09c03455d8af3a35273b605bb457591de11f0e22bded3325bbb626ee774caf",
+        "fields": {
+          "K": "games=5,found=5,ticket_value=3,total_value=30",
+          "G": "tickets_won_per_game",
+          "P": "total_tickets=total_value/ticket_value,won_total=total_tickets-found,per_game=won_total/games"
+        },
+        "communication_tokens": 55,
+        "communication_tokens_exact": true,
+        "attempt_count": 1,
+        "fallback": false,
+        "tokens_include_all_attempts": true,
+        "incoming_message_ids": []
+      }
+    },
+    {
+      "sender": "solver",
+      "content": "IR:total_tickets=30/3=10,won_total=10-5=5,per_game=5/5=1;R:1",
+      "receiver": "verifier",
+      "round": 0,
+      "role": "assistant",
+      "prompt_tokens": 782,
+      "completion_tokens": 33,
+      "id": "5b5649d7c9bd",
+      "ts": 1793093889.0717516,
+      "meta": {
+        "sender": "solver",
+        "receiver": "verifier",
+        "message_id": "5b5649d7c9bd",
+        "protocol_edge": "solver_to_verifier",
+        "protocol_version": "CARD-0-gsm8k",
+        "protocol_hash": "eb2823227bf7889a5ca248376e410b4922fec80b12249ba4d10a3c8452604ed2",
+        "contract_hash": "ac09c03455d8af3a35273b605bb457591de11f0e22bded3325bbb626ee774caf",
+        "fields": {
+          "IR": "total_tickets=30/3=10,won_total=10-5=5,per_game=5/5=1",
+          "R": "1"
+        },
+        "communication_tokens": 33,
+        "communication_tokens_exact": true,
+        "attempt_count": 1,
+        "fallback": false,
+        "tokens_include_all_attempts": true,
+        "incoming_message_ids": [
+          "fbc5189be050"
+        ]
+      }
+    },
+    {
+      "sender": "verifier",
+      "content": "CHK:ACCEPT",
+      "receiver": "solver",
+      "round": 0,
+      "role": "assistant",
+      "prompt_tokens": 1092,
+      "completion_tokens": 5,
+      "id": "90f1f8c89cd1",
+      "ts": 1793093890.349196,
+      "meta": {
+        "sender": "verifier",
+        "receiver": "solver",
+        "message_id": "90f1f8c89cd1",
+        "protocol_edge": "verifier_to_solver",
+        "protocol_version": "CARD-0-gsm8k",
+        "protocol_hash": "eb2823227bf7889a5ca248376e410b4922fec80b12249ba4d10a3c8452604ed2",
+        "contract_hash": "ac09c03455d8af3a35273b605bb457591de11f0e22bded3325bbb626ee774caf",
+        "fields": {
+          "CHK": "ACCEPT"
+        },
+        "communication_tokens": 5,
+        "communication_tokens_exact": true,
+        "attempt_count": 1,
+        "fallback": false,
+        "tokens_include_all_attempts": true,
+        "incoming_message_ids": [
+          "5b5649d7c9bd"
+        ]
+      }
+    }
+  ],
+  "communication_tokens": 93,
+  "wall_time_s": 4.253547600004822,
+  "verified": true,
+  "revision_rounds": 0,
+  "model_calls": [
+    {
+      "role": "planner",
+      "attempt": 0,
+      "status": "delivered",
+      "error": "",
+      "raw_output": "K:games=5,found=5,ticket_value=3,total_value=30;G:tickets_won_per_game;P:total_tickets=total_value/ticket_value,won_total=total_tickets-found,per_game=won_total/games",
+      "finish_reason": "stop",
+      "output_tokens": 55,
+      "usage_available": true
+    },
+    {
+      "role": "solver",
+      "attempt": 0,
+      "status": "delivered",
+      "error": "",
+      "raw_output": "IR:total_tickets=30/3=10,won_total=10-5=5,per_game=5/5=1;R:1",
+      "finish_reason": "stop",
+      "output_tokens": 33,
+      "usage_available": true
+    },
+    {
+      "role": "verifier",
+      "attempt": 0,
+      "status": "delivered",
+      "error": "",
+      "raw_output": "CHK:ACCEPT",
+      "finish_reason": "stop",
+      "output_tokens": 5,
+      "usage_available": true
+    }
+  ],
+  "failed_attempts": [],
+  "calls": 3,
+  "usage_complete": true,
+  "known_input_tokens": 2626,
+  "known_output_tokens": 93,
+  "model_input_tokens": 2626,
+  "model_output_tokens": 93,
+  "format_failed_calls": 0,
+  "transport_failed_calls": 0,
+  "fallback_calls": 0,
+  "sum_model_latency_s": 4.194382190704346,
+  "gold": "1",
+  "score": 1.0,
+  "question": "Taegan goes to a carnival where she wins tickets from each of the 5 carnival games and also finds 5 tickets on the floor. Each ticket is worth $3. In total, she has tickets that total a value of $30. If Taegan won an equal number of tickets from each of the games, how many tickets did she win from each game?\nGive the final numeric answer."
+}

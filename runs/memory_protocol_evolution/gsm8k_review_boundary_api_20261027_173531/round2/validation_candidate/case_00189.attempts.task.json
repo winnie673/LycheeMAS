@@ -1,0 +1,150 @@
+{
+  "task_id": "gsm8k:train:seed42:V:00189",
+  "status": "completed",
+  "error": null,
+  "prediction": "48",
+  "messages": [
+    {
+      "sender": "planner",
+      "content": "K:collect_per_day=8 dozen,days=2,market=3 dozen,mall=5 dozen,pie=4 dozen;G:donated_eggs;P:collected=collect_per_day*days,delivered=market+mall,donated=collected-delivered-pie;NL:all quantities in dozens, convert final result to individual eggs",
+      "receiver": "solver",
+      "round": 0,
+      "role": "assistant",
+      "prompt_tokens": 787,
+      "completion_tokens": 77,
+      "id": "596e05310540",
+      "ts": 1793097937.399477,
+      "meta": {
+        "sender": "planner",
+        "receiver": "solver",
+        "message_id": "596e05310540",
+        "protocol_edge": "planner_to_solver",
+        "protocol_version": "CARD-2-gsm8k",
+        "protocol_hash": "c152278e4a24181b874bd88cbf3adef79479b79f6539931bcd89721fa5a8a7a9",
+        "contract_hash": "ac09c03455d8af3a35273b605bb457591de11f0e22bded3325bbb626ee774caf",
+        "fields": {
+          "K": "collect_per_day=8 dozen,days=2,market=3 dozen,mall=5 dozen,pie=4 dozen",
+          "G": "donated_eggs",
+          "P": "collected=collect_per_day*days,delivered=market+mall,donated=collected-delivered-pie",
+          "NL": "all quantities in dozens, convert final result to individual eggs"
+        },
+        "communication_tokens": 77,
+        "communication_tokens_exact": true,
+        "attempt_count": 1,
+        "fallback": false,
+        "tokens_include_all_attempts": true,
+        "incoming_message_ids": []
+      }
+    },
+    {
+      "sender": "solver",
+      "content": "IR:collected=8*2=16,delivered=3+5=8,donated=16-8-4=4 dozen,eggs=4*12=48;R:48",
+      "receiver": "verifier",
+      "round": 0,
+      "role": "assistant",
+      "prompt_tokens": 807,
+      "completion_tokens": 44,
+      "id": "701cc9ccbcb3",
+      "ts": 1793097938.3102245,
+      "meta": {
+        "sender": "solver",
+        "receiver": "verifier",
+        "message_id": "701cc9ccbcb3",
+        "protocol_edge": "solver_to_verifier",
+        "protocol_version": "CARD-2-gsm8k",
+        "protocol_hash": "c152278e4a24181b874bd88cbf3adef79479b79f6539931bcd89721fa5a8a7a9",
+        "contract_hash": "ac09c03455d8af3a35273b605bb457591de11f0e22bded3325bbb626ee774caf",
+        "fields": {
+          "IR": "collected=8*2=16,delivered=3+5=8,donated=16-8-4=4 dozen,eggs=4*12=48",
+          "R": "48"
+        },
+        "communication_tokens": 44,
+        "communication_tokens_exact": true,
+        "attempt_count": 1,
+        "fallback": false,
+        "tokens_include_all_attempts": true,
+        "incoming_message_ids": [
+          "596e05310540"
+        ]
+      }
+    },
+    {
+      "sender": "verifier",
+      "content": "CHK:ACCEPT",
+      "receiver": "solver",
+      "round": 0,
+      "role": "assistant",
+      "prompt_tokens": 1106,
+      "completion_tokens": 5,
+      "id": "1766620438d6",
+      "ts": 1793097939.4403167,
+      "meta": {
+        "sender": "verifier",
+        "receiver": "solver",
+        "message_id": "1766620438d6",
+        "protocol_edge": "verifier_to_solver",
+        "protocol_version": "CARD-2-gsm8k",
+        "protocol_hash": "c152278e4a24181b874bd88cbf3adef79479b79f6539931bcd89721fa5a8a7a9",
+        "contract_hash": "ac09c03455d8af3a35273b605bb457591de11f0e22bded3325bbb626ee774caf",
+        "fields": {
+          "CHK": "ACCEPT"
+        },
+        "communication_tokens": 5,
+        "communication_tokens_exact": true,
+        "attempt_count": 1,
+        "fallback": false,
+        "tokens_include_all_attempts": true,
+        "incoming_message_ids": [
+          "701cc9ccbcb3"
+        ]
+      }
+    }
+  ],
+  "communication_tokens": 126,
+  "wall_time_s": 3.685204299981706,
+  "verified": true,
+  "revision_rounds": 0,
+  "model_calls": [
+    {
+      "role": "planner",
+      "attempt": 0,
+      "status": "delivered",
+      "error": "",
+      "raw_output": "K:collect_per_day=8 dozen,days=2,market=3 dozen,mall=5 dozen,pie=4 dozen;G:donated_eggs;P:collected=collect_per_day*days,delivered=market+mall,donated=collected-delivered-pie;NL:all quantities in dozens, convert final result to individual eggs",
+      "finish_reason": "stop",
+      "output_tokens": 77,
+      "usage_available": true
+    },
+    {
+      "role": "solver",
+      "attempt": 0,
+      "status": "delivered",
+      "error": "",
+      "raw_output": "IR:collected=8*2=16,delivered=3+5=8,donated=16-8-4=4 dozen,eggs=4*12=48;R:48",
+      "finish_reason": "stop",
+      "output_tokens": 44,
+      "usage_available": true
+    },
+    {
+      "role": "verifier",
+      "attempt": 0,
+      "status": "delivered",
+      "error": "",
+      "raw_output": "CHK:ACCEPT",
+      "finish_reason": "stop",
+      "output_tokens": 5,
+      "usage_available": true
+    }
+  ],
+  "failed_attempts": [],
+  "calls": 3,
+  "usage_complete": true,
+  "known_input_tokens": 2700,
+  "known_output_tokens": 126,
+  "model_input_tokens": 2700,
+  "model_output_tokens": 126,
+  "format_failed_calls": 0,
+  "transport_failed_calls": 0,
+  "fallback_calls": 0,
+  "sum_model_latency_s": 3.6271181106567383
+}

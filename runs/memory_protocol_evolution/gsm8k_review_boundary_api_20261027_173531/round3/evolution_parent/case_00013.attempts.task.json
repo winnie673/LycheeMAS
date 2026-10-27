@@ -1,0 +1,149 @@
+{
+  "task_id": "gsm8k:train:seed42:G3:00013",
+  "status": "completed",
+  "error": null,
+  "prediction": "4",
+  "messages": [
+    {
+      "sender": "planner",
+      "content": "G:days_ago;P:start=480,halve_until_below_50,count_halvings;NL:find smallest number of daily halvings from 480 that gives fewer than 50 zombies",
+      "receiver": "solver",
+      "round": 0,
+      "role": "assistant",
+      "prompt_tokens": 744,
+      "completion_tokens": 45,
+      "id": "063f6200962f",
+      "ts": 1793098028.983212,
+      "meta": {
+        "sender": "planner",
+        "receiver": "solver",
+        "message_id": "063f6200962f",
+        "protocol_edge": "planner_to_solver",
+        "protocol_version": "CARD-2-gsm8k",
+        "protocol_hash": "c152278e4a24181b874bd88cbf3adef79479b79f6539931bcd89721fa5a8a7a9",
+        "contract_hash": "ac09c03455d8af3a35273b605bb457591de11f0e22bded3325bbb626ee774caf",
+        "fields": {
+          "G": "days_ago",
+          "P": "start=480,halve_until_below_50,count_halvings",
+          "NL": "find smallest number of daily halvings from 480 that gives fewer than 50 zombies"
+        },
+        "communication_tokens": 45,
+        "communication_tokens_exact": true,
+        "attempt_count": 1,
+        "fallback": false,
+        "tokens_include_all_attempts": true,
+        "incoming_message_ids": []
+      }
+    },
+    {
+      "sender": "solver",
+      "content": "IR:480/2=240 day1,240/2=120 day2,120/2=60 day3,60/2=30 day4,30<50 so 4 halvings;R:4",
+      "receiver": "verifier",
+      "round": 0,
+      "role": "assistant",
+      "prompt_tokens": 732,
+      "completion_tokens": 46,
+      "id": "d76506f4624b",
+      "ts": 1793098030.364574,
+      "meta": {
+        "sender": "solver",
+        "receiver": "verifier",
+        "message_id": "d76506f4624b",
+        "protocol_edge": "solver_to_verifier",
+        "protocol_version": "CARD-2-gsm8k",
+        "protocol_hash": "c152278e4a24181b874bd88cbf3adef79479b79f6539931bcd89721fa5a8a7a9",
+        "contract_hash": "ac09c03455d8af3a35273b605bb457591de11f0e22bded3325bbb626ee774caf",
+        "fields": {
+          "IR": "480/2=240 day1,240/2=120 day2,120/2=60 day3,60/2=30 day4,30<50 so 4 halvings",
+          "R": "4"
+        },
+        "communication_tokens": 46,
+        "communication_tokens_exact": true,
+        "attempt_count": 1,
+        "fallback": false,
+        "tokens_include_all_attempts": true,
+        "incoming_message_ids": [
+          "063f6200962f"
+        ]
+      }
+    },
+    {
+      "sender": "verifier",
+      "content": "CHK:ACCEPT",
+      "receiver": "solver",
+      "round": 0,
+      "role": "assistant",
+      "prompt_tokens": 1065,
+      "completion_tokens": 5,
+      "id": "aca8607855f0",
+      "ts": 1793098031.6489463,
+      "meta": {
+        "sender": "verifier",
+        "receiver": "solver",
+        "message_id": "aca8607855f0",
+        "protocol_edge": "verifier_to_solver",
+        "protocol_version": "CARD-2-gsm8k",
+        "protocol_hash": "c152278e4a24181b874bd88cbf3adef79479b79f6539931bcd89721fa5a8a7a9",
+        "contract_hash": "ac09c03455d8af3a35273b605bb457591de11f0e22bded3325bbb626ee774caf",
+        "fields": {
+          "CHK": "ACCEPT"
+        },
+        "communication_tokens": 5,
+        "communication_tokens_exact": true,
+        "attempt_count": 1,
+        "fallback": false,
+        "tokens_include_all_attempts": true,
+        "incoming_message_ids": [
+          "d76506f4624b"
+        ]
+      }
+    }
+  ],
+  "communication_tokens": 96,
+  "wall_time_s": 4.186733099981211,
+  "verified": true,
+  "revision_rounds": 0,
+  "model_calls": [
+    {
+      "role": "planner",
+      "attempt": 0,
+      "status": "delivered",
+      "error": "",
+      "raw_output": "G:days_ago;P:start=480,halve_until_below_50,count_halvings;NL:find smallest number of daily halvings from 480 that gives fewer than 50 zombies",
+      "finish_reason": "stop",
+      "output_tokens": 45,
+      "usage_available": true
+    },
+    {
+      "role": "solver",
+      "attempt": 0,
+      "status": "delivered",
+      "error": "",
+      "raw_output": "IR:480/2=240 day1,240/2=120 day2,120/2=60 day3,60/2=30 day4,30<50 so 4 halvings;R:4",
+      "finish_reason": "stop",
+      "output_tokens": 46,
+      "usage_available": true
+    },
+    {
+      "role": "verifier",
+      "attempt": 0,
+      "status": "delivered",
+      "error": "",
+      "raw_output": "CHK:ACCEPT",
+      "finish_reason": "stop",
+      "output_tokens": 5,
+      "usage_available": true
+    }
+  ],
+  "failed_attempts": [],
+  "calls": 3,
+  "usage_complete": true,
+  "known_input_tokens": 2541,
+  "known_output_tokens": 96,
+  "model_input_tokens": 2541,
+  "model_output_tokens": 96,
+  "format_failed_calls": 0,
+  "transport_failed_calls": 0,
+  "fallback_calls": 0,
+  "sum_model_latency_s": 4.063427448272705
+}

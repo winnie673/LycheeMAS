@@ -1,0 +1,151 @@
+{
+  "task_id": "gsm8k:train:seed42:G1:00014",
+  "status": "completed",
+  "error": null,
+  "prediction": "550",
+  "messages": [
+    {
+      "sender": "planner",
+      "content": "G:total_money;P:total=2*100+5*50+10*10",
+      "receiver": "solver",
+      "round": 0,
+      "role": "assistant",
+      "prompt_tokens": 737,
+      "completion_tokens": 21,
+      "id": "5a1c374d5cda",
+      "ts": 1793107630.7323866,
+      "meta": {
+        "sender": "planner",
+        "receiver": "solver",
+        "message_id": "5a1c374d5cda",
+        "protocol_edge": "planner_to_solver",
+        "protocol_version": "CARD-0-gsm8k",
+        "protocol_hash": "4bcdae885cc464e0a51977368e4bc06650c0326dbdcb182ce0327477c1d32daa",
+        "contract_hash": "ab4b736240365db5d0ce2caea032f40a3b7fc9c189db42d5ebcd28cac0fac22b",
+        "fields": {
+          "G": "total_money",
+          "P": "total=2*100+5*50+10*10"
+        },
+        "communication_tokens": 21,
+        "communication_tokens_exact": true,
+        "attempt_count": 1,
+        "fallback": false,
+        "tokens_include_all_attempts": true,
+        "incoming_message_ids": []
+      }
+    },
+    {
+      "sender": "solver",
+      "content": "IR:2*100=200,5*50=250,10*10=100,total=200+250+100=550;R:550",
+      "receiver": "verifier",
+      "round": 0,
+      "role": "assistant",
+      "prompt_tokens": 700,
+      "completion_tokens": 33,
+      "id": "34bb7a5d6478",
+      "ts": 1793107631.9817388,
+      "meta": {
+        "sender": "solver",
+        "receiver": "verifier",
+        "message_id": "34bb7a5d6478",
+        "protocol_edge": "solver_to_verifier",
+        "protocol_version": "CARD-0-gsm8k",
+        "protocol_hash": "4bcdae885cc464e0a51977368e4bc06650c0326dbdcb182ce0327477c1d32daa",
+        "contract_hash": "ab4b736240365db5d0ce2caea032f40a3b7fc9c189db42d5ebcd28cac0fac22b",
+        "fields": {
+          "IR": "2*100=200,5*50=250,10*10=100,total=200+250+100=550",
+          "R": "550"
+        },
+        "communication_tokens": 33,
+        "communication_tokens_exact": true,
+        "attempt_count": 1,
+        "fallback": false,
+        "tokens_include_all_attempts": true,
+        "incoming_message_ids": [
+          "5a1c374d5cda"
+        ]
+      }
+    },
+    {
+      "sender": "verifier",
+      "content": "CHK:ACCEPT",
+      "receiver": "solver",
+      "round": 0,
+      "role": "assistant",
+      "prompt_tokens": 1078,
+      "completion_tokens": 5,
+      "id": "0a4e137ef761",
+      "ts": 1793107632.9443061,
+      "meta": {
+        "sender": "verifier",
+        "receiver": "solver",
+        "message_id": "0a4e137ef761",
+        "protocol_edge": "verifier_to_solver",
+        "protocol_version": "CARD-0-gsm8k",
+        "protocol_hash": "4bcdae885cc464e0a51977368e4bc06650c0326dbdcb182ce0327477c1d32daa",
+        "contract_hash": "ab4b736240365db5d0ce2caea032f40a3b7fc9c189db42d5ebcd28cac0fac22b",
+        "fields": {
+          "CHK": "ACCEPT"
+        },
+        "communication_tokens": 5,
+        "communication_tokens_exact": true,
+        "attempt_count": 1,
+        "fallback": false,
+        "tokens_include_all_attempts": true,
+        "incoming_message_ids": [
+          "34bb7a5d6478"
+        ]
+      }
+    }
+  ],
+  "communication_tokens": 59,
+  "wall_time_s": 3.49849299993366,
+  "verified": true,
+  "revision_rounds": 0,
+  "model_calls": [
+    {
+      "role": "planner",
+      "attempt": 0,
+      "status": "delivered",
+      "error": "",
+      "raw_output": "G:total_money;P:total=2*100+5*50+10*10",
+      "finish_reason": "stop",
+      "output_tokens": 21,
+      "usage_available": true
+    },
+    {
+      "role": "solver",
+      "attempt": 0,
+      "status": "delivered",
+      "error": "",
+      "raw_output": "IR:2*100=200,5*50=250,10*10=100,total=200+250+100=550;R:550",
+      "finish_reason": "stop",
+      "output_tokens": 33,
+      "usage_available": true
+    },
+    {
+      "role": "verifier",
+      "attempt": 0,
+      "status": "delivered",
+      "error": "",
+      "raw_output": "CHK:ACCEPT",
+      "finish_reason": "stop",
+      "output_tokens": 5,
+      "usage_available": true
+    }
+  ],
+  "failed_attempts": [],
+  "calls": 3,
+  "usage_complete": true,
+  "known_input_tokens": 2515,
+  "known_output_tokens": 59,
+  "model_input_tokens": 2515,
+  "model_output_tokens": 59,
+  "format_failed_calls": 0,
+  "transport_failed_calls": 0,
+  "fallback_calls": 0,
+  "sum_model_latency_s": 3.3175246715545654,
+  "gold": "550",
+  "score": 1.0,
+  "question": "Meghan had money in the following denomination: 2 $100 bills, 5 $50 bills, and 10 $10 bills. How much money did he have altogether?\nGive the final numeric answer."
+}

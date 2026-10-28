@@ -1,0 +1,151 @@
+{
+  "task_id": "gsm8k:train:seed42:V:00166",
+  "status": "completed",
+  "error": null,
+  "prediction": "60",
+  "messages": [
+    {
+      "sender": "planner",
+      "content": "G:average_licks;P:total=58+63+70+70+39,average=total/5",
+      "receiver": "solver",
+      "round": 0,
+      "role": "assistant",
+      "prompt_tokens": 825,
+      "completion_tokens": 25,
+      "id": "278f4097b612",
+      "ts": 1793168866.7713056,
+      "meta": {
+        "sender": "planner",
+        "receiver": "solver",
+        "message_id": "278f4097b612",
+        "protocol_edge": "planner_to_solver",
+        "protocol_version": "CARD-3-gsm8k",
+        "protocol_hash": "fb1a4acb6e591ac96544876aedd912b27a6f9d3154c76112e1da0f43407d27b2",
+        "contract_hash": "ab4b736240365db5d0ce2caea032f40a3b7fc9c189db42d5ebcd28cac0fac22b",
+        "fields": {
+          "G": "average_licks",
+          "P": "total=58+63+70+70+39,average=total/5"
+        },
+        "communication_tokens": 25,
+        "communication_tokens_exact": true,
+        "attempt_count": 1,
+        "fallback": false,
+        "tokens_include_all_attempts": true,
+        "incoming_message_ids": []
+      }
+    },
+    {
+      "sender": "solver",
+      "content": "IR:total=58+63+70+70+39=300,average=300/5=60;R:60",
+      "receiver": "verifier",
+      "round": 0,
+      "role": "assistant",
+      "prompt_tokens": 750,
+      "completion_tokens": 27,
+      "id": "829ecc4a80c8",
+      "ts": 1793168867.642145,
+      "meta": {
+        "sender": "solver",
+        "receiver": "verifier",
+        "message_id": "829ecc4a80c8",
+        "protocol_edge": "solver_to_verifier",
+        "protocol_version": "CARD-3-gsm8k",
+        "protocol_hash": "fb1a4acb6e591ac96544876aedd912b27a6f9d3154c76112e1da0f43407d27b2",
+        "contract_hash": "ab4b736240365db5d0ce2caea032f40a3b7fc9c189db42d5ebcd28cac0fac22b",
+        "fields": {
+          "IR": "total=58+63+70+70+39=300,average=300/5=60",
+          "R": "60"
+        },
+        "communication_tokens": 27,
+        "communication_tokens_exact": true,
+        "attempt_count": 1,
+        "fallback": false,
+        "tokens_include_all_attempts": true,
+        "incoming_message_ids": [
+          "278f4097b612"
+        ]
+      }
+    },
+    {
+      "sender": "verifier",
+      "content": "CHK:ACCEPT",
+      "receiver": "solver",
+      "round": 0,
+      "role": "assistant",
+      "prompt_tokens": 1118,
+      "completion_tokens": 5,
+      "id": "741269316a53",
+      "ts": 1793168868.507134,
+      "meta": {
+        "sender": "verifier",
+        "receiver": "solver",
+        "message_id": "741269316a53",
+        "protocol_edge": "verifier_to_solver",
+        "protocol_version": "CARD-3-gsm8k",
+        "protocol_hash": "fb1a4acb6e591ac96544876aedd912b27a6f9d3154c76112e1da0f43407d27b2",
+        "contract_hash": "ab4b736240365db5d0ce2caea032f40a3b7fc9c189db42d5ebcd28cac0fac22b",
+        "fields": {
+          "CHK": "ACCEPT"
+        },
+        "communication_tokens": 5,
+        "communication_tokens_exact": true,
+        "attempt_count": 1,
+        "fallback": false,
+        "tokens_include_all_attempts": true,
+        "incoming_message_ids": [
+          "829ecc4a80c8"
+        ]
+      }
+    }
+  ],
+  "communication_tokens": 57,
+  "wall_time_s": 3.2188205999555066,
+  "verified": true,
+  "revision_rounds": 0,
+  "model_calls": [
+    {
+      "role": "planner",
+      "attempt": 0,
+      "status": "delivered",
+      "error": "",
+      "raw_output": "G:average_licks;P:total=58+63+70+70+39,average=total/5",
+      "finish_reason": "stop",
+      "output_tokens": 25,
+      "usage_available": true
+    },
+    {
+      "role": "solver",
+      "attempt": 0,
+      "status": "delivered",
+      "error": "",
+      "raw_output": "IR:total=58+63+70+70+39=300,average=300/5=60;R:60",
+      "finish_reason": "stop",
+      "output_tokens": 27,
+      "usage_available": true
+    },
+    {
+      "role": "verifier",
+      "attempt": 0,
+      "status": "delivered",
+      "error": "",
+      "raw_output": "CHK:ACCEPT",
+      "finish_reason": "stop",
+      "output_tokens": 5,
+      "usage_available": true
+    }
+  ],
+  "failed_attempts": [],
+  "calls": 3,
+  "usage_complete": true,
+  "known_input_tokens": 2693,
+  "known_output_tokens": 57,
+  "model_input_tokens": 2693,
+  "model_output_tokens": 57,
+  "format_failed_calls": 0,
+  "transport_failed_calls": 0,
+  "fallback_calls": 0,
+  "sum_model_latency_s": 3.138537883758545,
+  "gold": "60",
+  "score": 1.0,
+  "question": "Dan can get to the center of a lollipop in 58 licks.  Micheal does it in 63 licks.  Sam & David each take 70 licks to get to the center of a lollipop while Lance only needs 39 licks.  What is the average amount of licks it takes to get to the center of a lollipop?\nGive the final numeric answer."
+}

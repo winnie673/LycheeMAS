@@ -1,0 +1,152 @@
+{
+  "task_id": "gsm8k:train:seed42:V:00060",
+  "status": "completed",
+  "error": null,
+  "prediction": "134",
+  "messages": [
+    {
+      "sender": "planner",
+      "content": "G:pounds_after;K:weight_kg=80,kg_to_lb=2.2,loss_per_hour_lb=1.5,hours_per_day=2,days=14;P:initial_lb=weight_kg*kg_to_lb,total_loss_lb=loss_per_hour_lb*hours_per_day*days,pounds_after=initial_lb-total_loss_lb",
+      "receiver": "solver",
+      "round": 0,
+      "role": "assistant",
+      "prompt_tokens": 762,
+      "completion_tokens": 89,
+      "id": "37a3388d7ab3",
+      "ts": 1793110547.6641946,
+      "meta": {
+        "sender": "planner",
+        "receiver": "solver",
+        "message_id": "37a3388d7ab3",
+        "protocol_edge": "planner_to_solver",
+        "protocol_version": "CARD-0-gsm8k",
+        "protocol_hash": "4bcdae885cc464e0a51977368e4bc06650c0326dbdcb182ce0327477c1d32daa",
+        "contract_hash": "ab4b736240365db5d0ce2caea032f40a3b7fc9c189db42d5ebcd28cac0fac22b",
+        "fields": {
+          "G": "pounds_after",
+          "K": "weight_kg=80,kg_to_lb=2.2,loss_per_hour_lb=1.5,hours_per_day=2,days=14",
+          "P": "initial_lb=weight_kg*kg_to_lb,total_loss_lb=loss_per_hour_lb*hours_per_day*days,pounds_after=initial_lb-total_loss_lb"
+        },
+        "communication_tokens": 89,
+        "communication_tokens_exact": true,
+        "attempt_count": 1,
+        "fallback": false,
+        "tokens_include_all_attempts": true,
+        "incoming_message_ids": []
+      }
+    },
+    {
+      "sender": "solver",
+      "content": "IR:initial_lb=80*2.2=176,total_loss_lb=1.5*2*14=42,pounds_after=176-42=134;R:134",
+      "receiver": "verifier",
+      "round": 0,
+      "role": "assistant",
+      "prompt_tokens": 793,
+      "completion_tokens": 42,
+      "id": "15c32848e28b",
+      "ts": 1793110548.879168,
+      "meta": {
+        "sender": "solver",
+        "receiver": "verifier",
+        "message_id": "15c32848e28b",
+        "protocol_edge": "solver_to_verifier",
+        "protocol_version": "CARD-0-gsm8k",
+        "protocol_hash": "4bcdae885cc464e0a51977368e4bc06650c0326dbdcb182ce0327477c1d32daa",
+        "contract_hash": "ab4b736240365db5d0ce2caea032f40a3b7fc9c189db42d5ebcd28cac0fac22b",
+        "fields": {
+          "IR": "initial_lb=80*2.2=176,total_loss_lb=1.5*2*14=42,pounds_after=176-42=134",
+          "R": "134"
+        },
+        "communication_tokens": 42,
+        "communication_tokens_exact": true,
+        "attempt_count": 1,
+        "fallback": false,
+        "tokens_include_all_attempts": true,
+        "incoming_message_ids": [
+          "37a3388d7ab3"
+        ]
+      }
+    },
+    {
+      "sender": "verifier",
+      "content": "CHK:ACCEPT",
+      "receiver": "solver",
+      "round": 0,
+      "role": "assistant",
+      "prompt_tokens": 1112,
+      "completion_tokens": 5,
+      "id": "f38f8b871f57",
+      "ts": 1793110550.1060398,
+      "meta": {
+        "sender": "verifier",
+        "receiver": "solver",
+        "message_id": "f38f8b871f57",
+        "protocol_edge": "verifier_to_solver",
+        "protocol_version": "CARD-0-gsm8k",
+        "protocol_hash": "4bcdae885cc464e0a51977368e4bc06650c0326dbdcb182ce0327477c1d32daa",
+        "contract_hash": "ab4b736240365db5d0ce2caea032f40a3b7fc9c189db42d5ebcd28cac0fac22b",
+        "fields": {
+          "CHK": "ACCEPT"
+        },
+        "communication_tokens": 5,
+        "communication_tokens_exact": true,
+        "attempt_count": 1,
+        "fallback": false,
+        "tokens_include_all_attempts": true,
+        "incoming_message_ids": [
+          "15c32848e28b"
+        ]
+      }
+    }
+  ],
+  "communication_tokens": 136,
+  "wall_time_s": 4.423850200022571,
+  "verified": true,
+  "revision_rounds": 0,
+  "model_calls": [
+    {
+      "role": "planner",
+      "attempt": 0,
+      "status": "delivered",
+      "error": "",
+      "raw_output": "G:pounds_after;K:weight_kg=80,kg_to_lb=2.2,loss_per_hour_lb=1.5,hours_per_day=2,days=14;P:initial_lb=weight_kg*kg_to_lb,total_loss_lb=loss_per_hour_lb*hours_per_day*days,pounds_after=initial_lb-total_loss_lb",
+      "finish_reason": "stop",
+      "output_tokens": 89,
+      "usage_available": true
+    },
+    {
+      "role": "solver",
+      "attempt": 0,
+      "status": "delivered",
+      "error": "",
+      "raw_output": "IR:initial_lb=80*2.2=176,total_loss_lb=1.5*2*14=42,pounds_after=176-42=134;R:134",
+      "finish_reason": "stop",
+      "output_tokens": 42,
+      "usage_available": true
+    },
+    {
+      "role": "verifier",
+      "attempt": 0,
+      "status": "delivered",
+      "error": "",
+      "raw_output": "CHK:ACCEPT",
+      "finish_reason": "stop",
+      "output_tokens": 5,
+      "usage_available": true
+    }
+  ],
+  "failed_attempts": [],
+  "calls": 3,
+  "usage_complete": true,
+  "known_input_tokens": 2667,
+  "known_output_tokens": 136,
+  "model_input_tokens": 2667,
+  "model_output_tokens": 136,
+  "format_failed_calls": 0,
+  "transport_failed_calls": 0,
+  "fallback_calls": 0,
+  "sum_model_latency_s": 4.260421276092529,
+  "gold": "134",
+  "score": 1.0,
+  "question": "Ajax is 80 kilograms. He is planning to lose some weight. Exercising for an hour will help him lose 1.5 pounds. If 1 kilogram is equal to 2.2 pounds How many pounds will he weigh if he exercises for 2 hours every day for two weeks?\nGive the final numeric answer."
+}

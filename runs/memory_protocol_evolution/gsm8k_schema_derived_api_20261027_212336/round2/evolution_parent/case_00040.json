@@ -1,0 +1,152 @@
+{
+  "task_id": "gsm8k:train:seed42:G2:00040",
+  "status": "completed",
+  "error": null,
+  "prediction": "128",
+  "messages": [
+    {
+      "sender": "planner",
+      "content": "G:total_paid;P:gross=400*0.40,discount_units=floor(gross/10),discount=2*discount_units,total_paid=gross-discount;NL:Apply the $2 discount for each full $10 of the purchase amount.",
+      "receiver": "solver",
+      "round": 0,
+      "role": "assistant",
+      "prompt_tokens": 753,
+      "completion_tokens": 61,
+      "id": "c0c0f2d75191",
+      "ts": 1793109998.8477993,
+      "meta": {
+        "sender": "planner",
+        "receiver": "solver",
+        "message_id": "c0c0f2d75191",
+        "protocol_edge": "planner_to_solver",
+        "protocol_version": "CARD-0-gsm8k",
+        "protocol_hash": "4bcdae885cc464e0a51977368e4bc06650c0326dbdcb182ce0327477c1d32daa",
+        "contract_hash": "ab4b736240365db5d0ce2caea032f40a3b7fc9c189db42d5ebcd28cac0fac22b",
+        "fields": {
+          "G": "total_paid",
+          "P": "gross=400*0.40,discount_units=floor(gross/10),discount=2*discount_units,total_paid=gross-discount",
+          "NL": "Apply the $2 discount for each full $10 of the purchase amount."
+        },
+        "communication_tokens": 61,
+        "communication_tokens_exact": true,
+        "attempt_count": 1,
+        "fallback": false,
+        "tokens_include_all_attempts": true,
+        "incoming_message_ids": []
+      }
+    },
+    {
+      "sender": "solver",
+      "content": "IR:gross=400*0.40=160,discount_units=floor(160/10)=16,discount=2*16=32,total_paid=160-32=128;R:128",
+      "receiver": "verifier",
+      "round": 0,
+      "role": "assistant",
+      "prompt_tokens": 756,
+      "completion_tokens": 46,
+      "id": "9e18d0c01710",
+      "ts": 1793110000.2232893,
+      "meta": {
+        "sender": "solver",
+        "receiver": "verifier",
+        "message_id": "9e18d0c01710",
+        "protocol_edge": "solver_to_verifier",
+        "protocol_version": "CARD-0-gsm8k",
+        "protocol_hash": "4bcdae885cc464e0a51977368e4bc06650c0326dbdcb182ce0327477c1d32daa",
+        "contract_hash": "ab4b736240365db5d0ce2caea032f40a3b7fc9c189db42d5ebcd28cac0fac22b",
+        "fields": {
+          "IR": "gross=400*0.40=160,discount_units=floor(160/10)=16,discount=2*16=32,total_paid=160-32=128",
+          "R": "128"
+        },
+        "communication_tokens": 46,
+        "communication_tokens_exact": true,
+        "attempt_count": 1,
+        "fallback": false,
+        "tokens_include_all_attempts": true,
+        "incoming_message_ids": [
+          "c0c0f2d75191"
+        ]
+      }
+    },
+    {
+      "sender": "verifier",
+      "content": "CHK:ACCEPT",
+      "receiver": "solver",
+      "round": 0,
+      "role": "assistant",
+      "prompt_tokens": 1107,
+      "completion_tokens": 5,
+      "id": "c78e338356d0",
+      "ts": 1793110001.244482,
+      "meta": {
+        "sender": "verifier",
+        "receiver": "solver",
+        "message_id": "c78e338356d0",
+        "protocol_edge": "verifier_to_solver",
+        "protocol_version": "CARD-0-gsm8k",
+        "protocol_hash": "4bcdae885cc464e0a51977368e4bc06650c0326dbdcb182ce0327477c1d32daa",
+        "contract_hash": "ab4b736240365db5d0ce2caea032f40a3b7fc9c189db42d5ebcd28cac0fac22b",
+        "fields": {
+          "CHK": "ACCEPT"
+        },
+        "communication_tokens": 5,
+        "communication_tokens_exact": true,
+        "attempt_count": 1,
+        "fallback": false,
+        "tokens_include_all_attempts": true,
+        "incoming_message_ids": [
+          "9e18d0c01710"
+        ]
+      }
+    }
+  ],
+  "communication_tokens": 112,
+  "wall_time_s": 3.8661167999962345,
+  "verified": true,
+  "revision_rounds": 0,
+  "model_calls": [
+    {
+      "role": "planner",
+      "attempt": 0,
+      "status": "delivered",
+      "error": "",
+      "raw_output": "G:total_paid;P:gross=400*0.40,discount_units=floor(gross/10),discount=2*discount_units,total_paid=gross-discount;NL:Apply the $2 discount for each full $10 of the purchase amount.",
+      "finish_reason": "stop",
+      "output_tokens": 61,
+      "usage_available": true
+    },
+    {
+      "role": "solver",
+      "attempt": 0,
+      "status": "delivered",
+      "error": "",
+      "raw_output": "IR:gross=400*0.40=160,discount_units=floor(160/10)=16,discount=2*16=32,total_paid=160-32=128;R:128",
+      "finish_reason": "stop",
+      "output_tokens": 46,
+      "usage_available": true
+    },
+    {
+      "role": "verifier",
+      "attempt": 0,
+      "status": "delivered",
+      "error": "",
+      "raw_output": "CHK:ACCEPT",
+      "finish_reason": "stop",
+      "output_tokens": 5,
+      "usage_available": true
+    }
+  ],
+  "failed_attempts": [],
+  "calls": 3,
+  "usage_complete": true,
+  "known_input_tokens": 2616,
+  "known_output_tokens": 112,
+  "model_input_tokens": 2616,
+  "model_output_tokens": 112,
+  "format_failed_calls": 0,
+  "transport_failed_calls": 0,
+  "fallback_calls": 0,
+  "sum_model_latency_s": 3.7123844623565674,
+  "gold": "128",
+  "score": 1.0,
+  "question": "A store offers a $2 discount for every $10 purchase on any item in the store. Kataleya went to the store and bought 400 peaches sold at forty cents each. Calculate the total amount of money she paid at the store for the fruits.\nGive the final numeric answer."
+}

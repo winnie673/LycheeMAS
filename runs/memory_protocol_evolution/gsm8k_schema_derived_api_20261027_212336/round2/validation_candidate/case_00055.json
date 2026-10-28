@@ -1,0 +1,151 @@
+{
+  "task_id": "gsm8k:train:seed42:V:00055",
+  "status": "completed",
+  "error": null,
+  "prediction": "7100",
+  "messages": [
+    {
+      "sender": "planner",
+      "content": "G:total_college_spending;P:tuition=14*450,textbooks=5*120,total=tuition+textbooks+200",
+      "receiver": "solver",
+      "round": 0,
+      "role": "assistant",
+      "prompt_tokens": 883,
+      "completion_tokens": 33,
+      "id": "bbda188d61bb",
+      "ts": 1793111350.7975314,
+      "meta": {
+        "sender": "planner",
+        "receiver": "solver",
+        "message_id": "bbda188d61bb",
+        "protocol_edge": "planner_to_solver",
+        "protocol_version": "CARD-2-gsm8k",
+        "protocol_hash": "aec703067bbfeee6aa1e642a2a319658f1d33f2eff00c8701de19347f616ed6d",
+        "contract_hash": "ab4b736240365db5d0ce2caea032f40a3b7fc9c189db42d5ebcd28cac0fac22b",
+        "fields": {
+          "G": "total_college_spending",
+          "P": "tuition=14*450,textbooks=5*120,total=tuition+textbooks+200"
+        },
+        "communication_tokens": 33,
+        "communication_tokens_exact": true,
+        "attempt_count": 1,
+        "fallback": false,
+        "tokens_include_all_attempts": true,
+        "incoming_message_ids": []
+      }
+    },
+    {
+      "sender": "solver",
+      "content": "IR:tuition=14*450=6300,textbooks=5*120=600,total=6300+600+200=7100;R:7100",
+      "receiver": "verifier",
+      "round": 0,
+      "role": "assistant",
+      "prompt_tokens": 734,
+      "completion_tokens": 37,
+      "id": "758a440e9291",
+      "ts": 1793111352.307707,
+      "meta": {
+        "sender": "solver",
+        "receiver": "verifier",
+        "message_id": "758a440e9291",
+        "protocol_edge": "solver_to_verifier",
+        "protocol_version": "CARD-2-gsm8k",
+        "protocol_hash": "aec703067bbfeee6aa1e642a2a319658f1d33f2eff00c8701de19347f616ed6d",
+        "contract_hash": "ab4b736240365db5d0ce2caea032f40a3b7fc9c189db42d5ebcd28cac0fac22b",
+        "fields": {
+          "IR": "tuition=14*450=6300,textbooks=5*120=600,total=6300+600+200=7100",
+          "R": "7100"
+        },
+        "communication_tokens": 37,
+        "communication_tokens_exact": true,
+        "attempt_count": 1,
+        "fallback": false,
+        "tokens_include_all_attempts": true,
+        "incoming_message_ids": [
+          "bbda188d61bb"
+        ]
+      }
+    },
+    {
+      "sender": "verifier",
+      "content": "CHK:ACCEPT",
+      "receiver": "solver",
+      "round": 0,
+      "role": "assistant",
+      "prompt_tokens": 1104,
+      "completion_tokens": 5,
+      "id": "2de7a3618d74",
+      "ts": 1793111353.5449588,
+      "meta": {
+        "sender": "verifier",
+        "receiver": "solver",
+        "message_id": "2de7a3618d74",
+        "protocol_edge": "verifier_to_solver",
+        "protocol_version": "CARD-2-gsm8k",
+        "protocol_hash": "aec703067bbfeee6aa1e642a2a319658f1d33f2eff00c8701de19347f616ed6d",
+        "contract_hash": "ab4b736240365db5d0ce2caea032f40a3b7fc9c189db42d5ebcd28cac0fac22b",
+        "fields": {
+          "CHK": "ACCEPT"
+        },
+        "communication_tokens": 5,
+        "communication_tokens_exact": true,
+        "attempt_count": 1,
+        "fallback": false,
+        "tokens_include_all_attempts": true,
+        "incoming_message_ids": [
+          "758a440e9291"
+        ]
+      }
+    }
+  ],
+  "communication_tokens": 75,
+  "wall_time_s": 4.266358399996534,
+  "verified": true,
+  "revision_rounds": 0,
+  "model_calls": [
+    {
+      "role": "planner",
+      "attempt": 0,
+      "status": "delivered",
+      "error": "",
+      "raw_output": "G:total_college_spending;P:tuition=14*450,textbooks=5*120,total=tuition+textbooks+200",
+      "finish_reason": "stop",
+      "output_tokens": 33,
+      "usage_available": true
+    },
+    {
+      "role": "solver",
+      "attempt": 0,
+      "status": "delivered",
+      "error": "",
+      "raw_output": "IR:tuition=14*450=6300,textbooks=5*120=600,total=6300+600+200=7100;R:7100",
+      "finish_reason": "stop",
+      "output_tokens": 37,
+      "usage_available": true
+    },
+    {
+      "role": "verifier",
+      "attempt": 0,
+      "status": "delivered",
+      "error": "",
+      "raw_output": "CHK:ACCEPT",
+      "finish_reason": "stop",
+      "output_tokens": 5,
+      "usage_available": true
+    }
+  ],
+  "failed_attempts": [],
+  "calls": 3,
+  "usage_complete": true,
+  "known_input_tokens": 2721,
+  "known_output_tokens": 75,
+  "model_input_tokens": 2721,
+  "model_output_tokens": 75,
+  "format_failed_calls": 0,
+  "transport_failed_calls": 0,
+  "fallback_calls": 0,
+  "sum_model_latency_s": 4.187940359115601,
+  "gold": "7100",
+  "score": 1.0,
+  "question": "Gina is figuring out how much she'll have to spend on college this year. She's taking 14 credits that cost $450 each, and she has to pay $120 for each of her 5 textbooks plus a $200 facilities fee. How much will Gina spend in total?\nGive the final numeric answer."
+}

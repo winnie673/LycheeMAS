@@ -1,0 +1,153 @@
+{
+  "task_id": "gsm8k:train:seed42:G1:00020",
+  "status": "completed",
+  "error": null,
+  "prediction": "22",
+  "messages": [
+    {
+      "sender": "planner",
+      "content": "G:total_chocolates_for_month;P:weekly=2+1,monthly=4*weekly,total=monthly+10;NL:Assume the month has 4 Saturdays and the additional 10 chocolates were bought this month.",
+      "receiver": "solver",
+      "round": 0,
+      "role": "assistant",
+      "prompt_tokens": 765,
+      "completion_tokens": 52,
+      "id": "643fd22950f9",
+      "ts": 1793107655.8901951,
+      "meta": {
+        "sender": "planner",
+        "receiver": "solver",
+        "message_id": "643fd22950f9",
+        "protocol_edge": "planner_to_solver",
+        "protocol_version": "CARD-0-gsm8k",
+        "protocol_hash": "4bcdae885cc464e0a51977368e4bc06650c0326dbdcb182ce0327477c1d32daa",
+        "contract_hash": "ab4b736240365db5d0ce2caea032f40a3b7fc9c189db42d5ebcd28cac0fac22b",
+        "fields": {
+          "G": "total_chocolates_for_month",
+          "P": "weekly=2+1,monthly=4*weekly,total=monthly+10",
+          "NL": "Assume the month has 4 Saturdays and the additional 10 chocolates were bought this month."
+        },
+        "communication_tokens": 52,
+        "communication_tokens_exact": true,
+        "attempt_count": 1,
+        "fallback": false,
+        "tokens_include_all_attempts": true,
+        "incoming_message_ids": []
+      }
+    },
+    {
+      "sender": "solver",
+      "content": "IR:weekly=2+1=3,monthly=4*3=12,total=12+10=22;R:22;NL:Assume the month has 4 Saturdays and the additional 10 chocolates were bought this month.",
+      "receiver": "verifier",
+      "round": 0,
+      "role": "assistant",
+      "prompt_tokens": 759,
+      "completion_tokens": 52,
+      "id": "79ee52a64112",
+      "ts": 1793107657.2067194,
+      "meta": {
+        "sender": "solver",
+        "receiver": "verifier",
+        "message_id": "79ee52a64112",
+        "protocol_edge": "solver_to_verifier",
+        "protocol_version": "CARD-0-gsm8k",
+        "protocol_hash": "4bcdae885cc464e0a51977368e4bc06650c0326dbdcb182ce0327477c1d32daa",
+        "contract_hash": "ab4b736240365db5d0ce2caea032f40a3b7fc9c189db42d5ebcd28cac0fac22b",
+        "fields": {
+          "IR": "weekly=2+1=3,monthly=4*3=12,total=12+10=22",
+          "R": "22",
+          "NL": "Assume the month has 4 Saturdays and the additional 10 chocolates were bought this month."
+        },
+        "communication_tokens": 52,
+        "communication_tokens_exact": true,
+        "attempt_count": 1,
+        "fallback": false,
+        "tokens_include_all_attempts": true,
+        "incoming_message_ids": [
+          "643fd22950f9"
+        ]
+      }
+    },
+    {
+      "sender": "verifier",
+      "content": "CHK:ACCEPT",
+      "receiver": "solver",
+      "round": 0,
+      "role": "assistant",
+      "prompt_tokens": 1125,
+      "completion_tokens": 5,
+      "id": "dba575d46de4",
+      "ts": 1793107658.5462687,
+      "meta": {
+        "sender": "verifier",
+        "receiver": "solver",
+        "message_id": "dba575d46de4",
+        "protocol_edge": "verifier_to_solver",
+        "protocol_version": "CARD-0-gsm8k",
+        "protocol_hash": "4bcdae885cc464e0a51977368e4bc06650c0326dbdcb182ce0327477c1d32daa",
+        "contract_hash": "ab4b736240365db5d0ce2caea032f40a3b7fc9c189db42d5ebcd28cac0fac22b",
+        "fields": {
+          "CHK": "ACCEPT"
+        },
+        "communication_tokens": 5,
+        "communication_tokens_exact": true,
+        "attempt_count": 1,
+        "fallback": false,
+        "tokens_include_all_attempts": true,
+        "incoming_message_ids": [
+          "79ee52a64112"
+        ]
+      }
+    }
+  ],
+  "communication_tokens": 109,
+  "wall_time_s": 4.273829500074498,
+  "verified": true,
+  "revision_rounds": 0,
+  "model_calls": [
+    {
+      "role": "planner",
+      "attempt": 0,
+      "status": "delivered",
+      "error": "",
+      "raw_output": "G:total_chocolates_for_month;P:weekly=2+1,monthly=4*weekly,total=monthly+10;NL:Assume the month has 4 Saturdays and the additional 10 chocolates were bought this month.",
+      "finish_reason": "stop",
+      "output_tokens": 52,
+      "usage_available": true
+    },
+    {
+      "role": "solver",
+      "attempt": 0,
+      "status": "delivered",
+      "error": "",
+      "raw_output": "IR:weekly=2+1=3,monthly=4*3=12,total=12+10=22;R:22;NL:Assume the month has 4 Saturdays and the additional 10 chocolates were bought this month.",
+      "finish_reason": "stop",
+      "output_tokens": 52,
+      "usage_available": true
+    },
+    {
+      "role": "verifier",
+      "attempt": 0,
+      "status": "delivered",
+      "error": "",
+      "raw_output": "CHK:ACCEPT",
+      "finish_reason": "stop",
+      "output_tokens": 5,
+      "usage_available": true
+    }
+  ],
+  "failed_attempts": [],
+  "calls": 3,
+  "usage_complete": true,
+  "known_input_tokens": 2649,
+  "known_output_tokens": 109,
+  "model_input_tokens": 2649,
+  "model_output_tokens": 109,
+  "format_failed_calls": 0,
+  "transport_failed_calls": 0,
+  "fallback_calls": 0,
+  "sum_model_latency_s": 4.129692077636719,
+  "gold": "22",
+  "score": 1.0,
+  "question": "Kantana loves chocolate. Every Saturday she goes to the candy store and buys 2 chocolates for herself and 1 for her sister. This last Saturday she picked up an additional 10 chocolates as a birthday gift for her friend Charlie. How many chocolates did Kantana end up buying for the month?\nGive the final numeric answer."
+}

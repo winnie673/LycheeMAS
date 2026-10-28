@@ -39,17 +39,25 @@
 V 集筛选和在线显式选卡入口，复用同一 CDM/static 图执行链路；不自动启动真实 API。
 使用方式及边界见 [memory README](src/lychee_mas/methods/memory/README.md)。
 核心协议机制不绑定任务或角色；`scripts/hybrid_gsm8k_spec.py` 统一实例化 GSM8K + PSV。
+字段接口和基础校验统一从 `gsm8k_protocol_schema.yaml` 派生，不再在 spec 中重复手写。
 旧冻结卡片由实验显式注入校验契约，新卡片携带契约；不等于支持任意图自动挂载。
 当前恢复版保留原实验的完整角色约束、初始语义审查与诊断驱动的有限补丁进化，
 具体边界及版本说明见 [memory README](src/lychee_mas/methods/memory/README.md)。
-默认 GSM8K 卡片现为 [gsm8k_psv_nl_field_card2_20261027.yaml](configs/memory/task_cards/gsm8k_psv_nl_field_card2_20261027.yaml)，
-由本地新流程的 V 集胜出卡显式发布；历史卡片保留，生成器不会自动覆盖默认配置。
+默认 GSM8K 卡片为 [gsm8k_psv_hybrid_card_20261028.yaml](configs/memory/task_cards/gsm8k_psv_hybrid_card_20261028.yaml)，
+由 v5-schema-derived 流程的 V 集胜出 Card-0 显式发布；生成器不会自动覆盖默认配置。
 
-本分支仅存档最新成功结果（2026-10-27），不包含本地失败运行及其他历史产物：
+默认卡对应的最新完整成功结果（2026-10-28 完成）：
 
-- [协议生成、三轮进化与 V 集筛选](runs/memory_protocol_evolution/gsm8k_review_boundary_api_20261027_173531/result.json)
-- [T 集 NL/Hybrid 对比](runs/memory_protocol_compare/gsm8k_review_boundary_api_20261027_173531/comparison.json)：
-  各 200 题，正确率分别为 98.5%/97.5%，平均通信 token 为 157.495/98.085。
+- [协议生成、三轮进化与 V 集筛选](runs/memory_protocol_evolution/gsm8k_schema_derived_api_20261027_212336/result.json)
+- [T 集 NL/Hybrid 对比](runs/memory_protocol_compare/gsm8k_schema_derived_api_20261027_212336/comparison.json)：
+  各 200 题，正确率分别为 98%/99%，平均通信 token 为 156.24/83.255。
+  Hybrid 有 2 题调用用量不完整，平均输出 token 未作完整比较。
+
+旧版成功的真实 API 评测、review-boundary 生成进化及功能验证记录在本地继续保留，
+包括历史 MATH-500 结果（不恢复其已移除的实现）。仅清理失败／未完成和假后端
+离线运行；配置目录只保留当前新卡，历史结果内部的卡片快照不改动。
+GitHub 当前分支快照只跟踪上述最新两份结果及对应日志；旧成功记录不从本地删除，
+此前提交仍保留在 Git 历史中。
 
 记录中的本地绝对路径保留原样用于审计，不代表克隆后的文件位置；模型凭据不随记录提交。
 

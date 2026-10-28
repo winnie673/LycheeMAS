@@ -1,0 +1,152 @@
+{
+  "task_id": "gsm8k:train:seed42:V:00158",
+  "status": "completed",
+  "error": null,
+  "prediction": "3000",
+  "messages": [
+    {
+      "sender": "planner",
+      "content": "G:annual_health_insurance_cost;P:monthly_income=25*30*4,subsidy_rate=0.5,monthly_cost=500*(1-subsidy_rate),annual_cost=monthly_cost*12;NL:Bill's monthly income is between $10,001 and $40,000 so the government pays 50% of the normal monthly price.",
+      "receiver": "solver",
+      "round": 0,
+      "role": "assistant",
+      "prompt_tokens": 935,
+      "completion_tokens": 82,
+      "id": "efbeeac39c8f",
+      "ts": 1793111781.872825,
+      "meta": {
+        "sender": "planner",
+        "receiver": "solver",
+        "message_id": "efbeeac39c8f",
+        "protocol_edge": "planner_to_solver",
+        "protocol_version": "CARD-2-gsm8k",
+        "protocol_hash": "aec703067bbfeee6aa1e642a2a319658f1d33f2eff00c8701de19347f616ed6d",
+        "contract_hash": "ab4b736240365db5d0ce2caea032f40a3b7fc9c189db42d5ebcd28cac0fac22b",
+        "fields": {
+          "G": "annual_health_insurance_cost",
+          "P": "monthly_income=25*30*4,subsidy_rate=0.5,monthly_cost=500*(1-subsidy_rate),annual_cost=monthly_cost*12",
+          "NL": "Bill's monthly income is between $10,001 and $40,000 so the government pays 50% of the normal monthly price."
+        },
+        "communication_tokens": 82,
+        "communication_tokens_exact": true,
+        "attempt_count": 1,
+        "fallback": false,
+        "tokens_include_all_attempts": true,
+        "incoming_message_ids": []
+      }
+    },
+    {
+      "sender": "solver",
+      "content": "IR:monthly_income=25*30*4=3000,subsidy_rate=0.5,monthly_cost=500*(1-0.5)=250,annual_cost=250*12=3000;R:3000",
+      "receiver": "verifier",
+      "round": 0,
+      "role": "assistant",
+      "prompt_tokens": 835,
+      "completion_tokens": 53,
+      "id": "fac4decaefad",
+      "ts": 1793111783.4122026,
+      "meta": {
+        "sender": "solver",
+        "receiver": "verifier",
+        "message_id": "fac4decaefad",
+        "protocol_edge": "solver_to_verifier",
+        "protocol_version": "CARD-2-gsm8k",
+        "protocol_hash": "aec703067bbfeee6aa1e642a2a319658f1d33f2eff00c8701de19347f616ed6d",
+        "contract_hash": "ab4b736240365db5d0ce2caea032f40a3b7fc9c189db42d5ebcd28cac0fac22b",
+        "fields": {
+          "IR": "monthly_income=25*30*4=3000,subsidy_rate=0.5,monthly_cost=500*(1-0.5)=250,annual_cost=250*12=3000",
+          "R": "3000"
+        },
+        "communication_tokens": 53,
+        "communication_tokens_exact": true,
+        "attempt_count": 1,
+        "fallback": false,
+        "tokens_include_all_attempts": true,
+        "incoming_message_ids": [
+          "efbeeac39c8f"
+        ]
+      }
+    },
+    {
+      "sender": "verifier",
+      "content": "CHK:ACCEPT",
+      "receiver": "solver",
+      "round": 0,
+      "role": "assistant",
+      "prompt_tokens": 1172,
+      "completion_tokens": 5,
+      "id": "a96f0acf8d12",
+      "ts": 1793111784.4000778,
+      "meta": {
+        "sender": "verifier",
+        "receiver": "solver",
+        "message_id": "a96f0acf8d12",
+        "protocol_edge": "verifier_to_solver",
+        "protocol_version": "CARD-2-gsm8k",
+        "protocol_hash": "aec703067bbfeee6aa1e642a2a319658f1d33f2eff00c8701de19347f616ed6d",
+        "contract_hash": "ab4b736240365db5d0ce2caea032f40a3b7fc9c189db42d5ebcd28cac0fac22b",
+        "fields": {
+          "CHK": "ACCEPT"
+        },
+        "communication_tokens": 5,
+        "communication_tokens_exact": true,
+        "attempt_count": 1,
+        "fallback": false,
+        "tokens_include_all_attempts": true,
+        "incoming_message_ids": [
+          "fac4decaefad"
+        ]
+      }
+    }
+  ],
+  "communication_tokens": 140,
+  "wall_time_s": 4.2735972999362275,
+  "verified": true,
+  "revision_rounds": 0,
+  "model_calls": [
+    {
+      "role": "planner",
+      "attempt": 0,
+      "status": "delivered",
+      "error": "",
+      "raw_output": "G:annual_health_insurance_cost;P:monthly_income=25*30*4,subsidy_rate=0.5,monthly_cost=500*(1-subsidy_rate),annual_cost=monthly_cost*12;NL:Bill's monthly income is between $10,001 and $40,000 so the government pays 50% of the normal monthly price.",
+      "finish_reason": "stop",
+      "output_tokens": 82,
+      "usage_available": true
+    },
+    {
+      "role": "solver",
+      "attempt": 0,
+      "status": "delivered",
+      "error": "",
+      "raw_output": "IR:monthly_income=25*30*4=3000,subsidy_rate=0.5,monthly_cost=500*(1-0.5)=250,annual_cost=250*12=3000;R:3000",
+      "finish_reason": "stop",
+      "output_tokens": 53,
+      "usage_available": true
+    },
+    {
+      "role": "verifier",
+      "attempt": 0,
+      "status": "delivered",
+      "error": "",
+      "raw_output": "CHK:ACCEPT",
+      "finish_reason": "stop",
+      "output_tokens": 5,
+      "usage_available": true
+    }
+  ],
+  "failed_attempts": [],
+  "calls": 3,
+  "usage_complete": true,
+  "known_input_tokens": 2942,
+  "known_output_tokens": 140,
+  "model_input_tokens": 2942,
+  "model_output_tokens": 140,
+  "format_failed_calls": 0,
+  "transport_failed_calls": 0,
+  "fallback_calls": 0,
+  "sum_model_latency_s": 4.1238203048706055,
+  "gold": "3000",
+  "score": 1.0,
+  "question": "Bill is buying healthcare on an exchange. The normal monthly price of the plan he wants is $500. The government will pay for part of this cost depending on Bill's income: 90% if he makes less than $10,000, 50% if he makes between $10,001 and $40,000, and 20% if he makes more than $50,000. Bill earns $25/hour and works 30 hours per week, four weeks per month. How much will Bill spend for health insurance in a year?\nGive the final numeric answer."
+}

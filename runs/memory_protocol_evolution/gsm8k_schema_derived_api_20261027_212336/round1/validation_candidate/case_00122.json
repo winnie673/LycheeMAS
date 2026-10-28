@@ -1,0 +1,152 @@
+{
+  "task_id": "gsm8k:train:seed42:V:00122",
+  "status": "completed",
+  "error": null,
+  "prediction": "54",
+  "messages": [
+    {
+      "sender": "planner",
+      "content": "G:discounted_order_total;P:subtotal=2*15+6*3+6*2,discount=0.10*subtotal,total=subtotal-discount;NL:Apply the 10% discount because the subtotal exceeds $50.",
+      "receiver": "solver",
+      "round": 0,
+      "role": "assistant",
+      "prompt_tokens": 829,
+      "completion_tokens": 56,
+      "id": "9b8862bbd015",
+      "ts": 1793109501.7612042,
+      "meta": {
+        "sender": "planner",
+        "receiver": "solver",
+        "message_id": "9b8862bbd015",
+        "protocol_edge": "planner_to_solver",
+        "protocol_version": "CARD-1-gsm8k",
+        "protocol_hash": "2a663f41d251a442e680de67a231e516a8fe5e31629bc25d021c8c0eb1354cff",
+        "contract_hash": "ab4b736240365db5d0ce2caea032f40a3b7fc9c189db42d5ebcd28cac0fac22b",
+        "fields": {
+          "G": "discounted_order_total",
+          "P": "subtotal=2*15+6*3+6*2,discount=0.10*subtotal,total=subtotal-discount",
+          "NL": "Apply the 10% discount because the subtotal exceeds $50."
+        },
+        "communication_tokens": 56,
+        "communication_tokens_exact": true,
+        "attempt_count": 1,
+        "fallback": false,
+        "tokens_include_all_attempts": true,
+        "incoming_message_ids": []
+      }
+    },
+    {
+      "sender": "solver",
+      "content": "IR:subtotal=2*15+6*3+6*2=60,discount=0.10*60=6,total=60-6=54;R:54",
+      "receiver": "verifier",
+      "round": 0,
+      "role": "assistant",
+      "prompt_tokens": 768,
+      "completion_tokens": 40,
+      "id": "3929ac07c879",
+      "ts": 1793109503.0359497,
+      "meta": {
+        "sender": "solver",
+        "receiver": "verifier",
+        "message_id": "3929ac07c879",
+        "protocol_edge": "solver_to_verifier",
+        "protocol_version": "CARD-1-gsm8k",
+        "protocol_hash": "2a663f41d251a442e680de67a231e516a8fe5e31629bc25d021c8c0eb1354cff",
+        "contract_hash": "ab4b736240365db5d0ce2caea032f40a3b7fc9c189db42d5ebcd28cac0fac22b",
+        "fields": {
+          "IR": "subtotal=2*15+6*3+6*2=60,discount=0.10*60=6,total=60-6=54",
+          "R": "54"
+        },
+        "communication_tokens": 40,
+        "communication_tokens_exact": true,
+        "attempt_count": 1,
+        "fallback": false,
+        "tokens_include_all_attempts": true,
+        "incoming_message_ids": [
+          "9b8862bbd015"
+        ]
+      }
+    },
+    {
+      "sender": "verifier",
+      "content": "CHK:ACCEPT",
+      "receiver": "solver",
+      "round": 0,
+      "role": "assistant",
+      "prompt_tokens": 1118,
+      "completion_tokens": 5,
+      "id": "5f2353b18166",
+      "ts": 1793109504.2237105,
+      "meta": {
+        "sender": "verifier",
+        "receiver": "solver",
+        "message_id": "5f2353b18166",
+        "protocol_edge": "verifier_to_solver",
+        "protocol_version": "CARD-1-gsm8k",
+        "protocol_hash": "2a663f41d251a442e680de67a231e516a8fe5e31629bc25d021c8c0eb1354cff",
+        "contract_hash": "ab4b736240365db5d0ce2caea032f40a3b7fc9c189db42d5ebcd28cac0fac22b",
+        "fields": {
+          "CHK": "ACCEPT"
+        },
+        "communication_tokens": 5,
+        "communication_tokens_exact": true,
+        "attempt_count": 1,
+        "fallback": false,
+        "tokens_include_all_attempts": true,
+        "incoming_message_ids": [
+          "3929ac07c879"
+        ]
+      }
+    }
+  ],
+  "communication_tokens": 101,
+  "wall_time_s": 4.091621600091457,
+  "verified": true,
+  "revision_rounds": 0,
+  "model_calls": [
+    {
+      "role": "planner",
+      "attempt": 0,
+      "status": "delivered",
+      "error": "",
+      "raw_output": "G:discounted_order_total;P:subtotal=2*15+6*3+6*2,discount=0.10*subtotal,total=subtotal-discount;NL:Apply the 10% discount because the subtotal exceeds $50.",
+      "finish_reason": "stop",
+      "output_tokens": 56,
+      "usage_available": true
+    },
+    {
+      "role": "solver",
+      "attempt": 0,
+      "status": "delivered",
+      "error": "",
+      "raw_output": "IR:subtotal=2*15+6*3+6*2=60,discount=0.10*60=6,total=60-6=54;R:54",
+      "finish_reason": "stop",
+      "output_tokens": 40,
+      "usage_available": true
+    },
+    {
+      "role": "verifier",
+      "attempt": 0,
+      "status": "delivered",
+      "error": "",
+      "raw_output": "CHK:ACCEPT",
+      "finish_reason": "stop",
+      "output_tokens": 5,
+      "usage_available": true
+    }
+  ],
+  "failed_attempts": [],
+  "calls": 3,
+  "usage_complete": true,
+  "known_input_tokens": 2715,
+  "known_output_tokens": 101,
+  "model_input_tokens": 2715,
+  "model_output_tokens": 101,
+  "format_failed_calls": 0,
+  "transport_failed_calls": 0,
+  "fallback_calls": 0,
+  "sum_model_latency_s": 3.931572914123535,
+  "gold": "54",
+  "score": 1.0,
+  "question": "Silvia’s bakery is offering 10% on advanced orders over $50.00.  She orders 2 quiches for $15.00 each, 6 croissants at $3.00 each and 6 buttermilk biscuits for $2.00 each.  How much will her order be with the discount?\nGive the final numeric answer."
+}

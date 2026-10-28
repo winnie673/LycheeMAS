@@ -1,0 +1,151 @@
+{
+  "task_id": "gsm8k:train:seed42:V:00168",
+  "status": "completed",
+  "error": null,
+  "prediction": "72",
+  "messages": [
+    {
+      "sender": "planner",
+      "content": "G:total_money;P:crabs_per_week=3*4*2,total_money=crabs_per_week*3",
+      "receiver": "solver",
+      "round": 0,
+      "role": "assistant",
+      "prompt_tokens": 744,
+      "completion_tokens": 31,
+      "id": "d5bd0467bc49",
+      "ts": 1793113076.1158228,
+      "meta": {
+        "sender": "planner",
+        "receiver": "solver",
+        "message_id": "d5bd0467bc49",
+        "protocol_edge": "planner_to_solver",
+        "protocol_version": "CARD-0-gsm8k",
+        "protocol_hash": "4bcdae885cc464e0a51977368e4bc06650c0326dbdcb182ce0327477c1d32daa",
+        "contract_hash": "ab4b736240365db5d0ce2caea032f40a3b7fc9c189db42d5ebcd28cac0fac22b",
+        "fields": {
+          "G": "total_money",
+          "P": "crabs_per_week=3*4*2,total_money=crabs_per_week*3"
+        },
+        "communication_tokens": 31,
+        "communication_tokens_exact": true,
+        "attempt_count": 1,
+        "fallback": false,
+        "tokens_include_all_attempts": true,
+        "incoming_message_ids": []
+      }
+    },
+    {
+      "sender": "solver",
+      "content": "IR:crabs_per_week=3*4*2=24,total_money=24*3=72;R:72",
+      "receiver": "verifier",
+      "round": 0,
+      "role": "assistant",
+      "prompt_tokens": 717,
+      "completion_tokens": 29,
+      "id": "a5bca7b9616e",
+      "ts": 1793113077.3343768,
+      "meta": {
+        "sender": "solver",
+        "receiver": "verifier",
+        "message_id": "a5bca7b9616e",
+        "protocol_edge": "solver_to_verifier",
+        "protocol_version": "CARD-0-gsm8k",
+        "protocol_hash": "4bcdae885cc464e0a51977368e4bc06650c0326dbdcb182ce0327477c1d32daa",
+        "contract_hash": "ab4b736240365db5d0ce2caea032f40a3b7fc9c189db42d5ebcd28cac0fac22b",
+        "fields": {
+          "IR": "crabs_per_week=3*4*2=24,total_money=24*3=72",
+          "R": "72"
+        },
+        "communication_tokens": 29,
+        "communication_tokens_exact": true,
+        "attempt_count": 1,
+        "fallback": false,
+        "tokens_include_all_attempts": true,
+        "incoming_message_ids": [
+          "d5bd0467bc49"
+        ]
+      }
+    },
+    {
+      "sender": "verifier",
+      "content": "CHK:ACCEPT",
+      "receiver": "solver",
+      "round": 0,
+      "role": "assistant",
+      "prompt_tokens": 1081,
+      "completion_tokens": 5,
+      "id": "25fd594077e1",
+      "ts": 1793113078.6379569,
+      "meta": {
+        "sender": "verifier",
+        "receiver": "solver",
+        "message_id": "25fd594077e1",
+        "protocol_edge": "verifier_to_solver",
+        "protocol_version": "CARD-0-gsm8k",
+        "protocol_hash": "4bcdae885cc464e0a51977368e4bc06650c0326dbdcb182ce0327477c1d32daa",
+        "contract_hash": "ab4b736240365db5d0ce2caea032f40a3b7fc9c189db42d5ebcd28cac0fac22b",
+        "fields": {
+          "CHK": "ACCEPT"
+        },
+        "communication_tokens": 5,
+        "communication_tokens_exact": true,
+        "attempt_count": 1,
+        "fallback": false,
+        "tokens_include_all_attempts": true,
+        "incoming_message_ids": [
+          "a5bca7b9616e"
+        ]
+      }
+    }
+  ],
+  "communication_tokens": 65,
+  "wall_time_s": 3.7068283000262454,
+  "verified": true,
+  "revision_rounds": 0,
+  "model_calls": [
+    {
+      "role": "planner",
+      "attempt": 0,
+      "status": "delivered",
+      "error": "",
+      "raw_output": "G:total_money;P:crabs_per_week=3*4*2,total_money=crabs_per_week*3",
+      "finish_reason": "stop",
+      "output_tokens": 31,
+      "usage_available": true
+    },
+    {
+      "role": "solver",
+      "attempt": 0,
+      "status": "delivered",
+      "error": "",
+      "raw_output": "IR:crabs_per_week=3*4*2=24,total_money=24*3=72;R:72",
+      "finish_reason": "stop",
+      "output_tokens": 29,
+      "usage_available": true
+    },
+    {
+      "role": "verifier",
+      "attempt": 0,
+      "status": "delivered",
+      "error": "",
+      "raw_output": "CHK:ACCEPT",
+      "finish_reason": "stop",
+      "output_tokens": 5,
+      "usage_available": true
+    }
+  ],
+  "failed_attempts": [],
+  "calls": 3,
+  "usage_complete": true,
+  "known_input_tokens": 2542,
+  "known_output_tokens": 65,
+  "model_input_tokens": 2542,
+  "model_output_tokens": 65,
+  "format_failed_calls": 0,
+  "transport_failed_calls": 0,
+  "fallback_calls": 0,
+  "sum_model_latency_s": 3.514706611633301,
+  "gold": "72",
+  "score": 1.0,
+  "question": "John reels in 3 crab baskets a week.  Each basket holds 4 crabs.  He collects crabs twice a week.  Each crab sells for $3.  How much money does he make?\nGive the final numeric answer."
+}

@@ -1,0 +1,126 @@
+{
+  "task_id": "gsm8k:train:seed42:G3:00012",
+  "status": "completed",
+  "error": null,
+  "prediction": "2",
+  "messages": [
+    {
+      "sender": "planner",
+      "content": "Goal: find how many servings of peanut butter Toby should add to reach 500 calories with one piece of bread.\n\nPlan: Account for the bread’s calories first, then determine how many 200-calorie peanut butter servings are needed to make up the remaining calories.\n\nConstraints: Use the given calorie values; do not include extra foods or assumptions.",
+      "receiver": "solver",
+      "round": 0,
+      "role": "assistant",
+      "prompt_tokens": 215,
+      "completion_tokens": 70,
+      "id": "b81e3407ed02",
+      "ts": 1793112209.203428,
+      "meta": {
+        "fields": {},
+        "communication_tokens": 70,
+        "communication_tokens_exact": true,
+        "attempt_count": 1,
+        "fallback": false,
+        "tokens_include_all_attempts": true,
+        "incoming_message_ids": []
+      }
+    },
+    {
+      "sender": "solver",
+      "content": "One piece of bread is 100 calories, leaving 400 calories to reach 500. Each peanut butter serving is 200 calories, so he needs 400 ÷ 200 = 2 servings.\n\n\\boxed{2}",
+      "receiver": "verifier",
+      "round": 0,
+      "role": "assistant",
+      "prompt_tokens": 297,
+      "completion_tokens": 46,
+      "id": "be774c419785",
+      "ts": 1793112210.5734131,
+      "meta": {
+        "fields": {
+          "R": "2"
+        },
+        "communication_tokens": 46,
+        "communication_tokens_exact": true,
+        "attempt_count": 1,
+        "fallback": false,
+        "tokens_include_all_attempts": true,
+        "incoming_message_ids": [
+          "b81e3407ed02"
+        ]
+      }
+    },
+    {
+      "sender": "verifier",
+      "content": "ACCEPT",
+      "receiver": "solver",
+      "round": 0,
+      "role": "assistant",
+      "prompt_tokens": 650,
+      "completion_tokens": 2,
+      "id": "104c1922855d",
+      "ts": 1793112211.6536086,
+      "meta": {
+        "fields": {
+          "CHK": "ACCEPT"
+        },
+        "communication_tokens": 2,
+        "communication_tokens_exact": true,
+        "attempt_count": 1,
+        "fallback": false,
+        "tokens_include_all_attempts": true,
+        "incoming_message_ids": [
+          "be774c419785"
+        ]
+      }
+    }
+  ],
+  "communication_tokens": 118,
+  "wall_time_s": 4.0713105000322685,
+  "verified": true,
+  "revision_rounds": 0,
+  "model_calls": [
+    {
+      "role": "planner",
+      "attempt": 0,
+      "status": "delivered",
+      "error": "",
+      "raw_output": "Goal: find how many servings of peanut butter Toby should add to reach 500 calories with one piece of bread.\n\nPlan: Account for the bread’s calories first, then determine how many 200-calorie peanut butter servings are needed to make up the remaining calories.\n\nConstraints: Use the given calorie values; do not include extra foods or assumptions.",
+      "finish_reason": "stop",
+      "output_tokens": 70,
+      "usage_available": true
+    },
+    {
+      "role": "solver",
+      "attempt": 0,
+      "status": "delivered",
+      "error": "",
+      "raw_output": "One piece of bread is 100 calories, leaving 400 calories to reach 500. Each peanut butter serving is 200 calories, so he needs 400 ÷ 200 = 2 servings.\n\n\\boxed{2}",
+      "finish_reason": "stop",
+      "output_tokens": 46,
+      "usage_available": true
+    },
+    {
+      "role": "verifier",
+      "attempt": 0,
+      "status": "delivered",
+      "error": "",
+      "raw_output": "ACCEPT",
+      "finish_reason": "stop",
+      "output_tokens": 2,
+      "usage_available": true
+    }
+  ],
+  "failed_attempts": [],
+  "calls": 3,
+  "usage_complete": true,
+  "known_input_tokens": 1162,
+  "known_output_tokens": 118,
+  "model_input_tokens": 1162,
+  "model_output_tokens": 118,
+  "format_failed_calls": 0,
+  "transport_failed_calls": 0,
+  "fallback_calls": 0,
+  "sum_model_latency_s": 3.9989001750946045,
+  "gold": "2",
+  "score": 1.0,
+  "question": "Toby is making toast and adding peanut butter to it. He wants to make sure he has 500 calories for breakfast. A piece of bread has 100 calories. A serving of peanut butter has 200 calories. If he has one piece of bread, how many servings of peanut butter should he add?\nGive the final numeric answer."
+}

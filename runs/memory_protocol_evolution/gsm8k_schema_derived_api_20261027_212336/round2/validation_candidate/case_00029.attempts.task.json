@@ -1,0 +1,149 @@
+{
+  "task_id": "gsm8k:train:seed42:V:00029",
+  "status": "completed",
+  "error": null,
+  "prediction": "27",
+  "messages": [
+    {
+      "sender": "planner",
+      "content": "G:total_hover_time;P:day1=3+4+2,day2=2*(3+4+2),total=day1+day2;NL:On the next day it hovered 2 more hours in each of the three time zones, so day 2 adds 2 hours per zone to the previous day's per-zone times.",
+      "receiver": "solver",
+      "round": 0,
+      "role": "assistant",
+      "prompt_tokens": 917,
+      "completion_tokens": 78,
+      "id": "02c46deabf7a",
+      "ts": 1793111241.5118597,
+      "meta": {
+        "sender": "planner",
+        "receiver": "solver",
+        "message_id": "02c46deabf7a",
+        "protocol_edge": "planner_to_solver",
+        "protocol_version": "CARD-2-gsm8k",
+        "protocol_hash": "aec703067bbfeee6aa1e642a2a319658f1d33f2eff00c8701de19347f616ed6d",
+        "contract_hash": "ab4b736240365db5d0ce2caea032f40a3b7fc9c189db42d5ebcd28cac0fac22b",
+        "fields": {
+          "G": "total_hover_time",
+          "P": "day1=3+4+2,day2=2*(3+4+2),total=day1+day2",
+          "NL": "On the next day it hovered 2 more hours in each of the three time zones, so day 2 adds 2 hours per zone to the previous day's per-zone times."
+        },
+        "communication_tokens": 78,
+        "communication_tokens_exact": true,
+        "attempt_count": 1,
+        "fallback": false,
+        "tokens_include_all_attempts": true,
+        "incoming_message_ids": []
+      }
+    },
+    {
+      "sender": "solver",
+      "content": "IR:day1=3+4+2=9,day2=2*(3+4+2)=18,total=9+18=27;R:27",
+      "receiver": "verifier",
+      "round": 0,
+      "role": "assistant",
+      "prompt_tokens": 813,
+      "completion_tokens": 37,
+      "id": "39473d7bd952",
+      "ts": 1793111242.7404792,
+      "meta": {
+        "sender": "solver",
+        "receiver": "verifier",
+        "message_id": "39473d7bd952",
+        "protocol_edge": "solver_to_verifier",
+        "protocol_version": "CARD-2-gsm8k",
+        "protocol_hash": "aec703067bbfeee6aa1e642a2a319658f1d33f2eff00c8701de19347f616ed6d",
+        "contract_hash": "ab4b736240365db5d0ce2caea032f40a3b7fc9c189db42d5ebcd28cac0fac22b",
+        "fields": {
+          "IR": "day1=3+4+2=9,day2=2*(3+4+2)=18,total=9+18=27",
+          "R": "27"
+        },
+        "communication_tokens": 37,
+        "communication_tokens_exact": true,
+        "attempt_count": 1,
+        "fallback": false,
+        "tokens_include_all_attempts": true,
+        "incoming_message_ids": [
+          "02c46deabf7a"
+        ]
+      }
+    },
+    {
+      "sender": "verifier",
+      "content": "CHK:ACCEPT",
+      "receiver": "solver",
+      "round": 0,
+      "role": "assistant",
+      "prompt_tokens": 1138,
+      "completion_tokens": 5,
+      "id": "81506589a727",
+      "ts": 1793111243.614216,
+      "meta": {
+        "sender": "verifier",
+        "receiver": "solver",
+        "message_id": "81506589a727",
+        "protocol_edge": "verifier_to_solver",
+        "protocol_version": "CARD-2-gsm8k",
+        "protocol_hash": "aec703067bbfeee6aa1e642a2a319658f1d33f2eff00c8701de19347f616ed6d",
+        "contract_hash": "ab4b736240365db5d0ce2caea032f40a3b7fc9c189db42d5ebcd28cac0fac22b",
+        "fields": {
+          "CHK": "ACCEPT"
+        },
+        "communication_tokens": 5,
+        "communication_tokens_exact": true,
+        "attempt_count": 1,
+        "fallback": false,
+        "tokens_include_all_attempts": true,
+        "incoming_message_ids": [
+          "39473d7bd952"
+        ]
+      }
+    }
+  ],
+  "communication_tokens": 120,
+  "wall_time_s": 3.5048139999853447,
+  "verified": true,
+  "revision_rounds": 0,
+  "model_calls": [
+    {
+      "role": "planner",
+      "attempt": 0,
+      "status": "delivered",
+      "error": "",
+      "raw_output": "G:total_hover_time;P:day1=3+4+2,day2=2*(3+4+2),total=day1+day2;NL:On the next day it hovered 2 more hours in each of the three time zones, so day 2 adds 2 hours per zone to the previous day's per-zone times.",
+      "finish_reason": "stop",
+      "output_tokens": 78,
+      "usage_available": true
+    },
+    {
+      "role": "solver",
+      "attempt": 0,
+      "status": "delivered",
+      "error": "",
+      "raw_output": "IR:day1=3+4+2=9,day2=2*(3+4+2)=18,total=9+18=27;R:27",
+      "finish_reason": "stop",
+      "output_tokens": 37,
+      "usage_available": true
+    },
+    {
+      "role": "verifier",
+      "attempt": 0,
+      "status": "delivered",
+      "error": "",
+      "raw_output": "CHK:ACCEPT",
+      "finish_reason": "stop",
+      "output_tokens": 5,
+      "usage_available": true
+    }
+  ],
+  "failed_attempts": [],
+  "calls": 3,
+  "usage_complete": true,
+  "known_input_tokens": 2868,
+  "known_output_tokens": 120,
+  "model_input_tokens": 2868,
+  "model_output_tokens": 120,
+  "format_failed_calls": 0,
+  "transport_failed_calls": 0,
+  "fallback_calls": 0,
+  "sum_model_latency_s": 3.4306960105895996
+}

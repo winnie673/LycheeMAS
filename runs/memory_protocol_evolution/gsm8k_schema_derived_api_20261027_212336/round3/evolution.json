@@ -1,0 +1,10 @@
+{
+  "decision": "UPDATE",
+  "reason": "Only communication-related diagnosis is case 00044, where verbose NL planner prose introduced a multiplicity error (doubling trips) that the compact symbolic P avoided. The card already prefers compact equations, but the P field rule and NL rule do not explicitly warn against re-counting combined per-trip capacity as separate trips. A minimal clarification to the P field rule (and its example) will reinforce the successful compact pattern without changing schema.",
+  "changed_paths": [
+    "planner_to_solver.field_rules.P"
+  ],
+  "eligible_case_ids": [
+    "gsm8k:train:seed42:G3:00044"
+  ]
+}

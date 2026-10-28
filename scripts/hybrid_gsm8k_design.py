@@ -2,7 +2,8 @@
 
 Source: sibling experiment implementation, MIT; no runtime dependency on that checkout.
 The named functions preserve source behavior except explicit CHK/E boundary
-clarifications in initialization_prompt and card_review_prompt (2026-10-27).
+clarifications in initialization_prompt and card_review_prompt (2026-10-27),
+and initialization's error-enum text is now derived from the schema.
 Adapter code follows them.
 """
 
@@ -201,6 +202,8 @@ def initialization_prompt(
             "C states an additional answer-changing validity condition. U states a genuine "
             "unresolved ambiguity that could change the answer."
         )
+    error_values = schema["verifier_to_solver"]["value_constraints"]["E"]["allowed_values"]
+    error_example, error_list = error_values[0], ", ".join(error_values)
     return f"""You are a protocol-card designer for {task_name}.
 
 The communication schema is frozen. You may NOT add, delete, rename, or redefine fields,
@@ -257,10 +260,9 @@ MUST be a JSON array containing exactly one string, for example `"examples":["x=
 return a scalar string such as `"examples":"x=1"`. Optional fields MUST
 be omitted when unused. Never emit none, N/A, no ambiguity, unknown, or not applicable.
 Control-field value examples must be individual frozen values: CHK examples must be exactly
-`ACCEPT` or `REVISE`; E examples must be exactly one frozen E enum value such as `ARITH`.
+`ACCEPT` or `REVISE`; E examples must be exactly one frozen E enum value such as `{error_example}`.
 Do not put explanatory text, alternatives, or multiple values in these example entries.
-The only valid E values are ARITH, RELATION, MISSING_FACT, MISSING_UNIT, WRONG_TARGET,
-INSUFFICIENT_INFO, and OTHER. Diagnostic issue labels are not E values and must never
+The only valid E values are {error_list}. Diagnostic issue labels are not E values and must never
 appear in verifier_to_solver.field_rules.E examples or full verifier messages.
 At least one full planner and solver example must omit the optional semantic fallback field(s).
 Verifier full examples
@@ -609,12 +611,11 @@ class GSM8KDesign:
 
     def __init__(self, schema: dict | None = None, task_profile: dict | None = None):
         if schema is None:
-            from pathlib import Path
-
-            import yaml
-
-            path = Path(__file__).resolve().parents[1] / "configs/memory/gsm8k_protocol_schema.yaml"
-            schema = yaml.safe_load(path.read_text(encoding="utf-8"))
+            if __package__:
+                from .hybrid_gsm8k_spec import GSM8K_SCHEMA
+            else:
+                from hybrid_gsm8k_spec import GSM8K_SCHEMA
+            schema = GSM8K_SCHEMA
         self.schema = deepcopy(schema)
         self.profile = (
             deepcopy(task_profile)

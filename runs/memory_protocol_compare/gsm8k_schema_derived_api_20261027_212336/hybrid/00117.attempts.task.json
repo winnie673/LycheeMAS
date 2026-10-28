@@ -1,0 +1,120 @@
+{
+  "task_id": "gsm8k:test:seed42:T:00121",
+  "mode": "hybrid",
+  "benchmark": "gsm8k",
+  "status": "completed",
+  "error": null,
+  "prediction": "27",
+  "gold": "27",
+  "wall_time_s": 3.7592403000453487,
+  "communication_tokens": 101,
+  "communication_tokens_exact": true,
+  "revision_rounds": 0,
+  "verification_decision": "ACCEPT",
+  "verified": true,
+  "messages": [
+    {
+      "sender": "planner",
+      "content": "G:total_fruits;P:kael_apples=2*5,kael_oranges=8/2,total_fruits=5+8+kael_apples+kael_oranges",
+      "receiver": "solver",
+      "round": 0,
+      "role": "assistant",
+      "prompt_tokens": 754,
+      "completion_tokens": 43,
+      "id": "9e5c32bccc57",
+      "ts": 1793169976.4196806,
+      "meta": {
+        "sender": "planner",
+        "receiver": "solver",
+        "message_id": "9e5c32bccc57",
+        "protocol_edge": "planner_to_solver",
+        "protocol_version": "CARD-0-gsm8k",
+        "protocol_hash": "4bcdae885cc464e0a51977368e4bc06650c0326dbdcb182ce0327477c1d32daa",
+        "contract_hash": "ab4b736240365db5d0ce2caea032f40a3b7fc9c189db42d5ebcd28cac0fac22b",
+        "fields": {
+          "G": "total_fruits",
+          "P": "kael_apples=2*5,kael_oranges=8/2,total_fruits=5+8+kael_apples+kael_oranges"
+        },
+        "communication_tokens": 43,
+        "communication_tokens_exact": true,
+        "attempt_count": 1,
+        "fallback": false,
+        "tokens_include_all_attempts": true,
+        "incoming_message_ids": []
+      }
+    },
+    {
+      "sender": "solver",
+      "content": "IR:morisette=5+8=13,kael_apples=2*5=10,kael_oranges=8/2=4,kael=10+4=14,total=13+14=27;R:27",
+      "receiver": "verifier",
+      "round": 0,
+      "role": "assistant",
+      "prompt_tokens": 739,
+      "completion_tokens": 53,
+      "id": "939ee1bce532",
+      "ts": 1793169977.777083,
+      "meta": {
+        "sender": "solver",
+        "receiver": "verifier",
+        "message_id": "939ee1bce532",
+        "protocol_edge": "solver_to_verifier",
+        "protocol_version": "CARD-0-gsm8k",
+        "protocol_hash": "4bcdae885cc464e0a51977368e4bc06650c0326dbdcb182ce0327477c1d32daa",
+        "contract_hash": "ab4b736240365db5d0ce2caea032f40a3b7fc9c189db42d5ebcd28cac0fac22b",
+        "fields": {
+          "IR": "morisette=5+8=13,kael_apples=2*5=10,kael_oranges=8/2=4,kael=10+4=14,total=13+14=27",
+          "R": "27"
+        },
+        "communication_tokens": 53,
+        "communication_tokens_exact": true,
+        "attempt_count": 1,
+        "fallback": false,
+        "tokens_include_all_attempts": true,
+        "incoming_message_ids": [
+          "9e5c32bccc57"
+        ]
+      }
+    },
+    {
+      "sender": "verifier",
+      "content": "CHK:ACCEPT",
+      "receiver": "solver",
+      "round": 0,
+      "role": "assistant",
+      "prompt_tokens": 1115,
+      "completion_tokens": 5,
+      "id": "34d6edf5b04e",
+      "ts": 1793169978.9490929,
+      "meta": {
+        "sender": "verifier",
+        "receiver": "solver",
+        "message_id": "34d6edf5b04e",
+        "protocol_edge": "verifier_to_solver",
+        "protocol_version": "CARD-0-gsm8k",
+        "protocol_hash": "4bcdae885cc464e0a51977368e4bc06650c0326dbdcb182ce0327477c1d32daa",
+        "contract_hash": "ab4b736240365db5d0ce2caea032f40a3b7fc9c189db42d5ebcd28cac0fac22b",
+        "fields": {
+          "CHK": "ACCEPT"
+        },
+        "communication_tokens": 5,
+        "communication_tokens_exact": true,
+        "attempt_count": 1,
+        "fallback": false,
+        "tokens_include_all_attempts": true,
+        "incoming_message_ids": [
+          "939ee1bce532"
+        ]
+      }
+    }
+  ],
+  "calls": 3,
+  "usage_complete": true,
+  "known_input_tokens": 2608,
+  "known_output_tokens": 101,
+  "model_input_tokens": 2608,
+  "model_output_tokens": 101,
+  "format_failed_calls": 0,
+  "transport_failed_calls": 0,
+  "fallback_calls": 0,
+  "sum_model_latency_s": 3.67970871925354
+}

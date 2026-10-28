@@ -1,0 +1,151 @@
+{
+  "task_id": "gsm8k:train:seed42:V:00066",
+  "status": "completed",
+  "error": null,
+  "prediction": "30",
+  "messages": [
+    {
+      "sender": "planner",
+      "content": "G:price_of_jeans;P:socks=5,tshirt=socks+10,jeans=2*tshirt",
+      "receiver": "solver",
+      "round": 0,
+      "role": "assistant",
+      "prompt_tokens": 886,
+      "completion_tokens": 30,
+      "id": "bcf884b9493d",
+      "ts": 1793111398.5922163,
+      "meta": {
+        "sender": "planner",
+        "receiver": "solver",
+        "message_id": "bcf884b9493d",
+        "protocol_edge": "planner_to_solver",
+        "protocol_version": "CARD-2-gsm8k",
+        "protocol_hash": "aec703067bbfeee6aa1e642a2a319658f1d33f2eff00c8701de19347f616ed6d",
+        "contract_hash": "ab4b736240365db5d0ce2caea032f40a3b7fc9c189db42d5ebcd28cac0fac22b",
+        "fields": {
+          "G": "price_of_jeans",
+          "P": "socks=5,tshirt=socks+10,jeans=2*tshirt"
+        },
+        "communication_tokens": 30,
+        "communication_tokens_exact": true,
+        "attempt_count": 1,
+        "fallback": false,
+        "tokens_include_all_attempts": true,
+        "incoming_message_ids": []
+      }
+    },
+    {
+      "sender": "solver",
+      "content": "IR:socks=5,tshirt=5+10=15,jeans=2*15=30;R:30",
+      "receiver": "verifier",
+      "round": 0,
+      "role": "assistant",
+      "prompt_tokens": 734,
+      "completion_tokens": 28,
+      "id": "ba5766d3359b",
+      "ts": 1793111400.0318866,
+      "meta": {
+        "sender": "solver",
+        "receiver": "verifier",
+        "message_id": "ba5766d3359b",
+        "protocol_edge": "solver_to_verifier",
+        "protocol_version": "CARD-2-gsm8k",
+        "protocol_hash": "aec703067bbfeee6aa1e642a2a319658f1d33f2eff00c8701de19347f616ed6d",
+        "contract_hash": "ab4b736240365db5d0ce2caea032f40a3b7fc9c189db42d5ebcd28cac0fac22b",
+        "fields": {
+          "IR": "socks=5,tshirt=5+10=15,jeans=2*15=30",
+          "R": "30"
+        },
+        "communication_tokens": 28,
+        "communication_tokens_exact": true,
+        "attempt_count": 1,
+        "fallback": false,
+        "tokens_include_all_attempts": true,
+        "incoming_message_ids": [
+          "bcf884b9493d"
+        ]
+      }
+    },
+    {
+      "sender": "verifier",
+      "content": "CHK:ACCEPT",
+      "receiver": "solver",
+      "round": 0,
+      "role": "assistant",
+      "prompt_tokens": 1098,
+      "completion_tokens": 5,
+      "id": "2159b965057d",
+      "ts": 1793111401.1773138,
+      "meta": {
+        "sender": "verifier",
+        "receiver": "solver",
+        "message_id": "2159b965057d",
+        "protocol_edge": "verifier_to_solver",
+        "protocol_version": "CARD-2-gsm8k",
+        "protocol_hash": "aec703067bbfeee6aa1e642a2a319658f1d33f2eff00c8701de19347f616ed6d",
+        "contract_hash": "ab4b736240365db5d0ce2caea032f40a3b7fc9c189db42d5ebcd28cac0fac22b",
+        "fields": {
+          "CHK": "ACCEPT"
+        },
+        "communication_tokens": 5,
+        "communication_tokens_exact": true,
+        "attempt_count": 1,
+        "fallback": false,
+        "tokens_include_all_attempts": true,
+        "incoming_message_ids": [
+          "ba5766d3359b"
+        ]
+      }
+    }
+  ],
+  "communication_tokens": 63,
+  "wall_time_s": 4.177665300085209,
+  "verified": true,
+  "revision_rounds": 0,
+  "model_calls": [
+    {
+      "role": "planner",
+      "attempt": 0,
+      "status": "delivered",
+      "error": "",
+      "raw_output": "G:price_of_jeans;P:socks=5,tshirt=socks+10,jeans=2*tshirt",
+      "finish_reason": "stop",
+      "output_tokens": 30,
+      "usage_available": true
+    },
+    {
+      "role": "solver",
+      "attempt": 0,
+      "status": "delivered",
+      "error": "",
+      "raw_output": "IR:socks=5,tshirt=5+10=15,jeans=2*15=30;R:30",
+      "finish_reason": "stop",
+      "output_tokens": 28,
+      "usage_available": true
+    },
+    {
+      "role": "verifier",
+      "attempt": 0,
+      "status": "delivered",
+      "error": "",
+      "raw_output": "CHK:ACCEPT",
+      "finish_reason": "stop",
+      "output_tokens": 5,
+      "usage_available": true
+    }
+  ],
+  "failed_attempts": [],
+  "calls": 3,
+  "usage_complete": true,
+  "known_input_tokens": 2718,
+  "known_output_tokens": 63,
+  "model_input_tokens": 2718,
+  "model_output_tokens": 63,
+  "format_failed_calls": 0,
+  "transport_failed_calls": 0,
+  "fallback_calls": 0,
+  "sum_model_latency_s": 4.100118637084961,
+  "gold": "30",
+  "score": 1.0,
+  "question": "Henry wants to buy a t-shirt, a pair of jeans and a pair of socks. The jeans are twice the price of the t-shirt, and the t-shirt is $10 more expensive than the socks. The socks cost $5. How much does Henry need to pay for the pair of jeans?\nGive the final numeric answer."
+}

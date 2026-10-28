@@ -1,0 +1,151 @@
+{
+  "task_id": "gsm8k:train:seed42:V:00064",
+  "status": "completed",
+  "error": null,
+  "prediction": "96",
+  "messages": [
+    {
+      "sender": "planner",
+      "content": "G:total_weight;P:total_weight=12*4+16*3",
+      "receiver": "solver",
+      "round": 0,
+      "role": "assistant",
+      "prompt_tokens": 795,
+      "completion_tokens": 17,
+      "id": "a78115569ce9",
+      "ts": 1793168521.8622522,
+      "meta": {
+        "sender": "planner",
+        "receiver": "solver",
+        "message_id": "a78115569ce9",
+        "protocol_edge": "planner_to_solver",
+        "protocol_version": "CARD-3-gsm8k",
+        "protocol_hash": "fb1a4acb6e591ac96544876aedd912b27a6f9d3154c76112e1da0f43407d27b2",
+        "contract_hash": "ab4b736240365db5d0ce2caea032f40a3b7fc9c189db42d5ebcd28cac0fac22b",
+        "fields": {
+          "G": "total_weight",
+          "P": "total_weight=12*4+16*3"
+        },
+        "communication_tokens": 17,
+        "communication_tokens_exact": true,
+        "attempt_count": 1,
+        "fallback": false,
+        "tokens_include_all_attempts": true,
+        "incoming_message_ids": []
+      }
+    },
+    {
+      "sender": "solver",
+      "content": "IR:crates_weight=12*4=48,cartons_weight=16*3=48,total=48+48=96;R:96",
+      "receiver": "verifier",
+      "round": 0,
+      "role": "assistant",
+      "prompt_tokens": 712,
+      "completion_tokens": 32,
+      "id": "8c1b44d36e46",
+      "ts": 1793168522.7798436,
+      "meta": {
+        "sender": "solver",
+        "receiver": "verifier",
+        "message_id": "8c1b44d36e46",
+        "protocol_edge": "solver_to_verifier",
+        "protocol_version": "CARD-3-gsm8k",
+        "protocol_hash": "fb1a4acb6e591ac96544876aedd912b27a6f9d3154c76112e1da0f43407d27b2",
+        "contract_hash": "ab4b736240365db5d0ce2caea032f40a3b7fc9c189db42d5ebcd28cac0fac22b",
+        "fields": {
+          "IR": "crates_weight=12*4=48,cartons_weight=16*3=48,total=48+48=96",
+          "R": "96"
+        },
+        "communication_tokens": 32,
+        "communication_tokens_exact": true,
+        "attempt_count": 1,
+        "fallback": false,
+        "tokens_include_all_attempts": true,
+        "incoming_message_ids": [
+          "a78115569ce9"
+        ]
+      }
+    },
+    {
+      "sender": "verifier",
+      "content": "CHK:ACCEPT",
+      "receiver": "solver",
+      "round": 0,
+      "role": "assistant",
+      "prompt_tokens": 1093,
+      "completion_tokens": 5,
+      "id": "5a857c1fdd53",
+      "ts": 1793168523.9117117,
+      "meta": {
+        "sender": "verifier",
+        "receiver": "solver",
+        "message_id": "5a857c1fdd53",
+        "protocol_edge": "verifier_to_solver",
+        "protocol_version": "CARD-3-gsm8k",
+        "protocol_hash": "fb1a4acb6e591ac96544876aedd912b27a6f9d3154c76112e1da0f43407d27b2",
+        "contract_hash": "ab4b736240365db5d0ce2caea032f40a3b7fc9c189db42d5ebcd28cac0fac22b",
+        "fields": {
+          "CHK": "ACCEPT"
+        },
+        "communication_tokens": 5,
+        "communication_tokens_exact": true,
+        "attempt_count": 1,
+        "fallback": false,
+        "tokens_include_all_attempts": true,
+        "incoming_message_ids": [
+          "8c1b44d36e46"
+        ]
+      }
+    }
+  ],
+  "communication_tokens": 54,
+  "wall_time_s": 3.1500940999248996,
+  "verified": true,
+  "revision_rounds": 0,
+  "model_calls": [
+    {
+      "role": "planner",
+      "attempt": 0,
+      "status": "delivered",
+      "error": "",
+      "raw_output": "G:total_weight;P:total_weight=12*4+16*3",
+      "finish_reason": "stop",
+      "output_tokens": 17,
+      "usage_available": true
+    },
+    {
+      "role": "solver",
+      "attempt": 0,
+      "status": "delivered",
+      "error": "",
+      "raw_output": "IR:crates_weight=12*4=48,cartons_weight=16*3=48,total=48+48=96;R:96",
+      "finish_reason": "stop",
+      "output_tokens": 32,
+      "usage_available": true
+    },
+    {
+      "role": "verifier",
+      "attempt": 0,
+      "status": "delivered",
+      "error": "",
+      "raw_output": "CHK:ACCEPT",
+      "finish_reason": "stop",
+      "output_tokens": 5,
+      "usage_available": true
+    }
+  ],
+  "failed_attempts": [],
+  "calls": 3,
+  "usage_complete": true,
+  "known_input_tokens": 2600,
+  "known_output_tokens": 54,
+  "model_input_tokens": 2600,
+  "model_output_tokens": 54,
+  "format_failed_calls": 0,
+  "transport_failed_calls": 0,
+  "fallback_calls": 0,
+  "sum_model_latency_s": 3.0431957244873047,
+  "gold": "96",
+  "score": 1.0,
+  "question": "A store transports fresh vegetables in crates and cartons using its delivery truck. One crate of vegetables weighs 4 kilograms and one carton 3 kilograms. How much will a load of 12 crates, and 16 cartons of vegetables weigh?\nGive the final numeric answer."
+}

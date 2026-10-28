@@ -1,0 +1,151 @@
+{
+  "task_id": "gsm8k:train:seed42:G1:00007",
+  "status": "completed",
+  "error": null,
+  "prediction": "5217",
+  "messages": [
+    {
+      "sender": "planner",
+      "content": "G:remaining_feathers;P:cars=23,pulled=2*cars,remaining=5263-pulled",
+      "receiver": "solver",
+      "round": 0,
+      "role": "assistant",
+      "prompt_tokens": 784,
+      "completion_tokens": 25,
+      "id": "8c999a7988cd",
+      "ts": 1793107601.7719805,
+      "meta": {
+        "sender": "planner",
+        "receiver": "solver",
+        "message_id": "8c999a7988cd",
+        "protocol_edge": "planner_to_solver",
+        "protocol_version": "CARD-0-gsm8k",
+        "protocol_hash": "4bcdae885cc464e0a51977368e4bc06650c0326dbdcb182ce0327477c1d32daa",
+        "contract_hash": "ab4b736240365db5d0ce2caea032f40a3b7fc9c189db42d5ebcd28cac0fac22b",
+        "fields": {
+          "G": "remaining_feathers",
+          "P": "cars=23,pulled=2*cars,remaining=5263-pulled"
+        },
+        "communication_tokens": 25,
+        "communication_tokens_exact": true,
+        "attempt_count": 1,
+        "fallback": false,
+        "tokens_include_all_attempts": true,
+        "incoming_message_ids": []
+      }
+    },
+    {
+      "sender": "solver",
+      "content": "IR:cars=23,pulled=2*23=46,remaining=5263-46=5217;R:5217",
+      "receiver": "verifier",
+      "round": 0,
+      "role": "assistant",
+      "prompt_tokens": 751,
+      "completion_tokens": 28,
+      "id": "6394ff0200d5",
+      "ts": 1793107603.036968,
+      "meta": {
+        "sender": "solver",
+        "receiver": "verifier",
+        "message_id": "6394ff0200d5",
+        "protocol_edge": "solver_to_verifier",
+        "protocol_version": "CARD-0-gsm8k",
+        "protocol_hash": "4bcdae885cc464e0a51977368e4bc06650c0326dbdcb182ce0327477c1d32daa",
+        "contract_hash": "ab4b736240365db5d0ce2caea032f40a3b7fc9c189db42d5ebcd28cac0fac22b",
+        "fields": {
+          "IR": "cars=23,pulled=2*23=46,remaining=5263-46=5217",
+          "R": "5217"
+        },
+        "communication_tokens": 28,
+        "communication_tokens_exact": true,
+        "attempt_count": 1,
+        "fallback": false,
+        "tokens_include_all_attempts": true,
+        "incoming_message_ids": [
+          "8c999a7988cd"
+        ]
+      }
+    },
+    {
+      "sender": "verifier",
+      "content": "CHK:ACCEPT",
+      "receiver": "solver",
+      "round": 0,
+      "role": "assistant",
+      "prompt_tokens": 1120,
+      "completion_tokens": 5,
+      "id": "c11b6e4073bc",
+      "ts": 1793107604.4743347,
+      "meta": {
+        "sender": "verifier",
+        "receiver": "solver",
+        "message_id": "c11b6e4073bc",
+        "protocol_edge": "verifier_to_solver",
+        "protocol_version": "CARD-0-gsm8k",
+        "protocol_hash": "4bcdae885cc464e0a51977368e4bc06650c0326dbdcb182ce0327477c1d32daa",
+        "contract_hash": "ab4b736240365db5d0ce2caea032f40a3b7fc9c189db42d5ebcd28cac0fac22b",
+        "fields": {
+          "CHK": "ACCEPT"
+        },
+        "communication_tokens": 5,
+        "communication_tokens_exact": true,
+        "attempt_count": 1,
+        "fallback": false,
+        "tokens_include_all_attempts": true,
+        "incoming_message_ids": [
+          "6394ff0200d5"
+        ]
+      }
+    }
+  ],
+  "communication_tokens": 58,
+  "wall_time_s": 4.27024139999412,
+  "verified": true,
+  "revision_rounds": 0,
+  "model_calls": [
+    {
+      "role": "planner",
+      "attempt": 0,
+      "status": "delivered",
+      "error": "",
+      "raw_output": "G:remaining_feathers;P:cars=23,pulled=2*cars,remaining=5263-pulled",
+      "finish_reason": "stop",
+      "output_tokens": 25,
+      "usage_available": true
+    },
+    {
+      "role": "solver",
+      "attempt": 0,
+      "status": "delivered",
+      "error": "",
+      "raw_output": "IR:cars=23,pulled=2*23=46,remaining=5263-46=5217;R:5217",
+      "finish_reason": "stop",
+      "output_tokens": 28,
+      "usage_available": true
+    },
+    {
+      "role": "verifier",
+      "attempt": 0,
+      "status": "delivered",
+      "error": "",
+      "raw_output": "CHK:ACCEPT",
+      "finish_reason": "stop",
+      "output_tokens": 5,
+      "usage_available": true
+    }
+  ],
+  "failed_attempts": [],
+  "calls": 3,
+  "usage_complete": true,
+  "known_input_tokens": 2655,
+  "known_output_tokens": 58,
+  "model_input_tokens": 2655,
+  "model_output_tokens": 58,
+  "format_failed_calls": 0,
+  "transport_failed_calls": 0,
+  "fallback_calls": 0,
+  "sum_model_latency_s": 4.182596921920776,
+  "gold": "5217",
+  "score": 1.0,
+  "question": "The chicken crossed the road to get to the other side twice for the thrill of it. The first time, it had to dodge 23 speeding cars. The second time, a person tried to catch it and accidentally pulled out twice as many feathers as the number of cars the chicken had dodged. The chicken had 5263 feathers before its thrill-seeking road crossings. How many feathers did it have afterward?\nGive the final numeric answer."
+}

@@ -1,0 +1,148 @@
+{
+  "task_id": "gsm8k:train:seed42:V:00194",
+  "status": "completed",
+  "error": null,
+  "prediction": "120",
+  "messages": [
+    {
+      "sender": "planner",
+      "content": "G:total_savings_over_30_years;P:expensive_coats=30/15,cheap_coats=30/5,expensive_total=expensive_coats*300,cheap_total=cheap_coats*120,total_savings_over_30_years=cheap_total-expensive_total",
+      "receiver": "solver",
+      "round": 0,
+      "role": "assistant",
+      "prompt_tokens": 876,
+      "completion_tokens": 67,
+      "id": "78aefe57518e",
+      "ts": 1793111928.0118709,
+      "meta": {
+        "sender": "planner",
+        "receiver": "solver",
+        "message_id": "78aefe57518e",
+        "protocol_edge": "planner_to_solver",
+        "protocol_version": "CARD-2-gsm8k",
+        "protocol_hash": "aec703067bbfeee6aa1e642a2a319658f1d33f2eff00c8701de19347f616ed6d",
+        "contract_hash": "ab4b736240365db5d0ce2caea032f40a3b7fc9c189db42d5ebcd28cac0fac22b",
+        "fields": {
+          "G": "total_savings_over_30_years",
+          "P": "expensive_coats=30/15,cheap_coats=30/5,expensive_total=expensive_coats*300,cheap_total=cheap_coats*120,total_savings_over_30_years=cheap_total-expensive_total"
+        },
+        "communication_tokens": 67,
+        "communication_tokens_exact": true,
+        "attempt_count": 1,
+        "fallback": false,
+        "tokens_include_all_attempts": true,
+        "incoming_message_ids": []
+      }
+    },
+    {
+      "sender": "solver",
+      "content": "IR:expensive_coats=30/15=2,cheap_coats=30/5=6,expensive_total=2*300=600,cheap_total=6*120=720,total_savings_over_30_years=720-600=120;R:120",
+      "receiver": "verifier",
+      "round": 0,
+      "role": "assistant",
+      "prompt_tokens": 761,
+      "completion_tokens": 61,
+      "id": "9fe6fa78339e",
+      "ts": 1793111929.400898,
+      "meta": {
+        "sender": "solver",
+        "receiver": "verifier",
+        "message_id": "9fe6fa78339e",
+        "protocol_edge": "solver_to_verifier",
+        "protocol_version": "CARD-2-gsm8k",
+        "protocol_hash": "aec703067bbfeee6aa1e642a2a319658f1d33f2eff00c8701de19347f616ed6d",
+        "contract_hash": "ab4b736240365db5d0ce2caea032f40a3b7fc9c189db42d5ebcd28cac0fac22b",
+        "fields": {
+          "IR": "expensive_coats=30/15=2,cheap_coats=30/5=6,expensive_total=2*300=600,cheap_total=6*120=720,total_savings_over_30_years=720-600=120",
+          "R": "120"
+        },
+        "communication_tokens": 61,
+        "communication_tokens_exact": true,
+        "attempt_count": 1,
+        "fallback": false,
+        "tokens_include_all_attempts": true,
+        "incoming_message_ids": [
+          "78aefe57518e"
+        ]
+      }
+    },
+    {
+      "sender": "verifier",
+      "content": "CHK:ACCEPT",
+      "receiver": "solver",
+      "round": 0,
+      "role": "assistant",
+      "prompt_tokens": 1121,
+      "completion_tokens": 5,
+      "id": "d8c0cae4befc",
+      "ts": 1793111931.4808795,
+      "meta": {
+        "sender": "verifier",
+        "receiver": "solver",
+        "message_id": "d8c0cae4befc",
+        "protocol_edge": "verifier_to_solver",
+        "protocol_version": "CARD-2-gsm8k",
+        "protocol_hash": "aec703067bbfeee6aa1e642a2a319658f1d33f2eff00c8701de19347f616ed6d",
+        "contract_hash": "ab4b736240365db5d0ce2caea032f40a3b7fc9c189db42d5ebcd28cac0fac22b",
+        "fields": {
+          "CHK": "ACCEPT"
+        },
+        "communication_tokens": 5,
+        "communication_tokens_exact": true,
+        "attempt_count": 1,
+        "fallback": false,
+        "tokens_include_all_attempts": true,
+        "incoming_message_ids": [
+          "9fe6fa78339e"
+        ]
+      }
+    }
+  ],
+  "communication_tokens": 133,
+  "wall_time_s": 4.873326899949461,
+  "verified": true,
+  "revision_rounds": 0,
+  "model_calls": [
+    {
+      "role": "planner",
+      "attempt": 0,
+      "status": "delivered",
+      "error": "",
+      "raw_output": "G:total_savings_over_30_years;P:expensive_coats=30/15,cheap_coats=30/5,expensive_total=expensive_coats*300,cheap_total=cheap_coats*120,total_savings_over_30_years=cheap_total-expensive_total",
+      "finish_reason": "stop",
+      "output_tokens": 67,
+      "usage_available": true
+    },
+    {
+      "role": "solver",
+      "attempt": 0,
+      "status": "delivered",
+      "error": "",
+      "raw_output": "IR:expensive_coats=30/15=2,cheap_coats=30/5=6,expensive_total=2*300=600,cheap_total=6*120=720,total_savings_over_30_years=720-600=120;R:120",
+      "finish_reason": "stop",
+      "output_tokens": 61,
+      "usage_available": true
+    },
+    {
+      "role": "verifier",
+      "attempt": 0,
+      "status": "delivered",
+      "error": "",
+      "raw_output": "CHK:ACCEPT",
+      "finish_reason": "stop",
+      "output_tokens": 5,
+      "usage_available": true
+    }
+  ],
+  "failed_attempts": [],
+  "calls": 3,
+  "usage_complete": true,
+  "known_input_tokens": 2758,
+  "known_output_tokens": 133,
+  "model_input_tokens": 2758,
+  "model_output_tokens": 133,
+  "format_failed_calls": 0,
+  "transport_failed_calls": 0,
+  "fallback_calls": 0,
+  "sum_model_latency_s": 4.734067916870117
+}

@@ -1,0 +1,95 @@
+{
+  "task_id": "gsm8k:test:seed42:T:00142",
+  "mode": "nl",
+  "benchmark": "gsm8k",
+  "status": "completed",
+  "error": null,
+  "prediction": "140",
+  "gold": "140",
+  "wall_time_s": 3.3300468999659643,
+  "communication_tokens": 103,
+  "communication_tokens_exact": true,
+  "revision_rounds": 0,
+  "verification_decision": "ACCEPT",
+  "verified": true,
+  "messages": [
+    {
+      "sender": "planner",
+      "content": "Goal: find how much Jordan would earn in one week if his daily 2 hours of video game time were spent working at $10/hour.\n\nPlan: multiply 2 hours/day by 7 days to get weekly hours, then multiply by $10/hour.\n\nConstraints: give a single final numeric answer in dollars.",
+      "receiver": "solver",
+      "round": 0,
+      "role": "assistant",
+      "prompt_tokens": 198,
+      "completion_tokens": 63,
+      "id": "a9a3d0155881",
+      "ts": 1793170133.7111502,
+      "meta": {
+        "fields": {},
+        "communication_tokens": 63,
+        "communication_tokens_exact": true,
+        "attempt_count": 1,
+        "fallback": false,
+        "tokens_include_all_attempts": true,
+        "incoming_message_ids": []
+      }
+    },
+    {
+      "sender": "solver",
+      "content": "Jordan would work 2 × 7 = 14 hours per week. At $10/hour, that is 14 × 10 = 140 dollars.\n\n\\boxed{140}",
+      "receiver": "verifier",
+      "round": 0,
+      "role": "assistant",
+      "prompt_tokens": 273,
+      "completion_tokens": 38,
+      "id": "5b5ee3110e08",
+      "ts": 1793170134.6842802,
+      "meta": {
+        "fields": {
+          "R": "140"
+        },
+        "communication_tokens": 38,
+        "communication_tokens_exact": true,
+        "attempt_count": 1,
+        "fallback": false,
+        "tokens_include_all_attempts": true,
+        "incoming_message_ids": [
+          "a9a3d0155881"
+        ]
+      }
+    },
+    {
+      "sender": "verifier",
+      "content": "ACCEPT",
+      "receiver": "solver",
+      "round": 0,
+      "role": "assistant",
+      "prompt_tokens": 625,
+      "completion_tokens": 2,
+      "id": "24967b895fee",
+      "ts": 1793170135.6546352,
+      "meta": {
+        "fields": {
+          "CHK": "ACCEPT"
+        },
+        "communication_tokens": 2,
+        "communication_tokens_exact": true,
+        "attempt_count": 1,
+        "fallback": false,
+        "tokens_include_all_attempts": true,
+        "incoming_message_ids": [
+          "5b5ee3110e08"
+        ]
+      }
+    }
+  ],
+  "calls": 3,
+  "usage_complete": true,
+  "known_input_tokens": 1096,
+  "known_output_tokens": 103,
+  "model_input_tokens": 1096,
+  "model_output_tokens": 103,
+  "format_failed_calls": 0,
+  "transport_failed_calls": 0,
+  "fallback_calls": 0,
+  "sum_model_latency_s": 3.272759437561035
+}

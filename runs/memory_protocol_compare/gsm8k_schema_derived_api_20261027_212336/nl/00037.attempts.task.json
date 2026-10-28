@@ -1,0 +1,95 @@
+{
+  "task_id": "gsm8k:test:seed42:T:00038",
+  "mode": "nl",
+  "benchmark": "gsm8k",
+  "status": "completed",
+  "error": null,
+  "prediction": "10",
+  "gold": "10",
+  "wall_time_s": 4.001526499981992,
+  "communication_tokens": 173,
+  "communication_tokens_exact": true,
+  "revision_rounds": 0,
+  "verification_decision": "ACCEPT",
+  "verified": true,
+  "messages": [
+    {
+      "sender": "planner",
+      "content": "Goal: find John’s running speed in miles per hour.\n\nPlan: Use the weekly total of 60 miles. Determine his running time for each of the 3 days: first day is 3 hours; the other two days are each half as much as the first day. Add the three daily times to get total weekly hours. Then divide total weekly miles by total weekly hours.\n\nConstraints: Report speed as miles per hour. Do not assume equal daily distances; use the given weekly distance and total time.",
+      "receiver": "solver",
+      "round": 0,
+      "role": "assistant",
+      "prompt_tokens": 196,
+      "completion_tokens": 103,
+      "id": "b5b555fa6330",
+      "ts": 1793169254.6441703,
+      "meta": {
+        "fields": {},
+        "communication_tokens": 103,
+        "communication_tokens_exact": true,
+        "attempt_count": 1,
+        "fallback": false,
+        "tokens_include_all_attempts": true,
+        "incoming_message_ids": []
+      }
+    },
+    {
+      "sender": "solver",
+      "content": "First day: 3 hours. Other two days: half of 3 hours = 1.5 hours each.  \nTotal time = 3 + 1.5 + 1.5 = 6 hours.  \nSpeed = 60 miles ÷ 6 hours = 10 miles per hour.\n\n\\boxed{10}",
+      "receiver": "verifier",
+      "round": 0,
+      "role": "assistant",
+      "prompt_tokens": 311,
+      "completion_tokens": 68,
+      "id": "58c6e29a12a9",
+      "ts": 1793169255.9355042,
+      "meta": {
+        "fields": {
+          "R": "10"
+        },
+        "communication_tokens": 68,
+        "communication_tokens_exact": true,
+        "attempt_count": 1,
+        "fallback": false,
+        "tokens_include_all_attempts": true,
+        "incoming_message_ids": [
+          "b5b555fa6330"
+        ]
+      }
+    },
+    {
+      "sender": "verifier",
+      "content": "ACCEPT",
+      "receiver": "solver",
+      "round": 0,
+      "role": "assistant",
+      "prompt_tokens": 653,
+      "completion_tokens": 2,
+      "id": "bf3c1422044f",
+      "ts": 1793169256.826129,
+      "meta": {
+        "fields": {
+          "CHK": "ACCEPT"
+        },
+        "communication_tokens": 2,
+        "communication_tokens_exact": true,
+        "attempt_count": 1,
+        "fallback": false,
+        "tokens_include_all_attempts": true,
+        "incoming_message_ids": [
+          "58c6e29a12a9"
+        ]
+      }
+    }
+  ],
+  "calls": 3,
+  "usage_complete": true,
+  "known_input_tokens": 1160,
+  "known_output_tokens": 173,
+  "model_input_tokens": 1160,
+  "model_output_tokens": 173,
+  "format_failed_calls": 0,
+  "transport_failed_calls": 0,
+  "fallback_calls": 0,
+  "sum_model_latency_s": 3.967446804046631
+}

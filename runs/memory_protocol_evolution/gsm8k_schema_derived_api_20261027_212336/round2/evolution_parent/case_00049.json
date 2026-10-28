@@ -1,0 +1,151 @@
+{
+  "task_id": "gsm8k:train:seed42:G2:00049",
+  "status": "completed",
+  "error": null,
+  "prediction": "35",
+  "messages": [
+    {
+      "sender": "planner",
+      "content": "G:hours_trained_first_two_weeks;P:week1=7*2,week2=7*3,total=week1+week2",
+      "receiver": "solver",
+      "round": 0,
+      "role": "assistant",
+      "prompt_tokens": 753,
+      "completion_tokens": 34,
+      "id": "f138bdc01ec1",
+      "ts": 1793110036.361966,
+      "meta": {
+        "sender": "planner",
+        "receiver": "solver",
+        "message_id": "f138bdc01ec1",
+        "protocol_edge": "planner_to_solver",
+        "protocol_version": "CARD-0-gsm8k",
+        "protocol_hash": "4bcdae885cc464e0a51977368e4bc06650c0326dbdcb182ce0327477c1d32daa",
+        "contract_hash": "ab4b736240365db5d0ce2caea032f40a3b7fc9c189db42d5ebcd28cac0fac22b",
+        "fields": {
+          "G": "hours_trained_first_two_weeks",
+          "P": "week1=7*2,week2=7*3,total=week1+week2"
+        },
+        "communication_tokens": 34,
+        "communication_tokens_exact": true,
+        "attempt_count": 1,
+        "fallback": false,
+        "tokens_include_all_attempts": true,
+        "incoming_message_ids": []
+      }
+    },
+    {
+      "sender": "solver",
+      "content": "IR:week1=7*2=14,week2=7*3=21,total=14+21=35;R:35",
+      "receiver": "verifier",
+      "round": 0,
+      "role": "assistant",
+      "prompt_tokens": 729,
+      "completion_tokens": 31,
+      "id": "8aa6476096f1",
+      "ts": 1793110037.9693887,
+      "meta": {
+        "sender": "solver",
+        "receiver": "verifier",
+        "message_id": "8aa6476096f1",
+        "protocol_edge": "solver_to_verifier",
+        "protocol_version": "CARD-0-gsm8k",
+        "protocol_hash": "4bcdae885cc464e0a51977368e4bc06650c0326dbdcb182ce0327477c1d32daa",
+        "contract_hash": "ab4b736240365db5d0ce2caea032f40a3b7fc9c189db42d5ebcd28cac0fac22b",
+        "fields": {
+          "IR": "week1=7*2=14,week2=7*3=21,total=14+21=35",
+          "R": "35"
+        },
+        "communication_tokens": 31,
+        "communication_tokens_exact": true,
+        "attempt_count": 1,
+        "fallback": false,
+        "tokens_include_all_attempts": true,
+        "incoming_message_ids": [
+          "f138bdc01ec1"
+        ]
+      }
+    },
+    {
+      "sender": "verifier",
+      "content": "CHK:ACCEPT",
+      "receiver": "solver",
+      "round": 0,
+      "role": "assistant",
+      "prompt_tokens": 1092,
+      "completion_tokens": 5,
+      "id": "a7c2ead3faf4",
+      "ts": 1793110040.1588137,
+      "meta": {
+        "sender": "verifier",
+        "receiver": "solver",
+        "message_id": "a7c2ead3faf4",
+        "protocol_edge": "verifier_to_solver",
+        "protocol_version": "CARD-0-gsm8k",
+        "protocol_hash": "4bcdae885cc464e0a51977368e4bc06650c0326dbdcb182ce0327477c1d32daa",
+        "contract_hash": "ab4b736240365db5d0ce2caea032f40a3b7fc9c189db42d5ebcd28cac0fac22b",
+        "fields": {
+          "CHK": "ACCEPT"
+        },
+        "communication_tokens": 5,
+        "communication_tokens_exact": true,
+        "attempt_count": 1,
+        "fallback": false,
+        "tokens_include_all_attempts": true,
+        "incoming_message_ids": [
+          "8aa6476096f1"
+        ]
+      }
+    }
+  ],
+  "communication_tokens": 70,
+  "wall_time_s": 5.2888591000810266,
+  "verified": true,
+  "revision_rounds": 0,
+  "model_calls": [
+    {
+      "role": "planner",
+      "attempt": 0,
+      "status": "delivered",
+      "error": "",
+      "raw_output": "G:hours_trained_first_two_weeks;P:week1=7*2,week2=7*3,total=week1+week2",
+      "finish_reason": "stop",
+      "output_tokens": 34,
+      "usage_available": true
+    },
+    {
+      "role": "solver",
+      "attempt": 0,
+      "status": "delivered",
+      "error": "",
+      "raw_output": "IR:week1=7*2=14,week2=7*3=21,total=14+21=35;R:35",
+      "finish_reason": "stop",
+      "output_tokens": 31,
+      "usage_available": true
+    },
+    {
+      "role": "verifier",
+      "attempt": 0,
+      "status": "delivered",
+      "error": "",
+      "raw_output": "CHK:ACCEPT",
+      "finish_reason": "stop",
+      "output_tokens": 5,
+      "usage_available": true
+    }
+  ],
+  "failed_attempts": [],
+  "calls": 3,
+  "usage_complete": true,
+  "known_input_tokens": 2574,
+  "known_output_tokens": 70,
+  "model_input_tokens": 2574,
+  "model_output_tokens": 70,
+  "format_failed_calls": 0,
+  "transport_failed_calls": 0,
+  "fallback_calls": 0,
+  "sum_model_latency_s": 5.150287866592407,
+  "gold": "35",
+  "score": 1.0,
+  "question": "Mike began to train to play basketball every day for a tournament. One day he plays a maximum of 2 hours. After a week of training, he increased the maximum time to 3 hours. How many hours did Mike train during the first two weeks?\nGive the final numeric answer."
+}

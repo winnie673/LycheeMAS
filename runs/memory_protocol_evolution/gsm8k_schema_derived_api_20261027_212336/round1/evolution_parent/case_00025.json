@@ -1,0 +1,151 @@
+{
+  "task_id": "gsm8k:train:seed42:G1:00025",
+  "status": "completed",
+  "error": null,
+  "prediction": "574",
+  "messages": [
+    {
+      "sender": "planner",
+      "content": "G:predicted_Saturday_customers;P:friday_total=73+127+87,predicted_Saturday_customers=2*friday_total",
+      "receiver": "solver",
+      "round": 0,
+      "role": "assistant",
+      "prompt_tokens": 782,
+      "completion_tokens": 33,
+      "id": "f67fbc0d9697",
+      "ts": 1793107676.9732654,
+      "meta": {
+        "sender": "planner",
+        "receiver": "solver",
+        "message_id": "f67fbc0d9697",
+        "protocol_edge": "planner_to_solver",
+        "protocol_version": "CARD-0-gsm8k",
+        "protocol_hash": "4bcdae885cc464e0a51977368e4bc06650c0326dbdcb182ce0327477c1d32daa",
+        "contract_hash": "ab4b736240365db5d0ce2caea032f40a3b7fc9c189db42d5ebcd28cac0fac22b",
+        "fields": {
+          "G": "predicted_Saturday_customers",
+          "P": "friday_total=73+127+87,predicted_Saturday_customers=2*friday_total"
+        },
+        "communication_tokens": 33,
+        "communication_tokens_exact": true,
+        "attempt_count": 1,
+        "fallback": false,
+        "tokens_include_all_attempts": true,
+        "incoming_message_ids": []
+      }
+    },
+    {
+      "sender": "solver",
+      "content": "IR:friday_total=73+127+87=287,predicted=2*287=574;R:574",
+      "receiver": "verifier",
+      "round": 0,
+      "role": "assistant",
+      "prompt_tokens": 757,
+      "completion_tokens": 25,
+      "id": "6ec5e8e29bad",
+      "ts": 1793107678.2007809,
+      "meta": {
+        "sender": "solver",
+        "receiver": "verifier",
+        "message_id": "6ec5e8e29bad",
+        "protocol_edge": "solver_to_verifier",
+        "protocol_version": "CARD-0-gsm8k",
+        "protocol_hash": "4bcdae885cc464e0a51977368e4bc06650c0326dbdcb182ce0327477c1d32daa",
+        "contract_hash": "ab4b736240365db5d0ce2caea032f40a3b7fc9c189db42d5ebcd28cac0fac22b",
+        "fields": {
+          "IR": "friday_total=73+127+87=287,predicted=2*287=574",
+          "R": "574"
+        },
+        "communication_tokens": 25,
+        "communication_tokens_exact": true,
+        "attempt_count": 1,
+        "fallback": false,
+        "tokens_include_all_attempts": true,
+        "incoming_message_ids": [
+          "f67fbc0d9697"
+        ]
+      }
+    },
+    {
+      "sender": "verifier",
+      "content": "CHK:ACCEPT",
+      "receiver": "solver",
+      "round": 0,
+      "role": "assistant",
+      "prompt_tokens": 1115,
+      "completion_tokens": 5,
+      "id": "597c6d149d06",
+      "ts": 1793107680.0171118,
+      "meta": {
+        "sender": "verifier",
+        "receiver": "solver",
+        "message_id": "597c6d149d06",
+        "protocol_edge": "verifier_to_solver",
+        "protocol_version": "CARD-0-gsm8k",
+        "protocol_hash": "4bcdae885cc464e0a51977368e4bc06650c0326dbdcb182ce0327477c1d32daa",
+        "contract_hash": "ab4b736240365db5d0ce2caea032f40a3b7fc9c189db42d5ebcd28cac0fac22b",
+        "fields": {
+          "CHK": "ACCEPT"
+        },
+        "communication_tokens": 5,
+        "communication_tokens_exact": true,
+        "attempt_count": 1,
+        "fallback": false,
+        "tokens_include_all_attempts": true,
+        "incoming_message_ids": [
+          "6ec5e8e29bad"
+        ]
+      }
+    }
+  ],
+  "communication_tokens": 63,
+  "wall_time_s": 4.6491171000525355,
+  "verified": true,
+  "revision_rounds": 0,
+  "model_calls": [
+    {
+      "role": "planner",
+      "attempt": 0,
+      "status": "delivered",
+      "error": "",
+      "raw_output": "G:predicted_Saturday_customers;P:friday_total=73+127+87,predicted_Saturday_customers=2*friday_total",
+      "finish_reason": "stop",
+      "output_tokens": 33,
+      "usage_available": true
+    },
+    {
+      "role": "solver",
+      "attempt": 0,
+      "status": "delivered",
+      "error": "",
+      "raw_output": "IR:friday_total=73+127+87=287,predicted=2*287=574;R:574",
+      "finish_reason": "stop",
+      "output_tokens": 25,
+      "usage_available": true
+    },
+    {
+      "role": "verifier",
+      "attempt": 0,
+      "status": "delivered",
+      "error": "",
+      "raw_output": "CHK:ACCEPT",
+      "finish_reason": "stop",
+      "output_tokens": 5,
+      "usage_available": true
+    }
+  ],
+  "failed_attempts": [],
+  "calls": 3,
+  "usage_complete": true,
+  "known_input_tokens": 2654,
+  "known_output_tokens": 63,
+  "model_input_tokens": 2654,
+  "model_output_tokens": 63,
+  "format_failed_calls": 0,
+  "transport_failed_calls": 0,
+  "fallback_calls": 0,
+  "sum_model_latency_s": 4.476031303405762,
+  "gold": "574",
+  "score": 1.0,
+  "question": "A busy restaurant is counting how many customers they had during that Friday to try to predict how many they might get on Saturday. During breakfast, they had 73 customers. During lunch, they had 127 customers. During dinner, they had 87 customers. If they predict they'll get twice the amount of customers on Saturday as they had on Friday, how many customers do they predict they will get?\nGive the final numeric answer."
+}

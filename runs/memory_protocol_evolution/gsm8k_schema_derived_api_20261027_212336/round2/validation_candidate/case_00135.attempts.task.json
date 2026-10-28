@@ -1,0 +1,149 @@
+{
+  "task_id": "gsm8k:train:seed42:V:00135",
+  "status": "completed",
+  "error": null,
+  "prediction": "75",
+  "messages": [
+    {
+      "sender": "planner",
+      "content": "G:total_quantity_after_three_weeks;P:week1=10+5,weekly_after=2*week1,total=week1+2*weekly_after;NL:The phrase \"for the next coming two weeks\" means two additional weeks, each requiring twice the week-1 quantity.",
+      "receiver": "solver",
+      "round": 0,
+      "role": "assistant",
+      "prompt_tokens": 928,
+      "completion_tokens": 67,
+      "id": "3aa3c08e7137",
+      "ts": 1793111683.1307874,
+      "meta": {
+        "sender": "planner",
+        "receiver": "solver",
+        "message_id": "3aa3c08e7137",
+        "protocol_edge": "planner_to_solver",
+        "protocol_version": "CARD-2-gsm8k",
+        "protocol_hash": "aec703067bbfeee6aa1e642a2a319658f1d33f2eff00c8701de19347f616ed6d",
+        "contract_hash": "ab4b736240365db5d0ce2caea032f40a3b7fc9c189db42d5ebcd28cac0fac22b",
+        "fields": {
+          "G": "total_quantity_after_three_weeks",
+          "P": "week1=10+5,weekly_after=2*week1,total=week1+2*weekly_after",
+          "NL": "The phrase \"for the next coming two weeks\" means two additional weeks, each requiring twice the week-1 quantity."
+        },
+        "communication_tokens": 67,
+        "communication_tokens_exact": true,
+        "attempt_count": 1,
+        "fallback": false,
+        "tokens_include_all_attempts": true,
+        "incoming_message_ids": []
+      }
+    },
+    {
+      "sender": "solver",
+      "content": "IR:week1=10+5=15,weekly_after=2*15=30,total=15+2*30=75;R:75",
+      "receiver": "verifier",
+      "round": 0,
+      "role": "assistant",
+      "prompt_tokens": 813,
+      "completion_tokens": 34,
+      "id": "1ec462736563",
+      "ts": 1793111684.4938545,
+      "meta": {
+        "sender": "solver",
+        "receiver": "verifier",
+        "message_id": "1ec462736563",
+        "protocol_edge": "solver_to_verifier",
+        "protocol_version": "CARD-2-gsm8k",
+        "protocol_hash": "aec703067bbfeee6aa1e642a2a319658f1d33f2eff00c8701de19347f616ed6d",
+        "contract_hash": "ab4b736240365db5d0ce2caea032f40a3b7fc9c189db42d5ebcd28cac0fac22b",
+        "fields": {
+          "IR": "week1=10+5=15,weekly_after=2*15=30,total=15+2*30=75",
+          "R": "75"
+        },
+        "communication_tokens": 34,
+        "communication_tokens_exact": true,
+        "attempt_count": 1,
+        "fallback": false,
+        "tokens_include_all_attempts": true,
+        "incoming_message_ids": [
+          "3aa3c08e7137"
+        ]
+      }
+    },
+    {
+      "sender": "verifier",
+      "content": "CHK:ACCEPT",
+      "receiver": "solver",
+      "round": 0,
+      "role": "assistant",
+      "prompt_tokens": 1146,
+      "completion_tokens": 5,
+      "id": "4dd00abeaf4b",
+      "ts": 1793111685.580767,
+      "meta": {
+        "sender": "verifier",
+        "receiver": "solver",
+        "message_id": "4dd00abeaf4b",
+        "protocol_edge": "verifier_to_solver",
+        "protocol_version": "CARD-2-gsm8k",
+        "protocol_hash": "aec703067bbfeee6aa1e642a2a319658f1d33f2eff00c8701de19347f616ed6d",
+        "contract_hash": "ab4b736240365db5d0ce2caea032f40a3b7fc9c189db42d5ebcd28cac0fac22b",
+        "fields": {
+          "CHK": "ACCEPT"
+        },
+        "communication_tokens": 5,
+        "communication_tokens_exact": true,
+        "attempt_count": 1,
+        "fallback": false,
+        "tokens_include_all_attempts": true,
+        "incoming_message_ids": [
+          "1ec462736563"
+        ]
+      }
+    }
+  ],
+  "communication_tokens": 106,
+  "wall_time_s": 3.9924631000030786,
+  "verified": true,
+  "revision_rounds": 0,
+  "model_calls": [
+    {
+      "role": "planner",
+      "attempt": 0,
+      "status": "delivered",
+      "error": "",
+      "raw_output": "G:total_quantity_after_three_weeks;P:week1=10+5,weekly_after=2*week1,total=week1+2*weekly_after;NL:The phrase \"for the next coming two weeks\" means two additional weeks, each requiring twice the week-1 quantity.",
+      "finish_reason": "stop",
+      "output_tokens": 67,
+      "usage_available": true
+    },
+    {
+      "role": "solver",
+      "attempt": 0,
+      "status": "delivered",
+      "error": "",
+      "raw_output": "IR:week1=10+5=15,weekly_after=2*15=30,total=15+2*30=75;R:75",
+      "finish_reason": "stop",
+      "output_tokens": 34,
+      "usage_available": true
+    },
+    {
+      "role": "verifier",
+      "attempt": 0,
+      "status": "delivered",
+      "error": "",
+      "raw_output": "CHK:ACCEPT",
+      "finish_reason": "stop",
+      "output_tokens": 5,
+      "usage_available": true
+    }
+  ],
+  "failed_attempts": [],
+  "calls": 3,
+  "usage_complete": true,
+  "known_input_tokens": 2887,
+  "known_output_tokens": 106,
+  "model_input_tokens": 2887,
+  "model_output_tokens": 106,
+  "format_failed_calls": 0,
+  "transport_failed_calls": 0,
+  "fallback_calls": 0,
+  "sum_model_latency_s": 3.817563772201538
+}

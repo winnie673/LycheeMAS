@@ -1,0 +1,151 @@
+{
+  "task_id": "gsm8k:train:seed42:V:00186",
+  "status": "completed",
+  "error": null,
+  "prediction": "14000",
+  "messages": [
+    {
+      "sender": "planner",
+      "content": "G:Mike_salary_now;P:fred_then=1000,mike_then=10*1000,mike_now=1.4*mike_then",
+      "receiver": "solver",
+      "round": 0,
+      "role": "assistant",
+      "prompt_tokens": 801,
+      "completion_tokens": 35,
+      "id": "15036d5a30df",
+      "ts": 1793109782.332075,
+      "meta": {
+        "sender": "planner",
+        "receiver": "solver",
+        "message_id": "15036d5a30df",
+        "protocol_edge": "planner_to_solver",
+        "protocol_version": "CARD-1-gsm8k",
+        "protocol_hash": "2a663f41d251a442e680de67a231e516a8fe5e31629bc25d021c8c0eb1354cff",
+        "contract_hash": "ab4b736240365db5d0ce2caea032f40a3b7fc9c189db42d5ebcd28cac0fac22b",
+        "fields": {
+          "G": "Mike_salary_now",
+          "P": "fred_then=1000,mike_then=10*1000,mike_now=1.4*mike_then"
+        },
+        "communication_tokens": 35,
+        "communication_tokens_exact": true,
+        "attempt_count": 1,
+        "fallback": false,
+        "tokens_include_all_attempts": true,
+        "incoming_message_ids": []
+      }
+    },
+    {
+      "sender": "solver",
+      "content": "IR:mike_then=10*1000=10000,mike_now=1.4*10000=14000;R:14000",
+      "receiver": "verifier",
+      "round": 0,
+      "role": "assistant",
+      "prompt_tokens": 719,
+      "completion_tokens": 31,
+      "id": "e93d18c295c1",
+      "ts": 1793109783.5555148,
+      "meta": {
+        "sender": "solver",
+        "receiver": "verifier",
+        "message_id": "e93d18c295c1",
+        "protocol_edge": "solver_to_verifier",
+        "protocol_version": "CARD-1-gsm8k",
+        "protocol_hash": "2a663f41d251a442e680de67a231e516a8fe5e31629bc25d021c8c0eb1354cff",
+        "contract_hash": "ab4b736240365db5d0ce2caea032f40a3b7fc9c189db42d5ebcd28cac0fac22b",
+        "fields": {
+          "IR": "mike_then=10*1000=10000,mike_now=1.4*10000=14000",
+          "R": "14000"
+        },
+        "communication_tokens": 31,
+        "communication_tokens_exact": true,
+        "attempt_count": 1,
+        "fallback": false,
+        "tokens_include_all_attempts": true,
+        "incoming_message_ids": [
+          "15036d5a30df"
+        ]
+      }
+    },
+    {
+      "sender": "verifier",
+      "content": "CHK:ACCEPT",
+      "receiver": "solver",
+      "round": 0,
+      "role": "assistant",
+      "prompt_tokens": 1081,
+      "completion_tokens": 5,
+      "id": "7f841dcc890e",
+      "ts": 1793109784.5104797,
+      "meta": {
+        "sender": "verifier",
+        "receiver": "solver",
+        "message_id": "7f841dcc890e",
+        "protocol_edge": "verifier_to_solver",
+        "protocol_version": "CARD-1-gsm8k",
+        "protocol_hash": "2a663f41d251a442e680de67a231e516a8fe5e31629bc25d021c8c0eb1354cff",
+        "contract_hash": "ab4b736240365db5d0ce2caea032f40a3b7fc9c189db42d5ebcd28cac0fac22b",
+        "fields": {
+          "CHK": "ACCEPT"
+        },
+        "communication_tokens": 5,
+        "communication_tokens_exact": true,
+        "attempt_count": 1,
+        "fallback": false,
+        "tokens_include_all_attempts": true,
+        "incoming_message_ids": [
+          "e93d18c295c1"
+        ]
+      }
+    }
+  ],
+  "communication_tokens": 71,
+  "wall_time_s": 3.722390699898824,
+  "verified": true,
+  "revision_rounds": 0,
+  "model_calls": [
+    {
+      "role": "planner",
+      "attempt": 0,
+      "status": "delivered",
+      "error": "",
+      "raw_output": "G:Mike_salary_now;P:fred_then=1000,mike_then=10*1000,mike_now=1.4*mike_then",
+      "finish_reason": "stop",
+      "output_tokens": 35,
+      "usage_available": true
+    },
+    {
+      "role": "solver",
+      "attempt": 0,
+      "status": "delivered",
+      "error": "",
+      "raw_output": "IR:mike_then=10*1000=10000,mike_now=1.4*10000=14000;R:14000",
+      "finish_reason": "stop",
+      "output_tokens": 31,
+      "usage_available": true
+    },
+    {
+      "role": "verifier",
+      "attempt": 0,
+      "status": "delivered",
+      "error": "",
+      "raw_output": "CHK:ACCEPT",
+      "finish_reason": "stop",
+      "output_tokens": 5,
+      "usage_available": true
+    }
+  ],
+  "failed_attempts": [],
+  "calls": 3,
+  "usage_complete": true,
+  "known_input_tokens": 2601,
+  "known_output_tokens": 71,
+  "model_input_tokens": 2601,
+  "model_output_tokens": 71,
+  "format_failed_calls": 0,
+  "transport_failed_calls": 0,
+  "fallback_calls": 0,
+  "sum_model_latency_s": 3.573101043701172,
+  "gold": "15400",
+  "score": 0.0,
+  "question": "Five months ago, Mike earned 10 times more money than Fred. If his salary has increased by 40 percent now, and Fred's salary then was $1000, calculate Mike's salary now.\nGive the final numeric answer."
+}

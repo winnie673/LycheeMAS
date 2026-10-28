@@ -1,0 +1,152 @@
+{
+  "task_id": "gsm8k:train:seed42:V:00119",
+  "status": "completed",
+  "error": null,
+  "prediction": "10",
+  "messages": [
+    {
+      "sender": "planner",
+      "content": "K:treeA_share=0.5,treeB_share=0.5,A_oranges=10,A_good=0.6,B_oranges=15,B_good=1/3,total_good=55;G:total_trees;P:good_per_A=10*0.6,good_per_B=15*(1/3),good_per_tree=0.5*good_per_A+0.5*good_per_B,total_trees=55/good_per_tree",
+      "receiver": "solver",
+      "round": 0,
+      "role": "assistant",
+      "prompt_tokens": 781,
+      "completion_tokens": 107,
+      "id": "3f3f4f0e4299",
+      "ts": 1793112878.487563,
+      "meta": {
+        "sender": "planner",
+        "receiver": "solver",
+        "message_id": "3f3f4f0e4299",
+        "protocol_edge": "planner_to_solver",
+        "protocol_version": "CARD-0-gsm8k",
+        "protocol_hash": "4bcdae885cc464e0a51977368e4bc06650c0326dbdcb182ce0327477c1d32daa",
+        "contract_hash": "ab4b736240365db5d0ce2caea032f40a3b7fc9c189db42d5ebcd28cac0fac22b",
+        "fields": {
+          "K": "treeA_share=0.5,treeB_share=0.5,A_oranges=10,A_good=0.6,B_oranges=15,B_good=1/3,total_good=55",
+          "G": "total_trees",
+          "P": "good_per_A=10*0.6,good_per_B=15*(1/3),good_per_tree=0.5*good_per_A+0.5*good_per_B,total_trees=55/good_per_tree"
+        },
+        "communication_tokens": 107,
+        "communication_tokens_exact": true,
+        "attempt_count": 1,
+        "fallback": false,
+        "tokens_include_all_attempts": true,
+        "incoming_message_ids": []
+      }
+    },
+    {
+      "sender": "solver",
+      "content": "IR:good_per_A=10*0.6=6,good_per_B=15*(1/3)=5,good_per_tree=0.5*6+0.5*5=5.5,total_trees=55/5.5=10;R:10",
+      "receiver": "verifier",
+      "round": 0,
+      "role": "assistant",
+      "prompt_tokens": 830,
+      "completion_tokens": 61,
+      "id": "e8d7cc7621bb",
+      "ts": 1793112879.9187667,
+      "meta": {
+        "sender": "solver",
+        "receiver": "verifier",
+        "message_id": "e8d7cc7621bb",
+        "protocol_edge": "solver_to_verifier",
+        "protocol_version": "CARD-0-gsm8k",
+        "protocol_hash": "4bcdae885cc464e0a51977368e4bc06650c0326dbdcb182ce0327477c1d32daa",
+        "contract_hash": "ab4b736240365db5d0ce2caea032f40a3b7fc9c189db42d5ebcd28cac0fac22b",
+        "fields": {
+          "IR": "good_per_A=10*0.6=6,good_per_B=15*(1/3)=5,good_per_tree=0.5*6+0.5*5=5.5,total_trees=55/5.5=10",
+          "R": "10"
+        },
+        "communication_tokens": 61,
+        "communication_tokens_exact": true,
+        "attempt_count": 1,
+        "fallback": false,
+        "tokens_include_all_attempts": true,
+        "incoming_message_ids": [
+          "3f3f4f0e4299"
+        ]
+      }
+    },
+    {
+      "sender": "verifier",
+      "content": "CHK:ACCEPT",
+      "receiver": "solver",
+      "round": 0,
+      "role": "assistant",
+      "prompt_tokens": 1150,
+      "completion_tokens": 5,
+      "id": "81cf916ba1aa",
+      "ts": 1793112880.973547,
+      "meta": {
+        "sender": "verifier",
+        "receiver": "solver",
+        "message_id": "81cf916ba1aa",
+        "protocol_edge": "verifier_to_solver",
+        "protocol_version": "CARD-0-gsm8k",
+        "protocol_hash": "4bcdae885cc464e0a51977368e4bc06650c0326dbdcb182ce0327477c1d32daa",
+        "contract_hash": "ab4b736240365db5d0ce2caea032f40a3b7fc9c189db42d5ebcd28cac0fac22b",
+        "fields": {
+          "CHK": "ACCEPT"
+        },
+        "communication_tokens": 5,
+        "communication_tokens_exact": true,
+        "attempt_count": 1,
+        "fallback": false,
+        "tokens_include_all_attempts": true,
+        "incoming_message_ids": [
+          "e8d7cc7621bb"
+        ]
+      }
+    }
+  ],
+  "communication_tokens": 173,
+  "wall_time_s": 4.197192099993117,
+  "verified": true,
+  "revision_rounds": 0,
+  "model_calls": [
+    {
+      "role": "planner",
+      "attempt": 0,
+      "status": "delivered",
+      "error": "",
+      "raw_output": "K:treeA_share=0.5,treeB_share=0.5,A_oranges=10,A_good=0.6,B_oranges=15,B_good=1/3,total_good=55;G:total_trees;P:good_per_A=10*0.6,good_per_B=15*(1/3),good_per_tree=0.5*good_per_A+0.5*good_per_B,total_trees=55/good_per_tree",
+      "finish_reason": "stop",
+      "output_tokens": 107,
+      "usage_available": true
+    },
+    {
+      "role": "solver",
+      "attempt": 0,
+      "status": "delivered",
+      "error": "",
+      "raw_output": "IR:good_per_A=10*0.6=6,good_per_B=15*(1/3)=5,good_per_tree=0.5*6+0.5*5=5.5,total_trees=55/5.5=10;R:10",
+      "finish_reason": "stop",
+      "output_tokens": 61,
+      "usage_available": true
+    },
+    {
+      "role": "verifier",
+      "attempt": 0,
+      "status": "delivered",
+      "error": "",
+      "raw_output": "CHK:ACCEPT",
+      "finish_reason": "stop",
+      "output_tokens": 5,
+      "usage_available": true
+    }
+  ],
+  "failed_attempts": [],
+  "calls": 3,
+  "usage_complete": true,
+  "known_input_tokens": 2761,
+  "known_output_tokens": 173,
+  "model_input_tokens": 2761,
+  "model_output_tokens": 173,
+  "format_failed_calls": 0,
+  "transport_failed_calls": 0,
+  "fallback_calls": 0,
+  "sum_model_latency_s": 4.038408994674683,
+  "gold": "10",
+  "score": 1.0,
+  "question": "Salaria is growing oranges this summer. She bought two types of trees. She has 50% of tree A and 50% of tree B. Tree A gives her 10 oranges a month and 60% are good. Tree B gives her 15 oranges and 1/3 are good. If she gets 55 good oranges per month, how many total trees does she have?\nGive the final numeric answer."
+}

@@ -1,0 +1,151 @@
+{
+  "task_id": "gsm8k:train:seed42:V:00106",
+  "status": "completed",
+  "error": null,
+  "prediction": "66",
+  "messages": [
+    {
+      "sender": "planner",
+      "content": "G:total_cost;P:white=2*5,blue=4*3,total_cost=(white+blue)*3",
+      "receiver": "solver",
+      "round": 0,
+      "role": "assistant",
+      "prompt_tokens": 806,
+      "completion_tokens": 27,
+      "id": "58f4d70fd0ea",
+      "ts": 1793168661.6175675,
+      "meta": {
+        "sender": "planner",
+        "receiver": "solver",
+        "message_id": "58f4d70fd0ea",
+        "protocol_edge": "planner_to_solver",
+        "protocol_version": "CARD-3-gsm8k",
+        "protocol_hash": "fb1a4acb6e591ac96544876aedd912b27a6f9d3154c76112e1da0f43407d27b2",
+        "contract_hash": "ab4b736240365db5d0ce2caea032f40a3b7fc9c189db42d5ebcd28cac0fac22b",
+        "fields": {
+          "G": "total_cost",
+          "P": "white=2*5,blue=4*3,total_cost=(white+blue)*3"
+        },
+        "communication_tokens": 27,
+        "communication_tokens_exact": true,
+        "attempt_count": 1,
+        "fallback": false,
+        "tokens_include_all_attempts": true,
+        "incoming_message_ids": []
+      }
+    },
+    {
+      "sender": "solver",
+      "content": "IR:white=2*5=10,blue=4*3=12,total=(10+12)*3=66;R:66",
+      "receiver": "verifier",
+      "round": 0,
+      "role": "assistant",
+      "prompt_tokens": 733,
+      "completion_tokens": 31,
+      "id": "2cf195e768d1",
+      "ts": 1793168662.5691657,
+      "meta": {
+        "sender": "solver",
+        "receiver": "verifier",
+        "message_id": "2cf195e768d1",
+        "protocol_edge": "solver_to_verifier",
+        "protocol_version": "CARD-3-gsm8k",
+        "protocol_hash": "fb1a4acb6e591ac96544876aedd912b27a6f9d3154c76112e1da0f43407d27b2",
+        "contract_hash": "ab4b736240365db5d0ce2caea032f40a3b7fc9c189db42d5ebcd28cac0fac22b",
+        "fields": {
+          "IR": "white=2*5=10,blue=4*3=12,total=(10+12)*3=66",
+          "R": "66"
+        },
+        "communication_tokens": 31,
+        "communication_tokens_exact": true,
+        "attempt_count": 1,
+        "fallback": false,
+        "tokens_include_all_attempts": true,
+        "incoming_message_ids": [
+          "58f4d70fd0ea"
+        ]
+      }
+    },
+    {
+      "sender": "verifier",
+      "content": "CHK:ACCEPT",
+      "receiver": "solver",
+      "round": 0,
+      "role": "assistant",
+      "prompt_tokens": 1103,
+      "completion_tokens": 5,
+      "id": "c5e0eed55fff",
+      "ts": 1793168663.5738094,
+      "meta": {
+        "sender": "verifier",
+        "receiver": "solver",
+        "message_id": "c5e0eed55fff",
+        "protocol_edge": "verifier_to_solver",
+        "protocol_version": "CARD-3-gsm8k",
+        "protocol_hash": "fb1a4acb6e591ac96544876aedd912b27a6f9d3154c76112e1da0f43407d27b2",
+        "contract_hash": "ab4b736240365db5d0ce2caea032f40a3b7fc9c189db42d5ebcd28cac0fac22b",
+        "fields": {
+          "CHK": "ACCEPT"
+        },
+        "communication_tokens": 5,
+        "communication_tokens_exact": true,
+        "attempt_count": 1,
+        "fallback": false,
+        "tokens_include_all_attempts": true,
+        "incoming_message_ids": [
+          "2cf195e768d1"
+        ]
+      }
+    }
+  ],
+  "communication_tokens": 63,
+  "wall_time_s": 3.1596139000030234,
+  "verified": true,
+  "revision_rounds": 0,
+  "model_calls": [
+    {
+      "role": "planner",
+      "attempt": 0,
+      "status": "delivered",
+      "error": "",
+      "raw_output": "G:total_cost;P:white=2*5,blue=4*3,total_cost=(white+blue)*3",
+      "finish_reason": "stop",
+      "output_tokens": 27,
+      "usage_available": true
+    },
+    {
+      "role": "solver",
+      "attempt": 0,
+      "status": "delivered",
+      "error": "",
+      "raw_output": "IR:white=2*5=10,blue=4*3=12,total=(10+12)*3=66;R:66",
+      "finish_reason": "stop",
+      "output_tokens": 31,
+      "usage_available": true
+    },
+    {
+      "role": "verifier",
+      "attempt": 0,
+      "status": "delivered",
+      "error": "",
+      "raw_output": "CHK:ACCEPT",
+      "finish_reason": "stop",
+      "output_tokens": 5,
+      "usage_available": true
+    }
+  ],
+  "failed_attempts": [],
+  "calls": 3,
+  "usage_complete": true,
+  "known_input_tokens": 2642,
+  "known_output_tokens": 63,
+  "model_input_tokens": 2642,
+  "model_output_tokens": 63,
+  "format_failed_calls": 0,
+  "transport_failed_calls": 0,
+  "fallback_calls": 0,
+  "sum_model_latency_s": 2.9896955490112305,
+  "gold": "66",
+  "score": 1.0,
+  "question": "Maddie bought 2 packs of white T-shirts and 4 packs of blue T-shirts for her basketball team. The white T-shirts come in packs of 5, and the blue T-shirts come in packs of 3. Each T-shirt cost $3. How much did Maddie spend in all?\nGive the final numeric answer."
+}

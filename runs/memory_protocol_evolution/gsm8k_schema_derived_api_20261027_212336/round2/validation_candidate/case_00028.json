@@ -1,0 +1,151 @@
+{
+  "task_id": "gsm8k:train:seed42:V:00028",
+  "status": "completed",
+  "error": null,
+  "prediction": "2928",
+  "messages": [
+    {
+      "sender": "planner",
+      "content": "G:final_odometer_miles;P:gas_used=2*20,trip_miles=gas_used*30,final_odometer_miles=1728+trip_miles",
+      "receiver": "solver",
+      "round": 0,
+      "role": "assistant",
+      "prompt_tokens": 892,
+      "completion_tokens": 42,
+      "id": "9ed97318e93d",
+      "ts": 1793111238.0315442,
+      "meta": {
+        "sender": "planner",
+        "receiver": "solver",
+        "message_id": "9ed97318e93d",
+        "protocol_edge": "planner_to_solver",
+        "protocol_version": "CARD-2-gsm8k",
+        "protocol_hash": "aec703067bbfeee6aa1e642a2a319658f1d33f2eff00c8701de19347f616ed6d",
+        "contract_hash": "ab4b736240365db5d0ce2caea032f40a3b7fc9c189db42d5ebcd28cac0fac22b",
+        "fields": {
+          "G": "final_odometer_miles",
+          "P": "gas_used=2*20,trip_miles=gas_used*30,final_odometer_miles=1728+trip_miles"
+        },
+        "communication_tokens": 42,
+        "communication_tokens_exact": true,
+        "attempt_count": 1,
+        "fallback": false,
+        "tokens_include_all_attempts": true,
+        "incoming_message_ids": []
+      }
+    },
+    {
+      "sender": "solver",
+      "content": "IR:gas_used=2*20=40,trip_miles=40*30=1200,final_odometer_miles=1728+1200=2928;R:2928",
+      "receiver": "verifier",
+      "round": 0,
+      "role": "assistant",
+      "prompt_tokens": 752,
+      "completion_tokens": 43,
+      "id": "dec1a7603f75",
+      "ts": 1793111238.8746011,
+      "meta": {
+        "sender": "solver",
+        "receiver": "verifier",
+        "message_id": "dec1a7603f75",
+        "protocol_edge": "solver_to_verifier",
+        "protocol_version": "CARD-2-gsm8k",
+        "protocol_hash": "aec703067bbfeee6aa1e642a2a319658f1d33f2eff00c8701de19347f616ed6d",
+        "contract_hash": "ab4b736240365db5d0ce2caea032f40a3b7fc9c189db42d5ebcd28cac0fac22b",
+        "fields": {
+          "IR": "gas_used=2*20=40,trip_miles=40*30=1200,final_odometer_miles=1728+1200=2928",
+          "R": "2928"
+        },
+        "communication_tokens": 43,
+        "communication_tokens_exact": true,
+        "attempt_count": 1,
+        "fallback": false,
+        "tokens_include_all_attempts": true,
+        "incoming_message_ids": [
+          "9ed97318e93d"
+        ]
+      }
+    },
+    {
+      "sender": "verifier",
+      "content": "CHK:ACCEPT",
+      "receiver": "solver",
+      "round": 0,
+      "role": "assistant",
+      "prompt_tokens": 1119,
+      "completion_tokens": 5,
+      "id": "5c6b3351b603",
+      "ts": 1793111240.0846264,
+      "meta": {
+        "sender": "verifier",
+        "receiver": "solver",
+        "message_id": "5c6b3351b603",
+        "protocol_edge": "verifier_to_solver",
+        "protocol_version": "CARD-2-gsm8k",
+        "protocol_hash": "aec703067bbfeee6aa1e642a2a319658f1d33f2eff00c8701de19347f616ed6d",
+        "contract_hash": "ab4b736240365db5d0ce2caea032f40a3b7fc9c189db42d5ebcd28cac0fac22b",
+        "fields": {
+          "CHK": "ACCEPT"
+        },
+        "communication_tokens": 5,
+        "communication_tokens_exact": true,
+        "attempt_count": 1,
+        "fallback": false,
+        "tokens_include_all_attempts": true,
+        "incoming_message_ids": [
+          "dec1a7603f75"
+        ]
+      }
+    }
+  ],
+  "communication_tokens": 90,
+  "wall_time_s": 3.6670675000641495,
+  "verified": true,
+  "revision_rounds": 0,
+  "model_calls": [
+    {
+      "role": "planner",
+      "attempt": 0,
+      "status": "delivered",
+      "error": "",
+      "raw_output": "G:final_odometer_miles;P:gas_used=2*20,trip_miles=gas_used*30,final_odometer_miles=1728+trip_miles",
+      "finish_reason": "stop",
+      "output_tokens": 42,
+      "usage_available": true
+    },
+    {
+      "role": "solver",
+      "attempt": 0,
+      "status": "delivered",
+      "error": "",
+      "raw_output": "IR:gas_used=2*20=40,trip_miles=40*30=1200,final_odometer_miles=1728+1200=2928;R:2928",
+      "finish_reason": "stop",
+      "output_tokens": 43,
+      "usage_available": true
+    },
+    {
+      "role": "verifier",
+      "attempt": 0,
+      "status": "delivered",
+      "error": "",
+      "raw_output": "CHK:ACCEPT",
+      "finish_reason": "stop",
+      "output_tokens": 5,
+      "usage_available": true
+    }
+  ],
+  "failed_attempts": [],
+  "calls": 3,
+  "usage_complete": true,
+  "known_input_tokens": 2763,
+  "known_output_tokens": 90,
+  "model_input_tokens": 2763,
+  "model_output_tokens": 90,
+  "format_failed_calls": 0,
+  "transport_failed_calls": 0,
+  "fallback_calls": 0,
+  "sum_model_latency_s": 3.5891268253326416,
+  "gold": "2928",
+  "score": 1.0,
+  "question": "Before Marcus went on a road trip to LA, his car had 1728 miles on it. He filled his empty gas tank twice and used up all the gas on the trip. If Marcus's car gets 30 miles per gallon and holds 20 gallons of gas, how many miles does Marcus' car have on it now?\nGive the final numeric answer."
+}

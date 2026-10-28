@@ -1,0 +1,152 @@
+{
+  "task_id": "gsm8k:train:seed42:V:00020",
+  "status": "completed",
+  "error": null,
+  "prediction": "12",
+  "messages": [
+    {
+      "sender": "planner",
+      "content": "K:blue=2,black=2*blue,red=2*black-2;G:total_pens;P:total=blue+black+red",
+      "receiver": "solver",
+      "round": 0,
+      "role": "assistant",
+      "prompt_tokens": 736,
+      "completion_tokens": 35,
+      "id": "60a41ee560bd",
+      "ts": 1793112477.8878446,
+      "meta": {
+        "sender": "planner",
+        "receiver": "solver",
+        "message_id": "60a41ee560bd",
+        "protocol_edge": "planner_to_solver",
+        "protocol_version": "CARD-0-gsm8k",
+        "protocol_hash": "4bcdae885cc464e0a51977368e4bc06650c0326dbdcb182ce0327477c1d32daa",
+        "contract_hash": "ab4b736240365db5d0ce2caea032f40a3b7fc9c189db42d5ebcd28cac0fac22b",
+        "fields": {
+          "K": "blue=2,black=2*blue,red=2*black-2",
+          "G": "total_pens",
+          "P": "total=blue+black+red"
+        },
+        "communication_tokens": 35,
+        "communication_tokens_exact": true,
+        "attempt_count": 1,
+        "fallback": false,
+        "tokens_include_all_attempts": true,
+        "incoming_message_ids": []
+      }
+    },
+    {
+      "sender": "solver",
+      "content": "IR:black=2*2=4,red=2*4-2=6,total=2+4+6=12;R:12",
+      "receiver": "verifier",
+      "round": 0,
+      "role": "assistant",
+      "prompt_tokens": 713,
+      "completion_tokens": 33,
+      "id": "4b30541f0de8",
+      "ts": 1793112479.1534052,
+      "meta": {
+        "sender": "solver",
+        "receiver": "verifier",
+        "message_id": "4b30541f0de8",
+        "protocol_edge": "solver_to_verifier",
+        "protocol_version": "CARD-0-gsm8k",
+        "protocol_hash": "4bcdae885cc464e0a51977368e4bc06650c0326dbdcb182ce0327477c1d32daa",
+        "contract_hash": "ab4b736240365db5d0ce2caea032f40a3b7fc9c189db42d5ebcd28cac0fac22b",
+        "fields": {
+          "IR": "black=2*2=4,red=2*4-2=6,total=2+4+6=12",
+          "R": "12"
+        },
+        "communication_tokens": 33,
+        "communication_tokens_exact": true,
+        "attempt_count": 1,
+        "fallback": false,
+        "tokens_include_all_attempts": true,
+        "incoming_message_ids": [
+          "60a41ee560bd"
+        ]
+      }
+    },
+    {
+      "sender": "verifier",
+      "content": "CHK:ACCEPT",
+      "receiver": "solver",
+      "round": 0,
+      "role": "assistant",
+      "prompt_tokens": 1077,
+      "completion_tokens": 5,
+      "id": "8f8f4e100232",
+      "ts": 1793112480.0328233,
+      "meta": {
+        "sender": "verifier",
+        "receiver": "solver",
+        "message_id": "8f8f4e100232",
+        "protocol_edge": "verifier_to_solver",
+        "protocol_version": "CARD-0-gsm8k",
+        "protocol_hash": "4bcdae885cc464e0a51977368e4bc06650c0326dbdcb182ce0327477c1d32daa",
+        "contract_hash": "ab4b736240365db5d0ce2caea032f40a3b7fc9c189db42d5ebcd28cac0fac22b",
+        "fields": {
+          "CHK": "ACCEPT"
+        },
+        "communication_tokens": 5,
+        "communication_tokens_exact": true,
+        "attempt_count": 1,
+        "fallback": false,
+        "tokens_include_all_attempts": true,
+        "incoming_message_ids": [
+          "4b30541f0de8"
+        ]
+      }
+    }
+  ],
+  "communication_tokens": 73,
+  "wall_time_s": 3.333246700000018,
+  "verified": true,
+  "revision_rounds": 0,
+  "model_calls": [
+    {
+      "role": "planner",
+      "attempt": 0,
+      "status": "delivered",
+      "error": "",
+      "raw_output": "K:blue=2,black=2*blue,red=2*black-2;G:total_pens;P:total=blue+black+red",
+      "finish_reason": "stop",
+      "output_tokens": 35,
+      "usage_available": true
+    },
+    {
+      "role": "solver",
+      "attempt": 0,
+      "status": "delivered",
+      "error": "",
+      "raw_output": "IR:black=2*2=4,red=2*4-2=6,total=2+4+6=12;R:12",
+      "finish_reason": "stop",
+      "output_tokens": 33,
+      "usage_available": true
+    },
+    {
+      "role": "verifier",
+      "attempt": 0,
+      "status": "delivered",
+      "error": "",
+      "raw_output": "CHK:ACCEPT",
+      "finish_reason": "stop",
+      "output_tokens": 5,
+      "usage_available": true
+    }
+  ],
+  "failed_attempts": [],
+  "calls": 3,
+  "usage_complete": true,
+  "known_input_tokens": 2526,
+  "known_output_tokens": 73,
+  "model_input_tokens": 2526,
+  "model_output_tokens": 73,
+  "format_failed_calls": 0,
+  "transport_failed_calls": 0,
+  "fallback_calls": 0,
+  "sum_model_latency_s": 3.2597336769104004,
+  "gold": "12",
+  "score": 1.0,
+  "question": "Roy has 2 blue pens. He has twice as many black and 2 less than twice as many red than black pens. How many pens does Roy have in all?\nGive the final numeric answer."
+}

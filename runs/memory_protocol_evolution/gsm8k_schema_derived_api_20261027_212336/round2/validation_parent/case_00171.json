@@ -1,0 +1,151 @@
+{
+  "task_id": "gsm8k:train:seed42:V:00171",
+  "status": "completed",
+  "error": null,
+  "prediction": "51",
+  "messages": [
+    {
+      "sender": "planner",
+      "content": "G:total_mascots;P:bunnies=3*5,teddies_new=5+2*bunnies,total_mascots=teddies_new+bunnies+1",
+      "receiver": "solver",
+      "round": 0,
+      "role": "assistant",
+      "prompt_tokens": 759,
+      "completion_tokens": 40,
+      "id": "4b1b2adc0857",
+      "ts": 1793111002.920833,
+      "meta": {
+        "sender": "planner",
+        "receiver": "solver",
+        "message_id": "4b1b2adc0857",
+        "protocol_edge": "planner_to_solver",
+        "protocol_version": "CARD-0-gsm8k",
+        "protocol_hash": "4bcdae885cc464e0a51977368e4bc06650c0326dbdcb182ce0327477c1d32daa",
+        "contract_hash": "ab4b736240365db5d0ce2caea032f40a3b7fc9c189db42d5ebcd28cac0fac22b",
+        "fields": {
+          "G": "total_mascots",
+          "P": "bunnies=3*5,teddies_new=5+2*bunnies,total_mascots=teddies_new+bunnies+1"
+        },
+        "communication_tokens": 40,
+        "communication_tokens_exact": true,
+        "attempt_count": 1,
+        "fallback": false,
+        "tokens_include_all_attempts": true,
+        "incoming_message_ids": []
+      }
+    },
+    {
+      "sender": "solver",
+      "content": "IR:bunnies=3*5=15,teddies_new=5+2*15=35,total=35+15+1=51;R:51",
+      "receiver": "verifier",
+      "round": 0,
+      "role": "assistant",
+      "prompt_tokens": 741,
+      "completion_tokens": 36,
+      "id": "279ffd972ead",
+      "ts": 1793111004.1264327,
+      "meta": {
+        "sender": "solver",
+        "receiver": "verifier",
+        "message_id": "279ffd972ead",
+        "protocol_edge": "solver_to_verifier",
+        "protocol_version": "CARD-0-gsm8k",
+        "protocol_hash": "4bcdae885cc464e0a51977368e4bc06650c0326dbdcb182ce0327477c1d32daa",
+        "contract_hash": "ab4b736240365db5d0ce2caea032f40a3b7fc9c189db42d5ebcd28cac0fac22b",
+        "fields": {
+          "IR": "bunnies=3*5=15,teddies_new=5+2*15=35,total=35+15+1=51",
+          "R": "51"
+        },
+        "communication_tokens": 36,
+        "communication_tokens_exact": true,
+        "attempt_count": 1,
+        "fallback": false,
+        "tokens_include_all_attempts": true,
+        "incoming_message_ids": [
+          "4b1b2adc0857"
+        ]
+      }
+    },
+    {
+      "sender": "verifier",
+      "content": "CHK:ACCEPT",
+      "receiver": "solver",
+      "round": 0,
+      "role": "assistant",
+      "prompt_tokens": 1103,
+      "completion_tokens": 5,
+      "id": "3a20ab6cb3d7",
+      "ts": 1793111005.367136,
+      "meta": {
+        "sender": "verifier",
+        "receiver": "solver",
+        "message_id": "3a20ab6cb3d7",
+        "protocol_edge": "verifier_to_solver",
+        "protocol_version": "CARD-0-gsm8k",
+        "protocol_hash": "4bcdae885cc464e0a51977368e4bc06650c0326dbdcb182ce0327477c1d32daa",
+        "contract_hash": "ab4b736240365db5d0ce2caea032f40a3b7fc9c189db42d5ebcd28cac0fac22b",
+        "fields": {
+          "CHK": "ACCEPT"
+        },
+        "communication_tokens": 5,
+        "communication_tokens_exact": true,
+        "attempt_count": 1,
+        "fallback": false,
+        "tokens_include_all_attempts": true,
+        "incoming_message_ids": [
+          "279ffd972ead"
+        ]
+      }
+    }
+  ],
+  "communication_tokens": 81,
+  "wall_time_s": 4.2679646000033244,
+  "verified": true,
+  "revision_rounds": 0,
+  "model_calls": [
+    {
+      "role": "planner",
+      "attempt": 0,
+      "status": "delivered",
+      "error": "",
+      "raw_output": "G:total_mascots;P:bunnies=3*5,teddies_new=5+2*bunnies,total_mascots=teddies_new+bunnies+1",
+      "finish_reason": "stop",
+      "output_tokens": 40,
+      "usage_available": true
+    },
+    {
+      "role": "solver",
+      "attempt": 0,
+      "status": "delivered",
+      "error": "",
+      "raw_output": "IR:bunnies=3*5=15,teddies_new=5+2*15=35,total=35+15+1=51;R:51",
+      "finish_reason": "stop",
+      "output_tokens": 36,
+      "usage_available": true
+    },
+    {
+      "role": "verifier",
+      "attempt": 0,
+      "status": "delivered",
+      "error": "",
+      "raw_output": "CHK:ACCEPT",
+      "finish_reason": "stop",
+      "output_tokens": 5,
+      "usage_available": true
+    }
+  ],
+  "failed_attempts": [],
+  "calls": 3,
+  "usage_complete": true,
+  "known_input_tokens": 2603,
+  "known_output_tokens": 81,
+  "model_input_tokens": 2603,
+  "model_output_tokens": 81,
+  "format_failed_calls": 0,
+  "transport_failed_calls": 0,
+  "fallback_calls": 0,
+  "sum_model_latency_s": 4.191635608673096,
+  "gold": "51",
+  "score": 1.0,
+  "question": "Jina likes to collect mascots. She has 5 teddies, 3 times more bunnies, and a koala bear. Her mom decided to give her two additional teddies for every bunny she has. How many mascots Jina has in total?\nGive the final numeric answer."
+}

@@ -1,0 +1,151 @@
+{
+  "task_id": "gsm8k:train:seed42:G1:00035",
+  "status": "completed",
+  "error": null,
+  "prediction": "12",
+  "messages": [
+    {
+      "sender": "planner",
+      "content": "G:books_currently_checked_out;P:after_first=5-3+5,current=after_first-2+7",
+      "receiver": "solver",
+      "round": 0,
+      "role": "assistant",
+      "prompt_tokens": 777,
+      "completion_tokens": 28,
+      "id": "960ace04d2be",
+      "ts": 1793107721.910651,
+      "meta": {
+        "sender": "planner",
+        "receiver": "solver",
+        "message_id": "960ace04d2be",
+        "protocol_edge": "planner_to_solver",
+        "protocol_version": "CARD-0-gsm8k",
+        "protocol_hash": "4bcdae885cc464e0a51977368e4bc06650c0326dbdcb182ce0327477c1d32daa",
+        "contract_hash": "ab4b736240365db5d0ce2caea032f40a3b7fc9c189db42d5ebcd28cac0fac22b",
+        "fields": {
+          "G": "books_currently_checked_out",
+          "P": "after_first=5-3+5,current=after_first-2+7"
+        },
+        "communication_tokens": 28,
+        "communication_tokens_exact": true,
+        "attempt_count": 1,
+        "fallback": false,
+        "tokens_include_all_attempts": true,
+        "incoming_message_ids": []
+      }
+    },
+    {
+      "sender": "solver",
+      "content": "IR:after_first=5-3+5=7,current=7-2+7=12;R:12",
+      "receiver": "verifier",
+      "round": 0,
+      "role": "assistant",
+      "prompt_tokens": 747,
+      "completion_tokens": 26,
+      "id": "2ec659b9b4f3",
+      "ts": 1793107723.053921,
+      "meta": {
+        "sender": "solver",
+        "receiver": "verifier",
+        "message_id": "2ec659b9b4f3",
+        "protocol_edge": "solver_to_verifier",
+        "protocol_version": "CARD-0-gsm8k",
+        "protocol_hash": "4bcdae885cc464e0a51977368e4bc06650c0326dbdcb182ce0327477c1d32daa",
+        "contract_hash": "ab4b736240365db5d0ce2caea032f40a3b7fc9c189db42d5ebcd28cac0fac22b",
+        "fields": {
+          "IR": "after_first=5-3+5=7,current=7-2+7=12",
+          "R": "12"
+        },
+        "communication_tokens": 26,
+        "communication_tokens_exact": true,
+        "attempt_count": 1,
+        "fallback": false,
+        "tokens_include_all_attempts": true,
+        "incoming_message_ids": [
+          "960ace04d2be"
+        ]
+      }
+    },
+    {
+      "sender": "verifier",
+      "content": "CHK:ACCEPT",
+      "receiver": "solver",
+      "round": 0,
+      "role": "assistant",
+      "prompt_tokens": 1111,
+      "completion_tokens": 5,
+      "id": "cd03488227c9",
+      "ts": 1793107724.430184,
+      "meta": {
+        "sender": "verifier",
+        "receiver": "solver",
+        "message_id": "cd03488227c9",
+        "protocol_edge": "verifier_to_solver",
+        "protocol_version": "CARD-0-gsm8k",
+        "protocol_hash": "4bcdae885cc464e0a51977368e4bc06650c0326dbdcb182ce0327477c1d32daa",
+        "contract_hash": "ab4b736240365db5d0ce2caea032f40a3b7fc9c189db42d5ebcd28cac0fac22b",
+        "fields": {
+          "CHK": "ACCEPT"
+        },
+        "communication_tokens": 5,
+        "communication_tokens_exact": true,
+        "attempt_count": 1,
+        "fallback": false,
+        "tokens_include_all_attempts": true,
+        "incoming_message_ids": [
+          "2ec659b9b4f3"
+        ]
+      }
+    }
+  ],
+  "communication_tokens": 59,
+  "wall_time_s": 4.303032000083476,
+  "verified": true,
+  "revision_rounds": 0,
+  "model_calls": [
+    {
+      "role": "planner",
+      "attempt": 0,
+      "status": "delivered",
+      "error": "",
+      "raw_output": "G:books_currently_checked_out;P:after_first=5-3+5,current=after_first-2+7",
+      "finish_reason": "stop",
+      "output_tokens": 28,
+      "usage_available": true
+    },
+    {
+      "role": "solver",
+      "attempt": 0,
+      "status": "delivered",
+      "error": "",
+      "raw_output": "IR:after_first=5-3+5=7,current=7-2+7=12;R:12",
+      "finish_reason": "stop",
+      "output_tokens": 26,
+      "usage_available": true
+    },
+    {
+      "role": "verifier",
+      "attempt": 0,
+      "status": "delivered",
+      "error": "",
+      "raw_output": "CHK:ACCEPT",
+      "finish_reason": "stop",
+      "output_tokens": 5,
+      "usage_available": true
+    }
+  ],
+  "failed_attempts": [],
+  "calls": 3,
+  "usage_complete": true,
+  "known_input_tokens": 2635,
+  "known_output_tokens": 59,
+  "model_input_tokens": 2635,
+  "model_output_tokens": 59,
+  "format_failed_calls": 0,
+  "transport_failed_calls": 0,
+  "fallback_calls": 0,
+  "sum_model_latency_s": 4.153185606002808,
+  "gold": "12",
+  "score": 1.0,
+  "question": "Mary was working on a research paper and already had borrowed 5 books from the library.  3 books weren't helpful so she returned those and checked out 5 more books.  3 days later, she went back to the library and returned 2 of those books and checked out 7 more books.  How many books does Mary currently have checked out of the library?\nGive the final numeric answer."
+}

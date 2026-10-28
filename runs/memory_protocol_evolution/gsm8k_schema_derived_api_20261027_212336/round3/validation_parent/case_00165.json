@@ -1,0 +1,152 @@
+{
+  "task_id": "gsm8k:train:seed42:V:00165",
+  "status": "completed",
+  "error": null,
+  "prediction": "7",
+  "messages": [
+    {
+      "sender": "planner",
+      "content": "K:daytona=26,daytona=3*cape_may+5;G:cape_may;P:cape_may=(daytona-5)/3",
+      "receiver": "solver",
+      "round": 0,
+      "role": "assistant",
+      "prompt_tokens": 741,
+      "completion_tokens": 39,
+      "id": "ce1e8b5a9d17",
+      "ts": 1793113064.0908983,
+      "meta": {
+        "sender": "planner",
+        "receiver": "solver",
+        "message_id": "ce1e8b5a9d17",
+        "protocol_edge": "planner_to_solver",
+        "protocol_version": "CARD-0-gsm8k",
+        "protocol_hash": "4bcdae885cc464e0a51977368e4bc06650c0326dbdcb182ce0327477c1d32daa",
+        "contract_hash": "ab4b736240365db5d0ce2caea032f40a3b7fc9c189db42d5ebcd28cac0fac22b",
+        "fields": {
+          "K": "daytona=26,daytona=3*cape_may+5",
+          "G": "cape_may",
+          "P": "cape_may=(daytona-5)/3"
+        },
+        "communication_tokens": 39,
+        "communication_tokens_exact": true,
+        "attempt_count": 1,
+        "fallback": false,
+        "tokens_include_all_attempts": true,
+        "incoming_message_ids": []
+      }
+    },
+    {
+      "sender": "solver",
+      "content": "IR:cape_may=(26-5)/3=21/3=7;R:7",
+      "receiver": "verifier",
+      "round": 0,
+      "role": "assistant",
+      "prompt_tokens": 722,
+      "completion_tokens": 21,
+      "id": "d5feb29d4d40",
+      "ts": 1793113065.2718885,
+      "meta": {
+        "sender": "solver",
+        "receiver": "verifier",
+        "message_id": "d5feb29d4d40",
+        "protocol_edge": "solver_to_verifier",
+        "protocol_version": "CARD-0-gsm8k",
+        "protocol_hash": "4bcdae885cc464e0a51977368e4bc06650c0326dbdcb182ce0327477c1d32daa",
+        "contract_hash": "ab4b736240365db5d0ce2caea032f40a3b7fc9c189db42d5ebcd28cac0fac22b",
+        "fields": {
+          "IR": "cape_may=(26-5)/3=21/3=7",
+          "R": "7"
+        },
+        "communication_tokens": 21,
+        "communication_tokens_exact": true,
+        "attempt_count": 1,
+        "fallback": false,
+        "tokens_include_all_attempts": true,
+        "incoming_message_ids": [
+          "ce1e8b5a9d17"
+        ]
+      }
+    },
+    {
+      "sender": "verifier",
+      "content": "CHK:ACCEPT",
+      "receiver": "solver",
+      "round": 0,
+      "role": "assistant",
+      "prompt_tokens": 1070,
+      "completion_tokens": 5,
+      "id": "4dfaf1d70b98",
+      "ts": 1793113066.6570115,
+      "meta": {
+        "sender": "verifier",
+        "receiver": "solver",
+        "message_id": "4dfaf1d70b98",
+        "protocol_edge": "verifier_to_solver",
+        "protocol_version": "CARD-0-gsm8k",
+        "protocol_hash": "4bcdae885cc464e0a51977368e4bc06650c0326dbdcb182ce0327477c1d32daa",
+        "contract_hash": "ab4b736240365db5d0ce2caea032f40a3b7fc9c189db42d5ebcd28cac0fac22b",
+        "fields": {
+          "CHK": "ACCEPT"
+        },
+        "communication_tokens": 5,
+        "communication_tokens_exact": true,
+        "attempt_count": 1,
+        "fallback": false,
+        "tokens_include_all_attempts": true,
+        "incoming_message_ids": [
+          "d5feb29d4d40"
+        ]
+      }
+    }
+  ],
+  "communication_tokens": 65,
+  "wall_time_s": 4.0217930999351665,
+  "verified": true,
+  "revision_rounds": 0,
+  "model_calls": [
+    {
+      "role": "planner",
+      "attempt": 0,
+      "status": "delivered",
+      "error": "",
+      "raw_output": "K:daytona=26,daytona=3*cape_may+5;G:cape_may;P:cape_may=(daytona-5)/3",
+      "finish_reason": "stop",
+      "output_tokens": 39,
+      "usage_available": true
+    },
+    {
+      "role": "solver",
+      "attempt": 0,
+      "status": "delivered",
+      "error": "",
+      "raw_output": "IR:cape_may=(26-5)/3=21/3=7;R:7",
+      "finish_reason": "stop",
+      "output_tokens": 21,
+      "usage_available": true
+    },
+    {
+      "role": "verifier",
+      "attempt": 0,
+      "status": "delivered",
+      "error": "",
+      "raw_output": "CHK:ACCEPT",
+      "finish_reason": "stop",
+      "output_tokens": 5,
+      "usage_available": true
+    }
+  ],
+  "failed_attempts": [],
+  "calls": 3,
+  "usage_complete": true,
+  "known_input_tokens": 2533,
+  "known_output_tokens": 65,
+  "model_input_tokens": 2533,
+  "model_output_tokens": 65,
+  "format_failed_calls": 0,
+  "transport_failed_calls": 0,
+  "fallback_calls": 0,
+  "sum_model_latency_s": 3.8533248901367188,
+  "gold": "7",
+  "score": 1.0,
+  "question": "Daytona Beach has 26 shark sightings a year. Daytona Beach has 5 more than triple the number of shark sightings as Cape May. How many shark sightings are there in Cape May?\nGive the final numeric answer."
+}

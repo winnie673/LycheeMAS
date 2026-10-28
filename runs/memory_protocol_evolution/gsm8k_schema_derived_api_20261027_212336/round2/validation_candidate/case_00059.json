@@ -1,0 +1,151 @@
+{
+  "task_id": "gsm8k:train:seed42:V:00059",
+  "status": "completed",
+  "error": null,
+  "prediction": "7",
+  "messages": [
+    {
+      "sender": "planner",
+      "content": "G:number_of_coats;P:total_minks=30+30*6,remaining_minks=total_minks/2,coats=remaining_minks/15",
+      "receiver": "solver",
+      "round": 0,
+      "role": "assistant",
+      "prompt_tokens": 871,
+      "completion_tokens": 37,
+      "id": "a20b677ca0b1",
+      "ts": 1793111368.2948475,
+      "meta": {
+        "sender": "planner",
+        "receiver": "solver",
+        "message_id": "a20b677ca0b1",
+        "protocol_edge": "planner_to_solver",
+        "protocol_version": "CARD-2-gsm8k",
+        "protocol_hash": "aec703067bbfeee6aa1e642a2a319658f1d33f2eff00c8701de19347f616ed6d",
+        "contract_hash": "ab4b736240365db5d0ce2caea032f40a3b7fc9c189db42d5ebcd28cac0fac22b",
+        "fields": {
+          "G": "number_of_coats",
+          "P": "total_minks=30+30*6,remaining_minks=total_minks/2,coats=remaining_minks/15"
+        },
+        "communication_tokens": 37,
+        "communication_tokens_exact": true,
+        "attempt_count": 1,
+        "fallback": false,
+        "tokens_include_all_attempts": true,
+        "incoming_message_ids": []
+      }
+    },
+    {
+      "sender": "solver",
+      "content": "IR:total_minks=30+30*6=210,remaining_minks=210/2=105,coats=105/15=7;R:7",
+      "receiver": "verifier",
+      "round": 0,
+      "role": "assistant",
+      "prompt_tokens": 726,
+      "completion_tokens": 36,
+      "id": "6dd0b815eb18",
+      "ts": 1793111369.7161305,
+      "meta": {
+        "sender": "solver",
+        "receiver": "verifier",
+        "message_id": "6dd0b815eb18",
+        "protocol_edge": "solver_to_verifier",
+        "protocol_version": "CARD-2-gsm8k",
+        "protocol_hash": "aec703067bbfeee6aa1e642a2a319658f1d33f2eff00c8701de19347f616ed6d",
+        "contract_hash": "ab4b736240365db5d0ce2caea032f40a3b7fc9c189db42d5ebcd28cac0fac22b",
+        "fields": {
+          "IR": "total_minks=30+30*6=210,remaining_minks=210/2=105,coats=105/15=7",
+          "R": "7"
+        },
+        "communication_tokens": 36,
+        "communication_tokens_exact": true,
+        "attempt_count": 1,
+        "fallback": false,
+        "tokens_include_all_attempts": true,
+        "incoming_message_ids": [
+          "a20b677ca0b1"
+        ]
+      }
+    },
+    {
+      "sender": "verifier",
+      "content": "CHK:ACCEPT",
+      "receiver": "solver",
+      "round": 0,
+      "role": "assistant",
+      "prompt_tokens": 1091,
+      "completion_tokens": 5,
+      "id": "987615434d98",
+      "ts": 1793111371.1667397,
+      "meta": {
+        "sender": "verifier",
+        "receiver": "solver",
+        "message_id": "987615434d98",
+        "protocol_edge": "verifier_to_solver",
+        "protocol_version": "CARD-2-gsm8k",
+        "protocol_hash": "aec703067bbfeee6aa1e642a2a319658f1d33f2eff00c8701de19347f616ed6d",
+        "contract_hash": "ab4b736240365db5d0ce2caea032f40a3b7fc9c189db42d5ebcd28cac0fac22b",
+        "fields": {
+          "CHK": "ACCEPT"
+        },
+        "communication_tokens": 5,
+        "communication_tokens_exact": true,
+        "attempt_count": 1,
+        "fallback": false,
+        "tokens_include_all_attempts": true,
+        "incoming_message_ids": [
+          "6dd0b815eb18"
+        ]
+      }
+    }
+  ],
+  "communication_tokens": 78,
+  "wall_time_s": 4.293782200082205,
+  "verified": true,
+  "revision_rounds": 0,
+  "model_calls": [
+    {
+      "role": "planner",
+      "attempt": 0,
+      "status": "delivered",
+      "error": "",
+      "raw_output": "G:number_of_coats;P:total_minks=30+30*6,remaining_minks=total_minks/2,coats=remaining_minks/15",
+      "finish_reason": "stop",
+      "output_tokens": 37,
+      "usage_available": true
+    },
+    {
+      "role": "solver",
+      "attempt": 0,
+      "status": "delivered",
+      "error": "",
+      "raw_output": "IR:total_minks=30+30*6=210,remaining_minks=210/2=105,coats=105/15=7;R:7",
+      "finish_reason": "stop",
+      "output_tokens": 36,
+      "usage_available": true
+    },
+    {
+      "role": "verifier",
+      "attempt": 0,
+      "status": "delivered",
+      "error": "",
+      "raw_output": "CHK:ACCEPT",
+      "finish_reason": "stop",
+      "output_tokens": 5,
+      "usage_available": true
+    }
+  ],
+  "failed_attempts": [],
+  "calls": 3,
+  "usage_complete": true,
+  "known_input_tokens": 2688,
+  "known_output_tokens": 78,
+  "model_input_tokens": 2688,
+  "model_output_tokens": 78,
+  "format_failed_calls": 0,
+  "transport_failed_calls": 0,
+  "fallback_calls": 0,
+  "sum_model_latency_s": 4.21270751953125,
+  "gold": "7",
+  "score": 1.0,
+  "question": "It takes 15 mink skins to make a coat. Andy buys 30 minks and each mink has 6 babies, but half the total minks are set free by activists. How many coats can he make?\nGive the final numeric answer."
+}

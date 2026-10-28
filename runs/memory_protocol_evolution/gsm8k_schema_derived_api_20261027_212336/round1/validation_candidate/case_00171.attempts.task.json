@@ -1,0 +1,150 @@
+{
+  "task_id": "gsm8k:train:seed42:V:00171",
+  "status": "completed",
+  "error": null,
+  "prediction": "51",
+  "messages": [
+    {
+      "sender": "planner",
+      "content": "G:total_mascots;P:bunnies=3*5,teddies=5+2*bunnies,koala=1,total_mascots=teddies+bunnies+koala;NL:Interpret \"3 times more bunnies\" as 3 times as many bunnies as teddies.",
+      "receiver": "solver",
+      "round": 0,
+      "role": "assistant",
+      "prompt_tokens": 818,
+      "completion_tokens": 70,
+      "id": "fed5b1059f5d",
+      "ts": 1793109720.3789313,
+      "meta": {
+        "sender": "planner",
+        "receiver": "solver",
+        "message_id": "fed5b1059f5d",
+        "protocol_edge": "planner_to_solver",
+        "protocol_version": "CARD-1-gsm8k",
+        "protocol_hash": "2a663f41d251a442e680de67a231e516a8fe5e31629bc25d021c8c0eb1354cff",
+        "contract_hash": "ab4b736240365db5d0ce2caea032f40a3b7fc9c189db42d5ebcd28cac0fac22b",
+        "fields": {
+          "G": "total_mascots",
+          "P": "bunnies=3*5,teddies=5+2*bunnies,koala=1,total_mascots=teddies+bunnies+koala",
+          "NL": "Interpret \"3 times more bunnies\" as 3 times as many bunnies as teddies."
+        },
+        "communication_tokens": 70,
+        "communication_tokens_exact": true,
+        "attempt_count": 1,
+        "fallback": false,
+        "tokens_include_all_attempts": true,
+        "incoming_message_ids": []
+      }
+    },
+    {
+      "sender": "solver",
+      "content": "IR:bunnies=3*5=15,teddies=5+2*15=35,koala=1,total=35+15+1=51;R:51;NL:Interpret \"3 times more bunnies\" as 3 times as many bunnies as teddies.",
+      "receiver": "verifier",
+      "round": 0,
+      "role": "assistant",
+      "prompt_tokens": 771,
+      "completion_tokens": 66,
+      "id": "7ac79bb58fd8",
+      "ts": 1793109721.3723507,
+      "meta": {
+        "sender": "solver",
+        "receiver": "verifier",
+        "message_id": "7ac79bb58fd8",
+        "protocol_edge": "solver_to_verifier",
+        "protocol_version": "CARD-1-gsm8k",
+        "protocol_hash": "2a663f41d251a442e680de67a231e516a8fe5e31629bc25d021c8c0eb1354cff",
+        "contract_hash": "ab4b736240365db5d0ce2caea032f40a3b7fc9c189db42d5ebcd28cac0fac22b",
+        "fields": {
+          "IR": "bunnies=3*5=15,teddies=5+2*15=35,koala=1,total=35+15+1=51",
+          "R": "51",
+          "NL": "Interpret \"3 times more bunnies\" as 3 times as many bunnies as teddies."
+        },
+        "communication_tokens": 66,
+        "communication_tokens_exact": true,
+        "attempt_count": 1,
+        "fallback": false,
+        "tokens_include_all_attempts": true,
+        "incoming_message_ids": [
+          "fed5b1059f5d"
+        ]
+      }
+    },
+    {
+      "sender": "verifier",
+      "content": "CHK:ACCEPT",
+      "receiver": "solver",
+      "round": 0,
+      "role": "assistant",
+      "prompt_tokens": 1133,
+      "completion_tokens": 5,
+      "id": "088478c07819",
+      "ts": 1793109722.8317783,
+      "meta": {
+        "sender": "verifier",
+        "receiver": "solver",
+        "message_id": "088478c07819",
+        "protocol_edge": "verifier_to_solver",
+        "protocol_version": "CARD-1-gsm8k",
+        "protocol_hash": "2a663f41d251a442e680de67a231e516a8fe5e31629bc25d021c8c0eb1354cff",
+        "contract_hash": "ab4b736240365db5d0ce2caea032f40a3b7fc9c189db42d5ebcd28cac0fac22b",
+        "fields": {
+          "CHK": "ACCEPT"
+        },
+        "communication_tokens": 5,
+        "communication_tokens_exact": true,
+        "attempt_count": 1,
+        "fallback": false,
+        "tokens_include_all_attempts": true,
+        "incoming_message_ids": [
+          "7ac79bb58fd8"
+        ]
+      }
+    }
+  ],
+  "communication_tokens": 141,
+  "wall_time_s": 3.9730673999292776,
+  "verified": true,
+  "revision_rounds": 0,
+  "model_calls": [
+    {
+      "role": "planner",
+      "attempt": 0,
+      "status": "delivered",
+      "error": "",
+      "raw_output": "G:total_mascots;P:bunnies=3*5,teddies=5+2*bunnies,koala=1,total_mascots=teddies+bunnies+koala;NL:Interpret \"3 times more bunnies\" as 3 times as many bunnies as teddies.",
+      "finish_reason": "stop",
+      "output_tokens": 70,
+      "usage_available": true
+    },
+    {
+      "role": "solver",
+      "attempt": 0,
+      "status": "delivered",
+      "error": "",
+      "raw_output": "IR:bunnies=3*5=15,teddies=5+2*15=35,koala=1,total=35+15+1=51;R:51;NL:Interpret \"3 times more bunnies\" as 3 times as many bunnies as teddies.",
+      "finish_reason": "stop",
+      "output_tokens": 66,
+      "usage_available": true
+    },
+    {
+      "role": "verifier",
+      "attempt": 0,
+      "status": "delivered",
+      "error": "",
+      "raw_output": "CHK:ACCEPT",
+      "finish_reason": "stop",
+      "output_tokens": 5,
+      "usage_available": true
+    }
+  ],
+  "failed_attempts": [],
+  "calls": 3,
+  "usage_complete": true,
+  "known_input_tokens": 2722,
+  "known_output_tokens": 141,
+  "model_input_tokens": 2722,
+  "model_output_tokens": 141,
+  "format_failed_calls": 0,
+  "transport_failed_calls": 0,
+  "fallback_calls": 0,
+  "sum_model_latency_s": 3.829401969909668
+}

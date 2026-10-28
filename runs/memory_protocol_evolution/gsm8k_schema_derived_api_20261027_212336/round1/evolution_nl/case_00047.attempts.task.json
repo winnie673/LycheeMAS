@@ -1,0 +1,123 @@
+{
+  "task_id": "gsm8k:train:seed42:G1:00047",
+  "status": "completed",
+  "error": null,
+  "prediction": "44",
+  "messages": [
+    {
+      "sender": "planner",
+      "content": "Goal: Find the total number of roses Bella received.\n\nPlan: Calculate the roses from her parents as 2 dozen (convert dozen to 12 per dozen), then calculate the roses from her 10 dancer friends as 2 roses per friend, and add the two amounts.\n\nConstraints: Provide only the final numeric total.",
+      "receiver": "solver",
+      "round": 0,
+      "role": "assistant",
+      "prompt_tokens": 191,
+      "completion_tokens": 64,
+      "id": "6ac495c8abe8",
+      "ts": 1793108027.1797976,
+      "meta": {
+        "fields": {},
+        "communication_tokens": 64,
+        "communication_tokens_exact": true,
+        "attempt_count": 1,
+        "fallback": false,
+        "tokens_include_all_attempts": true,
+        "incoming_message_ids": []
+      }
+    },
+    {
+      "sender": "solver",
+      "content": "Bella got 2 dozen = 24 roses from her parents, and 2 × 10 = 20 roses from her friends. Total: 24 + 20 = 44.\n\n\\boxed{44}",
+      "receiver": "verifier",
+      "round": 0,
+      "role": "assistant",
+      "prompt_tokens": 267,
+      "completion_tokens": 45,
+      "id": "6756f1501c3d",
+      "ts": 1793108028.7240143,
+      "meta": {
+        "fields": {
+          "R": "44"
+        },
+        "communication_tokens": 45,
+        "communication_tokens_exact": true,
+        "attempt_count": 1,
+        "fallback": false,
+        "tokens_include_all_attempts": true,
+        "incoming_message_ids": [
+          "6ac495c8abe8"
+        ]
+      }
+    },
+    {
+      "sender": "verifier",
+      "content": "ACCEPT",
+      "receiver": "solver",
+      "round": 0,
+      "role": "assistant",
+      "prompt_tokens": 625,
+      "completion_tokens": 2,
+      "id": "ec71dade1438",
+      "ts": 1793108030.049749,
+      "meta": {
+        "fields": {
+          "CHK": "ACCEPT"
+        },
+        "communication_tokens": 2,
+        "communication_tokens_exact": true,
+        "attempt_count": 1,
+        "fallback": false,
+        "tokens_include_all_attempts": true,
+        "incoming_message_ids": [
+          "6756f1501c3d"
+        ]
+      }
+    }
+  ],
+  "communication_tokens": 111,
+  "wall_time_s": 4.648060900042765,
+  "verified": true,
+  "revision_rounds": 0,
+  "model_calls": [
+    {
+      "role": "planner",
+      "attempt": 0,
+      "status": "delivered",
+      "error": "",
+      "raw_output": "Goal: Find the total number of roses Bella received.\n\nPlan: Calculate the roses from her parents as 2 dozen (convert dozen to 12 per dozen), then calculate the roses from her 10 dancer friends as 2 roses per friend, and add the two amounts.\n\nConstraints: Provide only the final numeric total.",
+      "finish_reason": "stop",
+      "output_tokens": 64,
+      "usage_available": true
+    },
+    {
+      "role": "solver",
+      "attempt": 0,
+      "status": "delivered",
+      "error": "",
+      "raw_output": "Bella got 2 dozen = 24 roses from her parents, and 2 × 10 = 20 roses from her friends. Total: 24 + 20 = 44.\n\n\\boxed{44}",
+      "finish_reason": "stop",
+      "output_tokens": 45,
+      "usage_available": true
+    },
+    {
+      "role": "verifier",
+      "attempt": 0,
+      "status": "delivered",
+      "error": "",
+      "raw_output": "ACCEPT",
+      "finish_reason": "stop",
+      "output_tokens": 2,
+      "usage_available": true
+    }
+  ],
+  "failed_attempts": [],
+  "calls": 3,
+  "usage_complete": true,
+  "known_input_tokens": 1083,
+  "known_output_tokens": 111,
+  "model_input_tokens": 1083,
+  "model_output_tokens": 111,
+  "format_failed_calls": 0,
+  "transport_failed_calls": 0,
+  "fallback_calls": 0,
+  "sum_model_latency_s": 4.5851709842681885
+}

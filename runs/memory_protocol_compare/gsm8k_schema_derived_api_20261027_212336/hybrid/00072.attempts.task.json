@@ -1,0 +1,121 @@
+{
+  "task_id": "gsm8k:test:seed42:T:00074",
+  "mode": "hybrid",
+  "benchmark": "gsm8k",
+  "status": "completed",
+  "error": null,
+  "prediction": "88",
+  "gold": "88",
+  "wall_time_s": 3.623751299921423,
+  "communication_tokens": 125,
+  "communication_tokens_exact": true,
+  "revision_rounds": 0,
+  "verification_decision": "ACCEPT",
+  "verified": true,
+  "messages": [
+    {
+      "sender": "planner",
+      "content": "G:total_revenue;P:marigold_price=round(2.74),petunia_price=round(1.87),begonia_price=round(2.12),total_revenue=12*marigold_price+9*petunia_price+17*begonia_price;NL:Round each price to the nearest dollar before multiplying by the number of pots sold.",
+      "receiver": "solver",
+      "round": 0,
+      "role": "assistant",
+      "prompt_tokens": 822,
+      "completion_tokens": 80,
+      "id": "c7ee329e33ae",
+      "ts": 1793169496.939128,
+      "meta": {
+        "sender": "planner",
+        "receiver": "solver",
+        "message_id": "c7ee329e33ae",
+        "protocol_edge": "planner_to_solver",
+        "protocol_version": "CARD-0-gsm8k",
+        "protocol_hash": "4bcdae885cc464e0a51977368e4bc06650c0326dbdcb182ce0327477c1d32daa",
+        "contract_hash": "ab4b736240365db5d0ce2caea032f40a3b7fc9c189db42d5ebcd28cac0fac22b",
+        "fields": {
+          "G": "total_revenue",
+          "P": "marigold_price=round(2.74),petunia_price=round(1.87),begonia_price=round(2.12),total_revenue=12*marigold_price+9*petunia_price+17*begonia_price",
+          "NL": "Round each price to the nearest dollar before multiplying by the number of pots sold."
+        },
+        "communication_tokens": 80,
+        "communication_tokens_exact": true,
+        "attempt_count": 1,
+        "fallback": false,
+        "tokens_include_all_attempts": true,
+        "incoming_message_ids": []
+      }
+    },
+    {
+      "sender": "solver",
+      "content": "IR:marigold_price=3,petunia_price=2,begonia_price=2,total=12*3+9*2+17*2=88;R:88",
+      "receiver": "verifier",
+      "round": 0,
+      "role": "assistant",
+      "prompt_tokens": 844,
+      "completion_tokens": 40,
+      "id": "1208b7266148",
+      "ts": 1793169498.1664813,
+      "meta": {
+        "sender": "solver",
+        "receiver": "verifier",
+        "message_id": "1208b7266148",
+        "protocol_edge": "solver_to_verifier",
+        "protocol_version": "CARD-0-gsm8k",
+        "protocol_hash": "4bcdae885cc464e0a51977368e4bc06650c0326dbdcb182ce0327477c1d32daa",
+        "contract_hash": "ab4b736240365db5d0ce2caea032f40a3b7fc9c189db42d5ebcd28cac0fac22b",
+        "fields": {
+          "IR": "marigold_price=3,petunia_price=2,begonia_price=2,total=12*3+9*2+17*2=88",
+          "R": "88"
+        },
+        "communication_tokens": 40,
+        "communication_tokens_exact": true,
+        "attempt_count": 1,
+        "fallback": false,
+        "tokens_include_all_attempts": true,
+        "incoming_message_ids": [
+          "c7ee329e33ae"
+        ]
+      }
+    },
+    {
+      "sender": "verifier",
+      "content": "CHK:ACCEPT",
+      "receiver": "solver",
+      "round": 0,
+      "role": "assistant",
+      "prompt_tokens": 1170,
+      "completion_tokens": 5,
+      "id": "43c6d79f274b",
+      "ts": 1793169499.1840045,
+      "meta": {
+        "sender": "verifier",
+        "receiver": "solver",
+        "message_id": "43c6d79f274b",
+        "protocol_edge": "verifier_to_solver",
+        "protocol_version": "CARD-0-gsm8k",
+        "protocol_hash": "4bcdae885cc464e0a51977368e4bc06650c0326dbdcb182ce0327477c1d32daa",
+        "contract_hash": "ab4b736240365db5d0ce2caea032f40a3b7fc9c189db42d5ebcd28cac0fac22b",
+        "fields": {
+          "CHK": "ACCEPT"
+        },
+        "communication_tokens": 5,
+        "communication_tokens_exact": true,
+        "attempt_count": 1,
+        "fallback": false,
+        "tokens_include_all_attempts": true,
+        "incoming_message_ids": [
+          "1208b7266148"
+        ]
+      }
+    }
+  ],
+  "calls": 3,
+  "usage_complete": true,
+  "known_input_tokens": 2836,
+  "known_output_tokens": 125,
+  "model_input_tokens": 2836,
+  "model_output_tokens": 125,
+  "format_failed_calls": 0,
+  "transport_failed_calls": 0,
+  "fallback_calls": 0,
+  "sum_model_latency_s": 3.5524280071258545
+}

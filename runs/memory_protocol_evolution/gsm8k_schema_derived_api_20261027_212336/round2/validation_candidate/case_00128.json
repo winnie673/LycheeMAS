@@ -1,0 +1,151 @@
+{
+  "task_id": "gsm8k:train:seed42:V:00128",
+  "status": "completed",
+  "error": null,
+  "prediction": "100",
+  "messages": [
+    {
+      "sender": "planner",
+      "content": "G:Sandra_amount;P:ratio_Sandra=2,ratio_Amy=1,Amy=50,Sandra_amount=Amy*(ratio_Sandra/ratio_Amy)",
+      "receiver": "solver",
+      "round": 0,
+      "role": "assistant",
+      "prompt_tokens": 863,
+      "completion_tokens": 36,
+      "id": "bb8eaa125319",
+      "ts": 1793111651.930256,
+      "meta": {
+        "sender": "planner",
+        "receiver": "solver",
+        "message_id": "bb8eaa125319",
+        "protocol_edge": "planner_to_solver",
+        "protocol_version": "CARD-2-gsm8k",
+        "protocol_hash": "aec703067bbfeee6aa1e642a2a319658f1d33f2eff00c8701de19347f616ed6d",
+        "contract_hash": "ab4b736240365db5d0ce2caea032f40a3b7fc9c189db42d5ebcd28cac0fac22b",
+        "fields": {
+          "G": "Sandra_amount",
+          "P": "ratio_Sandra=2,ratio_Amy=1,Amy=50,Sandra_amount=Amy*(ratio_Sandra/ratio_Amy)"
+        },
+        "communication_tokens": 36,
+        "communication_tokens_exact": true,
+        "attempt_count": 1,
+        "fallback": false,
+        "tokens_include_all_attempts": true,
+        "incoming_message_ids": []
+      }
+    },
+    {
+      "sender": "solver",
+      "content": "IR:Sandra_amount=50*(2/1)=100;R:100",
+      "receiver": "verifier",
+      "round": 0,
+      "role": "assistant",
+      "prompt_tokens": 717,
+      "completion_tokens": 16,
+      "id": "f6a95b3d2eba",
+      "ts": 1793111653.517586,
+      "meta": {
+        "sender": "solver",
+        "receiver": "verifier",
+        "message_id": "f6a95b3d2eba",
+        "protocol_edge": "solver_to_verifier",
+        "protocol_version": "CARD-2-gsm8k",
+        "protocol_hash": "aec703067bbfeee6aa1e642a2a319658f1d33f2eff00c8701de19347f616ed6d",
+        "contract_hash": "ab4b736240365db5d0ce2caea032f40a3b7fc9c189db42d5ebcd28cac0fac22b",
+        "fields": {
+          "IR": "Sandra_amount=50*(2/1)=100",
+          "R": "100"
+        },
+        "communication_tokens": 16,
+        "communication_tokens_exact": true,
+        "attempt_count": 1,
+        "fallback": false,
+        "tokens_include_all_attempts": true,
+        "incoming_message_ids": [
+          "bb8eaa125319"
+        ]
+      }
+    },
+    {
+      "sender": "verifier",
+      "content": "CHK:ACCEPT",
+      "receiver": "solver",
+      "round": 0,
+      "role": "assistant",
+      "prompt_tokens": 1063,
+      "completion_tokens": 5,
+      "id": "dcd66fde3f8b",
+      "ts": 1793111654.8288467,
+      "meta": {
+        "sender": "verifier",
+        "receiver": "solver",
+        "message_id": "dcd66fde3f8b",
+        "protocol_edge": "verifier_to_solver",
+        "protocol_version": "CARD-2-gsm8k",
+        "protocol_hash": "aec703067bbfeee6aa1e642a2a319658f1d33f2eff00c8701de19347f616ed6d",
+        "contract_hash": "ab4b736240365db5d0ce2caea032f40a3b7fc9c189db42d5ebcd28cac0fac22b",
+        "fields": {
+          "CHK": "ACCEPT"
+        },
+        "communication_tokens": 5,
+        "communication_tokens_exact": true,
+        "attempt_count": 1,
+        "fallback": false,
+        "tokens_include_all_attempts": true,
+        "incoming_message_ids": [
+          "f6a95b3d2eba"
+        ]
+      }
+    }
+  ],
+  "communication_tokens": 57,
+  "wall_time_s": 4.4325340000214055,
+  "verified": true,
+  "revision_rounds": 0,
+  "model_calls": [
+    {
+      "role": "planner",
+      "attempt": 0,
+      "status": "delivered",
+      "error": "",
+      "raw_output": "G:Sandra_amount;P:ratio_Sandra=2,ratio_Amy=1,Amy=50,Sandra_amount=Amy*(ratio_Sandra/ratio_Amy)",
+      "finish_reason": "stop",
+      "output_tokens": 36,
+      "usage_available": true
+    },
+    {
+      "role": "solver",
+      "attempt": 0,
+      "status": "delivered",
+      "error": "",
+      "raw_output": "IR:Sandra_amount=50*(2/1)=100;R:100",
+      "finish_reason": "stop",
+      "output_tokens": 16,
+      "usage_available": true
+    },
+    {
+      "role": "verifier",
+      "attempt": 0,
+      "status": "delivered",
+      "error": "",
+      "raw_output": "CHK:ACCEPT",
+      "finish_reason": "stop",
+      "output_tokens": 5,
+      "usage_available": true
+    }
+  ],
+  "failed_attempts": [],
+  "calls": 3,
+  "usage_complete": true,
+  "known_input_tokens": 2643,
+  "known_output_tokens": 57,
+  "model_input_tokens": 2643,
+  "model_output_tokens": 57,
+  "format_failed_calls": 0,
+  "transport_failed_calls": 0,
+  "fallback_calls": 0,
+  "sum_model_latency_s": 4.277512073516846,
+  "gold": "100",
+  "score": 1.0,
+  "question": "Sam shared a sum of money between his three cousins Sandra, Amy and Ruth in the ratio 2:1:3 respectively. If Amy got $50, how much did Sandra get?\nGive the final numeric answer."
+}

@@ -1,0 +1,151 @@
+{
+  "task_id": "gsm8k:train:seed42:G2:00002",
+  "status": "completed",
+  "error": null,
+  "prediction": "10",
+  "messages": [
+    {
+      "sender": "planner",
+      "content": "G:people_who_did_not_buy_coffee;P:coffee=25*3/5,did_not=25-coffee",
+      "receiver": "solver",
+      "round": 0,
+      "role": "assistant",
+      "prompt_tokens": 742,
+      "completion_tokens": 30,
+      "id": "cdef5cfade4a",
+      "ts": 1793109844.9950497,
+      "meta": {
+        "sender": "planner",
+        "receiver": "solver",
+        "message_id": "cdef5cfade4a",
+        "protocol_edge": "planner_to_solver",
+        "protocol_version": "CARD-0-gsm8k",
+        "protocol_hash": "4bcdae885cc464e0a51977368e4bc06650c0326dbdcb182ce0327477c1d32daa",
+        "contract_hash": "ab4b736240365db5d0ce2caea032f40a3b7fc9c189db42d5ebcd28cac0fac22b",
+        "fields": {
+          "G": "people_who_did_not_buy_coffee",
+          "P": "coffee=25*3/5,did_not=25-coffee"
+        },
+        "communication_tokens": 30,
+        "communication_tokens_exact": true,
+        "attempt_count": 1,
+        "fallback": false,
+        "tokens_include_all_attempts": true,
+        "incoming_message_ids": []
+      }
+    },
+    {
+      "sender": "solver",
+      "content": "IR:coffee=25*3/5=15,did_not=25-15=10;R:10",
+      "receiver": "verifier",
+      "round": 0,
+      "role": "assistant",
+      "prompt_tokens": 714,
+      "completion_tokens": 25,
+      "id": "db3ee09e12b4",
+      "ts": 1793109845.996665,
+      "meta": {
+        "sender": "solver",
+        "receiver": "verifier",
+        "message_id": "db3ee09e12b4",
+        "protocol_edge": "solver_to_verifier",
+        "protocol_version": "CARD-0-gsm8k",
+        "protocol_hash": "4bcdae885cc464e0a51977368e4bc06650c0326dbdcb182ce0327477c1d32daa",
+        "contract_hash": "ab4b736240365db5d0ce2caea032f40a3b7fc9c189db42d5ebcd28cac0fac22b",
+        "fields": {
+          "IR": "coffee=25*3/5=15,did_not=25-15=10",
+          "R": "10"
+        },
+        "communication_tokens": 25,
+        "communication_tokens_exact": true,
+        "attempt_count": 1,
+        "fallback": false,
+        "tokens_include_all_attempts": true,
+        "incoming_message_ids": [
+          "cdef5cfade4a"
+        ]
+      }
+    },
+    {
+      "sender": "verifier",
+      "content": "CHK:ACCEPT",
+      "receiver": "solver",
+      "round": 0,
+      "role": "assistant",
+      "prompt_tokens": 1075,
+      "completion_tokens": 5,
+      "id": "43c2921e76dc",
+      "ts": 1793109847.0343852,
+      "meta": {
+        "sender": "verifier",
+        "receiver": "solver",
+        "message_id": "43c2921e76dc",
+        "protocol_edge": "verifier_to_solver",
+        "protocol_version": "CARD-0-gsm8k",
+        "protocol_hash": "4bcdae885cc464e0a51977368e4bc06650c0326dbdcb182ce0327477c1d32daa",
+        "contract_hash": "ab4b736240365db5d0ce2caea032f40a3b7fc9c189db42d5ebcd28cac0fac22b",
+        "fields": {
+          "CHK": "ACCEPT"
+        },
+        "communication_tokens": 5,
+        "communication_tokens_exact": true,
+        "attempt_count": 1,
+        "fallback": false,
+        "tokens_include_all_attempts": true,
+        "incoming_message_ids": [
+          "db3ee09e12b4"
+        ]
+      }
+    }
+  ],
+  "communication_tokens": 60,
+  "wall_time_s": 3.647171900025569,
+  "verified": true,
+  "revision_rounds": 0,
+  "model_calls": [
+    {
+      "role": "planner",
+      "attempt": 0,
+      "status": "delivered",
+      "error": "",
+      "raw_output": "G:people_who_did_not_buy_coffee;P:coffee=25*3/5,did_not=25-coffee",
+      "finish_reason": "stop",
+      "output_tokens": 30,
+      "usage_available": true
+    },
+    {
+      "role": "solver",
+      "attempt": 0,
+      "status": "delivered",
+      "error": "",
+      "raw_output": "IR:coffee=25*3/5=15,did_not=25-15=10;R:10",
+      "finish_reason": "stop",
+      "output_tokens": 25,
+      "usage_available": true
+    },
+    {
+      "role": "verifier",
+      "attempt": 0,
+      "status": "delivered",
+      "error": "",
+      "raw_output": "CHK:ACCEPT",
+      "finish_reason": "stop",
+      "output_tokens": 5,
+      "usage_available": true
+    }
+  ],
+  "failed_attempts": [],
+  "calls": 3,
+  "usage_complete": true,
+  "known_input_tokens": 2531,
+  "known_output_tokens": 60,
+  "model_input_tokens": 2531,
+  "model_output_tokens": 60,
+  "format_failed_calls": 0,
+  "transport_failed_calls": 0,
+  "fallback_calls": 0,
+  "sum_model_latency_s": 3.494469165802002,
+  "gold": "10",
+  "score": 1.0,
+  "question": "On a particular week, Fatima's restaurant served 25 people food and drinks, and 3/5 of that number came to buy coffee. How many people did not buy coffee in the restaurant?\nGive the final numeric answer."
+}

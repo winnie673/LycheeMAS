@@ -1,0 +1,149 @@
+{
+  "task_id": "gsm8k:train:seed42:V:00062",
+  "status": "completed",
+  "error": null,
+  "prediction": "40",
+  "messages": [
+    {
+      "sender": "planner",
+      "content": "K:supplies_per_mile=0.5,resupply_fraction=0.25,speed_mph=2.5,hours_per_day=8,days=5;G:first_pack_weight;P:total_miles=speed_mph*hours_per_day*days,total_supplies=supplies_per_mile*total_miles,first_pack=total_supplies/(1+resupply_fraction)",
+      "receiver": "solver",
+      "round": 0,
+      "role": "assistant",
+      "prompt_tokens": 810,
+      "completion_tokens": 95,
+      "id": "09b568fb8f0a",
+      "ts": 1793112649.525568,
+      "meta": {
+        "sender": "planner",
+        "receiver": "solver",
+        "message_id": "09b568fb8f0a",
+        "protocol_edge": "planner_to_solver",
+        "protocol_version": "CARD-0-gsm8k",
+        "protocol_hash": "4bcdae885cc464e0a51977368e4bc06650c0326dbdcb182ce0327477c1d32daa",
+        "contract_hash": "ab4b736240365db5d0ce2caea032f40a3b7fc9c189db42d5ebcd28cac0fac22b",
+        "fields": {
+          "K": "supplies_per_mile=0.5,resupply_fraction=0.25,speed_mph=2.5,hours_per_day=8,days=5",
+          "G": "first_pack_weight",
+          "P": "total_miles=speed_mph*hours_per_day*days,total_supplies=supplies_per_mile*total_miles,first_pack=total_supplies/(1+resupply_fraction)"
+        },
+        "communication_tokens": 95,
+        "communication_tokens_exact": true,
+        "attempt_count": 1,
+        "fallback": false,
+        "tokens_include_all_attempts": true,
+        "incoming_message_ids": []
+      }
+    },
+    {
+      "sender": "solver",
+      "content": "IR:total_miles=2.5*8*5=100,total_supplies=0.5*100=50,first_pack=50/1.25=40;R:40",
+      "receiver": "verifier",
+      "round": 0,
+      "role": "assistant",
+      "prompt_tokens": 847,
+      "completion_tokens": 44,
+      "id": "c2a8994e155f",
+      "ts": 1793112650.6828706,
+      "meta": {
+        "sender": "solver",
+        "receiver": "verifier",
+        "message_id": "c2a8994e155f",
+        "protocol_edge": "solver_to_verifier",
+        "protocol_version": "CARD-0-gsm8k",
+        "protocol_hash": "4bcdae885cc464e0a51977368e4bc06650c0326dbdcb182ce0327477c1d32daa",
+        "contract_hash": "ab4b736240365db5d0ce2caea032f40a3b7fc9c189db42d5ebcd28cac0fac22b",
+        "fields": {
+          "IR": "total_miles=2.5*8*5=100,total_supplies=0.5*100=50,first_pack=50/1.25=40",
+          "R": "40"
+        },
+        "communication_tokens": 44,
+        "communication_tokens_exact": true,
+        "attempt_count": 1,
+        "fallback": false,
+        "tokens_include_all_attempts": true,
+        "incoming_message_ids": [
+          "09b568fb8f0a"
+        ]
+      }
+    },
+    {
+      "sender": "verifier",
+      "content": "CHK:ACCEPT",
+      "receiver": "solver",
+      "round": 0,
+      "role": "assistant",
+      "prompt_tokens": 1162,
+      "completion_tokens": 5,
+      "id": "e1cf65397827",
+      "ts": 1793112651.8054123,
+      "meta": {
+        "sender": "verifier",
+        "receiver": "solver",
+        "message_id": "e1cf65397827",
+        "protocol_edge": "verifier_to_solver",
+        "protocol_version": "CARD-0-gsm8k",
+        "protocol_hash": "4bcdae885cc464e0a51977368e4bc06650c0326dbdcb182ce0327477c1d32daa",
+        "contract_hash": "ab4b736240365db5d0ce2caea032f40a3b7fc9c189db42d5ebcd28cac0fac22b",
+        "fields": {
+          "CHK": "ACCEPT"
+        },
+        "communication_tokens": 5,
+        "communication_tokens_exact": true,
+        "attempt_count": 1,
+        "fallback": false,
+        "tokens_include_all_attempts": true,
+        "incoming_message_ids": [
+          "c2a8994e155f"
+        ]
+      }
+    }
+  ],
+  "communication_tokens": 144,
+  "wall_time_s": 3.6854335999814793,
+  "verified": true,
+  "revision_rounds": 0,
+  "model_calls": [
+    {
+      "role": "planner",
+      "attempt": 0,
+      "status": "delivered",
+      "error": "",
+      "raw_output": "K:supplies_per_mile=0.5,resupply_fraction=0.25,speed_mph=2.5,hours_per_day=8,days=5;G:first_pack_weight;P:total_miles=speed_mph*hours_per_day*days,total_supplies=supplies_per_mile*total_miles,first_pack=total_supplies/(1+resupply_fraction)",
+      "finish_reason": "stop",
+      "output_tokens": 95,
+      "usage_available": true
+    },
+    {
+      "role": "solver",
+      "attempt": 0,
+      "status": "delivered",
+      "error": "",
+      "raw_output": "IR:total_miles=2.5*8*5=100,total_supplies=0.5*100=50,first_pack=50/1.25=40;R:40",
+      "finish_reason": "stop",
+      "output_tokens": 44,
+      "usage_available": true
+    },
+    {
+      "role": "verifier",
+      "attempt": 0,
+      "status": "delivered",
+      "error": "",
+      "raw_output": "CHK:ACCEPT",
+      "finish_reason": "stop",
+      "output_tokens": 5,
+      "usage_available": true
+    }
+  ],
+  "failed_attempts": [],
+  "calls": 3,
+  "usage_complete": true,
+  "known_input_tokens": 2819,
+  "known_output_tokens": 144,
+  "model_input_tokens": 2819,
+  "model_output_tokens": 144,
+  "format_failed_calls": 0,
+  "transport_failed_calls": 0,
+  "fallback_calls": 0,
+  "sum_model_latency_s": 3.5138468742370605
+}

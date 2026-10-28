@@ -1,0 +1,151 @@
+{
+  "task_id": "gsm8k:train:seed42:V:00131",
+  "status": "completed",
+  "error": null,
+  "prediction": "1728",
+  "messages": [
+    {
+      "sender": "planner",
+      "content": "G:combined_balance;P:gina_each=3456/4,combined_balance=2*gina_each",
+      "receiver": "solver",
+      "round": 0,
+      "role": "assistant",
+      "prompt_tokens": 785,
+      "completion_tokens": 27,
+      "id": "41fcce8cd9b1",
+      "ts": 1793168747.9865322,
+      "meta": {
+        "sender": "planner",
+        "receiver": "solver",
+        "message_id": "41fcce8cd9b1",
+        "protocol_edge": "planner_to_solver",
+        "protocol_version": "CARD-3-gsm8k",
+        "protocol_hash": "fb1a4acb6e591ac96544876aedd912b27a6f9d3154c76112e1da0f43407d27b2",
+        "contract_hash": "ab4b736240365db5d0ce2caea032f40a3b7fc9c189db42d5ebcd28cac0fac22b",
+        "fields": {
+          "G": "combined_balance",
+          "P": "gina_each=3456/4,combined_balance=2*gina_each"
+        },
+        "communication_tokens": 27,
+        "communication_tokens_exact": true,
+        "attempt_count": 1,
+        "fallback": false,
+        "tokens_include_all_attempts": true,
+        "incoming_message_ids": []
+      }
+    },
+    {
+      "sender": "solver",
+      "content": "IR:gina_each=3456/4=864,combined=2*864=1728;R:1728",
+      "receiver": "verifier",
+      "round": 0,
+      "role": "assistant",
+      "prompt_tokens": 712,
+      "completion_tokens": 27,
+      "id": "cdfce2f28c0c",
+      "ts": 1793168748.9505153,
+      "meta": {
+        "sender": "solver",
+        "receiver": "verifier",
+        "message_id": "cdfce2f28c0c",
+        "protocol_edge": "solver_to_verifier",
+        "protocol_version": "CARD-3-gsm8k",
+        "protocol_hash": "fb1a4acb6e591ac96544876aedd912b27a6f9d3154c76112e1da0f43407d27b2",
+        "contract_hash": "ab4b736240365db5d0ce2caea032f40a3b7fc9c189db42d5ebcd28cac0fac22b",
+        "fields": {
+          "IR": "gina_each=3456/4=864,combined=2*864=1728",
+          "R": "1728"
+        },
+        "communication_tokens": 27,
+        "communication_tokens_exact": true,
+        "attempt_count": 1,
+        "fallback": false,
+        "tokens_include_all_attempts": true,
+        "incoming_message_ids": [
+          "41fcce8cd9b1"
+        ]
+      }
+    },
+    {
+      "sender": "verifier",
+      "content": "CHK:ACCEPT",
+      "receiver": "solver",
+      "round": 0,
+      "role": "assistant",
+      "prompt_tokens": 1078,
+      "completion_tokens": 5,
+      "id": "c9c0fdde2f84",
+      "ts": 1793168749.7897296,
+      "meta": {
+        "sender": "verifier",
+        "receiver": "solver",
+        "message_id": "c9c0fdde2f84",
+        "protocol_edge": "verifier_to_solver",
+        "protocol_version": "CARD-3-gsm8k",
+        "protocol_hash": "fb1a4acb6e591ac96544876aedd912b27a6f9d3154c76112e1da0f43407d27b2",
+        "contract_hash": "ab4b736240365db5d0ce2caea032f40a3b7fc9c189db42d5ebcd28cac0fac22b",
+        "fields": {
+          "CHK": "ACCEPT"
+        },
+        "communication_tokens": 5,
+        "communication_tokens_exact": true,
+        "attempt_count": 1,
+        "fallback": false,
+        "tokens_include_all_attempts": true,
+        "incoming_message_ids": [
+          "cdfce2f28c0c"
+        ]
+      }
+    }
+  ],
+  "communication_tokens": 59,
+  "wall_time_s": 2.813692199997604,
+  "verified": true,
+  "revision_rounds": 0,
+  "model_calls": [
+    {
+      "role": "planner",
+      "attempt": 0,
+      "status": "delivered",
+      "error": "",
+      "raw_output": "G:combined_balance;P:gina_each=3456/4,combined_balance=2*gina_each",
+      "finish_reason": "stop",
+      "output_tokens": 27,
+      "usage_available": true
+    },
+    {
+      "role": "solver",
+      "attempt": 0,
+      "status": "delivered",
+      "error": "",
+      "raw_output": "IR:gina_each=3456/4=864,combined=2*864=1728;R:1728",
+      "finish_reason": "stop",
+      "output_tokens": 27,
+      "usage_available": true
+    },
+    {
+      "role": "verifier",
+      "attempt": 0,
+      "status": "delivered",
+      "error": "",
+      "raw_output": "CHK:ACCEPT",
+      "finish_reason": "stop",
+      "output_tokens": 5,
+      "usage_available": true
+    }
+  ],
+  "failed_attempts": [],
+  "calls": 3,
+  "usage_complete": true,
+  "known_input_tokens": 2575,
+  "known_output_tokens": 59,
+  "model_input_tokens": 2575,
+  "model_output_tokens": 59,
+  "format_failed_calls": 0,
+  "transport_failed_calls": 0,
+  "fallback_calls": 0,
+  "sum_model_latency_s": 2.728842258453369,
+  "gold": "1728",
+  "score": 1.0,
+  "question": "Gina has two bank accounts. Each account has a quarter of the balance in Betty's account. If Betty's account balance is $3,456, what is the combined balance of both Gina's accounts?\nGive the final numeric answer."
+}

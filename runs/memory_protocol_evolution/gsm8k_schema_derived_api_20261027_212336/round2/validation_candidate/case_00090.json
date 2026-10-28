@@ -1,0 +1,151 @@
+{
+  "task_id": "gsm8k:train:seed42:V:00090",
+  "status": "completed",
+  "error": null,
+  "prediction": "5",
+  "messages": [
+    {
+      "sender": "planner",
+      "content": "G:kids_still_awake;P:first_sleep=20/2,remaining_after_first=20-first_sleep,second_sleep=remaining_after_first/2,kids_still_awake=remaining_after_first-second_sleep",
+      "receiver": "solver",
+      "round": 0,
+      "role": "assistant",
+      "prompt_tokens": 874,
+      "completion_tokens": 54,
+      "id": "6bf235e112e0",
+      "ts": 1793111497.1035807,
+      "meta": {
+        "sender": "planner",
+        "receiver": "solver",
+        "message_id": "6bf235e112e0",
+        "protocol_edge": "planner_to_solver",
+        "protocol_version": "CARD-2-gsm8k",
+        "protocol_hash": "aec703067bbfeee6aa1e642a2a319658f1d33f2eff00c8701de19347f616ed6d",
+        "contract_hash": "ab4b736240365db5d0ce2caea032f40a3b7fc9c189db42d5ebcd28cac0fac22b",
+        "fields": {
+          "G": "kids_still_awake",
+          "P": "first_sleep=20/2,remaining_after_first=20-first_sleep,second_sleep=remaining_after_first/2,kids_still_awake=remaining_after_first-second_sleep"
+        },
+        "communication_tokens": 54,
+        "communication_tokens_exact": true,
+        "attempt_count": 1,
+        "fallback": false,
+        "tokens_include_all_attempts": true,
+        "incoming_message_ids": []
+      }
+    },
+    {
+      "sender": "solver",
+      "content": "IR:first_sleep=20/2=10,remaining_after_first=20-10=10,second_sleep=10/2=5,kids_still_awake=10-5=5;R:5",
+      "receiver": "verifier",
+      "round": 0,
+      "role": "assistant",
+      "prompt_tokens": 746,
+      "completion_tokens": 49,
+      "id": "ce13b86574de",
+      "ts": 1793111498.4527047,
+      "meta": {
+        "sender": "solver",
+        "receiver": "verifier",
+        "message_id": "ce13b86574de",
+        "protocol_edge": "solver_to_verifier",
+        "protocol_version": "CARD-2-gsm8k",
+        "protocol_hash": "aec703067bbfeee6aa1e642a2a319658f1d33f2eff00c8701de19347f616ed6d",
+        "contract_hash": "ab4b736240365db5d0ce2caea032f40a3b7fc9c189db42d5ebcd28cac0fac22b",
+        "fields": {
+          "IR": "first_sleep=20/2=10,remaining_after_first=20-10=10,second_sleep=10/2=5,kids_still_awake=10-5=5",
+          "R": "5"
+        },
+        "communication_tokens": 49,
+        "communication_tokens_exact": true,
+        "attempt_count": 1,
+        "fallback": false,
+        "tokens_include_all_attempts": true,
+        "incoming_message_ids": [
+          "6bf235e112e0"
+        ]
+      }
+    },
+    {
+      "sender": "verifier",
+      "content": "CHK:ACCEPT",
+      "receiver": "solver",
+      "round": 0,
+      "role": "assistant",
+      "prompt_tokens": 1107,
+      "completion_tokens": 5,
+      "id": "b453e7a6f294",
+      "ts": 1793111499.410418,
+      "meta": {
+        "sender": "verifier",
+        "receiver": "solver",
+        "message_id": "b453e7a6f294",
+        "protocol_edge": "verifier_to_solver",
+        "protocol_version": "CARD-2-gsm8k",
+        "protocol_hash": "aec703067bbfeee6aa1e642a2a319658f1d33f2eff00c8701de19347f616ed6d",
+        "contract_hash": "ab4b736240365db5d0ce2caea032f40a3b7fc9c189db42d5ebcd28cac0fac22b",
+        "fields": {
+          "CHK": "ACCEPT"
+        },
+        "communication_tokens": 5,
+        "communication_tokens_exact": true,
+        "attempt_count": 1,
+        "fallback": false,
+        "tokens_include_all_attempts": true,
+        "incoming_message_ids": [
+          "ce13b86574de"
+        ]
+      }
+    }
+  ],
+  "communication_tokens": 108,
+  "wall_time_s": 4.074479900067672,
+  "verified": true,
+  "revision_rounds": 0,
+  "model_calls": [
+    {
+      "role": "planner",
+      "attempt": 0,
+      "status": "delivered",
+      "error": "",
+      "raw_output": "G:kids_still_awake;P:first_sleep=20/2,remaining_after_first=20-first_sleep,second_sleep=remaining_after_first/2,kids_still_awake=remaining_after_first-second_sleep",
+      "finish_reason": "stop",
+      "output_tokens": 54,
+      "usage_available": true
+    },
+    {
+      "role": "solver",
+      "attempt": 0,
+      "status": "delivered",
+      "error": "",
+      "raw_output": "IR:first_sleep=20/2=10,remaining_after_first=20-10=10,second_sleep=10/2=5,kids_still_awake=10-5=5;R:5",
+      "finish_reason": "stop",
+      "output_tokens": 49,
+      "usage_available": true
+    },
+    {
+      "role": "verifier",
+      "attempt": 0,
+      "status": "delivered",
+      "error": "",
+      "raw_output": "CHK:ACCEPT",
+      "finish_reason": "stop",
+      "output_tokens": 5,
+      "usage_available": true
+    }
+  ],
+  "failed_attempts": [],
+  "calls": 3,
+  "usage_complete": true,
+  "known_input_tokens": 2727,
+  "known_output_tokens": 108,
+  "model_input_tokens": 2727,
+  "model_output_tokens": 108,
+  "format_failed_calls": 0,
+  "transport_failed_calls": 0,
+  "fallback_calls": 0,
+  "sum_model_latency_s": 3.9974377155303955,
+  "gold": "5",
+  "score": 1.0,
+  "question": "20 kids in preschool are ready for a nap.  1/2 of the kids fall asleep within the first 5 minutes.  Then half of the kids remaining fall asleep within another 5 minutes.  How many kids are still awake?\nGive the final numeric answer."
+}

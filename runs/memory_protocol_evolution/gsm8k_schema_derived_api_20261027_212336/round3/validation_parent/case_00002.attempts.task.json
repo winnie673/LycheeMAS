@@ -1,0 +1,150 @@
+{
+  "task_id": "gsm8k:train:seed42:V:00002",
+  "status": "completed",
+  "error": null,
+  "prediction": "850",
+  "messages": [
+    {
+      "sender": "planner",
+      "content": "K:beef=3*11,fruits_veg=8*4,spices=3*6,other=37,rate=50/10,bonus=250,threshold=100;G:total_points;P:spend=beef+fruits_veg+spices+other,base=spend/10*rate,total_points=base+bonus;NL:Add the 250-point bonus only if total spend is more than $100.",
+      "receiver": "solver",
+      "round": 0,
+      "role": "assistant",
+      "prompt_tokens": 789,
+      "completion_tokens": 100,
+      "id": "cc11f3b60f6a",
+      "ts": 1793112399.8854265,
+      "meta": {
+        "sender": "planner",
+        "receiver": "solver",
+        "message_id": "cc11f3b60f6a",
+        "protocol_edge": "planner_to_solver",
+        "protocol_version": "CARD-0-gsm8k",
+        "protocol_hash": "4bcdae885cc464e0a51977368e4bc06650c0326dbdcb182ce0327477c1d32daa",
+        "contract_hash": "ab4b736240365db5d0ce2caea032f40a3b7fc9c189db42d5ebcd28cac0fac22b",
+        "fields": {
+          "K": "beef=3*11,fruits_veg=8*4,spices=3*6,other=37,rate=50/10,bonus=250,threshold=100",
+          "G": "total_points",
+          "P": "spend=beef+fruits_veg+spices+other,base=spend/10*rate,total_points=base+bonus",
+          "NL": "Add the 250-point bonus only if total spend is more than $100."
+        },
+        "communication_tokens": 100,
+        "communication_tokens_exact": true,
+        "attempt_count": 1,
+        "fallback": false,
+        "tokens_include_all_attempts": true,
+        "incoming_message_ids": []
+      }
+    },
+    {
+      "sender": "solver",
+      "content": "IR:beef=3*11=33,fruits_veg=8*4=32,spices=3*6=18,spend=33+32+18+37=120,base=120/10*50=600,total=600+250=850;R:850",
+      "receiver": "verifier",
+      "round": 0,
+      "role": "assistant",
+      "prompt_tokens": 831,
+      "completion_tokens": 64,
+      "id": "4506f74b30e0",
+      "ts": 1793112401.368299,
+      "meta": {
+        "sender": "solver",
+        "receiver": "verifier",
+        "message_id": "4506f74b30e0",
+        "protocol_edge": "solver_to_verifier",
+        "protocol_version": "CARD-0-gsm8k",
+        "protocol_hash": "4bcdae885cc464e0a51977368e4bc06650c0326dbdcb182ce0327477c1d32daa",
+        "contract_hash": "ab4b736240365db5d0ce2caea032f40a3b7fc9c189db42d5ebcd28cac0fac22b",
+        "fields": {
+          "IR": "beef=3*11=33,fruits_veg=8*4=32,spices=3*6=18,spend=33+32+18+37=120,base=120/10*50=600,total=600+250=850",
+          "R": "850"
+        },
+        "communication_tokens": 64,
+        "communication_tokens_exact": true,
+        "attempt_count": 1,
+        "fallback": false,
+        "tokens_include_all_attempts": true,
+        "incoming_message_ids": [
+          "cc11f3b60f6a"
+        ]
+      }
+    },
+    {
+      "sender": "verifier",
+      "content": "CHK:ACCEPT",
+      "receiver": "solver",
+      "round": 0,
+      "role": "assistant",
+      "prompt_tokens": 1161,
+      "completion_tokens": 5,
+      "id": "312ec8292a12",
+      "ts": 1793112402.7365904,
+      "meta": {
+        "sender": "verifier",
+        "receiver": "solver",
+        "message_id": "312ec8292a12",
+        "protocol_edge": "verifier_to_solver",
+        "protocol_version": "CARD-0-gsm8k",
+        "protocol_hash": "4bcdae885cc464e0a51977368e4bc06650c0326dbdcb182ce0327477c1d32daa",
+        "contract_hash": "ab4b736240365db5d0ce2caea032f40a3b7fc9c189db42d5ebcd28cac0fac22b",
+        "fields": {
+          "CHK": "ACCEPT"
+        },
+        "communication_tokens": 5,
+        "communication_tokens_exact": true,
+        "attempt_count": 1,
+        "fallback": false,
+        "tokens_include_all_attempts": true,
+        "incoming_message_ids": [
+          "4506f74b30e0"
+        ]
+      }
+    }
+  ],
+  "communication_tokens": 169,
+  "wall_time_s": 4.665017800056376,
+  "verified": true,
+  "revision_rounds": 0,
+  "model_calls": [
+    {
+      "role": "planner",
+      "attempt": 0,
+      "status": "delivered",
+      "error": "",
+      "raw_output": "K:beef=3*11,fruits_veg=8*4,spices=3*6,other=37,rate=50/10,bonus=250,threshold=100;G:total_points;P:spend=beef+fruits_veg+spices+other,base=spend/10*rate,total_points=base+bonus;NL:Add the 250-point bonus only if total spend is more than $100.",
+      "finish_reason": "stop",
+      "output_tokens": 100,
+      "usage_available": true
+    },
+    {
+      "role": "solver",
+      "attempt": 0,
+      "status": "delivered",
+      "error": "",
+      "raw_output": "IR:beef=3*11=33,fruits_veg=8*4=32,spices=3*6=18,spend=33+32+18+37=120,base=120/10*50=600,total=600+250=850;R:850",
+      "finish_reason": "stop",
+      "output_tokens": 64,
+      "usage_available": true
+    },
+    {
+      "role": "verifier",
+      "attempt": 0,
+      "status": "delivered",
+      "error": "",
+      "raw_output": "CHK:ACCEPT",
+      "finish_reason": "stop",
+      "output_tokens": 5,
+      "usage_available": true
+    }
+  ],
+  "failed_attempts": [],
+  "calls": 3,
+  "usage_complete": true,
+  "known_input_tokens": 2781,
+  "known_output_tokens": 169,
+  "model_input_tokens": 2781,
+  "model_output_tokens": 169,
+  "format_failed_calls": 0,
+  "transport_failed_calls": 0,
+  "fallback_calls": 0,
+  "sum_model_latency_s": 4.4801025390625
+}

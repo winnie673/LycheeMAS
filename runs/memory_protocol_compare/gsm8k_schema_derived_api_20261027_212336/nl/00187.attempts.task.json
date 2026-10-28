@@ -1,0 +1,95 @@
+{
+  "task_id": "gsm8k:test:seed42:T:00192",
+  "mode": "nl",
+  "benchmark": "gsm8k",
+  "status": "completed",
+  "error": null,
+  "prediction": "91",
+  "gold": "91",
+  "wall_time_s": 3.7177567000035197,
+  "communication_tokens": 152,
+  "communication_tokens_exact": true,
+  "revision_rounds": 0,
+  "verification_decision": "ACCEPT",
+  "verified": true,
+  "messages": [
+    {
+      "sender": "planner",
+      "content": "Goal: find the number of trees remaining after 10 years, including the 30% die-off.\n\nPlan: Start with 50 trees. Each year, add 10 planted and subtract 2 chopped, for a net gain of 8 trees per year. Apply that net change for 10 years, then reduce the resulting total by 30% for the trees that die. Report the final count.",
+      "receiver": "solver",
+      "round": 0,
+      "role": "assistant",
+      "prompt_tokens": 204,
+      "completion_tokens": 82,
+      "id": "2b6df5410777",
+      "ts": 1793170520.63752,
+      "meta": {
+        "fields": {},
+        "communication_tokens": 82,
+        "communication_tokens_exact": true,
+        "attempt_count": 1,
+        "fallback": false,
+        "tokens_include_all_attempts": true,
+        "incoming_message_ids": []
+      }
+    },
+    {
+      "sender": "solver",
+      "content": "Tom starts with 50 trees. Each year the net change is +10 − 2 = +8 trees. Over 10 years: 50 + 8×10 = 130 trees. Then 30% die, leaving 70%: 130 × 0.70 = 91.\n\n\\boxed{91}",
+      "receiver": "verifier",
+      "round": 0,
+      "role": "assistant",
+      "prompt_tokens": 298,
+      "completion_tokens": 68,
+      "id": "1edf3075a588",
+      "ts": 1793170521.852383,
+      "meta": {
+        "fields": {
+          "R": "91"
+        },
+        "communication_tokens": 68,
+        "communication_tokens_exact": true,
+        "attempt_count": 1,
+        "fallback": false,
+        "tokens_include_all_attempts": true,
+        "incoming_message_ids": [
+          "2b6df5410777"
+        ]
+      }
+    },
+    {
+      "sender": "verifier",
+      "content": "ACCEPT",
+      "receiver": "solver",
+      "round": 0,
+      "role": "assistant",
+      "prompt_tokens": 661,
+      "completion_tokens": 2,
+      "id": "141ddc7fa103",
+      "ts": 1793170523.0531971,
+      "meta": {
+        "fields": {
+          "CHK": "ACCEPT"
+        },
+        "communication_tokens": 2,
+        "communication_tokens_exact": true,
+        "attempt_count": 1,
+        "fallback": false,
+        "tokens_include_all_attempts": true,
+        "incoming_message_ids": [
+          "1edf3075a588"
+        ]
+      }
+    }
+  ],
+  "calls": 3,
+  "usage_complete": true,
+  "known_input_tokens": 1163,
+  "known_output_tokens": 152,
+  "model_input_tokens": 1163,
+  "model_output_tokens": 152,
+  "format_failed_calls": 0,
+  "transport_failed_calls": 0,
+  "fallback_calls": 0,
+  "sum_model_latency_s": 3.638123035430908
+}

@@ -1,0 +1,151 @@
+{
+  "task_id": "gsm8k:train:seed42:V:00178",
+  "status": "completed",
+  "error": null,
+  "prediction": "100",
+  "messages": [
+    {
+      "sender": "planner",
+      "content": "G:total_revenue;P:jeans_revenue=4*11,tees_revenue=7*8,total_revenue=jeans_revenue+tees_revenue",
+      "receiver": "solver",
+      "round": 0,
+      "role": "assistant",
+      "prompt_tokens": 814,
+      "completion_tokens": 39,
+      "id": "fe658efa9947",
+      "ts": 1793109749.799356,
+      "meta": {
+        "sender": "planner",
+        "receiver": "solver",
+        "message_id": "fe658efa9947",
+        "protocol_edge": "planner_to_solver",
+        "protocol_version": "CARD-1-gsm8k",
+        "protocol_hash": "2a663f41d251a442e680de67a231e516a8fe5e31629bc25d021c8c0eb1354cff",
+        "contract_hash": "ab4b736240365db5d0ce2caea032f40a3b7fc9c189db42d5ebcd28cac0fac22b",
+        "fields": {
+          "G": "total_revenue",
+          "P": "jeans_revenue=4*11,tees_revenue=7*8,total_revenue=jeans_revenue+tees_revenue"
+        },
+        "communication_tokens": 39,
+        "communication_tokens_exact": true,
+        "attempt_count": 1,
+        "fallback": false,
+        "tokens_include_all_attempts": true,
+        "incoming_message_ids": []
+      }
+    },
+    {
+      "sender": "solver",
+      "content": "IR:jeans_revenue=4*11=44,tees_revenue=7*8=56,total_revenue=44+56=100;R:100",
+      "receiver": "verifier",
+      "round": 0,
+      "role": "assistant",
+      "prompt_tokens": 736,
+      "completion_tokens": 37,
+      "id": "0bcf982fc21a",
+      "ts": 1793109751.0431826,
+      "meta": {
+        "sender": "solver",
+        "receiver": "verifier",
+        "message_id": "0bcf982fc21a",
+        "protocol_edge": "solver_to_verifier",
+        "protocol_version": "CARD-1-gsm8k",
+        "protocol_hash": "2a663f41d251a442e680de67a231e516a8fe5e31629bc25d021c8c0eb1354cff",
+        "contract_hash": "ab4b736240365db5d0ce2caea032f40a3b7fc9c189db42d5ebcd28cac0fac22b",
+        "fields": {
+          "IR": "jeans_revenue=4*11=44,tees_revenue=7*8=56,total_revenue=44+56=100",
+          "R": "100"
+        },
+        "communication_tokens": 37,
+        "communication_tokens_exact": true,
+        "attempt_count": 1,
+        "fallback": false,
+        "tokens_include_all_attempts": true,
+        "incoming_message_ids": [
+          "fe658efa9947"
+        ]
+      }
+    },
+    {
+      "sender": "verifier",
+      "content": "CHK:ACCEPT",
+      "receiver": "solver",
+      "round": 0,
+      "role": "assistant",
+      "prompt_tokens": 1100,
+      "completion_tokens": 5,
+      "id": "d2fc20f4797e",
+      "ts": 1793109752.6959672,
+      "meta": {
+        "sender": "verifier",
+        "receiver": "solver",
+        "message_id": "d2fc20f4797e",
+        "protocol_edge": "verifier_to_solver",
+        "protocol_version": "CARD-1-gsm8k",
+        "protocol_hash": "2a663f41d251a442e680de67a231e516a8fe5e31629bc25d021c8c0eb1354cff",
+        "contract_hash": "ab4b736240365db5d0ce2caea032f40a3b7fc9c189db42d5ebcd28cac0fac22b",
+        "fields": {
+          "CHK": "ACCEPT"
+        },
+        "communication_tokens": 5,
+        "communication_tokens_exact": true,
+        "attempt_count": 1,
+        "fallback": false,
+        "tokens_include_all_attempts": true,
+        "incoming_message_ids": [
+          "0bcf982fc21a"
+        ]
+      }
+    }
+  ],
+  "communication_tokens": 81,
+  "wall_time_s": 4.162359699956141,
+  "verified": true,
+  "revision_rounds": 0,
+  "model_calls": [
+    {
+      "role": "planner",
+      "attempt": 0,
+      "status": "delivered",
+      "error": "",
+      "raw_output": "G:total_revenue;P:jeans_revenue=4*11,tees_revenue=7*8,total_revenue=jeans_revenue+tees_revenue",
+      "finish_reason": "stop",
+      "output_tokens": 39,
+      "usage_available": true
+    },
+    {
+      "role": "solver",
+      "attempt": 0,
+      "status": "delivered",
+      "error": "",
+      "raw_output": "IR:jeans_revenue=4*11=44,tees_revenue=7*8=56,total_revenue=44+56=100;R:100",
+      "finish_reason": "stop",
+      "output_tokens": 37,
+      "usage_available": true
+    },
+    {
+      "role": "verifier",
+      "attempt": 0,
+      "status": "delivered",
+      "error": "",
+      "raw_output": "CHK:ACCEPT",
+      "finish_reason": "stop",
+      "output_tokens": 5,
+      "usage_available": true
+    }
+  ],
+  "failed_attempts": [],
+  "calls": 3,
+  "usage_complete": true,
+  "known_input_tokens": 2650,
+  "known_output_tokens": 81,
+  "model_input_tokens": 2650,
+  "model_output_tokens": 81,
+  "format_failed_calls": 0,
+  "transport_failed_calls": 0,
+  "fallback_calls": 0,
+  "sum_model_latency_s": 3.9967875480651855,
+  "gold": "100",
+  "score": 1.0,
+  "question": "Linda owns a store. She sells jeans at 11 dollars each and tees at 8 dollars each. If she sold 7 tees and 4 jeans in a day, how much money, in dollars, did she have at the end of the day?\nGive the final numeric answer."
+}

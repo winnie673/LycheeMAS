@@ -1,0 +1,123 @@
+{
+  "task_id": "gsm8k:train:seed42:G2:00047",
+  "status": "completed",
+  "error": null,
+  "prediction": "22",
+  "messages": [
+    {
+      "sender": "planner",
+      "content": "Goal: find how many paper boats remain after losses.\n\nPlan: Start with 30 boats. Compute 20% of 30 eaten by fish, subtract those. Then subtract the 2 boats shot with flaming arrows. Report the remaining count.\n\nConstraints: Use only the given numbers; give a single final numeric answer.",
+      "receiver": "solver",
+      "round": 0,
+      "role": "assistant",
+      "prompt_tokens": 190,
+      "completion_tokens": 64,
+      "id": "6849b3d36d7f",
+      "ts": 1793110263.232075,
+      "meta": {
+        "fields": {},
+        "communication_tokens": 64,
+        "communication_tokens_exact": true,
+        "attempt_count": 1,
+        "fallback": false,
+        "tokens_include_all_attempts": true,
+        "incoming_message_ids": []
+      }
+    },
+    {
+      "sender": "solver",
+      "content": "20% of 30 is 6, so 30 − 6 = 24 remain. Then 24 − 2 = 22.\n\n\\boxed{22}",
+      "receiver": "verifier",
+      "round": 0,
+      "role": "assistant",
+      "prompt_tokens": 266,
+      "completion_tokens": 36,
+      "id": "eed00038059e",
+      "ts": 1793110264.4114153,
+      "meta": {
+        "fields": {
+          "R": "22"
+        },
+        "communication_tokens": 36,
+        "communication_tokens_exact": true,
+        "attempt_count": 1,
+        "fallback": false,
+        "tokens_include_all_attempts": true,
+        "incoming_message_ids": [
+          "6849b3d36d7f"
+        ]
+      }
+    },
+    {
+      "sender": "verifier",
+      "content": "ACCEPT",
+      "receiver": "solver",
+      "round": 0,
+      "role": "assistant",
+      "prompt_tokens": 615,
+      "completion_tokens": 2,
+      "id": "cd7315e4b25e",
+      "ts": 1793110265.6802886,
+      "meta": {
+        "fields": {
+          "CHK": "ACCEPT"
+        },
+        "communication_tokens": 2,
+        "communication_tokens_exact": true,
+        "attempt_count": 1,
+        "fallback": false,
+        "tokens_include_all_attempts": true,
+        "incoming_message_ids": [
+          "eed00038059e"
+        ]
+      }
+    }
+  ],
+  "communication_tokens": 102,
+  "wall_time_s": 4.176866500056349,
+  "verified": true,
+  "revision_rounds": 0,
+  "model_calls": [
+    {
+      "role": "planner",
+      "attempt": 0,
+      "status": "delivered",
+      "error": "",
+      "raw_output": "Goal: find how many paper boats remain after losses.\n\nPlan: Start with 30 boats. Compute 20% of 30 eaten by fish, subtract those. Then subtract the 2 boats shot with flaming arrows. Report the remaining count.\n\nConstraints: Use only the given numbers; give a single final numeric answer.",
+      "finish_reason": "stop",
+      "output_tokens": 64,
+      "usage_available": true
+    },
+    {
+      "role": "solver",
+      "attempt": 0,
+      "status": "delivered",
+      "error": "",
+      "raw_output": "20% of 30 is 6, so 30 − 6 = 24 remain. Then 24 − 2 = 22.\n\n\\boxed{22}",
+      "finish_reason": "stop",
+      "output_tokens": 36,
+      "usage_available": true
+    },
+    {
+      "role": "verifier",
+      "attempt": 0,
+      "status": "delivered",
+      "error": "",
+      "raw_output": "ACCEPT",
+      "finish_reason": "stop",
+      "output_tokens": 2,
+      "usage_available": true
+    }
+  ],
+  "failed_attempts": [],
+  "calls": 3,
+  "usage_complete": true,
+  "known_input_tokens": 1071,
+  "known_output_tokens": 102,
+  "model_input_tokens": 1071,
+  "model_output_tokens": 102,
+  "format_failed_calls": 0,
+  "transport_failed_calls": 0,
+  "fallback_calls": 0,
+  "sum_model_latency_s": 4.104714870452881
+}

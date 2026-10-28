@@ -1,0 +1,151 @@
+{
+  "task_id": "gsm8k:train:seed42:V:00164",
+  "status": "completed",
+  "error": null,
+  "prediction": "180",
+  "messages": [
+    {
+      "sender": "planner",
+      "content": "G:total_animal_crackers_eaten;P:total_packs=20-2,crackers_eaten=total_packs*10",
+      "receiver": "solver",
+      "round": 0,
+      "role": "assistant",
+      "prompt_tokens": 834,
+      "completion_tokens": 31,
+      "id": "b7675775ede2",
+      "ts": 1793168859.7850873,
+      "meta": {
+        "sender": "planner",
+        "receiver": "solver",
+        "message_id": "b7675775ede2",
+        "protocol_edge": "planner_to_solver",
+        "protocol_version": "CARD-3-gsm8k",
+        "protocol_hash": "fb1a4acb6e591ac96544876aedd912b27a6f9d3154c76112e1da0f43407d27b2",
+        "contract_hash": "ab4b736240365db5d0ce2caea032f40a3b7fc9c189db42d5ebcd28cac0fac22b",
+        "fields": {
+          "G": "total_animal_crackers_eaten",
+          "P": "total_packs=20-2,crackers_eaten=total_packs*10"
+        },
+        "communication_tokens": 31,
+        "communication_tokens_exact": true,
+        "attempt_count": 1,
+        "fallback": false,
+        "tokens_include_all_attempts": true,
+        "incoming_message_ids": []
+      }
+    },
+    {
+      "sender": "solver",
+      "content": "IR:total_packs=20-2=18,crackers_eaten=18*10=180;R:180",
+      "receiver": "verifier",
+      "round": 0,
+      "role": "assistant",
+      "prompt_tokens": 765,
+      "completion_tokens": 26,
+      "id": "cf026ebf85bb",
+      "ts": 1793168860.7292602,
+      "meta": {
+        "sender": "solver",
+        "receiver": "verifier",
+        "message_id": "cf026ebf85bb",
+        "protocol_edge": "solver_to_verifier",
+        "protocol_version": "CARD-3-gsm8k",
+        "protocol_hash": "fb1a4acb6e591ac96544876aedd912b27a6f9d3154c76112e1da0f43407d27b2",
+        "contract_hash": "ab4b736240365db5d0ce2caea032f40a3b7fc9c189db42d5ebcd28cac0fac22b",
+        "fields": {
+          "IR": "total_packs=20-2=18,crackers_eaten=18*10=180",
+          "R": "180"
+        },
+        "communication_tokens": 26,
+        "communication_tokens_exact": true,
+        "attempt_count": 1,
+        "fallback": false,
+        "tokens_include_all_attempts": true,
+        "incoming_message_ids": [
+          "b7675775ede2"
+        ]
+      }
+    },
+    {
+      "sender": "verifier",
+      "content": "CHK:ACCEPT",
+      "receiver": "solver",
+      "round": 0,
+      "role": "assistant",
+      "prompt_tokens": 1126,
+      "completion_tokens": 5,
+      "id": "09b544a96c5f",
+      "ts": 1793168861.5732617,
+      "meta": {
+        "sender": "verifier",
+        "receiver": "solver",
+        "message_id": "09b544a96c5f",
+        "protocol_edge": "verifier_to_solver",
+        "protocol_version": "CARD-3-gsm8k",
+        "protocol_hash": "fb1a4acb6e591ac96544876aedd912b27a6f9d3154c76112e1da0f43407d27b2",
+        "contract_hash": "ab4b736240365db5d0ce2caea032f40a3b7fc9c189db42d5ebcd28cac0fac22b",
+        "fields": {
+          "CHK": "ACCEPT"
+        },
+        "communication_tokens": 5,
+        "communication_tokens_exact": true,
+        "attempt_count": 1,
+        "fallback": false,
+        "tokens_include_all_attempts": true,
+        "incoming_message_ids": [
+          "cf026ebf85bb"
+        ]
+      }
+    }
+  ],
+  "communication_tokens": 62,
+  "wall_time_s": 2.922203000052832,
+  "verified": true,
+  "revision_rounds": 0,
+  "model_calls": [
+    {
+      "role": "planner",
+      "attempt": 0,
+      "status": "delivered",
+      "error": "",
+      "raw_output": "G:total_animal_crackers_eaten;P:total_packs=20-2,crackers_eaten=total_packs*10",
+      "finish_reason": "stop",
+      "output_tokens": 31,
+      "usage_available": true
+    },
+    {
+      "role": "solver",
+      "attempt": 0,
+      "status": "delivered",
+      "error": "",
+      "raw_output": "IR:total_packs=20-2=18,crackers_eaten=18*10=180;R:180",
+      "finish_reason": "stop",
+      "output_tokens": 26,
+      "usage_available": true
+    },
+    {
+      "role": "verifier",
+      "attempt": 0,
+      "status": "delivered",
+      "error": "",
+      "raw_output": "CHK:ACCEPT",
+      "finish_reason": "stop",
+      "output_tokens": 5,
+      "usage_available": true
+    }
+  ],
+  "failed_attempts": [],
+  "calls": 3,
+  "usage_complete": true,
+  "known_input_tokens": 2725,
+  "known_output_tokens": 62,
+  "model_input_tokens": 2725,
+  "model_output_tokens": 62,
+  "format_failed_calls": 0,
+  "transport_failed_calls": 0,
+  "fallback_calls": 0,
+  "sum_model_latency_s": 2.8229191303253174,
+  "gold": "180",
+  "score": 1.0,
+  "question": "Mrs. Gable’s third grade class is on a field trip to the beach. For lunch, Mrs. Gable brought 20 lunches for the 20 students in her class. She included a pack of animal crackers in each lunch bag for dessert. Each pack of animal crackers contained 10 animal crackers. If 2 students did not eat their animal crackers, how many animal crackers were eaten in total among Mrs. Gable’s students?\nGive the final numeric answer."
+}

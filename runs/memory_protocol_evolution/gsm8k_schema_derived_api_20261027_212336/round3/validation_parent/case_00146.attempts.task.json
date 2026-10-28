@@ -1,0 +1,236 @@
+{
+  "task_id": "gsm8k:train:seed42:V:00146",
+  "status": "completed",
+  "error": null,
+  "prediction": "12",
+  "messages": [
+    {
+      "sender": "planner",
+      "content": "G:longest_boat_length_ft;K:savings=20000,price_per_ft=1500,license=500,docking=3*500;P:available=savings-license-docking,length=available/price_per_ft",
+      "receiver": "solver",
+      "round": 0,
+      "role": "assistant",
+      "prompt_tokens": 760,
+      "completion_tokens": 55,
+      "id": "42a45b8175f4",
+      "ts": 1793112987.144789,
+      "meta": {
+        "sender": "planner",
+        "receiver": "solver",
+        "message_id": "42a45b8175f4",
+        "protocol_edge": "planner_to_solver",
+        "protocol_version": "CARD-0-gsm8k",
+        "protocol_hash": "4bcdae885cc464e0a51977368e4bc06650c0326dbdcb182ce0327477c1d32daa",
+        "contract_hash": "ab4b736240365db5d0ce2caea032f40a3b7fc9c189db42d5ebcd28cac0fac22b",
+        "fields": {
+          "G": "longest_boat_length_ft",
+          "K": "savings=20000,price_per_ft=1500,license=500,docking=3*500",
+          "P": "available=savings-license-docking,length=available/price_per_ft"
+        },
+        "communication_tokens": 55,
+        "communication_tokens_exact": true,
+        "attempt_count": 1,
+        "fallback": false,
+        "tokens_include_all_attempts": true,
+        "incoming_message_ids": []
+      }
+    },
+    {
+      "sender": "solver",
+      "content": "IR:available=20000-500-1500=18000,length=18000/1500=12;R:12",
+      "receiver": "verifier",
+      "round": 0,
+      "role": "assistant",
+      "prompt_tokens": 757,
+      "completion_tokens": 28,
+      "id": "1340acb6f389",
+      "ts": 1793112988.001951,
+      "meta": {
+        "sender": "solver",
+        "receiver": "verifier",
+        "message_id": "1340acb6f389",
+        "protocol_edge": "solver_to_verifier",
+        "protocol_version": "CARD-0-gsm8k",
+        "protocol_hash": "4bcdae885cc464e0a51977368e4bc06650c0326dbdcb182ce0327477c1d32daa",
+        "contract_hash": "ab4b736240365db5d0ce2caea032f40a3b7fc9c189db42d5ebcd28cac0fac22b",
+        "fields": {
+          "IR": "available=20000-500-1500=18000,length=18000/1500=12",
+          "R": "12"
+        },
+        "communication_tokens": 28,
+        "communication_tokens_exact": true,
+        "attempt_count": 1,
+        "fallback": false,
+        "tokens_include_all_attempts": true,
+        "incoming_message_ids": [
+          "42a45b8175f4"
+        ]
+      }
+    },
+    {
+      "sender": "verifier",
+      "content": "CHK:REVISE;E:ARITH;REQ:Recompute the amount reserved for docking fees as three times $500 and subtract both the license/registration and docking amounts from $20000 before dividing by $1500 per foot.",
+      "receiver": "solver",
+      "round": 0,
+      "role": "assistant",
+      "prompt_tokens": 1096,
+      "completion_tokens": 51,
+      "id": "a6fc7cfd065a",
+      "ts": 1793112989.6831264,
+      "meta": {
+        "sender": "verifier",
+        "receiver": "solver",
+        "message_id": "a6fc7cfd065a",
+        "protocol_edge": "verifier_to_solver",
+        "protocol_version": "CARD-0-gsm8k",
+        "protocol_hash": "4bcdae885cc464e0a51977368e4bc06650c0326dbdcb182ce0327477c1d32daa",
+        "contract_hash": "ab4b736240365db5d0ce2caea032f40a3b7fc9c189db42d5ebcd28cac0fac22b",
+        "fields": {
+          "CHK": "REVISE",
+          "E": "ARITH",
+          "REQ": "Recompute the amount reserved for docking fees as three times $500 and subtract both the license/registration and docking amounts from $20000 before dividing by $1500 per foot."
+        },
+        "communication_tokens": 51,
+        "communication_tokens_exact": true,
+        "attempt_count": 1,
+        "fallback": false,
+        "tokens_include_all_attempts": true,
+        "incoming_message_ids": [
+          "1340acb6f389"
+        ]
+      }
+    },
+    {
+      "sender": "solver",
+      "content": "IR:docking=3*500=1500,available=20000-500-1500=18000,length=18000/1500=12;R:12",
+      "receiver": "verifier",
+      "round": 1,
+      "role": "assistant",
+      "prompt_tokens": 864,
+      "completion_tokens": 37,
+      "id": "41ef1951e522",
+      "ts": 1793112991.1150248,
+      "meta": {
+        "sender": "solver",
+        "receiver": "verifier",
+        "message_id": "41ef1951e522",
+        "protocol_edge": "solver_to_verifier",
+        "protocol_version": "CARD-0-gsm8k",
+        "protocol_hash": "4bcdae885cc464e0a51977368e4bc06650c0326dbdcb182ce0327477c1d32daa",
+        "contract_hash": "ab4b736240365db5d0ce2caea032f40a3b7fc9c189db42d5ebcd28cac0fac22b",
+        "fields": {
+          "IR": "docking=3*500=1500,available=20000-500-1500=18000,length=18000/1500=12",
+          "R": "12"
+        },
+        "communication_tokens": 37,
+        "communication_tokens_exact": true,
+        "attempt_count": 1,
+        "fallback": false,
+        "tokens_include_all_attempts": true,
+        "incoming_message_ids": [
+          "42a45b8175f4",
+          "1340acb6f389",
+          "a6fc7cfd065a"
+        ]
+      }
+    },
+    {
+      "sender": "verifier",
+      "content": "CHK:ACCEPT",
+      "receiver": "solver",
+      "round": 1,
+      "role": "assistant",
+      "prompt_tokens": 1117,
+      "completion_tokens": 5,
+      "id": "c2a16c49a0a9",
+      "ts": 1793112992.3647199,
+      "meta": {
+        "sender": "verifier",
+        "receiver": "solver",
+        "message_id": "c2a16c49a0a9",
+        "protocol_edge": "verifier_to_solver",
+        "protocol_version": "CARD-0-gsm8k",
+        "protocol_hash": "4bcdae885cc464e0a51977368e4bc06650c0326dbdcb182ce0327477c1d32daa",
+        "contract_hash": "ab4b736240365db5d0ce2caea032f40a3b7fc9c189db42d5ebcd28cac0fac22b",
+        "fields": {
+          "CHK": "ACCEPT"
+        },
+        "communication_tokens": 5,
+        "communication_tokens_exact": true,
+        "attempt_count": 1,
+        "fallback": false,
+        "tokens_include_all_attempts": true,
+        "incoming_message_ids": [
+          "41ef1951e522"
+        ]
+      }
+    }
+  ],
+  "communication_tokens": 176,
+  "wall_time_s": 6.55125920008868,
+  "verified": true,
+  "revision_rounds": 1,
+  "model_calls": [
+    {
+      "role": "planner",
+      "attempt": 0,
+      "status": "delivered",
+      "error": "",
+      "raw_output": "G:longest_boat_length_ft;K:savings=20000,price_per_ft=1500,license=500,docking=3*500;P:available=savings-license-docking,length=available/price_per_ft",
+      "finish_reason": "stop",
+      "output_tokens": 55,
+      "usage_available": true
+    },
+    {
+      "role": "solver",
+      "attempt": 0,
+      "status": "delivered",
+      "error": "",
+      "raw_output": "IR:available=20000-500-1500=18000,length=18000/1500=12;R:12",
+      "finish_reason": "stop",
+      "output_tokens": 28,
+      "usage_available": true
+    },
+    {
+      "role": "verifier",
+      "attempt": 0,
+      "status": "delivered",
+      "error": "",
+      "raw_output": "CHK:REVISE;E:ARITH;REQ:Recompute the amount reserved for docking fees as three times $500 and subtract both the license/registration and docking amounts from $20000 before dividing by $1500 per foot.",
+      "finish_reason": "stop",
+      "output_tokens": 51,
+      "usage_available": true
+    },
+    {
+      "role": "solver",
+      "attempt": 0,
+      "status": "delivered",
+      "error": "",
+      "raw_output": "IR:docking=3*500=1500,available=20000-500-1500=18000,length=18000/1500=12;R:12",
+      "finish_reason": "stop",
+      "output_tokens": 37,
+      "usage_available": true
+    },
+    {
+      "role": "verifier",
+      "attempt": 0,
+      "status": "delivered",
+      "error": "",
+      "raw_output": "CHK:ACCEPT",
+      "finish_reason": "stop",
+      "output_tokens": 5,
+      "usage_available": true
+    }
+  ],
+  "failed_attempts": [],
+  "calls": 5,
+  "usage_complete": true,
+  "known_input_tokens": 4594,
+  "known_output_tokens": 176,
+  "model_input_tokens": 4594,
+  "model_output_tokens": 176,
+  "format_failed_calls": 0,
+  "transport_failed_calls": 0,
+  "fallback_calls": 0,
+  "sum_model_latency_s": 6.403859376907349
+}

@@ -1,0 +1,81 @@
+{
+  "diagnosis": {
+    "case_analysis": [
+      {
+        "case_id": "gsm8k:train:seed42:G2:00000",
+        "issue_type": "OPERATION_DIRECTION_ERROR",
+        "communication_related": false,
+        "protocol_path": "planner_to_solver->solver_to_verifier",
+        "evidence": "Both NL and hybrid encode john_age=(79+5)/2=42 and age_gap=35-23=12, then James_age=john_age-age_gap=30. The relation 'James turned 23 the same time John turned 35' means James is 12 years YOUNGER, so James=42-12=30 is arithmetically consistent with the encoded plan; the error is the base reasoning that James is younger rather than older (gold 25 implies James=42-17? no—gold 25 means James is 17 years younger, i.e., the age gap should be applied differently). The protocol faithfully carried the planner's relation; the defect is in the underlying interpretation, not in encoding. Both variants fail identically, confirming base reasoning."
+      },
+      {
+        "case_id": "gsm8k:train:seed42:G2:00003",
+        "issue_type": "OPERATION_DIRECTION_ERROR",
+        "communication_related": false,
+        "protocol_path": "planner_to_solver->solver_to_verifier",
+        "evidence": "Both NL and hybrid compute first=0.40*50=20, second=0.34*50=17, neutral=50-20-17=13. Gold is 3. The encoded plan is internally consistent and faithfully transmitted; the failure is the base interpretation of the problem (the percentages likely overlap or the intended reading differs). No communication gap: hybrid P and NL prose both preserve the same relations, and both yield 13."
+      },
+      {
+        "case_id": "gsm8k:train:seed42:G2:00005",
+        "issue_type": "OPERATION_DIRECTION_ERROR",
+        "communication_related": true,
+        "protocol_path": "planner_to_solver",
+        "evidence": "NL planner correctly states Elle and Andrea split the soda+wings cost, so their combined spending equals the full cost ($16), giving others=$16+$5=$21 and difference=$1 (correct). Hybrid planner encodes others_shared=(4*1.5+10)/2+5, dividing the shared cost by 2, which halves the others' spending and yields 9. The hybrid P relation mis-encodes the split semantics: 'split the cost' means each pays half but combined equals full cost. This is a communication/encoding defect in P (operation direction on the shared cost), not base reasoning, since NL got it right."
+      },
+      {
+        "case_id": "gsm8k:train:seed42:G2:00031",
+        "issue_type": "MISSING_MULTIPLICITY",
+        "communication_related": true,
+        "protocol_path": "planner_to_solver",
+        "evidence": "NL planner correctly computes total start-fee income over 20 walks (20*$2=$40) before dividing remaining by $1.25, yielding 128. Hybrid P encodes blocks_per_dog=(per_person-start_fee)/per_block, subtracting the start fee only once per dog rather than accounting for the 20-walk start-fee total, then multiplies by 20, giving 3168. The multiplicity of the $2 start fee across 20 walks is lost in the hybrid encoding. Communication-related encoding defect (missing multiplicity), not base reasoning."
+      },
+      {
+        "case_id": "gsm8k:train:seed42:G2:00017",
+        "issue_type": "TEMPORAL_RELATION_LOSS",
+        "communication_related": true,
+        "protocol_path": "planner_to_solver->verifier_to_solver",
+        "evidence": "Hybrid P encodes miles_added_per_week=target/weeks=120/40=3, which matches gold 3. NL planner's prose is ambiguous about whether the increase applies over 40 weeks or 39 transitions; solver first computes 0.5, verifier requests revision, solver switches to 20/39, verifier requests revision again, and the run ends with \\frac{20}{39} (wrong). The NL path lost the temporal/step-count relation that the compact hybrid P preserved. Communication-related: the NL fallback failed to pin down the number of weekly increments, and the verifier's revision guidance pushed toward an incorrect step count."
+      },
+      {
+        "case_id": "gsm8k:train:seed42:G2:00033",
+        "issue_type": "none",
+        "communication_related": false,
+        "protocol_path": "planner_to_solver->solver_to_verifier",
+        "evidence": "Both NL and hybrid correctly compute capacity_ml=2,000,000, min_water=1,600,000, allowed_loss=400,000, jumps=1000. Hybrid is higher cost (170 vs 210 tokens) but both correct; hybrid includes K and NL fields that add tokens without changing the answer. Successful compact pattern; no defect."
+      },
+      {
+        "case_id": "gsm8k:train:seed42:G2:00044",
+        "issue_type": "none",
+        "communication_related": false,
+        "protocol_path": "planner_to_solver->solver_to_verifier",
+        "evidence": "Both NL and hybrid correctly compute crickets_100=8, weeks_90=12, weeks_100=3, total=72. Hybrid is more compact (143 vs 250 tokens) and preserves the same relations. Successful compact pattern; no defect."
+      },
+      {
+        "case_id": "gsm8k:train:seed42:G2:00020",
+        "issue_type": "none",
+        "communication_related": false,
+        "protocol_path": "planner_to_solver->solver_to_verifier",
+        "evidence": "Both NL and hybrid correctly compute Jacob_pies=5, Mason_hotdogs=15, total_weight=30. Hybrid is more compact (139 vs 181 tokens) and preserves the same relations. Successful compact pattern; no defect."
+      },
+      {
+        "case_id": "gsm8k:train:seed42:G2:00029",
+        "issue_type": "none",
+        "communication_related": false,
+        "protocol_path": "planner_to_solver->solver_to_verifier",
+        "evidence": "Both NL and hybrid correctly compute full_floors=6, half_floors=6, people_full=240, people_half=120, total=360. Hybrid is more compact (129 vs 183 tokens) and preserves the same relations. Successful compact pattern; no defect."
+      }
+    ],
+    "global_findings": [
+      "Hybrid compact symbolic P fields preserve operation direction and multiplicity better than NL prose in cases 00005 and 00031, where NL succeeded but hybrid failed due to encoding errors (shared-cost division, start-fee multiplicity).",
+      "NL prose path failed case 00017 due to temporal/step-count ambiguity that the compact hybrid P resolved correctly; the verifier's revision guidance amplified the error rather than correcting it.",
+      "Both-incorrect cases 00000 and 00003 are base reasoning/interpretation failures, not communication failures; both variants encode the same (wrong) relations faithfully.",
+      "Successful compact patterns (00033, 00044, 00020, 00029) show hybrid symbolic fields achieving equal correctness at lower token cost; these should be preserved.",
+      "The verifier ACCEPTed incorrect answers in both-incorrect cases and in hybrid failures, indicating verifier sufficiency checks did not catch base-reasoning or encoding errors; this is a verification gap, not a protocol-card defect per se."
+    ]
+  },
+  "eligible_case_ids": [
+    "gsm8k:train:seed42:G2:00005",
+    "gsm8k:train:seed42:G2:00017",
+    "gsm8k:train:seed42:G2:00031"
+  ]
+}

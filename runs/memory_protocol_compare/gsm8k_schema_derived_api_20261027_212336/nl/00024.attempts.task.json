@@ -1,0 +1,95 @@
+{
+  "task_id": "gsm8k:test:seed42:T:00025",
+  "mode": "nl",
+  "benchmark": "gsm8k",
+  "status": "completed",
+  "error": null,
+  "prediction": "2",
+  "gold": "2",
+  "wall_time_s": 3.3142005000263453,
+  "communication_tokens": 196,
+  "communication_tokens_exact": true,
+  "revision_rounds": 0,
+  "verification_decision": "ACCEPT",
+  "verified": true,
+  "messages": [
+    {
+      "sender": "planner",
+      "content": "Goal: find the number of pizza boxes Marie ordered.\n\nPlan: Compute the cost of the known items: 1 chicken meal at $12, 5 milks at $3 each, and 4 apples at $1.50 each. Add these to get the subtotal for non-pizza items. Subtract that subtotal from the $50 total to get the amount spent on pizza. Divide that pizza amount by $8.50 per box to get the number of boxes.\n\nConstraints: Use the given prices and total exactly; the result should be the count of pizza boxes.",
+      "receiver": "solver",
+      "round": 0,
+      "role": "assistant",
+      "prompt_tokens": 216,
+      "completion_tokens": 117,
+      "id": "b945fc21eeb9",
+      "ts": 1793169162.0342019,
+      "meta": {
+        "fields": {},
+        "communication_tokens": 117,
+        "communication_tokens_exact": true,
+        "attempt_count": 1,
+        "fallback": false,
+        "tokens_include_all_attempts": true,
+        "incoming_message_ids": []
+      }
+    },
+    {
+      "sender": "solver",
+      "content": "The known items cost: chicken $12, milk 5×$3=$15, apples 4×$1.50=$6. Subtotal = $12+$15+$6=$33. Pizza spending = $50−$33=$17. At $8.50 per box, 17÷8.50=2.\n\n\\boxed{2}",
+      "receiver": "verifier",
+      "round": 0,
+      "role": "assistant",
+      "prompt_tokens": 345,
+      "completion_tokens": 77,
+      "id": "db2cdf250e66",
+      "ts": 1793169163.0797865,
+      "meta": {
+        "fields": {
+          "R": "2"
+        },
+        "communication_tokens": 77,
+        "communication_tokens_exact": true,
+        "attempt_count": 1,
+        "fallback": false,
+        "tokens_include_all_attempts": true,
+        "incoming_message_ids": [
+          "b945fc21eeb9"
+        ]
+      }
+    },
+    {
+      "sender": "verifier",
+      "content": "ACCEPT",
+      "receiver": "solver",
+      "round": 0,
+      "role": "assistant",
+      "prompt_tokens": 682,
+      "completion_tokens": 2,
+      "id": "4eb8de134106",
+      "ts": 1793169164.0591328,
+      "meta": {
+        "fields": {
+          "CHK": "ACCEPT"
+        },
+        "communication_tokens": 2,
+        "communication_tokens_exact": true,
+        "attempt_count": 1,
+        "fallback": false,
+        "tokens_include_all_attempts": true,
+        "incoming_message_ids": [
+          "db2cdf250e66"
+        ]
+      }
+    }
+  ],
+  "calls": 3,
+  "usage_complete": true,
+  "known_input_tokens": 1243,
+  "known_output_tokens": 196,
+  "model_input_tokens": 1243,
+  "model_output_tokens": 196,
+  "format_failed_calls": 0,
+  "transport_failed_calls": 0,
+  "fallback_calls": 0,
+  "sum_model_latency_s": 3.274113416671753
+}

@@ -1,0 +1,151 @@
+{
+  "task_id": "gsm8k:train:seed42:V:00104",
+  "status": "completed",
+  "error": null,
+  "prediction": "2500",
+  "messages": [
+    {
+      "sender": "planner",
+      "content": "G:price_difference;P:proceeds=30000-4000,original=proceeds/0.8,difference=30000-original",
+      "receiver": "solver",
+      "round": 0,
+      "role": "assistant",
+      "prompt_tokens": 882,
+      "completion_tokens": 32,
+      "id": "898da60feb4d",
+      "ts": 1793111553.835959,
+      "meta": {
+        "sender": "planner",
+        "receiver": "solver",
+        "message_id": "898da60feb4d",
+        "protocol_edge": "planner_to_solver",
+        "protocol_version": "CARD-2-gsm8k",
+        "protocol_hash": "aec703067bbfeee6aa1e642a2a319658f1d33f2eff00c8701de19347f616ed6d",
+        "contract_hash": "ab4b736240365db5d0ce2caea032f40a3b7fc9c189db42d5ebcd28cac0fac22b",
+        "fields": {
+          "G": "price_difference",
+          "P": "proceeds=30000-4000,original=proceeds/0.8,difference=30000-original"
+        },
+        "communication_tokens": 32,
+        "communication_tokens_exact": true,
+        "attempt_count": 1,
+        "fallback": false,
+        "tokens_include_all_attempts": true,
+        "incoming_message_ids": []
+      }
+    },
+    {
+      "sender": "solver",
+      "content": "IR:proceeds=30000-4000=26000,original=26000/0.8=32500,difference=32500-30000=2500;R:2500",
+      "receiver": "verifier",
+      "round": 0,
+      "role": "assistant",
+      "prompt_tokens": 732,
+      "completion_tokens": 41,
+      "id": "8d3c2e4e5f87",
+      "ts": 1793111555.1503549,
+      "meta": {
+        "sender": "solver",
+        "receiver": "verifier",
+        "message_id": "8d3c2e4e5f87",
+        "protocol_edge": "solver_to_verifier",
+        "protocol_version": "CARD-2-gsm8k",
+        "protocol_hash": "aec703067bbfeee6aa1e642a2a319658f1d33f2eff00c8701de19347f616ed6d",
+        "contract_hash": "ab4b736240365db5d0ce2caea032f40a3b7fc9c189db42d5ebcd28cac0fac22b",
+        "fields": {
+          "IR": "proceeds=30000-4000=26000,original=26000/0.8=32500,difference=32500-30000=2500",
+          "R": "2500"
+        },
+        "communication_tokens": 41,
+        "communication_tokens_exact": true,
+        "attempt_count": 1,
+        "fallback": false,
+        "tokens_include_all_attempts": true,
+        "incoming_message_ids": [
+          "898da60feb4d"
+        ]
+      }
+    },
+    {
+      "sender": "verifier",
+      "content": "CHK:ACCEPT",
+      "receiver": "solver",
+      "round": 0,
+      "role": "assistant",
+      "prompt_tokens": 1107,
+      "completion_tokens": 5,
+      "id": "8a462be2704a",
+      "ts": 1793111556.630825,
+      "meta": {
+        "sender": "verifier",
+        "receiver": "solver",
+        "message_id": "8a462be2704a",
+        "protocol_edge": "verifier_to_solver",
+        "protocol_version": "CARD-2-gsm8k",
+        "protocol_hash": "aec703067bbfeee6aa1e642a2a319658f1d33f2eff00c8701de19347f616ed6d",
+        "contract_hash": "ab4b736240365db5d0ce2caea032f40a3b7fc9c189db42d5ebcd28cac0fac22b",
+        "fields": {
+          "CHK": "ACCEPT"
+        },
+        "communication_tokens": 5,
+        "communication_tokens_exact": true,
+        "attempt_count": 1,
+        "fallback": false,
+        "tokens_include_all_attempts": true,
+        "incoming_message_ids": [
+          "8d3c2e4e5f87"
+        ]
+      }
+    }
+  ],
+  "communication_tokens": 78,
+  "wall_time_s": 4.191505700000562,
+  "verified": true,
+  "revision_rounds": 0,
+  "model_calls": [
+    {
+      "role": "planner",
+      "attempt": 0,
+      "status": "delivered",
+      "error": "",
+      "raw_output": "G:price_difference;P:proceeds=30000-4000,original=proceeds/0.8,difference=30000-original",
+      "finish_reason": "stop",
+      "output_tokens": 32,
+      "usage_available": true
+    },
+    {
+      "role": "solver",
+      "attempt": 0,
+      "status": "delivered",
+      "error": "",
+      "raw_output": "IR:proceeds=30000-4000=26000,original=26000/0.8=32500,difference=32500-30000=2500;R:2500",
+      "finish_reason": "stop",
+      "output_tokens": 41,
+      "usage_available": true
+    },
+    {
+      "role": "verifier",
+      "attempt": 0,
+      "status": "delivered",
+      "error": "",
+      "raw_output": "CHK:ACCEPT",
+      "finish_reason": "stop",
+      "output_tokens": 5,
+      "usage_available": true
+    }
+  ],
+  "failed_attempts": [],
+  "calls": 3,
+  "usage_complete": true,
+  "known_input_tokens": 2721,
+  "known_output_tokens": 78,
+  "model_input_tokens": 2721,
+  "model_output_tokens": 78,
+  "format_failed_calls": 0,
+  "transport_failed_calls": 0,
+  "fallback_calls": 0,
+  "sum_model_latency_s": 4.02983832359314,
+  "gold": "2500",
+  "score": 1.0,
+  "question": "Liz sold her car at 80% of what she originally paid. She uses the proceeds of that sale and needs only $4,000 to buy herself a new $30,000 car. How much cheaper is her new car versus what she originally paid for her old one?\nGive the final numeric answer."
+}

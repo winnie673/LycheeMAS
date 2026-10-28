@@ -1,0 +1,148 @@
+{
+  "task_id": "gsm8k:train:seed42:V:00054",
+  "status": "completed",
+  "error": null,
+  "prediction": "20",
+  "messages": [
+    {
+      "sender": "planner",
+      "content": "G:trackball_mice;P:wireless=80/2,optical=80/4,trackball=80-wireless-optical",
+      "receiver": "solver",
+      "round": 0,
+      "role": "assistant",
+      "prompt_tokens": 884,
+      "completion_tokens": 31,
+      "id": "2d48ddb16c9a",
+      "ts": 1793111346.4351552,
+      "meta": {
+        "sender": "planner",
+        "receiver": "solver",
+        "message_id": "2d48ddb16c9a",
+        "protocol_edge": "planner_to_solver",
+        "protocol_version": "CARD-2-gsm8k",
+        "protocol_hash": "aec703067bbfeee6aa1e642a2a319658f1d33f2eff00c8701de19347f616ed6d",
+        "contract_hash": "ab4b736240365db5d0ce2caea032f40a3b7fc9c189db42d5ebcd28cac0fac22b",
+        "fields": {
+          "G": "trackball_mice",
+          "P": "wireless=80/2,optical=80/4,trackball=80-wireless-optical"
+        },
+        "communication_tokens": 31,
+        "communication_tokens_exact": true,
+        "attempt_count": 1,
+        "fallback": false,
+        "tokens_include_all_attempts": true,
+        "incoming_message_ids": []
+      }
+    },
+    {
+      "sender": "solver",
+      "content": "IR:wireless=80/2=40,optical=80/4=20,trackball=80-40-20=20;R:20",
+      "receiver": "verifier",
+      "round": 0,
+      "role": "assistant",
+      "prompt_tokens": 733,
+      "completion_tokens": 33,
+      "id": "296f7bb9c0e4",
+      "ts": 1793111347.8793893,
+      "meta": {
+        "sender": "solver",
+        "receiver": "verifier",
+        "message_id": "296f7bb9c0e4",
+        "protocol_edge": "solver_to_verifier",
+        "protocol_version": "CARD-2-gsm8k",
+        "protocol_hash": "aec703067bbfeee6aa1e642a2a319658f1d33f2eff00c8701de19347f616ed6d",
+        "contract_hash": "ab4b736240365db5d0ce2caea032f40a3b7fc9c189db42d5ebcd28cac0fac22b",
+        "fields": {
+          "IR": "wireless=80/2=40,optical=80/4=20,trackball=80-40-20=20",
+          "R": "20"
+        },
+        "communication_tokens": 33,
+        "communication_tokens_exact": true,
+        "attempt_count": 1,
+        "fallback": false,
+        "tokens_include_all_attempts": true,
+        "incoming_message_ids": [
+          "2d48ddb16c9a"
+        ]
+      }
+    },
+    {
+      "sender": "verifier",
+      "content": "CHK:ACCEPT",
+      "receiver": "solver",
+      "round": 0,
+      "role": "assistant",
+      "prompt_tokens": 1101,
+      "completion_tokens": 5,
+      "id": "03519aea6332",
+      "ts": 1793111349.2542348,
+      "meta": {
+        "sender": "verifier",
+        "receiver": "solver",
+        "message_id": "03519aea6332",
+        "protocol_edge": "verifier_to_solver",
+        "protocol_version": "CARD-2-gsm8k",
+        "protocol_hash": "aec703067bbfeee6aa1e642a2a319658f1d33f2eff00c8701de19347f616ed6d",
+        "contract_hash": "ab4b736240365db5d0ce2caea032f40a3b7fc9c189db42d5ebcd28cac0fac22b",
+        "fields": {
+          "CHK": "ACCEPT"
+        },
+        "communication_tokens": 5,
+        "communication_tokens_exact": true,
+        "attempt_count": 1,
+        "fallback": false,
+        "tokens_include_all_attempts": true,
+        "incoming_message_ids": [
+          "296f7bb9c0e4"
+        ]
+      }
+    }
+  ],
+  "communication_tokens": 69,
+  "wall_time_s": 4.4106111000292,
+  "verified": true,
+  "revision_rounds": 0,
+  "model_calls": [
+    {
+      "role": "planner",
+      "attempt": 0,
+      "status": "delivered",
+      "error": "",
+      "raw_output": "G:trackball_mice;P:wireless=80/2,optical=80/4,trackball=80-wireless-optical",
+      "finish_reason": "stop",
+      "output_tokens": 31,
+      "usage_available": true
+    },
+    {
+      "role": "solver",
+      "attempt": 0,
+      "status": "delivered",
+      "error": "",
+      "raw_output": "IR:wireless=80/2=40,optical=80/4=20,trackball=80-40-20=20;R:20",
+      "finish_reason": "stop",
+      "output_tokens": 33,
+      "usage_available": true
+    },
+    {
+      "role": "verifier",
+      "attempt": 0,
+      "status": "delivered",
+      "error": "",
+      "raw_output": "CHK:ACCEPT",
+      "finish_reason": "stop",
+      "output_tokens": 5,
+      "usage_available": true
+    }
+  ],
+  "failed_attempts": [],
+  "calls": 3,
+  "usage_complete": true,
+  "known_input_tokens": 2718,
+  "known_output_tokens": 69,
+  "model_input_tokens": 2718,
+  "model_output_tokens": 69,
+  "format_failed_calls": 0,
+  "transport_failed_calls": 0,
+  "fallback_calls": 0,
+  "sum_model_latency_s": 4.323159456253052
+}

@@ -1,0 +1,120 @@
+{
+  "task_id": "gsm8k:test:seed42:T:00112",
+  "mode": "hybrid",
+  "benchmark": "gsm8k",
+  "status": "completed",
+  "error": null,
+  "prediction": "24",
+  "gold": "24",
+  "wall_time_s": 3.5308310999535024,
+  "communication_tokens": 63,
+  "communication_tokens_exact": true,
+  "revision_rounds": 0,
+  "verification_decision": "ACCEPT",
+  "verified": true,
+  "messages": [
+    {
+      "sender": "planner",
+      "content": "G:total_cleanings_per_day;P:lessons_per_day=4*2,cleanings_per_day=lessons_per_day*3",
+      "receiver": "solver",
+      "round": 0,
+      "role": "assistant",
+      "prompt_tokens": 763,
+      "completion_tokens": 31,
+      "id": "f02b4ce1a23f",
+      "ts": 1793169914.8144896,
+      "meta": {
+        "sender": "planner",
+        "receiver": "solver",
+        "message_id": "f02b4ce1a23f",
+        "protocol_edge": "planner_to_solver",
+        "protocol_version": "CARD-0-gsm8k",
+        "protocol_hash": "4bcdae885cc464e0a51977368e4bc06650c0326dbdcb182ce0327477c1d32daa",
+        "contract_hash": "ab4b736240365db5d0ce2caea032f40a3b7fc9c189db42d5ebcd28cac0fac22b",
+        "fields": {
+          "G": "total_cleanings_per_day",
+          "P": "lessons_per_day=4*2,cleanings_per_day=lessons_per_day*3"
+        },
+        "communication_tokens": 31,
+        "communication_tokens_exact": true,
+        "attempt_count": 1,
+        "fallback": false,
+        "tokens_include_all_attempts": true,
+        "incoming_message_ids": []
+      }
+    },
+    {
+      "sender": "solver",
+      "content": "IR:lessons_per_day=4*2=8,cleanings_per_day=8*3=24;R:24",
+      "receiver": "verifier",
+      "round": 0,
+      "role": "assistant",
+      "prompt_tokens": 736,
+      "completion_tokens": 27,
+      "id": "13cebc445aa8",
+      "ts": 1793169915.9576483,
+      "meta": {
+        "sender": "solver",
+        "receiver": "verifier",
+        "message_id": "13cebc445aa8",
+        "protocol_edge": "solver_to_verifier",
+        "protocol_version": "CARD-0-gsm8k",
+        "protocol_hash": "4bcdae885cc464e0a51977368e4bc06650c0326dbdcb182ce0327477c1d32daa",
+        "contract_hash": "ab4b736240365db5d0ce2caea032f40a3b7fc9c189db42d5ebcd28cac0fac22b",
+        "fields": {
+          "IR": "lessons_per_day=4*2=8,cleanings_per_day=8*3=24",
+          "R": "24"
+        },
+        "communication_tokens": 27,
+        "communication_tokens_exact": true,
+        "attempt_count": 1,
+        "fallback": false,
+        "tokens_include_all_attempts": true,
+        "incoming_message_ids": [
+          "f02b4ce1a23f"
+        ]
+      }
+    },
+    {
+      "sender": "verifier",
+      "content": "CHK:ACCEPT",
+      "receiver": "solver",
+      "round": 0,
+      "role": "assistant",
+      "prompt_tokens": 1098,
+      "completion_tokens": 5,
+      "id": "ceba4771d477",
+      "ts": 1793169917.0803413,
+      "meta": {
+        "sender": "verifier",
+        "receiver": "solver",
+        "message_id": "ceba4771d477",
+        "protocol_edge": "verifier_to_solver",
+        "protocol_version": "CARD-0-gsm8k",
+        "protocol_hash": "4bcdae885cc464e0a51977368e4bc06650c0326dbdcb182ce0327477c1d32daa",
+        "contract_hash": "ab4b736240365db5d0ce2caea032f40a3b7fc9c189db42d5ebcd28cac0fac22b",
+        "fields": {
+          "CHK": "ACCEPT"
+        },
+        "communication_tokens": 5,
+        "communication_tokens_exact": true,
+        "attempt_count": 1,
+        "fallback": false,
+        "tokens_include_all_attempts": true,
+        "incoming_message_ids": [
+          "13cebc445aa8"
+        ]
+      }
+    }
+  ],
+  "calls": 3,
+  "usage_complete": true,
+  "known_input_tokens": 2597,
+  "known_output_tokens": 63,
+  "model_input_tokens": 2597,
+  "model_output_tokens": 63,
+  "format_failed_calls": 0,
+  "transport_failed_calls": 0,
+  "fallback_calls": 0,
+  "sum_model_latency_s": 3.458712339401245
+}

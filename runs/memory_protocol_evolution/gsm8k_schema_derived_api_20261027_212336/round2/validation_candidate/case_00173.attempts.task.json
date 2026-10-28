@@ -1,0 +1,148 @@
+{
+  "task_id": "gsm8k:train:seed42:V:00173",
+  "status": "completed",
+  "error": null,
+  "prediction": "1944",
+  "messages": [
+    {
+      "sender": "planner",
+      "content": "G:grandma_birth_year;P:gap_siblings=1936-1932,gap_grandma_sister=2*gap_siblings,grandma_birth_year=1936+gap_grandma_sister",
+      "receiver": "solver",
+      "round": 0,
+      "role": "assistant",
+      "prompt_tokens": 891,
+      "completion_tokens": 48,
+      "id": "d2a951ef1e32",
+      "ts": 1793111843.12327,
+      "meta": {
+        "sender": "planner",
+        "receiver": "solver",
+        "message_id": "d2a951ef1e32",
+        "protocol_edge": "planner_to_solver",
+        "protocol_version": "CARD-2-gsm8k",
+        "protocol_hash": "aec703067bbfeee6aa1e642a2a319658f1d33f2eff00c8701de19347f616ed6d",
+        "contract_hash": "ab4b736240365db5d0ce2caea032f40a3b7fc9c189db42d5ebcd28cac0fac22b",
+        "fields": {
+          "G": "grandma_birth_year",
+          "P": "gap_siblings=1936-1932,gap_grandma_sister=2*gap_siblings,grandma_birth_year=1936+gap_grandma_sister"
+        },
+        "communication_tokens": 48,
+        "communication_tokens_exact": true,
+        "attempt_count": 1,
+        "fallback": false,
+        "tokens_include_all_attempts": true,
+        "incoming_message_ids": []
+      }
+    },
+    {
+      "sender": "solver",
+      "content": "IR:gap_siblings=1936-1932=4,gap_grandma_sister=2*4=8,grandma_birth_year=1936+8=1944;R:1944",
+      "receiver": "verifier",
+      "round": 0,
+      "role": "assistant",
+      "prompt_tokens": 757,
+      "completion_tokens": 45,
+      "id": "71fb76762561",
+      "ts": 1793111844.4423575,
+      "meta": {
+        "sender": "solver",
+        "receiver": "verifier",
+        "message_id": "71fb76762561",
+        "protocol_edge": "solver_to_verifier",
+        "protocol_version": "CARD-2-gsm8k",
+        "protocol_hash": "aec703067bbfeee6aa1e642a2a319658f1d33f2eff00c8701de19347f616ed6d",
+        "contract_hash": "ab4b736240365db5d0ce2caea032f40a3b7fc9c189db42d5ebcd28cac0fac22b",
+        "fields": {
+          "IR": "gap_siblings=1936-1932=4,gap_grandma_sister=2*4=8,grandma_birth_year=1936+8=1944",
+          "R": "1944"
+        },
+        "communication_tokens": 45,
+        "communication_tokens_exact": true,
+        "attempt_count": 1,
+        "fallback": false,
+        "tokens_include_all_attempts": true,
+        "incoming_message_ids": [
+          "d2a951ef1e32"
+        ]
+      }
+    },
+    {
+      "sender": "verifier",
+      "content": "CHK:ACCEPT",
+      "receiver": "solver",
+      "round": 0,
+      "role": "assistant",
+      "prompt_tokens": 1120,
+      "completion_tokens": 5,
+      "id": "fcd31ead710f",
+      "ts": 1793111845.671916,
+      "meta": {
+        "sender": "verifier",
+        "receiver": "solver",
+        "message_id": "fcd31ead710f",
+        "protocol_edge": "verifier_to_solver",
+        "protocol_version": "CARD-2-gsm8k",
+        "protocol_hash": "aec703067bbfeee6aa1e642a2a319658f1d33f2eff00c8701de19347f616ed6d",
+        "contract_hash": "ab4b736240365db5d0ce2caea032f40a3b7fc9c189db42d5ebcd28cac0fac22b",
+        "fields": {
+          "CHK": "ACCEPT"
+        },
+        "communication_tokens": 5,
+        "communication_tokens_exact": true,
+        "attempt_count": 1,
+        "fallback": false,
+        "tokens_include_all_attempts": true,
+        "incoming_message_ids": [
+          "71fb76762561"
+        ]
+      }
+    }
+  ],
+  "communication_tokens": 98,
+  "wall_time_s": 3.829611799912527,
+  "verified": true,
+  "revision_rounds": 0,
+  "model_calls": [
+    {
+      "role": "planner",
+      "attempt": 0,
+      "status": "delivered",
+      "error": "",
+      "raw_output": "G:grandma_birth_year;P:gap_siblings=1936-1932,gap_grandma_sister=2*gap_siblings,grandma_birth_year=1936+gap_grandma_sister",
+      "finish_reason": "stop",
+      "output_tokens": 48,
+      "usage_available": true
+    },
+    {
+      "role": "solver",
+      "attempt": 0,
+      "status": "delivered",
+      "error": "",
+      "raw_output": "IR:gap_siblings=1936-1932=4,gap_grandma_sister=2*4=8,grandma_birth_year=1936+8=1944;R:1944",
+      "finish_reason": "stop",
+      "output_tokens": 45,
+      "usage_available": true
+    },
+    {
+      "role": "verifier",
+      "attempt": 0,
+      "status": "delivered",
+      "error": "",
+      "raw_output": "CHK:ACCEPT",
+      "finish_reason": "stop",
+      "output_tokens": 5,
+      "usage_available": true
+    }
+  ],
+  "failed_attempts": [],
+  "calls": 3,
+  "usage_complete": true,
+  "known_input_tokens": 2768,
+  "known_output_tokens": 98,
+  "model_input_tokens": 2768,
+  "model_output_tokens": 98,
+  "format_failed_calls": 0,
+  "transport_failed_calls": 0,
+  "fallback_calls": 0,
+  "sum_model_latency_s": 3.751291036605835
+}

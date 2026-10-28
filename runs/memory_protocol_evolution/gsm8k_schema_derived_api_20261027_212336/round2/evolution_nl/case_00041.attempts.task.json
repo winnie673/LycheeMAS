@@ -1,0 +1,123 @@
+{
+  "task_id": "gsm8k:train:seed42:G2:00041",
+  "status": "completed",
+  "error": null,
+  "prediction": "56",
+  "messages": [
+    {
+      "sender": "planner",
+      "content": "Goal: find how many nights 5 boxes of crackers last Chad.\n\nPlan: Determine how many crackers Chad uses per night by multiplying the 2 crackers per sandwich by the 5 sandwiches he eats nightly. Then determine how many crackers are in one box by multiplying 4 sleeves by 28 crackers per sleeve. Multiply that by 5 boxes to get the total crackers available. Finally, divide total crackers by crackers used per night.\n\nConstraints: Use only the given quantities; report the final result as a whole number of nights.",
+      "receiver": "solver",
+      "round": 0,
+      "role": "assistant",
+      "prompt_tokens": 209,
+      "completion_tokens": 105,
+      "id": "a8efbeded5e5",
+      "ts": 1793110235.9449122,
+      "meta": {
+        "fields": {},
+        "communication_tokens": 105,
+        "communication_tokens_exact": true,
+        "attempt_count": 1,
+        "fallback": false,
+        "tokens_include_all_attempts": true,
+        "incoming_message_ids": []
+      }
+    },
+    {
+      "sender": "solver",
+      "content": "Chad uses 2 crackers per sandwich × 5 sandwiches per night = 10 crackers per night.  \nOne box has 4 × 28 = 112 crackers.  \nFive boxes have 5 × 112 = 560 crackers.  \n560 ÷ 10 = 56 nights.\n\n\\boxed{56}",
+      "receiver": "verifier",
+      "round": 0,
+      "role": "assistant",
+      "prompt_tokens": 326,
+      "completion_tokens": 65,
+      "id": "f7afc6871d42",
+      "ts": 1793110237.5868402,
+      "meta": {
+        "fields": {
+          "R": "56"
+        },
+        "communication_tokens": 65,
+        "communication_tokens_exact": true,
+        "attempt_count": 1,
+        "fallback": false,
+        "tokens_include_all_attempts": true,
+        "incoming_message_ids": [
+          "a8efbeded5e5"
+        ]
+      }
+    },
+    {
+      "sender": "verifier",
+      "content": "ACCEPT",
+      "receiver": "solver",
+      "round": 0,
+      "role": "assistant",
+      "prompt_tokens": 663,
+      "completion_tokens": 2,
+      "id": "2fafe9562b70",
+      "ts": 1793110238.5691605,
+      "meta": {
+        "fields": {
+          "CHK": "ACCEPT"
+        },
+        "communication_tokens": 2,
+        "communication_tokens_exact": true,
+        "attempt_count": 1,
+        "fallback": false,
+        "tokens_include_all_attempts": true,
+        "incoming_message_ids": [
+          "f7afc6871d42"
+        ]
+      }
+    }
+  ],
+  "communication_tokens": 172,
+  "wall_time_s": 4.430281699984334,
+  "verified": true,
+  "revision_rounds": 0,
+  "model_calls": [
+    {
+      "role": "planner",
+      "attempt": 0,
+      "status": "delivered",
+      "error": "",
+      "raw_output": "Goal: find how many nights 5 boxes of crackers last Chad.\n\nPlan: Determine how many crackers Chad uses per night by multiplying the 2 crackers per sandwich by the 5 sandwiches he eats nightly. Then determine how many crackers are in one box by multiplying 4 sleeves by 28 crackers per sleeve. Multiply that by 5 boxes to get the total crackers available. Finally, divide total crackers by crackers used per night.\n\nConstraints: Use only the given quantities; report the final result as a whole number of nights.",
+      "finish_reason": "stop",
+      "output_tokens": 105,
+      "usage_available": true
+    },
+    {
+      "role": "solver",
+      "attempt": 0,
+      "status": "delivered",
+      "error": "",
+      "raw_output": "Chad uses 2 crackers per sandwich × 5 sandwiches per night = 10 crackers per night.  \nOne box has 4 × 28 = 112 crackers.  \nFive boxes have 5 × 112 = 560 crackers.  \n560 ÷ 10 = 56 nights.\n\n\\boxed{56}",
+      "finish_reason": "stop",
+      "output_tokens": 65,
+      "usage_available": true
+    },
+    {
+      "role": "verifier",
+      "attempt": 0,
+      "status": "delivered",
+      "error": "",
+      "raw_output": "ACCEPT",
+      "finish_reason": "stop",
+      "output_tokens": 2,
+      "usage_available": true
+    }
+  ],
+  "failed_attempts": [],
+  "calls": 3,
+  "usage_complete": true,
+  "known_input_tokens": 1198,
+  "known_output_tokens": 172,
+  "model_input_tokens": 1198,
+  "model_output_tokens": 172,
+  "format_failed_calls": 0,
+  "transport_failed_calls": 0,
+  "fallback_calls": 0,
+  "sum_model_latency_s": 4.359471559524536
+}

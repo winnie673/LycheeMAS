@@ -1,0 +1,152 @@
+{
+  "task_id": "gsm8k:train:seed42:V:00169",
+  "status": "completed",
+  "error": null,
+  "prediction": "11",
+  "messages": [
+    {
+      "sender": "planner",
+      "content": "G:number_of_suckers_Jen_ate;P:jen_received=bailey_total,jen_ate=jen_received/2,jen_gave=jen_received/2,molly_received=jen_gave,molly_gave=molly_received-2,harmony_received=molly_gave,harmony_gave=harmony_received-3,taylor_received=harmony_gave,taylor_gave=taylor_received-1,taylor_gave=5;NL:Work backward from Taylor giving the last 5 to Callie to find the amount Jen received, then take half of that.",
+      "receiver": "solver",
+      "round": 0,
+      "role": "assistant",
+      "prompt_tokens": 888,
+      "completion_tokens": 133,
+      "id": "5dfb85a2221f",
+      "ts": 1793111825.8051176,
+      "meta": {
+        "sender": "planner",
+        "receiver": "solver",
+        "message_id": "5dfb85a2221f",
+        "protocol_edge": "planner_to_solver",
+        "protocol_version": "CARD-2-gsm8k",
+        "protocol_hash": "aec703067bbfeee6aa1e642a2a319658f1d33f2eff00c8701de19347f616ed6d",
+        "contract_hash": "ab4b736240365db5d0ce2caea032f40a3b7fc9c189db42d5ebcd28cac0fac22b",
+        "fields": {
+          "G": "number_of_suckers_Jen_ate",
+          "P": "jen_received=bailey_total,jen_ate=jen_received/2,jen_gave=jen_received/2,molly_received=jen_gave,molly_gave=molly_received-2,harmony_received=molly_gave,harmony_gave=harmony_received-3,taylor_received=harmony_gave,taylor_gave=taylor_received-1,taylor_gave=5",
+          "NL": "Work backward from Taylor giving the last 5 to Callie to find the amount Jen received, then take half of that."
+        },
+        "communication_tokens": 133,
+        "communication_tokens_exact": true,
+        "attempt_count": 1,
+        "fallback": false,
+        "tokens_include_all_attempts": true,
+        "incoming_message_ids": []
+      }
+    },
+    {
+      "sender": "solver",
+      "content": "IR:taylor_received=5+1=6,harmony_gave=6,harmony_received=6+3=9,molly_gave=9,molly_received=9+2=11,jen_gave=11,jen_received=11*2=22,jen_ate=22/2=11;R:11",
+      "receiver": "verifier",
+      "round": 0,
+      "role": "assistant",
+      "prompt_tokens": 839,
+      "completion_tokens": 75,
+      "id": "9ee39096bb19",
+      "ts": 1793111827.2395265,
+      "meta": {
+        "sender": "solver",
+        "receiver": "verifier",
+        "message_id": "9ee39096bb19",
+        "protocol_edge": "solver_to_verifier",
+        "protocol_version": "CARD-2-gsm8k",
+        "protocol_hash": "aec703067bbfeee6aa1e642a2a319658f1d33f2eff00c8701de19347f616ed6d",
+        "contract_hash": "ab4b736240365db5d0ce2caea032f40a3b7fc9c189db42d5ebcd28cac0fac22b",
+        "fields": {
+          "IR": "taylor_received=5+1=6,harmony_gave=6,harmony_received=6+3=9,molly_gave=9,molly_received=9+2=11,jen_gave=11,jen_received=11*2=22,jen_ate=22/2=11",
+          "R": "11"
+        },
+        "communication_tokens": 75,
+        "communication_tokens_exact": true,
+        "attempt_count": 1,
+        "fallback": false,
+        "tokens_include_all_attempts": true,
+        "incoming_message_ids": [
+          "5dfb85a2221f"
+        ]
+      }
+    },
+    {
+      "sender": "verifier",
+      "content": "CHK:ACCEPT",
+      "receiver": "solver",
+      "round": 0,
+      "role": "assistant",
+      "prompt_tokens": 1147,
+      "completion_tokens": 5,
+      "id": "5e4ba755e8df",
+      "ts": 1793111828.4370575,
+      "meta": {
+        "sender": "verifier",
+        "receiver": "solver",
+        "message_id": "5e4ba755e8df",
+        "protocol_edge": "verifier_to_solver",
+        "protocol_version": "CARD-2-gsm8k",
+        "protocol_hash": "aec703067bbfeee6aa1e642a2a319658f1d33f2eff00c8701de19347f616ed6d",
+        "contract_hash": "ab4b736240365db5d0ce2caea032f40a3b7fc9c189db42d5ebcd28cac0fac22b",
+        "fields": {
+          "CHK": "ACCEPT"
+        },
+        "communication_tokens": 5,
+        "communication_tokens_exact": true,
+        "attempt_count": 1,
+        "fallback": false,
+        "tokens_include_all_attempts": true,
+        "incoming_message_ids": [
+          "9ee39096bb19"
+        ]
+      }
+    }
+  ],
+  "communication_tokens": 213,
+  "wall_time_s": 4.7792851000558585,
+  "verified": true,
+  "revision_rounds": 0,
+  "model_calls": [
+    {
+      "role": "planner",
+      "attempt": 0,
+      "status": "delivered",
+      "error": "",
+      "raw_output": "G:number_of_suckers_Jen_ate;P:jen_received=bailey_total,jen_ate=jen_received/2,jen_gave=jen_received/2,molly_received=jen_gave,molly_gave=molly_received-2,harmony_received=molly_gave,harmony_gave=harmony_received-3,taylor_received=harmony_gave,taylor_gave=taylor_received-1,taylor_gave=5;NL:Work backward from Taylor giving the last 5 to Callie to find the amount Jen received, then take half of that.",
+      "finish_reason": "stop",
+      "output_tokens": 133,
+      "usage_available": true
+    },
+    {
+      "role": "solver",
+      "attempt": 0,
+      "status": "delivered",
+      "error": "",
+      "raw_output": "IR:taylor_received=5+1=6,harmony_gave=6,harmony_received=6+3=9,molly_gave=9,molly_received=9+2=11,jen_gave=11,jen_received=11*2=22,jen_ate=22/2=11;R:11",
+      "finish_reason": "stop",
+      "output_tokens": 75,
+      "usage_available": true
+    },
+    {
+      "role": "verifier",
+      "attempt": 0,
+      "status": "delivered",
+      "error": "",
+      "raw_output": "CHK:ACCEPT",
+      "finish_reason": "stop",
+      "output_tokens": 5,
+      "usage_available": true
+    }
+  ],
+  "failed_attempts": [],
+  "calls": 3,
+  "usage_complete": true,
+  "known_input_tokens": 2874,
+  "known_output_tokens": 213,
+  "model_input_tokens": 2874,
+  "model_output_tokens": 213,
+  "format_failed_calls": 0,
+  "transport_failed_calls": 0,
+  "fallback_calls": 0,
+  "sum_model_latency_s": 4.623840570449829,
+  "gold": "11",
+  "score": 1.0,
+  "question": "Sienna gave Bailey half of her suckers. Jen ate half and gave the rest to Molly. Molly ate 2 and gave the rest to Harmony. Harmony kept 3 and passed the remainder to Taylor. Taylor ate one and gave the last 5 to Callie. How many suckers did Jen eat?\nGive the final numeric answer."
+}

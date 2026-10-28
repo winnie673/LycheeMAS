@@ -1,0 +1,152 @@
+{
+  "task_id": "gsm8k:train:seed42:V:00013",
+  "status": "completed",
+  "error": null,
+  "prediction": "180",
+  "messages": [
+    {
+      "sender": "planner",
+      "content": "G:weekly_miles;P:school_roundtrip=20,supermarket_roundtrip=20+2*10,weekly_miles=5*school_roundtrip+2*supermarket_roundtrip;NL:School is driven to every morning on 5 weekdays and supermarket on two afternoons.",
+      "receiver": "solver",
+      "round": 0,
+      "role": "assistant",
+      "prompt_tokens": 756,
+      "completion_tokens": 71,
+      "id": "6e8af6320f6e",
+      "ts": 1793112445.9424763,
+      "meta": {
+        "sender": "planner",
+        "receiver": "solver",
+        "message_id": "6e8af6320f6e",
+        "protocol_edge": "planner_to_solver",
+        "protocol_version": "CARD-0-gsm8k",
+        "protocol_hash": "4bcdae885cc464e0a51977368e4bc06650c0326dbdcb182ce0327477c1d32daa",
+        "contract_hash": "ab4b736240365db5d0ce2caea032f40a3b7fc9c189db42d5ebcd28cac0fac22b",
+        "fields": {
+          "G": "weekly_miles",
+          "P": "school_roundtrip=20,supermarket_roundtrip=20+2*10,weekly_miles=5*school_roundtrip+2*supermarket_roundtrip",
+          "NL": "School is driven to every morning on 5 weekdays and supermarket on two afternoons."
+        },
+        "communication_tokens": 71,
+        "communication_tokens_exact": true,
+        "attempt_count": 1,
+        "fallback": false,
+        "tokens_include_all_attempts": true,
+        "incoming_message_ids": []
+      }
+    },
+    {
+      "sender": "solver",
+      "content": "IR:supermarket_roundtrip=20+2*10=40,weekly_miles=5*20+2*40=180;R:180",
+      "receiver": "verifier",
+      "round": 0,
+      "role": "assistant",
+      "prompt_tokens": 769,
+      "completion_tokens": 34,
+      "id": "5e50d8d0bf99",
+      "ts": 1793112447.279101,
+      "meta": {
+        "sender": "solver",
+        "receiver": "verifier",
+        "message_id": "5e50d8d0bf99",
+        "protocol_edge": "solver_to_verifier",
+        "protocol_version": "CARD-0-gsm8k",
+        "protocol_hash": "4bcdae885cc464e0a51977368e4bc06650c0326dbdcb182ce0327477c1d32daa",
+        "contract_hash": "ab4b736240365db5d0ce2caea032f40a3b7fc9c189db42d5ebcd28cac0fac22b",
+        "fields": {
+          "IR": "supermarket_roundtrip=20+2*10=40,weekly_miles=5*20+2*40=180",
+          "R": "180"
+        },
+        "communication_tokens": 34,
+        "communication_tokens_exact": true,
+        "attempt_count": 1,
+        "fallback": false,
+        "tokens_include_all_attempts": true,
+        "incoming_message_ids": [
+          "6e8af6320f6e"
+        ]
+      }
+    },
+    {
+      "sender": "verifier",
+      "content": "CHK:ACCEPT",
+      "receiver": "solver",
+      "round": 0,
+      "role": "assistant",
+      "prompt_tokens": 1098,
+      "completion_tokens": 5,
+      "id": "46667519f46a",
+      "ts": 1793112448.3959563,
+      "meta": {
+        "sender": "verifier",
+        "receiver": "solver",
+        "message_id": "46667519f46a",
+        "protocol_edge": "verifier_to_solver",
+        "protocol_version": "CARD-0-gsm8k",
+        "protocol_hash": "4bcdae885cc464e0a51977368e4bc06650c0326dbdcb182ce0327477c1d32daa",
+        "contract_hash": "ab4b736240365db5d0ce2caea032f40a3b7fc9c189db42d5ebcd28cac0fac22b",
+        "fields": {
+          "CHK": "ACCEPT"
+        },
+        "communication_tokens": 5,
+        "communication_tokens_exact": true,
+        "attempt_count": 1,
+        "fallback": false,
+        "tokens_include_all_attempts": true,
+        "incoming_message_ids": [
+          "5e50d8d0bf99"
+        ]
+      }
+    }
+  ],
+  "communication_tokens": 110,
+  "wall_time_s": 4.529423499945551,
+  "verified": true,
+  "revision_rounds": 0,
+  "model_calls": [
+    {
+      "role": "planner",
+      "attempt": 0,
+      "status": "delivered",
+      "error": "",
+      "raw_output": "G:weekly_miles;P:school_roundtrip=20,supermarket_roundtrip=20+2*10,weekly_miles=5*school_roundtrip+2*supermarket_roundtrip;NL:School is driven to every morning on 5 weekdays and supermarket on two afternoons.",
+      "finish_reason": "stop",
+      "output_tokens": 71,
+      "usage_available": true
+    },
+    {
+      "role": "solver",
+      "attempt": 0,
+      "status": "delivered",
+      "error": "",
+      "raw_output": "IR:supermarket_roundtrip=20+2*10=40,weekly_miles=5*20+2*40=180;R:180",
+      "finish_reason": "stop",
+      "output_tokens": 34,
+      "usage_available": true
+    },
+    {
+      "role": "verifier",
+      "attempt": 0,
+      "status": "delivered",
+      "error": "",
+      "raw_output": "CHK:ACCEPT",
+      "finish_reason": "stop",
+      "output_tokens": 5,
+      "usage_available": true
+    }
+  ],
+  "failed_attempts": [],
+  "calls": 3,
+  "usage_complete": true,
+  "known_input_tokens": 2623,
+  "known_output_tokens": 110,
+  "model_input_tokens": 2623,
+  "model_output_tokens": 110,
+  "format_failed_calls": 0,
+  "transport_failed_calls": 0,
+  "fallback_calls": 0,
+  "sum_model_latency_s": 4.374394178390503,
+  "gold": "220",
+  "score": 0.0,
+  "question": "Laura’s House is a 20-mile round trip from her school. The supermarket is 10 miles farther away from the school. If Laura drives to school every morning and two afternoons a week drives to the supermarket. How many miles does Laura driver per week?\nGive the final numeric answer."
+}

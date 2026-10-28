@@ -1,0 +1,151 @@
+{
+  "task_id": "gsm8k:train:seed42:G2:00000",
+  "status": "completed",
+  "error": null,
+  "prediction": "30",
+  "messages": [
+    {
+      "sender": "planner",
+      "content": "G:James_age;P:john_age=(79+5)/2,age_gap=35-23,James_age=john_age-age_gap",
+      "receiver": "solver",
+      "round": 0,
+      "role": "assistant",
+      "prompt_tokens": 737,
+      "completion_tokens": 32,
+      "id": "2bb520277daa",
+      "ts": 1793109837.207008,
+      "meta": {
+        "sender": "planner",
+        "receiver": "solver",
+        "message_id": "2bb520277daa",
+        "protocol_edge": "planner_to_solver",
+        "protocol_version": "CARD-0-gsm8k",
+        "protocol_hash": "4bcdae885cc464e0a51977368e4bc06650c0326dbdcb182ce0327477c1d32daa",
+        "contract_hash": "ab4b736240365db5d0ce2caea032f40a3b7fc9c189db42d5ebcd28cac0fac22b",
+        "fields": {
+          "G": "James_age",
+          "P": "john_age=(79+5)/2,age_gap=35-23,James_age=john_age-age_gap"
+        },
+        "communication_tokens": 32,
+        "communication_tokens_exact": true,
+        "attempt_count": 1,
+        "fallback": false,
+        "tokens_include_all_attempts": true,
+        "incoming_message_ids": []
+      }
+    },
+    {
+      "sender": "solver",
+      "content": "IR:john_age=(79+5)/2=42,age_gap=35-23=12,James_age=42-12=30;R:30",
+      "receiver": "verifier",
+      "round": 0,
+      "role": "assistant",
+      "prompt_tokens": 711,
+      "completion_tokens": 35,
+      "id": "3576c49ac86a",
+      "ts": 1793109838.5056503,
+      "meta": {
+        "sender": "solver",
+        "receiver": "verifier",
+        "message_id": "3576c49ac86a",
+        "protocol_edge": "solver_to_verifier",
+        "protocol_version": "CARD-0-gsm8k",
+        "protocol_hash": "4bcdae885cc464e0a51977368e4bc06650c0326dbdcb182ce0327477c1d32daa",
+        "contract_hash": "ab4b736240365db5d0ce2caea032f40a3b7fc9c189db42d5ebcd28cac0fac22b",
+        "fields": {
+          "IR": "john_age=(79+5)/2=42,age_gap=35-23=12,James_age=42-12=30",
+          "R": "30"
+        },
+        "communication_tokens": 35,
+        "communication_tokens_exact": true,
+        "attempt_count": 1,
+        "fallback": false,
+        "tokens_include_all_attempts": true,
+        "incoming_message_ids": [
+          "2bb520277daa"
+        ]
+      }
+    },
+    {
+      "sender": "verifier",
+      "content": "CHK:ACCEPT",
+      "receiver": "solver",
+      "round": 0,
+      "role": "assistant",
+      "prompt_tokens": 1080,
+      "completion_tokens": 5,
+      "id": "0b573b345e23",
+      "ts": 1793109839.5910113,
+      "meta": {
+        "sender": "verifier",
+        "receiver": "solver",
+        "message_id": "0b573b345e23",
+        "protocol_edge": "verifier_to_solver",
+        "protocol_version": "CARD-0-gsm8k",
+        "protocol_hash": "4bcdae885cc464e0a51977368e4bc06650c0326dbdcb182ce0327477c1d32daa",
+        "contract_hash": "ab4b736240365db5d0ce2caea032f40a3b7fc9c189db42d5ebcd28cac0fac22b",
+        "fields": {
+          "CHK": "ACCEPT"
+        },
+        "communication_tokens": 5,
+        "communication_tokens_exact": true,
+        "attempt_count": 1,
+        "fallback": false,
+        "tokens_include_all_attempts": true,
+        "incoming_message_ids": [
+          "3576c49ac86a"
+        ]
+      }
+    }
+  ],
+  "communication_tokens": 72,
+  "wall_time_s": 3.97775580000598,
+  "verified": true,
+  "revision_rounds": 0,
+  "model_calls": [
+    {
+      "role": "planner",
+      "attempt": 0,
+      "status": "delivered",
+      "error": "",
+      "raw_output": "G:James_age;P:john_age=(79+5)/2,age_gap=35-23,James_age=john_age-age_gap",
+      "finish_reason": "stop",
+      "output_tokens": 32,
+      "usage_available": true
+    },
+    {
+      "role": "solver",
+      "attempt": 0,
+      "status": "delivered",
+      "error": "",
+      "raw_output": "IR:john_age=(79+5)/2=42,age_gap=35-23=12,James_age=42-12=30;R:30",
+      "finish_reason": "stop",
+      "output_tokens": 35,
+      "usage_available": true
+    },
+    {
+      "role": "verifier",
+      "attempt": 0,
+      "status": "delivered",
+      "error": "",
+      "raw_output": "CHK:ACCEPT",
+      "finish_reason": "stop",
+      "output_tokens": 5,
+      "usage_available": true
+    }
+  ],
+  "failed_attempts": [],
+  "calls": 3,
+  "usage_complete": true,
+  "known_input_tokens": 2528,
+  "known_output_tokens": 72,
+  "model_input_tokens": 2528,
+  "model_output_tokens": 72,
+  "format_failed_calls": 0,
+  "transport_failed_calls": 0,
+  "fallback_calls": 0,
+  "sum_model_latency_s": 3.8113112449645996,
+  "gold": "25",
+  "score": 0.0,
+  "question": "James turned 23 the same time John turned 35.  Tim is 5 years less than twice John's age.  If Tim is 79 how old is James?\nGive the final numeric answer."
+}

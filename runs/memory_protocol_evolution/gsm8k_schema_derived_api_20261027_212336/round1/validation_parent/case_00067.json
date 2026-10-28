@@ -1,0 +1,151 @@
+{
+  "task_id": "gsm8k:train:seed42:V:00067",
+  "status": "completed",
+  "error": null,
+  "prediction": "15",
+  "messages": [
+    {
+      "sender": "planner",
+      "content": "G:unused_hats;P:total=3*15,remaining=total-5,unused=remaining-25",
+      "receiver": "solver",
+      "round": 0,
+      "role": "assistant",
+      "prompt_tokens": 747,
+      "completion_tokens": 28,
+      "id": "80ca3b4b62f0",
+      "ts": 1793108364.1234596,
+      "meta": {
+        "sender": "planner",
+        "receiver": "solver",
+        "message_id": "80ca3b4b62f0",
+        "protocol_edge": "planner_to_solver",
+        "protocol_version": "CARD-0-gsm8k",
+        "protocol_hash": "4bcdae885cc464e0a51977368e4bc06650c0326dbdcb182ce0327477c1d32daa",
+        "contract_hash": "ab4b736240365db5d0ce2caea032f40a3b7fc9c189db42d5ebcd28cac0fac22b",
+        "fields": {
+          "G": "unused_hats",
+          "P": "total=3*15,remaining=total-5,unused=remaining-25"
+        },
+        "communication_tokens": 28,
+        "communication_tokens_exact": true,
+        "attempt_count": 1,
+        "fallback": false,
+        "tokens_include_all_attempts": true,
+        "incoming_message_ids": []
+      }
+    },
+    {
+      "sender": "solver",
+      "content": "IR:total=3*15=45,remaining=45-5=40,unused=40-25=15;R:15",
+      "receiver": "verifier",
+      "round": 0,
+      "role": "assistant",
+      "prompt_tokens": 717,
+      "completion_tokens": 30,
+      "id": "134eb6c7bc46",
+      "ts": 1793108365.5108035,
+      "meta": {
+        "sender": "solver",
+        "receiver": "verifier",
+        "message_id": "134eb6c7bc46",
+        "protocol_edge": "solver_to_verifier",
+        "protocol_version": "CARD-0-gsm8k",
+        "protocol_hash": "4bcdae885cc464e0a51977368e4bc06650c0326dbdcb182ce0327477c1d32daa",
+        "contract_hash": "ab4b736240365db5d0ce2caea032f40a3b7fc9c189db42d5ebcd28cac0fac22b",
+        "fields": {
+          "IR": "total=3*15=45,remaining=45-5=40,unused=40-25=15",
+          "R": "15"
+        },
+        "communication_tokens": 30,
+        "communication_tokens_exact": true,
+        "attempt_count": 1,
+        "fallback": false,
+        "tokens_include_all_attempts": true,
+        "incoming_message_ids": [
+          "80ca3b4b62f0"
+        ]
+      }
+    },
+    {
+      "sender": "verifier",
+      "content": "CHK:ACCEPT",
+      "receiver": "solver",
+      "round": 0,
+      "role": "assistant",
+      "prompt_tokens": 1085,
+      "completion_tokens": 5,
+      "id": "18018a4bac32",
+      "ts": 1793108366.5330427,
+      "meta": {
+        "sender": "verifier",
+        "receiver": "solver",
+        "message_id": "18018a4bac32",
+        "protocol_edge": "verifier_to_solver",
+        "protocol_version": "CARD-0-gsm8k",
+        "protocol_hash": "4bcdae885cc464e0a51977368e4bc06650c0326dbdcb182ce0327477c1d32daa",
+        "contract_hash": "ab4b736240365db5d0ce2caea032f40a3b7fc9c189db42d5ebcd28cac0fac22b",
+        "fields": {
+          "CHK": "ACCEPT"
+        },
+        "communication_tokens": 5,
+        "communication_tokens_exact": true,
+        "attempt_count": 1,
+        "fallback": false,
+        "tokens_include_all_attempts": true,
+        "incoming_message_ids": [
+          "134eb6c7bc46"
+        ]
+      }
+    }
+  ],
+  "communication_tokens": 63,
+  "wall_time_s": 4.2812167999800295,
+  "verified": true,
+  "revision_rounds": 0,
+  "model_calls": [
+    {
+      "role": "planner",
+      "attempt": 0,
+      "status": "delivered",
+      "error": "",
+      "raw_output": "G:unused_hats;P:total=3*15,remaining=total-5,unused=remaining-25",
+      "finish_reason": "stop",
+      "output_tokens": 28,
+      "usage_available": true
+    },
+    {
+      "role": "solver",
+      "attempt": 0,
+      "status": "delivered",
+      "error": "",
+      "raw_output": "IR:total=3*15=45,remaining=45-5=40,unused=40-25=15;R:15",
+      "finish_reason": "stop",
+      "output_tokens": 30,
+      "usage_available": true
+    },
+    {
+      "role": "verifier",
+      "attempt": 0,
+      "status": "delivered",
+      "error": "",
+      "raw_output": "CHK:ACCEPT",
+      "finish_reason": "stop",
+      "output_tokens": 5,
+      "usage_available": true
+    }
+  ],
+  "failed_attempts": [],
+  "calls": 3,
+  "usage_complete": true,
+  "known_input_tokens": 2549,
+  "known_output_tokens": 63,
+  "model_input_tokens": 2549,
+  "model_output_tokens": 63,
+  "format_failed_calls": 0,
+  "transport_failed_calls": 0,
+  "fallback_calls": 0,
+  "sum_model_latency_s": 4.139817237854004,
+  "gold": "15",
+  "score": 1.0,
+  "question": "Miggy's mom brought home 3 bags of birthday hats. Each bag has 15 hats. Miggy accidentally tore off 5 hats. During the party, only 25 hats were used. How many hats were unused?\nGive the final numeric answer."
+}

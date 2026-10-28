@@ -1,0 +1,148 @@
+{
+  "task_id": "gsm8k:train:seed42:V:00165",
+  "status": "completed",
+  "error": null,
+  "prediction": "7",
+  "messages": [
+    {
+      "sender": "planner",
+      "content": "G:Cape_May_sightings;P:Daytona=26,Daytona=3*Cape_May+5,Cape_May=(Daytona-5)/3",
+      "receiver": "solver",
+      "round": 0,
+      "role": "assistant",
+      "prompt_tokens": 783,
+      "completion_tokens": 41,
+      "id": "b62b29f62b5d",
+      "ts": 1793168863.0319767,
+      "meta": {
+        "sender": "planner",
+        "receiver": "solver",
+        "message_id": "b62b29f62b5d",
+        "protocol_edge": "planner_to_solver",
+        "protocol_version": "CARD-3-gsm8k",
+        "protocol_hash": "fb1a4acb6e591ac96544876aedd912b27a6f9d3154c76112e1da0f43407d27b2",
+        "contract_hash": "ab4b736240365db5d0ce2caea032f40a3b7fc9c189db42d5ebcd28cac0fac22b",
+        "fields": {
+          "G": "Cape_May_sightings",
+          "P": "Daytona=26,Daytona=3*Cape_May+5,Cape_May=(Daytona-5)/3"
+        },
+        "communication_tokens": 41,
+        "communication_tokens_exact": true,
+        "attempt_count": 1,
+        "fallback": false,
+        "tokens_include_all_attempts": true,
+        "incoming_message_ids": []
+      }
+    },
+    {
+      "sender": "solver",
+      "content": "IR:Cape_May=(26-5)/3=21/3=7;R:7",
+      "receiver": "verifier",
+      "round": 0,
+      "role": "assistant",
+      "prompt_tokens": 724,
+      "completion_tokens": 21,
+      "id": "015ed0295744",
+      "ts": 1793168864.1702454,
+      "meta": {
+        "sender": "solver",
+        "receiver": "verifier",
+        "message_id": "015ed0295744",
+        "protocol_edge": "solver_to_verifier",
+        "protocol_version": "CARD-3-gsm8k",
+        "protocol_hash": "fb1a4acb6e591ac96544876aedd912b27a6f9d3154c76112e1da0f43407d27b2",
+        "contract_hash": "ab4b736240365db5d0ce2caea032f40a3b7fc9c189db42d5ebcd28cac0fac22b",
+        "fields": {
+          "IR": "Cape_May=(26-5)/3=21/3=7",
+          "R": "7"
+        },
+        "communication_tokens": 21,
+        "communication_tokens_exact": true,
+        "attempt_count": 1,
+        "fallback": false,
+        "tokens_include_all_attempts": true,
+        "incoming_message_ids": [
+          "b62b29f62b5d"
+        ]
+      }
+    },
+    {
+      "sender": "verifier",
+      "content": "CHK:ACCEPT",
+      "receiver": "solver",
+      "round": 0,
+      "role": "assistant",
+      "prompt_tokens": 1070,
+      "completion_tokens": 5,
+      "id": "dd9f5e6e2ef0",
+      "ts": 1793168865.2728443,
+      "meta": {
+        "sender": "verifier",
+        "receiver": "solver",
+        "message_id": "dd9f5e6e2ef0",
+        "protocol_edge": "verifier_to_solver",
+        "protocol_version": "CARD-3-gsm8k",
+        "protocol_hash": "fb1a4acb6e591ac96544876aedd912b27a6f9d3154c76112e1da0f43407d27b2",
+        "contract_hash": "ab4b736240365db5d0ce2caea032f40a3b7fc9c189db42d5ebcd28cac0fac22b",
+        "fields": {
+          "CHK": "ACCEPT"
+        },
+        "communication_tokens": 5,
+        "communication_tokens_exact": true,
+        "attempt_count": 1,
+        "fallback": false,
+        "tokens_include_all_attempts": true,
+        "incoming_message_ids": [
+          "015ed0295744"
+        ]
+      }
+    }
+  ],
+  "communication_tokens": 67,
+  "wall_time_s": 3.6415852999780327,
+  "verified": true,
+  "revision_rounds": 0,
+  "model_calls": [
+    {
+      "role": "planner",
+      "attempt": 0,
+      "status": "delivered",
+      "error": "",
+      "raw_output": "G:Cape_May_sightings;P:Daytona=26,Daytona=3*Cape_May+5,Cape_May=(Daytona-5)/3",
+      "finish_reason": "stop",
+      "output_tokens": 41,
+      "usage_available": true
+    },
+    {
+      "role": "solver",
+      "attempt": 0,
+      "status": "delivered",
+      "error": "",
+      "raw_output": "IR:Cape_May=(26-5)/3=21/3=7;R:7",
+      "finish_reason": "stop",
+      "output_tokens": 21,
+      "usage_available": true
+    },
+    {
+      "role": "verifier",
+      "attempt": 0,
+      "status": "delivered",
+      "error": "",
+      "raw_output": "CHK:ACCEPT",
+      "finish_reason": "stop",
+      "output_tokens": 5,
+      "usage_available": true
+    }
+  ],
+  "failed_attempts": [],
+  "calls": 3,
+  "usage_complete": true,
+  "known_input_tokens": 2577,
+  "known_output_tokens": 67,
+  "model_input_tokens": 2577,
+  "model_output_tokens": 67,
+  "format_failed_calls": 0,
+  "transport_failed_calls": 0,
+  "fallback_calls": 0,
+  "sum_model_latency_s": 3.5602056980133057
+}

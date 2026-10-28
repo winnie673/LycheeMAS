@@ -1,0 +1,149 @@
+{
+  "task_id": "gsm8k:train:seed42:V:00106",
+  "status": "completed",
+  "error": null,
+  "prediction": "66",
+  "messages": [
+    {
+      "sender": "planner",
+      "content": "K:white_packs=2,blue_packs=4,white_per_pack=5,blue_per_pack=3,price_per_shirt=3;G:total_spend;P:white_shirts=white_packs*white_per_pack,blue_shirts=blue_packs*blue_per_pack,total_shirts=white_shirts+blue_shirts,total_spend=total_shirts*price_per_shirt",
+      "receiver": "solver",
+      "round": 0,
+      "role": "assistant",
+      "prompt_tokens": 764,
+      "completion_tokens": 93,
+      "id": "dfd4dbc70208",
+      "ts": 1793110733.4423325,
+      "meta": {
+        "sender": "planner",
+        "receiver": "solver",
+        "message_id": "dfd4dbc70208",
+        "protocol_edge": "planner_to_solver",
+        "protocol_version": "CARD-0-gsm8k",
+        "protocol_hash": "4bcdae885cc464e0a51977368e4bc06650c0326dbdcb182ce0327477c1d32daa",
+        "contract_hash": "ab4b736240365db5d0ce2caea032f40a3b7fc9c189db42d5ebcd28cac0fac22b",
+        "fields": {
+          "K": "white_packs=2,blue_packs=4,white_per_pack=5,blue_per_pack=3,price_per_shirt=3",
+          "G": "total_spend",
+          "P": "white_shirts=white_packs*white_per_pack,blue_shirts=blue_packs*blue_per_pack,total_shirts=white_shirts+blue_shirts,total_spend=total_shirts*price_per_shirt"
+        },
+        "communication_tokens": 93,
+        "communication_tokens_exact": true,
+        "attempt_count": 1,
+        "fallback": false,
+        "tokens_include_all_attempts": true,
+        "incoming_message_ids": []
+      }
+    },
+    {
+      "sender": "solver",
+      "content": "IR:white_shirts=2*5=10,blue_shirts=4*3=12,total_shirts=10+12=22,total_spend=22*3=66;R:66",
+      "receiver": "verifier",
+      "round": 0,
+      "role": "assistant",
+      "prompt_tokens": 799,
+      "completion_tokens": 45,
+      "id": "89687e6eb89d",
+      "ts": 1793110734.43824,
+      "meta": {
+        "sender": "solver",
+        "receiver": "verifier",
+        "message_id": "89687e6eb89d",
+        "protocol_edge": "solver_to_verifier",
+        "protocol_version": "CARD-0-gsm8k",
+        "protocol_hash": "4bcdae885cc464e0a51977368e4bc06650c0326dbdcb182ce0327477c1d32daa",
+        "contract_hash": "ab4b736240365db5d0ce2caea032f40a3b7fc9c189db42d5ebcd28cac0fac22b",
+        "fields": {
+          "IR": "white_shirts=2*5=10,blue_shirts=4*3=12,total_shirts=10+12=22,total_spend=22*3=66",
+          "R": "66"
+        },
+        "communication_tokens": 45,
+        "communication_tokens_exact": true,
+        "attempt_count": 1,
+        "fallback": false,
+        "tokens_include_all_attempts": true,
+        "incoming_message_ids": [
+          "dfd4dbc70208"
+        ]
+      }
+    },
+    {
+      "sender": "verifier",
+      "content": "CHK:ACCEPT",
+      "receiver": "solver",
+      "round": 0,
+      "role": "assistant",
+      "prompt_tokens": 1117,
+      "completion_tokens": 5,
+      "id": "af9bb372ce48",
+      "ts": 1793110735.535215,
+      "meta": {
+        "sender": "verifier",
+        "receiver": "solver",
+        "message_id": "af9bb372ce48",
+        "protocol_edge": "verifier_to_solver",
+        "protocol_version": "CARD-0-gsm8k",
+        "protocol_hash": "4bcdae885cc464e0a51977368e4bc06650c0326dbdcb182ce0327477c1d32daa",
+        "contract_hash": "ab4b736240365db5d0ce2caea032f40a3b7fc9c189db42d5ebcd28cac0fac22b",
+        "fields": {
+          "CHK": "ACCEPT"
+        },
+        "communication_tokens": 5,
+        "communication_tokens_exact": true,
+        "attempt_count": 1,
+        "fallback": false,
+        "tokens_include_all_attempts": true,
+        "incoming_message_ids": [
+          "89687e6eb89d"
+        ]
+      }
+    }
+  ],
+  "communication_tokens": 143,
+  "wall_time_s": 3.4700711000477895,
+  "verified": true,
+  "revision_rounds": 0,
+  "model_calls": [
+    {
+      "role": "planner",
+      "attempt": 0,
+      "status": "delivered",
+      "error": "",
+      "raw_output": "K:white_packs=2,blue_packs=4,white_per_pack=5,blue_per_pack=3,price_per_shirt=3;G:total_spend;P:white_shirts=white_packs*white_per_pack,blue_shirts=blue_packs*blue_per_pack,total_shirts=white_shirts+blue_shirts,total_spend=total_shirts*price_per_shirt",
+      "finish_reason": "stop",
+      "output_tokens": 93,
+      "usage_available": true
+    },
+    {
+      "role": "solver",
+      "attempt": 0,
+      "status": "delivered",
+      "error": "",
+      "raw_output": "IR:white_shirts=2*5=10,blue_shirts=4*3=12,total_shirts=10+12=22,total_spend=22*3=66;R:66",
+      "finish_reason": "stop",
+      "output_tokens": 45,
+      "usage_available": true
+    },
+    {
+      "role": "verifier",
+      "attempt": 0,
+      "status": "delivered",
+      "error": "",
+      "raw_output": "CHK:ACCEPT",
+      "finish_reason": "stop",
+      "output_tokens": 5,
+      "usage_available": true
+    }
+  ],
+  "failed_attempts": [],
+  "calls": 3,
+  "usage_complete": true,
+  "known_input_tokens": 2680,
+  "known_output_tokens": 143,
+  "model_input_tokens": 2680,
+  "model_output_tokens": 143,
+  "format_failed_calls": 0,
+  "transport_failed_calls": 0,
+  "fallback_calls": 0,
+  "sum_model_latency_s": 3.2971091270446777
+}

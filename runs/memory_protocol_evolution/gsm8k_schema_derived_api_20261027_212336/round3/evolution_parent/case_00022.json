@@ -1,0 +1,151 @@
+{
+  "task_id": "gsm8k:train:seed42:G3:00022",
+  "status": "completed",
+  "error": null,
+  "prediction": "86",
+  "messages": [
+    {
+      "sender": "planner",
+      "content": "G:Margaret_score;P:Marco=90*(1-0.10),Margaret=Marco+5",
+      "receiver": "solver",
+      "round": 0,
+      "role": "assistant",
+      "prompt_tokens": 746,
+      "completion_tokens": 24,
+      "id": "ae58af44c1df",
+      "ts": 1793112043.7939892,
+      "meta": {
+        "sender": "planner",
+        "receiver": "solver",
+        "message_id": "ae58af44c1df",
+        "protocol_edge": "planner_to_solver",
+        "protocol_version": "CARD-0-gsm8k",
+        "protocol_hash": "4bcdae885cc464e0a51977368e4bc06650c0326dbdcb182ce0327477c1d32daa",
+        "contract_hash": "ab4b736240365db5d0ce2caea032f40a3b7fc9c189db42d5ebcd28cac0fac22b",
+        "fields": {
+          "G": "Margaret_score",
+          "P": "Marco=90*(1-0.10),Margaret=Marco+5"
+        },
+        "communication_tokens": 24,
+        "communication_tokens_exact": true,
+        "attempt_count": 1,
+        "fallback": false,
+        "tokens_include_all_attempts": true,
+        "incoming_message_ids": []
+      }
+    },
+    {
+      "sender": "solver",
+      "content": "IR:Marco=90*0.9=81,Margaret=81+5=86;R:86",
+      "receiver": "verifier",
+      "round": 0,
+      "role": "assistant",
+      "prompt_tokens": 712,
+      "completion_tokens": 25,
+      "id": "b3f8d88ee8c0",
+      "ts": 1793112045.3944056,
+      "meta": {
+        "sender": "solver",
+        "receiver": "verifier",
+        "message_id": "b3f8d88ee8c0",
+        "protocol_edge": "solver_to_verifier",
+        "protocol_version": "CARD-0-gsm8k",
+        "protocol_hash": "4bcdae885cc464e0a51977368e4bc06650c0326dbdcb182ce0327477c1d32daa",
+        "contract_hash": "ab4b736240365db5d0ce2caea032f40a3b7fc9c189db42d5ebcd28cac0fac22b",
+        "fields": {
+          "IR": "Marco=90*0.9=81,Margaret=81+5=86",
+          "R": "86"
+        },
+        "communication_tokens": 25,
+        "communication_tokens_exact": true,
+        "attempt_count": 1,
+        "fallback": false,
+        "tokens_include_all_attempts": true,
+        "incoming_message_ids": [
+          "ae58af44c1df"
+        ]
+      }
+    },
+    {
+      "sender": "verifier",
+      "content": "CHK:ACCEPT",
+      "receiver": "solver",
+      "round": 0,
+      "role": "assistant",
+      "prompt_tokens": 1079,
+      "completion_tokens": 5,
+      "id": "7431b3ac935b",
+      "ts": 1793112046.2285962,
+      "meta": {
+        "sender": "verifier",
+        "receiver": "solver",
+        "message_id": "7431b3ac935b",
+        "protocol_edge": "verifier_to_solver",
+        "protocol_version": "CARD-0-gsm8k",
+        "protocol_hash": "4bcdae885cc464e0a51977368e4bc06650c0326dbdcb182ce0327477c1d32daa",
+        "contract_hash": "ab4b736240365db5d0ce2caea032f40a3b7fc9c189db42d5ebcd28cac0fac22b",
+        "fields": {
+          "CHK": "ACCEPT"
+        },
+        "communication_tokens": 5,
+        "communication_tokens_exact": true,
+        "attempt_count": 1,
+        "fallback": false,
+        "tokens_include_all_attempts": true,
+        "incoming_message_ids": [
+          "b3f8d88ee8c0"
+        ]
+      }
+    }
+  ],
+  "communication_tokens": 54,
+  "wall_time_s": 3.6662668000208214,
+  "verified": true,
+  "revision_rounds": 0,
+  "model_calls": [
+    {
+      "role": "planner",
+      "attempt": 0,
+      "status": "delivered",
+      "error": "",
+      "raw_output": "G:Margaret_score;P:Marco=90*(1-0.10),Margaret=Marco+5",
+      "finish_reason": "stop",
+      "output_tokens": 24,
+      "usage_available": true
+    },
+    {
+      "role": "solver",
+      "attempt": 0,
+      "status": "delivered",
+      "error": "",
+      "raw_output": "IR:Marco=90*0.9=81,Margaret=81+5=86;R:86",
+      "finish_reason": "stop",
+      "output_tokens": 25,
+      "usage_available": true
+    },
+    {
+      "role": "verifier",
+      "attempt": 0,
+      "status": "delivered",
+      "error": "",
+      "raw_output": "CHK:ACCEPT",
+      "finish_reason": "stop",
+      "output_tokens": 5,
+      "usage_available": true
+    }
+  ],
+  "failed_attempts": [],
+  "calls": 3,
+  "usage_complete": true,
+  "known_input_tokens": 2537,
+  "known_output_tokens": 54,
+  "model_input_tokens": 2537,
+  "model_output_tokens": 54,
+  "format_failed_calls": 0,
+  "transport_failed_calls": 0,
+  "fallback_calls": 0,
+  "sum_model_latency_s": 3.582904577255249,
+  "gold": "86",
+  "score": 1.0,
+  "question": "The average score on last week's Spanish test was 90.  Marco scored 10% less than the average test score and Margaret received 5 more points than Marco.  What score did Margaret receive on her test?\nGive the final numeric answer."
+}

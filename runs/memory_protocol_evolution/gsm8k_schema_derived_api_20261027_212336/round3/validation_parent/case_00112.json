@@ -1,0 +1,151 @@
+{
+  "task_id": "gsm8k:train:seed42:V:00112",
+  "status": "completed",
+  "error": null,
+  "prediction": "9",
+  "messages": [
+    {
+      "sender": "planner",
+      "content": "G:lemons_needed;P:juice_per_dozen=12,juice_total=3*juice_per_dozen,lemons_needed=juice_total/4",
+      "receiver": "solver",
+      "round": 0,
+      "role": "assistant",
+      "prompt_tokens": 749,
+      "completion_tokens": 41,
+      "id": "a8d7b6bbf33a",
+      "ts": 1793112851.0947134,
+      "meta": {
+        "sender": "planner",
+        "receiver": "solver",
+        "message_id": "a8d7b6bbf33a",
+        "protocol_edge": "planner_to_solver",
+        "protocol_version": "CARD-0-gsm8k",
+        "protocol_hash": "4bcdae885cc464e0a51977368e4bc06650c0326dbdcb182ce0327477c1d32daa",
+        "contract_hash": "ab4b736240365db5d0ce2caea032f40a3b7fc9c189db42d5ebcd28cac0fac22b",
+        "fields": {
+          "G": "lemons_needed",
+          "P": "juice_per_dozen=12,juice_total=3*juice_per_dozen,lemons_needed=juice_total/4"
+        },
+        "communication_tokens": 41,
+        "communication_tokens_exact": true,
+        "attempt_count": 1,
+        "fallback": false,
+        "tokens_include_all_attempts": true,
+        "incoming_message_ids": []
+      }
+    },
+    {
+      "sender": "solver",
+      "content": "IR:juice_total=3*12=36,lemons_needed=36/4=9;R:9",
+      "receiver": "verifier",
+      "round": 0,
+      "role": "assistant",
+      "prompt_tokens": 732,
+      "completion_tokens": 26,
+      "id": "d8a738873ed6",
+      "ts": 1793112852.4703355,
+      "meta": {
+        "sender": "solver",
+        "receiver": "verifier",
+        "message_id": "d8a738873ed6",
+        "protocol_edge": "solver_to_verifier",
+        "protocol_version": "CARD-0-gsm8k",
+        "protocol_hash": "4bcdae885cc464e0a51977368e4bc06650c0326dbdcb182ce0327477c1d32daa",
+        "contract_hash": "ab4b736240365db5d0ce2caea032f40a3b7fc9c189db42d5ebcd28cac0fac22b",
+        "fields": {
+          "IR": "juice_total=3*12=36,lemons_needed=36/4=9",
+          "R": "9"
+        },
+        "communication_tokens": 26,
+        "communication_tokens_exact": true,
+        "attempt_count": 1,
+        "fallback": false,
+        "tokens_include_all_attempts": true,
+        "incoming_message_ids": [
+          "a8d7b6bbf33a"
+        ]
+      }
+    },
+    {
+      "sender": "verifier",
+      "content": "CHK:ACCEPT",
+      "receiver": "solver",
+      "round": 0,
+      "role": "assistant",
+      "prompt_tokens": 1083,
+      "completion_tokens": 5,
+      "id": "9473e7f002e3",
+      "ts": 1793112853.698311,
+      "meta": {
+        "sender": "verifier",
+        "receiver": "solver",
+        "message_id": "9473e7f002e3",
+        "protocol_edge": "verifier_to_solver",
+        "protocol_version": "CARD-0-gsm8k",
+        "protocol_hash": "4bcdae885cc464e0a51977368e4bc06650c0326dbdcb182ce0327477c1d32daa",
+        "contract_hash": "ab4b736240365db5d0ce2caea032f40a3b7fc9c189db42d5ebcd28cac0fac22b",
+        "fields": {
+          "CHK": "ACCEPT"
+        },
+        "communication_tokens": 5,
+        "communication_tokens_exact": true,
+        "attempt_count": 1,
+        "fallback": false,
+        "tokens_include_all_attempts": true,
+        "incoming_message_ids": [
+          "d8a738873ed6"
+        ]
+      }
+    }
+  ],
+  "communication_tokens": 72,
+  "wall_time_s": 4.167779999901541,
+  "verified": true,
+  "revision_rounds": 0,
+  "model_calls": [
+    {
+      "role": "planner",
+      "attempt": 0,
+      "status": "delivered",
+      "error": "",
+      "raw_output": "G:lemons_needed;P:juice_per_dozen=12,juice_total=3*juice_per_dozen,lemons_needed=juice_total/4",
+      "finish_reason": "stop",
+      "output_tokens": 41,
+      "usage_available": true
+    },
+    {
+      "role": "solver",
+      "attempt": 0,
+      "status": "delivered",
+      "error": "",
+      "raw_output": "IR:juice_total=3*12=36,lemons_needed=36/4=9;R:9",
+      "finish_reason": "stop",
+      "output_tokens": 26,
+      "usage_available": true
+    },
+    {
+      "role": "verifier",
+      "attempt": 0,
+      "status": "delivered",
+      "error": "",
+      "raw_output": "CHK:ACCEPT",
+      "finish_reason": "stop",
+      "output_tokens": 5,
+      "usage_available": true
+    }
+  ],
+  "failed_attempts": [],
+  "calls": 3,
+  "usage_complete": true,
+  "known_input_tokens": 2564,
+  "known_output_tokens": 72,
+  "model_input_tokens": 2564,
+  "model_output_tokens": 72,
+  "format_failed_calls": 0,
+  "transport_failed_calls": 0,
+  "fallback_calls": 0,
+  "sum_model_latency_s": 4.003464460372925,
+  "gold": "9",
+  "score": 1.0,
+  "question": "Jose needs 12 tablespoons of lemon juice to make a dozen of his lemon cupcakes.  Every lemon provides 4 tablespoons of lemon juice.  If he needs to make 3 dozen cupcakes, how many lemons will he need?\nGive the final numeric answer."
+}

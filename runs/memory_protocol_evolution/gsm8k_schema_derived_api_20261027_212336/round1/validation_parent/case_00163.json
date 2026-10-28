@@ -1,0 +1,151 @@
+{
+  "task_id": "gsm8k:train:seed42:V:00163",
+  "status": "completed",
+  "error": null,
+  "prediction": "100",
+  "messages": [
+    {
+      "sender": "planner",
+      "content": "G:number_of_dresses_Alex_can_make;P:silk_given=5*20,silk_left=600-silk_given,dresses=silk_left/5",
+      "receiver": "solver",
+      "round": 0,
+      "role": "assistant",
+      "prompt_tokens": 770,
+      "completion_tokens": 38,
+      "id": "4cf8b9c2e7bb",
+      "ts": 1793108791.2870355,
+      "meta": {
+        "sender": "planner",
+        "receiver": "solver",
+        "message_id": "4cf8b9c2e7bb",
+        "protocol_edge": "planner_to_solver",
+        "protocol_version": "CARD-0-gsm8k",
+        "protocol_hash": "4bcdae885cc464e0a51977368e4bc06650c0326dbdcb182ce0327477c1d32daa",
+        "contract_hash": "ab4b736240365db5d0ce2caea032f40a3b7fc9c189db42d5ebcd28cac0fac22b",
+        "fields": {
+          "G": "number_of_dresses_Alex_can_make",
+          "P": "silk_given=5*20,silk_left=600-silk_given,dresses=silk_left/5"
+        },
+        "communication_tokens": 38,
+        "communication_tokens_exact": true,
+        "attempt_count": 1,
+        "fallback": false,
+        "tokens_include_all_attempts": true,
+        "incoming_message_ids": []
+      }
+    },
+    {
+      "sender": "solver",
+      "content": "IR:silk_given=5*20=100,silk_left=600-100=500,dresses=500/5=100;R:100",
+      "receiver": "verifier",
+      "round": 0,
+      "role": "assistant",
+      "prompt_tokens": 750,
+      "completion_tokens": 32,
+      "id": "3a876036179b",
+      "ts": 1793108792.560819,
+      "meta": {
+        "sender": "solver",
+        "receiver": "verifier",
+        "message_id": "3a876036179b",
+        "protocol_edge": "solver_to_verifier",
+        "protocol_version": "CARD-0-gsm8k",
+        "protocol_hash": "4bcdae885cc464e0a51977368e4bc06650c0326dbdcb182ce0327477c1d32daa",
+        "contract_hash": "ab4b736240365db5d0ce2caea032f40a3b7fc9c189db42d5ebcd28cac0fac22b",
+        "fields": {
+          "IR": "silk_given=5*20=100,silk_left=600-100=500,dresses=500/5=100",
+          "R": "100"
+        },
+        "communication_tokens": 32,
+        "communication_tokens_exact": true,
+        "attempt_count": 1,
+        "fallback": false,
+        "tokens_include_all_attempts": true,
+        "incoming_message_ids": [
+          "4cf8b9c2e7bb"
+        ]
+      }
+    },
+    {
+      "sender": "verifier",
+      "content": "CHK:ACCEPT",
+      "receiver": "solver",
+      "round": 0,
+      "role": "assistant",
+      "prompt_tokens": 1110,
+      "completion_tokens": 5,
+      "id": "e0ec7032b63e",
+      "ts": 1793108794.3584583,
+      "meta": {
+        "sender": "verifier",
+        "receiver": "solver",
+        "message_id": "e0ec7032b63e",
+        "protocol_edge": "verifier_to_solver",
+        "protocol_version": "CARD-0-gsm8k",
+        "protocol_hash": "4bcdae885cc464e0a51977368e4bc06650c0326dbdcb182ce0327477c1d32daa",
+        "contract_hash": "ab4b736240365db5d0ce2caea032f40a3b7fc9c189db42d5ebcd28cac0fac22b",
+        "fields": {
+          "CHK": "ACCEPT"
+        },
+        "communication_tokens": 5,
+        "communication_tokens_exact": true,
+        "attempt_count": 1,
+        "fallback": false,
+        "tokens_include_all_attempts": true,
+        "incoming_message_ids": [
+          "3a876036179b"
+        ]
+      }
+    }
+  ],
+  "communication_tokens": 75,
+  "wall_time_s": 4.675385600072332,
+  "verified": true,
+  "revision_rounds": 0,
+  "model_calls": [
+    {
+      "role": "planner",
+      "attempt": 0,
+      "status": "delivered",
+      "error": "",
+      "raw_output": "G:number_of_dresses_Alex_can_make;P:silk_given=5*20,silk_left=600-silk_given,dresses=silk_left/5",
+      "finish_reason": "stop",
+      "output_tokens": 38,
+      "usage_available": true
+    },
+    {
+      "role": "solver",
+      "attempt": 0,
+      "status": "delivered",
+      "error": "",
+      "raw_output": "IR:silk_given=5*20=100,silk_left=600-100=500,dresses=500/5=100;R:100",
+      "finish_reason": "stop",
+      "output_tokens": 32,
+      "usage_available": true
+    },
+    {
+      "role": "verifier",
+      "attempt": 0,
+      "status": "delivered",
+      "error": "",
+      "raw_output": "CHK:ACCEPT",
+      "finish_reason": "stop",
+      "output_tokens": 5,
+      "usage_available": true
+    }
+  ],
+  "failed_attempts": [],
+  "calls": 3,
+  "usage_complete": true,
+  "known_input_tokens": 2630,
+  "known_output_tokens": 75,
+  "model_input_tokens": 2630,
+  "model_output_tokens": 75,
+  "format_failed_calls": 0,
+  "transport_failed_calls": 0,
+  "fallback_calls": 0,
+  "sum_model_latency_s": 4.596207857131958,
+  "gold": "100",
+  "score": 1.0,
+  "question": "Alex makes luxury dresses out of silk. Each dress needs 5 meters of silk and Alex has 600 meters of silk in storage. His friends also want to learn how to make these dresses so Alex gives all 5 of them 20 meters of silk each. He uses the rest to make dresses himself. How many dresses can Alex make?\nGive the final numeric answer."
+}

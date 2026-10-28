@@ -1,0 +1,148 @@
+{
+  "task_id": "gsm8k:train:seed42:G3:00013",
+  "status": "completed",
+  "error": null,
+  "prediction": "4",
+  "messages": [
+    {
+      "sender": "planner",
+      "content": "G:days_ago;P:find smallest integer d such that 480/2^d<50,days_ago=d",
+      "receiver": "solver",
+      "round": 0,
+      "role": "assistant",
+      "prompt_tokens": 735,
+      "completion_tokens": 27,
+      "id": "bd3dc3081606",
+      "ts": 1793112008.9347265,
+      "meta": {
+        "sender": "planner",
+        "receiver": "solver",
+        "message_id": "bd3dc3081606",
+        "protocol_edge": "planner_to_solver",
+        "protocol_version": "CARD-0-gsm8k",
+        "protocol_hash": "4bcdae885cc464e0a51977368e4bc06650c0326dbdcb182ce0327477c1d32daa",
+        "contract_hash": "ab4b736240365db5d0ce2caea032f40a3b7fc9c189db42d5ebcd28cac0fac22b",
+        "fields": {
+          "G": "days_ago",
+          "P": "find smallest integer d such that 480/2^d<50,days_ago=d"
+        },
+        "communication_tokens": 27,
+        "communication_tokens_exact": true,
+        "attempt_count": 1,
+        "fallback": false,
+        "tokens_include_all_attempts": true,
+        "incoming_message_ids": []
+      }
+    },
+    {
+      "sender": "solver",
+      "content": "IR:480/2^d<50,2^d>9.6,d=4 since 2^3=8<9.6<16=2^4;R:4",
+      "receiver": "verifier",
+      "round": 0,
+      "role": "assistant",
+      "prompt_tokens": 704,
+      "completion_tokens": 41,
+      "id": "22252f455b99",
+      "ts": 1793112010.3317926,
+      "meta": {
+        "sender": "solver",
+        "receiver": "verifier",
+        "message_id": "22252f455b99",
+        "protocol_edge": "solver_to_verifier",
+        "protocol_version": "CARD-0-gsm8k",
+        "protocol_hash": "4bcdae885cc464e0a51977368e4bc06650c0326dbdcb182ce0327477c1d32daa",
+        "contract_hash": "ab4b736240365db5d0ce2caea032f40a3b7fc9c189db42d5ebcd28cac0fac22b",
+        "fields": {
+          "IR": "480/2^d<50,2^d>9.6,d=4 since 2^3=8<9.6<16=2^4",
+          "R": "4"
+        },
+        "communication_tokens": 41,
+        "communication_tokens_exact": true,
+        "attempt_count": 1,
+        "fallback": false,
+        "tokens_include_all_attempts": true,
+        "incoming_message_ids": [
+          "bd3dc3081606"
+        ]
+      }
+    },
+    {
+      "sender": "verifier",
+      "content": "CHK:ACCEPT",
+      "receiver": "solver",
+      "round": 0,
+      "role": "assistant",
+      "prompt_tokens": 1084,
+      "completion_tokens": 5,
+      "id": "d66582eedded",
+      "ts": 1793112011.435499,
+      "meta": {
+        "sender": "verifier",
+        "receiver": "solver",
+        "message_id": "d66582eedded",
+        "protocol_edge": "verifier_to_solver",
+        "protocol_version": "CARD-0-gsm8k",
+        "protocol_hash": "4bcdae885cc464e0a51977368e4bc06650c0326dbdcb182ce0327477c1d32daa",
+        "contract_hash": "ab4b736240365db5d0ce2caea032f40a3b7fc9c189db42d5ebcd28cac0fac22b",
+        "fields": {
+          "CHK": "ACCEPT"
+        },
+        "communication_tokens": 5,
+        "communication_tokens_exact": true,
+        "attempt_count": 1,
+        "fallback": false,
+        "tokens_include_all_attempts": true,
+        "incoming_message_ids": [
+          "22252f455b99"
+        ]
+      }
+    }
+  ],
+  "communication_tokens": 73,
+  "wall_time_s": 4.0710326000116765,
+  "verified": true,
+  "revision_rounds": 0,
+  "model_calls": [
+    {
+      "role": "planner",
+      "attempt": 0,
+      "status": "delivered",
+      "error": "",
+      "raw_output": "G:days_ago;P:find smallest integer d such that 480/2^d<50,days_ago=d",
+      "finish_reason": "stop",
+      "output_tokens": 27,
+      "usage_available": true
+    },
+    {
+      "role": "solver",
+      "attempt": 0,
+      "status": "delivered",
+      "error": "",
+      "raw_output": "IR:480/2^d<50,2^d>9.6,d=4 since 2^3=8<9.6<16=2^4;R:4",
+      "finish_reason": "stop",
+      "output_tokens": 41,
+      "usage_available": true
+    },
+    {
+      "role": "verifier",
+      "attempt": 0,
+      "status": "delivered",
+      "error": "",
+      "raw_output": "CHK:ACCEPT",
+      "finish_reason": "stop",
+      "output_tokens": 5,
+      "usage_available": true
+    }
+  ],
+  "failed_attempts": [],
+  "calls": 3,
+  "usage_complete": true,
+  "known_input_tokens": 2523,
+  "known_output_tokens": 73,
+  "model_input_tokens": 2523,
+  "model_output_tokens": 73,
+  "format_failed_calls": 0,
+  "transport_failed_calls": 0,
+  "fallback_calls": 0,
+  "sum_model_latency_s": 3.9946401119232178
+}

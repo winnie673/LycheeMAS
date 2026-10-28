@@ -1,0 +1,148 @@
+{
+  "task_id": "gsm8k:train:seed42:V:00175",
+  "status": "completed",
+  "error": null,
+  "prediction": "11250",
+  "messages": [
+    {
+      "sender": "planner",
+      "content": "G:total_products;P:coolers_per_hour=90+70,products_per_hour=90+coolers_per_hour,total_products=products_per_hour*9*5",
+      "receiver": "solver",
+      "round": 0,
+      "role": "assistant",
+      "prompt_tokens": 869,
+      "completion_tokens": 43,
+      "id": "d4b53d11c03e",
+      "ts": 1793111850.9949636,
+      "meta": {
+        "sender": "planner",
+        "receiver": "solver",
+        "message_id": "d4b53d11c03e",
+        "protocol_edge": "planner_to_solver",
+        "protocol_version": "CARD-2-gsm8k",
+        "protocol_hash": "aec703067bbfeee6aa1e642a2a319658f1d33f2eff00c8701de19347f616ed6d",
+        "contract_hash": "ab4b736240365db5d0ce2caea032f40a3b7fc9c189db42d5ebcd28cac0fac22b",
+        "fields": {
+          "G": "total_products",
+          "P": "coolers_per_hour=90+70,products_per_hour=90+coolers_per_hour,total_products=products_per_hour*9*5"
+        },
+        "communication_tokens": 43,
+        "communication_tokens_exact": true,
+        "attempt_count": 1,
+        "fallback": false,
+        "tokens_include_all_attempts": true,
+        "incoming_message_ids": []
+      }
+    },
+    {
+      "sender": "solver",
+      "content": "IR:coolers_per_hour=90+70=160,products_per_hour=90+160=250,total_products=250*9*5=11250;R:11250",
+      "receiver": "verifier",
+      "round": 0,
+      "role": "assistant",
+      "prompt_tokens": 730,
+      "completion_tokens": 42,
+      "id": "6f68cb2d9e09",
+      "ts": 1793111852.2726917,
+      "meta": {
+        "sender": "solver",
+        "receiver": "verifier",
+        "message_id": "6f68cb2d9e09",
+        "protocol_edge": "solver_to_verifier",
+        "protocol_version": "CARD-2-gsm8k",
+        "protocol_hash": "aec703067bbfeee6aa1e642a2a319658f1d33f2eff00c8701de19347f616ed6d",
+        "contract_hash": "ab4b736240365db5d0ce2caea032f40a3b7fc9c189db42d5ebcd28cac0fac22b",
+        "fields": {
+          "IR": "coolers_per_hour=90+70=160,products_per_hour=90+160=250,total_products=250*9*5=11250",
+          "R": "11250"
+        },
+        "communication_tokens": 42,
+        "communication_tokens_exact": true,
+        "attempt_count": 1,
+        "fallback": false,
+        "tokens_include_all_attempts": true,
+        "incoming_message_ids": [
+          "d4b53d11c03e"
+        ]
+      }
+    },
+    {
+      "sender": "verifier",
+      "content": "CHK:ACCEPT",
+      "receiver": "solver",
+      "round": 0,
+      "role": "assistant",
+      "prompt_tokens": 1095,
+      "completion_tokens": 5,
+      "id": "d93279034e54",
+      "ts": 1793111853.493698,
+      "meta": {
+        "sender": "verifier",
+        "receiver": "solver",
+        "message_id": "d93279034e54",
+        "protocol_edge": "verifier_to_solver",
+        "protocol_version": "CARD-2-gsm8k",
+        "protocol_hash": "aec703067bbfeee6aa1e642a2a319658f1d33f2eff00c8701de19347f616ed6d",
+        "contract_hash": "ab4b736240365db5d0ce2caea032f40a3b7fc9c189db42d5ebcd28cac0fac22b",
+        "fields": {
+          "CHK": "ACCEPT"
+        },
+        "communication_tokens": 5,
+        "communication_tokens_exact": true,
+        "attempt_count": 1,
+        "fallback": false,
+        "tokens_include_all_attempts": true,
+        "incoming_message_ids": [
+          "6f68cb2d9e09"
+        ]
+      }
+    }
+  ],
+  "communication_tokens": 90,
+  "wall_time_s": 4.0756601999746636,
+  "verified": true,
+  "revision_rounds": 0,
+  "model_calls": [
+    {
+      "role": "planner",
+      "attempt": 0,
+      "status": "delivered",
+      "error": "",
+      "raw_output": "G:total_products;P:coolers_per_hour=90+70,products_per_hour=90+coolers_per_hour,total_products=products_per_hour*9*5",
+      "finish_reason": "stop",
+      "output_tokens": 43,
+      "usage_available": true
+    },
+    {
+      "role": "solver",
+      "attempt": 0,
+      "status": "delivered",
+      "error": "",
+      "raw_output": "IR:coolers_per_hour=90+70=160,products_per_hour=90+160=250,total_products=250*9*5=11250;R:11250",
+      "finish_reason": "stop",
+      "output_tokens": 42,
+      "usage_available": true
+    },
+    {
+      "role": "verifier",
+      "attempt": 0,
+      "status": "delivered",
+      "error": "",
+      "raw_output": "CHK:ACCEPT",
+      "finish_reason": "stop",
+      "output_tokens": 5,
+      "usage_available": true
+    }
+  ],
+  "failed_attempts": [],
+  "calls": 3,
+  "usage_complete": true,
+  "known_input_tokens": 2694,
+  "known_output_tokens": 90,
+  "model_input_tokens": 2694,
+  "model_output_tokens": 90,
+  "format_failed_calls": 0,
+  "transport_failed_calls": 0,
+  "fallback_calls": 0,
+  "sum_model_latency_s": 3.8844316005706787
+}

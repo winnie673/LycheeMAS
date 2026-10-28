@@ -1,0 +1,151 @@
+{
+  "task_id": "gsm8k:train:seed42:V:00065",
+  "status": "completed",
+  "error": null,
+  "prediction": "17",
+  "messages": [
+    {
+      "sender": "planner",
+      "content": "G:total_yolks;P:double_yolk_eggs=5,single_yolk_eggs=12-5,total_yolks=2*double_yolk_eggs+single_yolk_eggs",
+      "receiver": "solver",
+      "round": 0,
+      "role": "assistant",
+      "prompt_tokens": 802,
+      "completion_tokens": 49,
+      "id": "077814c985cb",
+      "ts": 1793109245.5900097,
+      "meta": {
+        "sender": "planner",
+        "receiver": "solver",
+        "message_id": "077814c985cb",
+        "protocol_edge": "planner_to_solver",
+        "protocol_version": "CARD-1-gsm8k",
+        "protocol_hash": "2a663f41d251a442e680de67a231e516a8fe5e31629bc25d021c8c0eb1354cff",
+        "contract_hash": "ab4b736240365db5d0ce2caea032f40a3b7fc9c189db42d5ebcd28cac0fac22b",
+        "fields": {
+          "G": "total_yolks",
+          "P": "double_yolk_eggs=5,single_yolk_eggs=12-5,total_yolks=2*double_yolk_eggs+single_yolk_eggs"
+        },
+        "communication_tokens": 49,
+        "communication_tokens_exact": true,
+        "attempt_count": 1,
+        "fallback": false,
+        "tokens_include_all_attempts": true,
+        "incoming_message_ids": []
+      }
+    },
+    {
+      "sender": "solver",
+      "content": "IR:single_yolk_eggs=12-5=7,total_yolks=2*5+7=17;R:17",
+      "receiver": "verifier",
+      "round": 0,
+      "role": "assistant",
+      "prompt_tokens": 734,
+      "completion_tokens": 31,
+      "id": "7f8df0d430f0",
+      "ts": 1793109246.9901161,
+      "meta": {
+        "sender": "solver",
+        "receiver": "verifier",
+        "message_id": "7f8df0d430f0",
+        "protocol_edge": "solver_to_verifier",
+        "protocol_version": "CARD-1-gsm8k",
+        "protocol_hash": "2a663f41d251a442e680de67a231e516a8fe5e31629bc25d021c8c0eb1354cff",
+        "contract_hash": "ab4b736240365db5d0ce2caea032f40a3b7fc9c189db42d5ebcd28cac0fac22b",
+        "fields": {
+          "IR": "single_yolk_eggs=12-5=7,total_yolks=2*5+7=17",
+          "R": "17"
+        },
+        "communication_tokens": 31,
+        "communication_tokens_exact": true,
+        "attempt_count": 1,
+        "fallback": false,
+        "tokens_include_all_attempts": true,
+        "incoming_message_ids": [
+          "077814c985cb"
+        ]
+      }
+    },
+    {
+      "sender": "verifier",
+      "content": "CHK:ACCEPT",
+      "receiver": "solver",
+      "round": 0,
+      "role": "assistant",
+      "prompt_tokens": 1082,
+      "completion_tokens": 5,
+      "id": "c9e6cdf327c6",
+      "ts": 1793109248.0659645,
+      "meta": {
+        "sender": "verifier",
+        "receiver": "solver",
+        "message_id": "c9e6cdf327c6",
+        "protocol_edge": "verifier_to_solver",
+        "protocol_version": "CARD-1-gsm8k",
+        "protocol_hash": "2a663f41d251a442e680de67a231e516a8fe5e31629bc25d021c8c0eb1354cff",
+        "contract_hash": "ab4b736240365db5d0ce2caea032f40a3b7fc9c189db42d5ebcd28cac0fac22b",
+        "fields": {
+          "CHK": "ACCEPT"
+        },
+        "communication_tokens": 5,
+        "communication_tokens_exact": true,
+        "attempt_count": 1,
+        "fallback": false,
+        "tokens_include_all_attempts": true,
+        "incoming_message_ids": [
+          "7f8df0d430f0"
+        ]
+      }
+    }
+  ],
+  "communication_tokens": 85,
+  "wall_time_s": 4.538281799992546,
+  "verified": true,
+  "revision_rounds": 0,
+  "model_calls": [
+    {
+      "role": "planner",
+      "attempt": 0,
+      "status": "delivered",
+      "error": "",
+      "raw_output": "G:total_yolks;P:double_yolk_eggs=5,single_yolk_eggs=12-5,total_yolks=2*double_yolk_eggs+single_yolk_eggs",
+      "finish_reason": "stop",
+      "output_tokens": 49,
+      "usage_available": true
+    },
+    {
+      "role": "solver",
+      "attempt": 0,
+      "status": "delivered",
+      "error": "",
+      "raw_output": "IR:single_yolk_eggs=12-5=7,total_yolks=2*5+7=17;R:17",
+      "finish_reason": "stop",
+      "output_tokens": 31,
+      "usage_available": true
+    },
+    {
+      "role": "verifier",
+      "attempt": 0,
+      "status": "delivered",
+      "error": "",
+      "raw_output": "CHK:ACCEPT",
+      "finish_reason": "stop",
+      "output_tokens": 5,
+      "usage_available": true
+    }
+  ],
+  "failed_attempts": [],
+  "calls": 3,
+  "usage_complete": true,
+  "known_input_tokens": 2618,
+  "known_output_tokens": 85,
+  "model_input_tokens": 2618,
+  "model_output_tokens": 85,
+  "format_failed_calls": 0,
+  "transport_failed_calls": 0,
+  "fallback_calls": 0,
+  "sum_model_latency_s": 4.464246988296509,
+  "gold": "17",
+  "score": 1.0,
+  "question": "A local farm is famous for having lots of double yolks in their eggs. One carton of 12 eggs had five eggs with double yolks. How many yolks were in the whole carton?\nGive the final numeric answer."
+}

@@ -1,0 +1,151 @@
+{
+  "task_id": "gsm8k:train:seed42:G3:00012",
+  "status": "completed",
+  "error": null,
+  "prediction": "2",
+  "messages": [
+    {
+      "sender": "planner",
+      "content": "G:servings_of_peanut_butter;P:remaining_calories=500-100,servings=remaining_calories/200",
+      "receiver": "solver",
+      "round": 0,
+      "role": "assistant",
+      "prompt_tokens": 763,
+      "completion_tokens": 32,
+      "id": "88a06d36f81d",
+      "ts": 1793112005.0042431,
+      "meta": {
+        "sender": "planner",
+        "receiver": "solver",
+        "message_id": "88a06d36f81d",
+        "protocol_edge": "planner_to_solver",
+        "protocol_version": "CARD-0-gsm8k",
+        "protocol_hash": "4bcdae885cc464e0a51977368e4bc06650c0326dbdcb182ce0327477c1d32daa",
+        "contract_hash": "ab4b736240365db5d0ce2caea032f40a3b7fc9c189db42d5ebcd28cac0fac22b",
+        "fields": {
+          "G": "servings_of_peanut_butter",
+          "P": "remaining_calories=500-100,servings=remaining_calories/200"
+        },
+        "communication_tokens": 32,
+        "communication_tokens_exact": true,
+        "attempt_count": 1,
+        "fallback": false,
+        "tokens_include_all_attempts": true,
+        "incoming_message_ids": []
+      }
+    },
+    {
+      "sender": "solver",
+      "content": "IR:remaining=500-100=400,servings=400/200=2;R:2",
+      "receiver": "verifier",
+      "round": 0,
+      "role": "assistant",
+      "prompt_tokens": 737,
+      "completion_tokens": 22,
+      "id": "37688befe7ff",
+      "ts": 1793112006.2809417,
+      "meta": {
+        "sender": "solver",
+        "receiver": "verifier",
+        "message_id": "37688befe7ff",
+        "protocol_edge": "solver_to_verifier",
+        "protocol_version": "CARD-0-gsm8k",
+        "protocol_hash": "4bcdae885cc464e0a51977368e4bc06650c0326dbdcb182ce0327477c1d32daa",
+        "contract_hash": "ab4b736240365db5d0ce2caea032f40a3b7fc9c189db42d5ebcd28cac0fac22b",
+        "fields": {
+          "IR": "remaining=500-100=400,servings=400/200=2",
+          "R": "2"
+        },
+        "communication_tokens": 22,
+        "communication_tokens_exact": true,
+        "attempt_count": 1,
+        "fallback": false,
+        "tokens_include_all_attempts": true,
+        "incoming_message_ids": [
+          "88a06d36f81d"
+        ]
+      }
+    },
+    {
+      "sender": "verifier",
+      "content": "CHK:ACCEPT",
+      "receiver": "solver",
+      "round": 0,
+      "role": "assistant",
+      "prompt_tokens": 1093,
+      "completion_tokens": 5,
+      "id": "3a502358fdc2",
+      "ts": 1793112007.3369312,
+      "meta": {
+        "sender": "verifier",
+        "receiver": "solver",
+        "message_id": "3a502358fdc2",
+        "protocol_edge": "verifier_to_solver",
+        "protocol_version": "CARD-0-gsm8k",
+        "protocol_hash": "4bcdae885cc464e0a51977368e4bc06650c0326dbdcb182ce0327477c1d32daa",
+        "contract_hash": "ab4b736240365db5d0ce2caea032f40a3b7fc9c189db42d5ebcd28cac0fac22b",
+        "fields": {
+          "CHK": "ACCEPT"
+        },
+        "communication_tokens": 5,
+        "communication_tokens_exact": true,
+        "attempt_count": 1,
+        "fallback": false,
+        "tokens_include_all_attempts": true,
+        "incoming_message_ids": [
+          "37688befe7ff"
+        ]
+      }
+    }
+  ],
+  "communication_tokens": 59,
+  "wall_time_s": 3.720818000030704,
+  "verified": true,
+  "revision_rounds": 0,
+  "model_calls": [
+    {
+      "role": "planner",
+      "attempt": 0,
+      "status": "delivered",
+      "error": "",
+      "raw_output": "G:servings_of_peanut_butter;P:remaining_calories=500-100,servings=remaining_calories/200",
+      "finish_reason": "stop",
+      "output_tokens": 32,
+      "usage_available": true
+    },
+    {
+      "role": "solver",
+      "attempt": 0,
+      "status": "delivered",
+      "error": "",
+      "raw_output": "IR:remaining=500-100=400,servings=400/200=2;R:2",
+      "finish_reason": "stop",
+      "output_tokens": 22,
+      "usage_available": true
+    },
+    {
+      "role": "verifier",
+      "attempt": 0,
+      "status": "delivered",
+      "error": "",
+      "raw_output": "CHK:ACCEPT",
+      "finish_reason": "stop",
+      "output_tokens": 5,
+      "usage_available": true
+    }
+  ],
+  "failed_attempts": [],
+  "calls": 3,
+  "usage_complete": true,
+  "known_input_tokens": 2593,
+  "known_output_tokens": 59,
+  "model_input_tokens": 2593,
+  "model_output_tokens": 59,
+  "format_failed_calls": 0,
+  "transport_failed_calls": 0,
+  "fallback_calls": 0,
+  "sum_model_latency_s": 3.644319772720337,
+  "gold": "2",
+  "score": 1.0,
+  "question": "Toby is making toast and adding peanut butter to it. He wants to make sure he has 500 calories for breakfast. A piece of bread has 100 calories. A serving of peanut butter has 200 calories. If he has one piece of bread, how many servings of peanut butter should he add?\nGive the final numeric answer."
+}

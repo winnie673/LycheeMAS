@@ -1,0 +1,123 @@
+{
+  "task_id": "gsm8k:train:seed42:G2:00007",
+  "status": "completed",
+  "error": null,
+  "prediction": "472",
+  "messages": [
+    {
+      "sender": "planner",
+      "content": "Goal: compute Bob’s total pay over two weeks using regular pay for up to 40 hours per week and overtime pay for hours over 40.\n\nPlan: For each week, determine regular hours as min(hours worked, 40) and overtime hours as max(hours worked − 40, 0). Multiply regular hours by $5 and overtime hours by $6, then add the two weeks’ pay together.\n\nConstraints: Treat each week separately; overtime applies only to hours beyond 40 in that week.",
+      "receiver": "solver",
+      "round": 0,
+      "role": "assistant",
+      "prompt_tokens": 216,
+      "completion_tokens": 105,
+      "id": "280e60e48ad3",
+      "ts": 1793110074.384175,
+      "meta": {
+        "fields": {},
+        "communication_tokens": 105,
+        "communication_tokens_exact": true,
+        "attempt_count": 1,
+        "fallback": false,
+        "tokens_include_all_attempts": true,
+        "incoming_message_ids": []
+      }
+    },
+    {
+      "sender": "solver",
+      "content": "Week 1: 40 regular hours and 4 overtime hours. Pay = 40×5 + 4×6 = 200 + 24 = 224.\n\nWeek 2: 40 regular hours and 8 overtime hours. Pay = 40×5 + 8×6 = 200 + 48 = 248.\n\nTotal pay = 224 + 248 = 472.\n\n\\boxed{472}",
+      "receiver": "verifier",
+      "round": 0,
+      "role": "assistant",
+      "prompt_tokens": 333,
+      "completion_tokens": 88,
+      "id": "ba3b9b89b4b0",
+      "ts": 1793110075.7061608,
+      "meta": {
+        "fields": {
+          "R": "472"
+        },
+        "communication_tokens": 88,
+        "communication_tokens_exact": true,
+        "attempt_count": 1,
+        "fallback": false,
+        "tokens_include_all_attempts": true,
+        "incoming_message_ids": [
+          "280e60e48ad3"
+        ]
+      }
+    },
+    {
+      "sender": "verifier",
+      "content": "ACCEPT",
+      "receiver": "solver",
+      "round": 0,
+      "role": "assistant",
+      "prompt_tokens": 693,
+      "completion_tokens": 2,
+      "id": "924b2c61cc1d",
+      "ts": 1793110077.8413646,
+      "meta": {
+        "fields": {
+          "CHK": "ACCEPT"
+        },
+        "communication_tokens": 2,
+        "communication_tokens_exact": true,
+        "attempt_count": 1,
+        "fallback": false,
+        "tokens_include_all_attempts": true,
+        "incoming_message_ids": [
+          "ba3b9b89b4b0"
+        ]
+      }
+    }
+  ],
+  "communication_tokens": 195,
+  "wall_time_s": 5.094000400044024,
+  "verified": true,
+  "revision_rounds": 0,
+  "model_calls": [
+    {
+      "role": "planner",
+      "attempt": 0,
+      "status": "delivered",
+      "error": "",
+      "raw_output": "Goal: compute Bob’s total pay over two weeks using regular pay for up to 40 hours per week and overtime pay for hours over 40.\n\nPlan: For each week, determine regular hours as min(hours worked, 40) and overtime hours as max(hours worked − 40, 0). Multiply regular hours by $5 and overtime hours by $6, then add the two weeks’ pay together.\n\nConstraints: Treat each week separately; overtime applies only to hours beyond 40 in that week.",
+      "finish_reason": "stop",
+      "output_tokens": 105,
+      "usage_available": true
+    },
+    {
+      "role": "solver",
+      "attempt": 0,
+      "status": "delivered",
+      "error": "",
+      "raw_output": "Week 1: 40 regular hours and 4 overtime hours. Pay = 40×5 + 4×6 = 200 + 24 = 224.\n\nWeek 2: 40 regular hours and 8 overtime hours. Pay = 40×5 + 8×6 = 200 + 48 = 248.\n\nTotal pay = 224 + 248 = 472.\n\n\\boxed{472}",
+      "finish_reason": "stop",
+      "output_tokens": 88,
+      "usage_available": true
+    },
+    {
+      "role": "verifier",
+      "attempt": 0,
+      "status": "delivered",
+      "error": "",
+      "raw_output": "ACCEPT",
+      "finish_reason": "stop",
+      "output_tokens": 2,
+      "usage_available": true
+    }
+  ],
+  "failed_attempts": [],
+  "calls": 3,
+  "usage_complete": true,
+  "known_input_tokens": 1242,
+  "known_output_tokens": 195,
+  "model_input_tokens": 1242,
+  "model_output_tokens": 195,
+  "format_failed_calls": 0,
+  "transport_failed_calls": 0,
+  "fallback_calls": 0,
+  "sum_model_latency_s": 5.023152112960815
+}

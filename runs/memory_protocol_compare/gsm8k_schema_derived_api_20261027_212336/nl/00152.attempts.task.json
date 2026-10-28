@@ -1,0 +1,95 @@
+{
+  "task_id": "gsm8k:test:seed42:T:00156",
+  "mode": "nl",
+  "benchmark": "gsm8k",
+  "status": "completed",
+  "error": null,
+  "prediction": "1400",
+  "gold": "1400",
+  "wall_time_s": 3.9543296999763697,
+  "communication_tokens": 118,
+  "communication_tokens_exact": true,
+  "revision_rounds": 0,
+  "verification_decision": "ACCEPT",
+  "verified": true,
+  "messages": [
+    {
+      "sender": "planner",
+      "content": "Goal: find the total number of bananas to order for a 2-month period.\n\nPlan: Add the monthly banana needs for monkeys, gorillas, and baboons to get the total monthly requirement. Then multiply that monthly total by 2 to cover the 2-month ordering period.\n\nConstraints: Use the given monthly amounts exactly; the order must last 2 months.",
+      "receiver": "solver",
+      "round": 0,
+      "role": "assistant",
+      "prompt_tokens": 222,
+      "completion_tokens": 74,
+      "id": "3e03318b471e",
+      "ts": 1793170243.1532948,
+      "meta": {
+        "fields": {},
+        "communication_tokens": 74,
+        "communication_tokens_exact": true,
+        "attempt_count": 1,
+        "fallback": false,
+        "tokens_include_all_attempts": true,
+        "incoming_message_ids": []
+      }
+    },
+    {
+      "sender": "solver",
+      "content": "The monthly total is 200 + 400 + 100 = 700 bananas. For 2 months, that is 700 × 2 = 1400 bananas.\n\n\\boxed{1400}",
+      "receiver": "verifier",
+      "round": 0,
+      "role": "assistant",
+      "prompt_tokens": 308,
+      "completion_tokens": 42,
+      "id": "f4ed02090e74",
+      "ts": 1793170244.281218,
+      "meta": {
+        "fields": {
+          "R": "1400"
+        },
+        "communication_tokens": 42,
+        "communication_tokens_exact": true,
+        "attempt_count": 1,
+        "fallback": false,
+        "tokens_include_all_attempts": true,
+        "incoming_message_ids": [
+          "3e03318b471e"
+        ]
+      }
+    },
+    {
+      "sender": "verifier",
+      "content": "ACCEPT",
+      "receiver": "solver",
+      "round": 0,
+      "role": "assistant",
+      "prompt_tokens": 653,
+      "completion_tokens": 2,
+      "id": "a89ca86dd260",
+      "ts": 1793170245.477625,
+      "meta": {
+        "fields": {
+          "CHK": "ACCEPT"
+        },
+        "communication_tokens": 2,
+        "communication_tokens_exact": true,
+        "attempt_count": 1,
+        "fallback": false,
+        "tokens_include_all_attempts": true,
+        "incoming_message_ids": [
+          "f4ed02090e74"
+        ]
+      }
+    }
+  ],
+  "calls": 3,
+  "usage_complete": true,
+  "known_input_tokens": 1183,
+  "known_output_tokens": 118,
+  "model_input_tokens": 1183,
+  "model_output_tokens": 118,
+  "format_failed_calls": 0,
+  "transport_failed_calls": 0,
+  "fallback_calls": 0,
+  "sum_model_latency_s": 3.889254093170166
+}

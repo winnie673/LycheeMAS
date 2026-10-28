@@ -1,0 +1,151 @@
+{
+  "task_id": "gsm8k:train:seed42:V:00142",
+  "status": "completed",
+  "error": null,
+  "prediction": "180",
+  "messages": [
+    {
+      "sender": "planner",
+      "content": "G:total_gas_cost;P:total_gas_cost=12*(3+3.5+4+4.5)",
+      "receiver": "solver",
+      "round": 0,
+      "role": "assistant",
+      "prompt_tokens": 799,
+      "completion_tokens": 28,
+      "id": "6e0711c94f26",
+      "ts": 1793112971.9407496,
+      "meta": {
+        "sender": "planner",
+        "receiver": "solver",
+        "message_id": "6e0711c94f26",
+        "protocol_edge": "planner_to_solver",
+        "protocol_version": "CARD-0-gsm8k",
+        "protocol_hash": "4bcdae885cc464e0a51977368e4bc06650c0326dbdcb182ce0327477c1d32daa",
+        "contract_hash": "ab4b736240365db5d0ce2caea032f40a3b7fc9c189db42d5ebcd28cac0fac22b",
+        "fields": {
+          "G": "total_gas_cost",
+          "P": "total_gas_cost=12*(3+3.5+4+4.5)"
+        },
+        "communication_tokens": 28,
+        "communication_tokens_exact": true,
+        "attempt_count": 1,
+        "fallback": false,
+        "tokens_include_all_attempts": true,
+        "incoming_message_ids": []
+      }
+    },
+    {
+      "sender": "solver",
+      "content": "IR:sum_prices=3+3.5+4+4.5=15,total=12*15=180;R:180",
+      "receiver": "verifier",
+      "round": 0,
+      "role": "assistant",
+      "prompt_tokens": 769,
+      "completion_tokens": 31,
+      "id": "1d7e831efb05",
+      "ts": 1793112972.9459858,
+      "meta": {
+        "sender": "solver",
+        "receiver": "verifier",
+        "message_id": "1d7e831efb05",
+        "protocol_edge": "solver_to_verifier",
+        "protocol_version": "CARD-0-gsm8k",
+        "protocol_hash": "4bcdae885cc464e0a51977368e4bc06650c0326dbdcb182ce0327477c1d32daa",
+        "contract_hash": "ab4b736240365db5d0ce2caea032f40a3b7fc9c189db42d5ebcd28cac0fac22b",
+        "fields": {
+          "IR": "sum_prices=3+3.5+4+4.5=15,total=12*15=180",
+          "R": "180"
+        },
+        "communication_tokens": 31,
+        "communication_tokens_exact": true,
+        "attempt_count": 1,
+        "fallback": false,
+        "tokens_include_all_attempts": true,
+        "incoming_message_ids": [
+          "6e0711c94f26"
+        ]
+      }
+    },
+    {
+      "sender": "verifier",
+      "content": "CHK:ACCEPT",
+      "receiver": "solver",
+      "round": 0,
+      "role": "assistant",
+      "prompt_tokens": 1138,
+      "completion_tokens": 5,
+      "id": "48ac9f9c1425",
+      "ts": 1793112974.1388464,
+      "meta": {
+        "sender": "verifier",
+        "receiver": "solver",
+        "message_id": "48ac9f9c1425",
+        "protocol_edge": "verifier_to_solver",
+        "protocol_version": "CARD-0-gsm8k",
+        "protocol_hash": "4bcdae885cc464e0a51977368e4bc06650c0326dbdcb182ce0327477c1d32daa",
+        "contract_hash": "ab4b736240365db5d0ce2caea032f40a3b7fc9c189db42d5ebcd28cac0fac22b",
+        "fields": {
+          "CHK": "ACCEPT"
+        },
+        "communication_tokens": 5,
+        "communication_tokens_exact": true,
+        "attempt_count": 1,
+        "fallback": false,
+        "tokens_include_all_attempts": true,
+        "incoming_message_ids": [
+          "1d7e831efb05"
+        ]
+      }
+    }
+  ],
+  "communication_tokens": 64,
+  "wall_time_s": 3.5319827999919653,
+  "verified": true,
+  "revision_rounds": 0,
+  "model_calls": [
+    {
+      "role": "planner",
+      "attempt": 0,
+      "status": "delivered",
+      "error": "",
+      "raw_output": "G:total_gas_cost;P:total_gas_cost=12*(3+3.5+4+4.5)",
+      "finish_reason": "stop",
+      "output_tokens": 28,
+      "usage_available": true
+    },
+    {
+      "role": "solver",
+      "attempt": 0,
+      "status": "delivered",
+      "error": "",
+      "raw_output": "IR:sum_prices=3+3.5+4+4.5=15,total=12*15=180;R:180",
+      "finish_reason": "stop",
+      "output_tokens": 31,
+      "usage_available": true
+    },
+    {
+      "role": "verifier",
+      "attempt": 0,
+      "status": "delivered",
+      "error": "",
+      "raw_output": "CHK:ACCEPT",
+      "finish_reason": "stop",
+      "output_tokens": 5,
+      "usage_available": true
+    }
+  ],
+  "failed_attempts": [],
+  "calls": 3,
+  "usage_complete": true,
+  "known_input_tokens": 2706,
+  "known_output_tokens": 64,
+  "model_input_tokens": 2706,
+  "model_output_tokens": 64,
+  "format_failed_calls": 0,
+  "transport_failed_calls": 0,
+  "fallback_calls": 0,
+  "sum_model_latency_s": 3.386044979095459,
+  "gold": "180",
+  "score": 1.0,
+  "question": "Tara's taking a road trip for the weekend.  She drives for two days, stopping to fill up her gas tank each time from empty to full when she needs it.  She visits 4 different gas stations in total, with the price of gas being $3, $3.50, $4, and $4.50 respectively at each.  If Tara's car has a 12-gallon tank, how much does she spend on gas for her road trip?\nGive the final numeric answer."
+}

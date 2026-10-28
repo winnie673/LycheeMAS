@@ -1,0 +1,58 @@
+{
+  "diagnosis": {
+    "case_analysis": [
+      {
+        "case_id": "gsm8k:train:seed42:G3:00005",
+        "issue_type": "OPERATION_DIRECTION_ERROR",
+        "communication_related": false,
+        "protocol_path": "planner_to_solver->solver_to_verifier",
+        "evidence": "Both NL and hybrid interpret 'odds' as probability of all-good (0.24) rather than odds ratio; hybrid additionally computes 0.24/(1-0.24)=6/19. Gold is 24. The planner's P in hybrid encodes the odds-ratio formula, but the underlying misreading of 'odds' vs 'probability' is a base reasoning/interpretation error, not a protocol communication failure. NL planner prose also frames target as 'probability (odds)' conflating the two."
+      },
+      {
+        "case_id": "gsm8k:train:seed42:G3:00016",
+        "issue_type": "NONE",
+        "communication_related": false,
+        "protocol_path": "planner_to_solver->solver_to_verifier",
+        "evidence": "Hybrid compact fields K/G/P/NL correctly encode 365-day assumption, two-phase ounces, unit conversion, and ceil rounding; solver IR reproduces all steps; answer 17 matches gold. NL variant is verbose but also correct. No defect; hybrid is the successful compact pattern."
+      },
+      {
+        "case_id": "gsm8k:train:seed42:G3:00036",
+        "issue_type": "NONE",
+        "communication_related": false,
+        "protocol_path": "planner_to_solver->solver_to_verifier",
+        "evidence": "Hybrid P encodes multiplicity (17*1, 3*3) and division by 2; solver IR preserves all relations; answer 10 matches gold. Compact symbolic pattern is successful and should be preserved."
+      },
+      {
+        "case_id": "gsm8k:train:seed42:G3:00009",
+        "issue_type": "NONE",
+        "communication_related": false,
+        "protocol_path": "planner_to_solver->solver_to_verifier",
+        "evidence": "Hybrid K/G/P correctly encode speeds, times, target average, and operation direction (total_dist=target_avg*total_time, second_dist=total_dist-first_dist); answer 85 matches gold. Successful compact pattern."
+      },
+      {
+        "case_id": "gsm8k:train:seed42:G3:00033",
+        "issue_type": "NONE",
+        "communication_related": false,
+        "protocol_path": "planner_to_solver->solver_to_verifier",
+        "evidence": "Hybrid P correctly encodes temporal relation (ages at Diane=30, then subtract 14 years) and operation direction; answer 47 matches gold. Successful compact pattern preserving temporal relations."
+      },
+      {
+        "case_id": "gsm8k:train:seed42:G3:00044",
+        "issue_type": "MISSING_MULTIPLICITY",
+        "communication_related": true,
+        "protocol_path": "planner_to_solver",
+        "evidence": "NL planner prose says 'interpret the result as the total number of individual trips for both people' and solver multiplies 7 rounds by 2 to get 14, but gold is 7. The hybrid P 'per_trip=7+8,total_trips=105/per_trip' correctly treats combined per-trip capacity as one trip count and yields 7. The NL failure is a planner-introduced multiplicity error (doubling trips) that the compact symbolic form avoids; this is a communication-induced reasoning error in the NL path."
+      }
+    ],
+    "global_findings": [
+      "Hybrid compact symbolic fields (K/G/P with IR/R) consistently outperform verbose NL prose on communication tokens (78.44 vs 145.52) and accuracy (0.98 vs 0.96).",
+      "The only NL-specific failure (case 00044) is a planner-introduced multiplicity error where prose instructed doubling trips; the compact P form avoided it, confirming the card's preference for compact equations over procedural prose.",
+      "The both_incorrect case (00005) is a base reasoning/interpretation error about 'odds' vs 'probability', not a protocol communication failure; both paths share the same misreading.",
+      "Successful compact patterns (00016, 00036, 00009, 00033) preserve multiplicity, temporal relations, and operation direction in P and IR without NL fallback; these should be preserved.",
+      "No evidence of protocol schema violations, placeholder NL, or verifier over-revision in the selected cases."
+    ]
+  },
+  "eligible_case_ids": [
+    "gsm8k:train:seed42:G3:00044"
+  ]
+}

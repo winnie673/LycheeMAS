@@ -1,0 +1,151 @@
+{
+  "task_id": "gsm8k:train:seed42:G2:00016",
+  "status": "completed",
+  "error": null,
+  "prediction": "160",
+  "messages": [
+    {
+      "sender": "planner",
+      "content": "G:money_left;P:days=30-4,earned=days*10,spent=50,sister=50,money_left=earned-spent-sister",
+      "receiver": "solver",
+      "round": 0,
+      "role": "assistant",
+      "prompt_tokens": 763,
+      "completion_tokens": 38,
+      "id": "87b4e015fbb2",
+      "ts": 1793109901.79231,
+      "meta": {
+        "sender": "planner",
+        "receiver": "solver",
+        "message_id": "87b4e015fbb2",
+        "protocol_edge": "planner_to_solver",
+        "protocol_version": "CARD-0-gsm8k",
+        "protocol_hash": "4bcdae885cc464e0a51977368e4bc06650c0326dbdcb182ce0327477c1d32daa",
+        "contract_hash": "ab4b736240365db5d0ce2caea032f40a3b7fc9c189db42d5ebcd28cac0fac22b",
+        "fields": {
+          "G": "money_left",
+          "P": "days=30-4,earned=days*10,spent=50,sister=50,money_left=earned-spent-sister"
+        },
+        "communication_tokens": 38,
+        "communication_tokens_exact": true,
+        "attempt_count": 1,
+        "fallback": false,
+        "tokens_include_all_attempts": true,
+        "incoming_message_ids": []
+      }
+    },
+    {
+      "sender": "solver",
+      "content": "IR:days=30-4=26,earned=26*10=260,spent=50,sister=50,money_left=260-50-50=160;R:160",
+      "receiver": "verifier",
+      "round": 0,
+      "role": "assistant",
+      "prompt_tokens": 743,
+      "completion_tokens": 42,
+      "id": "0421192c6377",
+      "ts": 1793109903.0047154,
+      "meta": {
+        "sender": "solver",
+        "receiver": "verifier",
+        "message_id": "0421192c6377",
+        "protocol_edge": "solver_to_verifier",
+        "protocol_version": "CARD-0-gsm8k",
+        "protocol_hash": "4bcdae885cc464e0a51977368e4bc06650c0326dbdcb182ce0327477c1d32daa",
+        "contract_hash": "ab4b736240365db5d0ce2caea032f40a3b7fc9c189db42d5ebcd28cac0fac22b",
+        "fields": {
+          "IR": "days=30-4=26,earned=26*10=260,spent=50,sister=50,money_left=260-50-50=160",
+          "R": "160"
+        },
+        "communication_tokens": 42,
+        "communication_tokens_exact": true,
+        "attempt_count": 1,
+        "fallback": false,
+        "tokens_include_all_attempts": true,
+        "incoming_message_ids": [
+          "87b4e015fbb2"
+        ]
+      }
+    },
+    {
+      "sender": "verifier",
+      "content": "CHK:ACCEPT",
+      "receiver": "solver",
+      "round": 0,
+      "role": "assistant",
+      "prompt_tokens": 1113,
+      "completion_tokens": 5,
+      "id": "c53dcb60ef25",
+      "ts": 1793109904.259809,
+      "meta": {
+        "sender": "verifier",
+        "receiver": "solver",
+        "message_id": "c53dcb60ef25",
+        "protocol_edge": "verifier_to_solver",
+        "protocol_version": "CARD-0-gsm8k",
+        "protocol_hash": "4bcdae885cc464e0a51977368e4bc06650c0326dbdcb182ce0327477c1d32daa",
+        "contract_hash": "ab4b736240365db5d0ce2caea032f40a3b7fc9c189db42d5ebcd28cac0fac22b",
+        "fields": {
+          "CHK": "ACCEPT"
+        },
+        "communication_tokens": 5,
+        "communication_tokens_exact": true,
+        "attempt_count": 1,
+        "fallback": false,
+        "tokens_include_all_attempts": true,
+        "incoming_message_ids": [
+          "0421192c6377"
+        ]
+      }
+    }
+  ],
+  "communication_tokens": 85,
+  "wall_time_s": 4.108458300004713,
+  "verified": true,
+  "revision_rounds": 0,
+  "model_calls": [
+    {
+      "role": "planner",
+      "attempt": 0,
+      "status": "delivered",
+      "error": "",
+      "raw_output": "G:money_left;P:days=30-4,earned=days*10,spent=50,sister=50,money_left=earned-spent-sister",
+      "finish_reason": "stop",
+      "output_tokens": 38,
+      "usage_available": true
+    },
+    {
+      "role": "solver",
+      "attempt": 0,
+      "status": "delivered",
+      "error": "",
+      "raw_output": "IR:days=30-4=26,earned=26*10=260,spent=50,sister=50,money_left=260-50-50=160;R:160",
+      "finish_reason": "stop",
+      "output_tokens": 42,
+      "usage_available": true
+    },
+    {
+      "role": "verifier",
+      "attempt": 0,
+      "status": "delivered",
+      "error": "",
+      "raw_output": "CHK:ACCEPT",
+      "finish_reason": "stop",
+      "output_tokens": 5,
+      "usage_available": true
+    }
+  ],
+  "failed_attempts": [],
+  "calls": 3,
+  "usage_complete": true,
+  "known_input_tokens": 2619,
+  "known_output_tokens": 85,
+  "model_input_tokens": 2619,
+  "model_output_tokens": 85,
+  "format_failed_calls": 0,
+  "transport_failed_calls": 0,
+  "fallback_calls": 0,
+  "sum_model_latency_s": 3.9413135051727295,
+  "gold": "160",
+  "score": 1.0,
+  "question": "John's neighbor tells him to walk his dog for 1 hour each day for a total of $10. He does this for April, save for the 4 Sundays in April. He later spent $50 on books and gave his sister Kaylee the same amount. How much money did John have left?\nGive the final numeric answer."
+}

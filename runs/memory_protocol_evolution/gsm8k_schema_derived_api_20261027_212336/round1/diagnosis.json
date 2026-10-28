@@ -1,0 +1,79 @@
+{
+  "diagnosis": {
+    "case_analysis": [
+      {
+        "case_id": "gsm8k:train:seed42:G1:00022",
+        "issue_type": "PROCEDURAL_PROSE_OVERHEAD",
+        "communication_related": true,
+        "protocol_path": "planner_to_solver",
+        "evidence": "NL planner used 100 tokens of prose ('Goal:...Plan:...Constraints:...') vs hybrid's 85-token symbolic fields; both correct, but NL path is high-cost. Compact symbolic pattern (G/K/P) preserved answer-changing meaning with fewer tokens."
+      },
+      {
+        "case_id": "gsm8k:train:seed42:G1:00023",
+        "issue_type": "PROCEDURAL_PROSE_OVERHEAD",
+        "communication_related": true,
+        "protocol_path": "planner_to_solver",
+        "evidence": "NL planner 87 tokens of prose vs hybrid 80 tokens of symbolic P relations; both correct. Hybrid compact equation pattern is sufficient and cheaper."
+      },
+      {
+        "case_id": "gsm8k:train:seed42:G1:00043",
+        "issue_type": "PROCEDURAL_PROSE_OVERHEAD",
+        "communication_related": true,
+        "protocol_path": "planner_to_solver",
+        "evidence": "NL planner 107 tokens of prose vs hybrid 57 tokens of symbolic rate relations; both correct. Symbolic P preserved rates and operation direction without loss."
+      },
+      {
+        "case_id": "gsm8k:train:seed42:G1:00041",
+        "issue_type": "PROCEDURAL_PROSE_OVERHEAD",
+        "communication_related": true,
+        "protocol_path": "planner_to_solver",
+        "evidence": "NL planner 100 tokens of prose vs hybrid 69 tokens of symbolic relations; both correct. Hybrid compact pattern preserved fraction/operation direction."
+      },
+      {
+        "case_id": "gsm8k:train:seed42:G1:00016",
+        "issue_type": "MISSING_MULTIPLICITY",
+        "communication_related": true,
+        "protocol_path": "planner_to_solver",
+        "evidence": "Hybrid P encoded 'sandal_profit=4*21' treating the four-times profit as per-pair, but the problem states four times as much profit for selling TWO pairs, so per-pair is 4*21/2=42. The multiplicity of the two-pair bundle was dropped, yielding 301 instead of 175. NL path correctly divided by 2. Base reasoning also failed to catch it, but the root cause is a lost multiplicity relation in the encoded plan."
+      },
+      {
+        "case_id": "gsm8k:train:seed42:G1:00019",
+        "issue_type": "MISSING_FACT",
+        "communication_related": true,
+        "protocol_path": "planner_to_solver",
+        "evidence": "NL planner explicitly stated 'the initial Mac download is not part of the final total except as a basis for the Windows download duration', omitting the 10-minute Mac download from the total. Hybrid P included 'total_time=mac+win+glitch+clear' giving 82. The NL path dropped a required additive quantity, causing 72 vs 82."
+      },
+      {
+        "case_id": "gsm8k:train:seed42:G1:00031",
+        "issue_type": "OPERATION_DIRECTION_ERROR",
+        "communication_related": true,
+        "protocol_path": "planner_to_solver",
+        "evidence": "Both paths encoded 'micah_time=dean_time/(2/3)' interpreting '2/3 times as fast' as speed ratio, giving 13.5h. Gold 23 implies Micah time = 9*(2/3)=6 and Jake = 6*(4/3)=8, total 23. The speed-vs-time inversion is a base reasoning/interpretation error present in both NL and hybrid; NL fallback did not resolve the ambiguity. Communication did not introduce the error, but the NL fallback failed to expose the correct interpretation."
+      },
+      {
+        "case_id": "gsm8k:train:seed42:G1:00044",
+        "issue_type": "OPERATION_DIRECTION_ERROR",
+        "communication_related": true,
+        "protocol_path": "planner_to_solver",
+        "evidence": "Both paths assumed mutual exclusivity and added risks (0.1+0.1=0.2). Gold 15 implies inclusion-exclusion: 0.1+0.1-0.1*0.1=0.19? No—gold 15 suggests malaria 0.4*0.5*0.5=0.1 and zika 0.2*0.5=0.1 with overlap subtraction or different combination. The NL fallback asserted mutual exclusivity, an unverified interpretation that changed the answer. Base reasoning error compounded by an NL assumption that was not grounded in the problem."
+      }
+    ],
+    "global_findings": [
+      "NL path is consistently higher cost (mean 156 vs 83 tokens) with equal accuracy (0.94); compact symbolic G/K/P/IR patterns are sufficient and should be preserved.",
+      "The single hybrid_incorrect_nl_correct case (00016) is a MISSING_MULTIPLICITY in the symbolic plan: 'four times as much profit for two pairs' was encoded as per-pair multiplier, dropping the /2.",
+      "The single hybrid_correct_nl_incorrect case (00019) is a MISSING_FACT: NL planner explicitly excluded the Mac download time from the total, contradicting the question's 'downloading Zoom and talking total'.",
+      "Both_incorrect cases (00031, 00044) are base reasoning/interpretation errors (speed-vs-time inversion; mutual-exclusivity assumption) that NL fallback failed to correct and in 00044 actively asserted an ungrounded assumption.",
+      "Verifier accepted all cases including wrong ones; verifier did not independently recompute decisive relations, so it did not catch the multiplicity or fact omissions."
+    ]
+  },
+  "eligible_case_ids": [
+    "gsm8k:train:seed42:G1:00016",
+    "gsm8k:train:seed42:G1:00019",
+    "gsm8k:train:seed42:G1:00022",
+    "gsm8k:train:seed42:G1:00023",
+    "gsm8k:train:seed42:G1:00031",
+    "gsm8k:train:seed42:G1:00041",
+    "gsm8k:train:seed42:G1:00043",
+    "gsm8k:train:seed42:G1:00044"
+  ]
+}

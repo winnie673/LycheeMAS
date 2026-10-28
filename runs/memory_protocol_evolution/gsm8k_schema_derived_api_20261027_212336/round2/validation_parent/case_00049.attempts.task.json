@@ -1,0 +1,148 @@
+{
+  "task_id": "gsm8k:train:seed42:V:00049",
+  "status": "completed",
+  "error": null,
+  "prediction": "21",
+  "messages": [
+    {
+      "sender": "planner",
+      "content": "G:brother_age_in_5_years;P:sister=13+6,combined=13+sister,brother=combined/2,brother_age_in_5_years=brother+5",
+      "receiver": "solver",
+      "round": 0,
+      "role": "assistant",
+      "prompt_tokens": 735,
+      "completion_tokens": 45,
+      "id": "344c19f6ddd4",
+      "ts": 1793110502.850478,
+      "meta": {
+        "sender": "planner",
+        "receiver": "solver",
+        "message_id": "344c19f6ddd4",
+        "protocol_edge": "planner_to_solver",
+        "protocol_version": "CARD-0-gsm8k",
+        "protocol_hash": "4bcdae885cc464e0a51977368e4bc06650c0326dbdcb182ce0327477c1d32daa",
+        "contract_hash": "ab4b736240365db5d0ce2caea032f40a3b7fc9c189db42d5ebcd28cac0fac22b",
+        "fields": {
+          "G": "brother_age_in_5_years",
+          "P": "sister=13+6,combined=13+sister,brother=combined/2,brother_age_in_5_years=brother+5"
+        },
+        "communication_tokens": 45,
+        "communication_tokens_exact": true,
+        "attempt_count": 1,
+        "fallback": false,
+        "tokens_include_all_attempts": true,
+        "incoming_message_ids": []
+      }
+    },
+    {
+      "sender": "solver",
+      "content": "IR:sister=13+6=19,combined=13+19=32,brother=32/2=16,brother_in_5=16+5=21;R:21",
+      "receiver": "verifier",
+      "round": 0,
+      "role": "assistant",
+      "prompt_tokens": 722,
+      "completion_tokens": 42,
+      "id": "3ec514fd0b2e",
+      "ts": 1793110504.0400717,
+      "meta": {
+        "sender": "solver",
+        "receiver": "verifier",
+        "message_id": "3ec514fd0b2e",
+        "protocol_edge": "solver_to_verifier",
+        "protocol_version": "CARD-0-gsm8k",
+        "protocol_hash": "4bcdae885cc464e0a51977368e4bc06650c0326dbdcb182ce0327477c1d32daa",
+        "contract_hash": "ab4b736240365db5d0ce2caea032f40a3b7fc9c189db42d5ebcd28cac0fac22b",
+        "fields": {
+          "IR": "sister=13+6=19,combined=13+19=32,brother=32/2=16,brother_in_5=16+5=21",
+          "R": "21"
+        },
+        "communication_tokens": 42,
+        "communication_tokens_exact": true,
+        "attempt_count": 1,
+        "fallback": false,
+        "tokens_include_all_attempts": true,
+        "incoming_message_ids": [
+          "344c19f6ddd4"
+        ]
+      }
+    },
+    {
+      "sender": "verifier",
+      "content": "CHK:ACCEPT",
+      "receiver": "solver",
+      "round": 0,
+      "role": "assistant",
+      "prompt_tokens": 1085,
+      "completion_tokens": 5,
+      "id": "937b42480792",
+      "ts": 1793110505.0309014,
+      "meta": {
+        "sender": "verifier",
+        "receiver": "solver",
+        "message_id": "937b42480792",
+        "protocol_edge": "verifier_to_solver",
+        "protocol_version": "CARD-0-gsm8k",
+        "protocol_hash": "4bcdae885cc464e0a51977368e4bc06650c0326dbdcb182ce0327477c1d32daa",
+        "contract_hash": "ab4b736240365db5d0ce2caea032f40a3b7fc9c189db42d5ebcd28cac0fac22b",
+        "fields": {
+          "CHK": "ACCEPT"
+        },
+        "communication_tokens": 5,
+        "communication_tokens_exact": true,
+        "attempt_count": 1,
+        "fallback": false,
+        "tokens_include_all_attempts": true,
+        "incoming_message_ids": [
+          "3ec514fd0b2e"
+        ]
+      }
+    }
+  ],
+  "communication_tokens": 92,
+  "wall_time_s": 3.820132500026375,
+  "verified": true,
+  "revision_rounds": 0,
+  "model_calls": [
+    {
+      "role": "planner",
+      "attempt": 0,
+      "status": "delivered",
+      "error": "",
+      "raw_output": "G:brother_age_in_5_years;P:sister=13+6,combined=13+sister,brother=combined/2,brother_age_in_5_years=brother+5",
+      "finish_reason": "stop",
+      "output_tokens": 45,
+      "usage_available": true
+    },
+    {
+      "role": "solver",
+      "attempt": 0,
+      "status": "delivered",
+      "error": "",
+      "raw_output": "IR:sister=13+6=19,combined=13+19=32,brother=32/2=16,brother_in_5=16+5=21;R:21",
+      "finish_reason": "stop",
+      "output_tokens": 42,
+      "usage_available": true
+    },
+    {
+      "role": "verifier",
+      "attempt": 0,
+      "status": "delivered",
+      "error": "",
+      "raw_output": "CHK:ACCEPT",
+      "finish_reason": "stop",
+      "output_tokens": 5,
+      "usage_available": true
+    }
+  ],
+  "failed_attempts": [],
+  "calls": 3,
+  "usage_complete": true,
+  "known_input_tokens": 2542,
+  "known_output_tokens": 92,
+  "model_input_tokens": 2542,
+  "model_output_tokens": 92,
+  "format_failed_calls": 0,
+  "transport_failed_calls": 0,
+  "fallback_calls": 0,
+  "sum_model_latency_s": 3.662264108657837
+}

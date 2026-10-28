@@ -1,0 +1,151 @@
+{
+  "task_id": "gsm8k:train:seed42:G1:00024",
+  "status": "completed",
+  "error": null,
+  "prediction": "32",
+  "messages": [
+    {
+      "sender": "planner",
+      "content": "G:total_cost;P:needed=24*2,packs=needed/12,total_cost=packs*8",
+      "receiver": "solver",
+      "round": 0,
+      "role": "assistant",
+      "prompt_tokens": 781,
+      "completion_tokens": 27,
+      "id": "4c6856fa2506",
+      "ts": 1793107672.8877563,
+      "meta": {
+        "sender": "planner",
+        "receiver": "solver",
+        "message_id": "4c6856fa2506",
+        "protocol_edge": "planner_to_solver",
+        "protocol_version": "CARD-0-gsm8k",
+        "protocol_hash": "4bcdae885cc464e0a51977368e4bc06650c0326dbdcb182ce0327477c1d32daa",
+        "contract_hash": "ab4b736240365db5d0ce2caea032f40a3b7fc9c189db42d5ebcd28cac0fac22b",
+        "fields": {
+          "G": "total_cost",
+          "P": "needed=24*2,packs=needed/12,total_cost=packs*8"
+        },
+        "communication_tokens": 27,
+        "communication_tokens_exact": true,
+        "attempt_count": 1,
+        "fallback": false,
+        "tokens_include_all_attempts": true,
+        "incoming_message_ids": []
+      }
+    },
+    {
+      "sender": "solver",
+      "content": "IR:needed=24*2=48,packs=48/12=4,total_cost=4*8=32;R:32",
+      "receiver": "verifier",
+      "round": 0,
+      "role": "assistant",
+      "prompt_tokens": 750,
+      "completion_tokens": 31,
+      "id": "6452d1a3a317",
+      "ts": 1793107673.9704137,
+      "meta": {
+        "sender": "solver",
+        "receiver": "verifier",
+        "message_id": "6452d1a3a317",
+        "protocol_edge": "solver_to_verifier",
+        "protocol_version": "CARD-0-gsm8k",
+        "protocol_hash": "4bcdae885cc464e0a51977368e4bc06650c0326dbdcb182ce0327477c1d32daa",
+        "contract_hash": "ab4b736240365db5d0ce2caea032f40a3b7fc9c189db42d5ebcd28cac0fac22b",
+        "fields": {
+          "IR": "needed=24*2=48,packs=48/12=4,total_cost=4*8=32",
+          "R": "32"
+        },
+        "communication_tokens": 31,
+        "communication_tokens_exact": true,
+        "attempt_count": 1,
+        "fallback": false,
+        "tokens_include_all_attempts": true,
+        "incoming_message_ids": [
+          "4c6856fa2506"
+        ]
+      }
+    },
+    {
+      "sender": "verifier",
+      "content": "CHK:ACCEPT",
+      "receiver": "solver",
+      "round": 0,
+      "role": "assistant",
+      "prompt_tokens": 1120,
+      "completion_tokens": 5,
+      "id": "3e8fe449d4d0",
+      "ts": 1793107675.332977,
+      "meta": {
+        "sender": "verifier",
+        "receiver": "solver",
+        "message_id": "3e8fe449d4d0",
+        "protocol_edge": "verifier_to_solver",
+        "protocol_version": "CARD-0-gsm8k",
+        "protocol_hash": "4bcdae885cc464e0a51977368e4bc06650c0326dbdcb182ce0327477c1d32daa",
+        "contract_hash": "ab4b736240365db5d0ce2caea032f40a3b7fc9c189db42d5ebcd28cac0fac22b",
+        "fields": {
+          "CHK": "ACCEPT"
+        },
+        "communication_tokens": 5,
+        "communication_tokens_exact": true,
+        "attempt_count": 1,
+        "fallback": false,
+        "tokens_include_all_attempts": true,
+        "incoming_message_ids": [
+          "6452d1a3a317"
+        ]
+      }
+    }
+  ],
+  "communication_tokens": 63,
+  "wall_time_s": 4.052028400008567,
+  "verified": true,
+  "revision_rounds": 0,
+  "model_calls": [
+    {
+      "role": "planner",
+      "attempt": 0,
+      "status": "delivered",
+      "error": "",
+      "raw_output": "G:total_cost;P:needed=24*2,packs=needed/12,total_cost=packs*8",
+      "finish_reason": "stop",
+      "output_tokens": 27,
+      "usage_available": true
+    },
+    {
+      "role": "solver",
+      "attempt": 0,
+      "status": "delivered",
+      "error": "",
+      "raw_output": "IR:needed=24*2=48,packs=48/12=4,total_cost=4*8=32;R:32",
+      "finish_reason": "stop",
+      "output_tokens": 31,
+      "usage_available": true
+    },
+    {
+      "role": "verifier",
+      "attempt": 0,
+      "status": "delivered",
+      "error": "",
+      "raw_output": "CHK:ACCEPT",
+      "finish_reason": "stop",
+      "output_tokens": 5,
+      "usage_available": true
+    }
+  ],
+  "failed_attempts": [],
+  "calls": 3,
+  "usage_complete": true,
+  "known_input_tokens": 2651,
+  "known_output_tokens": 63,
+  "model_input_tokens": 2651,
+  "model_output_tokens": 63,
+  "format_failed_calls": 0,
+  "transport_failed_calls": 0,
+  "fallback_calls": 0,
+  "sum_model_latency_s": 3.8953731060028076,
+  "gold": "32",
+  "score": 1.0,
+  "question": "For the gala luncheon planning committee, Margaret wants to serve chicken salad sandwiches using mini croissants.  She wants there to be enough food that each person on the committee can have 2 sandwiches each.  Her bakery offers 12 minis croissants for $8.00.  There are 24 people on the committee. How much will she spend on croissants?\nGive the final numeric answer."
+}

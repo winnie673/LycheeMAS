@@ -1,0 +1,120 @@
+{
+  "task_id": "gsm8k:test:seed42:T:00197",
+  "mode": "hybrid",
+  "benchmark": "gsm8k",
+  "status": "completed",
+  "error": null,
+  "prediction": "6277",
+  "gold": "6277",
+  "wall_time_s": 3.849279099958949,
+  "communication_tokens": 44,
+  "communication_tokens_exact": true,
+  "revision_rounds": 0,
+  "verification_decision": "ACCEPT",
+  "verified": true,
+  "messages": [
+    {
+      "sender": "planner",
+      "content": "G:number_of_children;P:children=23786-8417-9092",
+      "receiver": "solver",
+      "round": 0,
+      "role": "assistant",
+      "prompt_tokens": 748,
+      "completion_tokens": 19,
+      "id": "3811b896089a",
+      "ts": 1793170558.3091304,
+      "meta": {
+        "sender": "planner",
+        "receiver": "solver",
+        "message_id": "3811b896089a",
+        "protocol_edge": "planner_to_solver",
+        "protocol_version": "CARD-0-gsm8k",
+        "protocol_hash": "4bcdae885cc464e0a51977368e4bc06650c0326dbdcb182ce0327477c1d32daa",
+        "contract_hash": "ab4b736240365db5d0ce2caea032f40a3b7fc9c189db42d5ebcd28cac0fac22b",
+        "fields": {
+          "G": "number_of_children",
+          "P": "children=23786-8417-9092"
+        },
+        "communication_tokens": 19,
+        "communication_tokens_exact": true,
+        "attempt_count": 1,
+        "fallback": false,
+        "tokens_include_all_attempts": true,
+        "incoming_message_ids": []
+      }
+    },
+    {
+      "sender": "solver",
+      "content": "IR:children=23786-8417-9092=6277;R:6277",
+      "receiver": "verifier",
+      "round": 0,
+      "role": "assistant",
+      "prompt_tokens": 709,
+      "completion_tokens": 20,
+      "id": "98070b2680df",
+      "ts": 1793170559.571474,
+      "meta": {
+        "sender": "solver",
+        "receiver": "verifier",
+        "message_id": "98070b2680df",
+        "protocol_edge": "solver_to_verifier",
+        "protocol_version": "CARD-0-gsm8k",
+        "protocol_hash": "4bcdae885cc464e0a51977368e4bc06650c0326dbdcb182ce0327477c1d32daa",
+        "contract_hash": "ab4b736240365db5d0ce2caea032f40a3b7fc9c189db42d5ebcd28cac0fac22b",
+        "fields": {
+          "IR": "children=23786-8417-9092=6277",
+          "R": "6277"
+        },
+        "communication_tokens": 20,
+        "communication_tokens_exact": true,
+        "attempt_count": 1,
+        "fallback": false,
+        "tokens_include_all_attempts": true,
+        "incoming_message_ids": [
+          "3811b896089a"
+        ]
+      }
+    },
+    {
+      "sender": "verifier",
+      "content": "CHK:ACCEPT",
+      "receiver": "solver",
+      "round": 0,
+      "role": "assistant",
+      "prompt_tokens": 1076,
+      "completion_tokens": 5,
+      "id": "15bf43688256",
+      "ts": 1793170560.7619586,
+      "meta": {
+        "sender": "verifier",
+        "receiver": "solver",
+        "message_id": "15bf43688256",
+        "protocol_edge": "verifier_to_solver",
+        "protocol_version": "CARD-0-gsm8k",
+        "protocol_hash": "4bcdae885cc464e0a51977368e4bc06650c0326dbdcb182ce0327477c1d32daa",
+        "contract_hash": "ab4b736240365db5d0ce2caea032f40a3b7fc9c189db42d5ebcd28cac0fac22b",
+        "fields": {
+          "CHK": "ACCEPT"
+        },
+        "communication_tokens": 5,
+        "communication_tokens_exact": true,
+        "attempt_count": 1,
+        "fallback": false,
+        "tokens_include_all_attempts": true,
+        "incoming_message_ids": [
+          "98070b2680df"
+        ]
+      }
+    }
+  ],
+  "calls": 3,
+  "usage_complete": true,
+  "known_input_tokens": 2533,
+  "known_output_tokens": 44,
+  "model_input_tokens": 2533,
+  "model_output_tokens": 44,
+  "format_failed_calls": 0,
+  "transport_failed_calls": 0,
+  "fallback_calls": 0,
+  "sum_model_latency_s": 3.689997911453247
+}

@@ -1,0 +1,148 @@
+{
+  "task_id": "gsm8k:train:seed42:V:00076",
+  "status": "completed",
+  "error": null,
+  "prediction": "96",
+  "messages": [
+    {
+      "sender": "planner",
+      "content": "G:total_hours_at_field;P:games_per_daughter=8,daughters=2,total_games=games_per_daughter*daughters,practice_hours=4*total_games,game_hours=2*total_games,total_hours_at_field=practice_hours+game_hours",
+      "receiver": "solver",
+      "round": 0,
+      "role": "assistant",
+      "prompt_tokens": 819,
+      "completion_tokens": 67,
+      "id": "b74a8ae05e89",
+      "ts": 1793109290.6750102,
+      "meta": {
+        "sender": "planner",
+        "receiver": "solver",
+        "message_id": "b74a8ae05e89",
+        "protocol_edge": "planner_to_solver",
+        "protocol_version": "CARD-1-gsm8k",
+        "protocol_hash": "2a663f41d251a442e680de67a231e516a8fe5e31629bc25d021c8c0eb1354cff",
+        "contract_hash": "ab4b736240365db5d0ce2caea032f40a3b7fc9c189db42d5ebcd28cac0fac22b",
+        "fields": {
+          "G": "total_hours_at_field",
+          "P": "games_per_daughter=8,daughters=2,total_games=games_per_daughter*daughters,practice_hours=4*total_games,game_hours=2*total_games,total_hours_at_field=practice_hours+game_hours"
+        },
+        "communication_tokens": 67,
+        "communication_tokens_exact": true,
+        "attempt_count": 1,
+        "fallback": false,
+        "tokens_include_all_attempts": true,
+        "incoming_message_ids": []
+      }
+    },
+    {
+      "sender": "solver",
+      "content": "IR:total_games=8*2=16,practice_hours=4*16=64,game_hours=2*16=32,total_hours_at_field=64+32=96;R:96",
+      "receiver": "verifier",
+      "round": 0,
+      "role": "assistant",
+      "prompt_tokens": 769,
+      "completion_tokens": 47,
+      "id": "b12256d64024",
+      "ts": 1793109292.033138,
+      "meta": {
+        "sender": "solver",
+        "receiver": "verifier",
+        "message_id": "b12256d64024",
+        "protocol_edge": "solver_to_verifier",
+        "protocol_version": "CARD-1-gsm8k",
+        "protocol_hash": "2a663f41d251a442e680de67a231e516a8fe5e31629bc25d021c8c0eb1354cff",
+        "contract_hash": "ab4b736240365db5d0ce2caea032f40a3b7fc9c189db42d5ebcd28cac0fac22b",
+        "fields": {
+          "IR": "total_games=8*2=16,practice_hours=4*16=64,game_hours=2*16=32,total_hours_at_field=64+32=96",
+          "R": "96"
+        },
+        "communication_tokens": 47,
+        "communication_tokens_exact": true,
+        "attempt_count": 1,
+        "fallback": false,
+        "tokens_include_all_attempts": true,
+        "incoming_message_ids": [
+          "b74a8ae05e89"
+        ]
+      }
+    },
+    {
+      "sender": "verifier",
+      "content": "CHK:ACCEPT",
+      "receiver": "solver",
+      "round": 0,
+      "role": "assistant",
+      "prompt_tokens": 1115,
+      "completion_tokens": 5,
+      "id": "ab5487bfcc03",
+      "ts": 1793109293.427278,
+      "meta": {
+        "sender": "verifier",
+        "receiver": "solver",
+        "message_id": "ab5487bfcc03",
+        "protocol_edge": "verifier_to_solver",
+        "protocol_version": "CARD-1-gsm8k",
+        "protocol_hash": "2a663f41d251a442e680de67a231e516a8fe5e31629bc25d021c8c0eb1354cff",
+        "contract_hash": "ab4b736240365db5d0ce2caea032f40a3b7fc9c189db42d5ebcd28cac0fac22b",
+        "fields": {
+          "CHK": "ACCEPT"
+        },
+        "communication_tokens": 5,
+        "communication_tokens_exact": true,
+        "attempt_count": 1,
+        "fallback": false,
+        "tokens_include_all_attempts": true,
+        "incoming_message_ids": [
+          "b12256d64024"
+        ]
+      }
+    }
+  ],
+  "communication_tokens": 119,
+  "wall_time_s": 4.440306899952702,
+  "verified": true,
+  "revision_rounds": 0,
+  "model_calls": [
+    {
+      "role": "planner",
+      "attempt": 0,
+      "status": "delivered",
+      "error": "",
+      "raw_output": "G:total_hours_at_field;P:games_per_daughter=8,daughters=2,total_games=games_per_daughter*daughters,practice_hours=4*total_games,game_hours=2*total_games,total_hours_at_field=practice_hours+game_hours",
+      "finish_reason": "stop",
+      "output_tokens": 67,
+      "usage_available": true
+    },
+    {
+      "role": "solver",
+      "attempt": 0,
+      "status": "delivered",
+      "error": "",
+      "raw_output": "IR:total_games=8*2=16,practice_hours=4*16=64,game_hours=2*16=32,total_hours_at_field=64+32=96;R:96",
+      "finish_reason": "stop",
+      "output_tokens": 47,
+      "usage_available": true
+    },
+    {
+      "role": "verifier",
+      "attempt": 0,
+      "status": "delivered",
+      "error": "",
+      "raw_output": "CHK:ACCEPT",
+      "finish_reason": "stop",
+      "output_tokens": 5,
+      "usage_available": true
+    }
+  ],
+  "failed_attempts": [],
+  "calls": 3,
+  "usage_complete": true,
+  "known_input_tokens": 2703,
+  "known_output_tokens": 119,
+  "model_input_tokens": 2703,
+  "model_output_tokens": 119,
+  "format_failed_calls": 0,
+  "transport_failed_calls": 0,
+  "fallback_calls": 0,
+  "sum_model_latency_s": 4.36304783821106
+}

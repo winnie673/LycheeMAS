@@ -1,0 +1,148 @@
+{
+  "task_id": "gsm8k:train:seed42:V:00016",
+  "status": "completed",
+  "error": null,
+  "prediction": "5",
+  "messages": [
+    {
+      "sender": "planner",
+      "content": "G:cost_per_scoop;P:people=1+2,meal_total=people*10,icecream_total=45-meal_total,cost_per_scoop=icecream_total/people",
+      "receiver": "solver",
+      "round": 0,
+      "role": "assistant",
+      "prompt_tokens": 821,
+      "completion_tokens": 43,
+      "id": "94bdb37640f4",
+      "ts": 1793109030.4935217,
+      "meta": {
+        "sender": "planner",
+        "receiver": "solver",
+        "message_id": "94bdb37640f4",
+        "protocol_edge": "planner_to_solver",
+        "protocol_version": "CARD-1-gsm8k",
+        "protocol_hash": "2a663f41d251a442e680de67a231e516a8fe5e31629bc25d021c8c0eb1354cff",
+        "contract_hash": "ab4b736240365db5d0ce2caea032f40a3b7fc9c189db42d5ebcd28cac0fac22b",
+        "fields": {
+          "G": "cost_per_scoop",
+          "P": "people=1+2,meal_total=people*10,icecream_total=45-meal_total,cost_per_scoop=icecream_total/people"
+        },
+        "communication_tokens": 43,
+        "communication_tokens_exact": true,
+        "attempt_count": 1,
+        "fallback": false,
+        "tokens_include_all_attempts": true,
+        "incoming_message_ids": []
+      }
+    },
+    {
+      "sender": "solver",
+      "content": "IR:people=1+2=3,meal_total=3*10=30,icecream_total=45-30=15,cost_per_scoop=15/3=5;R:5",
+      "receiver": "verifier",
+      "round": 0,
+      "role": "assistant",
+      "prompt_tokens": 747,
+      "completion_tokens": 44,
+      "id": "12dfce224ad1",
+      "ts": 1793109031.5648894,
+      "meta": {
+        "sender": "solver",
+        "receiver": "verifier",
+        "message_id": "12dfce224ad1",
+        "protocol_edge": "solver_to_verifier",
+        "protocol_version": "CARD-1-gsm8k",
+        "protocol_hash": "2a663f41d251a442e680de67a231e516a8fe5e31629bc25d021c8c0eb1354cff",
+        "contract_hash": "ab4b736240365db5d0ce2caea032f40a3b7fc9c189db42d5ebcd28cac0fac22b",
+        "fields": {
+          "IR": "people=1+2=3,meal_total=3*10=30,icecream_total=45-30=15,cost_per_scoop=15/3=5",
+          "R": "5"
+        },
+        "communication_tokens": 44,
+        "communication_tokens_exact": true,
+        "attempt_count": 1,
+        "fallback": false,
+        "tokens_include_all_attempts": true,
+        "incoming_message_ids": [
+          "94bdb37640f4"
+        ]
+      }
+    },
+    {
+      "sender": "verifier",
+      "content": "CHK:ACCEPT",
+      "receiver": "solver",
+      "round": 0,
+      "role": "assistant",
+      "prompt_tokens": 1114,
+      "completion_tokens": 5,
+      "id": "0f5c368ffd86",
+      "ts": 1793109033.505404,
+      "meta": {
+        "sender": "verifier",
+        "receiver": "solver",
+        "message_id": "0f5c368ffd86",
+        "protocol_edge": "verifier_to_solver",
+        "protocol_version": "CARD-1-gsm8k",
+        "protocol_hash": "2a663f41d251a442e680de67a231e516a8fe5e31629bc25d021c8c0eb1354cff",
+        "contract_hash": "ab4b736240365db5d0ce2caea032f40a3b7fc9c189db42d5ebcd28cac0fac22b",
+        "fields": {
+          "CHK": "ACCEPT"
+        },
+        "communication_tokens": 5,
+        "communication_tokens_exact": true,
+        "attempt_count": 1,
+        "fallback": false,
+        "tokens_include_all_attempts": true,
+        "incoming_message_ids": [
+          "12dfce224ad1"
+        ]
+      }
+    }
+  ],
+  "communication_tokens": 92,
+  "wall_time_s": 4.369439100031741,
+  "verified": true,
+  "revision_rounds": 0,
+  "model_calls": [
+    {
+      "role": "planner",
+      "attempt": 0,
+      "status": "delivered",
+      "error": "",
+      "raw_output": "G:cost_per_scoop;P:people=1+2,meal_total=people*10,icecream_total=45-meal_total,cost_per_scoop=icecream_total/people",
+      "finish_reason": "stop",
+      "output_tokens": 43,
+      "usage_available": true
+    },
+    {
+      "role": "solver",
+      "attempt": 0,
+      "status": "delivered",
+      "error": "",
+      "raw_output": "IR:people=1+2=3,meal_total=3*10=30,icecream_total=45-30=15,cost_per_scoop=15/3=5;R:5",
+      "finish_reason": "stop",
+      "output_tokens": 44,
+      "usage_available": true
+    },
+    {
+      "role": "verifier",
+      "attempt": 0,
+      "status": "delivered",
+      "error": "",
+      "raw_output": "CHK:ACCEPT",
+      "finish_reason": "stop",
+      "output_tokens": 5,
+      "usage_available": true
+    }
+  ],
+  "failed_attempts": [],
+  "calls": 3,
+  "usage_complete": true,
+  "known_input_tokens": 2682,
+  "known_output_tokens": 92,
+  "model_input_tokens": 2682,
+  "model_output_tokens": 92,
+  "format_failed_calls": 0,
+  "transport_failed_calls": 0,
+  "fallback_calls": 0,
+  "sum_model_latency_s": 4.285371541976929
+}

@@ -1,0 +1,151 @@
+{
+  "task_id": "gsm8k:train:seed42:G1:00005",
+  "status": "completed",
+  "error": null,
+  "prediction": "28",
+  "messages": [
+    {
+      "sender": "planner",
+      "content": "G:avocados_needed;P:batches=42/6,avocados_needed=batches*4",
+      "receiver": "solver",
+      "round": 0,
+      "role": "assistant",
+      "prompt_tokens": 748,
+      "completion_tokens": 25,
+      "id": "91f17f54b7c2",
+      "ts": 1793107593.209602,
+      "meta": {
+        "sender": "planner",
+        "receiver": "solver",
+        "message_id": "91f17f54b7c2",
+        "protocol_edge": "planner_to_solver",
+        "protocol_version": "CARD-0-gsm8k",
+        "protocol_hash": "4bcdae885cc464e0a51977368e4bc06650c0326dbdcb182ce0327477c1d32daa",
+        "contract_hash": "ab4b736240365db5d0ce2caea032f40a3b7fc9c189db42d5ebcd28cac0fac22b",
+        "fields": {
+          "G": "avocados_needed",
+          "P": "batches=42/6,avocados_needed=batches*4"
+        },
+        "communication_tokens": 25,
+        "communication_tokens_exact": true,
+        "attempt_count": 1,
+        "fallback": false,
+        "tokens_include_all_attempts": true,
+        "incoming_message_ids": []
+      }
+    },
+    {
+      "sender": "solver",
+      "content": "IR:batches=42/6=7,avocados_needed=7*4=28;R:28",
+      "receiver": "verifier",
+      "round": 0,
+      "role": "assistant",
+      "prompt_tokens": 715,
+      "completion_tokens": 25,
+      "id": "af7f404feefe",
+      "ts": 1793107594.2369215,
+      "meta": {
+        "sender": "solver",
+        "receiver": "verifier",
+        "message_id": "af7f404feefe",
+        "protocol_edge": "solver_to_verifier",
+        "protocol_version": "CARD-0-gsm8k",
+        "protocol_hash": "4bcdae885cc464e0a51977368e4bc06650c0326dbdcb182ce0327477c1d32daa",
+        "contract_hash": "ab4b736240365db5d0ce2caea032f40a3b7fc9c189db42d5ebcd28cac0fac22b",
+        "fields": {
+          "IR": "batches=42/6=7,avocados_needed=7*4=28",
+          "R": "28"
+        },
+        "communication_tokens": 25,
+        "communication_tokens_exact": true,
+        "attempt_count": 1,
+        "fallback": false,
+        "tokens_include_all_attempts": true,
+        "incoming_message_ids": [
+          "91f17f54b7c2"
+        ]
+      }
+    },
+    {
+      "sender": "verifier",
+      "content": "CHK:ACCEPT",
+      "receiver": "solver",
+      "round": 0,
+      "role": "assistant",
+      "prompt_tokens": 1081,
+      "completion_tokens": 5,
+      "id": "6077b42aa3e2",
+      "ts": 1793107595.5123203,
+      "meta": {
+        "sender": "verifier",
+        "receiver": "solver",
+        "message_id": "6077b42aa3e2",
+        "protocol_edge": "verifier_to_solver",
+        "protocol_version": "CARD-0-gsm8k",
+        "protocol_hash": "4bcdae885cc464e0a51977368e4bc06650c0326dbdcb182ce0327477c1d32daa",
+        "contract_hash": "ab4b736240365db5d0ce2caea032f40a3b7fc9c189db42d5ebcd28cac0fac22b",
+        "fields": {
+          "CHK": "ACCEPT"
+        },
+        "communication_tokens": 5,
+        "communication_tokens_exact": true,
+        "attempt_count": 1,
+        "fallback": false,
+        "tokens_include_all_attempts": true,
+        "incoming_message_ids": [
+          "af7f404feefe"
+        ]
+      }
+    }
+  ],
+  "communication_tokens": 55,
+  "wall_time_s": 3.9043647999642417,
+  "verified": true,
+  "revision_rounds": 0,
+  "model_calls": [
+    {
+      "role": "planner",
+      "attempt": 0,
+      "status": "delivered",
+      "error": "",
+      "raw_output": "G:avocados_needed;P:batches=42/6,avocados_needed=batches*4",
+      "finish_reason": "stop",
+      "output_tokens": 25,
+      "usage_available": true
+    },
+    {
+      "role": "solver",
+      "attempt": 0,
+      "status": "delivered",
+      "error": "",
+      "raw_output": "IR:batches=42/6=7,avocados_needed=7*4=28;R:28",
+      "finish_reason": "stop",
+      "output_tokens": 25,
+      "usage_available": true
+    },
+    {
+      "role": "verifier",
+      "attempt": 0,
+      "status": "delivered",
+      "error": "",
+      "raw_output": "CHK:ACCEPT",
+      "finish_reason": "stop",
+      "output_tokens": 5,
+      "usage_available": true
+    }
+  ],
+  "failed_attempts": [],
+  "calls": 3,
+  "usage_complete": true,
+  "known_input_tokens": 2544,
+  "known_output_tokens": 55,
+  "model_input_tokens": 2544,
+  "model_output_tokens": 55,
+  "format_failed_calls": 0,
+  "transport_failed_calls": 0,
+  "fallback_calls": 0,
+  "sum_model_latency_s": 3.7320141792297363,
+  "gold": "28",
+  "score": 1.0,
+  "question": "Allie's making guacamole for a party. Each batch requires 4 avocados and serves about 6 people. If 42 people are going to be at the party including her, how many avocados does she need?\nGive the final numeric answer."
+}

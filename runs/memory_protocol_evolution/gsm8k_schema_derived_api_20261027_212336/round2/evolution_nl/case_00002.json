@@ -1,0 +1,126 @@
+{
+  "task_id": "gsm8k:train:seed42:G2:00002",
+  "status": "completed",
+  "error": null,
+  "prediction": "10",
+  "messages": [
+    {
+      "sender": "planner",
+      "content": "Goal: Find how many of the 25 people did not buy coffee.\n\nPlan: The problem says 3/5 of the 25 people came to buy coffee. Compute 3/5 of 25 to get the coffee buyers, then subtract that from 25 to get the number who did not buy coffee.\n\nConstraints: Use the total of 25 people and the fraction 3/5. Report only the final count of people who did not buy coffee.",
+      "receiver": "solver",
+      "round": 0,
+      "role": "assistant",
+      "prompt_tokens": 194,
+      "completion_tokens": 94,
+      "id": "a4373a71231e",
+      "ts": 1793110051.6918507,
+      "meta": {
+        "fields": {},
+        "communication_tokens": 94,
+        "communication_tokens_exact": true,
+        "attempt_count": 1,
+        "fallback": false,
+        "tokens_include_all_attempts": true,
+        "incoming_message_ids": []
+      }
+    },
+    {
+      "sender": "solver",
+      "content": "3/5 of 25 is 15, so 25 − 15 = 10 people did not buy coffee.\n\\boxed{10}",
+      "receiver": "verifier",
+      "round": 0,
+      "role": "assistant",
+      "prompt_tokens": 300,
+      "completion_tokens": 31,
+      "id": "c01cdbed2b20",
+      "ts": 1793110052.777608,
+      "meta": {
+        "fields": {
+          "R": "10"
+        },
+        "communication_tokens": 31,
+        "communication_tokens_exact": true,
+        "attempt_count": 1,
+        "fallback": false,
+        "tokens_include_all_attempts": true,
+        "incoming_message_ids": [
+          "a4373a71231e"
+        ]
+      }
+    },
+    {
+      "sender": "verifier",
+      "content": "ACCEPT",
+      "receiver": "solver",
+      "round": 0,
+      "role": "assistant",
+      "prompt_tokens": 614,
+      "completion_tokens": 2,
+      "id": "cb215269252d",
+      "ts": 1793110053.899266,
+      "meta": {
+        "fields": {
+          "CHK": "ACCEPT"
+        },
+        "communication_tokens": 2,
+        "communication_tokens_exact": true,
+        "attempt_count": 1,
+        "fallback": false,
+        "tokens_include_all_attempts": true,
+        "incoming_message_ids": [
+          "c01cdbed2b20"
+        ]
+      }
+    }
+  ],
+  "communication_tokens": 127,
+  "wall_time_s": 4.269332099938765,
+  "verified": true,
+  "revision_rounds": 0,
+  "model_calls": [
+    {
+      "role": "planner",
+      "attempt": 0,
+      "status": "delivered",
+      "error": "",
+      "raw_output": "Goal: Find how many of the 25 people did not buy coffee.\n\nPlan: The problem says 3/5 of the 25 people came to buy coffee. Compute 3/5 of 25 to get the coffee buyers, then subtract that from 25 to get the number who did not buy coffee.\n\nConstraints: Use the total of 25 people and the fraction 3/5. Report only the final count of people who did not buy coffee.",
+      "finish_reason": "stop",
+      "output_tokens": 94,
+      "usage_available": true
+    },
+    {
+      "role": "solver",
+      "attempt": 0,
+      "status": "delivered",
+      "error": "",
+      "raw_output": "3/5 of 25 is 15, so 25 − 15 = 10 people did not buy coffee.\n\\boxed{10}",
+      "finish_reason": "stop",
+      "output_tokens": 31,
+      "usage_available": true
+    },
+    {
+      "role": "verifier",
+      "attempt": 0,
+      "status": "delivered",
+      "error": "",
+      "raw_output": "ACCEPT",
+      "finish_reason": "stop",
+      "output_tokens": 2,
+      "usage_available": true
+    }
+  ],
+  "failed_attempts": [],
+  "calls": 3,
+  "usage_complete": true,
+  "known_input_tokens": 1108,
+  "known_output_tokens": 127,
+  "model_input_tokens": 1108,
+  "model_output_tokens": 127,
+  "format_failed_calls": 0,
+  "transport_failed_calls": 0,
+  "fallback_calls": 0,
+  "sum_model_latency_s": 4.205692768096924,
+  "gold": "10",
+  "score": 1.0,
+  "question": "On a particular week, Fatima's restaurant served 25 people food and drinks, and 3/5 of that number came to buy coffee. How many people did not buy coffee in the restaurant?\nGive the final numeric answer."
+}

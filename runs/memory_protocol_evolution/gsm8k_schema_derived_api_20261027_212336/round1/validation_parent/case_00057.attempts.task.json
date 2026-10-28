@@ -1,0 +1,149 @@
+{
+  "task_id": "gsm8k:train:seed42:V:00057",
+  "status": "completed",
+  "error": null,
+  "prediction": "4800",
+  "messages": [
+    {
+      "sender": "planner",
+      "content": "K:hot_dogs_per_day=60,pizzas_per_day=hot_dogs_per_day+40,June_days=30;G:total_items_in_June;P:daily_total=hot_dogs_per_day+pizzas_per_day,total_items_in_June=daily_total*June_days",
+      "receiver": "solver",
+      "round": 0,
+      "role": "assistant",
+      "prompt_tokens": 739,
+      "completion_tokens": 65,
+      "id": "d80e8f2950ad",
+      "ts": 1793108320.4694278,
+      "meta": {
+        "sender": "planner",
+        "receiver": "solver",
+        "message_id": "d80e8f2950ad",
+        "protocol_edge": "planner_to_solver",
+        "protocol_version": "CARD-0-gsm8k",
+        "protocol_hash": "4bcdae885cc464e0a51977368e4bc06650c0326dbdcb182ce0327477c1d32daa",
+        "contract_hash": "ab4b736240365db5d0ce2caea032f40a3b7fc9c189db42d5ebcd28cac0fac22b",
+        "fields": {
+          "K": "hot_dogs_per_day=60,pizzas_per_day=hot_dogs_per_day+40,June_days=30",
+          "G": "total_items_in_June",
+          "P": "daily_total=hot_dogs_per_day+pizzas_per_day,total_items_in_June=daily_total*June_days"
+        },
+        "communication_tokens": 65,
+        "communication_tokens_exact": true,
+        "attempt_count": 1,
+        "fallback": false,
+        "tokens_include_all_attempts": true,
+        "incoming_message_ids": []
+      }
+    },
+    {
+      "sender": "solver",
+      "content": "IR:pizzas_per_day=60+40=100,daily_total=60+100=160,total=160*30=4800;R:4800",
+      "receiver": "verifier",
+      "round": 0,
+      "role": "assistant",
+      "prompt_tokens": 746,
+      "completion_tokens": 35,
+      "id": "ae5ca7b214bf",
+      "ts": 1793108321.7269185,
+      "meta": {
+        "sender": "solver",
+        "receiver": "verifier",
+        "message_id": "ae5ca7b214bf",
+        "protocol_edge": "solver_to_verifier",
+        "protocol_version": "CARD-0-gsm8k",
+        "protocol_hash": "4bcdae885cc464e0a51977368e4bc06650c0326dbdcb182ce0327477c1d32daa",
+        "contract_hash": "ab4b736240365db5d0ce2caea032f40a3b7fc9c189db42d5ebcd28cac0fac22b",
+        "fields": {
+          "IR": "pizzas_per_day=60+40=100,daily_total=60+100=160,total=160*30=4800",
+          "R": "4800"
+        },
+        "communication_tokens": 35,
+        "communication_tokens_exact": true,
+        "attempt_count": 1,
+        "fallback": false,
+        "tokens_include_all_attempts": true,
+        "incoming_message_ids": [
+          "d80e8f2950ad"
+        ]
+      }
+    },
+    {
+      "sender": "verifier",
+      "content": "CHK:ACCEPT",
+      "receiver": "solver",
+      "round": 0,
+      "role": "assistant",
+      "prompt_tokens": 1082,
+      "completion_tokens": 5,
+      "id": "e7cd91b43421",
+      "ts": 1793108322.8042994,
+      "meta": {
+        "sender": "verifier",
+        "receiver": "solver",
+        "message_id": "e7cd91b43421",
+        "protocol_edge": "verifier_to_solver",
+        "protocol_version": "CARD-0-gsm8k",
+        "protocol_hash": "4bcdae885cc464e0a51977368e4bc06650c0326dbdcb182ce0327477c1d32daa",
+        "contract_hash": "ab4b736240365db5d0ce2caea032f40a3b7fc9c189db42d5ebcd28cac0fac22b",
+        "fields": {
+          "CHK": "ACCEPT"
+        },
+        "communication_tokens": 5,
+        "communication_tokens_exact": true,
+        "attempt_count": 1,
+        "fallback": false,
+        "tokens_include_all_attempts": true,
+        "incoming_message_ids": [
+          "ae5ca7b214bf"
+        ]
+      }
+    }
+  ],
+  "communication_tokens": 105,
+  "wall_time_s": 3.9992346999933943,
+  "verified": true,
+  "revision_rounds": 0,
+  "model_calls": [
+    {
+      "role": "planner",
+      "attempt": 0,
+      "status": "delivered",
+      "error": "",
+      "raw_output": "K:hot_dogs_per_day=60,pizzas_per_day=hot_dogs_per_day+40,June_days=30;G:total_items_in_June;P:daily_total=hot_dogs_per_day+pizzas_per_day,total_items_in_June=daily_total*June_days",
+      "finish_reason": "stop",
+      "output_tokens": 65,
+      "usage_available": true
+    },
+    {
+      "role": "solver",
+      "attempt": 0,
+      "status": "delivered",
+      "error": "",
+      "raw_output": "IR:pizzas_per_day=60+40=100,daily_total=60+100=160,total=160*30=4800;R:4800",
+      "finish_reason": "stop",
+      "output_tokens": 35,
+      "usage_available": true
+    },
+    {
+      "role": "verifier",
+      "attempt": 0,
+      "status": "delivered",
+      "error": "",
+      "raw_output": "CHK:ACCEPT",
+      "finish_reason": "stop",
+      "output_tokens": 5,
+      "usage_available": true
+    }
+  ],
+  "failed_attempts": [],
+  "calls": 3,
+  "usage_complete": true,
+  "known_input_tokens": 2567,
+  "known_output_tokens": 105,
+  "model_input_tokens": 2567,
+  "model_output_tokens": 105,
+  "format_failed_calls": 0,
+  "transport_failed_calls": 0,
+  "fallback_calls": 0,
+  "sum_model_latency_s": 3.839873790740967
+}

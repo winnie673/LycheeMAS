@@ -1,0 +1,148 @@
+{
+  "task_id": "gsm8k:train:seed42:V:00102",
+  "status": "completed",
+  "error": null,
+  "prediction": "7",
+  "messages": [
+    {
+      "sender": "planner",
+      "content": "G:total_charges;P:day2=135+124,total_miles=135+day2+159+189,total_charges=total_miles/106",
+      "receiver": "solver",
+      "round": 0,
+      "role": "assistant",
+      "prompt_tokens": 823,
+      "completion_tokens": 39,
+      "id": "666d8d1eac7c",
+      "ts": 1793109410.8153863,
+      "meta": {
+        "sender": "planner",
+        "receiver": "solver",
+        "message_id": "666d8d1eac7c",
+        "protocol_edge": "planner_to_solver",
+        "protocol_version": "CARD-1-gsm8k",
+        "protocol_hash": "2a663f41d251a442e680de67a231e516a8fe5e31629bc25d021c8c0eb1354cff",
+        "contract_hash": "ab4b736240365db5d0ce2caea032f40a3b7fc9c189db42d5ebcd28cac0fac22b",
+        "fields": {
+          "G": "total_charges",
+          "P": "day2=135+124,total_miles=135+day2+159+189,total_charges=total_miles/106"
+        },
+        "communication_tokens": 39,
+        "communication_tokens_exact": true,
+        "attempt_count": 1,
+        "fallback": false,
+        "tokens_include_all_attempts": true,
+        "incoming_message_ids": []
+      }
+    },
+    {
+      "sender": "solver",
+      "content": "IR:day2=135+124=259,total_miles=135+259+159+189=742,total_charges=742/106=7;R:7",
+      "receiver": "verifier",
+      "round": 0,
+      "role": "assistant",
+      "prompt_tokens": 745,
+      "completion_tokens": 39,
+      "id": "c8f703314f7d",
+      "ts": 1793109411.9541101,
+      "meta": {
+        "sender": "solver",
+        "receiver": "verifier",
+        "message_id": "c8f703314f7d",
+        "protocol_edge": "solver_to_verifier",
+        "protocol_version": "CARD-1-gsm8k",
+        "protocol_hash": "2a663f41d251a442e680de67a231e516a8fe5e31629bc25d021c8c0eb1354cff",
+        "contract_hash": "ab4b736240365db5d0ce2caea032f40a3b7fc9c189db42d5ebcd28cac0fac22b",
+        "fields": {
+          "IR": "day2=135+124=259,total_miles=135+259+159+189=742,total_charges=742/106=7",
+          "R": "7"
+        },
+        "communication_tokens": 39,
+        "communication_tokens_exact": true,
+        "attempt_count": 1,
+        "fallback": false,
+        "tokens_include_all_attempts": true,
+        "incoming_message_ids": [
+          "666d8d1eac7c"
+        ]
+      }
+    },
+    {
+      "sender": "verifier",
+      "content": "CHK:ACCEPT",
+      "receiver": "solver",
+      "round": 0,
+      "role": "assistant",
+      "prompt_tokens": 1111,
+      "completion_tokens": 5,
+      "id": "2f9873d0f84e",
+      "ts": 1793109413.2801611,
+      "meta": {
+        "sender": "verifier",
+        "receiver": "solver",
+        "message_id": "2f9873d0f84e",
+        "protocol_edge": "verifier_to_solver",
+        "protocol_version": "CARD-1-gsm8k",
+        "protocol_hash": "2a663f41d251a442e680de67a231e516a8fe5e31629bc25d021c8c0eb1354cff",
+        "contract_hash": "ab4b736240365db5d0ce2caea032f40a3b7fc9c189db42d5ebcd28cac0fac22b",
+        "fields": {
+          "CHK": "ACCEPT"
+        },
+        "communication_tokens": 5,
+        "communication_tokens_exact": true,
+        "attempt_count": 1,
+        "fallback": false,
+        "tokens_include_all_attempts": true,
+        "incoming_message_ids": [
+          "c8f703314f7d"
+        ]
+      }
+    }
+  ],
+  "communication_tokens": 83,
+  "wall_time_s": 3.7768367000389844,
+  "verified": true,
+  "revision_rounds": 0,
+  "model_calls": [
+    {
+      "role": "planner",
+      "attempt": 0,
+      "status": "delivered",
+      "error": "",
+      "raw_output": "G:total_charges;P:day2=135+124,total_miles=135+day2+159+189,total_charges=total_miles/106",
+      "finish_reason": "stop",
+      "output_tokens": 39,
+      "usage_available": true
+    },
+    {
+      "role": "solver",
+      "attempt": 0,
+      "status": "delivered",
+      "error": "",
+      "raw_output": "IR:day2=135+124=259,total_miles=135+259+159+189=742,total_charges=742/106=7;R:7",
+      "finish_reason": "stop",
+      "output_tokens": 39,
+      "usage_available": true
+    },
+    {
+      "role": "verifier",
+      "attempt": 0,
+      "status": "delivered",
+      "error": "",
+      "raw_output": "CHK:ACCEPT",
+      "finish_reason": "stop",
+      "output_tokens": 5,
+      "usage_available": true
+    }
+  ],
+  "failed_attempts": [],
+  "calls": 3,
+  "usage_complete": true,
+  "known_input_tokens": 2679,
+  "known_output_tokens": 83,
+  "model_input_tokens": 2679,
+  "model_output_tokens": 83,
+  "format_failed_calls": 0,
+  "transport_failed_calls": 0,
+  "fallback_calls": 0,
+  "sum_model_latency_s": 3.6222798824310303
+}

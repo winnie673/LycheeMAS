@@ -1,0 +1,95 @@
+{
+  "task_id": "gsm8k:test:seed42:T:00136",
+  "mode": "nl",
+  "benchmark": "gsm8k",
+  "status": "completed",
+  "error": null,
+  "prediction": "6",
+  "gold": "6",
+  "wall_time_s": 3.7957079999614507,
+  "communication_tokens": 103,
+  "communication_tokens_exact": true,
+  "revision_rounds": 0,
+  "verification_decision": "ACCEPT",
+  "verified": true,
+  "messages": [
+    {
+      "sender": "planner",
+      "content": "Goal: find the number of female Scottish unicorns.\n\nPlan: Start with 27 unicorns total. Take one third to get the number in the Scottish Highlands. Then take two thirds of that Scottish group to get the number that are female.\n\nConstraints: Use only the given fractions and total; do not provide the final numeric answer in your message.",
+      "receiver": "solver",
+      "round": 0,
+      "role": "assistant",
+      "prompt_tokens": 196,
+      "completion_tokens": 70,
+      "id": "9bba6fda4e71",
+      "ts": 1793170087.5087168,
+      "meta": {
+        "fields": {},
+        "communication_tokens": 70,
+        "communication_tokens_exact": true,
+        "attempt_count": 1,
+        "fallback": false,
+        "tokens_include_all_attempts": true,
+        "incoming_message_ids": []
+      }
+    },
+    {
+      "sender": "solver",
+      "content": "One third of 27 is 9 Scottish unicorns. Two thirds of those 9 are female, giving 6.\n\n\\boxed{6}",
+      "receiver": "verifier",
+      "round": 0,
+      "role": "assistant",
+      "prompt_tokens": 278,
+      "completion_tokens": 31,
+      "id": "b165c5b23a59",
+      "ts": 1793170088.6941893,
+      "meta": {
+        "fields": {
+          "R": "6"
+        },
+        "communication_tokens": 31,
+        "communication_tokens_exact": true,
+        "attempt_count": 1,
+        "fallback": false,
+        "tokens_include_all_attempts": true,
+        "incoming_message_ids": [
+          "9bba6fda4e71"
+        ]
+      }
+    },
+    {
+      "sender": "verifier",
+      "content": "ACCEPT",
+      "receiver": "solver",
+      "round": 0,
+      "role": "assistant",
+      "prompt_tokens": 616,
+      "completion_tokens": 2,
+      "id": "089c06146d51",
+      "ts": 1793170089.7487602,
+      "meta": {
+        "fields": {
+          "CHK": "ACCEPT"
+        },
+        "communication_tokens": 2,
+        "communication_tokens_exact": true,
+        "attempt_count": 1,
+        "fallback": false,
+        "tokens_include_all_attempts": true,
+        "incoming_message_ids": [
+          "b165c5b23a59"
+        ]
+      }
+    }
+  ],
+  "calls": 3,
+  "usage_complete": true,
+  "known_input_tokens": 1090,
+  "known_output_tokens": 103,
+  "model_input_tokens": 1090,
+  "model_output_tokens": 103,
+  "format_failed_calls": 0,
+  "transport_failed_calls": 0,
+  "fallback_calls": 0,
+  "sum_model_latency_s": 3.715291738510132
+}

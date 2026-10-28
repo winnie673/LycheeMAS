@@ -15,24 +15,32 @@
 
 ### 核心机制与实验规格解耦（memory-compare-v3-contract）
 
-核心 `protocol/base.py` 只定义 `ProtocolArchitecture`、`ProtocolContract`、字段/条件
-约束及 `EvolutionSchedule`，不提供具体任务、角色、字段常量。
+核心 `protocol/base.py` 定义 `ProtocolArchitecture`、`ProtocolContract`、字段/条件
+约束、`EvolutionSchedule` 及通用 Schema 转换，不提供具体任务、角色、字段常量。
 `channels/hybrid_protocol.py` 只执行声明式规则并存取合法文本；
 `protocol/evolution.py` 只消费契约、数据日程及生成/执行/评分回调，不认识 GSM8K 或 PSV。
 字段规则支持枚举、禁用值、正则、条件必需字段及互斥输出，只有固定的安全操作，
 不从卡片执行 Python、加载代码或动态导入验证函数。
 
-实验规格集中在 `scripts/hybrid_gsm8k_spec.py`：PSV 角色职责、通信边、字段语义、
-NL 占位符、CHK/E/REQ 条件、示例覆盖及 D0/G1-G3/V/T 日程均由此定义。
-示例/生成/评测入口装配它；核心 src 不导入 scripts。
+字段基础定义的唯一来源是 `configs/memory/gsm8k_protocol_schema.yaml`。
+`scripts/hybrid_gsm8k_spec.py` 加载一次，经通用 `build_contract_from_schema` 派生
+字段接口、逐边语义、枚举、占位符禁用及条件约束；只补充 PSV 角色、数值答案要求、
+接收端兼容别名和 D0/G1-G3/V/T 日程。生成/审查复用同一 Schema，不含兼容别名。
+同名字段的逐边语义会全部保留，不以最后一条覆盖；Schema 的自然语言政策用于
+设计审查，不冒称已经全部转成可执行校验。核心 src 不导入 scripts。
 具体构图、NL 答案抽取、格式重试/fallback 和语义修订仍由实验执行层负责。
 因此机制可复用，但现有 CLI 和执行图仍仅实例化 GSM8K + PSV，不自动适配任意图。
 
-旧冻结 Card-2 保持原样，加载时必须显式提供 `protocol_contract=GSM8K_PROTOCOL`。
-缺少契约会报错，绝不静默只检查字段名而丢掉原有语义约束。现有示例/评测已自动注入。
+无内嵌契约的历史格式加载时仍必须显式提供 `protocol_contract`，缺少即报错，
+绝不静默丢掉语义校验。配置目录不再保留旧卡，兼容性回归使用临时合成卡片。
 新生成卡片包含完整 `validation_contract`，并记录架构/契约 SHA256，可独立加载；
 若同时传入外部契约，两者必须一致。指纹用于兼容性/可复现性检查，不是数字签名。
-本次不改卡片内容或数学评分，也不重新解释历史结果；新运行版本单独标记。
+默认已发布卡片的旧契约使用显式历史指纹白名单和运行时谓词等价检查，保留其
+内嵌契约，不用新契约覆盖它。未知指纹、架构差异或校验强弱变化均报错。
+`protocol_contract_for_card(path)` 负责该实验侧选择；核心通道仍严格核对外部/内嵌契约。
+新生成卡片使用 Schema 派生的新契约，指纹可以不同。旧契约中空的新约束属性不
+参与序列化，保证旧指纹稳定。不改卡片内容或数学评分，不重新解释历史结果；
+新版本标为 `memory-compare-v5-schema-derived` / `memory-evolution-v5-schema-derived`。
 
 其他架构接入需由调用方提供契约和执行回调，不需要改核心通道或进化算法：
 
@@ -75,7 +83,7 @@ V 筛选先比较准确率，再比较完整通信 token；并列或 token 不�
 KEEP/只改版本描述等非语义内容不晋级。输出 token 单独报告，输入只留审计。
 父代先、候选后为固定执行顺序，未消除 API 随时间变化的影响。
 新产物在 `runs/memory_protocol_evolution/<唯一运行名>/final/gsm8k_card.yaml`，
-不会覆盖 `configs/memory/task_cards/gsm8k_card2.yaml`。中间各阶段保存 metrics、
+不会自动覆盖 `configs/memory/task_cards/` 中的默认卡。中间各阶段保存 metrics、
 evolution、selection、原始调用和失败信息；不自动访问 T 或启动最终评测。
 
 在仓库根目录、LycheeMAS 环境中使用：
@@ -120,7 +128,7 @@ API 默认关闭 SDK 隐式重试；`--proposer-base-url` 和 `--proposer-api-ke
 
 | benchmark/task | 配置（仓库根目录相对路径） | 任务卡 |
 | --- | --- | --- |
-| `gsm8k` | `configs/memory/gsm8k_hybrid_protocol.yaml` | `configs/memory/task_cards/gsm8k_psv_nl_field_card2_20261027.yaml` |
+| `gsm8k` | `configs/memory/gsm8k_hybrid_protocol.yaml` | `configs/memory/task_cards/gsm8k_psv_hybrid_card_20261028.yaml` |
 
 实验入口根据已知的 benchmark 标识选择上述配置，再按现有方式将 `task`、
 `protocol_path` 交给 CDM。不要从题目文本猜任务，不要将未知 benchmark 静默映射到 GSM8K。
@@ -252,16 +260,19 @@ GSM8K 原 D0 第一题三次调用完成合法消息交付，输出 108（正确
 from lychee_mas import REGISTRY
 from lychee_mas.core.types import Message
 from lychee_mas.methods.memory.routing.base import RouteDecision
-from scripts.hybrid_gsm8k_spec import GSM8K_PROTOCOL
+from scripts.hybrid_gsm8k_spec import protocol_contract_for_card
+
+card_path = "configs/memory/task_cards/gsm8k_psv_hybrid_card_20261028.yaml"
+contract = protocol_contract_for_card(card_path)
 
 memory = REGISTRY.create(
     "memory_manager", "cdm", backend=backend,
     nl_strategy="hybrid_protocol",
-    protocol_path="configs/memory/task_cards/gsm8k_psv_nl_field_card2_20261027.yaml", task="gsm8k",
-    protocol_contract=GSM8K_PROTOCOL,
+    protocol_path=card_path, task="gsm8k",
+    protocol_contract=contract,
 )
 # 发送节点将约束附加到自己的 system prompt，再使用原有 backend.generate_chat。
-memory.nl.check_architecture(GSM8K_PROTOCOL.architecture)  # 调用方仍须创建相符的图。
+memory.nl.check_architecture(contract.architecture)  # 调用方仍须创建相符的图。
 rules = memory.nl.output_instructions("planner", "solver")
 # raw_output 是该次原有模型调用的结果，不增加转码调用。
 memory.observe([Message(sender="planner", receiver="solver", content=raw_output)])
@@ -269,11 +280,11 @@ bundle = memory.recall(RouteDecision(channel="nl"), question)
 # 接收节点只注入 bundle.NL_Channel；fields 元数据不再重复拼入 prompt。
 ```
 
-- 默认任务卡片：2026-10-27 本地新流程中 V 集筛选的 GSM8K PSV/NL-field Card-2。
-  来源为 `runs/memory_protocol_evolution/gsm8k_review_boundary_api_20261027_173531/final/gsm8k_card.yaml`；
-  发布名为 `gsm8k_psv_nl_field_card2_20261027.yaml`，保留源卡片的 `CARD-2-gsm8k` wire 版本、
+- 默认任务卡片：v5-schema-derived 流程中 V 集最终保留的 GSM8K PSV Hybrid Card-0。
+  来源为 `runs/memory_protocol_evolution/gsm8k_schema_derived_api_20261027_212336/final/gsm8k_card.yaml`；
+  发布名为 `gsm8k_psv_hybrid_card_20261028.yaml`，保留源卡片的 `CARD-0-gsm8k` wire 版本、
   全部规则、示例及内嵌校验契约，只增加名称和发布来源路径/SHA256 元数据。
-  旧 `gsm8k_card2.yaml` 保留原样但不再默认加载。生成器仍只写 runs/，不会自动发布。
+  两张旧配置卡已按用户确认清理。生成器仍只写 runs/，不会自动发布。
 - observe 校验最新消息的 sender/receiver、允许/必需字段及 CHK/E/REQ；无效消息报错且
   不覆盖上一条合法消息。core.Message 与带 sender/receiver/content 的字典均支持。
 - recall 与 prev_output 使用同一个 PREV_OUTPUT_HEADER；只转发最新已观察的 payload。

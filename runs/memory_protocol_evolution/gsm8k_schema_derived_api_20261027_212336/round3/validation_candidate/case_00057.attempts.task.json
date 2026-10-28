@@ -1,0 +1,118 @@
+{
+  "task_id": "gsm8k:train:seed42:V:00057",
+  "status": "failed",
+  "error": "solver exhausted 3 attempts: Connection error.",
+  "prediction": "",
+  "messages": [
+    {
+      "sender": "planner",
+      "content": "G:total_items_in_June;P:pizzas_per_day=60+40,total_per_day=pizzas_per_day+60,total_items_in_June=total_per_day*30;NL:June has 30 days.",
+      "receiver": "solver",
+      "round": 0,
+      "role": "assistant",
+      "prompt_tokens": 781,
+      "completion_tokens": 50,
+      "id": "c4d2fcb89821",
+      "ts": 1793168486.9771361,
+      "meta": {
+        "sender": "planner",
+        "receiver": "solver",
+        "message_id": "c4d2fcb89821",
+        "protocol_edge": "planner_to_solver",
+        "protocol_version": "CARD-3-gsm8k",
+        "protocol_hash": "fb1a4acb6e591ac96544876aedd912b27a6f9d3154c76112e1da0f43407d27b2",
+        "contract_hash": "ab4b736240365db5d0ce2caea032f40a3b7fc9c189db42d5ebcd28cac0fac22b",
+        "fields": {
+          "G": "total_items_in_June",
+          "P": "pizzas_per_day=60+40,total_per_day=pizzas_per_day+60,total_items_in_June=total_per_day*30",
+          "NL": "June has 30 days."
+        },
+        "communication_tokens": 50,
+        "communication_tokens_exact": true,
+        "attempt_count": 1,
+        "fallback": false,
+        "tokens_include_all_attempts": true,
+        "incoming_message_ids": []
+      }
+    }
+  ],
+  "communication_tokens": 50,
+  "wall_time_s": 12.12289810006041,
+  "verified": false,
+  "revision_rounds": 0,
+  "model_calls": [
+    {
+      "role": "planner",
+      "attempt": 0,
+      "status": "delivered",
+      "error": "",
+      "raw_output": "G:total_items_in_June;P:pizzas_per_day=60+40,total_per_day=pizzas_per_day+60,total_items_in_June=total_per_day*30;NL:June has 30 days.",
+      "finish_reason": "stop",
+      "output_tokens": 50,
+      "usage_available": true
+    },
+    {
+      "role": "solver",
+      "attempt": 0,
+      "status": "transport_error",
+      "error": "Connection error.",
+      "raw_output": "",
+      "finish_reason": "unavailable",
+      "output_tokens": 0,
+      "usage_available": false
+    },
+    {
+      "role": "solver",
+      "attempt": 1,
+      "status": "transport_error",
+      "error": "Connection error.",
+      "raw_output": "",
+      "finish_reason": "unavailable",
+      "output_tokens": 0,
+      "usage_available": false
+    },
+    {
+      "role": "solver",
+      "attempt": 2,
+      "status": "transport_error",
+      "error": "Connection error.",
+      "raw_output": "",
+      "finish_reason": "unavailable",
+      "output_tokens": 0,
+      "usage_available": false
+    }
+  ],
+  "failed_attempts": [
+    {
+      "status": "transport_error",
+      "error": "Connection error.",
+      "raw_output": "",
+      "attempt": 0,
+      "role": "solver"
+    },
+    {
+      "status": "transport_error",
+      "error": "Connection error.",
+      "raw_output": "",
+      "attempt": 1,
+      "role": "solver"
+    },
+    {
+      "status": "transport_error",
+      "error": "Connection error.",
+      "raw_output": "",
+      "attempt": 2,
+      "role": "solver"
+    }
+  ],
+  "calls": 4,
+  "usage_complete": false,
+  "known_input_tokens": 781,
+  "known_output_tokens": 50,
+  "model_input_tokens": null,
+  "model_output_tokens": null,
+  "format_failed_calls": 0,
+  "transport_failed_calls": 3,
+  "fallback_calls": 0,
+  "sum_model_latency_s": 1.3161578178405762
+}

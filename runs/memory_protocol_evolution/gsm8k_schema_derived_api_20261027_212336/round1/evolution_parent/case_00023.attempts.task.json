@@ -1,0 +1,148 @@
+{
+  "task_id": "gsm8k:train:seed42:G1:00023",
+  "status": "completed",
+  "error": null,
+  "prediction": "70",
+  "messages": [
+    {
+      "sender": "planner",
+      "content": "G:how_many_more_ducks_and_geese_Rayden_has_than_Lily_altogether;P:rayden_ducks=3*20,rayden_geese=4*10,lily_total=20+10,rayden_total=rayden_ducks+rayden_geese,difference=rayden_total-lily_total",
+      "receiver": "solver",
+      "round": 0,
+      "role": "assistant",
+      "prompt_tokens": 752,
+      "completion_tokens": 80,
+      "id": "fdc7862a292c",
+      "ts": 1793107669.054282,
+      "meta": {
+        "sender": "planner",
+        "receiver": "solver",
+        "message_id": "fdc7862a292c",
+        "protocol_edge": "planner_to_solver",
+        "protocol_version": "CARD-0-gsm8k",
+        "protocol_hash": "4bcdae885cc464e0a51977368e4bc06650c0326dbdcb182ce0327477c1d32daa",
+        "contract_hash": "ab4b736240365db5d0ce2caea032f40a3b7fc9c189db42d5ebcd28cac0fac22b",
+        "fields": {
+          "G": "how_many_more_ducks_and_geese_Rayden_has_than_Lily_altogether",
+          "P": "rayden_ducks=3*20,rayden_geese=4*10,lily_total=20+10,rayden_total=rayden_ducks+rayden_geese,difference=rayden_total-lily_total"
+        },
+        "communication_tokens": 80,
+        "communication_tokens_exact": true,
+        "attempt_count": 1,
+        "fallback": false,
+        "tokens_include_all_attempts": true,
+        "incoming_message_ids": []
+      }
+    },
+    {
+      "sender": "solver",
+      "content": "IR:rayden_ducks=3*20=60,rayden_geese=4*10=40,lily_total=20+10=30,rayden_total=60+40=100,difference=100-30=70;R:70",
+      "receiver": "verifier",
+      "round": 0,
+      "role": "assistant",
+      "prompt_tokens": 774,
+      "completion_tokens": 56,
+      "id": "4f5636da2540",
+      "ts": 1793107670.21763,
+      "meta": {
+        "sender": "solver",
+        "receiver": "verifier",
+        "message_id": "4f5636da2540",
+        "protocol_edge": "solver_to_verifier",
+        "protocol_version": "CARD-0-gsm8k",
+        "protocol_hash": "4bcdae885cc464e0a51977368e4bc06650c0326dbdcb182ce0327477c1d32daa",
+        "contract_hash": "ab4b736240365db5d0ce2caea032f40a3b7fc9c189db42d5ebcd28cac0fac22b",
+        "fields": {
+          "IR": "rayden_ducks=3*20=60,rayden_geese=4*10=40,lily_total=20+10=30,rayden_total=60+40=100,difference=100-30=70",
+          "R": "70"
+        },
+        "communication_tokens": 56,
+        "communication_tokens_exact": true,
+        "attempt_count": 1,
+        "fallback": false,
+        "tokens_include_all_attempts": true,
+        "incoming_message_ids": [
+          "fdc7862a292c"
+        ]
+      }
+    },
+    {
+      "sender": "verifier",
+      "content": "CHK:ACCEPT",
+      "receiver": "solver",
+      "round": 0,
+      "role": "assistant",
+      "prompt_tokens": 1116,
+      "completion_tokens": 5,
+      "id": "fcdb1e799789",
+      "ts": 1793107671.2449644,
+      "meta": {
+        "sender": "verifier",
+        "receiver": "solver",
+        "message_id": "fcdb1e799789",
+        "protocol_edge": "verifier_to_solver",
+        "protocol_version": "CARD-0-gsm8k",
+        "protocol_hash": "4bcdae885cc464e0a51977368e4bc06650c0326dbdcb182ce0327477c1d32daa",
+        "contract_hash": "ab4b736240365db5d0ce2caea032f40a3b7fc9c189db42d5ebcd28cac0fac22b",
+        "fields": {
+          "CHK": "ACCEPT"
+        },
+        "communication_tokens": 5,
+        "communication_tokens_exact": true,
+        "attempt_count": 1,
+        "fallback": false,
+        "tokens_include_all_attempts": true,
+        "incoming_message_ids": [
+          "4f5636da2540"
+        ]
+      }
+    }
+  ],
+  "communication_tokens": 141,
+  "wall_time_s": 3.8591451999964193,
+  "verified": true,
+  "revision_rounds": 0,
+  "model_calls": [
+    {
+      "role": "planner",
+      "attempt": 0,
+      "status": "delivered",
+      "error": "",
+      "raw_output": "G:how_many_more_ducks_and_geese_Rayden_has_than_Lily_altogether;P:rayden_ducks=3*20,rayden_geese=4*10,lily_total=20+10,rayden_total=rayden_ducks+rayden_geese,difference=rayden_total-lily_total",
+      "finish_reason": "stop",
+      "output_tokens": 80,
+      "usage_available": true
+    },
+    {
+      "role": "solver",
+      "attempt": 0,
+      "status": "delivered",
+      "error": "",
+      "raw_output": "IR:rayden_ducks=3*20=60,rayden_geese=4*10=40,lily_total=20+10=30,rayden_total=60+40=100,difference=100-30=70;R:70",
+      "finish_reason": "stop",
+      "output_tokens": 56,
+      "usage_available": true
+    },
+    {
+      "role": "verifier",
+      "attempt": 0,
+      "status": "delivered",
+      "error": "",
+      "raw_output": "CHK:ACCEPT",
+      "finish_reason": "stop",
+      "output_tokens": 5,
+      "usage_available": true
+    }
+  ],
+  "failed_attempts": [],
+  "calls": 3,
+  "usage_complete": true,
+  "known_input_tokens": 2642,
+  "known_output_tokens": 141,
+  "model_input_tokens": 2642,
+  "model_output_tokens": 141,
+  "format_failed_calls": 0,
+  "transport_failed_calls": 0,
+  "fallback_calls": 0,
+  "sum_model_latency_s": 3.6878368854522705
+}

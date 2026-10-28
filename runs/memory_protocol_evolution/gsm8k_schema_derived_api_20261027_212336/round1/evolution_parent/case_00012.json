@@ -1,0 +1,151 @@
+{
+  "task_id": "gsm8k:train:seed42:G1:00012",
+  "status": "completed",
+  "error": null,
+  "prediction": "390",
+  "messages": [
+    {
+      "sender": "planner",
+      "content": "G:total_minutes_per_year;P:weeks_per_year=52,cycles=weeks_per_year/4,total_minutes_per_year=cycles*30",
+      "receiver": "solver",
+      "round": 0,
+      "role": "assistant",
+      "prompt_tokens": 745,
+      "completion_tokens": 35,
+      "id": "ab66e842cc71",
+      "ts": 1793107623.7112215,
+      "meta": {
+        "sender": "planner",
+        "receiver": "solver",
+        "message_id": "ab66e842cc71",
+        "protocol_edge": "planner_to_solver",
+        "protocol_version": "CARD-0-gsm8k",
+        "protocol_hash": "4bcdae885cc464e0a51977368e4bc06650c0326dbdcb182ce0327477c1d32daa",
+        "contract_hash": "ab4b736240365db5d0ce2caea032f40a3b7fc9c189db42d5ebcd28cac0fac22b",
+        "fields": {
+          "G": "total_minutes_per_year",
+          "P": "weeks_per_year=52,cycles=weeks_per_year/4,total_minutes_per_year=cycles*30"
+        },
+        "communication_tokens": 35,
+        "communication_tokens_exact": true,
+        "attempt_count": 1,
+        "fallback": false,
+        "tokens_include_all_attempts": true,
+        "incoming_message_ids": []
+      }
+    },
+    {
+      "sender": "solver",
+      "content": "IR:cycles=52/4=13,total_minutes_per_year=13*30=390;R:390",
+      "receiver": "verifier",
+      "round": 0,
+      "role": "assistant",
+      "prompt_tokens": 722,
+      "completion_tokens": 25,
+      "id": "53d8e3efcdb4",
+      "ts": 1793107625.012221,
+      "meta": {
+        "sender": "solver",
+        "receiver": "verifier",
+        "message_id": "53d8e3efcdb4",
+        "protocol_edge": "solver_to_verifier",
+        "protocol_version": "CARD-0-gsm8k",
+        "protocol_hash": "4bcdae885cc464e0a51977368e4bc06650c0326dbdcb182ce0327477c1d32daa",
+        "contract_hash": "ab4b736240365db5d0ce2caea032f40a3b7fc9c189db42d5ebcd28cac0fac22b",
+        "fields": {
+          "IR": "cycles=52/4=13,total_minutes_per_year=13*30=390",
+          "R": "390"
+        },
+        "communication_tokens": 25,
+        "communication_tokens_exact": true,
+        "attempt_count": 1,
+        "fallback": false,
+        "tokens_include_all_attempts": true,
+        "incoming_message_ids": [
+          "ab66e842cc71"
+        ]
+      }
+    },
+    {
+      "sender": "verifier",
+      "content": "CHK:ACCEPT",
+      "receiver": "solver",
+      "round": 0,
+      "role": "assistant",
+      "prompt_tokens": 1078,
+      "completion_tokens": 5,
+      "id": "9ef0819d7216",
+      "ts": 1793107625.977582,
+      "meta": {
+        "sender": "verifier",
+        "receiver": "solver",
+        "message_id": "9ef0819d7216",
+        "protocol_edge": "verifier_to_solver",
+        "protocol_version": "CARD-0-gsm8k",
+        "protocol_hash": "4bcdae885cc464e0a51977368e4bc06650c0326dbdcb182ce0327477c1d32daa",
+        "contract_hash": "ab4b736240365db5d0ce2caea032f40a3b7fc9c189db42d5ebcd28cac0fac22b",
+        "fields": {
+          "CHK": "ACCEPT"
+        },
+        "communication_tokens": 5,
+        "communication_tokens_exact": true,
+        "attempt_count": 1,
+        "fallback": false,
+        "tokens_include_all_attempts": true,
+        "incoming_message_ids": [
+          "53d8e3efcdb4"
+        ]
+      }
+    }
+  ],
+  "communication_tokens": 65,
+  "wall_time_s": 4.0475052000256255,
+  "verified": true,
+  "revision_rounds": 0,
+  "model_calls": [
+    {
+      "role": "planner",
+      "attempt": 0,
+      "status": "delivered",
+      "error": "",
+      "raw_output": "G:total_minutes_per_year;P:weeks_per_year=52,cycles=weeks_per_year/4,total_minutes_per_year=cycles*30",
+      "finish_reason": "stop",
+      "output_tokens": 35,
+      "usage_available": true
+    },
+    {
+      "role": "solver",
+      "attempt": 0,
+      "status": "delivered",
+      "error": "",
+      "raw_output": "IR:cycles=52/4=13,total_minutes_per_year=13*30=390;R:390",
+      "finish_reason": "stop",
+      "output_tokens": 25,
+      "usage_available": true
+    },
+    {
+      "role": "verifier",
+      "attempt": 0,
+      "status": "delivered",
+      "error": "",
+      "raw_output": "CHK:ACCEPT",
+      "finish_reason": "stop",
+      "output_tokens": 5,
+      "usage_available": true
+    }
+  ],
+  "failed_attempts": [],
+  "calls": 3,
+  "usage_complete": true,
+  "known_input_tokens": 2545,
+  "known_output_tokens": 65,
+  "model_input_tokens": 2545,
+  "model_output_tokens": 65,
+  "format_failed_calls": 0,
+  "transport_failed_calls": 0,
+  "fallback_calls": 0,
+  "sum_model_latency_s": 3.9038796424865723,
+  "gold": "390",
+  "score": 1.0,
+  "question": "Every 4 weeks, Helen hand washes her silk pillowcases.  It takes 30 minutes to hand wash all of them.  In 1 year, how much time does Helen spend hand washing her pillowcases?\nGive the final numeric answer."
+}

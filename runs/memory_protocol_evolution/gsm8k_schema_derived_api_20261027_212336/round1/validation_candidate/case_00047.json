@@ -1,0 +1,151 @@
+{
+  "task_id": "gsm8k:train:seed42:V:00047",
+  "status": "completed",
+  "error": null,
+  "prediction": "100",
+  "messages": [
+    {
+      "sender": "planner",
+      "content": "G:total_cost;P:copper=10,plastic=copper+5,total_meters=copper+plastic,total_cost=total_meters*4",
+      "receiver": "solver",
+      "round": 0,
+      "role": "assistant",
+      "prompt_tokens": 799,
+      "completion_tokens": 36,
+      "id": "d66c4718f904",
+      "ts": 1793109167.3020532,
+      "meta": {
+        "sender": "planner",
+        "receiver": "solver",
+        "message_id": "d66c4718f904",
+        "protocol_edge": "planner_to_solver",
+        "protocol_version": "CARD-1-gsm8k",
+        "protocol_hash": "2a663f41d251a442e680de67a231e516a8fe5e31629bc25d021c8c0eb1354cff",
+        "contract_hash": "ab4b736240365db5d0ce2caea032f40a3b7fc9c189db42d5ebcd28cac0fac22b",
+        "fields": {
+          "G": "total_cost",
+          "P": "copper=10,plastic=copper+5,total_meters=copper+plastic,total_cost=total_meters*4"
+        },
+        "communication_tokens": 36,
+        "communication_tokens_exact": true,
+        "attempt_count": 1,
+        "fallback": false,
+        "tokens_include_all_attempts": true,
+        "incoming_message_ids": []
+      }
+    },
+    {
+      "sender": "solver",
+      "content": "IR:plastic=10+5=15,total_meters=10+15=25,total_cost=25*4=100;R:100",
+      "receiver": "verifier",
+      "round": 0,
+      "role": "assistant",
+      "prompt_tokens": 718,
+      "completion_tokens": 32,
+      "id": "55086350c4ad",
+      "ts": 1793109169.413496,
+      "meta": {
+        "sender": "solver",
+        "receiver": "verifier",
+        "message_id": "55086350c4ad",
+        "protocol_edge": "solver_to_verifier",
+        "protocol_version": "CARD-1-gsm8k",
+        "protocol_hash": "2a663f41d251a442e680de67a231e516a8fe5e31629bc25d021c8c0eb1354cff",
+        "contract_hash": "ab4b736240365db5d0ce2caea032f40a3b7fc9c189db42d5ebcd28cac0fac22b",
+        "fields": {
+          "IR": "plastic=10+5=15,total_meters=10+15=25,total_cost=25*4=100",
+          "R": "100"
+        },
+        "communication_tokens": 32,
+        "communication_tokens_exact": true,
+        "attempt_count": 1,
+        "fallback": false,
+        "tokens_include_all_attempts": true,
+        "incoming_message_ids": [
+          "d66c4718f904"
+        ]
+      }
+    },
+    {
+      "sender": "verifier",
+      "content": "CHK:ACCEPT",
+      "receiver": "solver",
+      "round": 0,
+      "role": "assistant",
+      "prompt_tokens": 1080,
+      "completion_tokens": 5,
+      "id": "69a6b4117685",
+      "ts": 1793109170.5767152,
+      "meta": {
+        "sender": "verifier",
+        "receiver": "solver",
+        "message_id": "69a6b4117685",
+        "protocol_edge": "verifier_to_solver",
+        "protocol_version": "CARD-1-gsm8k",
+        "protocol_hash": "2a663f41d251a442e680de67a231e516a8fe5e31629bc25d021c8c0eb1354cff",
+        "contract_hash": "ab4b736240365db5d0ce2caea032f40a3b7fc9c189db42d5ebcd28cac0fac22b",
+        "fields": {
+          "CHK": "ACCEPT"
+        },
+        "communication_tokens": 5,
+        "communication_tokens_exact": true,
+        "attempt_count": 1,
+        "fallback": false,
+        "tokens_include_all_attempts": true,
+        "incoming_message_ids": [
+          "55086350c4ad"
+        ]
+      }
+    }
+  ],
+  "communication_tokens": 73,
+  "wall_time_s": 4.848860800033435,
+  "verified": true,
+  "revision_rounds": 0,
+  "model_calls": [
+    {
+      "role": "planner",
+      "attempt": 0,
+      "status": "delivered",
+      "error": "",
+      "raw_output": "G:total_cost;P:copper=10,plastic=copper+5,total_meters=copper+plastic,total_cost=total_meters*4",
+      "finish_reason": "stop",
+      "output_tokens": 36,
+      "usage_available": true
+    },
+    {
+      "role": "solver",
+      "attempt": 0,
+      "status": "delivered",
+      "error": "",
+      "raw_output": "IR:plastic=10+5=15,total_meters=10+15=25,total_cost=25*4=100;R:100",
+      "finish_reason": "stop",
+      "output_tokens": 32,
+      "usage_available": true
+    },
+    {
+      "role": "verifier",
+      "attempt": 0,
+      "status": "delivered",
+      "error": "",
+      "raw_output": "CHK:ACCEPT",
+      "finish_reason": "stop",
+      "output_tokens": 5,
+      "usage_available": true
+    }
+  ],
+  "failed_attempts": [],
+  "calls": 3,
+  "usage_complete": true,
+  "known_input_tokens": 2597,
+  "known_output_tokens": 73,
+  "model_input_tokens": 2597,
+  "model_output_tokens": 73,
+  "format_failed_calls": 0,
+  "transport_failed_calls": 0,
+  "fallback_calls": 0,
+  "sum_model_latency_s": 4.7735595703125,
+  "gold": "100",
+  "score": 1.0,
+  "question": "A plumber bought 10 meters of copper and 5 more meters of plastic pipe. If each meter cost $4, how much did the plumber spent on the copper and plastic pipe?\nGive the final numeric answer."
+}

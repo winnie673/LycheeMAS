@@ -1,0 +1,120 @@
+{
+  "task_id": "gsm8k:test:seed42:T:00097",
+  "mode": "hybrid",
+  "benchmark": "gsm8k",
+  "status": "completed",
+  "error": null,
+  "prediction": "12",
+  "gold": "12",
+  "wall_time_s": 3.7468583000591025,
+  "communication_tokens": 106,
+  "communication_tokens_exact": true,
+  "revision_rounds": 0,
+  "verification_decision": "ACCEPT",
+  "verified": true,
+  "messages": [
+    {
+      "sender": "planner",
+      "content": "G:number_of_tomatoes_used;P:tomatoes_per_can=3,ounces_per_can=16,sauce_per_can=ounces_per_can/2,cans_used=32/sauce_per_can,tomatoes_used=cans_used*tomatoes_per_can",
+      "receiver": "solver",
+      "round": 0,
+      "role": "assistant",
+      "prompt_tokens": 754,
+      "completion_tokens": 64,
+      "id": "7be57fe4af98",
+      "ts": 1793169783.3351655,
+      "meta": {
+        "sender": "planner",
+        "receiver": "solver",
+        "message_id": "7be57fe4af98",
+        "protocol_edge": "planner_to_solver",
+        "protocol_version": "CARD-0-gsm8k",
+        "protocol_hash": "4bcdae885cc464e0a51977368e4bc06650c0326dbdcb182ce0327477c1d32daa",
+        "contract_hash": "ab4b736240365db5d0ce2caea032f40a3b7fc9c189db42d5ebcd28cac0fac22b",
+        "fields": {
+          "G": "number_of_tomatoes_used",
+          "P": "tomatoes_per_can=3,ounces_per_can=16,sauce_per_can=ounces_per_can/2,cans_used=32/sauce_per_can,tomatoes_used=cans_used*tomatoes_per_can"
+        },
+        "communication_tokens": 64,
+        "communication_tokens_exact": true,
+        "attempt_count": 1,
+        "fallback": false,
+        "tokens_include_all_attempts": true,
+        "incoming_message_ids": []
+      }
+    },
+    {
+      "sender": "solver",
+      "content": "IR:sauce_per_can=16/2=8,cans_used=32/8=4,tomatoes_used=4*3=12;R:12",
+      "receiver": "verifier",
+      "round": 0,
+      "role": "assistant",
+      "prompt_tokens": 760,
+      "completion_tokens": 37,
+      "id": "2093385b4939",
+      "ts": 1793169784.509561,
+      "meta": {
+        "sender": "solver",
+        "receiver": "verifier",
+        "message_id": "2093385b4939",
+        "protocol_edge": "solver_to_verifier",
+        "protocol_version": "CARD-0-gsm8k",
+        "protocol_hash": "4bcdae885cc464e0a51977368e4bc06650c0326dbdcb182ce0327477c1d32daa",
+        "contract_hash": "ab4b736240365db5d0ce2caea032f40a3b7fc9c189db42d5ebcd28cac0fac22b",
+        "fields": {
+          "IR": "sauce_per_can=16/2=8,cans_used=32/8=4,tomatoes_used=4*3=12",
+          "R": "12"
+        },
+        "communication_tokens": 37,
+        "communication_tokens_exact": true,
+        "attempt_count": 1,
+        "fallback": false,
+        "tokens_include_all_attempts": true,
+        "incoming_message_ids": [
+          "7be57fe4af98"
+        ]
+      }
+    },
+    {
+      "sender": "verifier",
+      "content": "CHK:ACCEPT",
+      "receiver": "solver",
+      "round": 0,
+      "role": "assistant",
+      "prompt_tokens": 1099,
+      "completion_tokens": 5,
+      "id": "6182ae330436",
+      "ts": 1793169785.6063426,
+      "meta": {
+        "sender": "verifier",
+        "receiver": "solver",
+        "message_id": "6182ae330436",
+        "protocol_edge": "verifier_to_solver",
+        "protocol_version": "CARD-0-gsm8k",
+        "protocol_hash": "4bcdae885cc464e0a51977368e4bc06650c0326dbdcb182ce0327477c1d32daa",
+        "contract_hash": "ab4b736240365db5d0ce2caea032f40a3b7fc9c189db42d5ebcd28cac0fac22b",
+        "fields": {
+          "CHK": "ACCEPT"
+        },
+        "communication_tokens": 5,
+        "communication_tokens_exact": true,
+        "attempt_count": 1,
+        "fallback": false,
+        "tokens_include_all_attempts": true,
+        "incoming_message_ids": [
+          "2093385b4939"
+        ]
+      }
+    }
+  ],
+  "calls": 3,
+  "usage_complete": true,
+  "known_input_tokens": 2613,
+  "known_output_tokens": 106,
+  "model_input_tokens": 2613,
+  "model_output_tokens": 106,
+  "format_failed_calls": 0,
+  "transport_failed_calls": 0,
+  "fallback_calls": 0,
+  "sum_model_latency_s": 3.666710376739502
+}

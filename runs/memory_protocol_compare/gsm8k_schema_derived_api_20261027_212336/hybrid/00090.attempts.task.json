@@ -1,0 +1,189 @@
+{
+  "task_id": "gsm8k:test:seed42:T:00093",
+  "mode": "hybrid",
+  "benchmark": "gsm8k",
+  "status": "completed",
+  "error": null,
+  "prediction": "36",
+  "gold": "36",
+  "wall_time_s": 7.167584100039676,
+  "communication_tokens": 196,
+  "communication_tokens_exact": true,
+  "revision_rounds": 1,
+  "verification_decision": "REVISE",
+  "verified": false,
+  "messages": [
+    {
+      "sender": "planner",
+      "content": "G:Gerald_improved_time;P:gerald_old=38+2,gerald_improved=gerald_old/1.1",
+      "receiver": "solver",
+      "round": 0,
+      "role": "assistant",
+      "prompt_tokens": 775,
+      "completion_tokens": 30,
+      "id": "0bde2e96a20f",
+      "ts": 1793169750.2849689,
+      "meta": {
+        "sender": "planner",
+        "receiver": "solver",
+        "message_id": "0bde2e96a20f",
+        "protocol_edge": "planner_to_solver",
+        "protocol_version": "CARD-0-gsm8k",
+        "protocol_hash": "4bcdae885cc464e0a51977368e4bc06650c0326dbdcb182ce0327477c1d32daa",
+        "contract_hash": "ab4b736240365db5d0ce2caea032f40a3b7fc9c189db42d5ebcd28cac0fac22b",
+        "fields": {
+          "G": "Gerald_improved_time",
+          "P": "gerald_old=38+2,gerald_improved=gerald_old/1.1"
+        },
+        "communication_tokens": 30,
+        "communication_tokens_exact": true,
+        "attempt_count": 1,
+        "fallback": false,
+        "tokens_include_all_attempts": true,
+        "incoming_message_ids": []
+      }
+    },
+    {
+      "sender": "solver",
+      "content": "IR:gerald_old=38+2=40,gerald_improved=40/1.1=36.36;R:36.36",
+      "receiver": "verifier",
+      "round": 0,
+      "role": "assistant",
+      "prompt_tokens": 747,
+      "completion_tokens": 32,
+      "id": "b0444611f5ce",
+      "ts": 1793169751.3692837,
+      "meta": {
+        "sender": "solver",
+        "receiver": "verifier",
+        "message_id": "b0444611f5ce",
+        "protocol_edge": "solver_to_verifier",
+        "protocol_version": "CARD-0-gsm8k",
+        "protocol_hash": "4bcdae885cc464e0a51977368e4bc06650c0326dbdcb182ce0327477c1d32daa",
+        "contract_hash": "ab4b736240365db5d0ce2caea032f40a3b7fc9c189db42d5ebcd28cac0fac22b",
+        "fields": {
+          "IR": "gerald_old=38+2=40,gerald_improved=40/1.1=36.36",
+          "R": "36.36"
+        },
+        "communication_tokens": 32,
+        "communication_tokens_exact": true,
+        "attempt_count": 1,
+        "fallback": false,
+        "tokens_include_all_attempts": true,
+        "incoming_message_ids": [
+          "0bde2e96a20f"
+        ]
+      }
+    },
+    {
+      "sender": "verifier",
+      "content": "CHK:REVISE;E:RELATION;REQ:Recompute Gerald's improved time as a 10% reduction from his old time, i.e. 40×(1−0.10), rather than dividing by 1.1.",
+      "receiver": "solver",
+      "round": 0,
+      "role": "assistant",
+      "prompt_tokens": 1115,
+      "completion_tokens": 53,
+      "id": "fe5b8f1cb222",
+      "ts": 1793169753.0096993,
+      "meta": {
+        "sender": "verifier",
+        "receiver": "solver",
+        "message_id": "fe5b8f1cb222",
+        "protocol_edge": "verifier_to_solver",
+        "protocol_version": "CARD-0-gsm8k",
+        "protocol_hash": "4bcdae885cc464e0a51977368e4bc06650c0326dbdcb182ce0327477c1d32daa",
+        "contract_hash": "ab4b736240365db5d0ce2caea032f40a3b7fc9c189db42d5ebcd28cac0fac22b",
+        "fields": {
+          "CHK": "REVISE",
+          "E": "RELATION",
+          "REQ": "Recompute Gerald's improved time as a 10% reduction from his old time, i.e. 40×(1−0.10), rather than dividing by 1.1."
+        },
+        "communication_tokens": 53,
+        "communication_tokens_exact": true,
+        "attempt_count": 1,
+        "fallback": false,
+        "tokens_include_all_attempts": true,
+        "incoming_message_ids": [
+          "b0444611f5ce"
+        ]
+      }
+    },
+    {
+      "sender": "solver",
+      "content": "IR:gerald_old=38+2=40,gerald_improved=40*(1-0.10)=36;R:36",
+      "receiver": "verifier",
+      "round": 1,
+      "role": "assistant",
+      "prompt_tokens": 860,
+      "completion_tokens": 30,
+      "id": "7e24b9fdd382",
+      "ts": 1793169754.2199612,
+      "meta": {
+        "sender": "solver",
+        "receiver": "verifier",
+        "message_id": "7e24b9fdd382",
+        "protocol_edge": "solver_to_verifier",
+        "protocol_version": "CARD-0-gsm8k",
+        "protocol_hash": "4bcdae885cc464e0a51977368e4bc06650c0326dbdcb182ce0327477c1d32daa",
+        "contract_hash": "ab4b736240365db5d0ce2caea032f40a3b7fc9c189db42d5ebcd28cac0fac22b",
+        "fields": {
+          "IR": "gerald_old=38+2=40,gerald_improved=40*(1-0.10)=36",
+          "R": "36"
+        },
+        "communication_tokens": 30,
+        "communication_tokens_exact": true,
+        "attempt_count": 1,
+        "fallback": false,
+        "tokens_include_all_attempts": true,
+        "incoming_message_ids": [
+          "0bde2e96a20f",
+          "b0444611f5ce",
+          "fe5b8f1cb222"
+        ]
+      }
+    },
+    {
+      "sender": "verifier",
+      "content": "CHK:REVISE;E:RELATION;REQ:Recompute Gerald's improved time as a 10% speed improvement, which reduces his time to 40/1.10 rather than 40*(1-0.10).",
+      "receiver": "solver",
+      "round": 1,
+      "role": "assistant",
+      "prompt_tokens": 1125,
+      "completion_tokens": 51,
+      "id": "f6fbcdf10fbc",
+      "ts": 1793169756.2362473,
+      "meta": {
+        "sender": "verifier",
+        "receiver": "solver",
+        "message_id": "f6fbcdf10fbc",
+        "protocol_edge": "verifier_to_solver",
+        "protocol_version": "CARD-0-gsm8k",
+        "protocol_hash": "4bcdae885cc464e0a51977368e4bc06650c0326dbdcb182ce0327477c1d32daa",
+        "contract_hash": "ab4b736240365db5d0ce2caea032f40a3b7fc9c189db42d5ebcd28cac0fac22b",
+        "fields": {
+          "CHK": "REVISE",
+          "E": "RELATION",
+          "REQ": "Recompute Gerald's improved time as a 10% speed improvement, which reduces his time to 40/1.10 rather than 40*(1-0.10)."
+        },
+        "communication_tokens": 51,
+        "communication_tokens_exact": true,
+        "attempt_count": 1,
+        "fallback": false,
+        "tokens_include_all_attempts": true,
+        "incoming_message_ids": [
+          "7e24b9fdd382"
+        ]
+      }
+    }
+  ],
+  "calls": 5,
+  "usage_complete": true,
+  "known_input_tokens": 4622,
+  "known_output_tokens": 196,
+  "model_input_tokens": 4622,
+  "model_output_tokens": 196,
+  "format_failed_calls": 0,
+  "transport_failed_calls": 0,
+  "fallback_calls": 0,
+  "sum_model_latency_s": 7.085356950759888
+}

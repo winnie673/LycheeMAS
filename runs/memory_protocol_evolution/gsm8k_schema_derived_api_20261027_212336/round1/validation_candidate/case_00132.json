@@ -1,0 +1,151 @@
+{
+  "task_id": "gsm8k:train:seed42:V:00132",
+  "status": "completed",
+  "error": null,
+  "prediction": "1600",
+  "messages": [
+    {
+      "sender": "planner",
+      "content": "G:total_profit;P:cost=2*250,revenue=6*350,total_profit=revenue-cost",
+      "receiver": "solver",
+      "round": 0,
+      "role": "assistant",
+      "prompt_tokens": 809,
+      "completion_tokens": 28,
+      "id": "5ea4d82063f5",
+      "ts": 1793109547.859995,
+      "meta": {
+        "sender": "planner",
+        "receiver": "solver",
+        "message_id": "5ea4d82063f5",
+        "protocol_edge": "planner_to_solver",
+        "protocol_version": "CARD-1-gsm8k",
+        "protocol_hash": "2a663f41d251a442e680de67a231e516a8fe5e31629bc25d021c8c0eb1354cff",
+        "contract_hash": "ab4b736240365db5d0ce2caea032f40a3b7fc9c189db42d5ebcd28cac0fac22b",
+        "fields": {
+          "G": "total_profit",
+          "P": "cost=2*250,revenue=6*350,total_profit=revenue-cost"
+        },
+        "communication_tokens": 28,
+        "communication_tokens_exact": true,
+        "attempt_count": 1,
+        "fallback": false,
+        "tokens_include_all_attempts": true,
+        "incoming_message_ids": []
+      }
+    },
+    {
+      "sender": "solver",
+      "content": "IR:cost=2*250=500,revenue=6*350=2100,total_profit=2100-500=1600;R:1600",
+      "receiver": "verifier",
+      "round": 0,
+      "role": "assistant",
+      "prompt_tokens": 720,
+      "completion_tokens": 36,
+      "id": "97693860ab60",
+      "ts": 1793109549.0779738,
+      "meta": {
+        "sender": "solver",
+        "receiver": "verifier",
+        "message_id": "97693860ab60",
+        "protocol_edge": "solver_to_verifier",
+        "protocol_version": "CARD-1-gsm8k",
+        "protocol_hash": "2a663f41d251a442e680de67a231e516a8fe5e31629bc25d021c8c0eb1354cff",
+        "contract_hash": "ab4b736240365db5d0ce2caea032f40a3b7fc9c189db42d5ebcd28cac0fac22b",
+        "fields": {
+          "IR": "cost=2*250=500,revenue=6*350=2100,total_profit=2100-500=1600",
+          "R": "1600"
+        },
+        "communication_tokens": 36,
+        "communication_tokens_exact": true,
+        "attempt_count": 1,
+        "fallback": false,
+        "tokens_include_all_attempts": true,
+        "incoming_message_ids": [
+          "5ea4d82063f5"
+        ]
+      }
+    },
+    {
+      "sender": "verifier",
+      "content": "CHK:ACCEPT",
+      "receiver": "solver",
+      "round": 0,
+      "role": "assistant",
+      "prompt_tokens": 1094,
+      "completion_tokens": 5,
+      "id": "496229426e2a",
+      "ts": 1793109550.151795,
+      "meta": {
+        "sender": "verifier",
+        "receiver": "solver",
+        "message_id": "496229426e2a",
+        "protocol_edge": "verifier_to_solver",
+        "protocol_version": "CARD-1-gsm8k",
+        "protocol_hash": "2a663f41d251a442e680de67a231e516a8fe5e31629bc25d021c8c0eb1354cff",
+        "contract_hash": "ab4b736240365db5d0ce2caea032f40a3b7fc9c189db42d5ebcd28cac0fac22b",
+        "fields": {
+          "CHK": "ACCEPT"
+        },
+        "communication_tokens": 5,
+        "communication_tokens_exact": true,
+        "attempt_count": 1,
+        "fallback": false,
+        "tokens_include_all_attempts": true,
+        "incoming_message_ids": [
+          "97693860ab60"
+        ]
+      }
+    }
+  ],
+  "communication_tokens": 69,
+  "wall_time_s": 3.494001100072637,
+  "verified": true,
+  "revision_rounds": 0,
+  "model_calls": [
+    {
+      "role": "planner",
+      "attempt": 0,
+      "status": "delivered",
+      "error": "",
+      "raw_output": "G:total_profit;P:cost=2*250,revenue=6*350,total_profit=revenue-cost",
+      "finish_reason": "stop",
+      "output_tokens": 28,
+      "usage_available": true
+    },
+    {
+      "role": "solver",
+      "attempt": 0,
+      "status": "delivered",
+      "error": "",
+      "raw_output": "IR:cost=2*250=500,revenue=6*350=2100,total_profit=2100-500=1600;R:1600",
+      "finish_reason": "stop",
+      "output_tokens": 36,
+      "usage_available": true
+    },
+    {
+      "role": "verifier",
+      "attempt": 0,
+      "status": "delivered",
+      "error": "",
+      "raw_output": "CHK:ACCEPT",
+      "finish_reason": "stop",
+      "output_tokens": 5,
+      "usage_available": true
+    }
+  ],
+  "failed_attempts": [],
+  "calls": 3,
+  "usage_complete": true,
+  "known_input_tokens": 2623,
+  "known_output_tokens": 69,
+  "model_input_tokens": 2623,
+  "model_output_tokens": 69,
+  "format_failed_calls": 0,
+  "transport_failed_calls": 0,
+  "fallback_calls": 0,
+  "sum_model_latency_s": 3.344041109085083,
+  "gold": "1600",
+  "score": 1.0,
+  "question": "Bob bought 2 show dogs for $250.00 each to breed as a side business.  The female just had a litter of 6 puppies.  If he sells each puppy for $350.00, what is his total profit?\nGive the final numeric answer."
+}

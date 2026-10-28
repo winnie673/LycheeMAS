@@ -1,0 +1,151 @@
+{
+  "task_id": "gsm8k:train:seed42:V:00076",
+  "status": "completed",
+  "error": null,
+  "prediction": "96",
+  "messages": [
+    {
+      "sender": "planner",
+      "content": "G:hours_at_field;P:games_per_daughter=8,daughters=2,total_games=games_per_daughter*daughters,practice_hours=4*total_games,game_hours=2*total_games,hours_at_field=practice_hours+game_hours",
+      "receiver": "solver",
+      "round": 0,
+      "role": "assistant",
+      "prompt_tokens": 760,
+      "completion_tokens": 63,
+      "id": "05dfed427ce6",
+      "ts": 1793108401.5793622,
+      "meta": {
+        "sender": "planner",
+        "receiver": "solver",
+        "message_id": "05dfed427ce6",
+        "protocol_edge": "planner_to_solver",
+        "protocol_version": "CARD-0-gsm8k",
+        "protocol_hash": "4bcdae885cc464e0a51977368e4bc06650c0326dbdcb182ce0327477c1d32daa",
+        "contract_hash": "ab4b736240365db5d0ce2caea032f40a3b7fc9c189db42d5ebcd28cac0fac22b",
+        "fields": {
+          "G": "hours_at_field",
+          "P": "games_per_daughter=8,daughters=2,total_games=games_per_daughter*daughters,practice_hours=4*total_games,game_hours=2*total_games,hours_at_field=practice_hours+game_hours"
+        },
+        "communication_tokens": 63,
+        "communication_tokens_exact": true,
+        "attempt_count": 1,
+        "fallback": false,
+        "tokens_include_all_attempts": true,
+        "incoming_message_ids": []
+      }
+    },
+    {
+      "sender": "solver",
+      "content": "IR:total_games=8*2=16,practice_hours=4*16=64,game_hours=2*16=32,hours_at_field=64+32=96;R:96",
+      "receiver": "verifier",
+      "round": 0,
+      "role": "assistant",
+      "prompt_tokens": 765,
+      "completion_tokens": 45,
+      "id": "d098781eee82",
+      "ts": 1793108402.503645,
+      "meta": {
+        "sender": "solver",
+        "receiver": "verifier",
+        "message_id": "d098781eee82",
+        "protocol_edge": "solver_to_verifier",
+        "protocol_version": "CARD-0-gsm8k",
+        "protocol_hash": "4bcdae885cc464e0a51977368e4bc06650c0326dbdcb182ce0327477c1d32daa",
+        "contract_hash": "ab4b736240365db5d0ce2caea032f40a3b7fc9c189db42d5ebcd28cac0fac22b",
+        "fields": {
+          "IR": "total_games=8*2=16,practice_hours=4*16=64,game_hours=2*16=32,hours_at_field=64+32=96",
+          "R": "96"
+        },
+        "communication_tokens": 45,
+        "communication_tokens_exact": true,
+        "attempt_count": 1,
+        "fallback": false,
+        "tokens_include_all_attempts": true,
+        "incoming_message_ids": [
+          "05dfed427ce6"
+        ]
+      }
+    },
+    {
+      "sender": "verifier",
+      "content": "CHK:ACCEPT",
+      "receiver": "solver",
+      "round": 0,
+      "role": "assistant",
+      "prompt_tokens": 1113,
+      "completion_tokens": 5,
+      "id": "13cbac28c282",
+      "ts": 1793108403.60591,
+      "meta": {
+        "sender": "verifier",
+        "receiver": "solver",
+        "message_id": "13cbac28c282",
+        "protocol_edge": "verifier_to_solver",
+        "protocol_version": "CARD-0-gsm8k",
+        "protocol_hash": "4bcdae885cc464e0a51977368e4bc06650c0326dbdcb182ce0327477c1d32daa",
+        "contract_hash": "ab4b736240365db5d0ce2caea032f40a3b7fc9c189db42d5ebcd28cac0fac22b",
+        "fields": {
+          "CHK": "ACCEPT"
+        },
+        "communication_tokens": 5,
+        "communication_tokens_exact": true,
+        "attempt_count": 1,
+        "fallback": false,
+        "tokens_include_all_attempts": true,
+        "incoming_message_ids": [
+          "d098781eee82"
+        ]
+      }
+    }
+  ],
+  "communication_tokens": 113,
+  "wall_time_s": 3.636493599973619,
+  "verified": true,
+  "revision_rounds": 0,
+  "model_calls": [
+    {
+      "role": "planner",
+      "attempt": 0,
+      "status": "delivered",
+      "error": "",
+      "raw_output": "G:hours_at_field;P:games_per_daughter=8,daughters=2,total_games=games_per_daughter*daughters,practice_hours=4*total_games,game_hours=2*total_games,hours_at_field=practice_hours+game_hours",
+      "finish_reason": "stop",
+      "output_tokens": 63,
+      "usage_available": true
+    },
+    {
+      "role": "solver",
+      "attempt": 0,
+      "status": "delivered",
+      "error": "",
+      "raw_output": "IR:total_games=8*2=16,practice_hours=4*16=64,game_hours=2*16=32,hours_at_field=64+32=96;R:96",
+      "finish_reason": "stop",
+      "output_tokens": 45,
+      "usage_available": true
+    },
+    {
+      "role": "verifier",
+      "attempt": 0,
+      "status": "delivered",
+      "error": "",
+      "raw_output": "CHK:ACCEPT",
+      "finish_reason": "stop",
+      "output_tokens": 5,
+      "usage_available": true
+    }
+  ],
+  "failed_attempts": [],
+  "calls": 3,
+  "usage_complete": true,
+  "known_input_tokens": 2638,
+  "known_output_tokens": 113,
+  "model_input_tokens": 2638,
+  "model_output_tokens": 113,
+  "format_failed_calls": 0,
+  "transport_failed_calls": 0,
+  "fallback_calls": 0,
+  "sum_model_latency_s": 3.476024627685547,
+  "gold": "96",
+  "score": 1.0,
+  "question": "Jerry’s two daughters play softball on different teams. They each have 8 games this season. Each team practices 4 hours for every game they play. If each game lasts for 2 hours, how many hours will Jerry spend at the field watching his daughters play and practice altogether?\nGive the final numeric answer."
+}

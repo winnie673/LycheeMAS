@@ -1,0 +1,153 @@
+{
+  "task_id": "gsm8k:train:seed42:V:00081",
+  "status": "completed",
+  "error": null,
+  "prediction": "800",
+  "messages": [
+    {
+      "sender": "planner",
+      "content": "G:monthly_salary;P:hours_week=8*6,days_worked=6-1,pay_week=5*8*days_worked,monthly_salary=pay_week*4;NL:Assume a month has 4 weeks and the missed day reduces the weekly workdays from 6 to 5.",
+      "receiver": "solver",
+      "round": 0,
+      "role": "assistant",
+      "prompt_tokens": 749,
+      "completion_tokens": 73,
+      "id": "3b53cd9f07c6",
+      "ts": 1793108422.9565165,
+      "meta": {
+        "sender": "planner",
+        "receiver": "solver",
+        "message_id": "3b53cd9f07c6",
+        "protocol_edge": "planner_to_solver",
+        "protocol_version": "CARD-0-gsm8k",
+        "protocol_hash": "4bcdae885cc464e0a51977368e4bc06650c0326dbdcb182ce0327477c1d32daa",
+        "contract_hash": "ab4b736240365db5d0ce2caea032f40a3b7fc9c189db42d5ebcd28cac0fac22b",
+        "fields": {
+          "G": "monthly_salary",
+          "P": "hours_week=8*6,days_worked=6-1,pay_week=5*8*days_worked,monthly_salary=pay_week*4",
+          "NL": "Assume a month has 4 weeks and the missed day reduces the weekly workdays from 6 to 5."
+        },
+        "communication_tokens": 73,
+        "communication_tokens_exact": true,
+        "attempt_count": 1,
+        "fallback": false,
+        "tokens_include_all_attempts": true,
+        "incoming_message_ids": []
+      }
+    },
+    {
+      "sender": "solver",
+      "content": "IR:hours_week=8*6=48,days_worked=6-1=5,pay_week=5*8*5=200,monthly_salary=200*4=800;R:800;NL:Assume a month has 4 weeks and the missed day reduces the weekly workdays from 6 to 5.",
+      "receiver": "verifier",
+      "round": 0,
+      "role": "assistant",
+      "prompt_tokens": 764,
+      "completion_tokens": 74,
+      "id": "b49045efad77",
+      "ts": 1793108424.3441045,
+      "meta": {
+        "sender": "solver",
+        "receiver": "verifier",
+        "message_id": "b49045efad77",
+        "protocol_edge": "solver_to_verifier",
+        "protocol_version": "CARD-0-gsm8k",
+        "protocol_hash": "4bcdae885cc464e0a51977368e4bc06650c0326dbdcb182ce0327477c1d32daa",
+        "contract_hash": "ab4b736240365db5d0ce2caea032f40a3b7fc9c189db42d5ebcd28cac0fac22b",
+        "fields": {
+          "IR": "hours_week=8*6=48,days_worked=6-1=5,pay_week=5*8*5=200,monthly_salary=200*4=800",
+          "R": "800",
+          "NL": "Assume a month has 4 weeks and the missed day reduces the weekly workdays from 6 to 5."
+        },
+        "communication_tokens": 74,
+        "communication_tokens_exact": true,
+        "attempt_count": 1,
+        "fallback": false,
+        "tokens_include_all_attempts": true,
+        "incoming_message_ids": [
+          "3b53cd9f07c6"
+        ]
+      }
+    },
+    {
+      "sender": "verifier",
+      "content": "CHK:ACCEPT",
+      "receiver": "solver",
+      "round": 0,
+      "role": "assistant",
+      "prompt_tokens": 1131,
+      "completion_tokens": 5,
+      "id": "f264d884b8ba",
+      "ts": 1793108425.517926,
+      "meta": {
+        "sender": "verifier",
+        "receiver": "solver",
+        "message_id": "f264d884b8ba",
+        "protocol_edge": "verifier_to_solver",
+        "protocol_version": "CARD-0-gsm8k",
+        "protocol_hash": "4bcdae885cc464e0a51977368e4bc06650c0326dbdcb182ce0327477c1d32daa",
+        "contract_hash": "ab4b736240365db5d0ce2caea032f40a3b7fc9c189db42d5ebcd28cac0fac22b",
+        "fields": {
+          "CHK": "ACCEPT"
+        },
+        "communication_tokens": 5,
+        "communication_tokens_exact": true,
+        "attempt_count": 1,
+        "fallback": false,
+        "tokens_include_all_attempts": true,
+        "incoming_message_ids": [
+          "b49045efad77"
+        ]
+      }
+    }
+  ],
+  "communication_tokens": 152,
+  "wall_time_s": 4.204073400003836,
+  "verified": true,
+  "revision_rounds": 0,
+  "model_calls": [
+    {
+      "role": "planner",
+      "attempt": 0,
+      "status": "delivered",
+      "error": "",
+      "raw_output": "G:monthly_salary;P:hours_week=8*6,days_worked=6-1,pay_week=5*8*days_worked,monthly_salary=pay_week*4;NL:Assume a month has 4 weeks and the missed day reduces the weekly workdays from 6 to 5.",
+      "finish_reason": "stop",
+      "output_tokens": 73,
+      "usage_available": true
+    },
+    {
+      "role": "solver",
+      "attempt": 0,
+      "status": "delivered",
+      "error": "",
+      "raw_output": "IR:hours_week=8*6=48,days_worked=6-1=5,pay_week=5*8*5=200,monthly_salary=200*4=800;R:800;NL:Assume a month has 4 weeks and the missed day reduces the weekly workdays from 6 to 5.",
+      "finish_reason": "stop",
+      "output_tokens": 74,
+      "usage_available": true
+    },
+    {
+      "role": "verifier",
+      "attempt": 0,
+      "status": "delivered",
+      "error": "",
+      "raw_output": "CHK:ACCEPT",
+      "finish_reason": "stop",
+      "output_tokens": 5,
+      "usage_available": true
+    }
+  ],
+  "failed_attempts": [],
+  "calls": 3,
+  "usage_complete": true,
+  "known_input_tokens": 2644,
+  "known_output_tokens": 152,
+  "model_input_tokens": 2644,
+  "model_output_tokens": 152,
+  "format_failed_calls": 0,
+  "transport_failed_calls": 0,
+  "fallback_calls": 0,
+  "sum_model_latency_s": 4.031117916107178,
+  "gold": "920",
+  "score": 0.0,
+  "question": "Julie works at a restaurant that pays her an hourly rate of $5. She works 8 hours a day and 6 days a week. How much is her monthly salary if she was not able to go to work for a day?\nGive the final numeric answer."
+}

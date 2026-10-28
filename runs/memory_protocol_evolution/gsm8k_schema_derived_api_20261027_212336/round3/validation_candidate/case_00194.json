@@ -1,0 +1,151 @@
+{
+  "task_id": "gsm8k:train:seed42:V:00194",
+  "status": "completed",
+  "error": null,
+  "prediction": "120",
+  "messages": [
+    {
+      "sender": "planner",
+      "content": "G:money_saved_over_30_years;P:expensive_count=30/15,expensive_cost=300*expensive_count,cheap_count=30/5,cheap_cost=120*cheap_count,money_saved=cheap_cost-expensive_cost",
+      "receiver": "solver",
+      "round": 0,
+      "role": "assistant",
+      "prompt_tokens": 794,
+      "completion_tokens": 56,
+      "id": "400cc7453938",
+      "ts": 1793168957.1010704,
+      "meta": {
+        "sender": "planner",
+        "receiver": "solver",
+        "message_id": "400cc7453938",
+        "protocol_edge": "planner_to_solver",
+        "protocol_version": "CARD-3-gsm8k",
+        "protocol_hash": "fb1a4acb6e591ac96544876aedd912b27a6f9d3154c76112e1da0f43407d27b2",
+        "contract_hash": "ab4b736240365db5d0ce2caea032f40a3b7fc9c189db42d5ebcd28cac0fac22b",
+        "fields": {
+          "G": "money_saved_over_30_years",
+          "P": "expensive_count=30/15,expensive_cost=300*expensive_count,cheap_count=30/5,cheap_cost=120*cheap_count,money_saved=cheap_cost-expensive_cost"
+        },
+        "communication_tokens": 56,
+        "communication_tokens_exact": true,
+        "attempt_count": 1,
+        "fallback": false,
+        "tokens_include_all_attempts": true,
+        "incoming_message_ids": []
+      }
+    },
+    {
+      "sender": "solver",
+      "content": "IR:expensive_count=30/15=2,expensive_cost=300*2=600,cheap_count=30/5=6,cheap_cost=120*6=720,money_saved=720-600=120;R:120",
+      "receiver": "verifier",
+      "round": 0,
+      "role": "assistant",
+      "prompt_tokens": 750,
+      "completion_tokens": 53,
+      "id": "5dddce413706",
+      "ts": 1793168958.04057,
+      "meta": {
+        "sender": "solver",
+        "receiver": "verifier",
+        "message_id": "5dddce413706",
+        "protocol_edge": "solver_to_verifier",
+        "protocol_version": "CARD-3-gsm8k",
+        "protocol_hash": "fb1a4acb6e591ac96544876aedd912b27a6f9d3154c76112e1da0f43407d27b2",
+        "contract_hash": "ab4b736240365db5d0ce2caea032f40a3b7fc9c189db42d5ebcd28cac0fac22b",
+        "fields": {
+          "IR": "expensive_count=30/15=2,expensive_cost=300*2=600,cheap_count=30/5=6,cheap_cost=120*6=720,money_saved=720-600=120",
+          "R": "120"
+        },
+        "communication_tokens": 53,
+        "communication_tokens_exact": true,
+        "attempt_count": 1,
+        "fallback": false,
+        "tokens_include_all_attempts": true,
+        "incoming_message_ids": [
+          "400cc7453938"
+        ]
+      }
+    },
+    {
+      "sender": "verifier",
+      "content": "CHK:ACCEPT",
+      "receiver": "solver",
+      "round": 0,
+      "role": "assistant",
+      "prompt_tokens": 1113,
+      "completion_tokens": 5,
+      "id": "8d10537b8be4",
+      "ts": 1793168958.717334,
+      "meta": {
+        "sender": "verifier",
+        "receiver": "solver",
+        "message_id": "8d10537b8be4",
+        "protocol_edge": "verifier_to_solver",
+        "protocol_version": "CARD-3-gsm8k",
+        "protocol_hash": "fb1a4acb6e591ac96544876aedd912b27a6f9d3154c76112e1da0f43407d27b2",
+        "contract_hash": "ab4b736240365db5d0ce2caea032f40a3b7fc9c189db42d5ebcd28cac0fac22b",
+        "fields": {
+          "CHK": "ACCEPT"
+        },
+        "communication_tokens": 5,
+        "communication_tokens_exact": true,
+        "attempt_count": 1,
+        "fallback": false,
+        "tokens_include_all_attempts": true,
+        "incoming_message_ids": [
+          "5dddce413706"
+        ]
+      }
+    }
+  ],
+  "communication_tokens": 114,
+  "wall_time_s": 2.794843600015156,
+  "verified": true,
+  "revision_rounds": 0,
+  "model_calls": [
+    {
+      "role": "planner",
+      "attempt": 0,
+      "status": "delivered",
+      "error": "",
+      "raw_output": "G:money_saved_over_30_years;P:expensive_count=30/15,expensive_cost=300*expensive_count,cheap_count=30/5,cheap_cost=120*cheap_count,money_saved=cheap_cost-expensive_cost",
+      "finish_reason": "stop",
+      "output_tokens": 56,
+      "usage_available": true
+    },
+    {
+      "role": "solver",
+      "attempt": 0,
+      "status": "delivered",
+      "error": "",
+      "raw_output": "IR:expensive_count=30/15=2,expensive_cost=300*2=600,cheap_count=30/5=6,cheap_cost=120*6=720,money_saved=720-600=120;R:120",
+      "finish_reason": "stop",
+      "output_tokens": 53,
+      "usage_available": true
+    },
+    {
+      "role": "verifier",
+      "attempt": 0,
+      "status": "delivered",
+      "error": "",
+      "raw_output": "CHK:ACCEPT",
+      "finish_reason": "stop",
+      "output_tokens": 5,
+      "usage_available": true
+    }
+  ],
+  "failed_attempts": [],
+  "calls": 3,
+  "usage_complete": true,
+  "known_input_tokens": 2657,
+  "known_output_tokens": 114,
+  "model_input_tokens": 2657,
+  "model_output_tokens": 114,
+  "format_failed_calls": 0,
+  "transport_failed_calls": 0,
+  "fallback_calls": 0,
+  "sum_model_latency_s": 2.7201454639434814,
+  "gold": "120",
+  "score": 1.0,
+  "question": "Karen is considering her winter coat options. One coast costs $300 and will last for 15 years. The other coat costs $120 and will last for five years. How much money would Karen save over 30 years by buying the more expensive cost?\nGive the final numeric answer."
+}

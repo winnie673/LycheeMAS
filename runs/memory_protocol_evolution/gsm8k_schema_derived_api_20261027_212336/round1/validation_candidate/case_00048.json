@@ -1,0 +1,151 @@
+{
+  "task_id": "gsm8k:train:seed42:V:00048",
+  "status": "completed",
+  "error": null,
+  "prediction": "40",
+  "messages": [
+    {
+      "sender": "planner",
+      "content": "G:original_bet;P:payout_ratio=3/2,paid=60,original_bet=paid/(3/2)",
+      "receiver": "solver",
+      "round": 0,
+      "role": "assistant",
+      "prompt_tokens": 799,
+      "completion_tokens": 30,
+      "id": "db7898b34353",
+      "ts": 1793109172.8306832,
+      "meta": {
+        "sender": "planner",
+        "receiver": "solver",
+        "message_id": "db7898b34353",
+        "protocol_edge": "planner_to_solver",
+        "protocol_version": "CARD-1-gsm8k",
+        "protocol_hash": "2a663f41d251a442e680de67a231e516a8fe5e31629bc25d021c8c0eb1354cff",
+        "contract_hash": "ab4b736240365db5d0ce2caea032f40a3b7fc9c189db42d5ebcd28cac0fac22b",
+        "fields": {
+          "G": "original_bet",
+          "P": "payout_ratio=3/2,paid=60,original_bet=paid/(3/2)"
+        },
+        "communication_tokens": 30,
+        "communication_tokens_exact": true,
+        "attempt_count": 1,
+        "fallback": false,
+        "tokens_include_all_attempts": true,
+        "incoming_message_ids": []
+      }
+    },
+    {
+      "sender": "solver",
+      "content": "IR:original_bet=60/(3/2)=40;R:40",
+      "receiver": "verifier",
+      "round": 0,
+      "role": "assistant",
+      "prompt_tokens": 712,
+      "completion_tokens": 17,
+      "id": "68ff3511be37",
+      "ts": 1793109174.00493,
+      "meta": {
+        "sender": "solver",
+        "receiver": "verifier",
+        "message_id": "68ff3511be37",
+        "protocol_edge": "solver_to_verifier",
+        "protocol_version": "CARD-1-gsm8k",
+        "protocol_hash": "2a663f41d251a442e680de67a231e516a8fe5e31629bc25d021c8c0eb1354cff",
+        "contract_hash": "ab4b736240365db5d0ce2caea032f40a3b7fc9c189db42d5ebcd28cac0fac22b",
+        "fields": {
+          "IR": "original_bet=60/(3/2)=40",
+          "R": "40"
+        },
+        "communication_tokens": 17,
+        "communication_tokens_exact": true,
+        "attempt_count": 1,
+        "fallback": false,
+        "tokens_include_all_attempts": true,
+        "incoming_message_ids": [
+          "db7898b34353"
+        ]
+      }
+    },
+    {
+      "sender": "verifier",
+      "content": "CHK:ACCEPT",
+      "receiver": "solver",
+      "round": 0,
+      "role": "assistant",
+      "prompt_tokens": 1065,
+      "completion_tokens": 5,
+      "id": "7a605c845c92",
+      "ts": 1793109176.1087942,
+      "meta": {
+        "sender": "verifier",
+        "receiver": "solver",
+        "message_id": "7a605c845c92",
+        "protocol_edge": "verifier_to_solver",
+        "protocol_version": "CARD-1-gsm8k",
+        "protocol_hash": "2a663f41d251a442e680de67a231e516a8fe5e31629bc25d021c8c0eb1354cff",
+        "contract_hash": "ab4b736240365db5d0ce2caea032f40a3b7fc9c189db42d5ebcd28cac0fac22b",
+        "fields": {
+          "CHK": "ACCEPT"
+        },
+        "communication_tokens": 5,
+        "communication_tokens_exact": true,
+        "attempt_count": 1,
+        "fallback": false,
+        "tokens_include_all_attempts": true,
+        "incoming_message_ids": [
+          "68ff3511be37"
+        ]
+      }
+    }
+  ],
+  "communication_tokens": 52,
+  "wall_time_s": 5.504516099928878,
+  "verified": true,
+  "revision_rounds": 0,
+  "model_calls": [
+    {
+      "role": "planner",
+      "attempt": 0,
+      "status": "delivered",
+      "error": "",
+      "raw_output": "G:original_bet;P:payout_ratio=3/2,paid=60,original_bet=paid/(3/2)",
+      "finish_reason": "stop",
+      "output_tokens": 30,
+      "usage_available": true
+    },
+    {
+      "role": "solver",
+      "attempt": 0,
+      "status": "delivered",
+      "error": "",
+      "raw_output": "IR:original_bet=60/(3/2)=40;R:40",
+      "finish_reason": "stop",
+      "output_tokens": 17,
+      "usage_available": true
+    },
+    {
+      "role": "verifier",
+      "attempt": 0,
+      "status": "delivered",
+      "error": "",
+      "raw_output": "CHK:ACCEPT",
+      "finish_reason": "stop",
+      "output_tokens": 5,
+      "usage_available": true
+    }
+  ],
+  "failed_attempts": [],
+  "calls": 3,
+  "usage_complete": true,
+  "known_input_tokens": 2576,
+  "known_output_tokens": 52,
+  "model_input_tokens": 2576,
+  "model_output_tokens": 52,
+  "format_failed_calls": 0,
+  "transport_failed_calls": 0,
+  "fallback_calls": 0,
+  "sum_model_latency_s": 5.427947998046875,
+  "gold": "40",
+  "score": 1.0,
+  "question": "A casino table pays 3:2 if you get a blackjack with your first 2 cards. If you scored a blackjack and were paid $60, what was your original bet?\nGive the final numeric answer."
+}

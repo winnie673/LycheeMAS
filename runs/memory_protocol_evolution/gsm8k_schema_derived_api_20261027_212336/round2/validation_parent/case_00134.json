@@ -1,0 +1,151 @@
+{
+  "task_id": "gsm8k:train:seed42:V:00134",
+  "status": "completed",
+  "error": null,
+  "prediction": "19",
+  "messages": [
+    {
+      "sender": "planner",
+      "content": "G:remaining_budget;P:total_supplies=13+24,available=6+50,remaining_budget=available-total_supplies",
+      "receiver": "solver",
+      "round": 0,
+      "role": "assistant",
+      "prompt_tokens": 751,
+      "completion_tokens": 33,
+      "id": "d9856c7500bb",
+      "ts": 1793110848.562321,
+      "meta": {
+        "sender": "planner",
+        "receiver": "solver",
+        "message_id": "d9856c7500bb",
+        "protocol_edge": "planner_to_solver",
+        "protocol_version": "CARD-0-gsm8k",
+        "protocol_hash": "4bcdae885cc464e0a51977368e4bc06650c0326dbdcb182ce0327477c1d32daa",
+        "contract_hash": "ab4b736240365db5d0ce2caea032f40a3b7fc9c189db42d5ebcd28cac0fac22b",
+        "fields": {
+          "G": "remaining_budget",
+          "P": "total_supplies=13+24,available=6+50,remaining_budget=available-total_supplies"
+        },
+        "communication_tokens": 33,
+        "communication_tokens_exact": true,
+        "attempt_count": 1,
+        "fallback": false,
+        "tokens_include_all_attempts": true,
+        "incoming_message_ids": []
+      }
+    },
+    {
+      "sender": "solver",
+      "content": "IR:total_supplies=13+24=37,available=6+50=56,remaining_budget=56-37=19;R:19",
+      "receiver": "verifier",
+      "round": 0,
+      "role": "assistant",
+      "prompt_tokens": 726,
+      "completion_tokens": 34,
+      "id": "4b7374aca15a",
+      "ts": 1793110849.7658918,
+      "meta": {
+        "sender": "solver",
+        "receiver": "verifier",
+        "message_id": "4b7374aca15a",
+        "protocol_edge": "solver_to_verifier",
+        "protocol_version": "CARD-0-gsm8k",
+        "protocol_hash": "4bcdae885cc464e0a51977368e4bc06650c0326dbdcb182ce0327477c1d32daa",
+        "contract_hash": "ab4b736240365db5d0ce2caea032f40a3b7fc9c189db42d5ebcd28cac0fac22b",
+        "fields": {
+          "IR": "total_supplies=13+24=37,available=6+50=56,remaining_budget=56-37=19",
+          "R": "19"
+        },
+        "communication_tokens": 34,
+        "communication_tokens_exact": true,
+        "attempt_count": 1,
+        "fallback": false,
+        "tokens_include_all_attempts": true,
+        "incoming_message_ids": [
+          "d9856c7500bb"
+        ]
+      }
+    },
+    {
+      "sender": "verifier",
+      "content": "CHK:ACCEPT",
+      "receiver": "solver",
+      "round": 0,
+      "role": "assistant",
+      "prompt_tokens": 1093,
+      "completion_tokens": 5,
+      "id": "6a35a283b357",
+      "ts": 1793110850.9576008,
+      "meta": {
+        "sender": "verifier",
+        "receiver": "solver",
+        "message_id": "6a35a283b357",
+        "protocol_edge": "verifier_to_solver",
+        "protocol_version": "CARD-0-gsm8k",
+        "protocol_hash": "4bcdae885cc464e0a51977368e4bc06650c0326dbdcb182ce0327477c1d32daa",
+        "contract_hash": "ab4b736240365db5d0ce2caea032f40a3b7fc9c189db42d5ebcd28cac0fac22b",
+        "fields": {
+          "CHK": "ACCEPT"
+        },
+        "communication_tokens": 5,
+        "communication_tokens_exact": true,
+        "attempt_count": 1,
+        "fallback": false,
+        "tokens_include_all_attempts": true,
+        "incoming_message_ids": [
+          "4b7374aca15a"
+        ]
+      }
+    }
+  ],
+  "communication_tokens": 72,
+  "wall_time_s": 3.877514300053008,
+  "verified": true,
+  "revision_rounds": 0,
+  "model_calls": [
+    {
+      "role": "planner",
+      "attempt": 0,
+      "status": "delivered",
+      "error": "",
+      "raw_output": "G:remaining_budget;P:total_supplies=13+24,available=6+50,remaining_budget=available-total_supplies",
+      "finish_reason": "stop",
+      "output_tokens": 33,
+      "usage_available": true
+    },
+    {
+      "role": "solver",
+      "attempt": 0,
+      "status": "delivered",
+      "error": "",
+      "raw_output": "IR:total_supplies=13+24=37,available=6+50=56,remaining_budget=56-37=19;R:19",
+      "finish_reason": "stop",
+      "output_tokens": 34,
+      "usage_available": true
+    },
+    {
+      "role": "verifier",
+      "attempt": 0,
+      "status": "delivered",
+      "error": "",
+      "raw_output": "CHK:ACCEPT",
+      "finish_reason": "stop",
+      "output_tokens": 5,
+      "usage_available": true
+    }
+  ],
+  "failed_attempts": [],
+  "calls": 3,
+  "usage_complete": true,
+  "known_input_tokens": 2570,
+  "known_output_tokens": 72,
+  "model_input_tokens": 2570,
+  "model_output_tokens": 72,
+  "format_failed_calls": 0,
+  "transport_failed_calls": 0,
+  "fallback_calls": 0,
+  "sum_model_latency_s": 3.8024895191192627,
+  "gold": "19",
+  "score": 1.0,
+  "question": "A teacher purchased some school supplies that cost $13 and $24. She had the remaining $6 budget from last year and for this year, she was given a $50 budget. How much money remains in her budget after purchasing the school supplies?\nGive the final numeric answer."
+}

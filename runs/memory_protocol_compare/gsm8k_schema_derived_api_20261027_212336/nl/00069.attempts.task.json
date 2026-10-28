@@ -1,0 +1,95 @@
+{
+  "task_id": "gsm8k:test:seed42:T:00071",
+  "mode": "nl",
+  "benchmark": "gsm8k",
+  "status": "completed",
+  "error": null,
+  "prediction": "60",
+  "gold": "60",
+  "wall_time_s": 3.3163462000666186,
+  "communication_tokens": 106,
+  "communication_tokens_exact": true,
+  "revision_rounds": 0,
+  "verification_decision": "ACCEPT",
+  "verified": true,
+  "messages": [
+    {
+      "sender": "planner",
+      "content": "Goal: find the total number of instructions Kelian must read for both dishes.\n\nPlan: The first recipe has 20 instructions. The second has twice as many as the first, so compute twice 20, then add that to 20 to get the total.\n\nConstraints: Report only the final numeric total.",
+      "receiver": "solver",
+      "round": 0,
+      "role": "assistant",
+      "prompt_tokens": 196,
+      "completion_tokens": 62,
+      "id": "aec11679eade",
+      "ts": 1793169475.684741,
+      "meta": {
+        "fields": {},
+        "communication_tokens": 62,
+        "communication_tokens_exact": true,
+        "attempt_count": 1,
+        "fallback": false,
+        "tokens_include_all_attempts": true,
+        "incoming_message_ids": []
+      }
+    },
+    {
+      "sender": "solver",
+      "content": "The first recipe has 20 instructions. The second has twice as many: \\(2 \\times 20 = 40\\). Total: \\(20 + 40 = 60\\).\n\n\\boxed{60}",
+      "receiver": "verifier",
+      "round": 0,
+      "role": "assistant",
+      "prompt_tokens": 270,
+      "completion_tokens": 42,
+      "id": "28a455f1e04d",
+      "ts": 1793169476.5405283,
+      "meta": {
+        "fields": {
+          "R": "60"
+        },
+        "communication_tokens": 42,
+        "communication_tokens_exact": true,
+        "attempt_count": 1,
+        "fallback": false,
+        "tokens_include_all_attempts": true,
+        "incoming_message_ids": [
+          "aec11679eade"
+        ]
+      }
+    },
+    {
+      "sender": "verifier",
+      "content": "ACCEPT",
+      "receiver": "solver",
+      "round": 0,
+      "role": "assistant",
+      "prompt_tokens": 627,
+      "completion_tokens": 2,
+      "id": "a25dda28c1b0",
+      "ts": 1793169477.7000248,
+      "meta": {
+        "fields": {
+          "CHK": "ACCEPT"
+        },
+        "communication_tokens": 2,
+        "communication_tokens_exact": true,
+        "attempt_count": 1,
+        "fallback": false,
+        "tokens_include_all_attempts": true,
+        "incoming_message_ids": [
+          "28a455f1e04d"
+        ]
+      }
+    }
+  ],
+  "calls": 3,
+  "usage_complete": true,
+  "known_input_tokens": 1093,
+  "known_output_tokens": 106,
+  "model_input_tokens": 1093,
+  "model_output_tokens": 106,
+  "format_failed_calls": 0,
+  "transport_failed_calls": 0,
+  "fallback_calls": 0,
+  "sum_model_latency_s": 3.2825124263763428
+}

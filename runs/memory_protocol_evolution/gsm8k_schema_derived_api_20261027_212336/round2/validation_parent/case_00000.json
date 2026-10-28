@@ -1,0 +1,151 @@
+{
+  "task_id": "gsm8k:train:seed42:V:00000",
+  "status": "completed",
+  "error": null,
+  "prediction": "30",
+  "messages": [
+    {
+      "sender": "planner",
+      "content": "G:total_cost_30_days;P:cups_per_day=1/2,pack_cups=1,price_per_pack=2,days=30,total_cost_30_days=days*cups_per_day*price_per_pack/pack_cups",
+      "receiver": "solver",
+      "round": 0,
+      "role": "assistant",
+      "prompt_tokens": 750,
+      "completion_tokens": 57,
+      "id": "397279c63458",
+      "ts": 1793110295.3631964,
+      "meta": {
+        "sender": "planner",
+        "receiver": "solver",
+        "message_id": "397279c63458",
+        "protocol_edge": "planner_to_solver",
+        "protocol_version": "CARD-0-gsm8k",
+        "protocol_hash": "4bcdae885cc464e0a51977368e4bc06650c0326dbdcb182ce0327477c1d32daa",
+        "contract_hash": "ab4b736240365db5d0ce2caea032f40a3b7fc9c189db42d5ebcd28cac0fac22b",
+        "fields": {
+          "G": "total_cost_30_days",
+          "P": "cups_per_day=1/2,pack_cups=1,price_per_pack=2,days=30,total_cost_30_days=days*cups_per_day*price_per_pack/pack_cups"
+        },
+        "communication_tokens": 57,
+        "communication_tokens_exact": true,
+        "attempt_count": 1,
+        "fallback": false,
+        "tokens_include_all_attempts": true,
+        "incoming_message_ids": []
+      }
+    },
+    {
+      "sender": "solver",
+      "content": "IR:cups_30=30*1/2=15,packs=15/1=15,cost=15*2=30;R:30",
+      "receiver": "verifier",
+      "round": 0,
+      "role": "assistant",
+      "prompt_tokens": 749,
+      "completion_tokens": 33,
+      "id": "d293c2a739da",
+      "ts": 1793110296.8095627,
+      "meta": {
+        "sender": "solver",
+        "receiver": "verifier",
+        "message_id": "d293c2a739da",
+        "protocol_edge": "solver_to_verifier",
+        "protocol_version": "CARD-0-gsm8k",
+        "protocol_hash": "4bcdae885cc464e0a51977368e4bc06650c0326dbdcb182ce0327477c1d32daa",
+        "contract_hash": "ab4b736240365db5d0ce2caea032f40a3b7fc9c189db42d5ebcd28cac0fac22b",
+        "fields": {
+          "IR": "cups_30=30*1/2=15,packs=15/1=15,cost=15*2=30",
+          "R": "30"
+        },
+        "communication_tokens": 33,
+        "communication_tokens_exact": true,
+        "attempt_count": 1,
+        "fallback": false,
+        "tokens_include_all_attempts": true,
+        "incoming_message_ids": [
+          "397279c63458"
+        ]
+      }
+    },
+    {
+      "sender": "verifier",
+      "content": "CHK:ACCEPT",
+      "receiver": "solver",
+      "round": 0,
+      "role": "assistant",
+      "prompt_tokens": 1091,
+      "completion_tokens": 5,
+      "id": "54f879184b4c",
+      "ts": 1793110298.204576,
+      "meta": {
+        "sender": "verifier",
+        "receiver": "solver",
+        "message_id": "54f879184b4c",
+        "protocol_edge": "verifier_to_solver",
+        "protocol_version": "CARD-0-gsm8k",
+        "protocol_hash": "4bcdae885cc464e0a51977368e4bc06650c0326dbdcb182ce0327477c1d32daa",
+        "contract_hash": "ab4b736240365db5d0ce2caea032f40a3b7fc9c189db42d5ebcd28cac0fac22b",
+        "fields": {
+          "CHK": "ACCEPT"
+        },
+        "communication_tokens": 5,
+        "communication_tokens_exact": true,
+        "attempt_count": 1,
+        "fallback": false,
+        "tokens_include_all_attempts": true,
+        "incoming_message_ids": [
+          "d293c2a739da"
+        ]
+      }
+    }
+  ],
+  "communication_tokens": 95,
+  "wall_time_s": 4.7981447000056505,
+  "verified": true,
+  "revision_rounds": 0,
+  "model_calls": [
+    {
+      "role": "planner",
+      "attempt": 0,
+      "status": "delivered",
+      "error": "",
+      "raw_output": "G:total_cost_30_days;P:cups_per_day=1/2,pack_cups=1,price_per_pack=2,days=30,total_cost_30_days=days*cups_per_day*price_per_pack/pack_cups",
+      "finish_reason": "stop",
+      "output_tokens": 57,
+      "usage_available": true
+    },
+    {
+      "role": "solver",
+      "attempt": 0,
+      "status": "delivered",
+      "error": "",
+      "raw_output": "IR:cups_30=30*1/2=15,packs=15/1=15,cost=15*2=30;R:30",
+      "finish_reason": "stop",
+      "output_tokens": 33,
+      "usage_available": true
+    },
+    {
+      "role": "verifier",
+      "attempt": 0,
+      "status": "delivered",
+      "error": "",
+      "raw_output": "CHK:ACCEPT",
+      "finish_reason": "stop",
+      "output_tokens": 5,
+      "usage_available": true
+    }
+  ],
+  "failed_attempts": [],
+  "calls": 3,
+  "usage_complete": true,
+  "known_input_tokens": 2590,
+  "known_output_tokens": 95,
+  "model_input_tokens": 2590,
+  "model_output_tokens": 95,
+  "format_failed_calls": 0,
+  "transport_failed_calls": 0,
+  "fallback_calls": 0,
+  "sum_model_latency_s": 4.649322032928467,
+  "gold": "30",
+  "score": 1.0,
+  "question": "Martin eats 1/2 cup of berries every day.  The grocery store is selling a package of berries (1 cup per pack) for $2.00.  How much will he spend on berries in a 30 day period?\nGive the final numeric answer."
+}

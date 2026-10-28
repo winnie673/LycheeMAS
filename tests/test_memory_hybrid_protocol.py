@@ -18,7 +18,7 @@ from lychee_mas.methods.memory.channels.nl import PREV_OUTPUT_HEADER, NLMemory
 from lychee_mas.methods.memory.routing.base import RouteDecision
 from scripts.hybrid_gsm8k_spec import GSM8K_PROTOCOL
 
-CARD = "configs/memory/task_cards/gsm8k_card2.yaml"
+CARD = "configs/memory/task_cards/gsm8k_psv_hybrid_card_20261028.yaml"
 PAYLOAD = "G:sum;P:sum=9+9;NL:Count both groups."
 
 
@@ -48,14 +48,14 @@ def test_card_rules_and_fingerprint():
     memory = manager()
     instructions = memory.nl.output_instructions("planner", "solver")
     assert "Allowed fields: K, G, P, NL" in instructions
-    assert "Rate or ratio values must carry their per-unit semantics" in instructions
-    assert "Every answer-changing relation" in instructions
+    assert "Explicit givens or relations selected from the shared problem" in instructions
+    assert "Concise symbolic relations" in instructions
     assert "Example:" in instructions
     deliver(memory)
     meta = memory.nl.metadata()
-    assert meta["protocol_version"] == "CARD-2-GSM8K-NL-FIELD-V1"
+    assert meta["protocol_version"] == "CARD-0-gsm8k"
     assert meta["protocol_hash"] == (
-        "e7aac3350d7a898d74ff30f82dbbfeeeb7bc22e3e053545cdfe9543969c33b17"
+        "4bcdae885cc464e0a51977368e4bc06650c0326dbdcb182ce0327477c1d32daa"
     )
 
 

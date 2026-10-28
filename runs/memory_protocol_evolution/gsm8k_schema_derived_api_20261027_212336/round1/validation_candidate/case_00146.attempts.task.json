@@ -1,0 +1,148 @@
+{
+  "task_id": "gsm8k:train:seed42:V:00146",
+  "status": "completed",
+  "error": null,
+  "prediction": "12",
+  "messages": [
+    {
+      "sender": "planner",
+      "content": "G:max_boat_length_ft;P:reserve=500+3*500,available=20000-reserve,max_boat_length_ft=available/1500",
+      "receiver": "solver",
+      "round": 0,
+      "role": "assistant",
+      "prompt_tokens": 819,
+      "completion_tokens": 37,
+      "id": "3db1c7bb5e4d",
+      "ts": 1793109611.5721204,
+      "meta": {
+        "sender": "planner",
+        "receiver": "solver",
+        "message_id": "3db1c7bb5e4d",
+        "protocol_edge": "planner_to_solver",
+        "protocol_version": "CARD-1-gsm8k",
+        "protocol_hash": "2a663f41d251a442e680de67a231e516a8fe5e31629bc25d021c8c0eb1354cff",
+        "contract_hash": "ab4b736240365db5d0ce2caea032f40a3b7fc9c189db42d5ebcd28cac0fac22b",
+        "fields": {
+          "G": "max_boat_length_ft",
+          "P": "reserve=500+3*500,available=20000-reserve,max_boat_length_ft=available/1500"
+        },
+        "communication_tokens": 37,
+        "communication_tokens_exact": true,
+        "attempt_count": 1,
+        "fallback": false,
+        "tokens_include_all_attempts": true,
+        "incoming_message_ids": []
+      }
+    },
+    {
+      "sender": "solver",
+      "content": "IR:reserve=500+3*500=2000,available=20000-2000=18000,max_boat_length_ft=18000/1500=12;R:12",
+      "receiver": "verifier",
+      "round": 0,
+      "role": "assistant",
+      "prompt_tokens": 739,
+      "completion_tokens": 42,
+      "id": "f7a3cc5ec232",
+      "ts": 1793109612.9910185,
+      "meta": {
+        "sender": "solver",
+        "receiver": "verifier",
+        "message_id": "f7a3cc5ec232",
+        "protocol_edge": "solver_to_verifier",
+        "protocol_version": "CARD-1-gsm8k",
+        "protocol_hash": "2a663f41d251a442e680de67a231e516a8fe5e31629bc25d021c8c0eb1354cff",
+        "contract_hash": "ab4b736240365db5d0ce2caea032f40a3b7fc9c189db42d5ebcd28cac0fac22b",
+        "fields": {
+          "IR": "reserve=500+3*500=2000,available=20000-2000=18000,max_boat_length_ft=18000/1500=12",
+          "R": "12"
+        },
+        "communication_tokens": 42,
+        "communication_tokens_exact": true,
+        "attempt_count": 1,
+        "fallback": false,
+        "tokens_include_all_attempts": true,
+        "incoming_message_ids": [
+          "3db1c7bb5e4d"
+        ]
+      }
+    },
+    {
+      "sender": "verifier",
+      "content": "CHK:ACCEPT",
+      "receiver": "solver",
+      "round": 0,
+      "role": "assistant",
+      "prompt_tokens": 1110,
+      "completion_tokens": 5,
+      "id": "883c9f661afc",
+      "ts": 1793109614.640644,
+      "meta": {
+        "sender": "verifier",
+        "receiver": "solver",
+        "message_id": "883c9f661afc",
+        "protocol_edge": "verifier_to_solver",
+        "protocol_version": "CARD-1-gsm8k",
+        "protocol_hash": "2a663f41d251a442e680de67a231e516a8fe5e31629bc25d021c8c0eb1354cff",
+        "contract_hash": "ab4b736240365db5d0ce2caea032f40a3b7fc9c189db42d5ebcd28cac0fac22b",
+        "fields": {
+          "CHK": "ACCEPT"
+        },
+        "communication_tokens": 5,
+        "communication_tokens_exact": true,
+        "attempt_count": 1,
+        "fallback": false,
+        "tokens_include_all_attempts": true,
+        "incoming_message_ids": [
+          "f7a3cc5ec232"
+        ]
+      }
+    }
+  ],
+  "communication_tokens": 84,
+  "wall_time_s": 4.72397379996255,
+  "verified": true,
+  "revision_rounds": 0,
+  "model_calls": [
+    {
+      "role": "planner",
+      "attempt": 0,
+      "status": "delivered",
+      "error": "",
+      "raw_output": "G:max_boat_length_ft;P:reserve=500+3*500,available=20000-reserve,max_boat_length_ft=available/1500",
+      "finish_reason": "stop",
+      "output_tokens": 37,
+      "usage_available": true
+    },
+    {
+      "role": "solver",
+      "attempt": 0,
+      "status": "delivered",
+      "error": "",
+      "raw_output": "IR:reserve=500+3*500=2000,available=20000-2000=18000,max_boat_length_ft=18000/1500=12;R:12",
+      "finish_reason": "stop",
+      "output_tokens": 42,
+      "usage_available": true
+    },
+    {
+      "role": "verifier",
+      "attempt": 0,
+      "status": "delivered",
+      "error": "",
+      "raw_output": "CHK:ACCEPT",
+      "finish_reason": "stop",
+      "output_tokens": 5,
+      "usage_available": true
+    }
+  ],
+  "failed_attempts": [],
+  "calls": 3,
+  "usage_complete": true,
+  "known_input_tokens": 2668,
+  "known_output_tokens": 84,
+  "model_input_tokens": 2668,
+  "model_output_tokens": 84,
+  "format_failed_calls": 0,
+  "transport_failed_calls": 0,
+  "fallback_calls": 0,
+  "sum_model_latency_s": 4.574908494949341
+}

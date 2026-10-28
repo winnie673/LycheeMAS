@@ -1,0 +1,151 @@
+{
+  "task_id": "gsm8k:train:seed42:G2:00021",
+  "status": "completed",
+  "error": null,
+  "prediction": "333200",
+  "messages": [
+    {
+      "sender": "planner",
+      "content": "G:total_property_price;P:total_sqft=2400+1000,total_property_price=98*total_sqft",
+      "receiver": "solver",
+      "round": 0,
+      "role": "assistant",
+      "prompt_tokens": 746,
+      "completion_tokens": 31,
+      "id": "46d0eb342b82",
+      "ts": 1793109921.7286599,
+      "meta": {
+        "sender": "planner",
+        "receiver": "solver",
+        "message_id": "46d0eb342b82",
+        "protocol_edge": "planner_to_solver",
+        "protocol_version": "CARD-0-gsm8k",
+        "protocol_hash": "4bcdae885cc464e0a51977368e4bc06650c0326dbdcb182ce0327477c1d32daa",
+        "contract_hash": "ab4b736240365db5d0ce2caea032f40a3b7fc9c189db42d5ebcd28cac0fac22b",
+        "fields": {
+          "G": "total_property_price",
+          "P": "total_sqft=2400+1000,total_property_price=98*total_sqft"
+        },
+        "communication_tokens": 31,
+        "communication_tokens_exact": true,
+        "attempt_count": 1,
+        "fallback": false,
+        "tokens_include_all_attempts": true,
+        "incoming_message_ids": []
+      }
+    },
+    {
+      "sender": "solver",
+      "content": "IR:total_sqft=2400+1000=3400,total_property_price=98*3400=333200;R:333200",
+      "receiver": "verifier",
+      "round": 0,
+      "role": "assistant",
+      "prompt_tokens": 719,
+      "completion_tokens": 33,
+      "id": "1fcf38f821ce",
+      "ts": 1793109922.9775124,
+      "meta": {
+        "sender": "solver",
+        "receiver": "verifier",
+        "message_id": "1fcf38f821ce",
+        "protocol_edge": "solver_to_verifier",
+        "protocol_version": "CARD-0-gsm8k",
+        "protocol_hash": "4bcdae885cc464e0a51977368e4bc06650c0326dbdcb182ce0327477c1d32daa",
+        "contract_hash": "ab4b736240365db5d0ce2caea032f40a3b7fc9c189db42d5ebcd28cac0fac22b",
+        "fields": {
+          "IR": "total_sqft=2400+1000=3400,total_property_price=98*3400=333200",
+          "R": "333200"
+        },
+        "communication_tokens": 33,
+        "communication_tokens_exact": true,
+        "attempt_count": 1,
+        "fallback": false,
+        "tokens_include_all_attempts": true,
+        "incoming_message_ids": [
+          "46d0eb342b82"
+        ]
+      }
+    },
+    {
+      "sender": "verifier",
+      "content": "CHK:ACCEPT",
+      "receiver": "solver",
+      "round": 0,
+      "role": "assistant",
+      "prompt_tokens": 1087,
+      "completion_tokens": 5,
+      "id": "8dae6f9a93d5",
+      "ts": 1793109924.0552187,
+      "meta": {
+        "sender": "verifier",
+        "receiver": "solver",
+        "message_id": "8dae6f9a93d5",
+        "protocol_edge": "verifier_to_solver",
+        "protocol_version": "CARD-0-gsm8k",
+        "protocol_hash": "4bcdae885cc464e0a51977368e4bc06650c0326dbdcb182ce0327477c1d32daa",
+        "contract_hash": "ab4b736240365db5d0ce2caea032f40a3b7fc9c189db42d5ebcd28cac0fac22b",
+        "fields": {
+          "CHK": "ACCEPT"
+        },
+        "communication_tokens": 5,
+        "communication_tokens_exact": true,
+        "attempt_count": 1,
+        "fallback": false,
+        "tokens_include_all_attempts": true,
+        "incoming_message_ids": [
+          "1fcf38f821ce"
+        ]
+      }
+    }
+  ],
+  "communication_tokens": 69,
+  "wall_time_s": 3.8551531000994146,
+  "verified": true,
+  "revision_rounds": 0,
+  "model_calls": [
+    {
+      "role": "planner",
+      "attempt": 0,
+      "status": "delivered",
+      "error": "",
+      "raw_output": "G:total_property_price;P:total_sqft=2400+1000,total_property_price=98*total_sqft",
+      "finish_reason": "stop",
+      "output_tokens": 31,
+      "usage_available": true
+    },
+    {
+      "role": "solver",
+      "attempt": 0,
+      "status": "delivered",
+      "error": "",
+      "raw_output": "IR:total_sqft=2400+1000=3400,total_property_price=98*3400=333200;R:333200",
+      "finish_reason": "stop",
+      "output_tokens": 33,
+      "usage_available": true
+    },
+    {
+      "role": "verifier",
+      "attempt": 0,
+      "status": "delivered",
+      "error": "",
+      "raw_output": "CHK:ACCEPT",
+      "finish_reason": "stop",
+      "output_tokens": 5,
+      "usage_available": true
+    }
+  ],
+  "failed_attempts": [],
+  "calls": 3,
+  "usage_complete": true,
+  "known_input_tokens": 2552,
+  "known_output_tokens": 69,
+  "model_input_tokens": 2552,
+  "model_output_tokens": 69,
+  "format_failed_calls": 0,
+  "transport_failed_calls": 0,
+  "fallback_calls": 0,
+  "sum_model_latency_s": 3.7016563415527344,
+  "gold": "333200",
+  "score": 1.0,
+  "question": "The price of a home is $98 per square foot (sq ft).  The house is 2,400 sq ft and the barn out back is 1,000 sq ft.  How much is this property?\nGive the final numeric answer."
+}

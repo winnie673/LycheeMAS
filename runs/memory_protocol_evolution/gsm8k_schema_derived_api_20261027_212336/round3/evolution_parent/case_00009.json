@@ -1,0 +1,152 @@
+{
+  "task_id": "gsm8k:train:seed42:G3:00009",
+  "status": "completed",
+  "error": null,
+  "prediction": "85",
+  "messages": [
+    {
+      "sender": "planner",
+      "content": "K:first_speed=60,first_time=3,second_time=2,target_avg=70;G:second_speed;P:total_time=first_time+second_time,total_dist=target_avg*total_time,first_dist=first_speed*first_time,second_dist=total_dist-first_dist,second_speed=second_dist/second_time",
+      "receiver": "solver",
+      "round": 0,
+      "role": "assistant",
+      "prompt_tokens": 736,
+      "completion_tokens": 77,
+      "id": "29c283989bc3",
+      "ts": 1793111992.032098,
+      "meta": {
+        "sender": "planner",
+        "receiver": "solver",
+        "message_id": "29c283989bc3",
+        "protocol_edge": "planner_to_solver",
+        "protocol_version": "CARD-0-gsm8k",
+        "protocol_hash": "4bcdae885cc464e0a51977368e4bc06650c0326dbdcb182ce0327477c1d32daa",
+        "contract_hash": "ab4b736240365db5d0ce2caea032f40a3b7fc9c189db42d5ebcd28cac0fac22b",
+        "fields": {
+          "K": "first_speed=60,first_time=3,second_time=2,target_avg=70",
+          "G": "second_speed",
+          "P": "total_time=first_time+second_time,total_dist=target_avg*total_time,first_dist=first_speed*first_time,second_dist=total_dist-first_dist,second_speed=second_dist/second_time"
+        },
+        "communication_tokens": 77,
+        "communication_tokens_exact": true,
+        "attempt_count": 1,
+        "fallback": false,
+        "tokens_include_all_attempts": true,
+        "incoming_message_ids": []
+      }
+    },
+    {
+      "sender": "solver",
+      "content": "IR:total_time=3+2=5,total_dist=70*5=350,first_dist=60*3=180,second_dist=350-180=170,second_speed=170/2=85;R:85",
+      "receiver": "verifier",
+      "round": 0,
+      "role": "assistant",
+      "prompt_tokens": 755,
+      "completion_tokens": 51,
+      "id": "940e6dc0bf93",
+      "ts": 1793111993.376597,
+      "meta": {
+        "sender": "solver",
+        "receiver": "verifier",
+        "message_id": "940e6dc0bf93",
+        "protocol_edge": "solver_to_verifier",
+        "protocol_version": "CARD-0-gsm8k",
+        "protocol_hash": "4bcdae885cc464e0a51977368e4bc06650c0326dbdcb182ce0327477c1d32daa",
+        "contract_hash": "ab4b736240365db5d0ce2caea032f40a3b7fc9c189db42d5ebcd28cac0fac22b",
+        "fields": {
+          "IR": "total_time=3+2=5,total_dist=70*5=350,first_dist=60*3=180,second_dist=350-180=170,second_speed=170/2=85",
+          "R": "85"
+        },
+        "communication_tokens": 51,
+        "communication_tokens_exact": true,
+        "attempt_count": 1,
+        "fallback": false,
+        "tokens_include_all_attempts": true,
+        "incoming_message_ids": [
+          "29c283989bc3"
+        ]
+      }
+    },
+    {
+      "sender": "verifier",
+      "content": "CHK:ACCEPT",
+      "receiver": "solver",
+      "round": 0,
+      "role": "assistant",
+      "prompt_tokens": 1095,
+      "completion_tokens": 5,
+      "id": "5a44e3773ecf",
+      "ts": 1793111994.9393532,
+      "meta": {
+        "sender": "verifier",
+        "receiver": "solver",
+        "message_id": "5a44e3773ecf",
+        "protocol_edge": "verifier_to_solver",
+        "protocol_version": "CARD-0-gsm8k",
+        "protocol_hash": "4bcdae885cc464e0a51977368e4bc06650c0326dbdcb182ce0327477c1d32daa",
+        "contract_hash": "ab4b736240365db5d0ce2caea032f40a3b7fc9c189db42d5ebcd28cac0fac22b",
+        "fields": {
+          "CHK": "ACCEPT"
+        },
+        "communication_tokens": 5,
+        "communication_tokens_exact": true,
+        "attempt_count": 1,
+        "fallback": false,
+        "tokens_include_all_attempts": true,
+        "incoming_message_ids": [
+          "940e6dc0bf93"
+        ]
+      }
+    }
+  ],
+  "communication_tokens": 133,
+  "wall_time_s": 4.455204099998809,
+  "verified": true,
+  "revision_rounds": 0,
+  "model_calls": [
+    {
+      "role": "planner",
+      "attempt": 0,
+      "status": "delivered",
+      "error": "",
+      "raw_output": "K:first_speed=60,first_time=3,second_time=2,target_avg=70;G:second_speed;P:total_time=first_time+second_time,total_dist=target_avg*total_time,first_dist=first_speed*first_time,second_dist=total_dist-first_dist,second_speed=second_dist/second_time",
+      "finish_reason": "stop",
+      "output_tokens": 77,
+      "usage_available": true
+    },
+    {
+      "role": "solver",
+      "attempt": 0,
+      "status": "delivered",
+      "error": "",
+      "raw_output": "IR:total_time=3+2=5,total_dist=70*5=350,first_dist=60*3=180,second_dist=350-180=170,second_speed=170/2=85;R:85",
+      "finish_reason": "stop",
+      "output_tokens": 51,
+      "usage_available": true
+    },
+    {
+      "role": "verifier",
+      "attempt": 0,
+      "status": "delivered",
+      "error": "",
+      "raw_output": "CHK:ACCEPT",
+      "finish_reason": "stop",
+      "output_tokens": 5,
+      "usage_available": true
+    }
+  ],
+  "failed_attempts": [],
+  "calls": 3,
+  "usage_complete": true,
+  "known_input_tokens": 2586,
+  "known_output_tokens": 133,
+  "model_input_tokens": 2586,
+  "model_output_tokens": 133,
+  "format_failed_calls": 0,
+  "transport_failed_calls": 0,
+  "fallback_calls": 0,
+  "sum_model_latency_s": 4.376806020736694,
+  "gold": "85",
+  "score": 1.0,
+  "question": "A man drives 60 mph for 3 hours.  How fast would he have to drive over the next 2 hours to get an average speed of 70 mph?\nGive the final numeric answer."
+}

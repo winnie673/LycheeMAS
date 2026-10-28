@@ -1,0 +1,151 @@
+{
+  "task_id": "gsm8k:train:seed42:V:00079",
+  "status": "completed",
+  "error": null,
+  "prediction": "3500",
+  "messages": [
+    {
+      "sender": "planner",
+      "content": "G:total_cost;P:per_table=25+4*10+10*5+15*4,total=20*per_table",
+      "receiver": "solver",
+      "round": 0,
+      "role": "assistant",
+      "prompt_tokens": 833,
+      "completion_tokens": 30,
+      "id": "14d56236e0bb",
+      "ts": 1793109303.5098166,
+      "meta": {
+        "sender": "planner",
+        "receiver": "solver",
+        "message_id": "14d56236e0bb",
+        "protocol_edge": "planner_to_solver",
+        "protocol_version": "CARD-1-gsm8k",
+        "protocol_hash": "2a663f41d251a442e680de67a231e516a8fe5e31629bc25d021c8c0eb1354cff",
+        "contract_hash": "ab4b736240365db5d0ce2caea032f40a3b7fc9c189db42d5ebcd28cac0fac22b",
+        "fields": {
+          "G": "total_cost",
+          "P": "per_table=25+4*10+10*5+15*4,total=20*per_table"
+        },
+        "communication_tokens": 30,
+        "communication_tokens_exact": true,
+        "attempt_count": 1,
+        "fallback": false,
+        "tokens_include_all_attempts": true,
+        "incoming_message_ids": []
+      }
+    },
+    {
+      "sender": "solver",
+      "content": "IR:per_table=25+40+50+60=175,total=20*175=3500;R:3500",
+      "receiver": "verifier",
+      "round": 0,
+      "role": "assistant",
+      "prompt_tokens": 746,
+      "completion_tokens": 28,
+      "id": "0fefda235569",
+      "ts": 1793109304.8051484,
+      "meta": {
+        "sender": "solver",
+        "receiver": "verifier",
+        "message_id": "0fefda235569",
+        "protocol_edge": "solver_to_verifier",
+        "protocol_version": "CARD-1-gsm8k",
+        "protocol_hash": "2a663f41d251a442e680de67a231e516a8fe5e31629bc25d021c8c0eb1354cff",
+        "contract_hash": "ab4b736240365db5d0ce2caea032f40a3b7fc9c189db42d5ebcd28cac0fac22b",
+        "fields": {
+          "IR": "per_table=25+40+50+60=175,total=20*175=3500",
+          "R": "3500"
+        },
+        "communication_tokens": 28,
+        "communication_tokens_exact": true,
+        "attempt_count": 1,
+        "fallback": false,
+        "tokens_include_all_attempts": true,
+        "incoming_message_ids": [
+          "14d56236e0bb"
+        ]
+      }
+    },
+    {
+      "sender": "verifier",
+      "content": "CHK:ACCEPT",
+      "receiver": "solver",
+      "round": 0,
+      "role": "assistant",
+      "prompt_tokens": 1110,
+      "completion_tokens": 5,
+      "id": "8ec4520221fe",
+      "ts": 1793109306.1546514,
+      "meta": {
+        "sender": "verifier",
+        "receiver": "solver",
+        "message_id": "8ec4520221fe",
+        "protocol_edge": "verifier_to_solver",
+        "protocol_version": "CARD-1-gsm8k",
+        "protocol_hash": "2a663f41d251a442e680de67a231e516a8fe5e31629bc25d021c8c0eb1354cff",
+        "contract_hash": "ab4b736240365db5d0ce2caea032f40a3b7fc9c189db42d5ebcd28cac0fac22b",
+        "fields": {
+          "CHK": "ACCEPT"
+        },
+        "communication_tokens": 5,
+        "communication_tokens_exact": true,
+        "attempt_count": 1,
+        "fallback": false,
+        "tokens_include_all_attempts": true,
+        "incoming_message_ids": [
+          "0fefda235569"
+        ]
+      }
+    }
+  ],
+  "communication_tokens": 63,
+  "wall_time_s": 4.690253900014795,
+  "verified": true,
+  "revision_rounds": 0,
+  "model_calls": [
+    {
+      "role": "planner",
+      "attempt": 0,
+      "status": "delivered",
+      "error": "",
+      "raw_output": "G:total_cost;P:per_table=25+4*10+10*5+15*4,total=20*per_table",
+      "finish_reason": "stop",
+      "output_tokens": 30,
+      "usage_available": true
+    },
+    {
+      "role": "solver",
+      "attempt": 0,
+      "status": "delivered",
+      "error": "",
+      "raw_output": "IR:per_table=25+40+50+60=175,total=20*175=3500;R:3500",
+      "finish_reason": "stop",
+      "output_tokens": 28,
+      "usage_available": true
+    },
+    {
+      "role": "verifier",
+      "attempt": 0,
+      "status": "delivered",
+      "error": "",
+      "raw_output": "CHK:ACCEPT",
+      "finish_reason": "stop",
+      "output_tokens": 5,
+      "usage_available": true
+    }
+  ],
+  "failed_attempts": [],
+  "calls": 3,
+  "usage_complete": true,
+  "known_input_tokens": 2689,
+  "known_output_tokens": 63,
+  "model_input_tokens": 2689,
+  "model_output_tokens": 63,
+  "format_failed_calls": 0,
+  "transport_failed_calls": 0,
+  "fallback_calls": 0,
+  "sum_model_latency_s": 4.614938020706177,
+  "gold": "3500",
+  "score": 1.0,
+  "question": "Nathan is buying decorations for his wedding reception. The reception hall will have 20 tables. Each table needs a linen tablecloth ($25 to rent), 4 place settings ($10 each to rent), and a centerpiece. Each centerpiece will have 10 roses ($5 each) and 15 lilies ($4 each). How much will the decorations cost?\nGive the final numeric answer."
+}

@@ -1,0 +1,151 @@
+{
+  "task_id": "gsm8k:train:seed42:V:00110",
+  "status": "completed",
+  "error": null,
+  "prediction": "8",
+  "messages": [
+    {
+      "sender": "planner",
+      "content": "G:logs_needed;P:have=8*5,shortfall=80-have,logs_needed=shortfall/5",
+      "receiver": "solver",
+      "round": 0,
+      "role": "assistant",
+      "prompt_tokens": 783,
+      "completion_tokens": 28,
+      "id": "d8af4011ef2e",
+      "ts": 1793168675.1860182,
+      "meta": {
+        "sender": "planner",
+        "receiver": "solver",
+        "message_id": "d8af4011ef2e",
+        "protocol_edge": "planner_to_solver",
+        "protocol_version": "CARD-3-gsm8k",
+        "protocol_hash": "fb1a4acb6e591ac96544876aedd912b27a6f9d3154c76112e1da0f43407d27b2",
+        "contract_hash": "ab4b736240365db5d0ce2caea032f40a3b7fc9c189db42d5ebcd28cac0fac22b",
+        "fields": {
+          "G": "logs_needed",
+          "P": "have=8*5,shortfall=80-have,logs_needed=shortfall/5"
+        },
+        "communication_tokens": 28,
+        "communication_tokens_exact": true,
+        "attempt_count": 1,
+        "fallback": false,
+        "tokens_include_all_attempts": true,
+        "incoming_message_ids": []
+      }
+    },
+    {
+      "sender": "solver",
+      "content": "IR:have=8*5=40,shortfall=80-40=40,logs_needed=40/5=8;R:8",
+      "receiver": "verifier",
+      "round": 0,
+      "role": "assistant",
+      "prompt_tokens": 711,
+      "completion_tokens": 32,
+      "id": "de3087a2ac04",
+      "ts": 1793168676.6089578,
+      "meta": {
+        "sender": "solver",
+        "receiver": "verifier",
+        "message_id": "de3087a2ac04",
+        "protocol_edge": "solver_to_verifier",
+        "protocol_version": "CARD-3-gsm8k",
+        "protocol_hash": "fb1a4acb6e591ac96544876aedd912b27a6f9d3154c76112e1da0f43407d27b2",
+        "contract_hash": "ab4b736240365db5d0ce2caea032f40a3b7fc9c189db42d5ebcd28cac0fac22b",
+        "fields": {
+          "IR": "have=8*5=40,shortfall=80-40=40,logs_needed=40/5=8",
+          "R": "8"
+        },
+        "communication_tokens": 32,
+        "communication_tokens_exact": true,
+        "attempt_count": 1,
+        "fallback": false,
+        "tokens_include_all_attempts": true,
+        "incoming_message_ids": [
+          "d8af4011ef2e"
+        ]
+      }
+    },
+    {
+      "sender": "verifier",
+      "content": "CHK:ACCEPT",
+      "receiver": "solver",
+      "round": 0,
+      "role": "assistant",
+      "prompt_tokens": 1081,
+      "completion_tokens": 5,
+      "id": "11b7d311dba8",
+      "ts": 1793168677.5993466,
+      "meta": {
+        "sender": "verifier",
+        "receiver": "solver",
+        "message_id": "11b7d311dba8",
+        "protocol_edge": "verifier_to_solver",
+        "protocol_version": "CARD-3-gsm8k",
+        "protocol_hash": "fb1a4acb6e591ac96544876aedd912b27a6f9d3154c76112e1da0f43407d27b2",
+        "contract_hash": "ab4b736240365db5d0ce2caea032f40a3b7fc9c189db42d5ebcd28cac0fac22b",
+        "fields": {
+          "CHK": "ACCEPT"
+        },
+        "communication_tokens": 5,
+        "communication_tokens_exact": true,
+        "attempt_count": 1,
+        "fallback": false,
+        "tokens_include_all_attempts": true,
+        "incoming_message_ids": [
+          "de3087a2ac04"
+        ]
+      }
+    }
+  ],
+  "communication_tokens": 65,
+  "wall_time_s": 3.890686700004153,
+  "verified": true,
+  "revision_rounds": 0,
+  "model_calls": [
+    {
+      "role": "planner",
+      "attempt": 0,
+      "status": "delivered",
+      "error": "",
+      "raw_output": "G:logs_needed;P:have=8*5,shortfall=80-have,logs_needed=shortfall/5",
+      "finish_reason": "stop",
+      "output_tokens": 28,
+      "usage_available": true
+    },
+    {
+      "role": "solver",
+      "attempt": 0,
+      "status": "delivered",
+      "error": "",
+      "raw_output": "IR:have=8*5=40,shortfall=80-40=40,logs_needed=40/5=8;R:8",
+      "finish_reason": "stop",
+      "output_tokens": 32,
+      "usage_available": true
+    },
+    {
+      "role": "verifier",
+      "attempt": 0,
+      "status": "delivered",
+      "error": "",
+      "raw_output": "CHK:ACCEPT",
+      "finish_reason": "stop",
+      "output_tokens": 5,
+      "usage_available": true
+    }
+  ],
+  "failed_attempts": [],
+  "calls": 3,
+  "usage_complete": true,
+  "known_input_tokens": 2575,
+  "known_output_tokens": 65,
+  "model_input_tokens": 2575,
+  "model_output_tokens": 65,
+  "format_failed_calls": 0,
+  "transport_failed_calls": 0,
+  "fallback_calls": 0,
+  "sum_model_latency_s": 3.706878423690796,
+  "gold": "8",
+  "score": 1.0,
+  "question": "A carpenter is building a house. He needs 80 woodblocks to build it. If he has 8 logs that can make five woodblocks each, how many logs does the carpenter still need?\nGive the final numeric answer."
+}

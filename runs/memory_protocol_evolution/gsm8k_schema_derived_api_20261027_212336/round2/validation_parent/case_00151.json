@@ -1,0 +1,151 @@
+{
+  "task_id": "gsm8k:train:seed42:V:00151",
+  "status": "completed",
+  "error": null,
+  "prediction": "54",
+  "messages": [
+    {
+      "sender": "planner",
+      "content": "G:total_combined_time;P:practice=3*6,tantrums=5*6,total_combined_time=6+practice+tantrums",
+      "receiver": "solver",
+      "round": 0,
+      "role": "assistant",
+      "prompt_tokens": 775,
+      "completion_tokens": 33,
+      "id": "2af9b6f975de",
+      "ts": 1793110920.2246997,
+      "meta": {
+        "sender": "planner",
+        "receiver": "solver",
+        "message_id": "2af9b6f975de",
+        "protocol_edge": "planner_to_solver",
+        "protocol_version": "CARD-0-gsm8k",
+        "protocol_hash": "4bcdae885cc464e0a51977368e4bc06650c0326dbdcb182ce0327477c1d32daa",
+        "contract_hash": "ab4b736240365db5d0ce2caea032f40a3b7fc9c189db42d5ebcd28cac0fac22b",
+        "fields": {
+          "G": "total_combined_time",
+          "P": "practice=3*6,tantrums=5*6,total_combined_time=6+practice+tantrums"
+        },
+        "communication_tokens": 33,
+        "communication_tokens_exact": true,
+        "attempt_count": 1,
+        "fallback": false,
+        "tokens_include_all_attempts": true,
+        "incoming_message_ids": []
+      }
+    },
+    {
+      "sender": "solver",
+      "content": "IR:practice=3*6=18,tantrums=5*6=30,total=6+18+30=54;R:54",
+      "receiver": "verifier",
+      "round": 0,
+      "role": "assistant",
+      "prompt_tokens": 750,
+      "completion_tokens": 32,
+      "id": "e50309fcfc50",
+      "ts": 1793110921.4078228,
+      "meta": {
+        "sender": "solver",
+        "receiver": "verifier",
+        "message_id": "e50309fcfc50",
+        "protocol_edge": "solver_to_verifier",
+        "protocol_version": "CARD-0-gsm8k",
+        "protocol_hash": "4bcdae885cc464e0a51977368e4bc06650c0326dbdcb182ce0327477c1d32daa",
+        "contract_hash": "ab4b736240365db5d0ce2caea032f40a3b7fc9c189db42d5ebcd28cac0fac22b",
+        "fields": {
+          "IR": "practice=3*6=18,tantrums=5*6=30,total=6+18+30=54",
+          "R": "54"
+        },
+        "communication_tokens": 32,
+        "communication_tokens_exact": true,
+        "attempt_count": 1,
+        "fallback": false,
+        "tokens_include_all_attempts": true,
+        "incoming_message_ids": [
+          "2af9b6f975de"
+        ]
+      }
+    },
+    {
+      "sender": "verifier",
+      "content": "CHK:ACCEPT",
+      "receiver": "solver",
+      "round": 0,
+      "role": "assistant",
+      "prompt_tokens": 1115,
+      "completion_tokens": 5,
+      "id": "fd0a40c21717",
+      "ts": 1793110922.439304,
+      "meta": {
+        "sender": "verifier",
+        "receiver": "solver",
+        "message_id": "fd0a40c21717",
+        "protocol_edge": "verifier_to_solver",
+        "protocol_version": "CARD-0-gsm8k",
+        "protocol_hash": "4bcdae885cc464e0a51977368e4bc06650c0326dbdcb182ce0327477c1d32daa",
+        "contract_hash": "ab4b736240365db5d0ce2caea032f40a3b7fc9c189db42d5ebcd28cac0fac22b",
+        "fields": {
+          "CHK": "ACCEPT"
+        },
+        "communication_tokens": 5,
+        "communication_tokens_exact": true,
+        "attempt_count": 1,
+        "fallback": false,
+        "tokens_include_all_attempts": true,
+        "incoming_message_ids": [
+          "e50309fcfc50"
+        ]
+      }
+    }
+  ],
+  "communication_tokens": 70,
+  "wall_time_s": 3.6674414000008255,
+  "verified": true,
+  "revision_rounds": 0,
+  "model_calls": [
+    {
+      "role": "planner",
+      "attempt": 0,
+      "status": "delivered",
+      "error": "",
+      "raw_output": "G:total_combined_time;P:practice=3*6,tantrums=5*6,total_combined_time=6+practice+tantrums",
+      "finish_reason": "stop",
+      "output_tokens": 33,
+      "usage_available": true
+    },
+    {
+      "role": "solver",
+      "attempt": 0,
+      "status": "delivered",
+      "error": "",
+      "raw_output": "IR:practice=3*6=18,tantrums=5*6=30,total=6+18+30=54;R:54",
+      "finish_reason": "stop",
+      "output_tokens": 32,
+      "usage_available": true
+    },
+    {
+      "role": "verifier",
+      "attempt": 0,
+      "status": "delivered",
+      "error": "",
+      "raw_output": "CHK:ACCEPT",
+      "finish_reason": "stop",
+      "output_tokens": 5,
+      "usage_available": true
+    }
+  ],
+  "failed_attempts": [],
+  "calls": 3,
+  "usage_complete": true,
+  "known_input_tokens": 2640,
+  "known_output_tokens": 70,
+  "model_input_tokens": 2640,
+  "model_output_tokens": 70,
+  "format_failed_calls": 0,
+  "transport_failed_calls": 0,
+  "fallback_calls": 0,
+  "sum_model_latency_s": 3.5913589000701904,
+  "gold": "54",
+  "score": 1.0,
+  "question": "For every 1 minute that Carlotta sings on stage during the final opera performance, she spends an additional 3 minutes practicing and 5 minutes throwing temper tantrums. If her final stage performance is 6 minutes long, what is the total combined amount of time, in minutes, that she spends practicing, throwing tantrums, and singing in the final stage performance?\nGive the final numeric answer."
+}

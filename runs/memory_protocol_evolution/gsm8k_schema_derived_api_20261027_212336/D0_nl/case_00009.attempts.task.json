@@ -1,0 +1,123 @@
+{
+  "task_id": "gsm8k:train:seed42:D0:00009",
+  "status": "completed",
+  "error": null,
+  "prediction": "12000",
+  "messages": [
+    {
+      "sender": "planner",
+      "content": "Goal: find the total new coronavirus cases recorded over three weeks.\n\nPlan: Use the first week’s count as the base. For week 2, take half of week 1. For week 3, add 2000 to week 2’s count. Then sum the counts for weeks 1, 2, and 3.\n\nConstraints: Report only the final total as a number.",
+      "receiver": "solver",
+      "round": 0,
+      "role": "assistant",
+      "prompt_tokens": 225,
+      "completion_tokens": 82,
+      "id": "d55c86791929",
+      "ts": 1793107476.8271747,
+      "meta": {
+        "fields": {},
+        "communication_tokens": 82,
+        "communication_tokens_exact": true,
+        "attempt_count": 1,
+        "fallback": false,
+        "tokens_include_all_attempts": true,
+        "incoming_message_ids": []
+      }
+    },
+    {
+      "sender": "solver",
+      "content": "Week 1: 5000. Week 2: half of 5000 = 2500. Week 3: 2500 + 2000 = 4500. Total: 5000 + 2500 + 4500 = 12000.\n\n\\boxed{12000}",
+      "receiver": "verifier",
+      "round": 0,
+      "role": "assistant",
+      "prompt_tokens": 319,
+      "completion_tokens": 63,
+      "id": "4f13375c764c",
+      "ts": 1793107478.1641068,
+      "meta": {
+        "fields": {
+          "R": "12000"
+        },
+        "communication_tokens": 63,
+        "communication_tokens_exact": true,
+        "attempt_count": 1,
+        "fallback": false,
+        "tokens_include_all_attempts": true,
+        "incoming_message_ids": [
+          "d55c86791929"
+        ]
+      }
+    },
+    {
+      "sender": "verifier",
+      "content": "ACCEPT",
+      "receiver": "solver",
+      "round": 0,
+      "role": "assistant",
+      "prompt_tokens": 677,
+      "completion_tokens": 2,
+      "id": "449b089d6a63",
+      "ts": 1793107478.9944708,
+      "meta": {
+        "fields": {
+          "CHK": "ACCEPT"
+        },
+        "communication_tokens": 2,
+        "communication_tokens_exact": true,
+        "attempt_count": 1,
+        "fallback": false,
+        "tokens_include_all_attempts": true,
+        "incoming_message_ids": [
+          "4f13375c764c"
+        ]
+      }
+    }
+  ],
+  "communication_tokens": 147,
+  "wall_time_s": 3.885915599996224,
+  "verified": true,
+  "revision_rounds": 0,
+  "model_calls": [
+    {
+      "role": "planner",
+      "attempt": 0,
+      "status": "delivered",
+      "error": "",
+      "raw_output": "Goal: find the total new coronavirus cases recorded over three weeks.\n\nPlan: Use the first week’s count as the base. For week 2, take half of week 1. For week 3, add 2000 to week 2’s count. Then sum the counts for weeks 1, 2, and 3.\n\nConstraints: Report only the final total as a number.",
+      "finish_reason": "stop",
+      "output_tokens": 82,
+      "usage_available": true
+    },
+    {
+      "role": "solver",
+      "attempt": 0,
+      "status": "delivered",
+      "error": "",
+      "raw_output": "Week 1: 5000. Week 2: half of 5000 = 2500. Week 3: 2500 + 2000 = 4500. Total: 5000 + 2500 + 4500 = 12000.\n\n\\boxed{12000}",
+      "finish_reason": "stop",
+      "output_tokens": 63,
+      "usage_available": true
+    },
+    {
+      "role": "verifier",
+      "attempt": 0,
+      "status": "delivered",
+      "error": "",
+      "raw_output": "ACCEPT",
+      "finish_reason": "stop",
+      "output_tokens": 2,
+      "usage_available": true
+    }
+  ],
+  "failed_attempts": [],
+  "calls": 3,
+  "usage_complete": true,
+  "known_input_tokens": 1221,
+  "known_output_tokens": 147,
+  "model_input_tokens": 1221,
+  "model_output_tokens": 147,
+  "format_failed_calls": 0,
+  "transport_failed_calls": 0,
+  "fallback_calls": 0,
+  "sum_model_latency_s": 3.8507883548736572
+}

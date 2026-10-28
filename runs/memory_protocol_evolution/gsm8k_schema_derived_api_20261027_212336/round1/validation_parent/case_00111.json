@@ -1,0 +1,151 @@
+{
+  "task_id": "gsm8k:train:seed42:V:00111",
+  "status": "completed",
+  "error": null,
+  "prediction": "135",
+  "messages": [
+    {
+      "sender": "planner",
+      "content": "G:miles_further_in_next_3_hours;P:speed=180/4,miles_further=speed*3",
+      "receiver": "solver",
+      "round": 0,
+      "role": "assistant",
+      "prompt_tokens": 736,
+      "completion_tokens": 27,
+      "id": "bc7b9986fb5d",
+      "ts": 1793108557.8334746,
+      "meta": {
+        "sender": "planner",
+        "receiver": "solver",
+        "message_id": "bc7b9986fb5d",
+        "protocol_edge": "planner_to_solver",
+        "protocol_version": "CARD-0-gsm8k",
+        "protocol_hash": "4bcdae885cc464e0a51977368e4bc06650c0326dbdcb182ce0327477c1d32daa",
+        "contract_hash": "ab4b736240365db5d0ce2caea032f40a3b7fc9c189db42d5ebcd28cac0fac22b",
+        "fields": {
+          "G": "miles_further_in_next_3_hours",
+          "P": "speed=180/4,miles_further=speed*3"
+        },
+        "communication_tokens": 27,
+        "communication_tokens_exact": true,
+        "attempt_count": 1,
+        "fallback": false,
+        "tokens_include_all_attempts": true,
+        "incoming_message_ids": []
+      }
+    },
+    {
+      "sender": "solver",
+      "content": "IR:speed=180/4=45,miles_further=45*3=135;R:135",
+      "receiver": "verifier",
+      "round": 0,
+      "role": "assistant",
+      "prompt_tokens": 705,
+      "completion_tokens": 23,
+      "id": "8193d1a20a65",
+      "ts": 1793108559.606148,
+      "meta": {
+        "sender": "solver",
+        "receiver": "verifier",
+        "message_id": "8193d1a20a65",
+        "protocol_edge": "solver_to_verifier",
+        "protocol_version": "CARD-0-gsm8k",
+        "protocol_hash": "4bcdae885cc464e0a51977368e4bc06650c0326dbdcb182ce0327477c1d32daa",
+        "contract_hash": "ab4b736240365db5d0ce2caea032f40a3b7fc9c189db42d5ebcd28cac0fac22b",
+        "fields": {
+          "IR": "speed=180/4=45,miles_further=45*3=135",
+          "R": "135"
+        },
+        "communication_tokens": 23,
+        "communication_tokens_exact": true,
+        "attempt_count": 1,
+        "fallback": false,
+        "tokens_include_all_attempts": true,
+        "incoming_message_ids": [
+          "bc7b9986fb5d"
+        ]
+      }
+    },
+    {
+      "sender": "verifier",
+      "content": "CHK:ACCEPT",
+      "receiver": "solver",
+      "round": 0,
+      "role": "assistant",
+      "prompt_tokens": 1067,
+      "completion_tokens": 5,
+      "id": "3f67fc313bc8",
+      "ts": 1793108560.7931855,
+      "meta": {
+        "sender": "verifier",
+        "receiver": "solver",
+        "message_id": "3f67fc313bc8",
+        "protocol_edge": "verifier_to_solver",
+        "protocol_version": "CARD-0-gsm8k",
+        "protocol_hash": "4bcdae885cc464e0a51977368e4bc06650c0326dbdcb182ce0327477c1d32daa",
+        "contract_hash": "ab4b736240365db5d0ce2caea032f40a3b7fc9c189db42d5ebcd28cac0fac22b",
+        "fields": {
+          "CHK": "ACCEPT"
+        },
+        "communication_tokens": 5,
+        "communication_tokens_exact": true,
+        "attempt_count": 1,
+        "fallback": false,
+        "tokens_include_all_attempts": true,
+        "incoming_message_ids": [
+          "8193d1a20a65"
+        ]
+      }
+    }
+  ],
+  "communication_tokens": 55,
+  "wall_time_s": 4.360251499922015,
+  "verified": true,
+  "revision_rounds": 0,
+  "model_calls": [
+    {
+      "role": "planner",
+      "attempt": 0,
+      "status": "delivered",
+      "error": "",
+      "raw_output": "G:miles_further_in_next_3_hours;P:speed=180/4,miles_further=speed*3",
+      "finish_reason": "stop",
+      "output_tokens": 27,
+      "usage_available": true
+    },
+    {
+      "role": "solver",
+      "attempt": 0,
+      "status": "delivered",
+      "error": "",
+      "raw_output": "IR:speed=180/4=45,miles_further=45*3=135;R:135",
+      "finish_reason": "stop",
+      "output_tokens": 23,
+      "usage_available": true
+    },
+    {
+      "role": "verifier",
+      "attempt": 0,
+      "status": "delivered",
+      "error": "",
+      "raw_output": "CHK:ACCEPT",
+      "finish_reason": "stop",
+      "output_tokens": 5,
+      "usage_available": true
+    }
+  ],
+  "failed_attempts": [],
+  "calls": 3,
+  "usage_complete": true,
+  "known_input_tokens": 2508,
+  "known_output_tokens": 55,
+  "model_input_tokens": 2508,
+  "model_output_tokens": 55,
+  "format_failed_calls": 0,
+  "transport_failed_calls": 0,
+  "fallback_calls": 0,
+  "sum_model_latency_s": 4.220755100250244,
+  "gold": "135",
+  "score": 1.0,
+  "question": "A car driving cross-country traveled 180 miles in 4 hours. At this rate of speed, how many miles further will the car travel in the next 3 hours?\nGive the final numeric answer."
+}

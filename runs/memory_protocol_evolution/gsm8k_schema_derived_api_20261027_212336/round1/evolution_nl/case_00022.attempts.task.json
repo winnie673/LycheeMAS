@@ -1,0 +1,123 @@
+{
+  "task_id": "gsm8k:train:seed42:G1:00022",
+  "status": "completed",
+  "error": null,
+  "prediction": "200",
+  "messages": [
+    {
+      "sender": "planner",
+      "content": "Goal: find how many days until cumulative profit covers the initial opening cost.\n\nPlan: Compute the daily operating cost as 1% of $100,000. Compute daily ticket revenue from 150 tickets at $10 each. Subtract daily operating cost from daily revenue to get net daily profit. Divide the initial $100,000 by that net daily profit to get the number of days needed to recover the opening cost.\n\nConstraints: Use the given values exactly; report the result as a number of days.",
+      "receiver": "solver",
+      "round": 0,
+      "role": "assistant",
+      "prompt_tokens": 210,
+      "completion_tokens": 100,
+      "id": "07bf12c5cdb2",
+      "ts": 1793107898.1569984,
+      "meta": {
+        "fields": {},
+        "communication_tokens": 100,
+        "communication_tokens_exact": true,
+        "attempt_count": 1,
+        "fallback": false,
+        "tokens_include_all_attempts": true,
+        "incoming_message_ids": []
+      }
+    },
+    {
+      "sender": "solver",
+      "content": "Daily operating cost is 1% of $100,000 = $1,000. Daily revenue is 150 × $10 = $1,500. Net daily profit is $1,500 − $1,000 = $500. To recover $100,000 at $500 per day takes $100,000 ÷ $500 = 200 days.\n\n\\boxed{200}",
+      "receiver": "verifier",
+      "round": 0,
+      "role": "assistant",
+      "prompt_tokens": 322,
+      "completion_tokens": 79,
+      "id": "fe99b8e0d56b",
+      "ts": 1793107899.7069385,
+      "meta": {
+        "fields": {
+          "R": "200"
+        },
+        "communication_tokens": 79,
+        "communication_tokens_exact": true,
+        "attempt_count": 1,
+        "fallback": false,
+        "tokens_include_all_attempts": true,
+        "incoming_message_ids": [
+          "07bf12c5cdb2"
+        ]
+      }
+    },
+    {
+      "sender": "verifier",
+      "content": "ACCEPT",
+      "receiver": "solver",
+      "round": 0,
+      "role": "assistant",
+      "prompt_tokens": 678,
+      "completion_tokens": 2,
+      "id": "cc18960ab187",
+      "ts": 1793107901.0292509,
+      "meta": {
+        "fields": {
+          "CHK": "ACCEPT"
+        },
+        "communication_tokens": 2,
+        "communication_tokens_exact": true,
+        "attempt_count": 1,
+        "fallback": false,
+        "tokens_include_all_attempts": true,
+        "incoming_message_ids": [
+          "fe99b8e0d56b"
+        ]
+      }
+    }
+  ],
+  "communication_tokens": 181,
+  "wall_time_s": 4.822026500012726,
+  "verified": true,
+  "revision_rounds": 0,
+  "model_calls": [
+    {
+      "role": "planner",
+      "attempt": 0,
+      "status": "delivered",
+      "error": "",
+      "raw_output": "Goal: find how many days until cumulative profit covers the initial opening cost.\n\nPlan: Compute the daily operating cost as 1% of $100,000. Compute daily ticket revenue from 150 tickets at $10 each. Subtract daily operating cost from daily revenue to get net daily profit. Divide the initial $100,000 by that net daily profit to get the number of days needed to recover the opening cost.\n\nConstraints: Use the given values exactly; report the result as a number of days.",
+      "finish_reason": "stop",
+      "output_tokens": 100,
+      "usage_available": true
+    },
+    {
+      "role": "solver",
+      "attempt": 0,
+      "status": "delivered",
+      "error": "",
+      "raw_output": "Daily operating cost is 1% of $100,000 = $1,000. Daily revenue is 150 × $10 = $1,500. Net daily profit is $1,500 − $1,000 = $500. To recover $100,000 at $500 per day takes $100,000 ÷ $500 = 200 days.\n\n\\boxed{200}",
+      "finish_reason": "stop",
+      "output_tokens": 79,
+      "usage_available": true
+    },
+    {
+      "role": "verifier",
+      "attempt": 0,
+      "status": "delivered",
+      "error": "",
+      "raw_output": "ACCEPT",
+      "finish_reason": "stop",
+      "output_tokens": 2,
+      "usage_available": true
+    }
+  ],
+  "failed_attempts": [],
+  "calls": 3,
+  "usage_complete": true,
+  "known_input_tokens": 1210,
+  "known_output_tokens": 181,
+  "model_input_tokens": 1210,
+  "model_output_tokens": 181,
+  "format_failed_calls": 0,
+  "transport_failed_calls": 0,
+  "fallback_calls": 0,
+  "sum_model_latency_s": 4.755361795425415
+}

@@ -1,0 +1,151 @@
+{
+  "task_id": "gsm8k:train:seed42:V:00039",
+  "status": "completed",
+  "error": null,
+  "prediction": "10",
+  "messages": [
+    {
+      "sender": "planner",
+      "content": "G:tennis_balls_per_container;P:kept=100/2,per_container=kept/5",
+      "receiver": "solver",
+      "round": 0,
+      "role": "assistant",
+      "prompt_tokens": 860,
+      "completion_tokens": 25,
+      "id": "916820cedb73",
+      "ts": 1793111284.7440965,
+      "meta": {
+        "sender": "planner",
+        "receiver": "solver",
+        "message_id": "916820cedb73",
+        "protocol_edge": "planner_to_solver",
+        "protocol_version": "CARD-2-gsm8k",
+        "protocol_hash": "aec703067bbfeee6aa1e642a2a319658f1d33f2eff00c8701de19347f616ed6d",
+        "contract_hash": "ab4b736240365db5d0ce2caea032f40a3b7fc9c189db42d5ebcd28cac0fac22b",
+        "fields": {
+          "G": "tennis_balls_per_container",
+          "P": "kept=100/2,per_container=kept/5"
+        },
+        "communication_tokens": 25,
+        "communication_tokens_exact": true,
+        "attempt_count": 1,
+        "fallback": false,
+        "tokens_include_all_attempts": true,
+        "incoming_message_ids": []
+      }
+    },
+    {
+      "sender": "solver",
+      "content": "IR:kept=100/2=50,per_container=50/5=10;R:10",
+      "receiver": "verifier",
+      "round": 0,
+      "role": "assistant",
+      "prompt_tokens": 703,
+      "completion_tokens": 23,
+      "id": "f0b7de345122",
+      "ts": 1793111286.1551888,
+      "meta": {
+        "sender": "solver",
+        "receiver": "verifier",
+        "message_id": "f0b7de345122",
+        "protocol_edge": "solver_to_verifier",
+        "protocol_version": "CARD-2-gsm8k",
+        "protocol_hash": "aec703067bbfeee6aa1e642a2a319658f1d33f2eff00c8701de19347f616ed6d",
+        "contract_hash": "ab4b736240365db5d0ce2caea032f40a3b7fc9c189db42d5ebcd28cac0fac22b",
+        "fields": {
+          "IR": "kept=100/2=50,per_container=50/5=10",
+          "R": "10"
+        },
+        "communication_tokens": 23,
+        "communication_tokens_exact": true,
+        "attempt_count": 1,
+        "fallback": false,
+        "tokens_include_all_attempts": true,
+        "incoming_message_ids": [
+          "916820cedb73"
+        ]
+      }
+    },
+    {
+      "sender": "verifier",
+      "content": "CHK:ACCEPT",
+      "receiver": "solver",
+      "round": 0,
+      "role": "assistant",
+      "prompt_tokens": 1067,
+      "completion_tokens": 5,
+      "id": "1d2c74cad642",
+      "ts": 1793111287.3862894,
+      "meta": {
+        "sender": "verifier",
+        "receiver": "solver",
+        "message_id": "1d2c74cad642",
+        "protocol_edge": "verifier_to_solver",
+        "protocol_version": "CARD-2-gsm8k",
+        "protocol_hash": "aec703067bbfeee6aa1e642a2a319658f1d33f2eff00c8701de19347f616ed6d",
+        "contract_hash": "ab4b736240365db5d0ce2caea032f40a3b7fc9c189db42d5ebcd28cac0fac22b",
+        "fields": {
+          "CHK": "ACCEPT"
+        },
+        "communication_tokens": 5,
+        "communication_tokens_exact": true,
+        "attempt_count": 1,
+        "fallback": false,
+        "tokens_include_all_attempts": true,
+        "incoming_message_ids": [
+          "f0b7de345122"
+        ]
+      }
+    }
+  ],
+  "communication_tokens": 53,
+  "wall_time_s": 3.868573500076309,
+  "verified": true,
+  "revision_rounds": 0,
+  "model_calls": [
+    {
+      "role": "planner",
+      "attempt": 0,
+      "status": "delivered",
+      "error": "",
+      "raw_output": "G:tennis_balls_per_container;P:kept=100/2,per_container=kept/5",
+      "finish_reason": "stop",
+      "output_tokens": 25,
+      "usage_available": true
+    },
+    {
+      "role": "solver",
+      "attempt": 0,
+      "status": "delivered",
+      "error": "",
+      "raw_output": "IR:kept=100/2=50,per_container=50/5=10;R:10",
+      "finish_reason": "stop",
+      "output_tokens": 23,
+      "usage_available": true
+    },
+    {
+      "role": "verifier",
+      "attempt": 0,
+      "status": "delivered",
+      "error": "",
+      "raw_output": "CHK:ACCEPT",
+      "finish_reason": "stop",
+      "output_tokens": 5,
+      "usage_available": true
+    }
+  ],
+  "failed_attempts": [],
+  "calls": 3,
+  "usage_complete": true,
+  "known_input_tokens": 2630,
+  "known_output_tokens": 53,
+  "model_input_tokens": 2630,
+  "model_output_tokens": 53,
+  "format_failed_calls": 0,
+  "transport_failed_calls": 0,
+  "fallback_calls": 0,
+  "sum_model_latency_s": 3.793402910232544,
+  "gold": "10",
+  "score": 1.0,
+  "question": "James buys 100 tennis balls and gives half of them away.  The other half he puts into 5 large containers.  How many tennis balls go in each container?\nGive the final numeric answer."
+}

@@ -1,0 +1,95 @@
+{
+  "task_id": "gsm8k:test:seed42:T:00137",
+  "mode": "nl",
+  "benchmark": "gsm8k",
+  "status": "completed",
+  "error": null,
+  "prediction": "29.00",
+  "gold": "29",
+  "wall_time_s": 3.9693366000428796,
+  "communication_tokens": 207,
+  "communication_tokens_exact": true,
+  "revision_rounds": 0,
+  "verification_decision": "ACCEPT",
+  "verified": true,
+  "messages": [
+    {
+      "sender": "planner",
+      "content": "Goal: find Rory’s total delivery order cost.\n\nPlan: Compute the cost of 2 subs at $7.50 each, 2 chips at $1.50 each, and 2 cookies at $1.00 each. Add those to get the food subtotal. Apply a 20% delivery fee to the subtotal, then add the $5.00 tip.\n\nConstraints: Use the delivery fee on the order subtotal as stated; include the tip after the fee. Provide the final total as a dollar amount.",
+      "receiver": "solver",
+      "round": 0,
+      "role": "assistant",
+      "prompt_tokens": 224,
+      "completion_tokens": 108,
+      "id": "4bb13834d488",
+      "ts": 1793170098.6035466,
+      "meta": {
+        "fields": {},
+        "communication_tokens": 108,
+        "communication_tokens_exact": true,
+        "attempt_count": 1,
+        "fallback": false,
+        "tokens_include_all_attempts": true,
+        "incoming_message_ids": []
+      }
+    },
+    {
+      "sender": "solver",
+      "content": "Subtotal: 2×7.50 = 15.00, 2×1.50 = 3.00, 2×1.00 = 2.00, total 20.00. Delivery fee is 20% of 20.00 = 4.00. Add tip 5.00: 20.00 + 4.00 + 5.00 = 29.00.\n\n\\boxed{29.00}",
+      "receiver": "verifier",
+      "round": 0,
+      "role": "assistant",
+      "prompt_tokens": 344,
+      "completion_tokens": 97,
+      "id": "ad4aa47beeaa",
+      "ts": 1793170100.0423508,
+      "meta": {
+        "fields": {
+          "R": "29.00"
+        },
+        "communication_tokens": 97,
+        "communication_tokens_exact": true,
+        "attempt_count": 1,
+        "fallback": false,
+        "tokens_include_all_attempts": true,
+        "incoming_message_ids": [
+          "4bb13834d488"
+        ]
+      }
+    },
+    {
+      "sender": "verifier",
+      "content": "ACCEPT",
+      "receiver": "solver",
+      "round": 0,
+      "role": "assistant",
+      "prompt_tokens": 710,
+      "completion_tokens": 2,
+      "id": "11bc9469794b",
+      "ts": 1793170100.9389079,
+      "meta": {
+        "fields": {
+          "CHK": "ACCEPT"
+        },
+        "communication_tokens": 2,
+        "communication_tokens_exact": true,
+        "attempt_count": 1,
+        "fallback": false,
+        "tokens_include_all_attempts": true,
+        "incoming_message_ids": [
+          "ad4aa47beeaa"
+        ]
+      }
+    }
+  ],
+  "calls": 3,
+  "usage_complete": true,
+  "known_input_tokens": 1278,
+  "known_output_tokens": 207,
+  "model_input_tokens": 1278,
+  "model_output_tokens": 207,
+  "format_failed_calls": 0,
+  "transport_failed_calls": 0,
+  "fallback_calls": 0,
+  "sum_model_latency_s": 3.9003989696502686
+}

@@ -1,0 +1,151 @@
+{
+  "task_id": "gsm8k:train:seed42:V:00177",
+  "status": "completed",
+  "error": null,
+  "prediction": "75",
+  "messages": [
+    {
+      "sender": "planner",
+      "content": "G:length_of_each_equal_piece_mm;P:total_mm=1165*10,remaining_pieces=154-150,remaining_mm=remaining_pieces*100,equal_total_mm=total_mm-remaining_mm,length_of_each_equal_piece_mm=equal_total_mm/150",
+      "receiver": "solver",
+      "round": 0,
+      "role": "assistant",
+      "prompt_tokens": 804,
+      "completion_tokens": 70,
+      "id": "fc4cb87e4efd",
+      "ts": 1793109745.6566925,
+      "meta": {
+        "sender": "planner",
+        "receiver": "solver",
+        "message_id": "fc4cb87e4efd",
+        "protocol_edge": "planner_to_solver",
+        "protocol_version": "CARD-1-gsm8k",
+        "protocol_hash": "2a663f41d251a442e680de67a231e516a8fe5e31629bc25d021c8c0eb1354cff",
+        "contract_hash": "ab4b736240365db5d0ce2caea032f40a3b7fc9c189db42d5ebcd28cac0fac22b",
+        "fields": {
+          "G": "length_of_each_equal_piece_mm",
+          "P": "total_mm=1165*10,remaining_pieces=154-150,remaining_mm=remaining_pieces*100,equal_total_mm=total_mm-remaining_mm,length_of_each_equal_piece_mm=equal_total_mm/150"
+        },
+        "communication_tokens": 70,
+        "communication_tokens_exact": true,
+        "attempt_count": 1,
+        "fallback": false,
+        "tokens_include_all_attempts": true,
+        "incoming_message_ids": []
+      }
+    },
+    {
+      "sender": "solver",
+      "content": "IR:total_mm=1165*10=11650,remaining_pieces=154-150=4,remaining_mm=4*100=400,equal_total_mm=11650-400=11250,length=11250/150=75;R:75",
+      "receiver": "verifier",
+      "round": 0,
+      "role": "assistant",
+      "prompt_tokens": 757,
+      "completion_tokens": 59,
+      "id": "02799a440c1e",
+      "ts": 1793109747.112176,
+      "meta": {
+        "sender": "solver",
+        "receiver": "verifier",
+        "message_id": "02799a440c1e",
+        "protocol_edge": "solver_to_verifier",
+        "protocol_version": "CARD-1-gsm8k",
+        "protocol_hash": "2a663f41d251a442e680de67a231e516a8fe5e31629bc25d021c8c0eb1354cff",
+        "contract_hash": "ab4b736240365db5d0ce2caea032f40a3b7fc9c189db42d5ebcd28cac0fac22b",
+        "fields": {
+          "IR": "total_mm=1165*10=11650,remaining_pieces=154-150=4,remaining_mm=4*100=400,equal_total_mm=11650-400=11250,length=11250/150=75",
+          "R": "75"
+        },
+        "communication_tokens": 59,
+        "communication_tokens_exact": true,
+        "attempt_count": 1,
+        "fallback": false,
+        "tokens_include_all_attempts": true,
+        "incoming_message_ids": [
+          "fc4cb87e4efd"
+        ]
+      }
+    },
+    {
+      "sender": "verifier",
+      "content": "CHK:ACCEPT",
+      "receiver": "solver",
+      "round": 0,
+      "role": "assistant",
+      "prompt_tokens": 1112,
+      "completion_tokens": 5,
+      "id": "b12ebc5df005",
+      "ts": 1793109748.4944012,
+      "meta": {
+        "sender": "verifier",
+        "receiver": "solver",
+        "message_id": "b12ebc5df005",
+        "protocol_edge": "verifier_to_solver",
+        "protocol_version": "CARD-1-gsm8k",
+        "protocol_hash": "2a663f41d251a442e680de67a231e516a8fe5e31629bc25d021c8c0eb1354cff",
+        "contract_hash": "ab4b736240365db5d0ce2caea032f40a3b7fc9c189db42d5ebcd28cac0fac22b",
+        "fields": {
+          "CHK": "ACCEPT"
+        },
+        "communication_tokens": 5,
+        "communication_tokens_exact": true,
+        "attempt_count": 1,
+        "fallback": false,
+        "tokens_include_all_attempts": true,
+        "incoming_message_ids": [
+          "02799a440c1e"
+        ]
+      }
+    }
+  ],
+  "communication_tokens": 134,
+  "wall_time_s": 4.183674700092524,
+  "verified": true,
+  "revision_rounds": 0,
+  "model_calls": [
+    {
+      "role": "planner",
+      "attempt": 0,
+      "status": "delivered",
+      "error": "",
+      "raw_output": "G:length_of_each_equal_piece_mm;P:total_mm=1165*10,remaining_pieces=154-150,remaining_mm=remaining_pieces*100,equal_total_mm=total_mm-remaining_mm,length_of_each_equal_piece_mm=equal_total_mm/150",
+      "finish_reason": "stop",
+      "output_tokens": 70,
+      "usage_available": true
+    },
+    {
+      "role": "solver",
+      "attempt": 0,
+      "status": "delivered",
+      "error": "",
+      "raw_output": "IR:total_mm=1165*10=11650,remaining_pieces=154-150=4,remaining_mm=4*100=400,equal_total_mm=11650-400=11250,length=11250/150=75;R:75",
+      "finish_reason": "stop",
+      "output_tokens": 59,
+      "usage_available": true
+    },
+    {
+      "role": "verifier",
+      "attempt": 0,
+      "status": "delivered",
+      "error": "",
+      "raw_output": "CHK:ACCEPT",
+      "finish_reason": "stop",
+      "output_tokens": 5,
+      "usage_available": true
+    }
+  ],
+  "failed_attempts": [],
+  "calls": 3,
+  "usage_complete": true,
+  "known_input_tokens": 2673,
+  "known_output_tokens": 134,
+  "model_input_tokens": 2673,
+  "model_output_tokens": 134,
+  "format_failed_calls": 0,
+  "transport_failed_calls": 0,
+  "fallback_calls": 0,
+  "sum_model_latency_s": 4.022627592086792,
+  "gold": "75",
+  "score": 1.0,
+  "question": "A 1165 cm long rope is cut into 154 pieces. 150 of the pieces are equally sized and the remaining pieces are 100mm each. Find the length of each of the equal pieces in millimeters.\nGive the final numeric answer."
+}

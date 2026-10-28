@@ -1,0 +1,95 @@
+{
+  "task_id": "gsm8k:test:seed42:T:00055",
+  "mode": "nl",
+  "benchmark": "gsm8k",
+  "status": "completed",
+  "error": null,
+  "prediction": "14",
+  "gold": "14",
+  "wall_time_s": 4.110241299960762,
+  "communication_tokens": 105,
+  "communication_tokens_exact": true,
+  "revision_rounds": 0,
+  "verification_decision": "ACCEPT",
+  "verified": true,
+  "messages": [
+    {
+      "sender": "planner",
+      "content": "Goal: find how many bags Jean can fill with the remaining lollipops after eating some.\n\nPlan: Start with the original number of lollipops, subtract the number Jean eats, then divide the remaining number by the number of lollipops per bag. Report the resulting number of full bags.",
+      "receiver": "solver",
+      "round": 0,
+      "role": "assistant",
+      "prompt_tokens": 202,
+      "completion_tokens": 63,
+      "id": "650504752caf",
+      "ts": 1793169370.2110333,
+      "meta": {
+        "fields": {},
+        "communication_tokens": 63,
+        "communication_tokens_exact": true,
+        "attempt_count": 1,
+        "fallback": false,
+        "tokens_include_all_attempts": true,
+        "incoming_message_ids": []
+      }
+    },
+    {
+      "sender": "solver",
+      "content": "Jean starts with 30 lollipops, eats 2, leaving 28. Packaging 2 per bag gives 28 ÷ 2 = 14 bags.\n\n\\boxed{14}",
+      "receiver": "verifier",
+      "round": 0,
+      "role": "assistant",
+      "prompt_tokens": 277,
+      "completion_tokens": 40,
+      "id": "0ba0f449348f",
+      "ts": 1793169371.4841743,
+      "meta": {
+        "fields": {
+          "R": "14"
+        },
+        "communication_tokens": 40,
+        "communication_tokens_exact": true,
+        "attempt_count": 1,
+        "fallback": false,
+        "tokens_include_all_attempts": true,
+        "incoming_message_ids": [
+          "650504752caf"
+        ]
+      }
+    },
+    {
+      "sender": "verifier",
+      "content": "ACCEPT",
+      "receiver": "solver",
+      "round": 0,
+      "role": "assistant",
+      "prompt_tokens": 631,
+      "completion_tokens": 2,
+      "id": "825098c58847",
+      "ts": 1793169372.9292781,
+      "meta": {
+        "fields": {
+          "CHK": "ACCEPT"
+        },
+        "communication_tokens": 2,
+        "communication_tokens_exact": true,
+        "attempt_count": 1,
+        "fallback": false,
+        "tokens_include_all_attempts": true,
+        "incoming_message_ids": [
+          "0ba0f449348f"
+        ]
+      }
+    }
+  ],
+  "calls": 3,
+  "usage_complete": true,
+  "known_input_tokens": 1110,
+  "known_output_tokens": 105,
+  "model_input_tokens": 1110,
+  "model_output_tokens": 105,
+  "format_failed_calls": 0,
+  "transport_failed_calls": 0,
+  "fallback_calls": 0,
+  "sum_model_latency_s": 4.076034069061279
+}

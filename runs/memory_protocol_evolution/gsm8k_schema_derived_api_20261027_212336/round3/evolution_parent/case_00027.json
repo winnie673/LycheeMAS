@@ -1,0 +1,151 @@
+{
+  "task_id": "gsm8k:train:seed42:G3:00027",
+  "status": "completed",
+  "error": null,
+  "prediction": "24",
+  "messages": [
+    {
+      "sender": "planner",
+      "content": "G:total_bags_Austin;P:austin_apples=14+6,austin_pears=9-5,total_bags_Austin=austin_apples+austin_pears",
+      "receiver": "solver",
+      "round": 0,
+      "role": "assistant",
+      "prompt_tokens": 763,
+      "completion_tokens": 41,
+      "id": "2d9d9c7651ec",
+      "ts": 1793112062.3483806,
+      "meta": {
+        "sender": "planner",
+        "receiver": "solver",
+        "message_id": "2d9d9c7651ec",
+        "protocol_edge": "planner_to_solver",
+        "protocol_version": "CARD-0-gsm8k",
+        "protocol_hash": "4bcdae885cc464e0a51977368e4bc06650c0326dbdcb182ce0327477c1d32daa",
+        "contract_hash": "ab4b736240365db5d0ce2caea032f40a3b7fc9c189db42d5ebcd28cac0fac22b",
+        "fields": {
+          "G": "total_bags_Austin",
+          "P": "austin_apples=14+6,austin_pears=9-5,total_bags_Austin=austin_apples+austin_pears"
+        },
+        "communication_tokens": 41,
+        "communication_tokens_exact": true,
+        "attempt_count": 1,
+        "fallback": false,
+        "tokens_include_all_attempts": true,
+        "incoming_message_ids": []
+      }
+    },
+    {
+      "sender": "solver",
+      "content": "IR:austin_apples=14+6=20,austin_pears=9-5=4,total=20+4=24;R:24",
+      "receiver": "verifier",
+      "round": 0,
+      "role": "assistant",
+      "prompt_tokens": 746,
+      "completion_tokens": 34,
+      "id": "107e7801848c",
+      "ts": 1793112063.6575701,
+      "meta": {
+        "sender": "solver",
+        "receiver": "verifier",
+        "message_id": "107e7801848c",
+        "protocol_edge": "solver_to_verifier",
+        "protocol_version": "CARD-0-gsm8k",
+        "protocol_hash": "4bcdae885cc464e0a51977368e4bc06650c0326dbdcb182ce0327477c1d32daa",
+        "contract_hash": "ab4b736240365db5d0ce2caea032f40a3b7fc9c189db42d5ebcd28cac0fac22b",
+        "fields": {
+          "IR": "austin_apples=14+6=20,austin_pears=9-5=4,total=20+4=24",
+          "R": "24"
+        },
+        "communication_tokens": 34,
+        "communication_tokens_exact": true,
+        "attempt_count": 1,
+        "fallback": false,
+        "tokens_include_all_attempts": true,
+        "incoming_message_ids": [
+          "2d9d9c7651ec"
+        ]
+      }
+    },
+    {
+      "sender": "verifier",
+      "content": "CHK:ACCEPT",
+      "receiver": "solver",
+      "round": 0,
+      "role": "assistant",
+      "prompt_tokens": 1105,
+      "completion_tokens": 5,
+      "id": "a0ffd37fec39",
+      "ts": 1793112065.1113203,
+      "meta": {
+        "sender": "verifier",
+        "receiver": "solver",
+        "message_id": "a0ffd37fec39",
+        "protocol_edge": "verifier_to_solver",
+        "protocol_version": "CARD-0-gsm8k",
+        "protocol_hash": "4bcdae885cc464e0a51977368e4bc06650c0326dbdcb182ce0327477c1d32daa",
+        "contract_hash": "ab4b736240365db5d0ce2caea032f40a3b7fc9c189db42d5ebcd28cac0fac22b",
+        "fields": {
+          "CHK": "ACCEPT"
+        },
+        "communication_tokens": 5,
+        "communication_tokens_exact": true,
+        "attempt_count": 1,
+        "fallback": false,
+        "tokens_include_all_attempts": true,
+        "incoming_message_ids": [
+          "107e7801848c"
+        ]
+      }
+    }
+  ],
+  "communication_tokens": 80,
+  "wall_time_s": 4.151679900009185,
+  "verified": true,
+  "revision_rounds": 0,
+  "model_calls": [
+    {
+      "role": "planner",
+      "attempt": 0,
+      "status": "delivered",
+      "error": "",
+      "raw_output": "G:total_bags_Austin;P:austin_apples=14+6,austin_pears=9-5,total_bags_Austin=austin_apples+austin_pears",
+      "finish_reason": "stop",
+      "output_tokens": 41,
+      "usage_available": true
+    },
+    {
+      "role": "solver",
+      "attempt": 0,
+      "status": "delivered",
+      "error": "",
+      "raw_output": "IR:austin_apples=14+6=20,austin_pears=9-5=4,total=20+4=24;R:24",
+      "finish_reason": "stop",
+      "output_tokens": 34,
+      "usage_available": true
+    },
+    {
+      "role": "verifier",
+      "attempt": 0,
+      "status": "delivered",
+      "error": "",
+      "raw_output": "CHK:ACCEPT",
+      "finish_reason": "stop",
+      "output_tokens": 5,
+      "usage_available": true
+    }
+  ],
+  "failed_attempts": [],
+  "calls": 3,
+  "usage_complete": true,
+  "known_input_tokens": 2614,
+  "known_output_tokens": 80,
+  "model_input_tokens": 2614,
+  "model_output_tokens": 80,
+  "format_failed_calls": 0,
+  "transport_failed_calls": 0,
+  "fallback_calls": 0,
+  "sum_model_latency_s": 4.072397947311401,
+  "gold": "24",
+  "score": 1.0,
+  "question": "Dallas and Austin went to the pick-your-own orchard. Dallas picked 14 bags of apples and 9 bags of pears. Austin picked 6 bags of apples more than Dallas, and 5 fewer bags of pears than Dallas. How many bags of fruit did Austin pick, in total?\nGive the final numeric answer."
+}

@@ -5,7 +5,7 @@ from __future__ import annotations
 import hashlib
 import json
 import re
-from dataclasses import asdict, dataclass
+from dataclasses import asdict, dataclass, replace
 from pathlib import Path
 from typing import Any, Callable, Protocol
 
@@ -160,6 +160,7 @@ class ConditionalConstraint:
     required: tuple[str, ...] = ()
     only: tuple[str, ...] = ()
     error: str | None = None
+    forbidden: tuple[str, ...] = ()
 
     def __post_init__(self) -> None:
         if (
@@ -167,7 +168,8 @@ class ConditionalConstraint:
             or not isinstance(self.equals, str)
             or not isinstance(self.required, tuple)
             or not isinstance(self.only, tuple)
-            or any(not isinstance(v, str) for v in (*self.required, *self.only))
+            or not isinstance(self.forbidden, tuple)
+            or any(not isinstance(v, str) for v in (*self.required, *self.only, *self.forbidden))
             or (self.error is not None and not isinstance(self.error, str))
         ):
             raise ValueError("invalid conditional constraint")
@@ -175,8 +177,10 @@ class ConditionalConstraint:
     def check(self, fields: dict[str, str]) -> None:
         if fields.get(self.field) == self.equals:
             missing = [name for name in self.required if not fields.get(name)]
-            if any(not fields.get(name) for name in self.required) or (
-                self.only and set(fields) != set(self.only)
+            if (
+                any(not fields.get(name) for name in self.required)
+                or (self.only and set(fields) != set(self.only))
+                or any(name in fields for name in self.forbidden)
             ):
                 raise ValueError(
                     self.error.replace("{missing}", repr(missing))
@@ -267,7 +271,8 @@ class ProtocolContract:
                 )
                 or not set(validation.required_example_fields) <= names
                 or any(
-                    rule.field not in names or not set((*rule.required, *rule.only)) <= names
+                    rule.field not in names
+                    or not set((*rule.required, *rule.only, *rule.forbidden)) <= names
                     for rule in validation.conditions
                 )
             ):
@@ -282,11 +287,17 @@ class ProtocolContract:
             raise ValueError("invalid fixed card option")
 
     def as_dict(self) -> dict:
+        validations = [asdict(rule) for rule in self.edge_validation]
+        # Preserve historical contract serialization/fingerprints byte-for-byte in JSON.
+        for validation in validations:
+            for condition in validation["conditions"]:
+                if not condition["forbidden"]:
+                    del condition["forbidden"]
         return {
             "task": self.task,
             "architecture": self.architecture.as_dict(),
             "field_meanings": dict(self.field_meanings),
-            "edge_validation": [asdict(rule) for rule in self.edge_validation],
+            "edge_validation": validations,
             "reserved_fields": list(self.reserved_fields),
             "fixed_card_options": dict(self.fixed_card_options),
             "generation_guidance": self.generation_guidance,
@@ -349,7 +360,7 @@ class ProtocolContract:
                         conditions=tuple(
                             ConditionalConstraint(
                                 **{
-                                    k: tuple(v) if k in {"required", "only"} else v
+                                    k: tuple(v) if k in {"required", "only", "forbidden"} else v
                                     for k, v in c.items()
                                 }
                             )
@@ -387,6 +398,222 @@ class ProtocolContract:
         return next(
             (rule for rule in self.edge_validation if rule.edge == edge), EdgeValidation(edge)
         )
+
+
+def load_protocol_schema(path: str | Path) -> dict:
+    """Read design data only; importing the framework does not import YAML."""
+    import yaml
+
+    value = yaml.safe_load(Path(path).read_text(encoding="utf-8"))
+    if not isinstance(value, dict):
+        raise ValueError("protocol schema must be a mapping")
+    return value
+
+
+def build_contract_from_schema(
+    schema: dict,
+    *,
+    task: str,
+    architecture_name: str,
+    roles: tuple[tuple[str, str], ...],
+    edges: tuple[str, ...],
+    control_fields: dict[str, str] | None = None,
+    runtime_aliases: dict[str, dict[str, str]] | None = None,
+    task_field_meanings: dict[str, str] | None = None,
+    reserved_fields: tuple[str, ...] = (),
+    fixed_card_options: tuple[tuple[str, bool | str], ...] = (),
+    generation_guidance: str = "",
+    max_semantic_revisions: int = 1,
+) -> ProtocolContract:
+    """Compile supported declarative schema operations, without task/role constants.
+
+    Prose policies remain design guidance, not executable validation. A field shared
+    across edges keeps every edge's meaning instead of last-write-wins flattening.
+    Receive-only aliases extend derived guards; they never modify the input schema.
+    """
+    controls, aliases = control_fields or {}, runtime_aliases or {}
+    if (
+        not isinstance(controls, dict)
+        or not isinstance(aliases, dict)
+        or any(not isinstance(value, dict) for value in aliases.values())
+    ):
+        raise ValueError("control/alias configuration must be mappings")
+    if not isinstance(schema, dict) or schema.get("message_format") != {
+        "structure": "fields_only",
+        "wire_syntax": "direct",
+        "field_separator": ";",
+    }:
+        raise ValueError("unsupported schema message format")
+    if set(controls) - set(edges) or set(aliases) - set(edges):
+        raise ValueError("control/alias refers to an unknown edge")
+    if {key for key in schema if "_to_" in key} != set(edges):
+        raise ValueError("schema edges do not match the experiment")
+
+    def names(value: object, label: str) -> tuple[str, ...]:
+        if not isinstance(value, list) or any(not isinstance(v, str) or not v for v in value):
+            raise ValueError(f"{label} must be a string list")
+        if len(value) != len(set(value)):
+            raise ValueError(f"duplicate {label}")
+        return tuple(value)
+
+    interfaces, validations, meanings = [], [], {}
+    for edge in edges:
+        spec = schema[edge]
+        if not isinstance(spec, dict) or set(spec) - {
+            "allowed_fields",
+            "required_fields",
+            "field_semantics",
+            "optional_field_policy",
+            "value_constraints",
+            "conditional_required",
+            "conditional_forbidden",
+        }:
+            raise ValueError(f"unsupported edge schema: {edge}")
+        allowed = names(spec.get("allowed_fields"), "allowed_fields")
+        required = names(spec.get("required_fields"), "required_fields")
+        if not set(required) <= set(allowed):
+            raise ValueError("required fields must be allowed")
+        semantics = spec.get("field_semantics", {})
+        if not isinstance(semantics, dict) or set(semantics) != set(allowed):
+            raise ValueError(f"field semantics must cover exactly {edge}")
+        for field, text in semantics.items():
+            if not isinstance(text, str) or not text.strip():
+                raise ValueError("empty field semantics")
+            meanings.setdefault(field, []).append((edge, text))
+        policy, values = spec.get("optional_field_policy", {}), spec.get("value_constraints", {})
+        if not isinstance(policy, dict) or not isinstance(values, dict):
+            raise ValueError("field policies/constraints must be mappings")
+        if (set(policy) | set(values)) - set(allowed):
+            raise ValueError("constraint refers to an undeclared field")
+        fields = []
+        for field in allowed:
+            option, constraint = policy.get(field, {}), values.get(field, {})
+            if (
+                not isinstance(option, dict)
+                or set(option) - {"omit_when_unused", "forbidden_placeholder_values"}
+                or option.get("omit_when_unused", True) is not True
+                or not isinstance(constraint, dict)
+                or set(constraint) - {"allowed_values", "pattern"}
+            ):
+                raise ValueError("unsupported field policy/constraint")
+            choices = names(constraint.get("allowed_values", []), "allowed_values")
+            if "allowed_values" in constraint and not choices:
+                raise ValueError("enum must not be empty")
+            forbidden = names(option.get("forbidden_placeholder_values", []), "placeholder values")
+            if choices or forbidden or "pattern" in constraint:
+                fields.append(
+                    FieldConstraint(
+                        field,
+                        choices=choices,
+                        forbidden_values=tuple(v.lower() for v in forbidden),
+                        pattern=constraint.get("pattern"),
+                    )
+                )
+        conditions = []
+        control = controls.get(edge)
+        for key, operation in (
+            ("conditional_required", "required"),
+            ("conditional_forbidden", "forbidden"),
+        ):
+            table = spec.get(key, {})
+            if not isinstance(table, dict):
+                raise ValueError("conditional constraints must be mappings")
+            for value, dependent in table.items():
+                choices = next((r.choices for r in fields if r.name == control), ())
+                if control not in allowed or value not in choices:
+                    raise ValueError("condition needs a declared control enum")
+                conditions.append(
+                    ConditionalConstraint(control, value, **{operation: names(dependent, key)})
+                )
+        for alias, canonical in aliases.get(edge, {}).items():
+            rule = next((r for r in fields if r.name == control), None)
+            if (
+                rule is None
+                or not isinstance(alias, str)
+                or not alias
+                or alias in rule.choices
+                or canonical not in rule.choices
+                or canonical in aliases.get(edge, {})
+            ):
+                raise ValueError("alias must point to a canonical control value")
+            fields[fields.index(rule)] = replace(rule, choices=(*rule.choices, alias))
+            conditions.extend(
+                replace(c, equals=alias) for c in tuple(conditions) if c.equals == canonical
+            )
+        for value in {c.equals for c in conditions}:
+            needed = set(required).union(*(c.required for c in conditions if c.equals == value))
+            banned = set().union(*(c.forbidden for c in conditions if c.equals == value))
+            if needed & banned:
+                raise ValueError("contradictory required/forbidden fields")
+        interfaces.append((edge, allowed, required))
+        validations.append(EdgeValidation(edge, fields=tuple(fields), conditions=tuple(conditions)))
+    overrides = task_field_meanings or {}
+    if set(overrides) - set(meanings) or any(
+        not isinstance(text, str) or not text.strip() for text in overrides.values()
+    ):
+        raise ValueError("invalid task field meaning override")
+    merged = []
+    for field, entries in meanings.items():
+        text = (
+            entries[0][1]
+            if len({v for _, v in entries}) == 1
+            else "\n".join(f"{edge}: {meaning}" for edge, meaning in entries)
+        )
+        if field in overrides:
+            text += "\nTask requirement: " + overrides[field]
+        merged.append((field, text))
+    return ProtocolContract(
+        task,
+        ProtocolArchitecture(architecture_name, roles, tuple(interfaces), max_semantic_revisions),
+        tuple(merged),
+        tuple(validations),
+        reserved_fields,
+        fixed_card_options,
+        generation_guidance,
+    )
+
+
+def assert_runtime_compatible(expected: ProtocolContract, historical: ProtocolContract) -> None:
+    """Explicit predicate comparison; this never substitutes or rewrites a fingerprint."""
+    if (
+        expected.task != historical.task
+        or expected.architecture != historical.architecture
+        or expected.fixed_card_options != historical.fixed_card_options
+        or expected.reserved_fields != historical.reserved_fields
+    ):
+        raise ValueError("historical contract architecture/options are incompatible")
+
+    def guards(contract: ProtocolContract, edge: str, allowed: tuple, required: tuple) -> tuple:
+        rule = contract.validation_for(edge)
+
+        def field_guards(items):
+            return frozenset(
+                (v.name, tuple(sorted(v.choices)), tuple(sorted(v.forbidden_values)), v.pattern)
+                for v in items
+            )
+
+        conditions = {}
+        for item in rule.conditions:
+            needed, banned = conditions.setdefault((item.field, item.equals), (set(), set()))
+            needed.update(item.required)
+            needed.update(item.only)
+            banned.update(item.forbidden)
+            if item.only:
+                banned.update(set(allowed) - set(item.only))
+        normalized = frozenset(
+            (field, value, tuple(sorted(needed - set(required))), tuple(sorted(banned)))
+            for (field, value), (needed, banned) in conditions.items()
+        )
+        return (
+            field_guards(rule.fields),
+            normalized,
+            field_guards(rule.example_only),
+            frozenset(rule.required_example_fields),
+        )
+
+    for edge, allowed, required in expected.architecture.edges:
+        if guards(expected, edge, allowed, required) != guards(historical, edge, allowed, required):
+            raise ValueError(f"historical contract validation is incompatible on {edge}")
 
 
 @dataclass(frozen=True)

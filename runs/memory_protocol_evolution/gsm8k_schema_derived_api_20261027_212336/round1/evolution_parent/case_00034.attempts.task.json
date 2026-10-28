@@ -1,0 +1,149 @@
+{
+  "task_id": "gsm8k:train:seed42:G1:00034",
+  "status": "completed",
+  "error": null,
+  "prediction": "108",
+  "messages": [
+    {
+      "sender": "planner",
+      "content": "K:hours_per_day=2,days=5,Mon_to_Wed_speed=12,Thu_to_Fri_speed=9;G:total_distance;P:mon_wed_dist=3*2*12,thu_fri_dist=2*2*9,total_distance=mon_wed_dist+thu_fri_dist",
+      "receiver": "solver",
+      "round": 0,
+      "role": "assistant",
+      "prompt_tokens": 766,
+      "completion_tokens": 73,
+      "id": "53456a03d3ec",
+      "ts": 1793107717.5219436,
+      "meta": {
+        "sender": "planner",
+        "receiver": "solver",
+        "message_id": "53456a03d3ec",
+        "protocol_edge": "planner_to_solver",
+        "protocol_version": "CARD-0-gsm8k",
+        "protocol_hash": "4bcdae885cc464e0a51977368e4bc06650c0326dbdcb182ce0327477c1d32daa",
+        "contract_hash": "ab4b736240365db5d0ce2caea032f40a3b7fc9c189db42d5ebcd28cac0fac22b",
+        "fields": {
+          "K": "hours_per_day=2,days=5,Mon_to_Wed_speed=12,Thu_to_Fri_speed=9",
+          "G": "total_distance",
+          "P": "mon_wed_dist=3*2*12,thu_fri_dist=2*2*9,total_distance=mon_wed_dist+thu_fri_dist"
+        },
+        "communication_tokens": 73,
+        "communication_tokens_exact": true,
+        "attempt_count": 1,
+        "fallback": false,
+        "tokens_include_all_attempts": true,
+        "incoming_message_ids": []
+      }
+    },
+    {
+      "sender": "solver",
+      "content": "IR:mon_wed_dist=3*2*12=72,thu_fri_dist=2*2*9=36,total_distance=72+36=108;R:108",
+      "receiver": "verifier",
+      "round": 0,
+      "role": "assistant",
+      "prompt_tokens": 781,
+      "completion_tokens": 41,
+      "id": "d05fae94bf5e",
+      "ts": 1793107718.8030837,
+      "meta": {
+        "sender": "solver",
+        "receiver": "verifier",
+        "message_id": "d05fae94bf5e",
+        "protocol_edge": "solver_to_verifier",
+        "protocol_version": "CARD-0-gsm8k",
+        "protocol_hash": "4bcdae885cc464e0a51977368e4bc06650c0326dbdcb182ce0327477c1d32daa",
+        "contract_hash": "ab4b736240365db5d0ce2caea032f40a3b7fc9c189db42d5ebcd28cac0fac22b",
+        "fields": {
+          "IR": "mon_wed_dist=3*2*12=72,thu_fri_dist=2*2*9=36,total_distance=72+36=108",
+          "R": "108"
+        },
+        "communication_tokens": 41,
+        "communication_tokens_exact": true,
+        "attempt_count": 1,
+        "fallback": false,
+        "tokens_include_all_attempts": true,
+        "incoming_message_ids": [
+          "53456a03d3ec"
+        ]
+      }
+    },
+    {
+      "sender": "verifier",
+      "content": "CHK:ACCEPT",
+      "receiver": "solver",
+      "round": 0,
+      "role": "assistant",
+      "prompt_tokens": 1115,
+      "completion_tokens": 5,
+      "id": "34edcbc7251d",
+      "ts": 1793107720.07664,
+      "meta": {
+        "sender": "verifier",
+        "receiver": "solver",
+        "message_id": "34edcbc7251d",
+        "protocol_edge": "verifier_to_solver",
+        "protocol_version": "CARD-0-gsm8k",
+        "protocol_hash": "4bcdae885cc464e0a51977368e4bc06650c0326dbdcb182ce0327477c1d32daa",
+        "contract_hash": "ab4b736240365db5d0ce2caea032f40a3b7fc9c189db42d5ebcd28cac0fac22b",
+        "fields": {
+          "CHK": "ACCEPT"
+        },
+        "communication_tokens": 5,
+        "communication_tokens_exact": true,
+        "attempt_count": 1,
+        "fallback": false,
+        "tokens_include_all_attempts": true,
+        "incoming_message_ids": [
+          "d05fae94bf5e"
+        ]
+      }
+    }
+  ],
+  "communication_tokens": 119,
+  "wall_time_s": 4.929506400017999,
+  "verified": true,
+  "revision_rounds": 0,
+  "model_calls": [
+    {
+      "role": "planner",
+      "attempt": 0,
+      "status": "delivered",
+      "error": "",
+      "raw_output": "K:hours_per_day=2,days=5,Mon_to_Wed_speed=12,Thu_to_Fri_speed=9;G:total_distance;P:mon_wed_dist=3*2*12,thu_fri_dist=2*2*9,total_distance=mon_wed_dist+thu_fri_dist",
+      "finish_reason": "stop",
+      "output_tokens": 73,
+      "usage_available": true
+    },
+    {
+      "role": "solver",
+      "attempt": 0,
+      "status": "delivered",
+      "error": "",
+      "raw_output": "IR:mon_wed_dist=3*2*12=72,thu_fri_dist=2*2*9=36,total_distance=72+36=108;R:108",
+      "finish_reason": "stop",
+      "output_tokens": 41,
+      "usage_available": true
+    },
+    {
+      "role": "verifier",
+      "attempt": 0,
+      "status": "delivered",
+      "error": "",
+      "raw_output": "CHK:ACCEPT",
+      "finish_reason": "stop",
+      "output_tokens": 5,
+      "usage_available": true
+    }
+  ],
+  "failed_attempts": [],
+  "calls": 3,
+  "usage_complete": true,
+  "known_input_tokens": 2662,
+  "known_output_tokens": 119,
+  "model_input_tokens": 2662,
+  "model_output_tokens": 119,
+  "format_failed_calls": 0,
+  "transport_failed_calls": 0,
+  "fallback_calls": 0,
+  "sum_model_latency_s": 4.787624835968018
+}

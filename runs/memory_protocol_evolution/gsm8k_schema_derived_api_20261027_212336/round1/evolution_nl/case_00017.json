@@ -1,0 +1,126 @@
+{
+  "task_id": "gsm8k:train:seed42:G1:00017",
+  "status": "completed",
+  "error": null,
+  "prediction": "40",
+  "messages": [
+    {
+      "sender": "planner",
+      "content": "Goal: find how many more people attended across the week than the expected total of 350.\n\nPlan: Compute attendance for each day from the given relationships: Saturday = 80; Monday = 20 fewer than Saturday; Wednesday = 50 more than Monday; Friday = Saturday plus Monday. Add the four daily attendances to get the actual weekly total, then compare that total to 350 by subtraction.\n\nConstraints: Use only the stated relationships. Be careful that “20 fewer” and “50 more” refer to the immediately preceding stated day as described. The final result should be the excess over 350.",
+      "receiver": "solver",
+      "round": 0,
+      "role": "assistant",
+      "prompt_tokens": 238,
+      "completion_tokens": 122,
+      "id": "f072f92b6c87",
+      "ts": 1793107873.7223952,
+      "meta": {
+        "fields": {},
+        "communication_tokens": 122,
+        "communication_tokens_exact": true,
+        "attempt_count": 1,
+        "fallback": false,
+        "tokens_include_all_attempts": true,
+        "incoming_message_ids": []
+      }
+    },
+    {
+      "sender": "solver",
+      "content": "Saturday: 80. Monday: 80 − 20 = 60. Wednesday: 60 + 50 = 110. Friday: 80 + 60 = 140. Total = 80 + 60 + 110 + 140 = 390. Excess over expected 350 is 390 − 350 = 40.\n\n\\boxed{40}",
+      "receiver": "verifier",
+      "round": 0,
+      "role": "assistant",
+      "prompt_tokens": 372,
+      "completion_tokens": 76,
+      "id": "091c14e5373d",
+      "ts": 1793107875.4236677,
+      "meta": {
+        "fields": {
+          "R": "40"
+        },
+        "communication_tokens": 76,
+        "communication_tokens_exact": true,
+        "attempt_count": 1,
+        "fallback": false,
+        "tokens_include_all_attempts": true,
+        "incoming_message_ids": [
+          "f072f92b6c87"
+        ]
+      }
+    },
+    {
+      "sender": "verifier",
+      "content": "ACCEPT",
+      "receiver": "solver",
+      "round": 0,
+      "role": "assistant",
+      "prompt_tokens": 703,
+      "completion_tokens": 2,
+      "id": "a91d010b09f8",
+      "ts": 1793107876.9664037,
+      "meta": {
+        "fields": {
+          "CHK": "ACCEPT"
+        },
+        "communication_tokens": 2,
+        "communication_tokens_exact": true,
+        "attempt_count": 1,
+        "fallback": false,
+        "tokens_include_all_attempts": true,
+        "incoming_message_ids": [
+          "091c14e5373d"
+        ]
+      }
+    }
+  ],
+  "communication_tokens": 200,
+  "wall_time_s": 5.199750300031155,
+  "verified": true,
+  "revision_rounds": 0,
+  "model_calls": [
+    {
+      "role": "planner",
+      "attempt": 0,
+      "status": "delivered",
+      "error": "",
+      "raw_output": "Goal: find how many more people attended across the week than the expected total of 350.\n\nPlan: Compute attendance for each day from the given relationships: Saturday = 80; Monday = 20 fewer than Saturday; Wednesday = 50 more than Monday; Friday = Saturday plus Monday. Add the four daily attendances to get the actual weekly total, then compare that total to 350 by subtraction.\n\nConstraints: Use only the stated relationships. Be careful that “20 fewer” and “50 more” refer to the immediately preceding stated day as described. The final result should be the excess over 350.",
+      "finish_reason": "stop",
+      "output_tokens": 122,
+      "usage_available": true
+    },
+    {
+      "role": "solver",
+      "attempt": 0,
+      "status": "delivered",
+      "error": "",
+      "raw_output": "Saturday: 80. Monday: 80 − 20 = 60. Wednesday: 60 + 50 = 110. Friday: 80 + 60 = 140. Total = 80 + 60 + 110 + 140 = 390. Excess over expected 350 is 390 − 350 = 40.\n\n\\boxed{40}",
+      "finish_reason": "stop",
+      "output_tokens": 76,
+      "usage_available": true
+    },
+    {
+      "role": "verifier",
+      "attempt": 0,
+      "status": "delivered",
+      "error": "",
+      "raw_output": "ACCEPT",
+      "finish_reason": "stop",
+      "output_tokens": 2,
+      "usage_available": true
+    }
+  ],
+  "failed_attempts": [],
+  "calls": 3,
+  "usage_complete": true,
+  "known_input_tokens": 1313,
+  "known_output_tokens": 200,
+  "model_input_tokens": 1313,
+  "model_output_tokens": 200,
+  "format_failed_calls": 0,
+  "transport_failed_calls": 0,
+  "fallback_calls": 0,
+  "sum_model_latency_s": 5.119067907333374,
+  "gold": "40",
+  "score": 1.0,
+  "question": "There were 80 people at a football game on Saturday. On Monday, 20 fewer people were at the football game. On Wednesday, 50 more people were at the game than on Monday. On Friday, there were the same number of people as on Saturday and Monday combined. If their expected total audience at the football game for a week is 350, how many more people attended the games than they had expected?\nGive the final numeric answer."
+}

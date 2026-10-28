@@ -1,0 +1,151 @@
+{
+  "task_id": "gsm8k:train:seed42:V:00108",
+  "status": "completed",
+  "error": null,
+  "prediction": "39",
+  "messages": [
+    {
+      "sender": "planner",
+      "content": "G:total_hours;P:loaded_time=(180+80)/10,unloaded_time=(120+140)/20,total_hours=loaded_time+unloaded_time",
+      "receiver": "solver",
+      "round": 0,
+      "role": "assistant",
+      "prompt_tokens": 878,
+      "completion_tokens": 37,
+      "id": "5620cbc66e7a",
+      "ts": 1793109440.7073684,
+      "meta": {
+        "sender": "planner",
+        "receiver": "solver",
+        "message_id": "5620cbc66e7a",
+        "protocol_edge": "planner_to_solver",
+        "protocol_version": "CARD-1-gsm8k",
+        "protocol_hash": "2a663f41d251a442e680de67a231e516a8fe5e31629bc25d021c8c0eb1354cff",
+        "contract_hash": "ab4b736240365db5d0ce2caea032f40a3b7fc9c189db42d5ebcd28cac0fac22b",
+        "fields": {
+          "G": "total_hours",
+          "P": "loaded_time=(180+80)/10,unloaded_time=(120+140)/20,total_hours=loaded_time+unloaded_time"
+        },
+        "communication_tokens": 37,
+        "communication_tokens_exact": true,
+        "attempt_count": 1,
+        "fallback": false,
+        "tokens_include_all_attempts": true,
+        "incoming_message_ids": []
+      }
+    },
+    {
+      "sender": "solver",
+      "content": "IR:loaded_time=(180+80)/10=26,unloaded_time=(120+140)/20=13,total_hours=26+13=39;R:39",
+      "receiver": "verifier",
+      "round": 0,
+      "role": "assistant",
+      "prompt_tokens": 798,
+      "completion_tokens": 38,
+      "id": "980e1df51a0b",
+      "ts": 1793109441.7544944,
+      "meta": {
+        "sender": "solver",
+        "receiver": "verifier",
+        "message_id": "980e1df51a0b",
+        "protocol_edge": "solver_to_verifier",
+        "protocol_version": "CARD-1-gsm8k",
+        "protocol_hash": "2a663f41d251a442e680de67a231e516a8fe5e31629bc25d021c8c0eb1354cff",
+        "contract_hash": "ab4b736240365db5d0ce2caea032f40a3b7fc9c189db42d5ebcd28cac0fac22b",
+        "fields": {
+          "IR": "loaded_time=(180+80)/10=26,unloaded_time=(120+140)/20=13,total_hours=26+13=39",
+          "R": "39"
+        },
+        "communication_tokens": 38,
+        "communication_tokens_exact": true,
+        "attempt_count": 1,
+        "fallback": false,
+        "tokens_include_all_attempts": true,
+        "incoming_message_ids": [
+          "5620cbc66e7a"
+        ]
+      }
+    },
+    {
+      "sender": "verifier",
+      "content": "CHK:ACCEPT",
+      "receiver": "solver",
+      "round": 0,
+      "role": "assistant",
+      "prompt_tokens": 1165,
+      "completion_tokens": 5,
+      "id": "db399d8a5e72",
+      "ts": 1793109443.1547236,
+      "meta": {
+        "sender": "verifier",
+        "receiver": "solver",
+        "message_id": "db399d8a5e72",
+        "protocol_edge": "verifier_to_solver",
+        "protocol_version": "CARD-1-gsm8k",
+        "protocol_hash": "2a663f41d251a442e680de67a231e516a8fe5e31629bc25d021c8c0eb1354cff",
+        "contract_hash": "ab4b736240365db5d0ce2caea032f40a3b7fc9c189db42d5ebcd28cac0fac22b",
+        "fields": {
+          "CHK": "ACCEPT"
+        },
+        "communication_tokens": 5,
+        "communication_tokens_exact": true,
+        "attempt_count": 1,
+        "fallback": false,
+        "tokens_include_all_attempts": true,
+        "incoming_message_ids": [
+          "980e1df51a0b"
+        ]
+      }
+    }
+  ],
+  "communication_tokens": 80,
+  "wall_time_s": 4.033800899982452,
+  "verified": true,
+  "revision_rounds": 0,
+  "model_calls": [
+    {
+      "role": "planner",
+      "attempt": 0,
+      "status": "delivered",
+      "error": "",
+      "raw_output": "G:total_hours;P:loaded_time=(180+80)/10,unloaded_time=(120+140)/20,total_hours=loaded_time+unloaded_time",
+      "finish_reason": "stop",
+      "output_tokens": 37,
+      "usage_available": true
+    },
+    {
+      "role": "solver",
+      "attempt": 0,
+      "status": "delivered",
+      "error": "",
+      "raw_output": "IR:loaded_time=(180+80)/10=26,unloaded_time=(120+140)/20=13,total_hours=26+13=39;R:39",
+      "finish_reason": "stop",
+      "output_tokens": 38,
+      "usage_available": true
+    },
+    {
+      "role": "verifier",
+      "attempt": 0,
+      "status": "delivered",
+      "error": "",
+      "raw_output": "CHK:ACCEPT",
+      "finish_reason": "stop",
+      "output_tokens": 5,
+      "usage_available": true
+    }
+  ],
+  "failed_attempts": [],
+  "calls": 3,
+  "usage_complete": true,
+  "known_input_tokens": 2841,
+  "known_output_tokens": 80,
+  "model_input_tokens": 2841,
+  "model_output_tokens": 80,
+  "format_failed_calls": 0,
+  "transport_failed_calls": 0,
+  "fallback_calls": 0,
+  "sum_model_latency_s": 3.848810911178589,
+  "gold": "39",
+  "score": 1.0,
+  "question": "Toby, the Alaskan Malamute, can pull a sled at a speed of 20 miles per hour if the sled is unloaded, but he pulls the same sled at a speed of 10 miles per hour if the sled is fully loaded.  If Toby takes a continuous 4-part journey, first pulling the loaded sled for 180 miles, then pulling the unloaded sled for 120 miles, then pulling the loaded sled 80 miles, and finally, pulling the unloaded sled another 140 miles, how many hours in total will Toby spend pulling the sled?\nGive the final numeric answer."
+}

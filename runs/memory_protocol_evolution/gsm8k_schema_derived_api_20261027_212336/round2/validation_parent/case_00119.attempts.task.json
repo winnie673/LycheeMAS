@@ -1,0 +1,149 @@
+{
+  "task_id": "gsm8k:train:seed42:V:00119",
+  "status": "completed",
+  "error": null,
+  "prediction": "10",
+  "messages": [
+    {
+      "sender": "planner",
+      "content": "G:total_trees;P:good_A=0.5*T*10*0.6,good_B=0.5*T*15*(1/3),total_good=good_A+good_B=55,solve_for=T;NL:Assume T is the total number of trees and the 50/50 split applies to that total.",
+      "receiver": "solver",
+      "round": 0,
+      "role": "assistant",
+      "prompt_tokens": 781,
+      "completion_tokens": 76,
+      "id": "70e59ffab0fc",
+      "ts": 1793110786.1130197,
+      "meta": {
+        "sender": "planner",
+        "receiver": "solver",
+        "message_id": "70e59ffab0fc",
+        "protocol_edge": "planner_to_solver",
+        "protocol_version": "CARD-0-gsm8k",
+        "protocol_hash": "4bcdae885cc464e0a51977368e4bc06650c0326dbdcb182ce0327477c1d32daa",
+        "contract_hash": "ab4b736240365db5d0ce2caea032f40a3b7fc9c189db42d5ebcd28cac0fac22b",
+        "fields": {
+          "G": "total_trees",
+          "P": "good_A=0.5*T*10*0.6,good_B=0.5*T*15*(1/3),total_good=good_A+good_B=55,solve_for=T",
+          "NL": "Assume T is the total number of trees and the 50/50 split applies to that total."
+        },
+        "communication_tokens": 76,
+        "communication_tokens_exact": true,
+        "attempt_count": 1,
+        "fallback": false,
+        "tokens_include_all_attempts": true,
+        "incoming_message_ids": []
+      }
+    },
+    {
+      "sender": "solver",
+      "content": "IR:good_A=0.5*T*10*0.6=3T,good_B=0.5*T*15*(1/3)=2.5T,total_good=3T+2.5T=5.5T=55,T=10;R:10",
+      "receiver": "verifier",
+      "round": 0,
+      "role": "assistant",
+      "prompt_tokens": 799,
+      "completion_tokens": 65,
+      "id": "434bfb20b173",
+      "ts": 1793110787.5364256,
+      "meta": {
+        "sender": "solver",
+        "receiver": "verifier",
+        "message_id": "434bfb20b173",
+        "protocol_edge": "solver_to_verifier",
+        "protocol_version": "CARD-0-gsm8k",
+        "protocol_hash": "4bcdae885cc464e0a51977368e4bc06650c0326dbdcb182ce0327477c1d32daa",
+        "contract_hash": "ab4b736240365db5d0ce2caea032f40a3b7fc9c189db42d5ebcd28cac0fac22b",
+        "fields": {
+          "IR": "good_A=0.5*T*10*0.6=3T,good_B=0.5*T*15*(1/3)=2.5T,total_good=3T+2.5T=5.5T=55,T=10",
+          "R": "10"
+        },
+        "communication_tokens": 65,
+        "communication_tokens_exact": true,
+        "attempt_count": 1,
+        "fallback": false,
+        "tokens_include_all_attempts": true,
+        "incoming_message_ids": [
+          "70e59ffab0fc"
+        ]
+      }
+    },
+    {
+      "sender": "verifier",
+      "content": "CHK:ACCEPT",
+      "receiver": "solver",
+      "round": 0,
+      "role": "assistant",
+      "prompt_tokens": 1154,
+      "completion_tokens": 5,
+      "id": "c61b7c956031",
+      "ts": 1793110788.4950006,
+      "meta": {
+        "sender": "verifier",
+        "receiver": "solver",
+        "message_id": "c61b7c956031",
+        "protocol_edge": "verifier_to_solver",
+        "protocol_version": "CARD-0-gsm8k",
+        "protocol_hash": "4bcdae885cc464e0a51977368e4bc06650c0326dbdcb182ce0327477c1d32daa",
+        "contract_hash": "ab4b736240365db5d0ce2caea032f40a3b7fc9c189db42d5ebcd28cac0fac22b",
+        "fields": {
+          "CHK": "ACCEPT"
+        },
+        "communication_tokens": 5,
+        "communication_tokens_exact": true,
+        "attempt_count": 1,
+        "fallback": false,
+        "tokens_include_all_attempts": true,
+        "incoming_message_ids": [
+          "434bfb20b173"
+        ]
+      }
+    }
+  ],
+  "communication_tokens": 146,
+  "wall_time_s": 3.8385641999775544,
+  "verified": true,
+  "revision_rounds": 0,
+  "model_calls": [
+    {
+      "role": "planner",
+      "attempt": 0,
+      "status": "delivered",
+      "error": "",
+      "raw_output": "G:total_trees;P:good_A=0.5*T*10*0.6,good_B=0.5*T*15*(1/3),total_good=good_A+good_B=55,solve_for=T;NL:Assume T is the total number of trees and the 50/50 split applies to that total.",
+      "finish_reason": "stop",
+      "output_tokens": 76,
+      "usage_available": true
+    },
+    {
+      "role": "solver",
+      "attempt": 0,
+      "status": "delivered",
+      "error": "",
+      "raw_output": "IR:good_A=0.5*T*10*0.6=3T,good_B=0.5*T*15*(1/3)=2.5T,total_good=3T+2.5T=5.5T=55,T=10;R:10",
+      "finish_reason": "stop",
+      "output_tokens": 65,
+      "usage_available": true
+    },
+    {
+      "role": "verifier",
+      "attempt": 0,
+      "status": "delivered",
+      "error": "",
+      "raw_output": "CHK:ACCEPT",
+      "finish_reason": "stop",
+      "output_tokens": 5,
+      "usage_available": true
+    }
+  ],
+  "failed_attempts": [],
+  "calls": 3,
+  "usage_complete": true,
+  "known_input_tokens": 2734,
+  "known_output_tokens": 146,
+  "model_input_tokens": 2734,
+  "model_output_tokens": 146,
+  "format_failed_calls": 0,
+  "transport_failed_calls": 0,
+  "fallback_calls": 0,
+  "sum_model_latency_s": 3.6925101280212402
+}

@@ -1,0 +1,151 @@
+{
+  "task_id": "gsm8k:train:seed42:G1:00009",
+  "status": "completed",
+  "error": null,
+  "prediction": "9",
+  "messages": [
+    {
+      "sender": "planner",
+      "content": "G:tail_length;P:body=b,head=b/6,tail=b/2,total=b+b/6+b/2=30,solve_for_b_then_tail=b/2",
+      "receiver": "solver",
+      "round": 0,
+      "role": "assistant",
+      "prompt_tokens": 747,
+      "completion_tokens": 41,
+      "id": "6f8173bff4e9",
+      "ts": 1793107609.592616,
+      "meta": {
+        "sender": "planner",
+        "receiver": "solver",
+        "message_id": "6f8173bff4e9",
+        "protocol_edge": "planner_to_solver",
+        "protocol_version": "CARD-0-gsm8k",
+        "protocol_hash": "4bcdae885cc464e0a51977368e4bc06650c0326dbdcb182ce0327477c1d32daa",
+        "contract_hash": "ab4b736240365db5d0ce2caea032f40a3b7fc9c189db42d5ebcd28cac0fac22b",
+        "fields": {
+          "G": "tail_length",
+          "P": "body=b,head=b/6,tail=b/2,total=b+b/6+b/2=30,solve_for_b_then_tail=b/2"
+        },
+        "communication_tokens": 41,
+        "communication_tokens_exact": true,
+        "attempt_count": 1,
+        "fallback": false,
+        "tokens_include_all_attempts": true,
+        "incoming_message_ids": []
+      }
+    },
+    {
+      "sender": "solver",
+      "content": "IR:total=b*(1+1/6+1/2)=b*5/3=30,b=18,tail=18/2=9;R:9",
+      "receiver": "verifier",
+      "round": 0,
+      "role": "assistant",
+      "prompt_tokens": 730,
+      "completion_tokens": 37,
+      "id": "454ff9fac0b6",
+      "ts": 1793107611.0364087,
+      "meta": {
+        "sender": "solver",
+        "receiver": "verifier",
+        "message_id": "454ff9fac0b6",
+        "protocol_edge": "solver_to_verifier",
+        "protocol_version": "CARD-0-gsm8k",
+        "protocol_hash": "4bcdae885cc464e0a51977368e4bc06650c0326dbdcb182ce0327477c1d32daa",
+        "contract_hash": "ab4b736240365db5d0ce2caea032f40a3b7fc9c189db42d5ebcd28cac0fac22b",
+        "fields": {
+          "IR": "total=b*(1+1/6+1/2)=b*5/3=30,b=18,tail=18/2=9",
+          "R": "9"
+        },
+        "communication_tokens": 37,
+        "communication_tokens_exact": true,
+        "attempt_count": 1,
+        "fallback": false,
+        "tokens_include_all_attempts": true,
+        "incoming_message_ids": [
+          "6f8173bff4e9"
+        ]
+      }
+    },
+    {
+      "sender": "verifier",
+      "content": "CHK:ACCEPT",
+      "receiver": "solver",
+      "round": 0,
+      "role": "assistant",
+      "prompt_tokens": 1092,
+      "completion_tokens": 5,
+      "id": "4e2a83ac3066",
+      "ts": 1793107612.1473465,
+      "meta": {
+        "sender": "verifier",
+        "receiver": "solver",
+        "message_id": "4e2a83ac3066",
+        "protocol_edge": "verifier_to_solver",
+        "protocol_version": "CARD-0-gsm8k",
+        "protocol_hash": "4bcdae885cc464e0a51977368e4bc06650c0326dbdcb182ce0327477c1d32daa",
+        "contract_hash": "ab4b736240365db5d0ce2caea032f40a3b7fc9c189db42d5ebcd28cac0fac22b",
+        "fields": {
+          "CHK": "ACCEPT"
+        },
+        "communication_tokens": 5,
+        "communication_tokens_exact": true,
+        "attempt_count": 1,
+        "fallback": false,
+        "tokens_include_all_attempts": true,
+        "incoming_message_ids": [
+          "454ff9fac0b6"
+        ]
+      }
+    }
+  ],
+  "communication_tokens": 83,
+  "wall_time_s": 4.179620399954729,
+  "verified": true,
+  "revision_rounds": 0,
+  "model_calls": [
+    {
+      "role": "planner",
+      "attempt": 0,
+      "status": "delivered",
+      "error": "",
+      "raw_output": "G:tail_length;P:body=b,head=b/6,tail=b/2,total=b+b/6+b/2=30,solve_for_b_then_tail=b/2",
+      "finish_reason": "stop",
+      "output_tokens": 41,
+      "usage_available": true
+    },
+    {
+      "role": "solver",
+      "attempt": 0,
+      "status": "delivered",
+      "error": "",
+      "raw_output": "IR:total=b*(1+1/6+1/2)=b*5/3=30,b=18,tail=18/2=9;R:9",
+      "finish_reason": "stop",
+      "output_tokens": 37,
+      "usage_available": true
+    },
+    {
+      "role": "verifier",
+      "attempt": 0,
+      "status": "delivered",
+      "error": "",
+      "raw_output": "CHK:ACCEPT",
+      "finish_reason": "stop",
+      "output_tokens": 5,
+      "usage_available": true
+    }
+  ],
+  "failed_attempts": [],
+  "calls": 3,
+  "usage_complete": true,
+  "known_input_tokens": 2569,
+  "known_output_tokens": 83,
+  "model_input_tokens": 2569,
+  "model_output_tokens": 83,
+  "format_failed_calls": 0,
+  "transport_failed_calls": 0,
+  "fallback_calls": 0,
+  "sum_model_latency_s": 3.992924928665161,
+  "gold": "9",
+  "score": 1.0,
+  "question": "Jason's dog has a tail that's half the length of its body, and a head that's 1/6 the length of its body. If the dog is 30 inches long overall, how long is its tail?\nGive the final numeric answer."
+}

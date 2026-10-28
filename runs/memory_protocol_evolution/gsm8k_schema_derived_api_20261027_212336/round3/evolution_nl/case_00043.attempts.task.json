@@ -1,0 +1,123 @@
+{
+  "task_id": "gsm8k:train:seed42:G3:00043",
+  "status": "completed",
+  "error": null,
+  "prediction": "210",
+  "messages": [
+    {
+      "sender": "planner",
+      "content": "Goal: Find the total number of apples bought by two men and three women.\n\nPlan: Each man bought 30 apples. Each woman bought 20 more apples than each man, so determine the per-woman amount, multiply by 3 women, multiply 30 by 2 men, then add the two totals.\n\nConstraints: Provide only the final numeric total.",
+      "receiver": "solver",
+      "round": 0,
+      "role": "assistant",
+      "prompt_tokens": 190,
+      "completion_tokens": 73,
+      "id": "3f1d17244ddc",
+      "ts": 1793112347.892107,
+      "meta": {
+        "fields": {},
+        "communication_tokens": 73,
+        "communication_tokens_exact": true,
+        "attempt_count": 1,
+        "fallback": false,
+        "tokens_include_all_attempts": true,
+        "incoming_message_ids": []
+      }
+    },
+    {
+      "sender": "solver",
+      "content": "Each man bought 30 apples, so the two men bought 2 × 30 = 60 apples. Each woman bought 20 more than each man, so 30 + 20 = 50 apples per woman. The three women bought 3 × 50 = 150 apples. Total: 60 + 150 = 210.\n\n\\boxed{210}",
+      "receiver": "verifier",
+      "round": 0,
+      "role": "assistant",
+      "prompt_tokens": 275,
+      "completion_tokens": 76,
+      "id": "92f6ed7962d8",
+      "ts": 1793112349.274047,
+      "meta": {
+        "fields": {
+          "R": "210"
+        },
+        "communication_tokens": 76,
+        "communication_tokens_exact": true,
+        "attempt_count": 1,
+        "fallback": false,
+        "tokens_include_all_attempts": true,
+        "incoming_message_ids": [
+          "3f1d17244ddc"
+        ]
+      }
+    },
+    {
+      "sender": "verifier",
+      "content": "ACCEPT",
+      "receiver": "solver",
+      "round": 0,
+      "role": "assistant",
+      "prompt_tokens": 655,
+      "completion_tokens": 2,
+      "id": "1a902e86fd46",
+      "ts": 1793112350.3793108,
+      "meta": {
+        "fields": {
+          "CHK": "ACCEPT"
+        },
+        "communication_tokens": 2,
+        "communication_tokens_exact": true,
+        "attempt_count": 1,
+        "fallback": false,
+        "tokens_include_all_attempts": true,
+        "incoming_message_ids": [
+          "92f6ed7962d8"
+        ]
+      }
+    }
+  ],
+  "communication_tokens": 151,
+  "wall_time_s": 4.480083500035107,
+  "verified": true,
+  "revision_rounds": 0,
+  "model_calls": [
+    {
+      "role": "planner",
+      "attempt": 0,
+      "status": "delivered",
+      "error": "",
+      "raw_output": "Goal: Find the total number of apples bought by two men and three women.\n\nPlan: Each man bought 30 apples. Each woman bought 20 more apples than each man, so determine the per-woman amount, multiply by 3 women, multiply 30 by 2 men, then add the two totals.\n\nConstraints: Provide only the final numeric total.",
+      "finish_reason": "stop",
+      "output_tokens": 73,
+      "usage_available": true
+    },
+    {
+      "role": "solver",
+      "attempt": 0,
+      "status": "delivered",
+      "error": "",
+      "raw_output": "Each man bought 30 apples, so the two men bought 2 × 30 = 60 apples. Each woman bought 20 more than each man, so 30 + 20 = 50 apples per woman. The three women bought 3 × 50 = 150 apples. Total: 60 + 150 = 210.\n\n\\boxed{210}",
+      "finish_reason": "stop",
+      "output_tokens": 76,
+      "usage_available": true
+    },
+    {
+      "role": "verifier",
+      "attempt": 0,
+      "status": "delivered",
+      "error": "",
+      "raw_output": "ACCEPT",
+      "finish_reason": "stop",
+      "output_tokens": 2,
+      "usage_available": true
+    }
+  ],
+  "failed_attempts": [],
+  "calls": 3,
+  "usage_complete": true,
+  "known_input_tokens": 1120,
+  "known_output_tokens": 151,
+  "model_input_tokens": 1120,
+  "model_output_tokens": 151,
+  "format_failed_calls": 0,
+  "transport_failed_calls": 0,
+  "fallback_calls": 0,
+  "sum_model_latency_s": 4.402362585067749
+}

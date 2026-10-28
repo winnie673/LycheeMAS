@@ -1,0 +1,148 @@
+{
+  "task_id": "gsm8k:train:seed42:V:00165",
+  "status": "completed",
+  "error": null,
+  "prediction": "7",
+  "messages": [
+    {
+      "sender": "planner",
+      "content": "G:Cape_May_sightings;P:26=5+3*Cape_May_sightings,Cape_May_sightings=(26-5)/3",
+      "receiver": "solver",
+      "round": 0,
+      "role": "assistant",
+      "prompt_tokens": 800,
+      "completion_tokens": 37,
+      "id": "e6275c0c3b10",
+      "ts": 1793109692.2372894,
+      "meta": {
+        "sender": "planner",
+        "receiver": "solver",
+        "message_id": "e6275c0c3b10",
+        "protocol_edge": "planner_to_solver",
+        "protocol_version": "CARD-1-gsm8k",
+        "protocol_hash": "2a663f41d251a442e680de67a231e516a8fe5e31629bc25d021c8c0eb1354cff",
+        "contract_hash": "ab4b736240365db5d0ce2caea032f40a3b7fc9c189db42d5ebcd28cac0fac22b",
+        "fields": {
+          "G": "Cape_May_sightings",
+          "P": "26=5+3*Cape_May_sightings,Cape_May_sightings=(26-5)/3"
+        },
+        "communication_tokens": 37,
+        "communication_tokens_exact": true,
+        "attempt_count": 1,
+        "fallback": false,
+        "tokens_include_all_attempts": true,
+        "incoming_message_ids": []
+      }
+    },
+    {
+      "sender": "solver",
+      "content": "IR:cape_may=(26-5)/3=7;R:7",
+      "receiver": "verifier",
+      "round": 0,
+      "role": "assistant",
+      "prompt_tokens": 720,
+      "completion_tokens": 17,
+      "id": "4a9666a2dcbc",
+      "ts": 1793109694.568875,
+      "meta": {
+        "sender": "solver",
+        "receiver": "verifier",
+        "message_id": "4a9666a2dcbc",
+        "protocol_edge": "solver_to_verifier",
+        "protocol_version": "CARD-1-gsm8k",
+        "protocol_hash": "2a663f41d251a442e680de67a231e516a8fe5e31629bc25d021c8c0eb1354cff",
+        "contract_hash": "ab4b736240365db5d0ce2caea032f40a3b7fc9c189db42d5ebcd28cac0fac22b",
+        "fields": {
+          "IR": "cape_may=(26-5)/3=7",
+          "R": "7"
+        },
+        "communication_tokens": 17,
+        "communication_tokens_exact": true,
+        "attempt_count": 1,
+        "fallback": false,
+        "tokens_include_all_attempts": true,
+        "incoming_message_ids": [
+          "e6275c0c3b10"
+        ]
+      }
+    },
+    {
+      "sender": "verifier",
+      "content": "CHK:ACCEPT",
+      "receiver": "solver",
+      "round": 0,
+      "role": "assistant",
+      "prompt_tokens": 1066,
+      "completion_tokens": 5,
+      "id": "dcaa1bebee15",
+      "ts": 1793109695.737791,
+      "meta": {
+        "sender": "verifier",
+        "receiver": "solver",
+        "message_id": "dcaa1bebee15",
+        "protocol_edge": "verifier_to_solver",
+        "protocol_version": "CARD-1-gsm8k",
+        "protocol_hash": "2a663f41d251a442e680de67a231e516a8fe5e31629bc25d021c8c0eb1354cff",
+        "contract_hash": "ab4b736240365db5d0ce2caea032f40a3b7fc9c189db42d5ebcd28cac0fac22b",
+        "fields": {
+          "CHK": "ACCEPT"
+        },
+        "communication_tokens": 5,
+        "communication_tokens_exact": true,
+        "attempt_count": 1,
+        "fallback": false,
+        "tokens_include_all_attempts": true,
+        "incoming_message_ids": [
+          "4a9666a2dcbc"
+        ]
+      }
+    }
+  ],
+  "communication_tokens": 59,
+  "wall_time_s": 5.076181899989024,
+  "verified": true,
+  "revision_rounds": 0,
+  "model_calls": [
+    {
+      "role": "planner",
+      "attempt": 0,
+      "status": "delivered",
+      "error": "",
+      "raw_output": "G:Cape_May_sightings;P:26=5+3*Cape_May_sightings,Cape_May_sightings=(26-5)/3",
+      "finish_reason": "stop",
+      "output_tokens": 37,
+      "usage_available": true
+    },
+    {
+      "role": "solver",
+      "attempt": 0,
+      "status": "delivered",
+      "error": "",
+      "raw_output": "IR:cape_may=(26-5)/3=7;R:7",
+      "finish_reason": "stop",
+      "output_tokens": 17,
+      "usage_available": true
+    },
+    {
+      "role": "verifier",
+      "attempt": 0,
+      "status": "delivered",
+      "error": "",
+      "raw_output": "CHK:ACCEPT",
+      "finish_reason": "stop",
+      "output_tokens": 5,
+      "usage_available": true
+    }
+  ],
+  "failed_attempts": [],
+  "calls": 3,
+  "usage_complete": true,
+  "known_input_tokens": 2586,
+  "known_output_tokens": 59,
+  "model_input_tokens": 2586,
+  "model_output_tokens": 59,
+  "format_failed_calls": 0,
+  "transport_failed_calls": 0,
+  "fallback_calls": 0,
+  "sum_model_latency_s": 4.9148852825164795
+}

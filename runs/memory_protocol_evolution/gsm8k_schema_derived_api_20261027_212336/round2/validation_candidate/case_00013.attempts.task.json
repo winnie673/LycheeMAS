@@ -1,0 +1,150 @@
+{
+  "task_id": "gsm8k:train:seed42:V:00013",
+  "status": "completed",
+  "error": null,
+  "prediction": "180",
+  "messages": [
+    {
+      "sender": "planner",
+      "content": "G:weekly_miles;P:school_roundtrip=20,supermarket_roundtrip=20+2*10,weekly_miles=5*school_roundtrip+2*supermarket_roundtrip;NL:School trip occurs 5 mornings plus 2 afternoons equals 5 school round trips per week.",
+      "receiver": "solver",
+      "round": 0,
+      "role": "assistant",
+      "prompt_tokens": 880,
+      "completion_tokens": 73,
+      "id": "d1ef604f5e9a",
+      "ts": 1793111173.9275002,
+      "meta": {
+        "sender": "planner",
+        "receiver": "solver",
+        "message_id": "d1ef604f5e9a",
+        "protocol_edge": "planner_to_solver",
+        "protocol_version": "CARD-2-gsm8k",
+        "protocol_hash": "aec703067bbfeee6aa1e642a2a319658f1d33f2eff00c8701de19347f616ed6d",
+        "contract_hash": "ab4b736240365db5d0ce2caea032f40a3b7fc9c189db42d5ebcd28cac0fac22b",
+        "fields": {
+          "G": "weekly_miles",
+          "P": "school_roundtrip=20,supermarket_roundtrip=20+2*10,weekly_miles=5*school_roundtrip+2*supermarket_roundtrip",
+          "NL": "School trip occurs 5 mornings plus 2 afternoons equals 5 school round trips per week."
+        },
+        "communication_tokens": 73,
+        "communication_tokens_exact": true,
+        "attempt_count": 1,
+        "fallback": false,
+        "tokens_include_all_attempts": true,
+        "incoming_message_ids": []
+      }
+    },
+    {
+      "sender": "solver",
+      "content": "IR:supermarket_roundtrip=20+2*10=40,weekly_miles=5*20+2*40=180;R:180;NL:School trip occurs 5 mornings plus 2 afternoons equals 5 school round trips per week.",
+      "receiver": "verifier",
+      "round": 0,
+      "role": "assistant",
+      "prompt_tokens": 771,
+      "completion_tokens": 58,
+      "id": "efb735578b41",
+      "ts": 1793111175.156156,
+      "meta": {
+        "sender": "solver",
+        "receiver": "verifier",
+        "message_id": "efb735578b41",
+        "protocol_edge": "solver_to_verifier",
+        "protocol_version": "CARD-2-gsm8k",
+        "protocol_hash": "aec703067bbfeee6aa1e642a2a319658f1d33f2eff00c8701de19347f616ed6d",
+        "contract_hash": "ab4b736240365db5d0ce2caea032f40a3b7fc9c189db42d5ebcd28cac0fac22b",
+        "fields": {
+          "IR": "supermarket_roundtrip=20+2*10=40,weekly_miles=5*20+2*40=180",
+          "R": "180",
+          "NL": "School trip occurs 5 mornings plus 2 afternoons equals 5 school round trips per week."
+        },
+        "communication_tokens": 58,
+        "communication_tokens_exact": true,
+        "attempt_count": 1,
+        "fallback": false,
+        "tokens_include_all_attempts": true,
+        "incoming_message_ids": [
+          "d1ef604f5e9a"
+        ]
+      }
+    },
+    {
+      "sender": "verifier",
+      "content": "CHK:ACCEPT",
+      "receiver": "solver",
+      "round": 0,
+      "role": "assistant",
+      "prompt_tokens": 1122,
+      "completion_tokens": 5,
+      "id": "1396d7442b23",
+      "ts": 1793111175.9761088,
+      "meta": {
+        "sender": "verifier",
+        "receiver": "solver",
+        "message_id": "1396d7442b23",
+        "protocol_edge": "verifier_to_solver",
+        "protocol_version": "CARD-2-gsm8k",
+        "protocol_hash": "aec703067bbfeee6aa1e642a2a319658f1d33f2eff00c8701de19347f616ed6d",
+        "contract_hash": "ab4b736240365db5d0ce2caea032f40a3b7fc9c189db42d5ebcd28cac0fac22b",
+        "fields": {
+          "CHK": "ACCEPT"
+        },
+        "communication_tokens": 5,
+        "communication_tokens_exact": true,
+        "attempt_count": 1,
+        "fallback": false,
+        "tokens_include_all_attempts": true,
+        "incoming_message_ids": [
+          "efb735578b41"
+        ]
+      }
+    }
+  ],
+  "communication_tokens": 136,
+  "wall_time_s": 4.279743900056928,
+  "verified": true,
+  "revision_rounds": 0,
+  "model_calls": [
+    {
+      "role": "planner",
+      "attempt": 0,
+      "status": "delivered",
+      "error": "",
+      "raw_output": "G:weekly_miles;P:school_roundtrip=20,supermarket_roundtrip=20+2*10,weekly_miles=5*school_roundtrip+2*supermarket_roundtrip;NL:School trip occurs 5 mornings plus 2 afternoons equals 5 school round trips per week.",
+      "finish_reason": "stop",
+      "output_tokens": 73,
+      "usage_available": true
+    },
+    {
+      "role": "solver",
+      "attempt": 0,
+      "status": "delivered",
+      "error": "",
+      "raw_output": "IR:supermarket_roundtrip=20+2*10=40,weekly_miles=5*20+2*40=180;R:180;NL:School trip occurs 5 mornings plus 2 afternoons equals 5 school round trips per week.",
+      "finish_reason": "stop",
+      "output_tokens": 58,
+      "usage_available": true
+    },
+    {
+      "role": "verifier",
+      "attempt": 0,
+      "status": "delivered",
+      "error": "",
+      "raw_output": "CHK:ACCEPT",
+      "finish_reason": "stop",
+      "output_tokens": 5,
+      "usage_available": true
+    }
+  ],
+  "failed_attempts": [],
+  "calls": 3,
+  "usage_complete": true,
+  "known_input_tokens": 2773,
+  "known_output_tokens": 136,
+  "model_input_tokens": 2773,
+  "model_output_tokens": 136,
+  "format_failed_calls": 0,
+  "transport_failed_calls": 0,
+  "fallback_calls": 0,
+  "sum_model_latency_s": 4.201913595199585
+}

@@ -1,0 +1,148 @@
+{
+  "task_id": "gsm8k:train:seed42:V:00163",
+  "status": "completed",
+  "error": null,
+  "prediction": "100",
+  "messages": [
+    {
+      "sender": "planner",
+      "content": "G:number_of_dresses_Alex_can_make;P:total_silk=600,friend_silk=5*20,remaining_silk=total_silk-friend_silk,dresses=remaining_silk/5",
+      "receiver": "solver",
+      "round": 0,
+      "role": "assistant",
+      "prompt_tokens": 770,
+      "completion_tokens": 48,
+      "id": "2fa5834296ac",
+      "ts": 1793113056.0643988,
+      "meta": {
+        "sender": "planner",
+        "receiver": "solver",
+        "message_id": "2fa5834296ac",
+        "protocol_edge": "planner_to_solver",
+        "protocol_version": "CARD-0-gsm8k",
+        "protocol_hash": "4bcdae885cc464e0a51977368e4bc06650c0326dbdcb182ce0327477c1d32daa",
+        "contract_hash": "ab4b736240365db5d0ce2caea032f40a3b7fc9c189db42d5ebcd28cac0fac22b",
+        "fields": {
+          "G": "number_of_dresses_Alex_can_make",
+          "P": "total_silk=600,friend_silk=5*20,remaining_silk=total_silk-friend_silk,dresses=remaining_silk/5"
+        },
+        "communication_tokens": 48,
+        "communication_tokens_exact": true,
+        "attempt_count": 1,
+        "fallback": false,
+        "tokens_include_all_attempts": true,
+        "incoming_message_ids": []
+      }
+    },
+    {
+      "sender": "solver",
+      "content": "IR:friend_silk=5*20=100,remaining_silk=600-100=500,dresses=500/5=100;R:100",
+      "receiver": "verifier",
+      "round": 0,
+      "role": "assistant",
+      "prompt_tokens": 760,
+      "completion_tokens": 33,
+      "id": "a20a5a63ac78",
+      "ts": 1793113057.1232693,
+      "meta": {
+        "sender": "solver",
+        "receiver": "verifier",
+        "message_id": "a20a5a63ac78",
+        "protocol_edge": "solver_to_verifier",
+        "protocol_version": "CARD-0-gsm8k",
+        "protocol_hash": "4bcdae885cc464e0a51977368e4bc06650c0326dbdcb182ce0327477c1d32daa",
+        "contract_hash": "ab4b736240365db5d0ce2caea032f40a3b7fc9c189db42d5ebcd28cac0fac22b",
+        "fields": {
+          "IR": "friend_silk=5*20=100,remaining_silk=600-100=500,dresses=500/5=100",
+          "R": "100"
+        },
+        "communication_tokens": 33,
+        "communication_tokens_exact": true,
+        "attempt_count": 1,
+        "fallback": false,
+        "tokens_include_all_attempts": true,
+        "incoming_message_ids": [
+          "2fa5834296ac"
+        ]
+      }
+    },
+    {
+      "sender": "verifier",
+      "content": "CHK:ACCEPT",
+      "receiver": "solver",
+      "round": 0,
+      "role": "assistant",
+      "prompt_tokens": 1111,
+      "completion_tokens": 5,
+      "id": "1a103848ac15",
+      "ts": 1793113058.289078,
+      "meta": {
+        "sender": "verifier",
+        "receiver": "solver",
+        "message_id": "1a103848ac15",
+        "protocol_edge": "verifier_to_solver",
+        "protocol_version": "CARD-0-gsm8k",
+        "protocol_hash": "4bcdae885cc464e0a51977368e4bc06650c0326dbdcb182ce0327477c1d32daa",
+        "contract_hash": "ab4b736240365db5d0ce2caea032f40a3b7fc9c189db42d5ebcd28cac0fac22b",
+        "fields": {
+          "CHK": "ACCEPT"
+        },
+        "communication_tokens": 5,
+        "communication_tokens_exact": true,
+        "attempt_count": 1,
+        "fallback": false,
+        "tokens_include_all_attempts": true,
+        "incoming_message_ids": [
+          "a20a5a63ac78"
+        ]
+      }
+    }
+  ],
+  "communication_tokens": 86,
+  "wall_time_s": 3.4254472999600694,
+  "verified": true,
+  "revision_rounds": 0,
+  "model_calls": [
+    {
+      "role": "planner",
+      "attempt": 0,
+      "status": "delivered",
+      "error": "",
+      "raw_output": "G:number_of_dresses_Alex_can_make;P:total_silk=600,friend_silk=5*20,remaining_silk=total_silk-friend_silk,dresses=remaining_silk/5",
+      "finish_reason": "stop",
+      "output_tokens": 48,
+      "usage_available": true
+    },
+    {
+      "role": "solver",
+      "attempt": 0,
+      "status": "delivered",
+      "error": "",
+      "raw_output": "IR:friend_silk=5*20=100,remaining_silk=600-100=500,dresses=500/5=100;R:100",
+      "finish_reason": "stop",
+      "output_tokens": 33,
+      "usage_available": true
+    },
+    {
+      "role": "verifier",
+      "attempt": 0,
+      "status": "delivered",
+      "error": "",
+      "raw_output": "CHK:ACCEPT",
+      "finish_reason": "stop",
+      "output_tokens": 5,
+      "usage_available": true
+    }
+  ],
+  "failed_attempts": [],
+  "calls": 3,
+  "usage_complete": true,
+  "known_input_tokens": 2641,
+  "known_output_tokens": 86,
+  "model_input_tokens": 2641,
+  "model_output_tokens": 86,
+  "format_failed_calls": 0,
+  "transport_failed_calls": 0,
+  "fallback_calls": 0,
+  "sum_model_latency_s": 3.2564399242401123
+}

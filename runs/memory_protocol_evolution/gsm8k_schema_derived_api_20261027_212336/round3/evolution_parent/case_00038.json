@@ -1,0 +1,151 @@
+{
+  "task_id": "gsm8k:train:seed42:G3:00038",
+  "status": "completed",
+  "error": null,
+  "prediction": "45",
+  "messages": [
+    {
+      "sender": "planner",
+      "content": "G:total_gumballs;P:todd=4,alisha=2*todd,bobby=4*alisha-5,total=todd+alisha+bobby+6",
+      "receiver": "solver",
+      "round": 0,
+      "role": "assistant",
+      "prompt_tokens": 780,
+      "completion_tokens": 39,
+      "id": "eb45933244ca",
+      "ts": 1793112106.0598743,
+      "meta": {
+        "sender": "planner",
+        "receiver": "solver",
+        "message_id": "eb45933244ca",
+        "protocol_edge": "planner_to_solver",
+        "protocol_version": "CARD-0-gsm8k",
+        "protocol_hash": "4bcdae885cc464e0a51977368e4bc06650c0326dbdcb182ce0327477c1d32daa",
+        "contract_hash": "ab4b736240365db5d0ce2caea032f40a3b7fc9c189db42d5ebcd28cac0fac22b",
+        "fields": {
+          "G": "total_gumballs",
+          "P": "todd=4,alisha=2*todd,bobby=4*alisha-5,total=todd+alisha+bobby+6"
+        },
+        "communication_tokens": 39,
+        "communication_tokens_exact": true,
+        "attempt_count": 1,
+        "fallback": false,
+        "tokens_include_all_attempts": true,
+        "incoming_message_ids": []
+      }
+    },
+    {
+      "sender": "solver",
+      "content": "IR:todd=4,alisha=2*4=8,bobby=4*8-5=27,total=4+8+27+6=45;R:45",
+      "receiver": "verifier",
+      "round": 0,
+      "role": "assistant",
+      "prompt_tokens": 761,
+      "completion_tokens": 40,
+      "id": "46913c336457",
+      "ts": 1793112107.1986246,
+      "meta": {
+        "sender": "solver",
+        "receiver": "verifier",
+        "message_id": "46913c336457",
+        "protocol_edge": "solver_to_verifier",
+        "protocol_version": "CARD-0-gsm8k",
+        "protocol_hash": "4bcdae885cc464e0a51977368e4bc06650c0326dbdcb182ce0327477c1d32daa",
+        "contract_hash": "ab4b736240365db5d0ce2caea032f40a3b7fc9c189db42d5ebcd28cac0fac22b",
+        "fields": {
+          "IR": "todd=4,alisha=2*4=8,bobby=4*8-5=27,total=4+8+27+6=45",
+          "R": "45"
+        },
+        "communication_tokens": 40,
+        "communication_tokens_exact": true,
+        "attempt_count": 1,
+        "fallback": false,
+        "tokens_include_all_attempts": true,
+        "incoming_message_ids": [
+          "eb45933244ca"
+        ]
+      }
+    },
+    {
+      "sender": "verifier",
+      "content": "CHK:ACCEPT",
+      "receiver": "solver",
+      "round": 0,
+      "role": "assistant",
+      "prompt_tokens": 1128,
+      "completion_tokens": 5,
+      "id": "5b590829b60d",
+      "ts": 1793112108.2247803,
+      "meta": {
+        "sender": "verifier",
+        "receiver": "solver",
+        "message_id": "5b590829b60d",
+        "protocol_edge": "verifier_to_solver",
+        "protocol_version": "CARD-0-gsm8k",
+        "protocol_hash": "4bcdae885cc464e0a51977368e4bc06650c0326dbdcb182ce0327477c1d32daa",
+        "contract_hash": "ab4b736240365db5d0ce2caea032f40a3b7fc9c189db42d5ebcd28cac0fac22b",
+        "fields": {
+          "CHK": "ACCEPT"
+        },
+        "communication_tokens": 5,
+        "communication_tokens_exact": true,
+        "attempt_count": 1,
+        "fallback": false,
+        "tokens_include_all_attempts": true,
+        "incoming_message_ids": [
+          "46913c336457"
+        ]
+      }
+    }
+  ],
+  "communication_tokens": 84,
+  "wall_time_s": 3.493776199989952,
+  "verified": true,
+  "revision_rounds": 0,
+  "model_calls": [
+    {
+      "role": "planner",
+      "attempt": 0,
+      "status": "delivered",
+      "error": "",
+      "raw_output": "G:total_gumballs;P:todd=4,alisha=2*todd,bobby=4*alisha-5,total=todd+alisha+bobby+6",
+      "finish_reason": "stop",
+      "output_tokens": 39,
+      "usage_available": true
+    },
+    {
+      "role": "solver",
+      "attempt": 0,
+      "status": "delivered",
+      "error": "",
+      "raw_output": "IR:todd=4,alisha=2*4=8,bobby=4*8-5=27,total=4+8+27+6=45;R:45",
+      "finish_reason": "stop",
+      "output_tokens": 40,
+      "usage_available": true
+    },
+    {
+      "role": "verifier",
+      "attempt": 0,
+      "status": "delivered",
+      "error": "",
+      "raw_output": "CHK:ACCEPT",
+      "finish_reason": "stop",
+      "output_tokens": 5,
+      "usage_available": true
+    }
+  ],
+  "failed_attempts": [],
+  "calls": 3,
+  "usage_complete": true,
+  "known_input_tokens": 2669,
+  "known_output_tokens": 84,
+  "model_input_tokens": 2669,
+  "model_output_tokens": 84,
+  "format_failed_calls": 0,
+  "transport_failed_calls": 0,
+  "fallback_calls": 0,
+  "sum_model_latency_s": 3.4048049449920654,
+  "gold": "45",
+  "score": 1.0,
+  "question": "Hector purchased a container of gumballs.  He gave 4 to Todd, then he gave twice as many as he had given Todd to Alisha, and then he gave 5 less than four times as many to Bobby as he had given to Alisha.  If Hector had 6 gumballs remaining, what is the total number of gumballs that Hector purchased?\nGive the final numeric answer."
+}

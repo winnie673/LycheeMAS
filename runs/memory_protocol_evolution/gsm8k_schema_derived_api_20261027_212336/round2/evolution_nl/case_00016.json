@@ -1,0 +1,126 @@
+{
+  "task_id": "gsm8k:train:seed42:G2:00016",
+  "status": "completed",
+  "error": null,
+  "prediction": "160",
+  "messages": [
+    {
+      "sender": "planner",
+      "content": "Goal: Determine how much money John has left after earning dog-walking pay in April and then spending on books and giving an equal amount to Kaylee.\n\nPlan: Calculate the number of days John actually walked the dog in April by taking 30 days and subtracting the 4 Sundays. Multiply that number of days by the daily pay of $10 to get total earnings. Then subtract $50 for books and another $50 given to Kaylee. Report the remaining amount.\n\nConstraints: Use April as 30 days. Do not count the 4 Sundays. The sister receives the same amount as the books, $50. Provide only the final numeric answer.",
+      "receiver": "solver",
+      "round": 0,
+      "role": "assistant",
+      "prompt_tokens": 215,
+      "completion_tokens": 131,
+      "id": "60e110457b34",
+      "ts": 1793110114.479977,
+      "meta": {
+        "fields": {},
+        "communication_tokens": 131,
+        "communication_tokens_exact": true,
+        "attempt_count": 1,
+        "fallback": false,
+        "tokens_include_all_attempts": true,
+        "incoming_message_ids": []
+      }
+    },
+    {
+      "sender": "solver",
+      "content": "John walked 30 − 4 = 26 days, earning 26 × $10 = $260. He spent $50 on books and gave $50 to Kaylee, totaling $100. He had $260 − $100 = $160 left.\n\n\\boxed{160}",
+      "receiver": "verifier",
+      "round": 0,
+      "role": "assistant",
+      "prompt_tokens": 358,
+      "completion_tokens": 58,
+      "id": "036541e32abe",
+      "ts": 1793110115.945503,
+      "meta": {
+        "fields": {
+          "R": "160"
+        },
+        "communication_tokens": 58,
+        "communication_tokens_exact": true,
+        "attempt_count": 1,
+        "fallback": false,
+        "tokens_include_all_attempts": true,
+        "incoming_message_ids": [
+          "60e110457b34"
+        ]
+      }
+    },
+    {
+      "sender": "verifier",
+      "content": "ACCEPT",
+      "receiver": "solver",
+      "round": 0,
+      "role": "assistant",
+      "prompt_tokens": 662,
+      "completion_tokens": 2,
+      "id": "49b8e3004b84",
+      "ts": 1793110116.9869404,
+      "meta": {
+        "fields": {
+          "CHK": "ACCEPT"
+        },
+        "communication_tokens": 2,
+        "communication_tokens_exact": true,
+        "attempt_count": 1,
+        "fallback": false,
+        "tokens_include_all_attempts": true,
+        "incoming_message_ids": [
+          "036541e32abe"
+        ]
+      }
+    }
+  ],
+  "communication_tokens": 191,
+  "wall_time_s": 4.512894800049253,
+  "verified": true,
+  "revision_rounds": 0,
+  "model_calls": [
+    {
+      "role": "planner",
+      "attempt": 0,
+      "status": "delivered",
+      "error": "",
+      "raw_output": "Goal: Determine how much money John has left after earning dog-walking pay in April and then spending on books and giving an equal amount to Kaylee.\n\nPlan: Calculate the number of days John actually walked the dog in April by taking 30 days and subtracting the 4 Sundays. Multiply that number of days by the daily pay of $10 to get total earnings. Then subtract $50 for books and another $50 given to Kaylee. Report the remaining amount.\n\nConstraints: Use April as 30 days. Do not count the 4 Sundays. The sister receives the same amount as the books, $50. Provide only the final numeric answer.",
+      "finish_reason": "stop",
+      "output_tokens": 131,
+      "usage_available": true
+    },
+    {
+      "role": "solver",
+      "attempt": 0,
+      "status": "delivered",
+      "error": "",
+      "raw_output": "John walked 30 − 4 = 26 days, earning 26 × $10 = $260. He spent $50 on books and gave $50 to Kaylee, totaling $100. He had $260 − $100 = $160 left.\n\n\\boxed{160}",
+      "finish_reason": "stop",
+      "output_tokens": 58,
+      "usage_available": true
+    },
+    {
+      "role": "verifier",
+      "attempt": 0,
+      "status": "delivered",
+      "error": "",
+      "raw_output": "ACCEPT",
+      "finish_reason": "stop",
+      "output_tokens": 2,
+      "usage_available": true
+    }
+  ],
+  "failed_attempts": [],
+  "calls": 3,
+  "usage_complete": true,
+  "known_input_tokens": 1235,
+  "known_output_tokens": 191,
+  "model_input_tokens": 1235,
+  "model_output_tokens": 191,
+  "format_failed_calls": 0,
+  "transport_failed_calls": 0,
+  "fallback_calls": 0,
+  "sum_model_latency_s": 4.445836305618286,
+  "gold": "160",
+  "score": 1.0,
+  "question": "John's neighbor tells him to walk his dog for 1 hour each day for a total of $10. He does this for April, save for the 4 Sundays in April. He later spent $50 on books and gave his sister Kaylee the same amount. How much money did John have left?\nGive the final numeric answer."
+}

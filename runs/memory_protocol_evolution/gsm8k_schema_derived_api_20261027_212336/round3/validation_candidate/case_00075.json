@@ -1,0 +1,151 @@
+{
+  "task_id": "gsm8k:train:seed42:V:00075",
+  "status": "completed",
+  "error": null,
+  "prediction": "6",
+  "messages": [
+    {
+      "sender": "planner",
+      "content": "G:combined_weight_of_Oliver_bags;P:oliver_bag=18/6,combined=2*oliver_bag",
+      "receiver": "solver",
+      "round": 0,
+      "role": "assistant",
+      "prompt_tokens": 783,
+      "completion_tokens": 29,
+      "id": "04e450e99c0b",
+      "ts": 1793168557.0089705,
+      "meta": {
+        "sender": "planner",
+        "receiver": "solver",
+        "message_id": "04e450e99c0b",
+        "protocol_edge": "planner_to_solver",
+        "protocol_version": "CARD-3-gsm8k",
+        "protocol_hash": "fb1a4acb6e591ac96544876aedd912b27a6f9d3154c76112e1da0f43407d27b2",
+        "contract_hash": "ab4b736240365db5d0ce2caea032f40a3b7fc9c189db42d5ebcd28cac0fac22b",
+        "fields": {
+          "G": "combined_weight_of_Oliver_bags",
+          "P": "oliver_bag=18/6,combined=2*oliver_bag"
+        },
+        "communication_tokens": 29,
+        "communication_tokens_exact": true,
+        "attempt_count": 1,
+        "fallback": false,
+        "tokens_include_all_attempts": true,
+        "incoming_message_ids": []
+      }
+    },
+    {
+      "sender": "solver",
+      "content": "IR:oliver_bag=18/6=3,combined=2*3=6;R:6",
+      "receiver": "verifier",
+      "round": 0,
+      "role": "assistant",
+      "prompt_tokens": 712,
+      "completion_tokens": 24,
+      "id": "1adb9f7fa5dc",
+      "ts": 1793168558.147794,
+      "meta": {
+        "sender": "solver",
+        "receiver": "verifier",
+        "message_id": "1adb9f7fa5dc",
+        "protocol_edge": "solver_to_verifier",
+        "protocol_version": "CARD-3-gsm8k",
+        "protocol_hash": "fb1a4acb6e591ac96544876aedd912b27a6f9d3154c76112e1da0f43407d27b2",
+        "contract_hash": "ab4b736240365db5d0ce2caea032f40a3b7fc9c189db42d5ebcd28cac0fac22b",
+        "fields": {
+          "IR": "oliver_bag=18/6=3,combined=2*3=6",
+          "R": "6"
+        },
+        "communication_tokens": 24,
+        "communication_tokens_exact": true,
+        "attempt_count": 1,
+        "fallback": false,
+        "tokens_include_all_attempts": true,
+        "incoming_message_ids": [
+          "04e450e99c0b"
+        ]
+      }
+    },
+    {
+      "sender": "verifier",
+      "content": "CHK:ACCEPT",
+      "receiver": "solver",
+      "round": 0,
+      "role": "assistant",
+      "prompt_tokens": 1073,
+      "completion_tokens": 5,
+      "id": "e789a1a2a30a",
+      "ts": 1793168559.0778615,
+      "meta": {
+        "sender": "verifier",
+        "receiver": "solver",
+        "message_id": "e789a1a2a30a",
+        "protocol_edge": "verifier_to_solver",
+        "protocol_version": "CARD-3-gsm8k",
+        "protocol_hash": "fb1a4acb6e591ac96544876aedd912b27a6f9d3154c76112e1da0f43407d27b2",
+        "contract_hash": "ab4b736240365db5d0ce2caea032f40a3b7fc9c189db42d5ebcd28cac0fac22b",
+        "fields": {
+          "CHK": "ACCEPT"
+        },
+        "communication_tokens": 5,
+        "communication_tokens_exact": true,
+        "attempt_count": 1,
+        "fallback": false,
+        "tokens_include_all_attempts": true,
+        "incoming_message_ids": [
+          "1adb9f7fa5dc"
+        ]
+      }
+    }
+  ],
+  "communication_tokens": 58,
+  "wall_time_s": 3.1626317999325693,
+  "verified": true,
+  "revision_rounds": 0,
+  "model_calls": [
+    {
+      "role": "planner",
+      "attempt": 0,
+      "status": "delivered",
+      "error": "",
+      "raw_output": "G:combined_weight_of_Oliver_bags;P:oliver_bag=18/6,combined=2*oliver_bag",
+      "finish_reason": "stop",
+      "output_tokens": 29,
+      "usage_available": true
+    },
+    {
+      "role": "solver",
+      "attempt": 0,
+      "status": "delivered",
+      "error": "",
+      "raw_output": "IR:oliver_bag=18/6=3,combined=2*3=6;R:6",
+      "finish_reason": "stop",
+      "output_tokens": 24,
+      "usage_available": true
+    },
+    {
+      "role": "verifier",
+      "attempt": 0,
+      "status": "delivered",
+      "error": "",
+      "raw_output": "CHK:ACCEPT",
+      "finish_reason": "stop",
+      "output_tokens": 5,
+      "usage_available": true
+    }
+  ],
+  "failed_attempts": [],
+  "calls": 3,
+  "usage_complete": true,
+  "known_input_tokens": 2568,
+  "known_output_tokens": 58,
+  "model_input_tokens": 2568,
+  "model_output_tokens": 58,
+  "format_failed_calls": 0,
+  "transport_failed_calls": 0,
+  "fallback_calls": 0,
+  "sum_model_latency_s": 3.0628914833068848,
+  "gold": "6",
+  "score": 1.0,
+  "question": "Oliver has two bags of vegetables. Each bag weighs 1/6 as much as James’s bag, which weighs 18kg. What is the combined weight of both Oliver’s bags?\nGive the final numeric answer."
+}

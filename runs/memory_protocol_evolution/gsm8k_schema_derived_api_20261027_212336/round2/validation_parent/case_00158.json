@@ -1,0 +1,153 @@
+{
+  "task_id": "gsm8k:train:seed42:V:00158",
+  "status": "completed",
+  "error": null,
+  "prediction": "3000",
+  "messages": [
+    {
+      "sender": "planner",
+      "content": "K:normal_monthly=500,income_rate=0.5,income_range=10001_to_40000,hourly=25,hours_per_week=30,weeks_per_month=4,months_per_year=12;G:annual_insurance_cost;P:monthly_income=hourly*hours_per_week*weeks_per_month,subsidy_rate=0.5,bill_monthly=normal_monthly*(1-subsidy_rate),annual_insurance_cost=bill_monthly*months_per_year;NL:Bill’s monthly income is $3000 so he falls in the 50% government-pay bracket.",
+      "receiver": "solver",
+      "round": 0,
+      "role": "assistant",
+      "prompt_tokens": 811,
+      "completion_tokens": 137,
+      "id": "5ad38b67b5f9",
+      "ts": 1793110949.6058,
+      "meta": {
+        "sender": "planner",
+        "receiver": "solver",
+        "message_id": "5ad38b67b5f9",
+        "protocol_edge": "planner_to_solver",
+        "protocol_version": "CARD-0-gsm8k",
+        "protocol_hash": "4bcdae885cc464e0a51977368e4bc06650c0326dbdcb182ce0327477c1d32daa",
+        "contract_hash": "ab4b736240365db5d0ce2caea032f40a3b7fc9c189db42d5ebcd28cac0fac22b",
+        "fields": {
+          "K": "normal_monthly=500,income_rate=0.5,income_range=10001_to_40000,hourly=25,hours_per_week=30,weeks_per_month=4,months_per_year=12",
+          "G": "annual_insurance_cost",
+          "P": "monthly_income=hourly*hours_per_week*weeks_per_month,subsidy_rate=0.5,bill_monthly=normal_monthly*(1-subsidy_rate),annual_insurance_cost=bill_monthly*months_per_year",
+          "NL": "Bill’s monthly income is $3000 so he falls in the 50% government-pay bracket."
+        },
+        "communication_tokens": 137,
+        "communication_tokens_exact": true,
+        "attempt_count": 1,
+        "fallback": false,
+        "tokens_include_all_attempts": true,
+        "incoming_message_ids": []
+      }
+    },
+    {
+      "sender": "solver",
+      "content": "IR:monthly_income=25*30*4=3000,subsidy_rate=0.5,bill_monthly=500*(1-0.5)=250,annual=250*12=3000;R:3000",
+      "receiver": "verifier",
+      "round": 0,
+      "role": "assistant",
+      "prompt_tokens": 890,
+      "completion_tokens": 52,
+      "id": "779b40375ed3",
+      "ts": 1793110950.9003658,
+      "meta": {
+        "sender": "solver",
+        "receiver": "verifier",
+        "message_id": "779b40375ed3",
+        "protocol_edge": "solver_to_verifier",
+        "protocol_version": "CARD-0-gsm8k",
+        "protocol_hash": "4bcdae885cc464e0a51977368e4bc06650c0326dbdcb182ce0327477c1d32daa",
+        "contract_hash": "ab4b736240365db5d0ce2caea032f40a3b7fc9c189db42d5ebcd28cac0fac22b",
+        "fields": {
+          "IR": "monthly_income=25*30*4=3000,subsidy_rate=0.5,bill_monthly=500*(1-0.5)=250,annual=250*12=3000",
+          "R": "3000"
+        },
+        "communication_tokens": 52,
+        "communication_tokens_exact": true,
+        "attempt_count": 1,
+        "fallback": false,
+        "tokens_include_all_attempts": true,
+        "incoming_message_ids": [
+          "5ad38b67b5f9"
+        ]
+      }
+    },
+    {
+      "sender": "verifier",
+      "content": "CHK:ACCEPT",
+      "receiver": "solver",
+      "round": 0,
+      "role": "assistant",
+      "prompt_tokens": 1171,
+      "completion_tokens": 5,
+      "id": "a8ef33f5bd5d",
+      "ts": 1793110951.9260557,
+      "meta": {
+        "sender": "verifier",
+        "receiver": "solver",
+        "message_id": "a8ef33f5bd5d",
+        "protocol_edge": "verifier_to_solver",
+        "protocol_version": "CARD-0-gsm8k",
+        "protocol_hash": "4bcdae885cc464e0a51977368e4bc06650c0326dbdcb182ce0327477c1d32daa",
+        "contract_hash": "ab4b736240365db5d0ce2caea032f40a3b7fc9c189db42d5ebcd28cac0fac22b",
+        "fields": {
+          "CHK": "ACCEPT"
+        },
+        "communication_tokens": 5,
+        "communication_tokens_exact": true,
+        "attempt_count": 1,
+        "fallback": false,
+        "tokens_include_all_attempts": true,
+        "incoming_message_ids": [
+          "779b40375ed3"
+        ]
+      }
+    }
+  ],
+  "communication_tokens": 194,
+  "wall_time_s": 4.415116999996826,
+  "verified": true,
+  "revision_rounds": 0,
+  "model_calls": [
+    {
+      "role": "planner",
+      "attempt": 0,
+      "status": "delivered",
+      "error": "",
+      "raw_output": "K:normal_monthly=500,income_rate=0.5,income_range=10001_to_40000,hourly=25,hours_per_week=30,weeks_per_month=4,months_per_year=12;G:annual_insurance_cost;P:monthly_income=hourly*hours_per_week*weeks_per_month,subsidy_rate=0.5,bill_monthly=normal_monthly*(1-subsidy_rate),annual_insurance_cost=bill_monthly*months_per_year;NL:Bill’s monthly income is $3000 so he falls in the 50% government-pay bracket.",
+      "finish_reason": "stop",
+      "output_tokens": 137,
+      "usage_available": true
+    },
+    {
+      "role": "solver",
+      "attempt": 0,
+      "status": "delivered",
+      "error": "",
+      "raw_output": "IR:monthly_income=25*30*4=3000,subsidy_rate=0.5,bill_monthly=500*(1-0.5)=250,annual=250*12=3000;R:3000",
+      "finish_reason": "stop",
+      "output_tokens": 52,
+      "usage_available": true
+    },
+    {
+      "role": "verifier",
+      "attempt": 0,
+      "status": "delivered",
+      "error": "",
+      "raw_output": "CHK:ACCEPT",
+      "finish_reason": "stop",
+      "output_tokens": 5,
+      "usage_available": true
+    }
+  ],
+  "failed_attempts": [],
+  "calls": 3,
+  "usage_complete": true,
+  "known_input_tokens": 2872,
+  "known_output_tokens": 194,
+  "model_input_tokens": 2872,
+  "model_output_tokens": 194,
+  "format_failed_calls": 0,
+  "transport_failed_calls": 0,
+  "fallback_calls": 0,
+  "sum_model_latency_s": 4.338740348815918,
+  "gold": "3000",
+  "score": 1.0,
+  "question": "Bill is buying healthcare on an exchange. The normal monthly price of the plan he wants is $500. The government will pay for part of this cost depending on Bill's income: 90% if he makes less than $10,000, 50% if he makes between $10,001 and $40,000, and 20% if he makes more than $50,000. Bill earns $25/hour and works 30 hours per week, four weeks per month. How much will Bill spend for health insurance in a year?\nGive the final numeric answer."
+}

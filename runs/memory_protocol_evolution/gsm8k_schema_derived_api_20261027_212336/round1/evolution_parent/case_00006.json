@@ -1,0 +1,151 @@
+{
+  "task_id": "gsm8k:train:seed42:G1:00006",
+  "status": "completed",
+  "error": null,
+  "prediction": "9",
+  "messages": [
+    {
+      "sender": "planner",
+      "content": "G:eggs_left;P:collected=4+3+2+2,eggs_left=collected-2",
+      "receiver": "solver",
+      "round": 0,
+      "role": "assistant",
+      "prompt_tokens": 766,
+      "completion_tokens": 27,
+      "id": "4bbb08cf7c2a",
+      "ts": 1793107597.9890287,
+      "meta": {
+        "sender": "planner",
+        "receiver": "solver",
+        "message_id": "4bbb08cf7c2a",
+        "protocol_edge": "planner_to_solver",
+        "protocol_version": "CARD-0-gsm8k",
+        "protocol_hash": "4bcdae885cc464e0a51977368e4bc06650c0326dbdcb182ce0327477c1d32daa",
+        "contract_hash": "ab4b736240365db5d0ce2caea032f40a3b7fc9c189db42d5ebcd28cac0fac22b",
+        "fields": {
+          "G": "eggs_left",
+          "P": "collected=4+3+2+2,eggs_left=collected-2"
+        },
+        "communication_tokens": 27,
+        "communication_tokens_exact": true,
+        "attempt_count": 1,
+        "fallback": false,
+        "tokens_include_all_attempts": true,
+        "incoming_message_ids": []
+      }
+    },
+    {
+      "sender": "solver",
+      "content": "IR:collected=4+3+2+2=11,eggs_left=11-2=9;R:9",
+      "receiver": "verifier",
+      "round": 0,
+      "role": "assistant",
+      "prompt_tokens": 735,
+      "completion_tokens": 28,
+      "id": "208b8cb3fa85",
+      "ts": 1793107598.9439883,
+      "meta": {
+        "sender": "solver",
+        "receiver": "verifier",
+        "message_id": "208b8cb3fa85",
+        "protocol_edge": "solver_to_verifier",
+        "protocol_version": "CARD-0-gsm8k",
+        "protocol_hash": "4bcdae885cc464e0a51977368e4bc06650c0326dbdcb182ce0327477c1d32daa",
+        "contract_hash": "ab4b736240365db5d0ce2caea032f40a3b7fc9c189db42d5ebcd28cac0fac22b",
+        "fields": {
+          "IR": "collected=4+3+2+2=11,eggs_left=11-2=9",
+          "R": "9"
+        },
+        "communication_tokens": 28,
+        "communication_tokens_exact": true,
+        "attempt_count": 1,
+        "fallback": false,
+        "tokens_include_all_attempts": true,
+        "incoming_message_ids": [
+          "4bbb08cf7c2a"
+        ]
+      }
+    },
+    {
+      "sender": "verifier",
+      "content": "CHK:ACCEPT",
+      "receiver": "solver",
+      "round": 0,
+      "role": "assistant",
+      "prompt_tokens": 1102,
+      "completion_tokens": 5,
+      "id": "80dac05098f0",
+      "ts": 1793107600.1727662,
+      "meta": {
+        "sender": "verifier",
+        "receiver": "solver",
+        "message_id": "80dac05098f0",
+        "protocol_edge": "verifier_to_solver",
+        "protocol_version": "CARD-0-gsm8k",
+        "protocol_hash": "4bcdae885cc464e0a51977368e4bc06650c0326dbdcb182ce0327477c1d32daa",
+        "contract_hash": "ab4b736240365db5d0ce2caea032f40a3b7fc9c189db42d5ebcd28cac0fac22b",
+        "fields": {
+          "CHK": "ACCEPT"
+        },
+        "communication_tokens": 5,
+        "communication_tokens_exact": true,
+        "attempt_count": 1,
+        "fallback": false,
+        "tokens_include_all_attempts": true,
+        "incoming_message_ids": [
+          "208b8cb3fa85"
+        ]
+      }
+    }
+  ],
+  "communication_tokens": 60,
+  "wall_time_s": 4.6109832000220194,
+  "verified": true,
+  "revision_rounds": 0,
+  "model_calls": [
+    {
+      "role": "planner",
+      "attempt": 0,
+      "status": "delivered",
+      "error": "",
+      "raw_output": "G:eggs_left;P:collected=4+3+2+2,eggs_left=collected-2",
+      "finish_reason": "stop",
+      "output_tokens": 27,
+      "usage_available": true
+    },
+    {
+      "role": "solver",
+      "attempt": 0,
+      "status": "delivered",
+      "error": "",
+      "raw_output": "IR:collected=4+3+2+2=11,eggs_left=11-2=9;R:9",
+      "finish_reason": "stop",
+      "output_tokens": 28,
+      "usage_available": true
+    },
+    {
+      "role": "verifier",
+      "attempt": 0,
+      "status": "delivered",
+      "error": "",
+      "raw_output": "CHK:ACCEPT",
+      "finish_reason": "stop",
+      "output_tokens": 5,
+      "usage_available": true
+    }
+  ],
+  "failed_attempts": [],
+  "calls": 3,
+  "usage_complete": true,
+  "known_input_tokens": 2603,
+  "known_output_tokens": 60,
+  "model_input_tokens": 2603,
+  "model_output_tokens": 60,
+  "format_failed_calls": 0,
+  "transport_failed_calls": 0,
+  "fallback_calls": 0,
+  "sum_model_latency_s": 4.468102693557739,
+  "gold": "9",
+  "score": 1.0,
+  "question": "It was Trevor's job to collect fresh eggs from the family's 4 chickens every morning.   He got 4 eggs from Gertrude and 3 eggs from Blanche.  Nancy laid 2 eggs as did Martha.  On the way, he dropped 2 eggs.  How many eggs did Trevor have left?\nGive the final numeric answer."
+}

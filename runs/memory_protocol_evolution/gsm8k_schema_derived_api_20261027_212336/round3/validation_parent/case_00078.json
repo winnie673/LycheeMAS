@@ -1,0 +1,152 @@
+{
+  "task_id": "gsm8k:train:seed42:V:00078",
+  "status": "completed",
+  "error": null,
+  "prediction": "3",
+  "messages": [
+    {
+      "sender": "planner",
+      "content": "G:extra_first_minus_second_after_eating;K:first_tank=48,first_tank=2*second_tank,one_gallon_per_inch,first_fish_len=3,second_fish_len=2,one_first_fish_eats_another;P:second_tank=first_tank/2,first_fish=first_tank/3,second_fish=second_tank/2,first_after=first_fish-1,extra=first_after-second_fish",
+      "receiver": "solver",
+      "round": 0,
+      "role": "assistant",
+      "prompt_tokens": 790,
+      "completion_tokens": 111,
+      "id": "c4869d43a02c",
+      "ts": 1793112712.6339645,
+      "meta": {
+        "sender": "planner",
+        "receiver": "solver",
+        "message_id": "c4869d43a02c",
+        "protocol_edge": "planner_to_solver",
+        "protocol_version": "CARD-0-gsm8k",
+        "protocol_hash": "4bcdae885cc464e0a51977368e4bc06650c0326dbdcb182ce0327477c1d32daa",
+        "contract_hash": "ab4b736240365db5d0ce2caea032f40a3b7fc9c189db42d5ebcd28cac0fac22b",
+        "fields": {
+          "G": "extra_first_minus_second_after_eating",
+          "K": "first_tank=48,first_tank=2*second_tank,one_gallon_per_inch,first_fish_len=3,second_fish_len=2,one_first_fish_eats_another",
+          "P": "second_tank=first_tank/2,first_fish=first_tank/3,second_fish=second_tank/2,first_after=first_fish-1,extra=first_after-second_fish"
+        },
+        "communication_tokens": 111,
+        "communication_tokens_exact": true,
+        "attempt_count": 1,
+        "fallback": false,
+        "tokens_include_all_attempts": true,
+        "incoming_message_ids": []
+      }
+    },
+    {
+      "sender": "solver",
+      "content": "IR:second_tank=48/2=24,first_fish=48/3=16,second_fish=24/2=12,first_after=16-1=15,extra=15-12=3;R:3",
+      "receiver": "verifier",
+      "round": 0,
+      "role": "assistant",
+      "prompt_tokens": 843,
+      "completion_tokens": 53,
+      "id": "b1e6a16d09e0",
+      "ts": 1793112713.8977141,
+      "meta": {
+        "sender": "solver",
+        "receiver": "verifier",
+        "message_id": "b1e6a16d09e0",
+        "protocol_edge": "solver_to_verifier",
+        "protocol_version": "CARD-0-gsm8k",
+        "protocol_hash": "4bcdae885cc464e0a51977368e4bc06650c0326dbdcb182ce0327477c1d32daa",
+        "contract_hash": "ab4b736240365db5d0ce2caea032f40a3b7fc9c189db42d5ebcd28cac0fac22b",
+        "fields": {
+          "IR": "second_tank=48/2=24,first_fish=48/3=16,second_fish=24/2=12,first_after=16-1=15,extra=15-12=3",
+          "R": "3"
+        },
+        "communication_tokens": 53,
+        "communication_tokens_exact": true,
+        "attempt_count": 1,
+        "fallback": false,
+        "tokens_include_all_attempts": true,
+        "incoming_message_ids": [
+          "c4869d43a02c"
+        ]
+      }
+    },
+    {
+      "sender": "verifier",
+      "content": "CHK:ACCEPT",
+      "receiver": "solver",
+      "round": 0,
+      "role": "assistant",
+      "prompt_tokens": 1151,
+      "completion_tokens": 5,
+      "id": "3e421ff44661",
+      "ts": 1793112714.8792253,
+      "meta": {
+        "sender": "verifier",
+        "receiver": "solver",
+        "message_id": "3e421ff44661",
+        "protocol_edge": "verifier_to_solver",
+        "protocol_version": "CARD-0-gsm8k",
+        "protocol_hash": "4bcdae885cc464e0a51977368e4bc06650c0326dbdcb182ce0327477c1d32daa",
+        "contract_hash": "ab4b736240365db5d0ce2caea032f40a3b7fc9c189db42d5ebcd28cac0fac22b",
+        "fields": {
+          "CHK": "ACCEPT"
+        },
+        "communication_tokens": 5,
+        "communication_tokens_exact": true,
+        "attempt_count": 1,
+        "fallback": false,
+        "tokens_include_all_attempts": true,
+        "incoming_message_ids": [
+          "b1e6a16d09e0"
+        ]
+      }
+    }
+  ],
+  "communication_tokens": 169,
+  "wall_time_s": 3.878328299964778,
+  "verified": true,
+  "revision_rounds": 0,
+  "model_calls": [
+    {
+      "role": "planner",
+      "attempt": 0,
+      "status": "delivered",
+      "error": "",
+      "raw_output": "G:extra_first_minus_second_after_eating;K:first_tank=48,first_tank=2*second_tank,one_gallon_per_inch,first_fish_len=3,second_fish_len=2,one_first_fish_eats_another;P:second_tank=first_tank/2,first_fish=first_tank/3,second_fish=second_tank/2,first_after=first_fish-1,extra=first_after-second_fish",
+      "finish_reason": "stop",
+      "output_tokens": 111,
+      "usage_available": true
+    },
+    {
+      "role": "solver",
+      "attempt": 0,
+      "status": "delivered",
+      "error": "",
+      "raw_output": "IR:second_tank=48/2=24,first_fish=48/3=16,second_fish=24/2=12,first_after=16-1=15,extra=15-12=3;R:3",
+      "finish_reason": "stop",
+      "output_tokens": 53,
+      "usage_available": true
+    },
+    {
+      "role": "verifier",
+      "attempt": 0,
+      "status": "delivered",
+      "error": "",
+      "raw_output": "CHK:ACCEPT",
+      "finish_reason": "stop",
+      "output_tokens": 5,
+      "usage_available": true
+    }
+  ],
+  "failed_attempts": [],
+  "calls": 3,
+  "usage_complete": true,
+  "known_input_tokens": 2784,
+  "known_output_tokens": 169,
+  "model_input_tokens": 2784,
+  "model_output_tokens": 169,
+  "format_failed_calls": 0,
+  "transport_failed_calls": 0,
+  "fallback_calls": 0,
+  "sum_model_latency_s": 3.720949411392212,
+  "gold": "3",
+  "score": 1.0,
+  "question": "Gail has two fish tanks. The first tank is twice the size of the second tank. There are 48 gallons of water in the first tank. She follows the rule of one gallon of water per inch of fish. If she keeps two-inch fish in the second tank and three-inch fish in the first tank, how many more fish would Gail have in the first tank than the second tank if one of the first tank fish eats another?\nGive the final numeric answer."
+}

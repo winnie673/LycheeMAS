@@ -1,0 +1,151 @@
+{
+  "task_id": "gsm8k:train:seed42:V:00101",
+  "status": "completed",
+  "error": null,
+  "prediction": "9",
+  "messages": [
+    {
+      "sender": "planner",
+      "content": "G:total_crayons_left;P:green_left=5-3,blue_left=8-1,total_crayons_left=green_left+blue_left",
+      "receiver": "solver",
+      "round": 0,
+      "role": "assistant",
+      "prompt_tokens": 869,
+      "completion_tokens": 35,
+      "id": "0cd5679cbc32",
+      "ts": 1793111541.9003913,
+      "meta": {
+        "sender": "planner",
+        "receiver": "solver",
+        "message_id": "0cd5679cbc32",
+        "protocol_edge": "planner_to_solver",
+        "protocol_version": "CARD-2-gsm8k",
+        "protocol_hash": "aec703067bbfeee6aa1e642a2a319658f1d33f2eff00c8701de19347f616ed6d",
+        "contract_hash": "ab4b736240365db5d0ce2caea032f40a3b7fc9c189db42d5ebcd28cac0fac22b",
+        "fields": {
+          "G": "total_crayons_left",
+          "P": "green_left=5-3,blue_left=8-1,total_crayons_left=green_left+blue_left"
+        },
+        "communication_tokens": 35,
+        "communication_tokens_exact": true,
+        "attempt_count": 1,
+        "fallback": false,
+        "tokens_include_all_attempts": true,
+        "incoming_message_ids": []
+      }
+    },
+    {
+      "sender": "solver",
+      "content": "IR:green_left=5-3=2,blue_left=8-1=7,total=2+7=9;R:9",
+      "receiver": "verifier",
+      "round": 0,
+      "role": "assistant",
+      "prompt_tokens": 722,
+      "completion_tokens": 31,
+      "id": "225fffab463e",
+      "ts": 1793111542.8383973,
+      "meta": {
+        "sender": "solver",
+        "receiver": "verifier",
+        "message_id": "225fffab463e",
+        "protocol_edge": "solver_to_verifier",
+        "protocol_version": "CARD-2-gsm8k",
+        "protocol_hash": "aec703067bbfeee6aa1e642a2a319658f1d33f2eff00c8701de19347f616ed6d",
+        "contract_hash": "ab4b736240365db5d0ce2caea032f40a3b7fc9c189db42d5ebcd28cac0fac22b",
+        "fields": {
+          "IR": "green_left=5-3=2,blue_left=8-1=7,total=2+7=9",
+          "R": "9"
+        },
+        "communication_tokens": 31,
+        "communication_tokens_exact": true,
+        "attempt_count": 1,
+        "fallback": false,
+        "tokens_include_all_attempts": true,
+        "incoming_message_ids": [
+          "0cd5679cbc32"
+        ]
+      }
+    },
+    {
+      "sender": "verifier",
+      "content": "CHK:ACCEPT",
+      "receiver": "solver",
+      "round": 0,
+      "role": "assistant",
+      "prompt_tokens": 1084,
+      "completion_tokens": 5,
+      "id": "8cb2470877f1",
+      "ts": 1793111544.0017874,
+      "meta": {
+        "sender": "verifier",
+        "receiver": "solver",
+        "message_id": "8cb2470877f1",
+        "protocol_edge": "verifier_to_solver",
+        "protocol_version": "CARD-2-gsm8k",
+        "protocol_hash": "aec703067bbfeee6aa1e642a2a319658f1d33f2eff00c8701de19347f616ed6d",
+        "contract_hash": "ab4b736240365db5d0ce2caea032f40a3b7fc9c189db42d5ebcd28cac0fac22b",
+        "fields": {
+          "CHK": "ACCEPT"
+        },
+        "communication_tokens": 5,
+        "communication_tokens_exact": true,
+        "attempt_count": 1,
+        "fallback": false,
+        "tokens_include_all_attempts": true,
+        "incoming_message_ids": [
+          "225fffab463e"
+        ]
+      }
+    }
+  ],
+  "communication_tokens": 71,
+  "wall_time_s": 3.4426602999446914,
+  "verified": true,
+  "revision_rounds": 0,
+  "model_calls": [
+    {
+      "role": "planner",
+      "attempt": 0,
+      "status": "delivered",
+      "error": "",
+      "raw_output": "G:total_crayons_left;P:green_left=5-3,blue_left=8-1,total_crayons_left=green_left+blue_left",
+      "finish_reason": "stop",
+      "output_tokens": 35,
+      "usage_available": true
+    },
+    {
+      "role": "solver",
+      "attempt": 0,
+      "status": "delivered",
+      "error": "",
+      "raw_output": "IR:green_left=5-3=2,blue_left=8-1=7,total=2+7=9;R:9",
+      "finish_reason": "stop",
+      "output_tokens": 31,
+      "usage_available": true
+    },
+    {
+      "role": "verifier",
+      "attempt": 0,
+      "status": "delivered",
+      "error": "",
+      "raw_output": "CHK:ACCEPT",
+      "finish_reason": "stop",
+      "output_tokens": 5,
+      "usage_available": true
+    }
+  ],
+  "failed_attempts": [],
+  "calls": 3,
+  "usage_complete": true,
+  "known_input_tokens": 2675,
+  "known_output_tokens": 71,
+  "model_input_tokens": 2675,
+  "model_output_tokens": 71,
+  "format_failed_calls": 0,
+  "transport_failed_calls": 0,
+  "fallback_calls": 0,
+  "sum_model_latency_s": 3.2635698318481445,
+  "gold": "9",
+  "score": 1.0,
+  "question": "Mary has 5 green crayons and 8 blue crayons of different shades. If she gives out 3 green crayons and 1 blue crayon to Becky, how many crayons does she have left?\nGive the final numeric answer."
+}

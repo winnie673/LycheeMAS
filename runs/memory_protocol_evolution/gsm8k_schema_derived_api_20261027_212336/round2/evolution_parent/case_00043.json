@@ -1,0 +1,151 @@
+{
+  "task_id": "gsm8k:train:seed42:G2:00043",
+  "status": "completed",
+  "error": null,
+  "prediction": "10",
+  "messages": [
+    {
+      "sender": "planner",
+      "content": "G:chips_kept;P:chips_kept=22-7-5",
+      "receiver": "solver",
+      "round": 0,
+      "role": "assistant",
+      "prompt_tokens": 746,
+      "completion_tokens": 21,
+      "id": "d5f49c964a44",
+      "ts": 1793110010.8708584,
+      "meta": {
+        "sender": "planner",
+        "receiver": "solver",
+        "message_id": "d5f49c964a44",
+        "protocol_edge": "planner_to_solver",
+        "protocol_version": "CARD-0-gsm8k",
+        "protocol_hash": "4bcdae885cc464e0a51977368e4bc06650c0326dbdcb182ce0327477c1d32daa",
+        "contract_hash": "ab4b736240365db5d0ce2caea032f40a3b7fc9c189db42d5ebcd28cac0fac22b",
+        "fields": {
+          "G": "chips_kept",
+          "P": "chips_kept=22-7-5"
+        },
+        "communication_tokens": 21,
+        "communication_tokens_exact": true,
+        "attempt_count": 1,
+        "fallback": false,
+        "tokens_include_all_attempts": true,
+        "incoming_message_ids": []
+      }
+    },
+    {
+      "sender": "solver",
+      "content": "IR:22-7-5=10;R:10",
+      "receiver": "verifier",
+      "round": 0,
+      "role": "assistant",
+      "prompt_tokens": 709,
+      "completion_tokens": 13,
+      "id": "7758348f2580",
+      "ts": 1793110012.5134342,
+      "meta": {
+        "sender": "solver",
+        "receiver": "verifier",
+        "message_id": "7758348f2580",
+        "protocol_edge": "solver_to_verifier",
+        "protocol_version": "CARD-0-gsm8k",
+        "protocol_hash": "4bcdae885cc464e0a51977368e4bc06650c0326dbdcb182ce0327477c1d32daa",
+        "contract_hash": "ab4b736240365db5d0ce2caea032f40a3b7fc9c189db42d5ebcd28cac0fac22b",
+        "fields": {
+          "IR": "22-7-5=10",
+          "R": "10"
+        },
+        "communication_tokens": 13,
+        "communication_tokens_exact": true,
+        "attempt_count": 1,
+        "fallback": false,
+        "tokens_include_all_attempts": true,
+        "incoming_message_ids": [
+          "d5f49c964a44"
+        ]
+      }
+    },
+    {
+      "sender": "verifier",
+      "content": "CHK:ACCEPT",
+      "receiver": "solver",
+      "round": 0,
+      "role": "assistant",
+      "prompt_tokens": 1067,
+      "completion_tokens": 5,
+      "id": "28c0b1d03814",
+      "ts": 1793110014.1848552,
+      "meta": {
+        "sender": "verifier",
+        "receiver": "solver",
+        "message_id": "28c0b1d03814",
+        "protocol_edge": "verifier_to_solver",
+        "protocol_version": "CARD-0-gsm8k",
+        "protocol_hash": "4bcdae885cc464e0a51977368e4bc06650c0326dbdcb182ce0327477c1d32daa",
+        "contract_hash": "ab4b736240365db5d0ce2caea032f40a3b7fc9c189db42d5ebcd28cac0fac22b",
+        "fields": {
+          "CHK": "ACCEPT"
+        },
+        "communication_tokens": 5,
+        "communication_tokens_exact": true,
+        "attempt_count": 1,
+        "fallback": false,
+        "tokens_include_all_attempts": true,
+        "incoming_message_ids": [
+          "7758348f2580"
+        ]
+      }
+    }
+  ],
+  "communication_tokens": 39,
+  "wall_time_s": 4.706594299990684,
+  "verified": true,
+  "revision_rounds": 0,
+  "model_calls": [
+    {
+      "role": "planner",
+      "attempt": 0,
+      "status": "delivered",
+      "error": "",
+      "raw_output": "G:chips_kept;P:chips_kept=22-7-5",
+      "finish_reason": "stop",
+      "output_tokens": 21,
+      "usage_available": true
+    },
+    {
+      "role": "solver",
+      "attempt": 0,
+      "status": "delivered",
+      "error": "",
+      "raw_output": "IR:22-7-5=10;R:10",
+      "finish_reason": "stop",
+      "output_tokens": 13,
+      "usage_available": true
+    },
+    {
+      "role": "verifier",
+      "attempt": 0,
+      "status": "delivered",
+      "error": "",
+      "raw_output": "CHK:ACCEPT",
+      "finish_reason": "stop",
+      "output_tokens": 5,
+      "usage_available": true
+    }
+  ],
+  "failed_attempts": [],
+  "calls": 3,
+  "usage_complete": true,
+  "known_input_tokens": 2522,
+  "known_output_tokens": 39,
+  "model_input_tokens": 2522,
+  "model_output_tokens": 39,
+  "format_failed_calls": 0,
+  "transport_failed_calls": 0,
+  "fallback_calls": 0,
+  "sum_model_latency_s": 4.544110059738159,
+  "gold": "10",
+  "score": 1.0,
+  "question": "Nancy has a bag containing 22 tortilla chips. She gives 7 tortilla chips to her brother and 5 tortilla chips to her sister, keeping the rest for herself. How many did Nancy keep for herself?\nGive the final numeric answer."
+}

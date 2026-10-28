@@ -1,0 +1,151 @@
+{
+  "task_id": "gsm8k:train:seed42:V:00044",
+  "status": "completed",
+  "error": null,
+  "prediction": "105",
+  "messages": [
+    {
+      "sender": "planner",
+      "content": "G:weekend_minutes_more;P:total=8*44,weekend=total-138-21-2*44",
+      "receiver": "solver",
+      "round": 0,
+      "role": "assistant",
+      "prompt_tokens": 900,
+      "completion_tokens": 29,
+      "id": "c9973c56586c",
+      "ts": 1793111303.993311,
+      "meta": {
+        "sender": "planner",
+        "receiver": "solver",
+        "message_id": "c9973c56586c",
+        "protocol_edge": "planner_to_solver",
+        "protocol_version": "CARD-2-gsm8k",
+        "protocol_hash": "aec703067bbfeee6aa1e642a2a319658f1d33f2eff00c8701de19347f616ed6d",
+        "contract_hash": "ab4b736240365db5d0ce2caea032f40a3b7fc9c189db42d5ebcd28cac0fac22b",
+        "fields": {
+          "G": "weekend_minutes_more",
+          "P": "total=8*44,weekend=total-138-21-2*44"
+        },
+        "communication_tokens": 29,
+        "communication_tokens_exact": true,
+        "attempt_count": 1,
+        "fallback": false,
+        "tokens_include_all_attempts": true,
+        "incoming_message_ids": []
+      }
+    },
+    {
+      "sender": "solver",
+      "content": "IR:total=8*44=352,weekday=138+21+2*44=247,weekend=352-247=105;R:105",
+      "receiver": "verifier",
+      "round": 0,
+      "role": "assistant",
+      "prompt_tokens": 747,
+      "completion_tokens": 35,
+      "id": "1eb68732b60b",
+      "ts": 1793111305.409224,
+      "meta": {
+        "sender": "solver",
+        "receiver": "verifier",
+        "message_id": "1eb68732b60b",
+        "protocol_edge": "solver_to_verifier",
+        "protocol_version": "CARD-2-gsm8k",
+        "protocol_hash": "aec703067bbfeee6aa1e642a2a319658f1d33f2eff00c8701de19347f616ed6d",
+        "contract_hash": "ab4b736240365db5d0ce2caea032f40a3b7fc9c189db42d5ebcd28cac0fac22b",
+        "fields": {
+          "IR": "total=8*44=352,weekday=138+21+2*44=247,weekend=352-247=105",
+          "R": "105"
+        },
+        "communication_tokens": 35,
+        "communication_tokens_exact": true,
+        "attempt_count": 1,
+        "fallback": false,
+        "tokens_include_all_attempts": true,
+        "incoming_message_ids": [
+          "c9973c56586c"
+        ]
+      }
+    },
+    {
+      "sender": "verifier",
+      "content": "CHK:ACCEPT",
+      "receiver": "solver",
+      "round": 0,
+      "role": "assistant",
+      "prompt_tokens": 1119,
+      "completion_tokens": 5,
+      "id": "d40b852c0a89",
+      "ts": 1793111306.7656667,
+      "meta": {
+        "sender": "verifier",
+        "receiver": "solver",
+        "message_id": "d40b852c0a89",
+        "protocol_edge": "verifier_to_solver",
+        "protocol_version": "CARD-2-gsm8k",
+        "protocol_hash": "aec703067bbfeee6aa1e642a2a319658f1d33f2eff00c8701de19347f616ed6d",
+        "contract_hash": "ab4b736240365db5d0ce2caea032f40a3b7fc9c189db42d5ebcd28cac0fac22b",
+        "fields": {
+          "CHK": "ACCEPT"
+        },
+        "communication_tokens": 5,
+        "communication_tokens_exact": true,
+        "attempt_count": 1,
+        "fallback": false,
+        "tokens_include_all_attempts": true,
+        "incoming_message_ids": [
+          "1eb68732b60b"
+        ]
+      }
+    }
+  ],
+  "communication_tokens": 69,
+  "wall_time_s": 4.308715999941342,
+  "verified": true,
+  "revision_rounds": 0,
+  "model_calls": [
+    {
+      "role": "planner",
+      "attempt": 0,
+      "status": "delivered",
+      "error": "",
+      "raw_output": "G:weekend_minutes_more;P:total=8*44,weekend=total-138-21-2*44",
+      "finish_reason": "stop",
+      "output_tokens": 29,
+      "usage_available": true
+    },
+    {
+      "role": "solver",
+      "attempt": 0,
+      "status": "delivered",
+      "error": "",
+      "raw_output": "IR:total=8*44=352,weekday=138+21+2*44=247,weekend=352-247=105;R:105",
+      "finish_reason": "stop",
+      "output_tokens": 35,
+      "usage_available": true
+    },
+    {
+      "role": "verifier",
+      "attempt": 0,
+      "status": "delivered",
+      "error": "",
+      "raw_output": "CHK:ACCEPT",
+      "finish_reason": "stop",
+      "output_tokens": 5,
+      "usage_available": true
+    }
+  ],
+  "failed_attempts": [],
+  "calls": 3,
+  "usage_complete": true,
+  "known_input_tokens": 2766,
+  "known_output_tokens": 69,
+  "model_input_tokens": 2766,
+  "model_output_tokens": 69,
+  "format_failed_calls": 0,
+  "transport_failed_calls": 0,
+  "fallback_calls": 0,
+  "sum_model_latency_s": 4.232200384140015,
+  "gold": "105",
+  "score": 1.0,
+  "question": "Maddie watches 8 episodes of a TV show this week. Each episode is about 44 minutes long. If she watches 138 minutes of the show on Monday. She does not watch any TV on Tuesday and Wednesday. On Thursday, she watches 21 minutes. On Friday, she watches 2 episodes. How many more minutes did she watch over the weekend?\nGive the final numeric answer."
+}

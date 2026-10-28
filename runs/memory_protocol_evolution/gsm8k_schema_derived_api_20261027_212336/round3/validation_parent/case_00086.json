@@ -1,0 +1,151 @@
+{
+  "task_id": "gsm8k:train:seed42:V:00086",
+  "status": "completed",
+  "error": null,
+  "prediction": "12",
+  "messages": [
+    {
+      "sender": "planner",
+      "content": "G:my_age_when_Billy_born;P:my_age_now=4*4,my_age_when_Billy_born=my_age_now-4",
+      "receiver": "solver",
+      "round": 0,
+      "role": "assistant",
+      "prompt_tokens": 729,
+      "completion_tokens": 35,
+      "id": "e4fd96b495dd",
+      "ts": 1793112745.9712977,
+      "meta": {
+        "sender": "planner",
+        "receiver": "solver",
+        "message_id": "e4fd96b495dd",
+        "protocol_edge": "planner_to_solver",
+        "protocol_version": "CARD-0-gsm8k",
+        "protocol_hash": "4bcdae885cc464e0a51977368e4bc06650c0326dbdcb182ce0327477c1d32daa",
+        "contract_hash": "ab4b736240365db5d0ce2caea032f40a3b7fc9c189db42d5ebcd28cac0fac22b",
+        "fields": {
+          "G": "my_age_when_Billy_born",
+          "P": "my_age_now=4*4,my_age_when_Billy_born=my_age_now-4"
+        },
+        "communication_tokens": 35,
+        "communication_tokens_exact": true,
+        "attempt_count": 1,
+        "fallback": false,
+        "tokens_include_all_attempts": true,
+        "incoming_message_ids": []
+      }
+    },
+    {
+      "sender": "solver",
+      "content": "IR:my_age_now=4*4=16,my_age_when_Billy_born=16-4=12;R:12",
+      "receiver": "verifier",
+      "round": 0,
+      "role": "assistant",
+      "prompt_tokens": 706,
+      "completion_tokens": 30,
+      "id": "bdc219dc3366",
+      "ts": 1793112747.2838144,
+      "meta": {
+        "sender": "solver",
+        "receiver": "verifier",
+        "message_id": "bdc219dc3366",
+        "protocol_edge": "solver_to_verifier",
+        "protocol_version": "CARD-0-gsm8k",
+        "protocol_hash": "4bcdae885cc464e0a51977368e4bc06650c0326dbdcb182ce0327477c1d32daa",
+        "contract_hash": "ab4b736240365db5d0ce2caea032f40a3b7fc9c189db42d5ebcd28cac0fac22b",
+        "fields": {
+          "IR": "my_age_now=4*4=16,my_age_when_Billy_born=16-4=12",
+          "R": "12"
+        },
+        "communication_tokens": 30,
+        "communication_tokens_exact": true,
+        "attempt_count": 1,
+        "fallback": false,
+        "tokens_include_all_attempts": true,
+        "incoming_message_ids": [
+          "e4fd96b495dd"
+        ]
+      }
+    },
+    {
+      "sender": "verifier",
+      "content": "CHK:ACCEPT",
+      "receiver": "solver",
+      "round": 0,
+      "role": "assistant",
+      "prompt_tokens": 1067,
+      "completion_tokens": 5,
+      "id": "2459c93d2aea",
+      "ts": 1793112748.4840965,
+      "meta": {
+        "sender": "verifier",
+        "receiver": "solver",
+        "message_id": "2459c93d2aea",
+        "protocol_edge": "verifier_to_solver",
+        "protocol_version": "CARD-0-gsm8k",
+        "protocol_hash": "4bcdae885cc464e0a51977368e4bc06650c0326dbdcb182ce0327477c1d32daa",
+        "contract_hash": "ab4b736240365db5d0ce2caea032f40a3b7fc9c189db42d5ebcd28cac0fac22b",
+        "fields": {
+          "CHK": "ACCEPT"
+        },
+        "communication_tokens": 5,
+        "communication_tokens_exact": true,
+        "attempt_count": 1,
+        "fallback": false,
+        "tokens_include_all_attempts": true,
+        "incoming_message_ids": [
+          "bdc219dc3366"
+        ]
+      }
+    }
+  ],
+  "communication_tokens": 70,
+  "wall_time_s": 4.254336999962106,
+  "verified": true,
+  "revision_rounds": 0,
+  "model_calls": [
+    {
+      "role": "planner",
+      "attempt": 0,
+      "status": "delivered",
+      "error": "",
+      "raw_output": "G:my_age_when_Billy_born;P:my_age_now=4*4,my_age_when_Billy_born=my_age_now-4",
+      "finish_reason": "stop",
+      "output_tokens": 35,
+      "usage_available": true
+    },
+    {
+      "role": "solver",
+      "attempt": 0,
+      "status": "delivered",
+      "error": "",
+      "raw_output": "IR:my_age_now=4*4=16,my_age_when_Billy_born=16-4=12;R:12",
+      "finish_reason": "stop",
+      "output_tokens": 30,
+      "usage_available": true
+    },
+    {
+      "role": "verifier",
+      "attempt": 0,
+      "status": "delivered",
+      "error": "",
+      "raw_output": "CHK:ACCEPT",
+      "finish_reason": "stop",
+      "output_tokens": 5,
+      "usage_available": true
+    }
+  ],
+  "failed_attempts": [],
+  "calls": 3,
+  "usage_complete": true,
+  "known_input_tokens": 2502,
+  "known_output_tokens": 70,
+  "model_input_tokens": 2502,
+  "model_output_tokens": 70,
+  "format_failed_calls": 0,
+  "transport_failed_calls": 0,
+  "fallback_calls": 0,
+  "sum_model_latency_s": 4.10541033744812,
+  "gold": "12",
+  "score": 1.0,
+  "question": "If I'm 4 times older than Billy currently, and Billy is 4 years old, how old was I when Billy was born?\nGive the final numeric answer."
+}

@@ -1,0 +1,13 @@
+{
+  "decision": "UPDATE",
+  "reason": "Two communication-related hybrid failures (00005, 00031) show the planner's P field mis-encoding shared-cost division and per-walk start-fee multiplicity, while the NL path succeeded. Case 00017 shows the NL fallback failing to pin down the number of weekly increments. A minimal fix is to tighten the P field rule to require explicit multiplicity and shared-cost semantics, and to tighten the NL rule to require pinning down step counts when temporal increments are ambiguous.",
+  "changed_paths": [
+    "planner_to_solver.field_rules.P",
+    "planner_to_solver.field_rules.NL"
+  ],
+  "eligible_case_ids": [
+    "gsm8k:train:seed42:G2:00005",
+    "gsm8k:train:seed42:G2:00017",
+    "gsm8k:train:seed42:G2:00031"
+  ]
+}

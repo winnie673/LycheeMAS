@@ -23,7 +23,7 @@ CONFIGS = {"gsm8k": "configs/memory/gsm8k_hybrid_protocol.yaml"}
 ROOT = Path(__file__).resolve().parents[1]
 sys.path.insert(0, str(ROOT / "scripts"))
 QUESTIONS = {"gsm8k": "What is 9+9?"}
-RUNTIME_VERSION = "memory-compare-v4-restored"
+RUNTIME_VERSION = "memory-compare-v5-schema-derived"
 
 
 class TaskExecutionError(RuntimeError):
@@ -136,18 +136,20 @@ class DemoState(TypedDict):
 
 def load_memory_config(benchmark: str, mode: str, protocol_path: Path | None = None) -> dict:
     import yaml
-    from hybrid_gsm8k_spec import GSM8K_PROTOCOL
+    from hybrid_gsm8k_spec import GSM8K_PROTOCOL, protocol_contract_for_card
 
     if benchmark not in CONFIGS or mode not in {"nl", "hybrid"}:
         raise ValueError("unknown benchmark or communication mode")
     with (ROOT / CONFIGS[benchmark]).open(encoding="utf-8") as handle:
         config = yaml.safe_load(handle)
     config["protocol_path"] = str(ROOT / config["protocol_path"])
-    config["protocol_contract"] = GSM8K_PROTOCOL
     if protocol_path is not None:
         if benchmark != "gsm8k" or mode != "hybrid":
             raise ValueError("explicit card selection is supported for GSM8K Hybrid only")
         config["protocol_path"] = str(Path(protocol_path).resolve())
+    config["protocol_contract"] = (
+        protocol_contract_for_card(config["protocol_path"]) if mode == "hybrid" else GSM8K_PROTOCOL
+    )
     if mode == "nl":
         config["nl_strategy"] = "prev_output"
     return config

@@ -1,0 +1,151 @@
+{
+  "task_id": "gsm8k:train:seed42:V:00170",
+  "status": "completed",
+  "error": null,
+  "prediction": "11",
+  "messages": [
+    {
+      "sender": "planner",
+      "content": "G:total_race_time;P:lake_races=10/2,ocean_races=10/2,lake_time=lake_races*3/3,ocean_time=ocean_races*3/2.5,total_race_time=lake_time+ocean_time",
+      "receiver": "solver",
+      "round": 0,
+      "role": "assistant",
+      "prompt_tokens": 812,
+      "completion_tokens": 67,
+      "id": "ecdc3d1bd29c",
+      "ts": 1793168879.527365,
+      "meta": {
+        "sender": "planner",
+        "receiver": "solver",
+        "message_id": "ecdc3d1bd29c",
+        "protocol_edge": "planner_to_solver",
+        "protocol_version": "CARD-3-gsm8k",
+        "protocol_hash": "fb1a4acb6e591ac96544876aedd912b27a6f9d3154c76112e1da0f43407d27b2",
+        "contract_hash": "ab4b736240365db5d0ce2caea032f40a3b7fc9c189db42d5ebcd28cac0fac22b",
+        "fields": {
+          "G": "total_race_time",
+          "P": "lake_races=10/2,ocean_races=10/2,lake_time=lake_races*3/3,ocean_time=ocean_races*3/2.5,total_race_time=lake_time+ocean_time"
+        },
+        "communication_tokens": 67,
+        "communication_tokens_exact": true,
+        "attempt_count": 1,
+        "fallback": false,
+        "tokens_include_all_attempts": true,
+        "incoming_message_ids": []
+      }
+    },
+    {
+      "sender": "solver",
+      "content": "IR:lake_races=5,ocean_races=5,lake_time=5*3/3=5,ocean_time=5*3/2.5=6,total=5+6=11;R:11",
+      "receiver": "verifier",
+      "round": 0,
+      "role": "assistant",
+      "prompt_tokens": 779,
+      "completion_tokens": 53,
+      "id": "3ff42af3dafc",
+      "ts": 1793168880.554629,
+      "meta": {
+        "sender": "solver",
+        "receiver": "verifier",
+        "message_id": "3ff42af3dafc",
+        "protocol_edge": "solver_to_verifier",
+        "protocol_version": "CARD-3-gsm8k",
+        "protocol_hash": "fb1a4acb6e591ac96544876aedd912b27a6f9d3154c76112e1da0f43407d27b2",
+        "contract_hash": "ab4b736240365db5d0ce2caea032f40a3b7fc9c189db42d5ebcd28cac0fac22b",
+        "fields": {
+          "IR": "lake_races=5,ocean_races=5,lake_time=5*3/3=5,ocean_time=5*3/2.5=6,total=5+6=11",
+          "R": "11"
+        },
+        "communication_tokens": 53,
+        "communication_tokens_exact": true,
+        "attempt_count": 1,
+        "fallback": false,
+        "tokens_include_all_attempts": true,
+        "incoming_message_ids": [
+          "ecdc3d1bd29c"
+        ]
+      }
+    },
+    {
+      "sender": "verifier",
+      "content": "CHK:ACCEPT",
+      "receiver": "solver",
+      "round": 0,
+      "role": "assistant",
+      "prompt_tokens": 1131,
+      "completion_tokens": 5,
+      "id": "ad7499003775",
+      "ts": 1793168881.899166,
+      "meta": {
+        "sender": "verifier",
+        "receiver": "solver",
+        "message_id": "ad7499003775",
+        "protocol_edge": "verifier_to_solver",
+        "protocol_version": "CARD-3-gsm8k",
+        "protocol_hash": "fb1a4acb6e591ac96544876aedd912b27a6f9d3154c76112e1da0f43407d27b2",
+        "contract_hash": "ab4b736240365db5d0ce2caea032f40a3b7fc9c189db42d5ebcd28cac0fac22b",
+        "fields": {
+          "CHK": "ACCEPT"
+        },
+        "communication_tokens": 5,
+        "communication_tokens_exact": true,
+        "attempt_count": 1,
+        "fallback": false,
+        "tokens_include_all_attempts": true,
+        "incoming_message_ids": [
+          "3ff42af3dafc"
+        ]
+      }
+    }
+  ],
+  "communication_tokens": 125,
+  "wall_time_s": 3.7079926000442356,
+  "verified": true,
+  "revision_rounds": 0,
+  "model_calls": [
+    {
+      "role": "planner",
+      "attempt": 0,
+      "status": "delivered",
+      "error": "",
+      "raw_output": "G:total_race_time;P:lake_races=10/2,ocean_races=10/2,lake_time=lake_races*3/3,ocean_time=ocean_races*3/2.5,total_race_time=lake_time+ocean_time",
+      "finish_reason": "stop",
+      "output_tokens": 67,
+      "usage_available": true
+    },
+    {
+      "role": "solver",
+      "attempt": 0,
+      "status": "delivered",
+      "error": "",
+      "raw_output": "IR:lake_races=5,ocean_races=5,lake_time=5*3/3=5,ocean_time=5*3/2.5=6,total=5+6=11;R:11",
+      "finish_reason": "stop",
+      "output_tokens": 53,
+      "usage_available": true
+    },
+    {
+      "role": "verifier",
+      "attempt": 0,
+      "status": "delivered",
+      "error": "",
+      "raw_output": "CHK:ACCEPT",
+      "finish_reason": "stop",
+      "output_tokens": 5,
+      "usage_available": true
+    }
+  ],
+  "failed_attempts": [],
+  "calls": 3,
+  "usage_complete": true,
+  "known_input_tokens": 2722,
+  "known_output_tokens": 125,
+  "model_input_tokens": 2722,
+  "model_output_tokens": 125,
+  "format_failed_calls": 0,
+  "transport_failed_calls": 0,
+  "fallback_calls": 0,
+  "sum_model_latency_s": 3.6320600509643555,
+  "gold": "11",
+  "score": 1.0,
+  "question": "Tyson can swim at a speed of 3 miles per hour in a lake and 2.5 mph in an ocean. This season, half his races happened in lakes and half his races happened in the ocean. He had ten total races, each of which was 3 miles long. How much time did he spend in his races?\nGive the final numeric answer."
+}

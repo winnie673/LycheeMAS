@@ -1,0 +1,151 @@
+{
+  "task_id": "gsm8k:train:seed42:V:00007",
+  "status": "completed",
+  "error": null,
+  "prediction": "11.25",
+  "messages": [
+    {
+      "sender": "planner",
+      "content": "G:number_below_surface;P:surface=0.25*15,below=15-surface",
+      "receiver": "solver",
+      "round": 0,
+      "role": "assistant",
+      "prompt_tokens": 756,
+      "completion_tokens": 22,
+      "id": "c4a6a44fb994",
+      "ts": 1793112421.0995164,
+      "meta": {
+        "sender": "planner",
+        "receiver": "solver",
+        "message_id": "c4a6a44fb994",
+        "protocol_edge": "planner_to_solver",
+        "protocol_version": "CARD-0-gsm8k",
+        "protocol_hash": "4bcdae885cc464e0a51977368e4bc06650c0326dbdcb182ce0327477c1d32daa",
+        "contract_hash": "ab4b736240365db5d0ce2caea032f40a3b7fc9c189db42d5ebcd28cac0fac22b",
+        "fields": {
+          "G": "number_below_surface",
+          "P": "surface=0.25*15,below=15-surface"
+        },
+        "communication_tokens": 22,
+        "communication_tokens_exact": true,
+        "attempt_count": 1,
+        "fallback": false,
+        "tokens_include_all_attempts": true,
+        "incoming_message_ids": []
+      }
+    },
+    {
+      "sender": "solver",
+      "content": "IR:surface=0.25*15=3.75,below=15-3.75=11.25;R:11.25",
+      "receiver": "verifier",
+      "round": 0,
+      "role": "assistant",
+      "prompt_tokens": 720,
+      "completion_tokens": 31,
+      "id": "2d3e3aff4196",
+      "ts": 1793112422.2679694,
+      "meta": {
+        "sender": "solver",
+        "receiver": "verifier",
+        "message_id": "2d3e3aff4196",
+        "protocol_edge": "solver_to_verifier",
+        "protocol_version": "CARD-0-gsm8k",
+        "protocol_hash": "4bcdae885cc464e0a51977368e4bc06650c0326dbdcb182ce0327477c1d32daa",
+        "contract_hash": "ab4b736240365db5d0ce2caea032f40a3b7fc9c189db42d5ebcd28cac0fac22b",
+        "fields": {
+          "IR": "surface=0.25*15=3.75,below=15-3.75=11.25",
+          "R": "11.25"
+        },
+        "communication_tokens": 31,
+        "communication_tokens_exact": true,
+        "attempt_count": 1,
+        "fallback": false,
+        "tokens_include_all_attempts": true,
+        "incoming_message_ids": [
+          "c4a6a44fb994"
+        ]
+      }
+    },
+    {
+      "sender": "verifier",
+      "content": "CHK:ACCEPT",
+      "receiver": "solver",
+      "round": 0,
+      "role": "assistant",
+      "prompt_tokens": 1095,
+      "completion_tokens": 5,
+      "id": "6d97fda1d720",
+      "ts": 1793112423.6184747,
+      "meta": {
+        "sender": "verifier",
+        "receiver": "solver",
+        "message_id": "6d97fda1d720",
+        "protocol_edge": "verifier_to_solver",
+        "protocol_version": "CARD-0-gsm8k",
+        "protocol_hash": "4bcdae885cc464e0a51977368e4bc06650c0326dbdcb182ce0327477c1d32daa",
+        "contract_hash": "ab4b736240365db5d0ce2caea032f40a3b7fc9c189db42d5ebcd28cac0fac22b",
+        "fields": {
+          "CHK": "ACCEPT"
+        },
+        "communication_tokens": 5,
+        "communication_tokens_exact": true,
+        "attempt_count": 1,
+        "fallback": false,
+        "tokens_include_all_attempts": true,
+        "incoming_message_ids": [
+          "2d3e3aff4196"
+        ]
+      }
+    }
+  ],
+  "communication_tokens": 58,
+  "wall_time_s": 4.0612191000254825,
+  "verified": true,
+  "revision_rounds": 0,
+  "model_calls": [
+    {
+      "role": "planner",
+      "attempt": 0,
+      "status": "delivered",
+      "error": "",
+      "raw_output": "G:number_below_surface;P:surface=0.25*15,below=15-surface",
+      "finish_reason": "stop",
+      "output_tokens": 22,
+      "usage_available": true
+    },
+    {
+      "role": "solver",
+      "attempt": 0,
+      "status": "delivered",
+      "error": "",
+      "raw_output": "IR:surface=0.25*15=3.75,below=15-3.75=11.25;R:11.25",
+      "finish_reason": "stop",
+      "output_tokens": 31,
+      "usage_available": true
+    },
+    {
+      "role": "verifier",
+      "attempt": 0,
+      "status": "delivered",
+      "error": "",
+      "raw_output": "CHK:ACCEPT",
+      "finish_reason": "stop",
+      "output_tokens": 5,
+      "usage_available": true
+    }
+  ],
+  "failed_attempts": [],
+  "calls": 3,
+  "usage_complete": true,
+  "known_input_tokens": 2571,
+  "known_output_tokens": 58,
+  "model_input_tokens": 2571,
+  "model_output_tokens": 58,
+  "format_failed_calls": 0,
+  "transport_failed_calls": 0,
+  "fallback_calls": 0,
+  "sum_model_latency_s": 3.8887014389038086,
+  "gold": "45",
+  "score": 0.0,
+  "question": "Toby is counting goldfish in the local pond. He knows that only 25% of goldfish are at the surface and the rest are too deep below the surface to be able to see. If he counts 15 goldfish, how many are below the surface?\nGive the final numeric answer."
+}

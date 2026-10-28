@@ -1,0 +1,151 @@
+{
+  "task_id": "gsm8k:train:seed42:V:00161",
+  "status": "completed",
+  "error": null,
+  "prediction": "144",
+  "messages": [
+    {
+      "sender": "planner",
+      "content": "G:total_pay_for_8_bikes;P:paint_pay=5,sell_pay=paint_pay+8,per_bike=paint_pay+sell_pay,total_pay_for_8_bikes=8*per_bike",
+      "receiver": "solver",
+      "round": 0,
+      "role": "assistant",
+      "prompt_tokens": 870,
+      "completion_tokens": 55,
+      "id": "19060646c976",
+      "ts": 1793111794.0852532,
+      "meta": {
+        "sender": "planner",
+        "receiver": "solver",
+        "message_id": "19060646c976",
+        "protocol_edge": "planner_to_solver",
+        "protocol_version": "CARD-2-gsm8k",
+        "protocol_hash": "aec703067bbfeee6aa1e642a2a319658f1d33f2eff00c8701de19347f616ed6d",
+        "contract_hash": "ab4b736240365db5d0ce2caea032f40a3b7fc9c189db42d5ebcd28cac0fac22b",
+        "fields": {
+          "G": "total_pay_for_8_bikes",
+          "P": "paint_pay=5,sell_pay=paint_pay+8,per_bike=paint_pay+sell_pay,total_pay_for_8_bikes=8*per_bike"
+        },
+        "communication_tokens": 55,
+        "communication_tokens_exact": true,
+        "attempt_count": 1,
+        "fallback": false,
+        "tokens_include_all_attempts": true,
+        "incoming_message_ids": []
+      }
+    },
+    {
+      "sender": "solver",
+      "content": "IR:paint_pay=5,sell_pay=5+8=13,per_bike=5+13=18,total=8*18=144;R:144",
+      "receiver": "verifier",
+      "round": 0,
+      "role": "assistant",
+      "prompt_tokens": 743,
+      "completion_tokens": 39,
+      "id": "2a68becb5281",
+      "ts": 1793111795.0876489,
+      "meta": {
+        "sender": "solver",
+        "receiver": "verifier",
+        "message_id": "2a68becb5281",
+        "protocol_edge": "solver_to_verifier",
+        "protocol_version": "CARD-2-gsm8k",
+        "protocol_hash": "aec703067bbfeee6aa1e642a2a319658f1d33f2eff00c8701de19347f616ed6d",
+        "contract_hash": "ab4b736240365db5d0ce2caea032f40a3b7fc9c189db42d5ebcd28cac0fac22b",
+        "fields": {
+          "IR": "paint_pay=5,sell_pay=5+8=13,per_bike=5+13=18,total=8*18=144",
+          "R": "144"
+        },
+        "communication_tokens": 39,
+        "communication_tokens_exact": true,
+        "attempt_count": 1,
+        "fallback": false,
+        "tokens_include_all_attempts": true,
+        "incoming_message_ids": [
+          "19060646c976"
+        ]
+      }
+    },
+    {
+      "sender": "verifier",
+      "content": "CHK:ACCEPT",
+      "receiver": "solver",
+      "round": 0,
+      "role": "assistant",
+      "prompt_tokens": 1093,
+      "completion_tokens": 5,
+      "id": "df76c9a4b145",
+      "ts": 1793111796.458954,
+      "meta": {
+        "sender": "verifier",
+        "receiver": "solver",
+        "message_id": "df76c9a4b145",
+        "protocol_edge": "verifier_to_solver",
+        "protocol_version": "CARD-2-gsm8k",
+        "protocol_hash": "aec703067bbfeee6aa1e642a2a319658f1d33f2eff00c8701de19347f616ed6d",
+        "contract_hash": "ab4b736240365db5d0ce2caea032f40a3b7fc9c189db42d5ebcd28cac0fac22b",
+        "fields": {
+          "CHK": "ACCEPT"
+        },
+        "communication_tokens": 5,
+        "communication_tokens_exact": true,
+        "attempt_count": 1,
+        "fallback": false,
+        "tokens_include_all_attempts": true,
+        "incoming_message_ids": [
+          "2a68becb5281"
+        ]
+      }
+    }
+  ],
+  "communication_tokens": 99,
+  "wall_time_s": 3.809155900031328,
+  "verified": true,
+  "revision_rounds": 0,
+  "model_calls": [
+    {
+      "role": "planner",
+      "attempt": 0,
+      "status": "delivered",
+      "error": "",
+      "raw_output": "G:total_pay_for_8_bikes;P:paint_pay=5,sell_pay=paint_pay+8,per_bike=paint_pay+sell_pay,total_pay_for_8_bikes=8*per_bike",
+      "finish_reason": "stop",
+      "output_tokens": 55,
+      "usage_available": true
+    },
+    {
+      "role": "solver",
+      "attempt": 0,
+      "status": "delivered",
+      "error": "",
+      "raw_output": "IR:paint_pay=5,sell_pay=5+8=13,per_bike=5+13=18,total=8*18=144;R:144",
+      "finish_reason": "stop",
+      "output_tokens": 39,
+      "usage_available": true
+    },
+    {
+      "role": "verifier",
+      "attempt": 0,
+      "status": "delivered",
+      "error": "",
+      "raw_output": "CHK:ACCEPT",
+      "finish_reason": "stop",
+      "output_tokens": 5,
+      "usage_available": true
+    }
+  ],
+  "failed_attempts": [],
+  "calls": 3,
+  "usage_complete": true,
+  "known_input_tokens": 2706,
+  "known_output_tokens": 99,
+  "model_input_tokens": 2706,
+  "model_output_tokens": 99,
+  "format_failed_calls": 0,
+  "transport_failed_calls": 0,
+  "fallback_calls": 0,
+  "sum_model_latency_s": 3.6573078632354736,
+  "gold": "144",
+  "score": 1.0,
+  "question": "For every bike Henry sells, he is paid $8 more than he is paid to paint the bike. If Henry gets $5 to paint the bike, how much does he get paid to sell and paint 8 bikes?\nGive the final numeric answer."
+}

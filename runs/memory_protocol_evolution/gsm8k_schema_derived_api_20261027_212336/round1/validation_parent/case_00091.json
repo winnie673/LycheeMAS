@@ -1,0 +1,151 @@
+{
+  "task_id": "gsm8k:train:seed42:V:00091",
+  "status": "completed",
+  "error": null,
+  "prediction": "88",
+  "messages": [
+    {
+      "sender": "planner",
+      "content": "G:pages_Saturday;P:total_needed=7*50,read_so_far=43+65+28+0+70+56,pages_Saturday=total_needed-read_so_far",
+      "receiver": "solver",
+      "round": 0,
+      "role": "assistant",
+      "prompt_tokens": 788,
+      "completion_tokens": 46,
+      "id": "b8f7045ca392",
+      "ts": 1793108467.977716,
+      "meta": {
+        "sender": "planner",
+        "receiver": "solver",
+        "message_id": "b8f7045ca392",
+        "protocol_edge": "planner_to_solver",
+        "protocol_version": "CARD-0-gsm8k",
+        "protocol_hash": "4bcdae885cc464e0a51977368e4bc06650c0326dbdcb182ce0327477c1d32daa",
+        "contract_hash": "ab4b736240365db5d0ce2caea032f40a3b7fc9c189db42d5ebcd28cac0fac22b",
+        "fields": {
+          "G": "pages_Saturday",
+          "P": "total_needed=7*50,read_so_far=43+65+28+0+70+56,pages_Saturday=total_needed-read_so_far"
+        },
+        "communication_tokens": 46,
+        "communication_tokens_exact": true,
+        "attempt_count": 1,
+        "fallback": false,
+        "tokens_include_all_attempts": true,
+        "incoming_message_ids": []
+      }
+    },
+    {
+      "sender": "solver",
+      "content": "IR:total_needed=7*50=350,read_so_far=43+65+28+0+70+56=262,pages_Saturday=350-262=88;R:88",
+      "receiver": "verifier",
+      "round": 0,
+      "role": "assistant",
+      "prompt_tokens": 776,
+      "completion_tokens": 45,
+      "id": "f9b23fbfdd18",
+      "ts": 1793108469.958484,
+      "meta": {
+        "sender": "solver",
+        "receiver": "verifier",
+        "message_id": "f9b23fbfdd18",
+        "protocol_edge": "solver_to_verifier",
+        "protocol_version": "CARD-0-gsm8k",
+        "protocol_hash": "4bcdae885cc464e0a51977368e4bc06650c0326dbdcb182ce0327477c1d32daa",
+        "contract_hash": "ab4b736240365db5d0ce2caea032f40a3b7fc9c189db42d5ebcd28cac0fac22b",
+        "fields": {
+          "IR": "total_needed=7*50=350,read_so_far=43+65+28+0+70+56=262,pages_Saturday=350-262=88",
+          "R": "88"
+        },
+        "communication_tokens": 45,
+        "communication_tokens_exact": true,
+        "attempt_count": 1,
+        "fallback": false,
+        "tokens_include_all_attempts": true,
+        "incoming_message_ids": [
+          "b8f7045ca392"
+        ]
+      }
+    },
+    {
+      "sender": "verifier",
+      "content": "CHK:ACCEPT",
+      "receiver": "solver",
+      "round": 0,
+      "role": "assistant",
+      "prompt_tokens": 1141,
+      "completion_tokens": 5,
+      "id": "ddc28d26f422",
+      "ts": 1793108471.0269554,
+      "meta": {
+        "sender": "verifier",
+        "receiver": "solver",
+        "message_id": "ddc28d26f422",
+        "protocol_edge": "verifier_to_solver",
+        "protocol_version": "CARD-0-gsm8k",
+        "protocol_hash": "4bcdae885cc464e0a51977368e4bc06650c0326dbdcb182ce0327477c1d32daa",
+        "contract_hash": "ab4b736240365db5d0ce2caea032f40a3b7fc9c189db42d5ebcd28cac0fac22b",
+        "fields": {
+          "CHK": "ACCEPT"
+        },
+        "communication_tokens": 5,
+        "communication_tokens_exact": true,
+        "attempt_count": 1,
+        "fallback": false,
+        "tokens_include_all_attempts": true,
+        "incoming_message_ids": [
+          "f9b23fbfdd18"
+        ]
+      }
+    }
+  ],
+  "communication_tokens": 96,
+  "wall_time_s": 4.6626866000005975,
+  "verified": true,
+  "revision_rounds": 0,
+  "model_calls": [
+    {
+      "role": "planner",
+      "attempt": 0,
+      "status": "delivered",
+      "error": "",
+      "raw_output": "G:pages_Saturday;P:total_needed=7*50,read_so_far=43+65+28+0+70+56,pages_Saturday=total_needed-read_so_far",
+      "finish_reason": "stop",
+      "output_tokens": 46,
+      "usage_available": true
+    },
+    {
+      "role": "solver",
+      "attempt": 0,
+      "status": "delivered",
+      "error": "",
+      "raw_output": "IR:total_needed=7*50=350,read_so_far=43+65+28+0+70+56=262,pages_Saturday=350-262=88;R:88",
+      "finish_reason": "stop",
+      "output_tokens": 45,
+      "usage_available": true
+    },
+    {
+      "role": "verifier",
+      "attempt": 0,
+      "status": "delivered",
+      "error": "",
+      "raw_output": "CHK:ACCEPT",
+      "finish_reason": "stop",
+      "output_tokens": 5,
+      "usage_available": true
+    }
+  ],
+  "failed_attempts": [],
+  "calls": 3,
+  "usage_complete": true,
+  "known_input_tokens": 2705,
+  "known_output_tokens": 96,
+  "model_input_tokens": 2705,
+  "model_output_tokens": 96,
+  "format_failed_calls": 0,
+  "transport_failed_calls": 0,
+  "fallback_calls": 0,
+  "sum_model_latency_s": 4.540902853012085,
+  "gold": "88",
+  "score": 1.0,
+  "question": "Berry wants to make sure he reads an average of 50 pages a day. This week he read 43 pages on Sunday, 65 pages on Monday, and 28 pages on Tuesday. He had a soccer game and fell asleep early on Wednesday so he read nothing. On Thursday he read 70 pages, and on Friday he read 56 pages. How many pages does he have to read on Saturday to reach his goal?\nGive the final numeric answer."
+}

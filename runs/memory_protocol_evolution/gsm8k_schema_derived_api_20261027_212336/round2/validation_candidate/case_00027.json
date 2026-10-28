@@ -1,0 +1,151 @@
+{
+  "task_id": "gsm8k:train:seed42:V:00027",
+  "status": "completed",
+  "error": null,
+  "prediction": "1040",
+  "messages": [
+    {
+      "sender": "planner",
+      "content": "G:difference_in_annual_spending;P:clarinet_annual=40*3*52,piano_annual=28*5*52,difference_in_annual_spending=piano_annual-clarinet_annual",
+      "receiver": "solver",
+      "round": 0,
+      "role": "assistant",
+      "prompt_tokens": 872,
+      "completion_tokens": 47,
+      "id": "bd5ee3bfc428",
+      "ts": 1793111234.1040764,
+      "meta": {
+        "sender": "planner",
+        "receiver": "solver",
+        "message_id": "bd5ee3bfc428",
+        "protocol_edge": "planner_to_solver",
+        "protocol_version": "CARD-2-gsm8k",
+        "protocol_hash": "aec703067bbfeee6aa1e642a2a319658f1d33f2eff00c8701de19347f616ed6d",
+        "contract_hash": "ab4b736240365db5d0ce2caea032f40a3b7fc9c189db42d5ebcd28cac0fac22b",
+        "fields": {
+          "G": "difference_in_annual_spending",
+          "P": "clarinet_annual=40*3*52,piano_annual=28*5*52,difference_in_annual_spending=piano_annual-clarinet_annual"
+        },
+        "communication_tokens": 47,
+        "communication_tokens_exact": true,
+        "attempt_count": 1,
+        "fallback": false,
+        "tokens_include_all_attempts": true,
+        "incoming_message_ids": []
+      }
+    },
+    {
+      "sender": "solver",
+      "content": "IR:clarinet_annual=40*3*52=6240,piano_annual=28*5*52=7280,difference=7280-6240=1040;R:1040",
+      "receiver": "verifier",
+      "round": 0,
+      "role": "assistant",
+      "prompt_tokens": 737,
+      "completion_tokens": 44,
+      "id": "c37a39afdbfb",
+      "ts": 1793111235.2482684,
+      "meta": {
+        "sender": "solver",
+        "receiver": "verifier",
+        "message_id": "c37a39afdbfb",
+        "protocol_edge": "solver_to_verifier",
+        "protocol_version": "CARD-2-gsm8k",
+        "protocol_hash": "aec703067bbfeee6aa1e642a2a319658f1d33f2eff00c8701de19347f616ed6d",
+        "contract_hash": "ab4b736240365db5d0ce2caea032f40a3b7fc9c189db42d5ebcd28cac0fac22b",
+        "fields": {
+          "IR": "clarinet_annual=40*3*52=6240,piano_annual=28*5*52=7280,difference=7280-6240=1040",
+          "R": "1040"
+        },
+        "communication_tokens": 44,
+        "communication_tokens_exact": true,
+        "attempt_count": 1,
+        "fallback": false,
+        "tokens_include_all_attempts": true,
+        "incoming_message_ids": [
+          "bd5ee3bfc428"
+        ]
+      }
+    },
+    {
+      "sender": "verifier",
+      "content": "CHK:ACCEPT",
+      "receiver": "solver",
+      "round": 0,
+      "role": "assistant",
+      "prompt_tokens": 1100,
+      "completion_tokens": 5,
+      "id": "96f83de9a7e5",
+      "ts": 1793111236.3935387,
+      "meta": {
+        "sender": "verifier",
+        "receiver": "solver",
+        "message_id": "96f83de9a7e5",
+        "protocol_edge": "verifier_to_solver",
+        "protocol_version": "CARD-2-gsm8k",
+        "protocol_hash": "aec703067bbfeee6aa1e642a2a319658f1d33f2eff00c8701de19347f616ed6d",
+        "contract_hash": "ab4b736240365db5d0ce2caea032f40a3b7fc9c189db42d5ebcd28cac0fac22b",
+        "fields": {
+          "CHK": "ACCEPT"
+        },
+        "communication_tokens": 5,
+        "communication_tokens_exact": true,
+        "attempt_count": 1,
+        "fallback": false,
+        "tokens_include_all_attempts": true,
+        "incoming_message_ids": [
+          "c37a39afdbfb"
+        ]
+      }
+    }
+  ],
+  "communication_tokens": 96,
+  "wall_time_s": 4.28007879992947,
+  "verified": true,
+  "revision_rounds": 0,
+  "model_calls": [
+    {
+      "role": "planner",
+      "attempt": 0,
+      "status": "delivered",
+      "error": "",
+      "raw_output": "G:difference_in_annual_spending;P:clarinet_annual=40*3*52,piano_annual=28*5*52,difference_in_annual_spending=piano_annual-clarinet_annual",
+      "finish_reason": "stop",
+      "output_tokens": 47,
+      "usage_available": true
+    },
+    {
+      "role": "solver",
+      "attempt": 0,
+      "status": "delivered",
+      "error": "",
+      "raw_output": "IR:clarinet_annual=40*3*52=6240,piano_annual=28*5*52=7280,difference=7280-6240=1040;R:1040",
+      "finish_reason": "stop",
+      "output_tokens": 44,
+      "usage_available": true
+    },
+    {
+      "role": "verifier",
+      "attempt": 0,
+      "status": "delivered",
+      "error": "",
+      "raw_output": "CHK:ACCEPT",
+      "finish_reason": "stop",
+      "output_tokens": 5,
+      "usage_available": true
+    }
+  ],
+  "failed_attempts": [],
+  "calls": 3,
+  "usage_complete": true,
+  "known_input_tokens": 2709,
+  "known_output_tokens": 96,
+  "model_input_tokens": 2709,
+  "model_output_tokens": 96,
+  "format_failed_calls": 0,
+  "transport_failed_calls": 0,
+  "fallback_calls": 0,
+  "sum_model_latency_s": 4.204759836196899,
+  "gold": "1040",
+  "score": 1.0,
+  "question": "Janet pays $40/hour for 3 hours per week of clarinet lessons and $28/hour for 5 hours a week of piano lessons. How much more does she spend on piano lessons than clarinet lessons in a year?\nGive the final numeric answer."
+}

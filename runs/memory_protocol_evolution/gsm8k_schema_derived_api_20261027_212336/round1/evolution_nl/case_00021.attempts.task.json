@@ -1,0 +1,123 @@
+{
+  "task_id": "gsm8k:train:seed42:G1:00021",
+  "status": "completed",
+  "error": null,
+  "prediction": "94000",
+  "messages": [
+    {
+      "sender": "planner",
+      "content": "Goal: Find the total number of views the video had gained after the described timeline.\n\nPlan: Start with the first-day views. Interpret “increased by a number ten times more than the views on the first day” as an increase equal to 10 times the first-day views, and add that to the first-day views. Then add the additional 50,000 views from the next two days. Be careful to distinguish total views gained from just the increase.\n\nConstraints: Use the wording exactly as given; do not assume compounding beyond what is stated. Provide only the final numeric total.",
+      "receiver": "solver",
+      "round": 0,
+      "role": "assistant",
+      "prompt_tokens": 231,
+      "completion_tokens": 118,
+      "id": "10b4a5f9b4d0",
+      "ts": 1793107893.6987083,
+      "meta": {
+        "fields": {},
+        "communication_tokens": 118,
+        "communication_tokens_exact": true,
+        "attempt_count": 1,
+        "fallback": false,
+        "tokens_include_all_attempts": true,
+        "incoming_message_ids": []
+      }
+    },
+    {
+      "sender": "solver",
+      "content": "First day: 4000 views.  \nIncrease after 4 days: 10 × 4000 = 40,000 views.  \nViews then: 4000 + 40,000 = 44,000.  \nAfter another two days: 44,000 + 50,000 = 94,000.\n\n\\boxed{94000}",
+      "receiver": "verifier",
+      "round": 0,
+      "role": "assistant",
+      "prompt_tokens": 361,
+      "completion_tokens": 74,
+      "id": "894af40f9e7c",
+      "ts": 1793107894.8959436,
+      "meta": {
+        "fields": {
+          "R": "94000"
+        },
+        "communication_tokens": 74,
+        "communication_tokens_exact": true,
+        "attempt_count": 1,
+        "fallback": false,
+        "tokens_include_all_attempts": true,
+        "incoming_message_ids": [
+          "10b4a5f9b4d0"
+        ]
+      }
+    },
+    {
+      "sender": "verifier",
+      "content": "ACCEPT",
+      "receiver": "solver",
+      "round": 0,
+      "role": "assistant",
+      "prompt_tokens": 694,
+      "completion_tokens": 2,
+      "id": "aaddeaa6918d",
+      "ts": 1793107896.1842167,
+      "meta": {
+        "fields": {
+          "CHK": "ACCEPT"
+        },
+        "communication_tokens": 2,
+        "communication_tokens_exact": true,
+        "attempt_count": 1,
+        "fallback": false,
+        "tokens_include_all_attempts": true,
+        "incoming_message_ids": [
+          "894af40f9e7c"
+        ]
+      }
+    }
+  ],
+  "communication_tokens": 194,
+  "wall_time_s": 4.549942400073633,
+  "verified": true,
+  "revision_rounds": 0,
+  "model_calls": [
+    {
+      "role": "planner",
+      "attempt": 0,
+      "status": "delivered",
+      "error": "",
+      "raw_output": "Goal: Find the total number of views the video had gained after the described timeline.\n\nPlan: Start with the first-day views. Interpret “increased by a number ten times more than the views on the first day” as an increase equal to 10 times the first-day views, and add that to the first-day views. Then add the additional 50,000 views from the next two days. Be careful to distinguish total views gained from just the increase.\n\nConstraints: Use the wording exactly as given; do not assume compounding beyond what is stated. Provide only the final numeric total.",
+      "finish_reason": "stop",
+      "output_tokens": 118,
+      "usage_available": true
+    },
+    {
+      "role": "solver",
+      "attempt": 0,
+      "status": "delivered",
+      "error": "",
+      "raw_output": "First day: 4000 views.  \nIncrease after 4 days: 10 × 4000 = 40,000 views.  \nViews then: 4000 + 40,000 = 44,000.  \nAfter another two days: 44,000 + 50,000 = 94,000.\n\n\\boxed{94000}",
+      "finish_reason": "stop",
+      "output_tokens": 74,
+      "usage_available": true
+    },
+    {
+      "role": "verifier",
+      "attempt": 0,
+      "status": "delivered",
+      "error": "",
+      "raw_output": "ACCEPT",
+      "finish_reason": "stop",
+      "output_tokens": 2,
+      "usage_available": true
+    }
+  ],
+  "failed_attempts": [],
+  "calls": 3,
+  "usage_complete": true,
+  "known_input_tokens": 1286,
+  "known_output_tokens": 194,
+  "model_input_tokens": 1286,
+  "model_output_tokens": 194,
+  "format_failed_calls": 0,
+  "transport_failed_calls": 0,
+  "fallback_calls": 0,
+  "sum_model_latency_s": 4.489612340927124
+}

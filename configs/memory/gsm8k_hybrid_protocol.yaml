@@ -2,7 +2,7 @@
 # supplied by the caller; no model path or credential belongs in this config.
 name: cdm
 nl_strategy: hybrid_protocol
-protocol_path: configs/memory/task_cards/gsm8k_psv_nl_field_card2_20261027.yaml
+protocol_path: configs/memory/task_cards/gsm8k_psv_hybrid_card_20261028.yaml
 task: gsm8k
 router:
   name: fixed

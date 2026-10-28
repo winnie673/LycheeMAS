@@ -1,0 +1,149 @@
+{
+  "task_id": "gsm8k:train:seed42:V:00158",
+  "status": "completed",
+  "error": null,
+  "prediction": "3000",
+  "messages": [
+    {
+      "sender": "planner",
+      "content": "G:annual_health_insurance_cost;P:monthly_income=25*30*4,income_bracket=50000<monthly_income<40000,government_share=0.5,monthly_cost=500*(1-government_share),annual_cost=monthly_cost*12;NL:Bill's monthly income is $3000 so he falls in the 50% subsidy bracket.",
+      "receiver": "solver",
+      "round": 0,
+      "role": "assistant",
+      "prompt_tokens": 870,
+      "completion_tokens": 86,
+      "id": "89eccfa34681",
+      "ts": 1793109663.7350008,
+      "meta": {
+        "sender": "planner",
+        "receiver": "solver",
+        "message_id": "89eccfa34681",
+        "protocol_edge": "planner_to_solver",
+        "protocol_version": "CARD-1-gsm8k",
+        "protocol_hash": "2a663f41d251a442e680de67a231e516a8fe5e31629bc25d021c8c0eb1354cff",
+        "contract_hash": "ab4b736240365db5d0ce2caea032f40a3b7fc9c189db42d5ebcd28cac0fac22b",
+        "fields": {
+          "G": "annual_health_insurance_cost",
+          "P": "monthly_income=25*30*4,income_bracket=50000<monthly_income<40000,government_share=0.5,monthly_cost=500*(1-government_share),annual_cost=monthly_cost*12",
+          "NL": "Bill's monthly income is $3000 so he falls in the 50% subsidy bracket."
+        },
+        "communication_tokens": 86,
+        "communication_tokens_exact": true,
+        "attempt_count": 1,
+        "fallback": false,
+        "tokens_include_all_attempts": true,
+        "incoming_message_ids": []
+      }
+    },
+    {
+      "sender": "solver",
+      "content": "IR:monthly_income=25*30*4=3000,government_share=0.5,monthly_cost=500*(1-0.5)=250,annual_cost=250*12=3000;R:3000",
+      "receiver": "verifier",
+      "round": 0,
+      "role": "assistant",
+      "prompt_tokens": 839,
+      "completion_tokens": 52,
+      "id": "75e77fc671c8",
+      "ts": 1793109665.0764585,
+      "meta": {
+        "sender": "solver",
+        "receiver": "verifier",
+        "message_id": "75e77fc671c8",
+        "protocol_edge": "solver_to_verifier",
+        "protocol_version": "CARD-1-gsm8k",
+        "protocol_hash": "2a663f41d251a442e680de67a231e516a8fe5e31629bc25d021c8c0eb1354cff",
+        "contract_hash": "ab4b736240365db5d0ce2caea032f40a3b7fc9c189db42d5ebcd28cac0fac22b",
+        "fields": {
+          "IR": "monthly_income=25*30*4=3000,government_share=0.5,monthly_cost=500*(1-0.5)=250,annual_cost=250*12=3000",
+          "R": "3000"
+        },
+        "communication_tokens": 52,
+        "communication_tokens_exact": true,
+        "attempt_count": 1,
+        "fallback": false,
+        "tokens_include_all_attempts": true,
+        "incoming_message_ids": [
+          "89eccfa34681"
+        ]
+      }
+    },
+    {
+      "sender": "verifier",
+      "content": "CHK:ACCEPT",
+      "receiver": "solver",
+      "round": 0,
+      "role": "assistant",
+      "prompt_tokens": 1171,
+      "completion_tokens": 5,
+      "id": "f34dea01caf9",
+      "ts": 1793109666.2683823,
+      "meta": {
+        "sender": "verifier",
+        "receiver": "solver",
+        "message_id": "f34dea01caf9",
+        "protocol_edge": "verifier_to_solver",
+        "protocol_version": "CARD-1-gsm8k",
+        "protocol_hash": "2a663f41d251a442e680de67a231e516a8fe5e31629bc25d021c8c0eb1354cff",
+        "contract_hash": "ab4b736240365db5d0ce2caea032f40a3b7fc9c189db42d5ebcd28cac0fac22b",
+        "fields": {
+          "CHK": "ACCEPT"
+        },
+        "communication_tokens": 5,
+        "communication_tokens_exact": true,
+        "attempt_count": 1,
+        "fallback": false,
+        "tokens_include_all_attempts": true,
+        "incoming_message_ids": [
+          "75e77fc671c8"
+        ]
+      }
+    }
+  ],
+  "communication_tokens": 143,
+  "wall_time_s": 4.309802300063893,
+  "verified": true,
+  "revision_rounds": 0,
+  "model_calls": [
+    {
+      "role": "planner",
+      "attempt": 0,
+      "status": "delivered",
+      "error": "",
+      "raw_output": "G:annual_health_insurance_cost;P:monthly_income=25*30*4,income_bracket=50000<monthly_income<40000,government_share=0.5,monthly_cost=500*(1-government_share),annual_cost=monthly_cost*12;NL:Bill's monthly income is $3000 so he falls in the 50% subsidy bracket.",
+      "finish_reason": "stop",
+      "output_tokens": 86,
+      "usage_available": true
+    },
+    {
+      "role": "solver",
+      "attempt": 0,
+      "status": "delivered",
+      "error": "",
+      "raw_output": "IR:monthly_income=25*30*4=3000,government_share=0.5,monthly_cost=500*(1-0.5)=250,annual_cost=250*12=3000;R:3000",
+      "finish_reason": "stop",
+      "output_tokens": 52,
+      "usage_available": true
+    },
+    {
+      "role": "verifier",
+      "attempt": 0,
+      "status": "delivered",
+      "error": "",
+      "raw_output": "CHK:ACCEPT",
+      "finish_reason": "stop",
+      "output_tokens": 5,
+      "usage_available": true
+    }
+  ],
+  "failed_attempts": [],
+  "calls": 3,
+  "usage_complete": true,
+  "known_input_tokens": 2880,
+  "known_output_tokens": 143,
+  "model_input_tokens": 2880,
+  "model_output_tokens": 143,
+  "format_failed_calls": 0,
+  "transport_failed_calls": 0,
+  "fallback_calls": 0,
+  "sum_model_latency_s": 4.132375478744507
+}

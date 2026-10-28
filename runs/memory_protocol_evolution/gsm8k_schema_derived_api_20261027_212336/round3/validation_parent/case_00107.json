@@ -1,0 +1,152 @@
+{
+  "task_id": "gsm8k:train:seed42:V:00107",
+  "status": "completed",
+  "error": null,
+  "prediction": "90",
+  "messages": [
+    {
+      "sender": "planner",
+      "content": "K:first=30,second=first/2,third=first+second;G:total_minutes;P:total=first+second+third",
+      "receiver": "solver",
+      "round": 0,
+      "role": "assistant",
+      "prompt_tokens": 769,
+      "completion_tokens": 33,
+      "id": "17f491a1d93f",
+      "ts": 1793112832.7377534,
+      "meta": {
+        "sender": "planner",
+        "receiver": "solver",
+        "message_id": "17f491a1d93f",
+        "protocol_edge": "planner_to_solver",
+        "protocol_version": "CARD-0-gsm8k",
+        "protocol_hash": "4bcdae885cc464e0a51977368e4bc06650c0326dbdcb182ce0327477c1d32daa",
+        "contract_hash": "ab4b736240365db5d0ce2caea032f40a3b7fc9c189db42d5ebcd28cac0fac22b",
+        "fields": {
+          "K": "first=30,second=first/2,third=first+second",
+          "G": "total_minutes",
+          "P": "total=first+second+third"
+        },
+        "communication_tokens": 33,
+        "communication_tokens_exact": true,
+        "attempt_count": 1,
+        "fallback": false,
+        "tokens_include_all_attempts": true,
+        "incoming_message_ids": []
+      }
+    },
+    {
+      "sender": "solver",
+      "content": "IR:second=30/2=15,third=30+15=45,total=30+15+45=90;R:90",
+      "receiver": "verifier",
+      "round": 0,
+      "role": "assistant",
+      "prompt_tokens": 744,
+      "completion_tokens": 31,
+      "id": "4752b2d6b111",
+      "ts": 1793112833.6245515,
+      "meta": {
+        "sender": "solver",
+        "receiver": "verifier",
+        "message_id": "4752b2d6b111",
+        "protocol_edge": "solver_to_verifier",
+        "protocol_version": "CARD-0-gsm8k",
+        "protocol_hash": "4bcdae885cc464e0a51977368e4bc06650c0326dbdcb182ce0327477c1d32daa",
+        "contract_hash": "ab4b736240365db5d0ce2caea032f40a3b7fc9c189db42d5ebcd28cac0fac22b",
+        "fields": {
+          "IR": "second=30/2=15,third=30+15=45,total=30+15+45=90",
+          "R": "90"
+        },
+        "communication_tokens": 31,
+        "communication_tokens_exact": true,
+        "attempt_count": 1,
+        "fallback": false,
+        "tokens_include_all_attempts": true,
+        "incoming_message_ids": [
+          "17f491a1d93f"
+        ]
+      }
+    },
+    {
+      "sender": "verifier",
+      "content": "CHK:ACCEPT",
+      "receiver": "solver",
+      "round": 0,
+      "role": "assistant",
+      "prompt_tokens": 1108,
+      "completion_tokens": 5,
+      "id": "f249dfeb9111",
+      "ts": 1793112834.650326,
+      "meta": {
+        "sender": "verifier",
+        "receiver": "solver",
+        "message_id": "f249dfeb9111",
+        "protocol_edge": "verifier_to_solver",
+        "protocol_version": "CARD-0-gsm8k",
+        "protocol_hash": "4bcdae885cc464e0a51977368e4bc06650c0326dbdcb182ce0327477c1d32daa",
+        "contract_hash": "ab4b736240365db5d0ce2caea032f40a3b7fc9c189db42d5ebcd28cac0fac22b",
+        "fields": {
+          "CHK": "ACCEPT"
+        },
+        "communication_tokens": 5,
+        "communication_tokens_exact": true,
+        "attempt_count": 1,
+        "fallback": false,
+        "tokens_include_all_attempts": true,
+        "incoming_message_ids": [
+          "4752b2d6b111"
+        ]
+      }
+    }
+  ],
+  "communication_tokens": 69,
+  "wall_time_s": 3.32196979993023,
+  "verified": true,
+  "revision_rounds": 0,
+  "model_calls": [
+    {
+      "role": "planner",
+      "attempt": 0,
+      "status": "delivered",
+      "error": "",
+      "raw_output": "K:first=30,second=first/2,third=first+second;G:total_minutes;P:total=first+second+third",
+      "finish_reason": "stop",
+      "output_tokens": 33,
+      "usage_available": true
+    },
+    {
+      "role": "solver",
+      "attempt": 0,
+      "status": "delivered",
+      "error": "",
+      "raw_output": "IR:second=30/2=15,third=30+15=45,total=30+15+45=90;R:90",
+      "finish_reason": "stop",
+      "output_tokens": 31,
+      "usage_available": true
+    },
+    {
+      "role": "verifier",
+      "attempt": 0,
+      "status": "delivered",
+      "error": "",
+      "raw_output": "CHK:ACCEPT",
+      "finish_reason": "stop",
+      "output_tokens": 5,
+      "usage_available": true
+    }
+  ],
+  "failed_attempts": [],
+  "calls": 3,
+  "usage_complete": true,
+  "known_input_tokens": 2621,
+  "known_output_tokens": 69,
+  "model_input_tokens": 2621,
+  "model_output_tokens": 69,
+  "format_failed_calls": 0,
+  "transport_failed_calls": 0,
+  "fallback_calls": 0,
+  "sum_model_latency_s": 3.1718595027923584,
+  "gold": "90",
+  "score": 1.0,
+  "question": "Arabella is a dance student learning three new steps this session. Her instructor has her spend thirty minutes on learning the first step. The second step she masters in half the time. The third step is more complex, so it takes her as long as both the other steps to learn. How many minutes did she spend learning the three steps?\nGive the final numeric answer."
+}

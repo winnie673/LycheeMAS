@@ -1,0 +1,151 @@
+{
+  "task_id": "gsm8k:train:seed42:G2:00009",
+  "status": "completed",
+  "error": null,
+  "prediction": "165",
+  "messages": [
+    {
+      "sender": "planner",
+      "content": "G:students_at_end;P:after_join=150+30,end=after_join-15",
+      "receiver": "solver",
+      "round": 0,
+      "role": "assistant",
+      "prompt_tokens": 753,
+      "completion_tokens": 22,
+      "id": "46c3fb067940",
+      "ts": 1793109871.8826632,
+      "meta": {
+        "sender": "planner",
+        "receiver": "solver",
+        "message_id": "46c3fb067940",
+        "protocol_edge": "planner_to_solver",
+        "protocol_version": "CARD-0-gsm8k",
+        "protocol_hash": "4bcdae885cc464e0a51977368e4bc06650c0326dbdcb182ce0327477c1d32daa",
+        "contract_hash": "ab4b736240365db5d0ce2caea032f40a3b7fc9c189db42d5ebcd28cac0fac22b",
+        "fields": {
+          "G": "students_at_end",
+          "P": "after_join=150+30,end=after_join-15"
+        },
+        "communication_tokens": 22,
+        "communication_tokens_exact": true,
+        "attempt_count": 1,
+        "fallback": false,
+        "tokens_include_all_attempts": true,
+        "incoming_message_ids": []
+      }
+    },
+    {
+      "sender": "solver",
+      "content": "IR:after_join=150+30=180,end=180-15=165;R:165",
+      "receiver": "verifier",
+      "round": 0,
+      "role": "assistant",
+      "prompt_tokens": 717,
+      "completion_tokens": 22,
+      "id": "9283fdaa3c4c",
+      "ts": 1793109873.0411394,
+      "meta": {
+        "sender": "solver",
+        "receiver": "verifier",
+        "message_id": "9283fdaa3c4c",
+        "protocol_edge": "solver_to_verifier",
+        "protocol_version": "CARD-0-gsm8k",
+        "protocol_hash": "4bcdae885cc464e0a51977368e4bc06650c0326dbdcb182ce0327477c1d32daa",
+        "contract_hash": "ab4b736240365db5d0ce2caea032f40a3b7fc9c189db42d5ebcd28cac0fac22b",
+        "fields": {
+          "IR": "after_join=150+30=180,end=180-15=165",
+          "R": "165"
+        },
+        "communication_tokens": 22,
+        "communication_tokens_exact": true,
+        "attempt_count": 1,
+        "fallback": false,
+        "tokens_include_all_attempts": true,
+        "incoming_message_ids": [
+          "46c3fb067940"
+        ]
+      }
+    },
+    {
+      "sender": "verifier",
+      "content": "CHK:ACCEPT",
+      "receiver": "solver",
+      "round": 0,
+      "role": "assistant",
+      "prompt_tokens": 1083,
+      "completion_tokens": 5,
+      "id": "7be1843b62f2",
+      "ts": 1793109874.2856395,
+      "meta": {
+        "sender": "verifier",
+        "receiver": "solver",
+        "message_id": "7be1843b62f2",
+        "protocol_edge": "verifier_to_solver",
+        "protocol_version": "CARD-0-gsm8k",
+        "protocol_hash": "4bcdae885cc464e0a51977368e4bc06650c0326dbdcb182ce0327477c1d32daa",
+        "contract_hash": "ab4b736240365db5d0ce2caea032f40a3b7fc9c189db42d5ebcd28cac0fac22b",
+        "fields": {
+          "CHK": "ACCEPT"
+        },
+        "communication_tokens": 5,
+        "communication_tokens_exact": true,
+        "attempt_count": 1,
+        "fallback": false,
+        "tokens_include_all_attempts": true,
+        "incoming_message_ids": [
+          "9283fdaa3c4c"
+        ]
+      }
+    }
+  ],
+  "communication_tokens": 49,
+  "wall_time_s": 3.681891900021583,
+  "verified": true,
+  "revision_rounds": 0,
+  "model_calls": [
+    {
+      "role": "planner",
+      "attempt": 0,
+      "status": "delivered",
+      "error": "",
+      "raw_output": "G:students_at_end;P:after_join=150+30,end=after_join-15",
+      "finish_reason": "stop",
+      "output_tokens": 22,
+      "usage_available": true
+    },
+    {
+      "role": "solver",
+      "attempt": 0,
+      "status": "delivered",
+      "error": "",
+      "raw_output": "IR:after_join=150+30=180,end=180-15=165;R:165",
+      "finish_reason": "stop",
+      "output_tokens": 22,
+      "usage_available": true
+    },
+    {
+      "role": "verifier",
+      "attempt": 0,
+      "status": "delivered",
+      "error": "",
+      "raw_output": "CHK:ACCEPT",
+      "finish_reason": "stop",
+      "output_tokens": 5,
+      "usage_available": true
+    }
+  ],
+  "failed_attempts": [],
+  "calls": 3,
+  "usage_complete": true,
+  "known_input_tokens": 2553,
+  "known_output_tokens": 49,
+  "model_input_tokens": 2553,
+  "model_output_tokens": 49,
+  "format_failed_calls": 0,
+  "transport_failed_calls": 0,
+  "fallback_calls": 0,
+  "sum_model_latency_s": 3.529059648513794,
+  "gold": "165",
+  "score": 1.0,
+  "question": "Beth had 150 students in her 10th-grade class.  The following year 30 more students join.  In her final year, 15 students left.  How many students did Beth have in her class at the end of her final year?\nGive the final numeric answer."
+}

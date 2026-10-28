@@ -1,0 +1,151 @@
+{
+  "task_id": "gsm8k:train:seed42:V:00169",
+  "status": "completed",
+  "error": null,
+  "prediction": "11",
+  "messages": [
+    {
+      "sender": "planner",
+      "content": "G:number_of_suckers_Jen_ate;P:taylor_received=1+5,harmony_received=3+taylor_received,molly_received=2+harmony_received,jen_received=2*molly_received,jen_ate=jen_received/2",
+      "receiver": "solver",
+      "round": 0,
+      "role": "assistant",
+      "prompt_tokens": 806,
+      "completion_tokens": 63,
+      "id": "f625f8b67b02",
+      "ts": 1793168876.168809,
+      "meta": {
+        "sender": "planner",
+        "receiver": "solver",
+        "message_id": "f625f8b67b02",
+        "protocol_edge": "planner_to_solver",
+        "protocol_version": "CARD-3-gsm8k",
+        "protocol_hash": "fb1a4acb6e591ac96544876aedd912b27a6f9d3154c76112e1da0f43407d27b2",
+        "contract_hash": "ab4b736240365db5d0ce2caea032f40a3b7fc9c189db42d5ebcd28cac0fac22b",
+        "fields": {
+          "G": "number_of_suckers_Jen_ate",
+          "P": "taylor_received=1+5,harmony_received=3+taylor_received,molly_received=2+harmony_received,jen_received=2*molly_received,jen_ate=jen_received/2"
+        },
+        "communication_tokens": 63,
+        "communication_tokens_exact": true,
+        "attempt_count": 1,
+        "fallback": false,
+        "tokens_include_all_attempts": true,
+        "incoming_message_ids": []
+      }
+    },
+    {
+      "sender": "solver",
+      "content": "IR:taylor_received=1+5=6,harmony_received=3+6=9,molly_received=2+9=11,jen_received=2*11=22,jen_ate=22/2=11;R:11",
+      "receiver": "verifier",
+      "round": 0,
+      "role": "assistant",
+      "prompt_tokens": 769,
+      "completion_tokens": 56,
+      "id": "235333b9d0e2",
+      "ts": 1793168877.4149559,
+      "meta": {
+        "sender": "solver",
+        "receiver": "verifier",
+        "message_id": "235333b9d0e2",
+        "protocol_edge": "solver_to_verifier",
+        "protocol_version": "CARD-3-gsm8k",
+        "protocol_hash": "fb1a4acb6e591ac96544876aedd912b27a6f9d3154c76112e1da0f43407d27b2",
+        "contract_hash": "ab4b736240365db5d0ce2caea032f40a3b7fc9c189db42d5ebcd28cac0fac22b",
+        "fields": {
+          "IR": "taylor_received=1+5=6,harmony_received=3+6=9,molly_received=2+9=11,jen_received=2*11=22,jen_ate=22/2=11",
+          "R": "11"
+        },
+        "communication_tokens": 56,
+        "communication_tokens_exact": true,
+        "attempt_count": 1,
+        "fallback": false,
+        "tokens_include_all_attempts": true,
+        "incoming_message_ids": [
+          "f625f8b67b02"
+        ]
+      }
+    },
+    {
+      "sender": "verifier",
+      "content": "CHK:ACCEPT",
+      "receiver": "solver",
+      "round": 0,
+      "role": "assistant",
+      "prompt_tokens": 1128,
+      "completion_tokens": 5,
+      "id": "f328fe462613",
+      "ts": 1793168878.1665523,
+      "meta": {
+        "sender": "verifier",
+        "receiver": "solver",
+        "message_id": "f328fe462613",
+        "protocol_edge": "verifier_to_solver",
+        "protocol_version": "CARD-3-gsm8k",
+        "protocol_hash": "fb1a4acb6e591ac96544876aedd912b27a6f9d3154c76112e1da0f43407d27b2",
+        "contract_hash": "ab4b736240365db5d0ce2caea032f40a3b7fc9c189db42d5ebcd28cac0fac22b",
+        "fields": {
+          "CHK": "ACCEPT"
+        },
+        "communication_tokens": 5,
+        "communication_tokens_exact": true,
+        "attempt_count": 1,
+        "fallback": false,
+        "tokens_include_all_attempts": true,
+        "incoming_message_ids": [
+          "235333b9d0e2"
+        ]
+      }
+    }
+  ],
+  "communication_tokens": 124,
+  "wall_time_s": 3.400518100010231,
+  "verified": true,
+  "revision_rounds": 0,
+  "model_calls": [
+    {
+      "role": "planner",
+      "attempt": 0,
+      "status": "delivered",
+      "error": "",
+      "raw_output": "G:number_of_suckers_Jen_ate;P:taylor_received=1+5,harmony_received=3+taylor_received,molly_received=2+harmony_received,jen_received=2*molly_received,jen_ate=jen_received/2",
+      "finish_reason": "stop",
+      "output_tokens": 63,
+      "usage_available": true
+    },
+    {
+      "role": "solver",
+      "attempt": 0,
+      "status": "delivered",
+      "error": "",
+      "raw_output": "IR:taylor_received=1+5=6,harmony_received=3+6=9,molly_received=2+9=11,jen_received=2*11=22,jen_ate=22/2=11;R:11",
+      "finish_reason": "stop",
+      "output_tokens": 56,
+      "usage_available": true
+    },
+    {
+      "role": "verifier",
+      "attempt": 0,
+      "status": "delivered",
+      "error": "",
+      "raw_output": "CHK:ACCEPT",
+      "finish_reason": "stop",
+      "output_tokens": 5,
+      "usage_available": true
+    }
+  ],
+  "failed_attempts": [],
+  "calls": 3,
+  "usage_complete": true,
+  "known_input_tokens": 2703,
+  "known_output_tokens": 124,
+  "model_input_tokens": 2703,
+  "model_output_tokens": 124,
+  "format_failed_calls": 0,
+  "transport_failed_calls": 0,
+  "fallback_calls": 0,
+  "sum_model_latency_s": 3.3210649490356445,
+  "gold": "11",
+  "score": 1.0,
+  "question": "Sienna gave Bailey half of her suckers. Jen ate half and gave the rest to Molly. Molly ate 2 and gave the rest to Harmony. Harmony kept 3 and passed the remainder to Taylor. Taylor ate one and gave the last 5 to Callie. How many suckers did Jen eat?\nGive the final numeric answer."
+}

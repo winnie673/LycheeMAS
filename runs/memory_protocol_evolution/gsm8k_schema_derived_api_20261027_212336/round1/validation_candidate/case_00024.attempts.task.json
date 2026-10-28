@@ -1,0 +1,148 @@
+{
+  "task_id": "gsm8k:train:seed42:V:00024",
+  "status": "completed",
+  "error": null,
+  "prediction": "24",
+  "messages": [
+    {
+      "sender": "planner",
+      "content": "G:combined_total_cost;P:mike_extra=2+4+2,mike_bill=2*john_bill,john_bill=taco_plate,mike_bill=taco_plate+mike_extra,combined_total_cost=mike_bill+john_bill",
+      "receiver": "solver",
+      "round": 0,
+      "role": "assistant",
+      "prompt_tokens": 852,
+      "completion_tokens": 59,
+      "id": "15e7ef44e5cb",
+      "ts": 1793109068.48999,
+      "meta": {
+        "sender": "planner",
+        "receiver": "solver",
+        "message_id": "15e7ef44e5cb",
+        "protocol_edge": "planner_to_solver",
+        "protocol_version": "CARD-1-gsm8k",
+        "protocol_hash": "2a663f41d251a442e680de67a231e516a8fe5e31629bc25d021c8c0eb1354cff",
+        "contract_hash": "ab4b736240365db5d0ce2caea032f40a3b7fc9c189db42d5ebcd28cac0fac22b",
+        "fields": {
+          "G": "combined_total_cost",
+          "P": "mike_extra=2+4+2,mike_bill=2*john_bill,john_bill=taco_plate,mike_bill=taco_plate+mike_extra,combined_total_cost=mike_bill+john_bill"
+        },
+        "communication_tokens": 59,
+        "communication_tokens_exact": true,
+        "attempt_count": 1,
+        "fallback": false,
+        "tokens_include_all_attempts": true,
+        "incoming_message_ids": []
+      }
+    },
+    {
+      "sender": "solver",
+      "content": "IR:mike_extra=2+4+2=8,mike_bill=taco_plate+8=2*taco_plate so taco_plate=8,john_bill=8,mike_bill=16,combined=16+8=24;R:24",
+      "receiver": "verifier",
+      "round": 0,
+      "role": "assistant",
+      "prompt_tokens": 794,
+      "completion_tokens": 60,
+      "id": "7cae8f8fdb3c",
+      "ts": 1793109069.8328338,
+      "meta": {
+        "sender": "solver",
+        "receiver": "verifier",
+        "message_id": "7cae8f8fdb3c",
+        "protocol_edge": "solver_to_verifier",
+        "protocol_version": "CARD-1-gsm8k",
+        "protocol_hash": "2a663f41d251a442e680de67a231e516a8fe5e31629bc25d021c8c0eb1354cff",
+        "contract_hash": "ab4b736240365db5d0ce2caea032f40a3b7fc9c189db42d5ebcd28cac0fac22b",
+        "fields": {
+          "IR": "mike_extra=2+4+2=8,mike_bill=taco_plate+8=2*taco_plate so taco_plate=8,john_bill=8,mike_bill=16,combined=16+8=24",
+          "R": "24"
+        },
+        "communication_tokens": 60,
+        "communication_tokens_exact": true,
+        "attempt_count": 1,
+        "fallback": false,
+        "tokens_include_all_attempts": true,
+        "incoming_message_ids": [
+          "15e7ef44e5cb"
+        ]
+      }
+    },
+    {
+      "sender": "verifier",
+      "content": "CHK:ACCEPT",
+      "receiver": "solver",
+      "round": 0,
+      "role": "assistant",
+      "prompt_tokens": 1161,
+      "completion_tokens": 5,
+      "id": "b1c9a955e878",
+      "ts": 1793109071.2493737,
+      "meta": {
+        "sender": "verifier",
+        "receiver": "solver",
+        "message_id": "b1c9a955e878",
+        "protocol_edge": "verifier_to_solver",
+        "protocol_version": "CARD-1-gsm8k",
+        "protocol_hash": "2a663f41d251a442e680de67a231e516a8fe5e31629bc25d021c8c0eb1354cff",
+        "contract_hash": "ab4b736240365db5d0ce2caea032f40a3b7fc9c189db42d5ebcd28cac0fac22b",
+        "fields": {
+          "CHK": "ACCEPT"
+        },
+        "communication_tokens": 5,
+        "communication_tokens_exact": true,
+        "attempt_count": 1,
+        "fallback": false,
+        "tokens_include_all_attempts": true,
+        "incoming_message_ids": [
+          "7cae8f8fdb3c"
+        ]
+      }
+    }
+  ],
+  "communication_tokens": 124,
+  "wall_time_s": 4.46676170011051,
+  "verified": true,
+  "revision_rounds": 0,
+  "model_calls": [
+    {
+      "role": "planner",
+      "attempt": 0,
+      "status": "delivered",
+      "error": "",
+      "raw_output": "G:combined_total_cost;P:mike_extra=2+4+2,mike_bill=2*john_bill,john_bill=taco_plate,mike_bill=taco_plate+mike_extra,combined_total_cost=mike_bill+john_bill",
+      "finish_reason": "stop",
+      "output_tokens": 59,
+      "usage_available": true
+    },
+    {
+      "role": "solver",
+      "attempt": 0,
+      "status": "delivered",
+      "error": "",
+      "raw_output": "IR:mike_extra=2+4+2=8,mike_bill=taco_plate+8=2*taco_plate so taco_plate=8,john_bill=8,mike_bill=16,combined=16+8=24;R:24",
+      "finish_reason": "stop",
+      "output_tokens": 60,
+      "usage_available": true
+    },
+    {
+      "role": "verifier",
+      "attempt": 0,
+      "status": "delivered",
+      "error": "",
+      "raw_output": "CHK:ACCEPT",
+      "finish_reason": "stop",
+      "output_tokens": 5,
+      "usage_available": true
+    }
+  ],
+  "failed_attempts": [],
+  "calls": 3,
+  "usage_complete": true,
+  "known_input_tokens": 2807,
+  "known_output_tokens": 124,
+  "model_input_tokens": 2807,
+  "model_output_tokens": 124,
+  "format_failed_calls": 0,
+  "transport_failed_calls": 0,
+  "fallback_calls": 0,
+  "sum_model_latency_s": 4.388917922973633
+}

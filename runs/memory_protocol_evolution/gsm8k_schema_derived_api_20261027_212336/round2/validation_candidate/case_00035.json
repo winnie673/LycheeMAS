@@ -1,0 +1,152 @@
+{
+  "task_id": "gsm8k:train:seed42:V:00035",
+  "status": "completed",
+  "error": null,
+  "prediction": "319",
+  "messages": [
+    {
+      "sender": "planner",
+      "content": "G:total_weight;P:steve=jim-8,stan=steve+5,total=stan+steve+jim;K:jim=110",
+      "receiver": "solver",
+      "round": 0,
+      "role": "assistant",
+      "prompt_tokens": 868,
+      "completion_tokens": 36,
+      "id": "9269f79c4f34",
+      "ts": 1793111267.8832116,
+      "meta": {
+        "sender": "planner",
+        "receiver": "solver",
+        "message_id": "9269f79c4f34",
+        "protocol_edge": "planner_to_solver",
+        "protocol_version": "CARD-2-gsm8k",
+        "protocol_hash": "aec703067bbfeee6aa1e642a2a319658f1d33f2eff00c8701de19347f616ed6d",
+        "contract_hash": "ab4b736240365db5d0ce2caea032f40a3b7fc9c189db42d5ebcd28cac0fac22b",
+        "fields": {
+          "G": "total_weight",
+          "P": "steve=jim-8,stan=steve+5,total=stan+steve+jim",
+          "K": "jim=110"
+        },
+        "communication_tokens": 36,
+        "communication_tokens_exact": true,
+        "attempt_count": 1,
+        "fallback": false,
+        "tokens_include_all_attempts": true,
+        "incoming_message_ids": []
+      }
+    },
+    {
+      "sender": "solver",
+      "content": "IR:steve=110-8=102,stan=102+5=107,total=107+102+110=319;R:319",
+      "receiver": "verifier",
+      "round": 0,
+      "role": "assistant",
+      "prompt_tokens": 722,
+      "completion_tokens": 32,
+      "id": "2411f214beaf",
+      "ts": 1793111269.3635986,
+      "meta": {
+        "sender": "solver",
+        "receiver": "verifier",
+        "message_id": "2411f214beaf",
+        "protocol_edge": "solver_to_verifier",
+        "protocol_version": "CARD-2-gsm8k",
+        "protocol_hash": "aec703067bbfeee6aa1e642a2a319658f1d33f2eff00c8701de19347f616ed6d",
+        "contract_hash": "ab4b736240365db5d0ce2caea032f40a3b7fc9c189db42d5ebcd28cac0fac22b",
+        "fields": {
+          "IR": "steve=110-8=102,stan=102+5=107,total=107+102+110=319",
+          "R": "319"
+        },
+        "communication_tokens": 32,
+        "communication_tokens_exact": true,
+        "attempt_count": 1,
+        "fallback": false,
+        "tokens_include_all_attempts": true,
+        "incoming_message_ids": [
+          "9269f79c4f34"
+        ]
+      }
+    },
+    {
+      "sender": "verifier",
+      "content": "CHK:ACCEPT",
+      "receiver": "solver",
+      "round": 0,
+      "role": "assistant",
+      "prompt_tokens": 1084,
+      "completion_tokens": 5,
+      "id": "c56f7e0d82de",
+      "ts": 1793111270.6080716,
+      "meta": {
+        "sender": "verifier",
+        "receiver": "solver",
+        "message_id": "c56f7e0d82de",
+        "protocol_edge": "verifier_to_solver",
+        "protocol_version": "CARD-2-gsm8k",
+        "protocol_hash": "aec703067bbfeee6aa1e642a2a319658f1d33f2eff00c8701de19347f616ed6d",
+        "contract_hash": "ab4b736240365db5d0ce2caea032f40a3b7fc9c189db42d5ebcd28cac0fac22b",
+        "fields": {
+          "CHK": "ACCEPT"
+        },
+        "communication_tokens": 5,
+        "communication_tokens_exact": true,
+        "attempt_count": 1,
+        "fallback": false,
+        "tokens_include_all_attempts": true,
+        "incoming_message_ids": [
+          "2411f214beaf"
+        ]
+      }
+    }
+  ],
+  "communication_tokens": 73,
+  "wall_time_s": 4.293272399925627,
+  "verified": true,
+  "revision_rounds": 0,
+  "model_calls": [
+    {
+      "role": "planner",
+      "attempt": 0,
+      "status": "delivered",
+      "error": "",
+      "raw_output": "G:total_weight;P:steve=jim-8,stan=steve+5,total=stan+steve+jim;K:jim=110",
+      "finish_reason": "stop",
+      "output_tokens": 36,
+      "usage_available": true
+    },
+    {
+      "role": "solver",
+      "attempt": 0,
+      "status": "delivered",
+      "error": "",
+      "raw_output": "IR:steve=110-8=102,stan=102+5=107,total=107+102+110=319;R:319",
+      "finish_reason": "stop",
+      "output_tokens": 32,
+      "usage_available": true
+    },
+    {
+      "role": "verifier",
+      "attempt": 0,
+      "status": "delivered",
+      "error": "",
+      "raw_output": "CHK:ACCEPT",
+      "finish_reason": "stop",
+      "output_tokens": 5,
+      "usage_available": true
+    }
+  ],
+  "failed_attempts": [],
+  "calls": 3,
+  "usage_complete": true,
+  "known_input_tokens": 2674,
+  "known_output_tokens": 73,
+  "model_input_tokens": 2674,
+  "model_output_tokens": 73,
+  "format_failed_calls": 0,
+  "transport_failed_calls": 0,
+  "fallback_calls": 0,
+  "sum_model_latency_s": 4.217509508132935,
+  "gold": "319",
+  "score": 1.0,
+  "question": "Stan weighs 5 more pounds than Steve. Steve is eight pounds lighter than Jim. If Jim weighs 110 pounds and the three of them crowd onto a scale at the same time, what is their total weight?\nGive the final numeric answer."
+}

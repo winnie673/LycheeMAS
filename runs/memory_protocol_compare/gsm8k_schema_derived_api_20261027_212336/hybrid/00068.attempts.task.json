@@ -1,0 +1,120 @@
+{
+  "task_id": "gsm8k:test:seed42:T:00070",
+  "mode": "hybrid",
+  "benchmark": "gsm8k",
+  "status": "completed",
+  "error": null,
+  "prediction": "7425",
+  "gold": "7425",
+  "wall_time_s": 3.500689300009981,
+  "communication_tokens": 87,
+  "communication_tokens_exact": true,
+  "revision_rounds": 0,
+  "verification_decision": "ACCEPT",
+  "verified": true,
+  "messages": [
+    {
+      "sender": "planner",
+      "content": "G:weekly_earnings;P:weekday_classes=5*5,saturday_classes=8,total_classes=weekday_classes+saturday_classes,weekly_earnings=total_classes*15*15",
+      "receiver": "solver",
+      "round": 0,
+      "role": "assistant",
+      "prompt_tokens": 752,
+      "completion_tokens": 43,
+      "id": "32cfef52cd61",
+      "ts": 1793169469.3435626,
+      "meta": {
+        "sender": "planner",
+        "receiver": "solver",
+        "message_id": "32cfef52cd61",
+        "protocol_edge": "planner_to_solver",
+        "protocol_version": "CARD-0-gsm8k",
+        "protocol_hash": "4bcdae885cc464e0a51977368e4bc06650c0326dbdcb182ce0327477c1d32daa",
+        "contract_hash": "ab4b736240365db5d0ce2caea032f40a3b7fc9c189db42d5ebcd28cac0fac22b",
+        "fields": {
+          "G": "weekly_earnings",
+          "P": "weekday_classes=5*5,saturday_classes=8,total_classes=weekday_classes+saturday_classes,weekly_earnings=total_classes*15*15"
+        },
+        "communication_tokens": 43,
+        "communication_tokens_exact": true,
+        "attempt_count": 1,
+        "fallback": false,
+        "tokens_include_all_attempts": true,
+        "incoming_message_ids": []
+      }
+    },
+    {
+      "sender": "solver",
+      "content": "IR:weekday_classes=5*5=25,total_classes=25+8=33,weekly_earnings=33*15*15=7425;R:7425",
+      "receiver": "verifier",
+      "round": 0,
+      "role": "assistant",
+      "prompt_tokens": 737,
+      "completion_tokens": 39,
+      "id": "84cf6b2aac46",
+      "ts": 1793169470.3421178,
+      "meta": {
+        "sender": "solver",
+        "receiver": "verifier",
+        "message_id": "84cf6b2aac46",
+        "protocol_edge": "solver_to_verifier",
+        "protocol_version": "CARD-0-gsm8k",
+        "protocol_hash": "4bcdae885cc464e0a51977368e4bc06650c0326dbdcb182ce0327477c1d32daa",
+        "contract_hash": "ab4b736240365db5d0ce2caea032f40a3b7fc9c189db42d5ebcd28cac0fac22b",
+        "fields": {
+          "IR": "weekday_classes=5*5=25,total_classes=25+8=33,weekly_earnings=33*15*15=7425",
+          "R": "7425"
+        },
+        "communication_tokens": 39,
+        "communication_tokens_exact": true,
+        "attempt_count": 1,
+        "fallback": false,
+        "tokens_include_all_attempts": true,
+        "incoming_message_ids": [
+          "32cfef52cd61"
+        ]
+      }
+    },
+    {
+      "sender": "verifier",
+      "content": "CHK:ACCEPT",
+      "receiver": "solver",
+      "round": 0,
+      "role": "assistant",
+      "prompt_tokens": 1099,
+      "completion_tokens": 5,
+      "id": "7d3be4e5002d",
+      "ts": 1793169471.2151504,
+      "meta": {
+        "sender": "verifier",
+        "receiver": "solver",
+        "message_id": "7d3be4e5002d",
+        "protocol_edge": "verifier_to_solver",
+        "protocol_version": "CARD-0-gsm8k",
+        "protocol_hash": "4bcdae885cc464e0a51977368e4bc06650c0326dbdcb182ce0327477c1d32daa",
+        "contract_hash": "ab4b736240365db5d0ce2caea032f40a3b7fc9c189db42d5ebcd28cac0fac22b",
+        "fields": {
+          "CHK": "ACCEPT"
+        },
+        "communication_tokens": 5,
+        "communication_tokens_exact": true,
+        "attempt_count": 1,
+        "fallback": false,
+        "tokens_include_all_attempts": true,
+        "incoming_message_ids": [
+          "84cf6b2aac46"
+        ]
+      }
+    }
+  ],
+  "calls": 3,
+  "usage_complete": true,
+  "known_input_tokens": 2588,
+  "known_output_tokens": 87,
+  "model_input_tokens": 2588,
+  "model_output_tokens": 87,
+  "format_failed_calls": 0,
+  "transport_failed_calls": 0,
+  "fallback_calls": 0,
+  "sum_model_latency_s": 3.4269869327545166
+}

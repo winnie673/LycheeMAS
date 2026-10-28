@@ -1,0 +1,95 @@
+{
+  "task_id": "gsm8k:test:seed42:T:00148",
+  "mode": "nl",
+  "benchmark": "gsm8k",
+  "status": "completed",
+  "error": null,
+  "prediction": "30",
+  "gold": "30",
+  "wall_time_s": 3.4558909999905154,
+  "communication_tokens": 121,
+  "communication_tokens_exact": true,
+  "revision_rounds": 0,
+  "verification_decision": "ACCEPT",
+  "verified": true,
+  "messages": [
+    {
+      "sender": "planner",
+      "content": "Goal: find how much money Brittany’s mom gave the cashier.\n\nPlan: Compute the total cost of 1 adult ticket at $12 and 1 child ticket at $10. Since she received $8 in change, add that change amount to the total ticket cost to determine the amount she handed to the cashier.\n\nConstraints: Use only the given prices and change amount; provide the final amount in dollars.",
+      "receiver": "solver",
+      "round": 0,
+      "role": "assistant",
+      "prompt_tokens": 220,
+      "completion_tokens": 84,
+      "id": "8f81d056b627",
+      "ts": 1793170180.9510121,
+      "meta": {
+        "fields": {},
+        "communication_tokens": 84,
+        "communication_tokens_exact": true,
+        "attempt_count": 1,
+        "fallback": false,
+        "tokens_include_all_attempts": true,
+        "incoming_message_ids": []
+      }
+    },
+    {
+      "sender": "solver",
+      "content": "The total ticket cost is $12 + $10 = $22. Adding the $8 change gives $22 + $8 = $30.\n\n\\boxed{30}",
+      "receiver": "verifier",
+      "round": 0,
+      "role": "assistant",
+      "prompt_tokens": 316,
+      "completion_tokens": 35,
+      "id": "be47c39dcae8",
+      "ts": 1793170182.0784068,
+      "meta": {
+        "fields": {
+          "R": "30"
+        },
+        "communication_tokens": 35,
+        "communication_tokens_exact": true,
+        "attempt_count": 1,
+        "fallback": false,
+        "tokens_include_all_attempts": true,
+        "incoming_message_ids": [
+          "8f81d056b627"
+        ]
+      }
+    },
+    {
+      "sender": "verifier",
+      "content": "ACCEPT",
+      "receiver": "solver",
+      "round": 0,
+      "role": "assistant",
+      "prompt_tokens": 644,
+      "completion_tokens": 2,
+      "id": "12ffca5e1fe3",
+      "ts": 1793170182.9821808,
+      "meta": {
+        "fields": {
+          "CHK": "ACCEPT"
+        },
+        "communication_tokens": 2,
+        "communication_tokens_exact": true,
+        "attempt_count": 1,
+        "fallback": false,
+        "tokens_include_all_attempts": true,
+        "incoming_message_ids": [
+          "be47c39dcae8"
+        ]
+      }
+    }
+  ],
+  "calls": 3,
+  "usage_complete": true,
+  "known_input_tokens": 1180,
+  "known_output_tokens": 121,
+  "model_input_tokens": 1180,
+  "model_output_tokens": 121,
+  "format_failed_calls": 0,
+  "transport_failed_calls": 0,
+  "fallback_calls": 0,
+  "sum_model_latency_s": 3.415544033050537
+}

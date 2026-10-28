@@ -1,0 +1,151 @@
+{
+  "task_id": "gsm8k:train:seed42:V:00123",
+  "status": "completed",
+  "error": null,
+  "prediction": "27",
+  "messages": [
+    {
+      "sender": "planner",
+      "content": "G:pies_left;P:total=5*7,pies_left=total-8",
+      "receiver": "solver",
+      "round": 0,
+      "role": "assistant",
+      "prompt_tokens": 861,
+      "completion_tokens": 19,
+      "id": "35ef098f639c",
+      "ts": 1793111630.9778,
+      "meta": {
+        "sender": "planner",
+        "receiver": "solver",
+        "message_id": "35ef098f639c",
+        "protocol_edge": "planner_to_solver",
+        "protocol_version": "CARD-2-gsm8k",
+        "protocol_hash": "aec703067bbfeee6aa1e642a2a319658f1d33f2eff00c8701de19347f616ed6d",
+        "contract_hash": "ab4b736240365db5d0ce2caea032f40a3b7fc9c189db42d5ebcd28cac0fac22b",
+        "fields": {
+          "G": "pies_left",
+          "P": "total=5*7,pies_left=total-8"
+        },
+        "communication_tokens": 19,
+        "communication_tokens_exact": true,
+        "attempt_count": 1,
+        "fallback": false,
+        "tokens_include_all_attempts": true,
+        "incoming_message_ids": []
+      }
+    },
+    {
+      "sender": "solver",
+      "content": "IR:total=5*7=35,pies_left=35-8=27;R:27",
+      "receiver": "verifier",
+      "round": 0,
+      "role": "assistant",
+      "prompt_tokens": 698,
+      "completion_tokens": 22,
+      "id": "fd1ac11b08f8",
+      "ts": 1793111632.2852492,
+      "meta": {
+        "sender": "solver",
+        "receiver": "verifier",
+        "message_id": "fd1ac11b08f8",
+        "protocol_edge": "solver_to_verifier",
+        "protocol_version": "CARD-2-gsm8k",
+        "protocol_hash": "aec703067bbfeee6aa1e642a2a319658f1d33f2eff00c8701de19347f616ed6d",
+        "contract_hash": "ab4b736240365db5d0ce2caea032f40a3b7fc9c189db42d5ebcd28cac0fac22b",
+        "fields": {
+          "IR": "total=5*7=35,pies_left=35-8=27",
+          "R": "27"
+        },
+        "communication_tokens": 22,
+        "communication_tokens_exact": true,
+        "attempt_count": 1,
+        "fallback": false,
+        "tokens_include_all_attempts": true,
+        "incoming_message_ids": [
+          "35ef098f639c"
+        ]
+      }
+    },
+    {
+      "sender": "verifier",
+      "content": "CHK:ACCEPT",
+      "receiver": "solver",
+      "round": 0,
+      "role": "assistant",
+      "prompt_tokens": 1067,
+      "completion_tokens": 5,
+      "id": "37dded999b77",
+      "ts": 1793111633.4978502,
+      "meta": {
+        "sender": "verifier",
+        "receiver": "solver",
+        "message_id": "37dded999b77",
+        "protocol_edge": "verifier_to_solver",
+        "protocol_version": "CARD-2-gsm8k",
+        "protocol_hash": "aec703067bbfeee6aa1e642a2a319658f1d33f2eff00c8701de19347f616ed6d",
+        "contract_hash": "ab4b736240365db5d0ce2caea032f40a3b7fc9c189db42d5ebcd28cac0fac22b",
+        "fields": {
+          "CHK": "ACCEPT"
+        },
+        "communication_tokens": 5,
+        "communication_tokens_exact": true,
+        "attempt_count": 1,
+        "fallback": false,
+        "tokens_include_all_attempts": true,
+        "incoming_message_ids": [
+          "fd1ac11b08f8"
+        ]
+      }
+    }
+  ],
+  "communication_tokens": 46,
+  "wall_time_s": 4.03008019994013,
+  "verified": true,
+  "revision_rounds": 0,
+  "model_calls": [
+    {
+      "role": "planner",
+      "attempt": 0,
+      "status": "delivered",
+      "error": "",
+      "raw_output": "G:pies_left;P:total=5*7,pies_left=total-8",
+      "finish_reason": "stop",
+      "output_tokens": 19,
+      "usage_available": true
+    },
+    {
+      "role": "solver",
+      "attempt": 0,
+      "status": "delivered",
+      "error": "",
+      "raw_output": "IR:total=5*7=35,pies_left=35-8=27;R:27",
+      "finish_reason": "stop",
+      "output_tokens": 22,
+      "usage_available": true
+    },
+    {
+      "role": "verifier",
+      "attempt": 0,
+      "status": "delivered",
+      "error": "",
+      "raw_output": "CHK:ACCEPT",
+      "finish_reason": "stop",
+      "output_tokens": 5,
+      "usage_available": true
+    }
+  ],
+  "failed_attempts": [],
+  "calls": 3,
+  "usage_complete": true,
+  "known_input_tokens": 2626,
+  "known_output_tokens": 46,
+  "model_input_tokens": 2626,
+  "model_output_tokens": 46,
+  "format_failed_calls": 0,
+  "transport_failed_calls": 0,
+  "fallback_calls": 0,
+  "sum_model_latency_s": 3.8667802810668945,
+  "gold": "27",
+  "score": 1.0,
+  "question": "Marcus can fit 5 pies in his oven at once. He bakes 7 batches of pies, then slips and drops 8 of them. How many pies are left?\nGive the final numeric answer."
+}

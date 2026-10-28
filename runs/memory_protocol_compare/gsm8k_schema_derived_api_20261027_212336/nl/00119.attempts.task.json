@@ -1,0 +1,95 @@
+{
+  "task_id": "gsm8k:test:seed42:T:00123",
+  "mode": "nl",
+  "benchmark": "gsm8k",
+  "status": "completed",
+  "error": null,
+  "prediction": "50",
+  "gold": "50",
+  "wall_time_s": 4.266520000062883,
+  "communication_tokens": 146,
+  "communication_tokens_exact": true,
+  "revision_rounds": 0,
+  "verification_decision": "ACCEPT",
+  "verified": true,
+  "messages": [
+    {
+      "sender": "planner",
+      "content": "Goal: Find the total distance Rosie can run in 7 hours.\n\nPlan: Split the 7 hours into two phases. For the first 3 hours, use her initial speed of 10 mph to compute distance. For the remaining 4 hours, use her slower speed of 5 mph to compute distance. Add the two distances.\n\nConstraints: Do not exceed the given time segments; use distance = speed × time for each phase.",
+      "receiver": "solver",
+      "round": 0,
+      "role": "assistant",
+      "prompt_tokens": 189,
+      "completion_tokens": 88,
+      "id": "e169bdffeab8",
+      "ts": 1793169995.2415116,
+      "meta": {
+        "fields": {},
+        "communication_tokens": 88,
+        "communication_tokens_exact": true,
+        "attempt_count": 1,
+        "fallback": false,
+        "tokens_include_all_attempts": true,
+        "incoming_message_ids": []
+      }
+    },
+    {
+      "sender": "solver",
+      "content": "First 3 hours: \\(10 \\times 3 = 30\\) miles.  \nRemaining 4 hours: \\(5 \\times 4 = 20\\) miles.  \nTotal: \\(30 + 20 = 50\\) miles.\n\n\\boxed{50}",
+      "receiver": "verifier",
+      "round": 0,
+      "role": "assistant",
+      "prompt_tokens": 289,
+      "completion_tokens": 56,
+      "id": "8de4e73d08bc",
+      "ts": 1793169996.823358,
+      "meta": {
+        "fields": {
+          "R": "50"
+        },
+        "communication_tokens": 56,
+        "communication_tokens_exact": true,
+        "attempt_count": 1,
+        "fallback": false,
+        "tokens_include_all_attempts": true,
+        "incoming_message_ids": [
+          "e169bdffeab8"
+        ]
+      }
+    },
+    {
+      "sender": "verifier",
+      "content": "ACCEPT",
+      "receiver": "solver",
+      "round": 0,
+      "role": "assistant",
+      "prompt_tokens": 634,
+      "completion_tokens": 2,
+      "id": "3c6451a6af67",
+      "ts": 1793169998.1261277,
+      "meta": {
+        "fields": {
+          "CHK": "ACCEPT"
+        },
+        "communication_tokens": 2,
+        "communication_tokens_exact": true,
+        "attempt_count": 1,
+        "fallback": false,
+        "tokens_include_all_attempts": true,
+        "incoming_message_ids": [
+          "8de4e73d08bc"
+        ]
+      }
+    }
+  ],
+  "calls": 3,
+  "usage_complete": true,
+  "known_input_tokens": 1112,
+  "known_output_tokens": 146,
+  "model_input_tokens": 1112,
+  "model_output_tokens": 146,
+  "format_failed_calls": 0,
+  "transport_failed_calls": 0,
+  "fallback_calls": 0,
+  "sum_model_latency_s": 4.235109806060791
+}

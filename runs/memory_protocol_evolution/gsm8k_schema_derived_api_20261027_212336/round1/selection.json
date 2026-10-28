@@ -1,0 +1,25 @@
+{
+  "round": 1,
+  "parent": "E:\\毕设\\LycheeMAS_memory_channel\\runs\\memory_protocol_evolution\\gsm8k_schema_derived_api_20261027_212336\\card0\\proposal_0.yaml",
+  "candidate": "E:\\毕设\\LycheeMAS_memory_channel\\runs\\memory_protocol_evolution\\gsm8k_schema_derived_api_20261027_212336\\round1\\proposal_0.yaml",
+  "parent_metrics": {
+    "n": 200,
+    "correct": 187.0,
+    "accuracy": 0.935,
+    "failed": 0,
+    "avg_communication_tokens": 85.94,
+    "avg_model_output_tokens": 85.94,
+    "avg_wall_time_s": 4.492516507998808
+  },
+  "candidate_metrics": {
+    "n": 200,
+    "correct": 186.0,
+    "accuracy": 0.93,
+    "failed": 0,
+    "avg_communication_tokens": 85.715,
+    "avg_model_output_tokens": 85.715,
+    "avg_wall_time_s": 4.338323104999144
+  },
+  "promoted": false,
+  "reason": "accuracy"
+}

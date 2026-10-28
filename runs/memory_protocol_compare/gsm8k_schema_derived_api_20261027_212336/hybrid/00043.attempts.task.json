@@ -1,0 +1,120 @@
+{
+  "task_id": "gsm8k:test:seed42:T:00044",
+  "mode": "hybrid",
+  "benchmark": "gsm8k",
+  "status": "completed",
+  "error": null,
+  "prediction": "20",
+  "gold": "20",
+  "wall_time_s": 2.7694041999056935,
+  "communication_tokens": 95,
+  "communication_tokens_exact": true,
+  "revision_rounds": 0,
+  "verification_decision": "ACCEPT",
+  "verified": true,
+  "messages": [
+    {
+      "sender": "planner",
+      "content": "G:net_profit;P:candles_per_lb=10,supply_cost_per_lb=10,revenue=20*2,cost=(20/candles_per_lb)*supply_cost_per_lb,net_profit=revenue-cost",
+      "receiver": "solver",
+      "round": 0,
+      "role": "assistant",
+      "prompt_tokens": 773,
+      "completion_tokens": 56,
+      "id": "8acee94ae638",
+      "ts": 1793169293.8435965,
+      "meta": {
+        "sender": "planner",
+        "receiver": "solver",
+        "message_id": "8acee94ae638",
+        "protocol_edge": "planner_to_solver",
+        "protocol_version": "CARD-0-gsm8k",
+        "protocol_hash": "4bcdae885cc464e0a51977368e4bc06650c0326dbdcb182ce0327477c1d32daa",
+        "contract_hash": "ab4b736240365db5d0ce2caea032f40a3b7fc9c189db42d5ebcd28cac0fac22b",
+        "fields": {
+          "G": "net_profit",
+          "P": "candles_per_lb=10,supply_cost_per_lb=10,revenue=20*2,cost=(20/candles_per_lb)*supply_cost_per_lb,net_profit=revenue-cost"
+        },
+        "communication_tokens": 56,
+        "communication_tokens_exact": true,
+        "attempt_count": 1,
+        "fallback": false,
+        "tokens_include_all_attempts": true,
+        "incoming_message_ids": []
+      }
+    },
+    {
+      "sender": "solver",
+      "content": "IR:revenue=20*2=40,cost=(20/10)*10=20,net_profit=40-20=20;R:20",
+      "receiver": "verifier",
+      "round": 0,
+      "role": "assistant",
+      "prompt_tokens": 771,
+      "completion_tokens": 34,
+      "id": "f008f297b195",
+      "ts": 1793169294.7871583,
+      "meta": {
+        "sender": "solver",
+        "receiver": "verifier",
+        "message_id": "f008f297b195",
+        "protocol_edge": "solver_to_verifier",
+        "protocol_version": "CARD-0-gsm8k",
+        "protocol_hash": "4bcdae885cc464e0a51977368e4bc06650c0326dbdcb182ce0327477c1d32daa",
+        "contract_hash": "ab4b736240365db5d0ce2caea032f40a3b7fc9c189db42d5ebcd28cac0fac22b",
+        "fields": {
+          "IR": "revenue=20*2=40,cost=(20/10)*10=20,net_profit=40-20=20",
+          "R": "20"
+        },
+        "communication_tokens": 34,
+        "communication_tokens_exact": true,
+        "attempt_count": 1,
+        "fallback": false,
+        "tokens_include_all_attempts": true,
+        "incoming_message_ids": [
+          "8acee94ae638"
+        ]
+      }
+    },
+    {
+      "sender": "verifier",
+      "content": "CHK:ACCEPT",
+      "receiver": "solver",
+      "round": 0,
+      "role": "assistant",
+      "prompt_tokens": 1115,
+      "completion_tokens": 5,
+      "id": "805b2c07b2c6",
+      "ts": 1793169295.5161633,
+      "meta": {
+        "sender": "verifier",
+        "receiver": "solver",
+        "message_id": "805b2c07b2c6",
+        "protocol_edge": "verifier_to_solver",
+        "protocol_version": "CARD-0-gsm8k",
+        "protocol_hash": "4bcdae885cc464e0a51977368e4bc06650c0326dbdcb182ce0327477c1d32daa",
+        "contract_hash": "ab4b736240365db5d0ce2caea032f40a3b7fc9c189db42d5ebcd28cac0fac22b",
+        "fields": {
+          "CHK": "ACCEPT"
+        },
+        "communication_tokens": 5,
+        "communication_tokens_exact": true,
+        "attempt_count": 1,
+        "fallback": false,
+        "tokens_include_all_attempts": true,
+        "incoming_message_ids": [
+          "f008f297b195"
+        ]
+      }
+    }
+  ],
+  "calls": 3,
+  "usage_complete": true,
+  "known_input_tokens": 2659,
+  "known_output_tokens": 95,
+  "model_input_tokens": 2659,
+  "model_output_tokens": 95,
+  "format_failed_calls": 0,
+  "transport_failed_calls": 0,
+  "fallback_calls": 0,
+  "sum_model_latency_s": 2.6935722827911377
+}

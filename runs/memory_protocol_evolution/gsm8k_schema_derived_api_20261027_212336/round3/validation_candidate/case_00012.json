@@ -1,0 +1,151 @@
+{
+  "task_id": "gsm8k:train:seed42:V:00012",
+  "status": "completed",
+  "error": null,
+  "prediction": "37",
+  "messages": [
+    {
+      "sender": "planner",
+      "content": "G:total_books;P:july=2*8,august=july-3,total=8+july+august",
+      "receiver": "solver",
+      "round": 0,
+      "role": "assistant",
+      "prompt_tokens": 791,
+      "completion_tokens": 30,
+      "id": "6ae7abc58108",
+      "ts": 1793113256.5793235,
+      "meta": {
+        "sender": "planner",
+        "receiver": "solver",
+        "message_id": "6ae7abc58108",
+        "protocol_edge": "planner_to_solver",
+        "protocol_version": "CARD-3-gsm8k",
+        "protocol_hash": "fb1a4acb6e591ac96544876aedd912b27a6f9d3154c76112e1da0f43407d27b2",
+        "contract_hash": "ab4b736240365db5d0ce2caea032f40a3b7fc9c189db42d5ebcd28cac0fac22b",
+        "fields": {
+          "G": "total_books",
+          "P": "july=2*8,august=july-3,total=8+july+august"
+        },
+        "communication_tokens": 30,
+        "communication_tokens_exact": true,
+        "attempt_count": 1,
+        "fallback": false,
+        "tokens_include_all_attempts": true,
+        "incoming_message_ids": []
+      }
+    },
+    {
+      "sender": "solver",
+      "content": "IR:july=2*8=16,august=16-3=13,total=8+16+13=37;R:37",
+      "receiver": "verifier",
+      "round": 0,
+      "role": "assistant",
+      "prompt_tokens": 721,
+      "completion_tokens": 33,
+      "id": "d3e3aac3dea1",
+      "ts": 1793113257.6329021,
+      "meta": {
+        "sender": "solver",
+        "receiver": "verifier",
+        "message_id": "d3e3aac3dea1",
+        "protocol_edge": "solver_to_verifier",
+        "protocol_version": "CARD-3-gsm8k",
+        "protocol_hash": "fb1a4acb6e591ac96544876aedd912b27a6f9d3154c76112e1da0f43407d27b2",
+        "contract_hash": "ab4b736240365db5d0ce2caea032f40a3b7fc9c189db42d5ebcd28cac0fac22b",
+        "fields": {
+          "IR": "july=2*8=16,august=16-3=13,total=8+16+13=37",
+          "R": "37"
+        },
+        "communication_tokens": 33,
+        "communication_tokens_exact": true,
+        "attempt_count": 1,
+        "fallback": false,
+        "tokens_include_all_attempts": true,
+        "incoming_message_ids": [
+          "6ae7abc58108"
+        ]
+      }
+    },
+    {
+      "sender": "verifier",
+      "content": "CHK:ACCEPT",
+      "receiver": "solver",
+      "round": 0,
+      "role": "assistant",
+      "prompt_tokens": 1090,
+      "completion_tokens": 5,
+      "id": "0b54c164c734",
+      "ts": 1793113258.612581,
+      "meta": {
+        "sender": "verifier",
+        "receiver": "solver",
+        "message_id": "0b54c164c734",
+        "protocol_edge": "verifier_to_solver",
+        "protocol_version": "CARD-3-gsm8k",
+        "protocol_hash": "fb1a4acb6e591ac96544876aedd912b27a6f9d3154c76112e1da0f43407d27b2",
+        "contract_hash": "ab4b736240365db5d0ce2caea032f40a3b7fc9c189db42d5ebcd28cac0fac22b",
+        "fields": {
+          "CHK": "ACCEPT"
+        },
+        "communication_tokens": 5,
+        "communication_tokens_exact": true,
+        "attempt_count": 1,
+        "fallback": false,
+        "tokens_include_all_attempts": true,
+        "incoming_message_ids": [
+          "d3e3aac3dea1"
+        ]
+      }
+    }
+  ],
+  "communication_tokens": 68,
+  "wall_time_s": 3.4657163999509066,
+  "verified": true,
+  "revision_rounds": 0,
+  "model_calls": [
+    {
+      "role": "planner",
+      "attempt": 0,
+      "status": "delivered",
+      "error": "",
+      "raw_output": "G:total_books;P:july=2*8,august=july-3,total=8+july+august",
+      "finish_reason": "stop",
+      "output_tokens": 30,
+      "usage_available": true
+    },
+    {
+      "role": "solver",
+      "attempt": 0,
+      "status": "delivered",
+      "error": "",
+      "raw_output": "IR:july=2*8=16,august=16-3=13,total=8+16+13=37;R:37",
+      "finish_reason": "stop",
+      "output_tokens": 33,
+      "usage_available": true
+    },
+    {
+      "role": "verifier",
+      "attempt": 0,
+      "status": "delivered",
+      "error": "",
+      "raw_output": "CHK:ACCEPT",
+      "finish_reason": "stop",
+      "output_tokens": 5,
+      "usage_available": true
+    }
+  ],
+  "failed_attempts": [],
+  "calls": 3,
+  "usage_complete": true,
+  "known_input_tokens": 2602,
+  "known_output_tokens": 68,
+  "model_input_tokens": 2602,
+  "model_output_tokens": 68,
+  "format_failed_calls": 0,
+  "transport_failed_calls": 0,
+  "fallback_calls": 0,
+  "sum_model_latency_s": 3.3144967555999756,
+  "gold": "37",
+  "score": 1.0,
+  "question": "Katy participated in a summer reading program at her local library. She read 8 books in June, twice as many in July and three fewer in August than she did in July. How many books did Katy read during the summer?\nGive the final numeric answer."
+}

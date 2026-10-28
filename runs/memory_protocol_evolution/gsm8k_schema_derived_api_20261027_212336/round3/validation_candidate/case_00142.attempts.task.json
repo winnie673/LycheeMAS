@@ -1,0 +1,149 @@
+{
+  "task_id": "gsm8k:train:seed42:V:00142",
+  "status": "completed",
+  "error": null,
+  "prediction": "180",
+  "messages": [
+    {
+      "sender": "planner",
+      "content": "G:total_gas_cost;P:total_gallons=4*12,cost_i=12*price_i,total_gas_cost=sum(cost_i for i=1..4);NL:Each of the 4 station visits fills the 12-gallon tank from empty to full, so buy 12 gallons at each listed price.",
+      "receiver": "solver",
+      "round": 0,
+      "role": "assistant",
+      "prompt_tokens": 841,
+      "completion_tokens": 73,
+      "id": "78b87bae88af",
+      "ts": 1793168787.968324,
+      "meta": {
+        "sender": "planner",
+        "receiver": "solver",
+        "message_id": "78b87bae88af",
+        "protocol_edge": "planner_to_solver",
+        "protocol_version": "CARD-3-gsm8k",
+        "protocol_hash": "fb1a4acb6e591ac96544876aedd912b27a6f9d3154c76112e1da0f43407d27b2",
+        "contract_hash": "ab4b736240365db5d0ce2caea032f40a3b7fc9c189db42d5ebcd28cac0fac22b",
+        "fields": {
+          "G": "total_gas_cost",
+          "P": "total_gallons=4*12,cost_i=12*price_i,total_gas_cost=sum(cost_i for i=1..4)",
+          "NL": "Each of the 4 station visits fills the 12-gallon tank from empty to full, so buy 12 gallons at each listed price."
+        },
+        "communication_tokens": 73,
+        "communication_tokens_exact": true,
+        "attempt_count": 1,
+        "fallback": false,
+        "tokens_include_all_attempts": true,
+        "incoming_message_ids": []
+      }
+    },
+    {
+      "sender": "solver",
+      "content": "IR:gallons=4*12=48,cost=12*(3+3.5+4+4.5)=12*15=180;R:180",
+      "receiver": "verifier",
+      "round": 0,
+      "role": "assistant",
+      "prompt_tokens": 814,
+      "completion_tokens": 36,
+      "id": "59c6135a5b5d",
+      "ts": 1793168788.942122,
+      "meta": {
+        "sender": "solver",
+        "receiver": "verifier",
+        "message_id": "59c6135a5b5d",
+        "protocol_edge": "solver_to_verifier",
+        "protocol_version": "CARD-3-gsm8k",
+        "protocol_hash": "fb1a4acb6e591ac96544876aedd912b27a6f9d3154c76112e1da0f43407d27b2",
+        "contract_hash": "ab4b736240365db5d0ce2caea032f40a3b7fc9c189db42d5ebcd28cac0fac22b",
+        "fields": {
+          "IR": "gallons=4*12=48,cost=12*(3+3.5+4+4.5)=12*15=180",
+          "R": "180"
+        },
+        "communication_tokens": 36,
+        "communication_tokens_exact": true,
+        "attempt_count": 1,
+        "fallback": false,
+        "tokens_include_all_attempts": true,
+        "incoming_message_ids": [
+          "78b87bae88af"
+        ]
+      }
+    },
+    {
+      "sender": "verifier",
+      "content": "CHK:ACCEPT",
+      "receiver": "solver",
+      "round": 0,
+      "role": "assistant",
+      "prompt_tokens": 1143,
+      "completion_tokens": 5,
+      "id": "e6f21a7c7fb4",
+      "ts": 1793168789.916696,
+      "meta": {
+        "sender": "verifier",
+        "receiver": "solver",
+        "message_id": "e6f21a7c7fb4",
+        "protocol_edge": "verifier_to_solver",
+        "protocol_version": "CARD-3-gsm8k",
+        "protocol_hash": "fb1a4acb6e591ac96544876aedd912b27a6f9d3154c76112e1da0f43407d27b2",
+        "contract_hash": "ab4b736240365db5d0ce2caea032f40a3b7fc9c189db42d5ebcd28cac0fac22b",
+        "fields": {
+          "CHK": "ACCEPT"
+        },
+        "communication_tokens": 5,
+        "communication_tokens_exact": true,
+        "attempt_count": 1,
+        "fallback": false,
+        "tokens_include_all_attempts": true,
+        "incoming_message_ids": [
+          "59c6135a5b5d"
+        ]
+      }
+    }
+  ],
+  "communication_tokens": 114,
+  "wall_time_s": 3.335431499988772,
+  "verified": true,
+  "revision_rounds": 0,
+  "model_calls": [
+    {
+      "role": "planner",
+      "attempt": 0,
+      "status": "delivered",
+      "error": "",
+      "raw_output": "G:total_gas_cost;P:total_gallons=4*12,cost_i=12*price_i,total_gas_cost=sum(cost_i for i=1..4);NL:Each of the 4 station visits fills the 12-gallon tank from empty to full, so buy 12 gallons at each listed price.",
+      "finish_reason": "stop",
+      "output_tokens": 73,
+      "usage_available": true
+    },
+    {
+      "role": "solver",
+      "attempt": 0,
+      "status": "delivered",
+      "error": "",
+      "raw_output": "IR:gallons=4*12=48,cost=12*(3+3.5+4+4.5)=12*15=180;R:180",
+      "finish_reason": "stop",
+      "output_tokens": 36,
+      "usage_available": true
+    },
+    {
+      "role": "verifier",
+      "attempt": 0,
+      "status": "delivered",
+      "error": "",
+      "raw_output": "CHK:ACCEPT",
+      "finish_reason": "stop",
+      "output_tokens": 5,
+      "usage_available": true
+    }
+  ],
+  "failed_attempts": [],
+  "calls": 3,
+  "usage_complete": true,
+  "known_input_tokens": 2798,
+  "known_output_tokens": 114,
+  "model_input_tokens": 2798,
+  "model_output_tokens": 114,
+  "format_failed_calls": 0,
+  "transport_failed_calls": 0,
+  "fallback_calls": 0,
+  "sum_model_latency_s": 3.2576687335968018
+}

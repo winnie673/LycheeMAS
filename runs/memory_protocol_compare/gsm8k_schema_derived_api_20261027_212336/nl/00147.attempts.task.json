@@ -1,0 +1,95 @@
+{
+  "task_id": "gsm8k:test:seed42:T:00151",
+  "mode": "nl",
+  "benchmark": "gsm8k",
+  "status": "completed",
+  "error": null,
+  "prediction": "5",
+  "gold": "5",
+  "wall_time_s": 3.7900791000574827,
+  "communication_tokens": 160,
+  "communication_tokens_exact": true,
+  "revision_rounds": 0,
+  "verification_decision": "ACCEPT",
+  "verified": true,
+  "messages": [
+    {
+      "sender": "planner",
+      "content": "Goal: find Shawnda’s total earnings in dollars for the day.\n\nPlan: Count the total number of tires inflated by adding the tires from bicycles, tricycles, and the unicycle. Then multiply the total tire count by the per-tire charge, and convert cents to dollars.\n\nFacts to use: bicycles have 2 tires each; tricycles have 3 tires each; a unicycle has 1 tire. Charge is 25 cents per tire.",
+      "receiver": "solver",
+      "round": 0,
+      "role": "assistant",
+      "prompt_tokens": 244,
+      "completion_tokens": 96,
+      "id": "c80cd3d2092e",
+      "ts": 1793170206.2265074,
+      "meta": {
+        "fields": {},
+        "communication_tokens": 96,
+        "communication_tokens_exact": true,
+        "attempt_count": 1,
+        "fallback": false,
+        "tokens_include_all_attempts": true,
+        "incoming_message_ids": []
+      }
+    },
+    {
+      "sender": "solver",
+      "content": "Bicycles: 5 × 2 = 10 tires. Tricycles: 3 × 3 = 9 tires. Unicycle: 1 tire. Total = 20 tires. At 25 cents each, that's 500 cents = $5.\n\n\\boxed{5}",
+      "receiver": "verifier",
+      "round": 0,
+      "role": "assistant",
+      "prompt_tokens": 352,
+      "completion_tokens": 62,
+      "id": "3d3e2178148b",
+      "ts": 1793170207.398245,
+      "meta": {
+        "fields": {
+          "R": "5"
+        },
+        "communication_tokens": 62,
+        "communication_tokens_exact": true,
+        "attempt_count": 1,
+        "fallback": false,
+        "tokens_include_all_attempts": true,
+        "incoming_message_ids": [
+          "c80cd3d2092e"
+        ]
+      }
+    },
+    {
+      "sender": "verifier",
+      "content": "ACCEPT",
+      "receiver": "solver",
+      "round": 0,
+      "role": "assistant",
+      "prompt_tokens": 695,
+      "completion_tokens": 2,
+      "id": "79e20fa388cb",
+      "ts": 1793170208.4713478,
+      "meta": {
+        "fields": {
+          "CHK": "ACCEPT"
+        },
+        "communication_tokens": 2,
+        "communication_tokens_exact": true,
+        "attempt_count": 1,
+        "fallback": false,
+        "tokens_include_all_attempts": true,
+        "incoming_message_ids": [
+          "3d3e2178148b"
+        ]
+      }
+    }
+  ],
+  "calls": 3,
+  "usage_complete": true,
+  "known_input_tokens": 1291,
+  "known_output_tokens": 160,
+  "model_input_tokens": 1291,
+  "model_output_tokens": 160,
+  "format_failed_calls": 0,
+  "transport_failed_calls": 0,
+  "fallback_calls": 0,
+  "sum_model_latency_s": 3.756865978240967
+}

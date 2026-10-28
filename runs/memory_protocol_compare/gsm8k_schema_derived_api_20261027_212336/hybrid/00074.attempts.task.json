@@ -1,0 +1,121 @@
+{
+  "task_id": "gsm8k:test:seed42:T:00076",
+  "mode": "hybrid",
+  "benchmark": "gsm8k",
+  "status": "completed",
+  "error": null,
+  "prediction": "5",
+  "gold": "5",
+  "wall_time_s": 3.79893719998654,
+  "communication_tokens": 156,
+  "communication_tokens_exact": true,
+  "revision_rounds": 0,
+  "verification_decision": "ACCEPT",
+  "verified": true,
+  "messages": [
+    {
+      "sender": "planner",
+      "content": "G:bags_in_first_year;P:first_phase_cups=180*1,second_phase_days=365-180,second_phase_cups=second_phase_days*2,total_cups=first_phase_cups+second_phase_cups,bags_in_first_year=total_cups/110;NL:Use 365 days for the first year and assume bags can be fractional unless the division is exact.",
+      "receiver": "solver",
+      "round": 0,
+      "role": "assistant",
+      "prompt_tokens": 783,
+      "completion_tokens": 92,
+      "id": "4e87927d9fa4",
+      "ts": 1793169510.9415174,
+      "meta": {
+        "sender": "planner",
+        "receiver": "solver",
+        "message_id": "4e87927d9fa4",
+        "protocol_edge": "planner_to_solver",
+        "protocol_version": "CARD-0-gsm8k",
+        "protocol_hash": "4bcdae885cc464e0a51977368e4bc06650c0326dbdcb182ce0327477c1d32daa",
+        "contract_hash": "ab4b736240365db5d0ce2caea032f40a3b7fc9c189db42d5ebcd28cac0fac22b",
+        "fields": {
+          "G": "bags_in_first_year",
+          "P": "first_phase_cups=180*1,second_phase_days=365-180,second_phase_cups=second_phase_days*2,total_cups=first_phase_cups+second_phase_cups,bags_in_first_year=total_cups/110",
+          "NL": "Use 365 days for the first year and assume bags can be fractional unless the division is exact."
+        },
+        "communication_tokens": 92,
+        "communication_tokens_exact": true,
+        "attempt_count": 1,
+        "fallback": false,
+        "tokens_include_all_attempts": true,
+        "incoming_message_ids": []
+      }
+    },
+    {
+      "sender": "solver",
+      "content": "IR:first_phase_cups=180*1=180,second_phase_days=365-180=185,second_phase_cups=185*2=370,total_cups=180+370=550,bags=550/110=5;R:5",
+      "receiver": "verifier",
+      "round": 0,
+      "role": "assistant",
+      "prompt_tokens": 817,
+      "completion_tokens": 59,
+      "id": "bc9296cf5745",
+      "ts": 1793169512.1425648,
+      "meta": {
+        "sender": "solver",
+        "receiver": "verifier",
+        "message_id": "bc9296cf5745",
+        "protocol_edge": "solver_to_verifier",
+        "protocol_version": "CARD-0-gsm8k",
+        "protocol_hash": "4bcdae885cc464e0a51977368e4bc06650c0326dbdcb182ce0327477c1d32daa",
+        "contract_hash": "ab4b736240365db5d0ce2caea032f40a3b7fc9c189db42d5ebcd28cac0fac22b",
+        "fields": {
+          "IR": "first_phase_cups=180*1=180,second_phase_days=365-180=185,second_phase_cups=185*2=370,total_cups=180+370=550,bags=550/110=5",
+          "R": "5"
+        },
+        "communication_tokens": 59,
+        "communication_tokens_exact": true,
+        "attempt_count": 1,
+        "fallback": false,
+        "tokens_include_all_attempts": true,
+        "incoming_message_ids": [
+          "4e87927d9fa4"
+        ]
+      }
+    },
+    {
+      "sender": "verifier",
+      "content": "CHK:ACCEPT",
+      "receiver": "solver",
+      "round": 0,
+      "role": "assistant",
+      "prompt_tokens": 1150,
+      "completion_tokens": 5,
+      "id": "9cb646d1d6b4",
+      "ts": 1793169513.2875361,
+      "meta": {
+        "sender": "verifier",
+        "receiver": "solver",
+        "message_id": "9cb646d1d6b4",
+        "protocol_edge": "verifier_to_solver",
+        "protocol_version": "CARD-0-gsm8k",
+        "protocol_hash": "4bcdae885cc464e0a51977368e4bc06650c0326dbdcb182ce0327477c1d32daa",
+        "contract_hash": "ab4b736240365db5d0ce2caea032f40a3b7fc9c189db42d5ebcd28cac0fac22b",
+        "fields": {
+          "CHK": "ACCEPT"
+        },
+        "communication_tokens": 5,
+        "communication_tokens_exact": true,
+        "attempt_count": 1,
+        "fallback": false,
+        "tokens_include_all_attempts": true,
+        "incoming_message_ids": [
+          "bc9296cf5745"
+        ]
+      }
+    }
+  ],
+  "calls": 3,
+  "usage_complete": true,
+  "known_input_tokens": 2750,
+  "known_output_tokens": 156,
+  "model_input_tokens": 2750,
+  "model_output_tokens": 156,
+  "format_failed_calls": 0,
+  "transport_failed_calls": 0,
+  "fallback_calls": 0,
+  "sum_model_latency_s": 3.6945865154266357
+}

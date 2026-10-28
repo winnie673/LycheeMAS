@@ -1,0 +1,152 @@
+{
+  "task_id": "gsm8k:train:seed42:V:00084",
+  "status": "completed",
+  "error": null,
+  "prediction": "20",
+  "messages": [
+    {
+      "sender": "planner",
+      "content": "G:total_weight_gained;P:jose=2*orlando+2,fernando=jose/2-3,total=orlando+jose+fernando;K:orlando=5",
+      "receiver": "solver",
+      "round": 0,
+      "role": "assistant",
+      "prompt_tokens": 766,
+      "completion_tokens": 44,
+      "id": "bac2d686280e",
+      "ts": 1793112737.4366372,
+      "meta": {
+        "sender": "planner",
+        "receiver": "solver",
+        "message_id": "bac2d686280e",
+        "protocol_edge": "planner_to_solver",
+        "protocol_version": "CARD-0-gsm8k",
+        "protocol_hash": "4bcdae885cc464e0a51977368e4bc06650c0326dbdcb182ce0327477c1d32daa",
+        "contract_hash": "ab4b736240365db5d0ce2caea032f40a3b7fc9c189db42d5ebcd28cac0fac22b",
+        "fields": {
+          "G": "total_weight_gained",
+          "P": "jose=2*orlando+2,fernando=jose/2-3,total=orlando+jose+fernando",
+          "K": "orlando=5"
+        },
+        "communication_tokens": 44,
+        "communication_tokens_exact": true,
+        "attempt_count": 1,
+        "fallback": false,
+        "tokens_include_all_attempts": true,
+        "incoming_message_ids": []
+      }
+    },
+    {
+      "sender": "solver",
+      "content": "IR:jose=2*5+2=12,fernando=12/2-3=3,total=5+12+3=20;R:20",
+      "receiver": "verifier",
+      "round": 0,
+      "role": "assistant",
+      "prompt_tokens": 752,
+      "completion_tokens": 37,
+      "id": "4c2cccf5f384",
+      "ts": 1793112738.5973725,
+      "meta": {
+        "sender": "solver",
+        "receiver": "verifier",
+        "message_id": "4c2cccf5f384",
+        "protocol_edge": "solver_to_verifier",
+        "protocol_version": "CARD-0-gsm8k",
+        "protocol_hash": "4bcdae885cc464e0a51977368e4bc06650c0326dbdcb182ce0327477c1d32daa",
+        "contract_hash": "ab4b736240365db5d0ce2caea032f40a3b7fc9c189db42d5ebcd28cac0fac22b",
+        "fields": {
+          "IR": "jose=2*5+2=12,fernando=12/2-3=3,total=5+12+3=20",
+          "R": "20"
+        },
+        "communication_tokens": 37,
+        "communication_tokens_exact": true,
+        "attempt_count": 1,
+        "fallback": false,
+        "tokens_include_all_attempts": true,
+        "incoming_message_ids": [
+          "bac2d686280e"
+        ]
+      }
+    },
+    {
+      "sender": "verifier",
+      "content": "CHK:ACCEPT",
+      "receiver": "solver",
+      "round": 0,
+      "role": "assistant",
+      "prompt_tokens": 1111,
+      "completion_tokens": 5,
+      "id": "23f779d4ed86",
+      "ts": 1793112740.2364554,
+      "meta": {
+        "sender": "verifier",
+        "receiver": "solver",
+        "message_id": "23f779d4ed86",
+        "protocol_edge": "verifier_to_solver",
+        "protocol_version": "CARD-0-gsm8k",
+        "protocol_hash": "4bcdae885cc464e0a51977368e4bc06650c0326dbdcb182ce0327477c1d32daa",
+        "contract_hash": "ab4b736240365db5d0ce2caea032f40a3b7fc9c189db42d5ebcd28cac0fac22b",
+        "fields": {
+          "CHK": "ACCEPT"
+        },
+        "communication_tokens": 5,
+        "communication_tokens_exact": true,
+        "attempt_count": 1,
+        "fallback": false,
+        "tokens_include_all_attempts": true,
+        "incoming_message_ids": [
+          "4c2cccf5f384"
+        ]
+      }
+    }
+  ],
+  "communication_tokens": 86,
+  "wall_time_s": 4.540155099937692,
+  "verified": true,
+  "revision_rounds": 0,
+  "model_calls": [
+    {
+      "role": "planner",
+      "attempt": 0,
+      "status": "delivered",
+      "error": "",
+      "raw_output": "G:total_weight_gained;P:jose=2*orlando+2,fernando=jose/2-3,total=orlando+jose+fernando;K:orlando=5",
+      "finish_reason": "stop",
+      "output_tokens": 44,
+      "usage_available": true
+    },
+    {
+      "role": "solver",
+      "attempt": 0,
+      "status": "delivered",
+      "error": "",
+      "raw_output": "IR:jose=2*5+2=12,fernando=12/2-3=3,total=5+12+3=20;R:20",
+      "finish_reason": "stop",
+      "output_tokens": 37,
+      "usage_available": true
+    },
+    {
+      "role": "verifier",
+      "attempt": 0,
+      "status": "delivered",
+      "error": "",
+      "raw_output": "CHK:ACCEPT",
+      "finish_reason": "stop",
+      "output_tokens": 5,
+      "usage_available": true
+    }
+  ],
+  "failed_attempts": [],
+  "calls": 3,
+  "usage_complete": true,
+  "known_input_tokens": 2629,
+  "known_output_tokens": 86,
+  "model_input_tokens": 2629,
+  "model_output_tokens": 86,
+  "format_failed_calls": 0,
+  "transport_failed_calls": 0,
+  "fallback_calls": 0,
+  "sum_model_latency_s": 4.398080348968506,
+  "gold": "20",
+  "score": 1.0,
+  "question": "At the family reunion, everyone ate too much food and gained weight.  Orlando gained 5 pounds.  Jose gained two pounds more than twice what Orlando gained.  Fernando gained 3 pounds less than half of what Jose gained.  How much weight, in pounds, did the three family members gain at their reunion?\nGive the final numeric answer."
+}

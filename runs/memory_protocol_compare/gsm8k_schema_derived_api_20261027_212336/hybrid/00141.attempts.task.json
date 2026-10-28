@@ -1,0 +1,120 @@
+{
+  "task_id": "gsm8k:test:seed42:T:00145",
+  "mode": "hybrid",
+  "benchmark": "gsm8k",
+  "status": "completed",
+  "error": null,
+  "prediction": "4000",
+  "gold": "4000",
+  "wall_time_s": 3.9675934000406414,
+  "communication_tokens": 103,
+  "communication_tokens_exact": true,
+  "revision_rounds": 0,
+  "verification_decision": "ACCEPT",
+  "verified": true,
+  "messages": [
+    {
+      "sender": "planner",
+      "content": "G:pineapples_per_year;P:harvests_per_year=12/3,pineapples_per_harvest=10*100,pineapples_per_year=harvests_per_year*pineapples_per_harvest",
+      "receiver": "solver",
+      "round": 0,
+      "role": "assistant",
+      "prompt_tokens": 745,
+      "completion_tokens": 51,
+      "id": "a9c519af0ede",
+      "ts": 1793170156.6884298,
+      "meta": {
+        "sender": "planner",
+        "receiver": "solver",
+        "message_id": "a9c519af0ede",
+        "protocol_edge": "planner_to_solver",
+        "protocol_version": "CARD-0-gsm8k",
+        "protocol_hash": "4bcdae885cc464e0a51977368e4bc06650c0326dbdcb182ce0327477c1d32daa",
+        "contract_hash": "ab4b736240365db5d0ce2caea032f40a3b7fc9c189db42d5ebcd28cac0fac22b",
+        "fields": {
+          "G": "pineapples_per_year",
+          "P": "harvests_per_year=12/3,pineapples_per_harvest=10*100,pineapples_per_year=harvests_per_year*pineapples_per_harvest"
+        },
+        "communication_tokens": 51,
+        "communication_tokens_exact": true,
+        "attempt_count": 1,
+        "fallback": false,
+        "tokens_include_all_attempts": true,
+        "incoming_message_ids": []
+      }
+    },
+    {
+      "sender": "solver",
+      "content": "IR:harvests_per_year=12/3=4,pineapples_per_harvest=10*100=1000,pineapples_per_year=4*1000=4000;R:4000",
+      "receiver": "verifier",
+      "round": 0,
+      "role": "assistant",
+      "prompt_tokens": 738,
+      "completion_tokens": 47,
+      "id": "245e961391d4",
+      "ts": 1793170157.95811,
+      "meta": {
+        "sender": "solver",
+        "receiver": "verifier",
+        "message_id": "245e961391d4",
+        "protocol_edge": "solver_to_verifier",
+        "protocol_version": "CARD-0-gsm8k",
+        "protocol_hash": "4bcdae885cc464e0a51977368e4bc06650c0326dbdcb182ce0327477c1d32daa",
+        "contract_hash": "ab4b736240365db5d0ce2caea032f40a3b7fc9c189db42d5ebcd28cac0fac22b",
+        "fields": {
+          "IR": "harvests_per_year=12/3=4,pineapples_per_harvest=10*100=1000,pineapples_per_year=4*1000=4000",
+          "R": "4000"
+        },
+        "communication_tokens": 47,
+        "communication_tokens_exact": true,
+        "attempt_count": 1,
+        "fallback": false,
+        "tokens_include_all_attempts": true,
+        "incoming_message_ids": [
+          "a9c519af0ede"
+        ]
+      }
+    },
+    {
+      "sender": "verifier",
+      "content": "CHK:ACCEPT",
+      "receiver": "solver",
+      "round": 0,
+      "role": "assistant",
+      "prompt_tokens": 1100,
+      "completion_tokens": 5,
+      "id": "5efb22602427",
+      "ts": 1793170159.4677217,
+      "meta": {
+        "sender": "verifier",
+        "receiver": "solver",
+        "message_id": "5efb22602427",
+        "protocol_edge": "verifier_to_solver",
+        "protocol_version": "CARD-0-gsm8k",
+        "protocol_hash": "4bcdae885cc464e0a51977368e4bc06650c0326dbdcb182ce0327477c1d32daa",
+        "contract_hash": "ab4b736240365db5d0ce2caea032f40a3b7fc9c189db42d5ebcd28cac0fac22b",
+        "fields": {
+          "CHK": "ACCEPT"
+        },
+        "communication_tokens": 5,
+        "communication_tokens_exact": true,
+        "attempt_count": 1,
+        "fallback": false,
+        "tokens_include_all_attempts": true,
+        "incoming_message_ids": [
+          "245e961391d4"
+        ]
+      }
+    }
+  ],
+  "calls": 3,
+  "usage_complete": true,
+  "known_input_tokens": 2583,
+  "known_output_tokens": 103,
+  "model_input_tokens": 2583,
+  "model_output_tokens": 103,
+  "format_failed_calls": 0,
+  "transport_failed_calls": 0,
+  "fallback_calls": 0,
+  "sum_model_latency_s": 3.8928661346435547
+}

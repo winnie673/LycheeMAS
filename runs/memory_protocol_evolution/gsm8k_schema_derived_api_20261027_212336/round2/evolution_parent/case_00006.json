@@ -1,0 +1,151 @@
+{
+  "task_id": "gsm8k:train:seed42:G2:00006",
+  "status": "completed",
+  "error": null,
+  "prediction": "30",
+  "messages": [
+    {
+      "sender": "planner",
+      "content": "G:number_of_Tammy_catches;P:joe=23,derek=2*joe-4,tammy=derek/3+16",
+      "receiver": "solver",
+      "round": 0,
+      "role": "assistant",
+      "prompt_tokens": 755,
+      "completion_tokens": 33,
+      "id": "2fd5600e090d",
+      "ts": 1793109860.4244046,
+      "meta": {
+        "sender": "planner",
+        "receiver": "solver",
+        "message_id": "2fd5600e090d",
+        "protocol_edge": "planner_to_solver",
+        "protocol_version": "CARD-0-gsm8k",
+        "protocol_hash": "4bcdae885cc464e0a51977368e4bc06650c0326dbdcb182ce0327477c1d32daa",
+        "contract_hash": "ab4b736240365db5d0ce2caea032f40a3b7fc9c189db42d5ebcd28cac0fac22b",
+        "fields": {
+          "G": "number_of_Tammy_catches",
+          "P": "joe=23,derek=2*joe-4,tammy=derek/3+16"
+        },
+        "communication_tokens": 33,
+        "communication_tokens_exact": true,
+        "attempt_count": 1,
+        "fallback": false,
+        "tokens_include_all_attempts": true,
+        "incoming_message_ids": []
+      }
+    },
+    {
+      "sender": "solver",
+      "content": "IR:derek=2*23-4=42,tammy=42/3+16=30;R:30",
+      "receiver": "verifier",
+      "round": 0,
+      "role": "assistant",
+      "prompt_tokens": 730,
+      "completion_tokens": 26,
+      "id": "4137385464af",
+      "ts": 1793109861.7977276,
+      "meta": {
+        "sender": "solver",
+        "receiver": "verifier",
+        "message_id": "4137385464af",
+        "protocol_edge": "solver_to_verifier",
+        "protocol_version": "CARD-0-gsm8k",
+        "protocol_hash": "4bcdae885cc464e0a51977368e4bc06650c0326dbdcb182ce0327477c1d32daa",
+        "contract_hash": "ab4b736240365db5d0ce2caea032f40a3b7fc9c189db42d5ebcd28cac0fac22b",
+        "fields": {
+          "IR": "derek=2*23-4=42,tammy=42/3+16=30",
+          "R": "30"
+        },
+        "communication_tokens": 26,
+        "communication_tokens_exact": true,
+        "attempt_count": 1,
+        "fallback": false,
+        "tokens_include_all_attempts": true,
+        "incoming_message_ids": [
+          "2fd5600e090d"
+        ]
+      }
+    },
+    {
+      "sender": "verifier",
+      "content": "CHK:ACCEPT",
+      "receiver": "solver",
+      "round": 0,
+      "role": "assistant",
+      "prompt_tokens": 1089,
+      "completion_tokens": 5,
+      "id": "bf87b9153a68",
+      "ts": 1793109863.0204904,
+      "meta": {
+        "sender": "verifier",
+        "receiver": "solver",
+        "message_id": "bf87b9153a68",
+        "protocol_edge": "verifier_to_solver",
+        "protocol_version": "CARD-0-gsm8k",
+        "protocol_hash": "4bcdae885cc464e0a51977368e4bc06650c0326dbdcb182ce0327477c1d32daa",
+        "contract_hash": "ab4b736240365db5d0ce2caea032f40a3b7fc9c189db42d5ebcd28cac0fac22b",
+        "fields": {
+          "CHK": "ACCEPT"
+        },
+        "communication_tokens": 5,
+        "communication_tokens_exact": true,
+        "attempt_count": 1,
+        "fallback": false,
+        "tokens_include_all_attempts": true,
+        "incoming_message_ids": [
+          "4137385464af"
+        ]
+      }
+    }
+  ],
+  "communication_tokens": 64,
+  "wall_time_s": 4.0627029000315815,
+  "verified": true,
+  "revision_rounds": 0,
+  "model_calls": [
+    {
+      "role": "planner",
+      "attempt": 0,
+      "status": "delivered",
+      "error": "",
+      "raw_output": "G:number_of_Tammy_catches;P:joe=23,derek=2*joe-4,tammy=derek/3+16",
+      "finish_reason": "stop",
+      "output_tokens": 33,
+      "usage_available": true
+    },
+    {
+      "role": "solver",
+      "attempt": 0,
+      "status": "delivered",
+      "error": "",
+      "raw_output": "IR:derek=2*23-4=42,tammy=42/3+16=30;R:30",
+      "finish_reason": "stop",
+      "output_tokens": 26,
+      "usage_available": true
+    },
+    {
+      "role": "verifier",
+      "attempt": 0,
+      "status": "delivered",
+      "error": "",
+      "raw_output": "CHK:ACCEPT",
+      "finish_reason": "stop",
+      "output_tokens": 5,
+      "usage_available": true
+    }
+  ],
+  "failed_attempts": [],
+  "calls": 3,
+  "usage_complete": true,
+  "known_input_tokens": 2574,
+  "known_output_tokens": 64,
+  "model_input_tokens": 2574,
+  "model_output_tokens": 64,
+  "format_failed_calls": 0,
+  "transport_failed_calls": 0,
+  "fallback_calls": 0,
+  "sum_model_latency_s": 3.8854546546936035,
+  "gold": "30",
+  "score": 1.0,
+  "question": "Joe played catch with Derek and Tammy. He caught the ball 23 times. Derek made four less than double the catches Joe did. Tammy caught the ball sixteen more than a third of the times Derek did. How many times did Tammy catch the ball?\nGive the final numeric answer."
+}

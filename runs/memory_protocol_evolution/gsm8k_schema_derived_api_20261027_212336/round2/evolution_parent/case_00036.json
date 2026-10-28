@@ -1,0 +1,151 @@
+{
+  "task_id": "gsm8k:train:seed42:G2:00036",
+  "status": "completed",
+  "error": null,
+  "prediction": "8",
+  "messages": [
+    {
+      "sender": "planner",
+      "content": "G:Kerry_age;P:total_candles=3*age,boxes=total_candles/12,cost=boxes*2.5=5,solve_for_age",
+      "receiver": "solver",
+      "round": 0,
+      "role": "assistant",
+      "prompt_tokens": 754,
+      "completion_tokens": 39,
+      "id": "9024ddf75263",
+      "ts": 1793109981.4364471,
+      "meta": {
+        "sender": "planner",
+        "receiver": "solver",
+        "message_id": "9024ddf75263",
+        "protocol_edge": "planner_to_solver",
+        "protocol_version": "CARD-0-gsm8k",
+        "protocol_hash": "4bcdae885cc464e0a51977368e4bc06650c0326dbdcb182ce0327477c1d32daa",
+        "contract_hash": "ab4b736240365db5d0ce2caea032f40a3b7fc9c189db42d5ebcd28cac0fac22b",
+        "fields": {
+          "G": "Kerry_age",
+          "P": "total_candles=3*age,boxes=total_candles/12,cost=boxes*2.5=5,solve_for_age"
+        },
+        "communication_tokens": 39,
+        "communication_tokens_exact": true,
+        "attempt_count": 1,
+        "fallback": false,
+        "tokens_include_all_attempts": true,
+        "incoming_message_ids": []
+      }
+    },
+    {
+      "sender": "solver",
+      "content": "IR:boxes=5/2.5=2,total_candles=2*12=24,age=24/3=8;R:8",
+      "receiver": "verifier",
+      "round": 0,
+      "role": "assistant",
+      "prompt_tokens": 735,
+      "completion_tokens": 34,
+      "id": "d78e4b1b02dc",
+      "ts": 1793109982.6701546,
+      "meta": {
+        "sender": "solver",
+        "receiver": "verifier",
+        "message_id": "d78e4b1b02dc",
+        "protocol_edge": "solver_to_verifier",
+        "protocol_version": "CARD-0-gsm8k",
+        "protocol_hash": "4bcdae885cc464e0a51977368e4bc06650c0326dbdcb182ce0327477c1d32daa",
+        "contract_hash": "ab4b736240365db5d0ce2caea032f40a3b7fc9c189db42d5ebcd28cac0fac22b",
+        "fields": {
+          "IR": "boxes=5/2.5=2,total_candles=2*12=24,age=24/3=8",
+          "R": "8"
+        },
+        "communication_tokens": 34,
+        "communication_tokens_exact": true,
+        "attempt_count": 1,
+        "fallback": false,
+        "tokens_include_all_attempts": true,
+        "incoming_message_ids": [
+          "9024ddf75263"
+        ]
+      }
+    },
+    {
+      "sender": "verifier",
+      "content": "CHK:ACCEPT",
+      "receiver": "solver",
+      "round": 0,
+      "role": "assistant",
+      "prompt_tokens": 1096,
+      "completion_tokens": 5,
+      "id": "644e61939387",
+      "ts": 1793109983.839233,
+      "meta": {
+        "sender": "verifier",
+        "receiver": "solver",
+        "message_id": "644e61939387",
+        "protocol_edge": "verifier_to_solver",
+        "protocol_version": "CARD-0-gsm8k",
+        "protocol_hash": "4bcdae885cc464e0a51977368e4bc06650c0326dbdcb182ce0327477c1d32daa",
+        "contract_hash": "ab4b736240365db5d0ce2caea032f40a3b7fc9c189db42d5ebcd28cac0fac22b",
+        "fields": {
+          "CHK": "ACCEPT"
+        },
+        "communication_tokens": 5,
+        "communication_tokens_exact": true,
+        "attempt_count": 1,
+        "fallback": false,
+        "tokens_include_all_attempts": true,
+        "incoming_message_ids": [
+          "d78e4b1b02dc"
+        ]
+      }
+    }
+  ],
+  "communication_tokens": 78,
+  "wall_time_s": 4.006951399962418,
+  "verified": true,
+  "revision_rounds": 0,
+  "model_calls": [
+    {
+      "role": "planner",
+      "attempt": 0,
+      "status": "delivered",
+      "error": "",
+      "raw_output": "G:Kerry_age;P:total_candles=3*age,boxes=total_candles/12,cost=boxes*2.5=5,solve_for_age",
+      "finish_reason": "stop",
+      "output_tokens": 39,
+      "usage_available": true
+    },
+    {
+      "role": "solver",
+      "attempt": 0,
+      "status": "delivered",
+      "error": "",
+      "raw_output": "IR:boxes=5/2.5=2,total_candles=2*12=24,age=24/3=8;R:8",
+      "finish_reason": "stop",
+      "output_tokens": 34,
+      "usage_available": true
+    },
+    {
+      "role": "verifier",
+      "attempt": 0,
+      "status": "delivered",
+      "error": "",
+      "raw_output": "CHK:ACCEPT",
+      "finish_reason": "stop",
+      "output_tokens": 5,
+      "usage_available": true
+    }
+  ],
+  "failed_attempts": [],
+  "calls": 3,
+  "usage_complete": true,
+  "known_input_tokens": 2585,
+  "known_output_tokens": 78,
+  "model_input_tokens": 2585,
+  "model_output_tokens": 78,
+  "format_failed_calls": 0,
+  "transport_failed_calls": 0,
+  "fallback_calls": 0,
+  "sum_model_latency_s": 3.853583574295044,
+  "gold": "8",
+  "score": 1.0,
+  "question": "Kerry is ready to celebrate his birthday and wants to have three cakes with his age in candles on each of them. Candles come in boxes of 12 and cost $2.5 a box. If the candles cost $5, how old is Kerry?\nGive the final numeric answer."
+}

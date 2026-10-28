@@ -1,0 +1,151 @@
+{
+  "task_id": "gsm8k:train:seed42:V:00150",
+  "status": "completed",
+  "error": null,
+  "prediction": "19",
+  "messages": [
+    {
+      "sender": "planner",
+      "content": "G:candies_left_to_share;P:after_siblings=100-3*10,given_friend=after_siblings/2,left=after_siblings-given_friend,candies_left_to_share=left-16",
+      "receiver": "solver",
+      "round": 0,
+      "role": "assistant",
+      "prompt_tokens": 889,
+      "completion_tokens": 51,
+      "id": "b9c1ade01d32",
+      "ts": 1793111748.1892722,
+      "meta": {
+        "sender": "planner",
+        "receiver": "solver",
+        "message_id": "b9c1ade01d32",
+        "protocol_edge": "planner_to_solver",
+        "protocol_version": "CARD-2-gsm8k",
+        "protocol_hash": "aec703067bbfeee6aa1e642a2a319658f1d33f2eff00c8701de19347f616ed6d",
+        "contract_hash": "ab4b736240365db5d0ce2caea032f40a3b7fc9c189db42d5ebcd28cac0fac22b",
+        "fields": {
+          "G": "candies_left_to_share",
+          "P": "after_siblings=100-3*10,given_friend=after_siblings/2,left=after_siblings-given_friend,candies_left_to_share=left-16"
+        },
+        "communication_tokens": 51,
+        "communication_tokens_exact": true,
+        "attempt_count": 1,
+        "fallback": false,
+        "tokens_include_all_attempts": true,
+        "incoming_message_ids": []
+      }
+    },
+    {
+      "sender": "solver",
+      "content": "IR:after_siblings=100-3*10=70,given_friend=70/2=35,left=70-35=35,candies_left_to_share=35-16=19;R:19",
+      "receiver": "verifier",
+      "round": 0,
+      "role": "assistant",
+      "prompt_tokens": 758,
+      "completion_tokens": 48,
+      "id": "c5d7e199d878",
+      "ts": 1793111750.0587518,
+      "meta": {
+        "sender": "solver",
+        "receiver": "verifier",
+        "message_id": "c5d7e199d878",
+        "protocol_edge": "solver_to_verifier",
+        "protocol_version": "CARD-2-gsm8k",
+        "protocol_hash": "aec703067bbfeee6aa1e642a2a319658f1d33f2eff00c8701de19347f616ed6d",
+        "contract_hash": "ab4b736240365db5d0ce2caea032f40a3b7fc9c189db42d5ebcd28cac0fac22b",
+        "fields": {
+          "IR": "after_siblings=100-3*10=70,given_friend=70/2=35,left=70-35=35,candies_left_to_share=35-16=19",
+          "R": "19"
+        },
+        "communication_tokens": 48,
+        "communication_tokens_exact": true,
+        "attempt_count": 1,
+        "fallback": false,
+        "tokens_include_all_attempts": true,
+        "incoming_message_ids": [
+          "b9c1ade01d32"
+        ]
+      }
+    },
+    {
+      "sender": "verifier",
+      "content": "CHK:ACCEPT",
+      "receiver": "solver",
+      "round": 0,
+      "role": "assistant",
+      "prompt_tokens": 1121,
+      "completion_tokens": 5,
+      "id": "46a18f58ef8e",
+      "ts": 1793111751.2980077,
+      "meta": {
+        "sender": "verifier",
+        "receiver": "solver",
+        "message_id": "46a18f58ef8e",
+        "protocol_edge": "verifier_to_solver",
+        "protocol_version": "CARD-2-gsm8k",
+        "protocol_hash": "aec703067bbfeee6aa1e642a2a319658f1d33f2eff00c8701de19347f616ed6d",
+        "contract_hash": "ab4b736240365db5d0ce2caea032f40a3b7fc9c189db42d5ebcd28cac0fac22b",
+        "fields": {
+          "CHK": "ACCEPT"
+        },
+        "communication_tokens": 5,
+        "communication_tokens_exact": true,
+        "attempt_count": 1,
+        "fallback": false,
+        "tokens_include_all_attempts": true,
+        "incoming_message_ids": [
+          "c5d7e199d878"
+        ]
+      }
+    }
+  ],
+  "communication_tokens": 104,
+  "wall_time_s": 4.446048800018616,
+  "verified": true,
+  "revision_rounds": 0,
+  "model_calls": [
+    {
+      "role": "planner",
+      "attempt": 0,
+      "status": "delivered",
+      "error": "",
+      "raw_output": "G:candies_left_to_share;P:after_siblings=100-3*10,given_friend=after_siblings/2,left=after_siblings-given_friend,candies_left_to_share=left-16",
+      "finish_reason": "stop",
+      "output_tokens": 51,
+      "usage_available": true
+    },
+    {
+      "role": "solver",
+      "attempt": 0,
+      "status": "delivered",
+      "error": "",
+      "raw_output": "IR:after_siblings=100-3*10=70,given_friend=70/2=35,left=70-35=35,candies_left_to_share=35-16=19;R:19",
+      "finish_reason": "stop",
+      "output_tokens": 48,
+      "usage_available": true
+    },
+    {
+      "role": "verifier",
+      "attempt": 0,
+      "status": "delivered",
+      "error": "",
+      "raw_output": "CHK:ACCEPT",
+      "finish_reason": "stop",
+      "output_tokens": 5,
+      "usage_available": true
+    }
+  ],
+  "failed_attempts": [],
+  "calls": 3,
+  "usage_complete": true,
+  "known_input_tokens": 2768,
+  "known_output_tokens": 104,
+  "model_input_tokens": 2768,
+  "model_output_tokens": 104,
+  "format_failed_calls": 0,
+  "transport_failed_calls": 0,
+  "fallback_calls": 0,
+  "sum_model_latency_s": 4.288160800933838,
+  "gold": "19",
+  "score": 1.0,
+  "question": "Josh had 100 gummy bear candies. He decided to give his 3 siblings 10 candies each. Then he gave half of the remaining candies to his best friend. If he only wants to eat 16 gummy bear candies, how many candies are left to be shared with others?\nGive the final numeric answer."
+}

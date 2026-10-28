@@ -1,0 +1,121 @@
+{
+  "task_id": "gsm8k:test:seed42:T:00172",
+  "mode": "hybrid",
+  "benchmark": "gsm8k",
+  "status": "completed",
+  "error": null,
+  "prediction": "51",
+  "gold": "51",
+  "wall_time_s": 3.8043565000407398,
+  "communication_tokens": 106,
+  "communication_tokens_exact": true,
+  "revision_rounds": 0,
+  "verification_decision": "ACCEPT",
+  "verified": true,
+  "messages": [
+    {
+      "sender": "planner",
+      "content": "K:SallyFour=8,SallyThirtytwo=8,GrannyRed=2*SallyFour,SallyTwo=GrannyRed+3;G:total_age;P:total=SallyTwo+GrannyRed+SallyFour+SallyThirtytwo",
+      "receiver": "solver",
+      "round": 0,
+      "role": "assistant",
+      "prompt_tokens": 765,
+      "completion_tokens": 54,
+      "id": "c579f82d7583",
+      "ts": 1793170362.1795979,
+      "meta": {
+        "sender": "planner",
+        "receiver": "solver",
+        "message_id": "c579f82d7583",
+        "protocol_edge": "planner_to_solver",
+        "protocol_version": "CARD-0-gsm8k",
+        "protocol_hash": "4bcdae885cc464e0a51977368e4bc06650c0326dbdcb182ce0327477c1d32daa",
+        "contract_hash": "ab4b736240365db5d0ce2caea032f40a3b7fc9c189db42d5ebcd28cac0fac22b",
+        "fields": {
+          "K": "SallyFour=8,SallyThirtytwo=8,GrannyRed=2*SallyFour,SallyTwo=GrannyRed+3",
+          "G": "total_age",
+          "P": "total=SallyTwo+GrannyRed+SallyFour+SallyThirtytwo"
+        },
+        "communication_tokens": 54,
+        "communication_tokens_exact": true,
+        "attempt_count": 1,
+        "fallback": false,
+        "tokens_include_all_attempts": true,
+        "incoming_message_ids": []
+      }
+    },
+    {
+      "sender": "solver",
+      "content": "IR:SallyFour=8,SallyThirtytwo=8,GrannyRed=2*8=16,SallyTwo=16+3=19,total=19+16+8+8=51;R:51",
+      "receiver": "verifier",
+      "round": 0,
+      "role": "assistant",
+      "prompt_tokens": 761,
+      "completion_tokens": 47,
+      "id": "c64547ef70c7",
+      "ts": 1793170363.433362,
+      "meta": {
+        "sender": "solver",
+        "receiver": "verifier",
+        "message_id": "c64547ef70c7",
+        "protocol_edge": "solver_to_verifier",
+        "protocol_version": "CARD-0-gsm8k",
+        "protocol_hash": "4bcdae885cc464e0a51977368e4bc06650c0326dbdcb182ce0327477c1d32daa",
+        "contract_hash": "ab4b736240365db5d0ce2caea032f40a3b7fc9c189db42d5ebcd28cac0fac22b",
+        "fields": {
+          "IR": "SallyFour=8,SallyThirtytwo=8,GrannyRed=2*8=16,SallyTwo=16+3=19,total=19+16+8+8=51",
+          "R": "51"
+        },
+        "communication_tokens": 47,
+        "communication_tokens_exact": true,
+        "attempt_count": 1,
+        "fallback": false,
+        "tokens_include_all_attempts": true,
+        "incoming_message_ids": [
+          "c579f82d7583"
+        ]
+      }
+    },
+    {
+      "sender": "verifier",
+      "content": "CHK:ACCEPT",
+      "receiver": "solver",
+      "round": 0,
+      "role": "assistant",
+      "prompt_tokens": 1120,
+      "completion_tokens": 5,
+      "id": "5365ee4704ab",
+      "ts": 1793170364.507267,
+      "meta": {
+        "sender": "verifier",
+        "receiver": "solver",
+        "message_id": "5365ee4704ab",
+        "protocol_edge": "verifier_to_solver",
+        "protocol_version": "CARD-0-gsm8k",
+        "protocol_hash": "4bcdae885cc464e0a51977368e4bc06650c0326dbdcb182ce0327477c1d32daa",
+        "contract_hash": "ab4b736240365db5d0ce2caea032f40a3b7fc9c189db42d5ebcd28cac0fac22b",
+        "fields": {
+          "CHK": "ACCEPT"
+        },
+        "communication_tokens": 5,
+        "communication_tokens_exact": true,
+        "attempt_count": 1,
+        "fallback": false,
+        "tokens_include_all_attempts": true,
+        "incoming_message_ids": [
+          "c64547ef70c7"
+        ]
+      }
+    }
+  ],
+  "calls": 3,
+  "usage_complete": true,
+  "known_input_tokens": 2646,
+  "known_output_tokens": 106,
+  "model_input_tokens": 2646,
+  "model_output_tokens": 106,
+  "format_failed_calls": 0,
+  "transport_failed_calls": 0,
+  "fallback_calls": 0,
+  "sum_model_latency_s": 3.645519495010376
+}

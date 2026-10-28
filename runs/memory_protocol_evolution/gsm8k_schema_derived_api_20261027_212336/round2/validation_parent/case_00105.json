@@ -1,0 +1,151 @@
+{
+  "task_id": "gsm8k:train:seed42:V:00105",
+  "status": "completed",
+  "error": null,
+  "prediction": "80",
+  "messages": [
+    {
+      "sender": "planner",
+      "content": "G:total_gas_cost_4_weeks;P:weekly_miles=50*5,weekly_gallons=weekly_miles/25,weeks=4,total_gallons=weekly_gallons*weeks,total_gas_cost_4_weeks=total_gallons*2",
+      "receiver": "solver",
+      "round": 0,
+      "role": "assistant",
+      "prompt_tokens": 780,
+      "completion_tokens": 67,
+      "id": "878c8f39c23f",
+      "ts": 1793110729.7893307,
+      "meta": {
+        "sender": "planner",
+        "receiver": "solver",
+        "message_id": "878c8f39c23f",
+        "protocol_edge": "planner_to_solver",
+        "protocol_version": "CARD-0-gsm8k",
+        "protocol_hash": "4bcdae885cc464e0a51977368e4bc06650c0326dbdcb182ce0327477c1d32daa",
+        "contract_hash": "ab4b736240365db5d0ce2caea032f40a3b7fc9c189db42d5ebcd28cac0fac22b",
+        "fields": {
+          "G": "total_gas_cost_4_weeks",
+          "P": "weekly_miles=50*5,weekly_gallons=weekly_miles/25,weeks=4,total_gallons=weekly_gallons*weeks,total_gas_cost_4_weeks=total_gallons*2"
+        },
+        "communication_tokens": 67,
+        "communication_tokens_exact": true,
+        "attempt_count": 1,
+        "fallback": false,
+        "tokens_include_all_attempts": true,
+        "incoming_message_ids": []
+      }
+    },
+    {
+      "sender": "solver",
+      "content": "IR:weekly_miles=50*5=250,weekly_gallons=250/25=10,total_gallons=10*4=40,total_gas_cost_4_weeks=40*2=80;R:80",
+      "receiver": "verifier",
+      "round": 0,
+      "role": "assistant",
+      "prompt_tokens": 789,
+      "completion_tokens": 53,
+      "id": "007e35834882",
+      "ts": 1793110730.8160572,
+      "meta": {
+        "sender": "solver",
+        "receiver": "verifier",
+        "message_id": "007e35834882",
+        "protocol_edge": "solver_to_verifier",
+        "protocol_version": "CARD-0-gsm8k",
+        "protocol_hash": "4bcdae885cc464e0a51977368e4bc06650c0326dbdcb182ce0327477c1d32daa",
+        "contract_hash": "ab4b736240365db5d0ce2caea032f40a3b7fc9c189db42d5ebcd28cac0fac22b",
+        "fields": {
+          "IR": "weekly_miles=50*5=250,weekly_gallons=250/25=10,total_gallons=10*4=40,total_gas_cost_4_weeks=40*2=80",
+          "R": "80"
+        },
+        "communication_tokens": 53,
+        "communication_tokens_exact": true,
+        "attempt_count": 1,
+        "fallback": false,
+        "tokens_include_all_attempts": true,
+        "incoming_message_ids": [
+          "878c8f39c23f"
+        ]
+      }
+    },
+    {
+      "sender": "verifier",
+      "content": "CHK:ACCEPT",
+      "receiver": "solver",
+      "round": 0,
+      "role": "assistant",
+      "prompt_tokens": 1141,
+      "completion_tokens": 5,
+      "id": "c5eeffa3b475",
+      "ts": 1793110732.008899,
+      "meta": {
+        "sender": "verifier",
+        "receiver": "solver",
+        "message_id": "c5eeffa3b475",
+        "protocol_edge": "verifier_to_solver",
+        "protocol_version": "CARD-0-gsm8k",
+        "protocol_hash": "4bcdae885cc464e0a51977368e4bc06650c0326dbdcb182ce0327477c1d32daa",
+        "contract_hash": "ab4b736240365db5d0ce2caea032f40a3b7fc9c189db42d5ebcd28cac0fac22b",
+        "fields": {
+          "CHK": "ACCEPT"
+        },
+        "communication_tokens": 5,
+        "communication_tokens_exact": true,
+        "attempt_count": 1,
+        "fallback": false,
+        "tokens_include_all_attempts": true,
+        "incoming_message_ids": [
+          "007e35834882"
+        ]
+      }
+    }
+  ],
+  "communication_tokens": 125,
+  "wall_time_s": 3.9269610999617726,
+  "verified": true,
+  "revision_rounds": 0,
+  "model_calls": [
+    {
+      "role": "planner",
+      "attempt": 0,
+      "status": "delivered",
+      "error": "",
+      "raw_output": "G:total_gas_cost_4_weeks;P:weekly_miles=50*5,weekly_gallons=weekly_miles/25,weeks=4,total_gallons=weekly_gallons*weeks,total_gas_cost_4_weeks=total_gallons*2",
+      "finish_reason": "stop",
+      "output_tokens": 67,
+      "usage_available": true
+    },
+    {
+      "role": "solver",
+      "attempt": 0,
+      "status": "delivered",
+      "error": "",
+      "raw_output": "IR:weekly_miles=50*5=250,weekly_gallons=250/25=10,total_gallons=10*4=40,total_gas_cost_4_weeks=40*2=80;R:80",
+      "finish_reason": "stop",
+      "output_tokens": 53,
+      "usage_available": true
+    },
+    {
+      "role": "verifier",
+      "attempt": 0,
+      "status": "delivered",
+      "error": "",
+      "raw_output": "CHK:ACCEPT",
+      "finish_reason": "stop",
+      "output_tokens": 5,
+      "usage_available": true
+    }
+  ],
+  "failed_attempts": [],
+  "calls": 3,
+  "usage_complete": true,
+  "known_input_tokens": 2710,
+  "known_output_tokens": 125,
+  "model_input_tokens": 2710,
+  "model_output_tokens": 125,
+  "format_failed_calls": 0,
+  "transport_failed_calls": 0,
+  "fallback_calls": 0,
+  "sum_model_latency_s": 3.749061346054077,
+  "gold": "80",
+  "score": 1.0,
+  "question": "Tony drives a car that gets 25 miles to the gallon.  He drives 50 miles round trip to work 5 days a week.  His tank holds 10 gallons.  He begins the week with a full tank and when he runs out he fills up at the local gas station for $2 a gallon.  How much money does Tony spend on gas in 4 weeks?\nGive the final numeric answer."
+}

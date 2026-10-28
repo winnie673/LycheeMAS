@@ -1,0 +1,151 @@
+{
+  "task_id": "gsm8k:train:seed42:G2:00003",
+  "status": "completed",
+  "error": null,
+  "prediction": "13",
+  "messages": [
+    {
+      "sender": "planner",
+      "content": "G:number_neutral;P:first=0.40*50,second=0.34*50,neutral=50-first-second",
+      "receiver": "solver",
+      "round": 0,
+      "role": "assistant",
+      "prompt_tokens": 753,
+      "completion_tokens": 29,
+      "id": "6cd11d438cbe",
+      "ts": 1793109848.463428,
+      "meta": {
+        "sender": "planner",
+        "receiver": "solver",
+        "message_id": "6cd11d438cbe",
+        "protocol_edge": "planner_to_solver",
+        "protocol_version": "CARD-0-gsm8k",
+        "protocol_hash": "4bcdae885cc464e0a51977368e4bc06650c0326dbdcb182ce0327477c1d32daa",
+        "contract_hash": "ab4b736240365db5d0ce2caea032f40a3b7fc9c189db42d5ebcd28cac0fac22b",
+        "fields": {
+          "G": "number_neutral",
+          "P": "first=0.40*50,second=0.34*50,neutral=50-first-second"
+        },
+        "communication_tokens": 29,
+        "communication_tokens_exact": true,
+        "attempt_count": 1,
+        "fallback": false,
+        "tokens_include_all_attempts": true,
+        "incoming_message_ids": []
+      }
+    },
+    {
+      "sender": "solver",
+      "content": "IR:first=0.40*50=20,second=0.34*50=17,neutral=50-20-17=13;R:13",
+      "receiver": "verifier",
+      "round": 0,
+      "role": "assistant",
+      "prompt_tokens": 724,
+      "completion_tokens": 35,
+      "id": "ea3679a76127",
+      "ts": 1793109849.7518861,
+      "meta": {
+        "sender": "solver",
+        "receiver": "verifier",
+        "message_id": "ea3679a76127",
+        "protocol_edge": "solver_to_verifier",
+        "protocol_version": "CARD-0-gsm8k",
+        "protocol_hash": "4bcdae885cc464e0a51977368e4bc06650c0326dbdcb182ce0327477c1d32daa",
+        "contract_hash": "ab4b736240365db5d0ce2caea032f40a3b7fc9c189db42d5ebcd28cac0fac22b",
+        "fields": {
+          "IR": "first=0.40*50=20,second=0.34*50=17,neutral=50-20-17=13",
+          "R": "13"
+        },
+        "communication_tokens": 35,
+        "communication_tokens_exact": true,
+        "attempt_count": 1,
+        "fallback": false,
+        "tokens_include_all_attempts": true,
+        "incoming_message_ids": [
+          "6cd11d438cbe"
+        ]
+      }
+    },
+    {
+      "sender": "verifier",
+      "content": "CHK:ACCEPT",
+      "receiver": "solver",
+      "round": 0,
+      "role": "assistant",
+      "prompt_tokens": 1096,
+      "completion_tokens": 5,
+      "id": "7daa5b7e2720",
+      "ts": 1793109850.962866,
+      "meta": {
+        "sender": "verifier",
+        "receiver": "solver",
+        "message_id": "7daa5b7e2720",
+        "protocol_edge": "verifier_to_solver",
+        "protocol_version": "CARD-0-gsm8k",
+        "protocol_hash": "4bcdae885cc464e0a51977368e4bc06650c0326dbdcb182ce0327477c1d32daa",
+        "contract_hash": "ab4b736240365db5d0ce2caea032f40a3b7fc9c189db42d5ebcd28cac0fac22b",
+        "fields": {
+          "CHK": "ACCEPT"
+        },
+        "communication_tokens": 5,
+        "communication_tokens_exact": true,
+        "attempt_count": 1,
+        "fallback": false,
+        "tokens_include_all_attempts": true,
+        "incoming_message_ids": [
+          "ea3679a76127"
+        ]
+      }
+    }
+  ],
+  "communication_tokens": 69,
+  "wall_time_s": 3.8929677000269294,
+  "verified": true,
+  "revision_rounds": 0,
+  "model_calls": [
+    {
+      "role": "planner",
+      "attempt": 0,
+      "status": "delivered",
+      "error": "",
+      "raw_output": "G:number_neutral;P:first=0.40*50,second=0.34*50,neutral=50-first-second",
+      "finish_reason": "stop",
+      "output_tokens": 29,
+      "usage_available": true
+    },
+    {
+      "role": "solver",
+      "attempt": 0,
+      "status": "delivered",
+      "error": "",
+      "raw_output": "IR:first=0.40*50=20,second=0.34*50=17,neutral=50-20-17=13;R:13",
+      "finish_reason": "stop",
+      "output_tokens": 35,
+      "usage_available": true
+    },
+    {
+      "role": "verifier",
+      "attempt": 0,
+      "status": "delivered",
+      "error": "",
+      "raw_output": "CHK:ACCEPT",
+      "finish_reason": "stop",
+      "output_tokens": 5,
+      "usage_available": true
+    }
+  ],
+  "failed_attempts": [],
+  "calls": 3,
+  "usage_complete": true,
+  "known_input_tokens": 2573,
+  "known_output_tokens": 69,
+  "model_input_tokens": 2573,
+  "model_output_tokens": 69,
+  "format_failed_calls": 0,
+  "transport_failed_calls": 0,
+  "fallback_calls": 0,
+  "sum_model_latency_s": 3.7382214069366455,
+  "gold": "3",
+  "score": 0.0,
+  "question": "During one game, a total of 50 people attended a baseball team’s games. Forty percent and thirty-four percent of the audiences are supporters of the first and second teams, respectively. How many people attended the game did not support either of the teams?\nGive the final numeric answer."
+}

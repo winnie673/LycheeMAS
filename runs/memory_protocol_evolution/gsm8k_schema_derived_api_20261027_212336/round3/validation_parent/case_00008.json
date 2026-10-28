@@ -1,0 +1,151 @@
+{
+  "task_id": "gsm8k:train:seed42:V:00008",
+  "status": "completed",
+  "error": null,
+  "prediction": "14",
+  "messages": [
+    {
+      "sender": "planner",
+      "content": "G:number_of_friends;P:total_pens=(4+2)*3,remaining=total_pens-2*2,friends=remaining",
+      "receiver": "solver",
+      "round": 0,
+      "role": "assistant",
+      "prompt_tokens": 760,
+      "completion_tokens": 32,
+      "id": "0a2925f3f149",
+      "ts": 1793112425.3084767,
+      "meta": {
+        "sender": "planner",
+        "receiver": "solver",
+        "message_id": "0a2925f3f149",
+        "protocol_edge": "planner_to_solver",
+        "protocol_version": "CARD-0-gsm8k",
+        "protocol_hash": "4bcdae885cc464e0a51977368e4bc06650c0326dbdcb182ce0327477c1d32daa",
+        "contract_hash": "ab4b736240365db5d0ce2caea032f40a3b7fc9c189db42d5ebcd28cac0fac22b",
+        "fields": {
+          "G": "number_of_friends",
+          "P": "total_pens=(4+2)*3,remaining=total_pens-2*2,friends=remaining"
+        },
+        "communication_tokens": 32,
+        "communication_tokens_exact": true,
+        "attempt_count": 1,
+        "fallback": false,
+        "tokens_include_all_attempts": true,
+        "incoming_message_ids": []
+      }
+    },
+    {
+      "sender": "solver",
+      "content": "IR:total_pens=(4+2)*3=18,remaining=18-2*2=14;R:14",
+      "receiver": "verifier",
+      "round": 0,
+      "role": "assistant",
+      "prompt_tokens": 734,
+      "completion_tokens": 27,
+      "id": "f0dc92c1db21",
+      "ts": 1793112426.7303112,
+      "meta": {
+        "sender": "solver",
+        "receiver": "verifier",
+        "message_id": "f0dc92c1db21",
+        "protocol_edge": "solver_to_verifier",
+        "protocol_version": "CARD-0-gsm8k",
+        "protocol_hash": "4bcdae885cc464e0a51977368e4bc06650c0326dbdcb182ce0327477c1d32daa",
+        "contract_hash": "ab4b736240365db5d0ce2caea032f40a3b7fc9c189db42d5ebcd28cac0fac22b",
+        "fields": {
+          "IR": "total_pens=(4+2)*3=18,remaining=18-2*2=14",
+          "R": "14"
+        },
+        "communication_tokens": 27,
+        "communication_tokens_exact": true,
+        "attempt_count": 1,
+        "fallback": false,
+        "tokens_include_all_attempts": true,
+        "incoming_message_ids": [
+          "0a2925f3f149"
+        ]
+      }
+    },
+    {
+      "sender": "verifier",
+      "content": "CHK:ACCEPT",
+      "receiver": "solver",
+      "round": 0,
+      "role": "assistant",
+      "prompt_tokens": 1095,
+      "completion_tokens": 5,
+      "id": "74b7977e9f0a",
+      "ts": 1793112427.9222763,
+      "meta": {
+        "sender": "verifier",
+        "receiver": "solver",
+        "message_id": "74b7977e9f0a",
+        "protocol_edge": "verifier_to_solver",
+        "protocol_version": "CARD-0-gsm8k",
+        "protocol_hash": "4bcdae885cc464e0a51977368e4bc06650c0326dbdcb182ce0327477c1d32daa",
+        "contract_hash": "ab4b736240365db5d0ce2caea032f40a3b7fc9c189db42d5ebcd28cac0fac22b",
+        "fields": {
+          "CHK": "ACCEPT"
+        },
+        "communication_tokens": 5,
+        "communication_tokens_exact": true,
+        "attempt_count": 1,
+        "fallback": false,
+        "tokens_include_all_attempts": true,
+        "incoming_message_ids": [
+          "f0dc92c1db21"
+        ]
+      }
+    }
+  ],
+  "communication_tokens": 64,
+  "wall_time_s": 4.211669499985874,
+  "verified": true,
+  "revision_rounds": 0,
+  "model_calls": [
+    {
+      "role": "planner",
+      "attempt": 0,
+      "status": "delivered",
+      "error": "",
+      "raw_output": "G:number_of_friends;P:total_pens=(4+2)*3,remaining=total_pens-2*2,friends=remaining",
+      "finish_reason": "stop",
+      "output_tokens": 32,
+      "usage_available": true
+    },
+    {
+      "role": "solver",
+      "attempt": 0,
+      "status": "delivered",
+      "error": "",
+      "raw_output": "IR:total_pens=(4+2)*3=18,remaining=18-2*2=14;R:14",
+      "finish_reason": "stop",
+      "output_tokens": 27,
+      "usage_available": true
+    },
+    {
+      "role": "verifier",
+      "attempt": 0,
+      "status": "delivered",
+      "error": "",
+      "raw_output": "CHK:ACCEPT",
+      "finish_reason": "stop",
+      "output_tokens": 5,
+      "usage_available": true
+    }
+  ],
+  "failed_attempts": [],
+  "calls": 3,
+  "usage_complete": true,
+  "known_input_tokens": 2589,
+  "known_output_tokens": 64,
+  "model_input_tokens": 2589,
+  "model_output_tokens": 64,
+  "format_failed_calls": 0,
+  "transport_failed_calls": 0,
+  "fallback_calls": 0,
+  "sum_model_latency_s": 4.054917812347412,
+  "gold": "14",
+  "score": 1.0,
+  "question": "Kendra has 4 packs of pens. Tony has 2 packs of pens. There are 3 pens in each pack. If Kendra and Tony decide to keep two pens each and give the remaining pens to their friends one pen per friend, how many friends will they give pens to?\nGive the final numeric answer."
+}

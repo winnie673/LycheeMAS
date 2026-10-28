@@ -1,0 +1,186 @@
+{
+  "task_id": "gsm8k:train:seed42:V:00052",
+  "status": "completed",
+  "error": null,
+  "prediction": "120",
+  "messages": [
+    {
+      "sender": "planner",
+      "content": "G:total_cost;P:people=2,flight=24*people,hotel=12*people*3,total=flight+hotel",
+      "receiver": "solver",
+      "round": 0,
+      "role": "assistant",
+      "prompt_tokens": 814,
+      "completion_tokens": 32,
+      "id": "92e8f9447526",
+      "ts": 1793168463.6231456,
+      "meta": {
+        "sender": "planner",
+        "receiver": "solver",
+        "message_id": "92e8f9447526",
+        "protocol_edge": "planner_to_solver",
+        "protocol_version": "CARD-3-gsm8k",
+        "protocol_hash": "fb1a4acb6e591ac96544876aedd912b27a6f9d3154c76112e1da0f43407d27b2",
+        "contract_hash": "ab4b736240365db5d0ce2caea032f40a3b7fc9c189db42d5ebcd28cac0fac22b",
+        "fields": {
+          "G": "total_cost",
+          "P": "people=2,flight=24*people,hotel=12*people*3,total=flight+hotel"
+        },
+        "communication_tokens": 32,
+        "communication_tokens_exact": true,
+        "attempt_count": 3,
+        "fallback": false,
+        "tokens_include_all_attempts": true,
+        "incoming_message_ids": []
+      }
+    },
+    {
+      "sender": "solver",
+      "content": "IR:flight=24*2=48,hotel=12*2*3=72,total=48+72=120;R:120",
+      "receiver": "verifier",
+      "round": 0,
+      "role": "assistant",
+      "prompt_tokens": 726,
+      "completion_tokens": 32,
+      "id": "75d11b4ee1db",
+      "ts": 1793168464.6572747,
+      "meta": {
+        "sender": "solver",
+        "receiver": "verifier",
+        "message_id": "75d11b4ee1db",
+        "protocol_edge": "solver_to_verifier",
+        "protocol_version": "CARD-3-gsm8k",
+        "protocol_hash": "fb1a4acb6e591ac96544876aedd912b27a6f9d3154c76112e1da0f43407d27b2",
+        "contract_hash": "ab4b736240365db5d0ce2caea032f40a3b7fc9c189db42d5ebcd28cac0fac22b",
+        "fields": {
+          "IR": "flight=24*2=48,hotel=12*2*3=72,total=48+72=120",
+          "R": "120"
+        },
+        "communication_tokens": 32,
+        "communication_tokens_exact": true,
+        "attempt_count": 1,
+        "fallback": false,
+        "tokens_include_all_attempts": true,
+        "incoming_message_ids": [
+          "92e8f9447526"
+        ]
+      }
+    },
+    {
+      "sender": "verifier",
+      "content": "CHK:ACCEPT",
+      "receiver": "solver",
+      "round": 0,
+      "role": "assistant",
+      "prompt_tokens": 1092,
+      "completion_tokens": 5,
+      "id": "731e0d4b6021",
+      "ts": 1793168465.83061,
+      "meta": {
+        "sender": "verifier",
+        "receiver": "solver",
+        "message_id": "731e0d4b6021",
+        "protocol_edge": "verifier_to_solver",
+        "protocol_version": "CARD-3-gsm8k",
+        "protocol_hash": "fb1a4acb6e591ac96544876aedd912b27a6f9d3154c76112e1da0f43407d27b2",
+        "contract_hash": "ab4b736240365db5d0ce2caea032f40a3b7fc9c189db42d5ebcd28cac0fac22b",
+        "fields": {
+          "CHK": "ACCEPT"
+        },
+        "communication_tokens": 5,
+        "communication_tokens_exact": true,
+        "attempt_count": 1,
+        "fallback": false,
+        "tokens_include_all_attempts": true,
+        "incoming_message_ids": [
+          "75d11b4ee1db"
+        ]
+      }
+    }
+  ],
+  "communication_tokens": 69,
+  "wall_time_s": 54588.47580839996,
+  "verified": true,
+  "revision_rounds": 0,
+  "model_calls": [
+    {
+      "role": "planner",
+      "attempt": 0,
+      "status": "transport_error",
+      "error": "Connection error.",
+      "raw_output": "",
+      "finish_reason": "unavailable",
+      "output_tokens": 0,
+      "usage_available": false
+    },
+    {
+      "role": "planner",
+      "attempt": 1,
+      "status": "transport_error",
+      "error": "Connection error.",
+      "raw_output": "",
+      "finish_reason": "unavailable",
+      "output_tokens": 0,
+      "usage_available": false
+    },
+    {
+      "role": "planner",
+      "attempt": 2,
+      "status": "delivered",
+      "error": "",
+      "raw_output": "G:total_cost;P:people=2,flight=24*people,hotel=12*people*3,total=flight+hotel",
+      "finish_reason": "stop",
+      "output_tokens": 32,
+      "usage_available": true
+    },
+    {
+      "role": "solver",
+      "attempt": 0,
+      "status": "delivered",
+      "error": "",
+      "raw_output": "IR:flight=24*2=48,hotel=12*2*3=72,total=48+72=120;R:120",
+      "finish_reason": "stop",
+      "output_tokens": 32,
+      "usage_available": true
+    },
+    {
+      "role": "verifier",
+      "attempt": 0,
+      "status": "delivered",
+      "error": "",
+      "raw_output": "CHK:ACCEPT",
+      "finish_reason": "stop",
+      "output_tokens": 5,
+      "usage_available": true
+    }
+  ],
+  "failed_attempts": [
+    {
+      "status": "transport_error",
+      "error": "Connection error.",
+      "raw_output": "",
+      "attempt": 0,
+      "role": "planner"
+    },
+    {
+      "status": "transport_error",
+      "error": "Connection error.",
+      "raw_output": "",
+      "attempt": 1,
+      "role": "planner"
+    }
+  ],
+  "calls": 5,
+  "usage_complete": false,
+  "known_input_tokens": 2632,
+  "known_output_tokens": 69,
+  "model_input_tokens": null,
+  "model_output_tokens": null,
+  "format_failed_calls": 0,
+  "transport_failed_calls": 2,
+  "fallback_calls": 0,
+  "sum_model_latency_s": 14.924112796783447,
+  "gold": "120",
+  "score": 1.0,
+  "question": "Jamie and Oliver are planning to go on a vacation. A plane ticket costs $24 for each person and a hotel stay costs $12 for each person per day. How much money will they spend on the vacation if they stay for 3 days?\nGive the final numeric answer."
+}

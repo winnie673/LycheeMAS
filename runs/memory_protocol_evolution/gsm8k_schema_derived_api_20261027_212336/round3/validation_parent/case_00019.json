@@ -1,0 +1,151 @@
+{
+  "task_id": "gsm8k:train:seed42:V:00019",
+  "status": "completed",
+  "error": null,
+  "prediction": "20",
+  "messages": [
+    {
+      "sender": "planner",
+      "content": "G:students_who_do_not_eat_lunch;P:lunch_bringers=3*cafeteria,cafeteria=10,do_not_eat=60-lunch_bringers-cafeteria",
+      "receiver": "solver",
+      "round": 0,
+      "role": "assistant",
+      "prompt_tokens": 757,
+      "completion_tokens": 45,
+      "id": "a677d5f60ecc",
+      "ts": 1793112474.2506158,
+      "meta": {
+        "sender": "planner",
+        "receiver": "solver",
+        "message_id": "a677d5f60ecc",
+        "protocol_edge": "planner_to_solver",
+        "protocol_version": "CARD-0-gsm8k",
+        "protocol_hash": "4bcdae885cc464e0a51977368e4bc06650c0326dbdcb182ce0327477c1d32daa",
+        "contract_hash": "ab4b736240365db5d0ce2caea032f40a3b7fc9c189db42d5ebcd28cac0fac22b",
+        "fields": {
+          "G": "students_who_do_not_eat_lunch",
+          "P": "lunch_bringers=3*cafeteria,cafeteria=10,do_not_eat=60-lunch_bringers-cafeteria"
+        },
+        "communication_tokens": 45,
+        "communication_tokens_exact": true,
+        "attempt_count": 1,
+        "fallback": false,
+        "tokens_include_all_attempts": true,
+        "incoming_message_ids": []
+      }
+    },
+    {
+      "sender": "solver",
+      "content": "IR:lunch_bringers=3*10=30,do_not_eat=60-30-10=20;R:20",
+      "receiver": "verifier",
+      "round": 0,
+      "role": "assistant",
+      "prompt_tokens": 744,
+      "completion_tokens": 30,
+      "id": "f1113e436e1a",
+      "ts": 1793112475.5183742,
+      "meta": {
+        "sender": "solver",
+        "receiver": "verifier",
+        "message_id": "f1113e436e1a",
+        "protocol_edge": "solver_to_verifier",
+        "protocol_version": "CARD-0-gsm8k",
+        "protocol_hash": "4bcdae885cc464e0a51977368e4bc06650c0326dbdcb182ce0327477c1d32daa",
+        "contract_hash": "ab4b736240365db5d0ce2caea032f40a3b7fc9c189db42d5ebcd28cac0fac22b",
+        "fields": {
+          "IR": "lunch_bringers=3*10=30,do_not_eat=60-30-10=20",
+          "R": "20"
+        },
+        "communication_tokens": 30,
+        "communication_tokens_exact": true,
+        "attempt_count": 1,
+        "fallback": false,
+        "tokens_include_all_attempts": true,
+        "incoming_message_ids": [
+          "a677d5f60ecc"
+        ]
+      }
+    },
+    {
+      "sender": "verifier",
+      "content": "CHK:ACCEPT",
+      "receiver": "solver",
+      "round": 0,
+      "role": "assistant",
+      "prompt_tokens": 1095,
+      "completion_tokens": 5,
+      "id": "60a331e54f11",
+      "ts": 1793112476.674845,
+      "meta": {
+        "sender": "verifier",
+        "receiver": "solver",
+        "message_id": "60a331e54f11",
+        "protocol_edge": "verifier_to_solver",
+        "protocol_version": "CARD-0-gsm8k",
+        "protocol_hash": "4bcdae885cc464e0a51977368e4bc06650c0326dbdcb182ce0327477c1d32daa",
+        "contract_hash": "ab4b736240365db5d0ce2caea032f40a3b7fc9c189db42d5ebcd28cac0fac22b",
+        "fields": {
+          "CHK": "ACCEPT"
+        },
+        "communication_tokens": 5,
+        "communication_tokens_exact": true,
+        "attempt_count": 1,
+        "fallback": false,
+        "tokens_include_all_attempts": true,
+        "incoming_message_ids": [
+          "f1113e436e1a"
+        ]
+      }
+    }
+  ],
+  "communication_tokens": 80,
+  "wall_time_s": 4.078478800016455,
+  "verified": true,
+  "revision_rounds": 0,
+  "model_calls": [
+    {
+      "role": "planner",
+      "attempt": 0,
+      "status": "delivered",
+      "error": "",
+      "raw_output": "G:students_who_do_not_eat_lunch;P:lunch_bringers=3*cafeteria,cafeteria=10,do_not_eat=60-lunch_bringers-cafeteria",
+      "finish_reason": "stop",
+      "output_tokens": 45,
+      "usage_available": true
+    },
+    {
+      "role": "solver",
+      "attempt": 0,
+      "status": "delivered",
+      "error": "",
+      "raw_output": "IR:lunch_bringers=3*10=30,do_not_eat=60-30-10=20;R:20",
+      "finish_reason": "stop",
+      "output_tokens": 30,
+      "usage_available": true
+    },
+    {
+      "role": "verifier",
+      "attempt": 0,
+      "status": "delivered",
+      "error": "",
+      "raw_output": "CHK:ACCEPT",
+      "finish_reason": "stop",
+      "output_tokens": 5,
+      "usage_available": true
+    }
+  ],
+  "failed_attempts": [],
+  "calls": 3,
+  "usage_complete": true,
+  "known_input_tokens": 2596,
+  "known_output_tokens": 80,
+  "model_input_tokens": 2596,
+  "model_output_tokens": 80,
+  "format_failed_calls": 0,
+  "transport_failed_calls": 0,
+  "fallback_calls": 0,
+  "sum_model_latency_s": 4.002331018447876,
+  "gold": "20",
+  "score": 1.0,
+  "question": "A class has 60 students. The number of students who bring their lunch is thrice the number of those who eat in the school cafeteria. The rest of the students don't eat lunch. If 10 students eat in the school cafeteria, how many don't eat lunch?\nGive the final numeric answer."
+}

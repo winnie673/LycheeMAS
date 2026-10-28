@@ -1,0 +1,149 @@
+{
+  "task_id": "gsm8k:train:seed42:V:00169",
+  "status": "completed",
+  "error": null,
+  "prediction": "11",
+  "messages": [
+    {
+      "sender": "planner",
+      "content": "G:number_of_suckers_Jen_ate;P:taylor_received=1+5,Harmony_received=taylor_received+3,Molly_received=Harmony_received+2,Jen_received=2*Molly_received,Jen_ate=Jen_received/2;NL:Work backward from Taylor through each person, treating each “ate half and gave the rest” as the next person receiving half of what the previous person had.",
+      "receiver": "solver",
+      "round": 0,
+      "role": "assistant",
+      "prompt_tokens": 823,
+      "completion_tokens": 98,
+      "id": "ff0f70819552",
+      "ts": 1793109711.8624654,
+      "meta": {
+        "sender": "planner",
+        "receiver": "solver",
+        "message_id": "ff0f70819552",
+        "protocol_edge": "planner_to_solver",
+        "protocol_version": "CARD-1-gsm8k",
+        "protocol_hash": "2a663f41d251a442e680de67a231e516a8fe5e31629bc25d021c8c0eb1354cff",
+        "contract_hash": "ab4b736240365db5d0ce2caea032f40a3b7fc9c189db42d5ebcd28cac0fac22b",
+        "fields": {
+          "G": "number_of_suckers_Jen_ate",
+          "P": "taylor_received=1+5,Harmony_received=taylor_received+3,Molly_received=Harmony_received+2,Jen_received=2*Molly_received,Jen_ate=Jen_received/2",
+          "NL": "Work backward from Taylor through each person, treating each “ate half and gave the rest” as the next person receiving half of what the previous person had."
+        },
+        "communication_tokens": 98,
+        "communication_tokens_exact": true,
+        "attempt_count": 1,
+        "fallback": false,
+        "tokens_include_all_attempts": true,
+        "incoming_message_ids": []
+      }
+    },
+    {
+      "sender": "solver",
+      "content": "IR:taylor_received=1+5=6,Harmony_received=6+3=9,Molly_received=9+2=11,Jen_received=2*11=22,Jen_ate=22/2=11;R:11",
+      "receiver": "verifier",
+      "round": 0,
+      "role": "assistant",
+      "prompt_tokens": 804,
+      "completion_tokens": 56,
+      "id": "ca68b415db3e",
+      "ts": 1793109713.705934,
+      "meta": {
+        "sender": "solver",
+        "receiver": "verifier",
+        "message_id": "ca68b415db3e",
+        "protocol_edge": "solver_to_verifier",
+        "protocol_version": "CARD-1-gsm8k",
+        "protocol_hash": "2a663f41d251a442e680de67a231e516a8fe5e31629bc25d021c8c0eb1354cff",
+        "contract_hash": "ab4b736240365db5d0ce2caea032f40a3b7fc9c189db42d5ebcd28cac0fac22b",
+        "fields": {
+          "IR": "taylor_received=1+5=6,Harmony_received=6+3=9,Molly_received=9+2=11,Jen_received=2*11=22,Jen_ate=22/2=11",
+          "R": "11"
+        },
+        "communication_tokens": 56,
+        "communication_tokens_exact": true,
+        "attempt_count": 1,
+        "fallback": false,
+        "tokens_include_all_attempts": true,
+        "incoming_message_ids": [
+          "ff0f70819552"
+        ]
+      }
+    },
+    {
+      "sender": "verifier",
+      "content": "CHK:ACCEPT",
+      "receiver": "solver",
+      "round": 0,
+      "role": "assistant",
+      "prompt_tokens": 1128,
+      "completion_tokens": 5,
+      "id": "ba0d3f721fe2",
+      "ts": 1793109714.7565284,
+      "meta": {
+        "sender": "verifier",
+        "receiver": "solver",
+        "message_id": "ba0d3f721fe2",
+        "protocol_edge": "verifier_to_solver",
+        "protocol_version": "CARD-1-gsm8k",
+        "protocol_hash": "2a663f41d251a442e680de67a231e516a8fe5e31629bc25d021c8c0eb1354cff",
+        "contract_hash": "ab4b736240365db5d0ce2caea032f40a3b7fc9c189db42d5ebcd28cac0fac22b",
+        "fields": {
+          "CHK": "ACCEPT"
+        },
+        "communication_tokens": 5,
+        "communication_tokens_exact": true,
+        "attempt_count": 1,
+        "fallback": false,
+        "tokens_include_all_attempts": true,
+        "incoming_message_ids": [
+          "ca68b415db3e"
+        ]
+      }
+    }
+  ],
+  "communication_tokens": 159,
+  "wall_time_s": 4.570342499995604,
+  "verified": true,
+  "revision_rounds": 0,
+  "model_calls": [
+    {
+      "role": "planner",
+      "attempt": 0,
+      "status": "delivered",
+      "error": "",
+      "raw_output": "G:number_of_suckers_Jen_ate;P:taylor_received=1+5,Harmony_received=taylor_received+3,Molly_received=Harmony_received+2,Jen_received=2*Molly_received,Jen_ate=Jen_received/2;NL:Work backward from Taylor through each person, treating each “ate half and gave the rest” as the next person receiving half of what the previous person had.",
+      "finish_reason": "stop",
+      "output_tokens": 98,
+      "usage_available": true
+    },
+    {
+      "role": "solver",
+      "attempt": 0,
+      "status": "delivered",
+      "error": "",
+      "raw_output": "IR:taylor_received=1+5=6,Harmony_received=6+3=9,Molly_received=9+2=11,Jen_received=2*11=22,Jen_ate=22/2=11;R:11",
+      "finish_reason": "stop",
+      "output_tokens": 56,
+      "usage_available": true
+    },
+    {
+      "role": "verifier",
+      "attempt": 0,
+      "status": "delivered",
+      "error": "",
+      "raw_output": "CHK:ACCEPT",
+      "finish_reason": "stop",
+      "output_tokens": 5,
+      "usage_available": true
+    }
+  ],
+  "failed_attempts": [],
+  "calls": 3,
+  "usage_complete": true,
+  "known_input_tokens": 2755,
+  "known_output_tokens": 159,
+  "model_input_tokens": 2755,
+  "model_output_tokens": 159,
+  "format_failed_calls": 0,
+  "transport_failed_calls": 0,
+  "fallback_calls": 0,
+  "sum_model_latency_s": 4.392584800720215
+}

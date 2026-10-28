@@ -1,0 +1,148 @@
+{
+  "task_id": "gsm8k:train:seed42:V:00195",
+  "status": "completed",
+  "error": null,
+  "prediction": "20",
+  "messages": [
+    {
+      "sender": "planner",
+      "content": "G:Samir_age_in_5_years;P:hania_now=45-5,hania_10_ago=hania_now-10,samir_now=hania_10_ago/2,samir_in_5=samir_now+5",
+      "receiver": "solver",
+      "round": 0,
+      "role": "assistant",
+      "prompt_tokens": 800,
+      "completion_tokens": 54,
+      "id": "9b6eb999a14a",
+      "ts": 1793109817.5949101,
+      "meta": {
+        "sender": "planner",
+        "receiver": "solver",
+        "message_id": "9b6eb999a14a",
+        "protocol_edge": "planner_to_solver",
+        "protocol_version": "CARD-1-gsm8k",
+        "protocol_hash": "2a663f41d251a442e680de67a231e516a8fe5e31629bc25d021c8c0eb1354cff",
+        "contract_hash": "ab4b736240365db5d0ce2caea032f40a3b7fc9c189db42d5ebcd28cac0fac22b",
+        "fields": {
+          "G": "Samir_age_in_5_years",
+          "P": "hania_now=45-5,hania_10_ago=hania_now-10,samir_now=hania_10_ago/2,samir_in_5=samir_now+5"
+        },
+        "communication_tokens": 54,
+        "communication_tokens_exact": true,
+        "attempt_count": 1,
+        "fallback": false,
+        "tokens_include_all_attempts": true,
+        "incoming_message_ids": []
+      }
+    },
+    {
+      "sender": "solver",
+      "content": "IR:hania_now=45-5=40,hania_10_ago=40-10=30,samir_now=30/2=15,samir_in_5=15+5=20;R:20",
+      "receiver": "verifier",
+      "round": 0,
+      "role": "assistant",
+      "prompt_tokens": 737,
+      "completion_tokens": 48,
+      "id": "ba198cb3165f",
+      "ts": 1793109818.524866,
+      "meta": {
+        "sender": "solver",
+        "receiver": "verifier",
+        "message_id": "ba198cb3165f",
+        "protocol_edge": "solver_to_verifier",
+        "protocol_version": "CARD-1-gsm8k",
+        "protocol_hash": "2a663f41d251a442e680de67a231e516a8fe5e31629bc25d021c8c0eb1354cff",
+        "contract_hash": "ab4b736240365db5d0ce2caea032f40a3b7fc9c189db42d5ebcd28cac0fac22b",
+        "fields": {
+          "IR": "hania_now=45-5=40,hania_10_ago=40-10=30,samir_now=30/2=15,samir_in_5=15+5=20",
+          "R": "20"
+        },
+        "communication_tokens": 48,
+        "communication_tokens_exact": true,
+        "attempt_count": 1,
+        "fallback": false,
+        "tokens_include_all_attempts": true,
+        "incoming_message_ids": [
+          "9b6eb999a14a"
+        ]
+      }
+    },
+    {
+      "sender": "verifier",
+      "content": "CHK:ACCEPT",
+      "receiver": "solver",
+      "round": 0,
+      "role": "assistant",
+      "prompt_tokens": 1097,
+      "completion_tokens": 5,
+      "id": "c3a746472027",
+      "ts": 1793109819.625811,
+      "meta": {
+        "sender": "verifier",
+        "receiver": "solver",
+        "message_id": "c3a746472027",
+        "protocol_edge": "verifier_to_solver",
+        "protocol_version": "CARD-1-gsm8k",
+        "protocol_hash": "2a663f41d251a442e680de67a231e516a8fe5e31629bc25d021c8c0eb1354cff",
+        "contract_hash": "ab4b736240365db5d0ce2caea032f40a3b7fc9c189db42d5ebcd28cac0fac22b",
+        "fields": {
+          "CHK": "ACCEPT"
+        },
+        "communication_tokens": 5,
+        "communication_tokens_exact": true,
+        "attempt_count": 1,
+        "fallback": false,
+        "tokens_include_all_attempts": true,
+        "incoming_message_ids": [
+          "ba198cb3165f"
+        ]
+      }
+    }
+  ],
+  "communication_tokens": 107,
+  "wall_time_s": 3.6072493999963626,
+  "verified": true,
+  "revision_rounds": 0,
+  "model_calls": [
+    {
+      "role": "planner",
+      "attempt": 0,
+      "status": "delivered",
+      "error": "",
+      "raw_output": "G:Samir_age_in_5_years;P:hania_now=45-5,hania_10_ago=hania_now-10,samir_now=hania_10_ago/2,samir_in_5=samir_now+5",
+      "finish_reason": "stop",
+      "output_tokens": 54,
+      "usage_available": true
+    },
+    {
+      "role": "solver",
+      "attempt": 0,
+      "status": "delivered",
+      "error": "",
+      "raw_output": "IR:hania_now=45-5=40,hania_10_ago=40-10=30,samir_now=30/2=15,samir_in_5=15+5=20;R:20",
+      "finish_reason": "stop",
+      "output_tokens": 48,
+      "usage_available": true
+    },
+    {
+      "role": "verifier",
+      "attempt": 0,
+      "status": "delivered",
+      "error": "",
+      "raw_output": "CHK:ACCEPT",
+      "finish_reason": "stop",
+      "output_tokens": 5,
+      "usage_available": true
+    }
+  ],
+  "failed_attempts": [],
+  "calls": 3,
+  "usage_complete": true,
+  "known_input_tokens": 2634,
+  "known_output_tokens": 107,
+  "model_input_tokens": 2634,
+  "model_output_tokens": 107,
+  "format_failed_calls": 0,
+  "transport_failed_calls": 0,
+  "fallback_calls": 0,
+  "sum_model_latency_s": 3.431098699569702
+}

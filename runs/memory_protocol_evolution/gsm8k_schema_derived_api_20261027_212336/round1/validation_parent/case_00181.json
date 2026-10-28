@@ -1,0 +1,151 @@
+{
+  "task_id": "gsm8k:train:seed42:V:00181",
+  "status": "completed",
+  "error": null,
+  "prediction": "480",
+  "messages": [
+    {
+      "sender": "planner",
+      "content": "G:distance_between_table_1_and_table_3;P:race_length=4*300,segments=6-1,spacing=race_length/segments,distance=2*spacing",
+      "receiver": "solver",
+      "round": 0,
+      "role": "assistant",
+      "prompt_tokens": 789,
+      "completion_tokens": 44,
+      "id": "35171bede3dd",
+      "ts": 1793108870.716933,
+      "meta": {
+        "sender": "planner",
+        "receiver": "solver",
+        "message_id": "35171bede3dd",
+        "protocol_edge": "planner_to_solver",
+        "protocol_version": "CARD-0-gsm8k",
+        "protocol_hash": "4bcdae885cc464e0a51977368e4bc06650c0326dbdcb182ce0327477c1d32daa",
+        "contract_hash": "ab4b736240365db5d0ce2caea032f40a3b7fc9c189db42d5ebcd28cac0fac22b",
+        "fields": {
+          "G": "distance_between_table_1_and_table_3",
+          "P": "race_length=4*300,segments=6-1,spacing=race_length/segments,distance=2*spacing"
+        },
+        "communication_tokens": 44,
+        "communication_tokens_exact": true,
+        "attempt_count": 1,
+        "fallback": false,
+        "tokens_include_all_attempts": true,
+        "incoming_message_ids": []
+      }
+    },
+    {
+      "sender": "solver",
+      "content": "IR:race_length=4*300=1200,segments=6-1=5,spacing=1200/5=240,distance=2*240=480;R:480",
+      "receiver": "verifier",
+      "round": 0,
+      "role": "assistant",
+      "prompt_tokens": 775,
+      "completion_tokens": 42,
+      "id": "10146b2f6d2e",
+      "ts": 1793108872.3629692,
+      "meta": {
+        "sender": "solver",
+        "receiver": "verifier",
+        "message_id": "10146b2f6d2e",
+        "protocol_edge": "solver_to_verifier",
+        "protocol_version": "CARD-0-gsm8k",
+        "protocol_hash": "4bcdae885cc464e0a51977368e4bc06650c0326dbdcb182ce0327477c1d32daa",
+        "contract_hash": "ab4b736240365db5d0ce2caea032f40a3b7fc9c189db42d5ebcd28cac0fac22b",
+        "fields": {
+          "IR": "race_length=4*300=1200,segments=6-1=5,spacing=1200/5=240,distance=2*240=480",
+          "R": "480"
+        },
+        "communication_tokens": 42,
+        "communication_tokens_exact": true,
+        "attempt_count": 1,
+        "fallback": false,
+        "tokens_include_all_attempts": true,
+        "incoming_message_ids": [
+          "35171bede3dd"
+        ]
+      }
+    },
+    {
+      "sender": "verifier",
+      "content": "CHK:ACCEPT",
+      "receiver": "solver",
+      "round": 0,
+      "role": "assistant",
+      "prompt_tokens": 1139,
+      "completion_tokens": 5,
+      "id": "1f2129b7662a",
+      "ts": 1793108873.617186,
+      "meta": {
+        "sender": "verifier",
+        "receiver": "solver",
+        "message_id": "1f2129b7662a",
+        "protocol_edge": "verifier_to_solver",
+        "protocol_version": "CARD-0-gsm8k",
+        "protocol_hash": "4bcdae885cc464e0a51977368e4bc06650c0326dbdcb182ce0327477c1d32daa",
+        "contract_hash": "ab4b736240365db5d0ce2caea032f40a3b7fc9c189db42d5ebcd28cac0fac22b",
+        "fields": {
+          "CHK": "ACCEPT"
+        },
+        "communication_tokens": 5,
+        "communication_tokens_exact": true,
+        "attempt_count": 1,
+        "fallback": false,
+        "tokens_include_all_attempts": true,
+        "incoming_message_ids": [
+          "10146b2f6d2e"
+        ]
+      }
+    }
+  ],
+  "communication_tokens": 91,
+  "wall_time_s": 4.479648799984716,
+  "verified": true,
+  "revision_rounds": 0,
+  "model_calls": [
+    {
+      "role": "planner",
+      "attempt": 0,
+      "status": "delivered",
+      "error": "",
+      "raw_output": "G:distance_between_table_1_and_table_3;P:race_length=4*300,segments=6-1,spacing=race_length/segments,distance=2*spacing",
+      "finish_reason": "stop",
+      "output_tokens": 44,
+      "usage_available": true
+    },
+    {
+      "role": "solver",
+      "attempt": 0,
+      "status": "delivered",
+      "error": "",
+      "raw_output": "IR:race_length=4*300=1200,segments=6-1=5,spacing=1200/5=240,distance=2*240=480;R:480",
+      "finish_reason": "stop",
+      "output_tokens": 42,
+      "usage_available": true
+    },
+    {
+      "role": "verifier",
+      "attempt": 0,
+      "status": "delivered",
+      "error": "",
+      "raw_output": "CHK:ACCEPT",
+      "finish_reason": "stop",
+      "output_tokens": 5,
+      "usage_available": true
+    }
+  ],
+  "failed_attempts": [],
+  "calls": 3,
+  "usage_complete": true,
+  "known_input_tokens": 2703,
+  "known_output_tokens": 91,
+  "model_input_tokens": 2703,
+  "model_output_tokens": 91,
+  "format_failed_calls": 0,
+  "transport_failed_calls": 0,
+  "fallback_calls": 0,
+  "sum_model_latency_s": 4.3997962474823,
+  "gold": "400",
+  "score": 0.0,
+  "question": "Giselle is in charge of the relay run on track and field day. Last year, the race was 300 meters. This year, it will be 4 times as long. Giselle needs to set up 6 tables for the relay run. The distance between the tables must be the same and the last table will be at the finish line. What is the distance between table 1 and table 3 in meters?\nGive the final numeric answer."
+}

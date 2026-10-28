@@ -1,0 +1,153 @@
+{
+  "task_id": "gsm8k:train:seed42:V:00006",
+  "status": "completed",
+  "error": null,
+  "prediction": "365",
+  "messages": [
+    {
+      "sender": "planner",
+      "content": "G:hours_per_year;P:one_way=5+20+5,daily=2*one_way,yearly_minutes=365*daily,hours_per_year=yearly_minutes/60;NL:Assume 365 days per year since he works every day.",
+      "receiver": "solver",
+      "round": 0,
+      "role": "assistant",
+      "prompt_tokens": 901,
+      "completion_tokens": 59,
+      "id": "6dc1f13d6fbf",
+      "ts": 1793111145.4990706,
+      "meta": {
+        "sender": "planner",
+        "receiver": "solver",
+        "message_id": "6dc1f13d6fbf",
+        "protocol_edge": "planner_to_solver",
+        "protocol_version": "CARD-2-gsm8k",
+        "protocol_hash": "aec703067bbfeee6aa1e642a2a319658f1d33f2eff00c8701de19347f616ed6d",
+        "contract_hash": "ab4b736240365db5d0ce2caea032f40a3b7fc9c189db42d5ebcd28cac0fac22b",
+        "fields": {
+          "G": "hours_per_year",
+          "P": "one_way=5+20+5,daily=2*one_way,yearly_minutes=365*daily,hours_per_year=yearly_minutes/60",
+          "NL": "Assume 365 days per year since he works every day."
+        },
+        "communication_tokens": 59,
+        "communication_tokens_exact": true,
+        "attempt_count": 1,
+        "fallback": false,
+        "tokens_include_all_attempts": true,
+        "incoming_message_ids": []
+      }
+    },
+    {
+      "sender": "solver",
+      "content": "IR:one_way=5+20+5=30,daily=2*30=60,yearly_minutes=365*60=21900,hours_per_year=21900/60=365;R:365;NL:Assume 365 days per year since he works every day.",
+      "receiver": "verifier",
+      "round": 0,
+      "role": "assistant",
+      "prompt_tokens": 778,
+      "completion_tokens": 62,
+      "id": "f9f035bcc5c7",
+      "ts": 1793111146.5414464,
+      "meta": {
+        "sender": "solver",
+        "receiver": "verifier",
+        "message_id": "f9f035bcc5c7",
+        "protocol_edge": "solver_to_verifier",
+        "protocol_version": "CARD-2-gsm8k",
+        "protocol_hash": "aec703067bbfeee6aa1e642a2a319658f1d33f2eff00c8701de19347f616ed6d",
+        "contract_hash": "ab4b736240365db5d0ce2caea032f40a3b7fc9c189db42d5ebcd28cac0fac22b",
+        "fields": {
+          "IR": "one_way=5+20+5=30,daily=2*30=60,yearly_minutes=365*60=21900,hours_per_year=21900/60=365",
+          "R": "365",
+          "NL": "Assume 365 days per year since he works every day."
+        },
+        "communication_tokens": 62,
+        "communication_tokens_exact": true,
+        "attempt_count": 1,
+        "fallback": false,
+        "tokens_include_all_attempts": true,
+        "incoming_message_ids": [
+          "6dc1f13d6fbf"
+        ]
+      }
+    },
+    {
+      "sender": "verifier",
+      "content": "CHK:ACCEPT",
+      "receiver": "solver",
+      "round": 0,
+      "role": "assistant",
+      "prompt_tokens": 1147,
+      "completion_tokens": 5,
+      "id": "4349320ea97d",
+      "ts": 1793111147.5092204,
+      "meta": {
+        "sender": "verifier",
+        "receiver": "solver",
+        "message_id": "4349320ea97d",
+        "protocol_edge": "verifier_to_solver",
+        "protocol_version": "CARD-2-gsm8k",
+        "protocol_hash": "aec703067bbfeee6aa1e642a2a319658f1d33f2eff00c8701de19347f616ed6d",
+        "contract_hash": "ab4b736240365db5d0ce2caea032f40a3b7fc9c189db42d5ebcd28cac0fac22b",
+        "fields": {
+          "CHK": "ACCEPT"
+        },
+        "communication_tokens": 5,
+        "communication_tokens_exact": true,
+        "attempt_count": 1,
+        "fallback": false,
+        "tokens_include_all_attempts": true,
+        "incoming_message_ids": [
+          "f9f035bcc5c7"
+        ]
+      }
+    }
+  ],
+  "communication_tokens": 126,
+  "wall_time_s": 3.4933747000759467,
+  "verified": true,
+  "revision_rounds": 0,
+  "model_calls": [
+    {
+      "role": "planner",
+      "attempt": 0,
+      "status": "delivered",
+      "error": "",
+      "raw_output": "G:hours_per_year;P:one_way=5+20+5,daily=2*one_way,yearly_minutes=365*daily,hours_per_year=yearly_minutes/60;NL:Assume 365 days per year since he works every day.",
+      "finish_reason": "stop",
+      "output_tokens": 59,
+      "usage_available": true
+    },
+    {
+      "role": "solver",
+      "attempt": 0,
+      "status": "delivered",
+      "error": "",
+      "raw_output": "IR:one_way=5+20+5=30,daily=2*30=60,yearly_minutes=365*60=21900,hours_per_year=21900/60=365;R:365;NL:Assume 365 days per year since he works every day.",
+      "finish_reason": "stop",
+      "output_tokens": 62,
+      "usage_available": true
+    },
+    {
+      "role": "verifier",
+      "attempt": 0,
+      "status": "delivered",
+      "error": "",
+      "raw_output": "CHK:ACCEPT",
+      "finish_reason": "stop",
+      "output_tokens": 5,
+      "usage_available": true
+    }
+  ],
+  "failed_attempts": [],
+  "calls": 3,
+  "usage_complete": true,
+  "known_input_tokens": 2826,
+  "known_output_tokens": 126,
+  "model_input_tokens": 2826,
+  "model_output_tokens": 126,
+  "format_failed_calls": 0,
+  "transport_failed_calls": 0,
+  "fallback_calls": 0,
+  "sum_model_latency_s": 3.417248010635376,
+  "gold": "365",
+  "score": 1.0,
+  "question": "It takes Bryan 5 minutes to walk from his house to the bus station. Then he rides the bus for 20 minutes. After that, he walks 5 minutes from the bus station to his job. It takes the same amount of time in the morning and the evening. How many hours per year does Bryan spend traveling to and from work, if he works every day?\nGive the final numeric answer."
+}

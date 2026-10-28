@@ -1,0 +1,95 @@
+{
+  "task_id": "gsm8k:test:seed42:T:00134",
+  "mode": "nl",
+  "benchmark": "gsm8k",
+  "status": "completed",
+  "error": null,
+  "prediction": "720",
+  "gold": "720",
+  "wall_time_s": 3.7139152999734506,
+  "communication_tokens": 131,
+  "communication_tokens_exact": true,
+  "revision_rounds": 0,
+  "verification_decision": "ACCEPT",
+  "verified": true,
+  "messages": [
+    {
+      "sender": "planner",
+      "content": "Goal: Find Tom’s total yearly cost for car washes.\n\nPlan: Determine how many car washes Tom gets in a year by multiplying the monthly number by 12. Then multiply that yearly number of car washes by the cost per wash.\n\nFacts: Tom gets 4 car washes per month. Each car wash costs $15. There are 12 months in a year.",
+      "receiver": "solver",
+      "round": 0,
+      "role": "assistant",
+      "prompt_tokens": 179,
+      "completion_tokens": 76,
+      "id": "622b43c465d0",
+      "ts": 1793170073.2028635,
+      "meta": {
+        "fields": {},
+        "communication_tokens": 76,
+        "communication_tokens_exact": true,
+        "attempt_count": 1,
+        "fallback": false,
+        "tokens_include_all_attempts": true,
+        "incoming_message_ids": []
+      }
+    },
+    {
+      "sender": "solver",
+      "content": "Tom gets 4 car washes per month, so in a year he gets \\(4 \\times 12 = 48\\) car washes. At $15 each, the yearly cost is \\(48 \\times 15 = 720\\).\n\n\\boxed{720}",
+      "receiver": "verifier",
+      "round": 0,
+      "role": "assistant",
+      "prompt_tokens": 267,
+      "completion_tokens": 53,
+      "id": "d422db021c5c",
+      "ts": 1793170074.388618,
+      "meta": {
+        "fields": {
+          "R": "720"
+        },
+        "communication_tokens": 53,
+        "communication_tokens_exact": true,
+        "attempt_count": 1,
+        "fallback": false,
+        "tokens_include_all_attempts": true,
+        "incoming_message_ids": [
+          "622b43c465d0"
+        ]
+      }
+    },
+    {
+      "sender": "verifier",
+      "content": "ACCEPT",
+      "receiver": "solver",
+      "round": 0,
+      "role": "assistant",
+      "prompt_tokens": 621,
+      "completion_tokens": 2,
+      "id": "b57a48ad9769",
+      "ts": 1793170075.3609521,
+      "meta": {
+        "fields": {
+          "CHK": "ACCEPT"
+        },
+        "communication_tokens": 2,
+        "communication_tokens_exact": true,
+        "attempt_count": 1,
+        "fallback": false,
+        "tokens_include_all_attempts": true,
+        "incoming_message_ids": [
+          "d422db021c5c"
+        ]
+      }
+    }
+  ],
+  "calls": 3,
+  "usage_complete": true,
+  "known_input_tokens": 1067,
+  "known_output_tokens": 131,
+  "model_input_tokens": 1067,
+  "model_output_tokens": 131,
+  "format_failed_calls": 0,
+  "transport_failed_calls": 0,
+  "fallback_calls": 0,
+  "sum_model_latency_s": 3.6453399658203125
+}

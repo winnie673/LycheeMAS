@@ -1,0 +1,151 @@
+{
+  "task_id": "gsm8k:train:seed42:V:00088",
+  "status": "completed",
+  "error": null,
+  "prediction": "80",
+  "messages": [
+    {
+      "sender": "planner",
+      "content": "G:seeds_per_row;P:row_length_ft=120,spacing_ft=18/12,seeds_per_row=row_length_ft/spacing_ft",
+      "receiver": "solver",
+      "round": 0,
+      "role": "assistant",
+      "prompt_tokens": 871,
+      "completion_tokens": 38,
+      "id": "595cb72f5c0e",
+      "ts": 1793111487.7630453,
+      "meta": {
+        "sender": "planner",
+        "receiver": "solver",
+        "message_id": "595cb72f5c0e",
+        "protocol_edge": "planner_to_solver",
+        "protocol_version": "CARD-2-gsm8k",
+        "protocol_hash": "aec703067bbfeee6aa1e642a2a319658f1d33f2eff00c8701de19347f616ed6d",
+        "contract_hash": "ab4b736240365db5d0ce2caea032f40a3b7fc9c189db42d5ebcd28cac0fac22b",
+        "fields": {
+          "G": "seeds_per_row",
+          "P": "row_length_ft=120,spacing_ft=18/12,seeds_per_row=row_length_ft/spacing_ft"
+        },
+        "communication_tokens": 38,
+        "communication_tokens_exact": true,
+        "attempt_count": 1,
+        "fallback": false,
+        "tokens_include_all_attempts": true,
+        "incoming_message_ids": []
+      }
+    },
+    {
+      "sender": "solver",
+      "content": "IR:spacing_ft=18/12=1.5,seeds_per_row=120/1.5=80;R:80",
+      "receiver": "verifier",
+      "round": 0,
+      "role": "assistant",
+      "prompt_tokens": 727,
+      "completion_tokens": 31,
+      "id": "b3a08c4e98aa",
+      "ts": 1793111489.2031906,
+      "meta": {
+        "sender": "solver",
+        "receiver": "verifier",
+        "message_id": "b3a08c4e98aa",
+        "protocol_edge": "solver_to_verifier",
+        "protocol_version": "CARD-2-gsm8k",
+        "protocol_hash": "aec703067bbfeee6aa1e642a2a319658f1d33f2eff00c8701de19347f616ed6d",
+        "contract_hash": "ab4b736240365db5d0ce2caea032f40a3b7fc9c189db42d5ebcd28cac0fac22b",
+        "fields": {
+          "IR": "spacing_ft=18/12=1.5,seeds_per_row=120/1.5=80",
+          "R": "80"
+        },
+        "communication_tokens": 31,
+        "communication_tokens_exact": true,
+        "attempt_count": 1,
+        "fallback": false,
+        "tokens_include_all_attempts": true,
+        "incoming_message_ids": [
+          "595cb72f5c0e"
+        ]
+      }
+    },
+    {
+      "sender": "verifier",
+      "content": "CHK:ACCEPT",
+      "receiver": "solver",
+      "round": 0,
+      "role": "assistant",
+      "prompt_tokens": 1086,
+      "completion_tokens": 5,
+      "id": "1bc1eb3160f4",
+      "ts": 1793111490.5470011,
+      "meta": {
+        "sender": "verifier",
+        "receiver": "solver",
+        "message_id": "1bc1eb3160f4",
+        "protocol_edge": "verifier_to_solver",
+        "protocol_version": "CARD-2-gsm8k",
+        "protocol_hash": "aec703067bbfeee6aa1e642a2a319658f1d33f2eff00c8701de19347f616ed6d",
+        "contract_hash": "ab4b736240365db5d0ce2caea032f40a3b7fc9c189db42d5ebcd28cac0fac22b",
+        "fields": {
+          "CHK": "ACCEPT"
+        },
+        "communication_tokens": 5,
+        "communication_tokens_exact": true,
+        "attempt_count": 1,
+        "fallback": false,
+        "tokens_include_all_attempts": true,
+        "incoming_message_ids": [
+          "b3a08c4e98aa"
+        ]
+      }
+    }
+  ],
+  "communication_tokens": 74,
+  "wall_time_s": 4.245975799974985,
+  "verified": true,
+  "revision_rounds": 0,
+  "model_calls": [
+    {
+      "role": "planner",
+      "attempt": 0,
+      "status": "delivered",
+      "error": "",
+      "raw_output": "G:seeds_per_row;P:row_length_ft=120,spacing_ft=18/12,seeds_per_row=row_length_ft/spacing_ft",
+      "finish_reason": "stop",
+      "output_tokens": 38,
+      "usage_available": true
+    },
+    {
+      "role": "solver",
+      "attempt": 0,
+      "status": "delivered",
+      "error": "",
+      "raw_output": "IR:spacing_ft=18/12=1.5,seeds_per_row=120/1.5=80;R:80",
+      "finish_reason": "stop",
+      "output_tokens": 31,
+      "usage_available": true
+    },
+    {
+      "role": "verifier",
+      "attempt": 0,
+      "status": "delivered",
+      "error": "",
+      "raw_output": "CHK:ACCEPT",
+      "finish_reason": "stop",
+      "output_tokens": 5,
+      "usage_available": true
+    }
+  ],
+  "failed_attempts": [],
+  "calls": 3,
+  "usage_complete": true,
+  "known_input_tokens": 2684,
+  "known_output_tokens": 74,
+  "model_input_tokens": 2684,
+  "model_output_tokens": 74,
+  "format_failed_calls": 0,
+  "transport_failed_calls": 0,
+  "fallback_calls": 0,
+  "sum_model_latency_s": 4.16529655456543,
+  "gold": "80",
+  "score": 1.0,
+  "question": "Bob is going to plant corn in part of his garden. The rows are 120 feet long, and each seed needs its own dedicated space of 18 inches to its right. How many seeds can Bob plant in each row?\nGive the final numeric answer."
+}

@@ -1,0 +1,151 @@
+{
+  "task_id": "gsm8k:train:seed42:G1:00004",
+  "status": "completed",
+  "error": null,
+  "prediction": "15",
+  "messages": [
+    {
+      "sender": "planner",
+      "content": "G:additional_acorns_per_squirrel;P:additional=130-575/5",
+      "receiver": "solver",
+      "round": 0,
+      "role": "assistant",
+      "prompt_tokens": 735,
+      "completion_tokens": 19,
+      "id": "244ebb72d2f0",
+      "ts": 1793107588.3675492,
+      "meta": {
+        "sender": "planner",
+        "receiver": "solver",
+        "message_id": "244ebb72d2f0",
+        "protocol_edge": "planner_to_solver",
+        "protocol_version": "CARD-0-gsm8k",
+        "protocol_hash": "4bcdae885cc464e0a51977368e4bc06650c0326dbdcb182ce0327477c1d32daa",
+        "contract_hash": "ab4b736240365db5d0ce2caea032f40a3b7fc9c189db42d5ebcd28cac0fac22b",
+        "fields": {
+          "G": "additional_acorns_per_squirrel",
+          "P": "additional=130-575/5"
+        },
+        "communication_tokens": 19,
+        "communication_tokens_exact": true,
+        "attempt_count": 1,
+        "fallback": false,
+        "tokens_include_all_attempts": true,
+        "incoming_message_ids": []
+      }
+    },
+    {
+      "sender": "solver",
+      "content": "IR:per_squirrel=575/5=115,additional=130-115=15;R:15",
+      "receiver": "verifier",
+      "round": 0,
+      "role": "assistant",
+      "prompt_tokens": 696,
+      "completion_tokens": 24,
+      "id": "44260b2beb2d",
+      "ts": 1793107590.2624443,
+      "meta": {
+        "sender": "solver",
+        "receiver": "verifier",
+        "message_id": "44260b2beb2d",
+        "protocol_edge": "solver_to_verifier",
+        "protocol_version": "CARD-0-gsm8k",
+        "protocol_hash": "4bcdae885cc464e0a51977368e4bc06650c0326dbdcb182ce0327477c1d32daa",
+        "contract_hash": "ab4b736240365db5d0ce2caea032f40a3b7fc9c189db42d5ebcd28cac0fac22b",
+        "fields": {
+          "IR": "per_squirrel=575/5=115,additional=130-115=15",
+          "R": "15"
+        },
+        "communication_tokens": 24,
+        "communication_tokens_exact": true,
+        "attempt_count": 1,
+        "fallback": false,
+        "tokens_include_all_attempts": true,
+        "incoming_message_ids": [
+          "244ebb72d2f0"
+        ]
+      }
+    },
+    {
+      "sender": "verifier",
+      "content": "CHK:ACCEPT",
+      "receiver": "solver",
+      "round": 0,
+      "role": "assistant",
+      "prompt_tokens": 1067,
+      "completion_tokens": 5,
+      "id": "8a32df4e7f24",
+      "ts": 1793107591.5692692,
+      "meta": {
+        "sender": "verifier",
+        "receiver": "solver",
+        "message_id": "8a32df4e7f24",
+        "protocol_edge": "verifier_to_solver",
+        "protocol_version": "CARD-0-gsm8k",
+        "protocol_hash": "4bcdae885cc464e0a51977368e4bc06650c0326dbdcb182ce0327477c1d32daa",
+        "contract_hash": "ab4b736240365db5d0ce2caea032f40a3b7fc9c189db42d5ebcd28cac0fac22b",
+        "fields": {
+          "CHK": "ACCEPT"
+        },
+        "communication_tokens": 5,
+        "communication_tokens_exact": true,
+        "attempt_count": 1,
+        "fallback": false,
+        "tokens_include_all_attempts": true,
+        "incoming_message_ids": [
+          "44260b2beb2d"
+        ]
+      }
+    }
+  ],
+  "communication_tokens": 48,
+  "wall_time_s": 4.617586100008339,
+  "verified": true,
+  "revision_rounds": 0,
+  "model_calls": [
+    {
+      "role": "planner",
+      "attempt": 0,
+      "status": "delivered",
+      "error": "",
+      "raw_output": "G:additional_acorns_per_squirrel;P:additional=130-575/5",
+      "finish_reason": "stop",
+      "output_tokens": 19,
+      "usage_available": true
+    },
+    {
+      "role": "solver",
+      "attempt": 0,
+      "status": "delivered",
+      "error": "",
+      "raw_output": "IR:per_squirrel=575/5=115,additional=130-115=15;R:15",
+      "finish_reason": "stop",
+      "output_tokens": 24,
+      "usage_available": true
+    },
+    {
+      "role": "verifier",
+      "attempt": 0,
+      "status": "delivered",
+      "error": "",
+      "raw_output": "CHK:ACCEPT",
+      "finish_reason": "stop",
+      "output_tokens": 5,
+      "usage_available": true
+    }
+  ],
+  "failed_attempts": [],
+  "calls": 3,
+  "usage_complete": true,
+  "known_input_tokens": 2498,
+  "known_output_tokens": 48,
+  "model_input_tokens": 2498,
+  "model_output_tokens": 48,
+  "format_failed_calls": 0,
+  "transport_failed_calls": 0,
+  "fallback_calls": 0,
+  "sum_model_latency_s": 4.465716123580933,
+  "gold": "15",
+  "score": 1.0,
+  "question": "5 squirrels collected 575 acorns. If each squirrel needs 130 acorns to get through the winter, how many more acorns does each squirrel need to collect?\nGive the final numeric answer."
+}

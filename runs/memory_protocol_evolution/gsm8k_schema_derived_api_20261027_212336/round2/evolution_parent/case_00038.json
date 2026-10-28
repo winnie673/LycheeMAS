@@ -1,0 +1,151 @@
+{
+  "task_id": "gsm8k:train:seed42:G2:00038",
+  "status": "completed",
+  "error": null,
+  "prediction": "80",
+  "messages": [
+    {
+      "sender": "planner",
+      "content": "G:number_more_driving_than_public_transport;P:drivers=200*0.6,non_drivers=200-drivers,public_transport=non_drivers/2,number_more_driving_than_public_transport=drivers-public_transport",
+      "receiver": "solver",
+      "round": 0,
+      "role": "assistant",
+      "prompt_tokens": 746,
+      "completion_tokens": 64,
+      "id": "92fe3f536ff6",
+      "ts": 1793109990.1476264,
+      "meta": {
+        "sender": "planner",
+        "receiver": "solver",
+        "message_id": "92fe3f536ff6",
+        "protocol_edge": "planner_to_solver",
+        "protocol_version": "CARD-0-gsm8k",
+        "protocol_hash": "4bcdae885cc464e0a51977368e4bc06650c0326dbdcb182ce0327477c1d32daa",
+        "contract_hash": "ab4b736240365db5d0ce2caea032f40a3b7fc9c189db42d5ebcd28cac0fac22b",
+        "fields": {
+          "G": "number_more_driving_than_public_transport",
+          "P": "drivers=200*0.6,non_drivers=200-drivers,public_transport=non_drivers/2,number_more_driving_than_public_transport=drivers-public_transport"
+        },
+        "communication_tokens": 64,
+        "communication_tokens_exact": true,
+        "attempt_count": 1,
+        "fallback": false,
+        "tokens_include_all_attempts": true,
+        "incoming_message_ids": []
+      }
+    },
+    {
+      "sender": "solver",
+      "content": "IR:drivers=200*0.6=120,non_drivers=200-120=80,public_transport=80/2=40,more=120-40=80;R:80",
+      "receiver": "verifier",
+      "round": 0,
+      "role": "assistant",
+      "prompt_tokens": 752,
+      "completion_tokens": 45,
+      "id": "7a31bfe080ab",
+      "ts": 1793109991.2742727,
+      "meta": {
+        "sender": "solver",
+        "receiver": "verifier",
+        "message_id": "7a31bfe080ab",
+        "protocol_edge": "solver_to_verifier",
+        "protocol_version": "CARD-0-gsm8k",
+        "protocol_hash": "4bcdae885cc464e0a51977368e4bc06650c0326dbdcb182ce0327477c1d32daa",
+        "contract_hash": "ab4b736240365db5d0ce2caea032f40a3b7fc9c189db42d5ebcd28cac0fac22b",
+        "fields": {
+          "IR": "drivers=200*0.6=120,non_drivers=200-120=80,public_transport=80/2=40,more=120-40=80",
+          "R": "80"
+        },
+        "communication_tokens": 45,
+        "communication_tokens_exact": true,
+        "attempt_count": 1,
+        "fallback": false,
+        "tokens_include_all_attempts": true,
+        "incoming_message_ids": [
+          "92fe3f536ff6"
+        ]
+      }
+    },
+    {
+      "sender": "verifier",
+      "content": "CHK:ACCEPT",
+      "receiver": "solver",
+      "round": 0,
+      "role": "assistant",
+      "prompt_tokens": 1099,
+      "completion_tokens": 5,
+      "id": "737a70437cea",
+      "ts": 1793109993.5332062,
+      "meta": {
+        "sender": "verifier",
+        "receiver": "solver",
+        "message_id": "737a70437cea",
+        "protocol_edge": "verifier_to_solver",
+        "protocol_version": "CARD-0-gsm8k",
+        "protocol_hash": "4bcdae885cc464e0a51977368e4bc06650c0326dbdcb182ce0327477c1d32daa",
+        "contract_hash": "ab4b736240365db5d0ce2caea032f40a3b7fc9c189db42d5ebcd28cac0fac22b",
+        "fields": {
+          "CHK": "ACCEPT"
+        },
+        "communication_tokens": 5,
+        "communication_tokens_exact": true,
+        "attempt_count": 1,
+        "fallback": false,
+        "tokens_include_all_attempts": true,
+        "incoming_message_ids": [
+          "7a31bfe080ab"
+        ]
+      }
+    }
+  ],
+  "communication_tokens": 114,
+  "wall_time_s": 5.361673899926245,
+  "verified": true,
+  "revision_rounds": 0,
+  "model_calls": [
+    {
+      "role": "planner",
+      "attempt": 0,
+      "status": "delivered",
+      "error": "",
+      "raw_output": "G:number_more_driving_than_public_transport;P:drivers=200*0.6,non_drivers=200-drivers,public_transport=non_drivers/2,number_more_driving_than_public_transport=drivers-public_transport",
+      "finish_reason": "stop",
+      "output_tokens": 64,
+      "usage_available": true
+    },
+    {
+      "role": "solver",
+      "attempt": 0,
+      "status": "delivered",
+      "error": "",
+      "raw_output": "IR:drivers=200*0.6=120,non_drivers=200-120=80,public_transport=80/2=40,more=120-40=80;R:80",
+      "finish_reason": "stop",
+      "output_tokens": 45,
+      "usage_available": true
+    },
+    {
+      "role": "verifier",
+      "attempt": 0,
+      "status": "delivered",
+      "error": "",
+      "raw_output": "CHK:ACCEPT",
+      "finish_reason": "stop",
+      "output_tokens": 5,
+      "usage_available": true
+    }
+  ],
+  "failed_attempts": [],
+  "calls": 3,
+  "usage_complete": true,
+  "known_input_tokens": 2597,
+  "known_output_tokens": 114,
+  "model_input_tokens": 2597,
+  "model_output_tokens": 114,
+  "format_failed_calls": 0,
+  "transport_failed_calls": 0,
+  "fallback_calls": 0,
+  "sum_model_latency_s": 5.213937997817993,
+  "gold": "40",
+  "score": 0.0,
+  "question": "A company has 200 employees.  60% of the employees drive to work.  Of the employees who don't drive to work, half take public transportation. How many more employees drive to work than take public transportation?\nGive the final numeric answer."
+}

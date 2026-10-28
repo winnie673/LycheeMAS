@@ -1,0 +1,151 @@
+{
+  "task_id": "gsm8k:train:seed42:G3:00020",
+  "status": "completed",
+  "error": null,
+  "prediction": "180",
+  "messages": [
+    {
+      "sender": "planner",
+      "content": "G:Lorelai_jellybeans_eaten;P:rory=15+30,total_girls=15+rory,lorelai=3*total_girls",
+      "receiver": "solver",
+      "round": 0,
+      "role": "assistant",
+      "prompt_tokens": 751,
+      "completion_tokens": 37,
+      "id": "9bd781c26d0d",
+      "ts": 1793112036.6940637,
+      "meta": {
+        "sender": "planner",
+        "receiver": "solver",
+        "message_id": "9bd781c26d0d",
+        "protocol_edge": "planner_to_solver",
+        "protocol_version": "CARD-0-gsm8k",
+        "protocol_hash": "4bcdae885cc464e0a51977368e4bc06650c0326dbdcb182ce0327477c1d32daa",
+        "contract_hash": "ab4b736240365db5d0ce2caea032f40a3b7fc9c189db42d5ebcd28cac0fac22b",
+        "fields": {
+          "G": "Lorelai_jellybeans_eaten",
+          "P": "rory=15+30,total_girls=15+rory,lorelai=3*total_girls"
+        },
+        "communication_tokens": 37,
+        "communication_tokens_exact": true,
+        "attempt_count": 1,
+        "fallback": false,
+        "tokens_include_all_attempts": true,
+        "incoming_message_ids": []
+      }
+    },
+    {
+      "sender": "solver",
+      "content": "IR:rory=15+30=45,total_girls=15+45=60,lorelai=3*60=180;R:180",
+      "receiver": "verifier",
+      "round": 0,
+      "role": "assistant",
+      "prompt_tokens": 730,
+      "completion_tokens": 34,
+      "id": "43da30d0cad2",
+      "ts": 1793112037.7751071,
+      "meta": {
+        "sender": "solver",
+        "receiver": "verifier",
+        "message_id": "43da30d0cad2",
+        "protocol_edge": "solver_to_verifier",
+        "protocol_version": "CARD-0-gsm8k",
+        "protocol_hash": "4bcdae885cc464e0a51977368e4bc06650c0326dbdcb182ce0327477c1d32daa",
+        "contract_hash": "ab4b736240365db5d0ce2caea032f40a3b7fc9c189db42d5ebcd28cac0fac22b",
+        "fields": {
+          "IR": "rory=15+30=45,total_girls=15+45=60,lorelai=3*60=180",
+          "R": "180"
+        },
+        "communication_tokens": 34,
+        "communication_tokens_exact": true,
+        "attempt_count": 1,
+        "fallback": false,
+        "tokens_include_all_attempts": true,
+        "incoming_message_ids": [
+          "9bd781c26d0d"
+        ]
+      }
+    },
+    {
+      "sender": "verifier",
+      "content": "CHK:ACCEPT",
+      "receiver": "solver",
+      "round": 0,
+      "role": "assistant",
+      "prompt_tokens": 1093,
+      "completion_tokens": 5,
+      "id": "5c3e8507add3",
+      "ts": 1793112039.0394068,
+      "meta": {
+        "sender": "verifier",
+        "receiver": "solver",
+        "message_id": "5c3e8507add3",
+        "protocol_edge": "verifier_to_solver",
+        "protocol_version": "CARD-0-gsm8k",
+        "protocol_hash": "4bcdae885cc464e0a51977368e4bc06650c0326dbdcb182ce0327477c1d32daa",
+        "contract_hash": "ab4b736240365db5d0ce2caea032f40a3b7fc9c189db42d5ebcd28cac0fac22b",
+        "fields": {
+          "CHK": "ACCEPT"
+        },
+        "communication_tokens": 5,
+        "communication_tokens_exact": true,
+        "attempt_count": 1,
+        "fallback": false,
+        "tokens_include_all_attempts": true,
+        "incoming_message_ids": [
+          "43da30d0cad2"
+        ]
+      }
+    }
+  ],
+  "communication_tokens": 76,
+  "wall_time_s": 3.8897483999608085,
+  "verified": true,
+  "revision_rounds": 0,
+  "model_calls": [
+    {
+      "role": "planner",
+      "attempt": 0,
+      "status": "delivered",
+      "error": "",
+      "raw_output": "G:Lorelai_jellybeans_eaten;P:rory=15+30,total_girls=15+rory,lorelai=3*total_girls",
+      "finish_reason": "stop",
+      "output_tokens": 37,
+      "usage_available": true
+    },
+    {
+      "role": "solver",
+      "attempt": 0,
+      "status": "delivered",
+      "error": "",
+      "raw_output": "IR:rory=15+30=45,total_girls=15+45=60,lorelai=3*60=180;R:180",
+      "finish_reason": "stop",
+      "output_tokens": 34,
+      "usage_available": true
+    },
+    {
+      "role": "verifier",
+      "attempt": 0,
+      "status": "delivered",
+      "error": "",
+      "raw_output": "CHK:ACCEPT",
+      "finish_reason": "stop",
+      "output_tokens": 5,
+      "usage_available": true
+    }
+  ],
+  "failed_attempts": [],
+  "calls": 3,
+  "usage_complete": true,
+  "known_input_tokens": 2574,
+  "known_output_tokens": 76,
+  "model_input_tokens": 2574,
+  "model_output_tokens": 76,
+  "format_failed_calls": 0,
+  "transport_failed_calls": 0,
+  "fallback_calls": 0,
+  "sum_model_latency_s": 3.7983670234680176,
+  "gold": "180",
+  "score": 1.0,
+  "question": "Rory has 30 more jellybeans than her sister Gigi who has 15 jellybeans.  Lorelai has already eaten three times the number of jellybeans that both girls have.  How many jellybeans has Lorelai eaten?\nGive the final numeric answer."
+}

@@ -1,0 +1,120 @@
+{
+  "task_id": "gsm8k:test:seed42:T:00115",
+  "mode": "hybrid",
+  "benchmark": "gsm8k",
+  "status": "completed",
+  "error": null,
+  "prediction": "90",
+  "gold": "90",
+  "wall_time_s": 3.488383400021121,
+  "communication_tokens": 77,
+  "communication_tokens_exact": true,
+  "revision_rounds": 0,
+  "verification_decision": "ACCEPT",
+  "verified": true,
+  "messages": [
+    {
+      "sender": "planner",
+      "content": "G:profit;P:cost=10*10+5*16,revenue=1.5*(10*10+5*16),profit=revenue-cost",
+      "receiver": "solver",
+      "round": 0,
+      "role": "assistant",
+      "prompt_tokens": 789,
+      "completion_tokens": 36,
+      "id": "82da87fbd78f",
+      "ts": 1793169943.2497911,
+      "meta": {
+        "sender": "planner",
+        "receiver": "solver",
+        "message_id": "82da87fbd78f",
+        "protocol_edge": "planner_to_solver",
+        "protocol_version": "CARD-0-gsm8k",
+        "protocol_hash": "4bcdae885cc464e0a51977368e4bc06650c0326dbdcb182ce0327477c1d32daa",
+        "contract_hash": "ab4b736240365db5d0ce2caea032f40a3b7fc9c189db42d5ebcd28cac0fac22b",
+        "fields": {
+          "G": "profit",
+          "P": "cost=10*10+5*16,revenue=1.5*(10*10+5*16),profit=revenue-cost"
+        },
+        "communication_tokens": 36,
+        "communication_tokens_exact": true,
+        "attempt_count": 1,
+        "fallback": false,
+        "tokens_include_all_attempts": true,
+        "incoming_message_ids": []
+      }
+    },
+    {
+      "sender": "solver",
+      "content": "IR:cost=10*10+5*16=180,revenue=1.5*180=270,profit=270-180=90;R:90",
+      "receiver": "verifier",
+      "round": 0,
+      "role": "assistant",
+      "prompt_tokens": 767,
+      "completion_tokens": 36,
+      "id": "4c0a02df4cf0",
+      "ts": 1793169944.2462668,
+      "meta": {
+        "sender": "solver",
+        "receiver": "verifier",
+        "message_id": "4c0a02df4cf0",
+        "protocol_edge": "solver_to_verifier",
+        "protocol_version": "CARD-0-gsm8k",
+        "protocol_hash": "4bcdae885cc464e0a51977368e4bc06650c0326dbdcb182ce0327477c1d32daa",
+        "contract_hash": "ab4b736240365db5d0ce2caea032f40a3b7fc9c189db42d5ebcd28cac0fac22b",
+        "fields": {
+          "IR": "cost=10*10+5*16=180,revenue=1.5*180=270,profit=270-180=90",
+          "R": "90"
+        },
+        "communication_tokens": 36,
+        "communication_tokens_exact": true,
+        "attempt_count": 1,
+        "fallback": false,
+        "tokens_include_all_attempts": true,
+        "incoming_message_ids": [
+          "82da87fbd78f"
+        ]
+      }
+    },
+    {
+      "sender": "verifier",
+      "content": "CHK:ACCEPT",
+      "receiver": "solver",
+      "round": 0,
+      "role": "assistant",
+      "prompt_tokens": 1133,
+      "completion_tokens": 5,
+      "id": "e988ff477311",
+      "ts": 1793169945.303387,
+      "meta": {
+        "sender": "verifier",
+        "receiver": "solver",
+        "message_id": "e988ff477311",
+        "protocol_edge": "verifier_to_solver",
+        "protocol_version": "CARD-0-gsm8k",
+        "protocol_hash": "4bcdae885cc464e0a51977368e4bc06650c0326dbdcb182ce0327477c1d32daa",
+        "contract_hash": "ab4b736240365db5d0ce2caea032f40a3b7fc9c189db42d5ebcd28cac0fac22b",
+        "fields": {
+          "CHK": "ACCEPT"
+        },
+        "communication_tokens": 5,
+        "communication_tokens_exact": true,
+        "attempt_count": 1,
+        "fallback": false,
+        "tokens_include_all_attempts": true,
+        "incoming_message_ids": [
+          "4c0a02df4cf0"
+        ]
+      }
+    }
+  ],
+  "calls": 3,
+  "usage_complete": true,
+  "known_input_tokens": 2689,
+  "known_output_tokens": 77,
+  "model_input_tokens": 2689,
+  "model_output_tokens": 77,
+  "format_failed_calls": 0,
+  "transport_failed_calls": 0,
+  "fallback_calls": 0,
+  "sum_model_latency_s": 3.4106855392456055
+}

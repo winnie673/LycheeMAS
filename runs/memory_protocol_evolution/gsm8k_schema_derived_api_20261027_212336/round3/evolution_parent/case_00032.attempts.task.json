@@ -1,0 +1,148 @@
+{
+  "task_id": "gsm8k:train:seed42:G3:00032",
+  "status": "completed",
+  "error": null,
+  "prediction": "240",
+  "messages": [
+    {
+      "sender": "planner",
+      "content": "G:grams_eaten;P:left_fraction=1-1/6,whole=1200/left_fraction,eaten=whole-1200",
+      "receiver": "solver",
+      "round": 0,
+      "role": "assistant",
+      "prompt_tokens": 740,
+      "completion_tokens": 33,
+      "id": "d18229bc9d76",
+      "ts": 1793112081.400149,
+      "meta": {
+        "sender": "planner",
+        "receiver": "solver",
+        "message_id": "d18229bc9d76",
+        "protocol_edge": "planner_to_solver",
+        "protocol_version": "CARD-0-gsm8k",
+        "protocol_hash": "4bcdae885cc464e0a51977368e4bc06650c0326dbdcb182ce0327477c1d32daa",
+        "contract_hash": "ab4b736240365db5d0ce2caea032f40a3b7fc9c189db42d5ebcd28cac0fac22b",
+        "fields": {
+          "G": "grams_eaten",
+          "P": "left_fraction=1-1/6,whole=1200/left_fraction,eaten=whole-1200"
+        },
+        "communication_tokens": 33,
+        "communication_tokens_exact": true,
+        "attempt_count": 1,
+        "fallback": false,
+        "tokens_include_all_attempts": true,
+        "incoming_message_ids": []
+      }
+    },
+    {
+      "sender": "solver",
+      "content": "IR:left_fraction=1-1/6=5/6,whole=1200/(5/6)=1440,eaten=1440-1200=240;R:240",
+      "receiver": "verifier",
+      "round": 0,
+      "role": "assistant",
+      "prompt_tokens": 715,
+      "completion_tokens": 41,
+      "id": "2a1d7000ec65",
+      "ts": 1793112082.68407,
+      "meta": {
+        "sender": "solver",
+        "receiver": "verifier",
+        "message_id": "2a1d7000ec65",
+        "protocol_edge": "solver_to_verifier",
+        "protocol_version": "CARD-0-gsm8k",
+        "protocol_hash": "4bcdae885cc464e0a51977368e4bc06650c0326dbdcb182ce0327477c1d32daa",
+        "contract_hash": "ab4b736240365db5d0ce2caea032f40a3b7fc9c189db42d5ebcd28cac0fac22b",
+        "fields": {
+          "IR": "left_fraction=1-1/6=5/6,whole=1200/(5/6)=1440,eaten=1440-1200=240",
+          "R": "240"
+        },
+        "communication_tokens": 41,
+        "communication_tokens_exact": true,
+        "attempt_count": 1,
+        "fallback": false,
+        "tokens_include_all_attempts": true,
+        "incoming_message_ids": [
+          "d18229bc9d76"
+        ]
+      }
+    },
+    {
+      "sender": "verifier",
+      "content": "CHK:ACCEPT",
+      "receiver": "solver",
+      "round": 0,
+      "role": "assistant",
+      "prompt_tokens": 1089,
+      "completion_tokens": 5,
+      "id": "788665e4ad3c",
+      "ts": 1793112084.4670887,
+      "meta": {
+        "sender": "verifier",
+        "receiver": "solver",
+        "message_id": "788665e4ad3c",
+        "protocol_edge": "verifier_to_solver",
+        "protocol_version": "CARD-0-gsm8k",
+        "protocol_hash": "4bcdae885cc464e0a51977368e4bc06650c0326dbdcb182ce0327477c1d32daa",
+        "contract_hash": "ab4b736240365db5d0ce2caea032f40a3b7fc9c189db42d5ebcd28cac0fac22b",
+        "fields": {
+          "CHK": "ACCEPT"
+        },
+        "communication_tokens": 5,
+        "communication_tokens_exact": true,
+        "attempt_count": 1,
+        "fallback": false,
+        "tokens_include_all_attempts": true,
+        "incoming_message_ids": [
+          "2a1d7000ec65"
+        ]
+      }
+    }
+  ],
+  "communication_tokens": 79,
+  "wall_time_s": 4.477596399956383,
+  "verified": true,
+  "revision_rounds": 0,
+  "model_calls": [
+    {
+      "role": "planner",
+      "attempt": 0,
+      "status": "delivered",
+      "error": "",
+      "raw_output": "G:grams_eaten;P:left_fraction=1-1/6,whole=1200/left_fraction,eaten=whole-1200",
+      "finish_reason": "stop",
+      "output_tokens": 33,
+      "usage_available": true
+    },
+    {
+      "role": "solver",
+      "attempt": 0,
+      "status": "delivered",
+      "error": "",
+      "raw_output": "IR:left_fraction=1-1/6=5/6,whole=1200/(5/6)=1440,eaten=1440-1200=240;R:240",
+      "finish_reason": "stop",
+      "output_tokens": 41,
+      "usage_available": true
+    },
+    {
+      "role": "verifier",
+      "attempt": 0,
+      "status": "delivered",
+      "error": "",
+      "raw_output": "CHK:ACCEPT",
+      "finish_reason": "stop",
+      "output_tokens": 5,
+      "usage_available": true
+    }
+  ],
+  "failed_attempts": [],
+  "calls": 3,
+  "usage_complete": true,
+  "known_input_tokens": 2544,
+  "known_output_tokens": 79,
+  "model_input_tokens": 2544,
+  "model_output_tokens": 79,
+  "format_failed_calls": 0,
+  "transport_failed_calls": 0,
+  "fallback_calls": 0,
+  "sum_model_latency_s": 4.402840852737427
+}

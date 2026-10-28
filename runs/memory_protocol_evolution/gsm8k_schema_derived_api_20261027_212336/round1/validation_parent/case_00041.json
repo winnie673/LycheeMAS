@@ -1,0 +1,151 @@
+{
+  "task_id": "gsm8k:train:seed42:V:00041",
+  "status": "completed",
+  "error": null,
+  "prediction": "76",
+  "messages": [
+    {
+      "sender": "planner",
+      "content": "G:final_bank_balance;P:balance=65+15-4",
+      "receiver": "solver",
+      "round": 0,
+      "role": "assistant",
+      "prompt_tokens": 731,
+      "completion_tokens": 17,
+      "id": "6cd852d0e725",
+      "ts": 1793108251.095749,
+      "meta": {
+        "sender": "planner",
+        "receiver": "solver",
+        "message_id": "6cd852d0e725",
+        "protocol_edge": "planner_to_solver",
+        "protocol_version": "CARD-0-gsm8k",
+        "protocol_hash": "4bcdae885cc464e0a51977368e4bc06650c0326dbdcb182ce0327477c1d32daa",
+        "contract_hash": "ab4b736240365db5d0ce2caea032f40a3b7fc9c189db42d5ebcd28cac0fac22b",
+        "fields": {
+          "G": "final_bank_balance",
+          "P": "balance=65+15-4"
+        },
+        "communication_tokens": 17,
+        "communication_tokens_exact": true,
+        "attempt_count": 1,
+        "fallback": false,
+        "tokens_include_all_attempts": true,
+        "incoming_message_ids": []
+      }
+    },
+    {
+      "sender": "solver",
+      "content": "IR:balance=65+15-4=76;R:76",
+      "receiver": "verifier",
+      "round": 0,
+      "role": "assistant",
+      "prompt_tokens": 690,
+      "completion_tokens": 15,
+      "id": "465a1a03c1b4",
+      "ts": 1793108252.7137942,
+      "meta": {
+        "sender": "solver",
+        "receiver": "verifier",
+        "message_id": "465a1a03c1b4",
+        "protocol_edge": "solver_to_verifier",
+        "protocol_version": "CARD-0-gsm8k",
+        "protocol_hash": "4bcdae885cc464e0a51977368e4bc06650c0326dbdcb182ce0327477c1d32daa",
+        "contract_hash": "ab4b736240365db5d0ce2caea032f40a3b7fc9c189db42d5ebcd28cac0fac22b",
+        "fields": {
+          "IR": "balance=65+15-4=76",
+          "R": "76"
+        },
+        "communication_tokens": 15,
+        "communication_tokens_exact": true,
+        "attempt_count": 1,
+        "fallback": false,
+        "tokens_include_all_attempts": true,
+        "incoming_message_ids": [
+          "6cd852d0e725"
+        ]
+      }
+    },
+    {
+      "sender": "verifier",
+      "content": "CHK:ACCEPT",
+      "receiver": "solver",
+      "round": 0,
+      "role": "assistant",
+      "prompt_tokens": 1054,
+      "completion_tokens": 5,
+      "id": "b603dd6268e3",
+      "ts": 1793108254.132387,
+      "meta": {
+        "sender": "verifier",
+        "receiver": "solver",
+        "message_id": "b603dd6268e3",
+        "protocol_edge": "verifier_to_solver",
+        "protocol_version": "CARD-0-gsm8k",
+        "protocol_hash": "4bcdae885cc464e0a51977368e4bc06650c0326dbdcb182ce0327477c1d32daa",
+        "contract_hash": "ab4b736240365db5d0ce2caea032f40a3b7fc9c189db42d5ebcd28cac0fac22b",
+        "fields": {
+          "CHK": "ACCEPT"
+        },
+        "communication_tokens": 5,
+        "communication_tokens_exact": true,
+        "attempt_count": 1,
+        "fallback": false,
+        "tokens_include_all_attempts": true,
+        "incoming_message_ids": [
+          "465a1a03c1b4"
+        ]
+      }
+    }
+  ],
+  "communication_tokens": 37,
+  "wall_time_s": 4.410228700027801,
+  "verified": true,
+  "revision_rounds": 0,
+  "model_calls": [
+    {
+      "role": "planner",
+      "attempt": 0,
+      "status": "delivered",
+      "error": "",
+      "raw_output": "G:final_bank_balance;P:balance=65+15-4",
+      "finish_reason": "stop",
+      "output_tokens": 17,
+      "usage_available": true
+    },
+    {
+      "role": "solver",
+      "attempt": 0,
+      "status": "delivered",
+      "error": "",
+      "raw_output": "IR:balance=65+15-4=76;R:76",
+      "finish_reason": "stop",
+      "output_tokens": 15,
+      "usage_available": true
+    },
+    {
+      "role": "verifier",
+      "attempt": 0,
+      "status": "delivered",
+      "error": "",
+      "raw_output": "CHK:ACCEPT",
+      "finish_reason": "stop",
+      "output_tokens": 5,
+      "usage_available": true
+    }
+  ],
+  "failed_attempts": [],
+  "calls": 3,
+  "usage_complete": true,
+  "known_input_tokens": 2475,
+  "known_output_tokens": 37,
+  "model_input_tokens": 2475,
+  "model_output_tokens": 37,
+  "format_failed_calls": 0,
+  "transport_failed_calls": 0,
+  "fallback_calls": 0,
+  "sum_model_latency_s": 4.240687370300293,
+  "gold": "76",
+  "score": 1.0,
+  "question": "Lucy has $65 in the bank. She made a $15 deposit and then followed by a $4 withdrawal. What is Lucy's bank balance?\nGive the final numeric answer."
+}

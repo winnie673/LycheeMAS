@@ -1,0 +1,151 @@
+{
+  "task_id": "gsm8k:train:seed42:V:00114",
+  "status": "completed",
+  "error": null,
+  "prediction": "45",
+  "messages": [
+    {
+      "sender": "planner",
+      "content": "G:flower_charge_total;P:mow_pay=15,mow_hours=1,flower_hours=2,target_total_pay=20*(mow_hours+flower_hours),flower_charge_total=target_total_pay-mow_pay",
+      "receiver": "solver",
+      "round": 0,
+      "role": "assistant",
+      "prompt_tokens": 829,
+      "completion_tokens": 56,
+      "id": "2b23e8be5a3b",
+      "ts": 1793109467.4453163,
+      "meta": {
+        "sender": "planner",
+        "receiver": "solver",
+        "message_id": "2b23e8be5a3b",
+        "protocol_edge": "planner_to_solver",
+        "protocol_version": "CARD-1-gsm8k",
+        "protocol_hash": "2a663f41d251a442e680de67a231e516a8fe5e31629bc25d021c8c0eb1354cff",
+        "contract_hash": "ab4b736240365db5d0ce2caea032f40a3b7fc9c189db42d5ebcd28cac0fac22b",
+        "fields": {
+          "G": "flower_charge_total",
+          "P": "mow_pay=15,mow_hours=1,flower_hours=2,target_total_pay=20*(mow_hours+flower_hours),flower_charge_total=target_total_pay-mow_pay"
+        },
+        "communication_tokens": 56,
+        "communication_tokens_exact": true,
+        "attempt_count": 1,
+        "fallback": false,
+        "tokens_include_all_attempts": true,
+        "incoming_message_ids": []
+      }
+    },
+    {
+      "sender": "solver",
+      "content": "IR:target_total_pay=20*(1+2)=60,flower_charge_total=60-15=45;R:45",
+      "receiver": "verifier",
+      "round": 0,
+      "role": "assistant",
+      "prompt_tokens": 768,
+      "completion_tokens": 29,
+      "id": "50cb06b5d3ce",
+      "ts": 1793109468.7624092,
+      "meta": {
+        "sender": "solver",
+        "receiver": "verifier",
+        "message_id": "50cb06b5d3ce",
+        "protocol_edge": "solver_to_verifier",
+        "protocol_version": "CARD-1-gsm8k",
+        "protocol_hash": "2a663f41d251a442e680de67a231e516a8fe5e31629bc25d021c8c0eb1354cff",
+        "contract_hash": "ab4b736240365db5d0ce2caea032f40a3b7fc9c189db42d5ebcd28cac0fac22b",
+        "fields": {
+          "IR": "target_total_pay=20*(1+2)=60,flower_charge_total=60-15=45",
+          "R": "45"
+        },
+        "communication_tokens": 29,
+        "communication_tokens_exact": true,
+        "attempt_count": 1,
+        "fallback": false,
+        "tokens_include_all_attempts": true,
+        "incoming_message_ids": [
+          "2b23e8be5a3b"
+        ]
+      }
+    },
+    {
+      "sender": "verifier",
+      "content": "CHK:ACCEPT",
+      "receiver": "solver",
+      "round": 0,
+      "role": "assistant",
+      "prompt_tokens": 1107,
+      "completion_tokens": 5,
+      "id": "d8581aa58ffb",
+      "ts": 1793109469.8126988,
+      "meta": {
+        "sender": "verifier",
+        "receiver": "solver",
+        "message_id": "d8581aa58ffb",
+        "protocol_edge": "verifier_to_solver",
+        "protocol_version": "CARD-1-gsm8k",
+        "protocol_hash": "2a663f41d251a442e680de67a231e516a8fe5e31629bc25d021c8c0eb1354cff",
+        "contract_hash": "ab4b736240365db5d0ce2caea032f40a3b7fc9c189db42d5ebcd28cac0fac22b",
+        "fields": {
+          "CHK": "ACCEPT"
+        },
+        "communication_tokens": 5,
+        "communication_tokens_exact": true,
+        "attempt_count": 1,
+        "fallback": false,
+        "tokens_include_all_attempts": true,
+        "incoming_message_ids": [
+          "50cb06b5d3ce"
+        ]
+      }
+    }
+  ],
+  "communication_tokens": 90,
+  "wall_time_s": 3.819538199924864,
+  "verified": true,
+  "revision_rounds": 0,
+  "model_calls": [
+    {
+      "role": "planner",
+      "attempt": 0,
+      "status": "delivered",
+      "error": "",
+      "raw_output": "G:flower_charge_total;P:mow_pay=15,mow_hours=1,flower_hours=2,target_total_pay=20*(mow_hours+flower_hours),flower_charge_total=target_total_pay-mow_pay",
+      "finish_reason": "stop",
+      "output_tokens": 56,
+      "usage_available": true
+    },
+    {
+      "role": "solver",
+      "attempt": 0,
+      "status": "delivered",
+      "error": "",
+      "raw_output": "IR:target_total_pay=20*(1+2)=60,flower_charge_total=60-15=45;R:45",
+      "finish_reason": "stop",
+      "output_tokens": 29,
+      "usage_available": true
+    },
+    {
+      "role": "verifier",
+      "attempt": 0,
+      "status": "delivered",
+      "error": "",
+      "raw_output": "CHK:ACCEPT",
+      "finish_reason": "stop",
+      "output_tokens": 5,
+      "usage_available": true
+    }
+  ],
+  "failed_attempts": [],
+  "calls": 3,
+  "usage_complete": true,
+  "known_input_tokens": 2704,
+  "known_output_tokens": 90,
+  "model_input_tokens": 2704,
+  "model_output_tokens": 90,
+  "format_failed_calls": 0,
+  "transport_failed_calls": 0,
+  "fallback_calls": 0,
+  "sum_model_latency_s": 3.6439130306243896,
+  "gold": "45",
+  "score": 1.0,
+  "question": "Jake's neighbors hire him to mow their lawn and plant some flowers. Mowing the lawn takes 1 hour and pays $15. If Jake wants to make $20/hour working for the neighbors, and planting the flowers takes 2 hours, how much should Jake charge (in total, not per hour) for planting the flowers?\nGive the final numeric answer."
+}

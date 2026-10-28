@@ -1,0 +1,95 @@
+{
+  "task_id": "gsm8k:test:seed42:T:00159",
+  "mode": "nl",
+  "benchmark": "gsm8k",
+  "status": "completed",
+  "error": null,
+  "prediction": "15",
+  "gold": "15",
+  "wall_time_s": 3.577672600047663,
+  "communication_tokens": 100,
+  "communication_tokens_exact": true,
+  "revision_rounds": 0,
+  "verification_decision": "ACCEPT",
+  "verified": true,
+  "messages": [
+    {
+      "sender": "planner",
+      "content": "Goal: find how many tadpoles Finn can see now. Start with 11 visible, add the 6 that come out of hiding, then subtract the 2 that hide under a rock. Give the final number.",
+      "receiver": "solver",
+      "round": 0,
+      "role": "assistant",
+      "prompt_tokens": 209,
+      "completion_tokens": 45,
+      "id": "dba0c41d64c9",
+      "ts": 1793170272.1492429,
+      "meta": {
+        "fields": {},
+        "communication_tokens": 45,
+        "communication_tokens_exact": true,
+        "attempt_count": 1,
+        "fallback": false,
+        "tokens_include_all_attempts": true,
+        "incoming_message_ids": []
+      }
+    },
+    {
+      "sender": "solver",
+      "content": "Start with 11 visible tadpoles. Add the 6 that come out of hiding: 11 + 6 = 17. Subtract the 2 that hide under a rock: 17 − 2 = 15.\n\n\\boxed{15}",
+      "receiver": "verifier",
+      "round": 0,
+      "role": "assistant",
+      "prompt_tokens": 266,
+      "completion_tokens": 53,
+      "id": "1b6c492e221a",
+      "ts": 1793170273.4986904,
+      "meta": {
+        "fields": {
+          "R": "15"
+        },
+        "communication_tokens": 53,
+        "communication_tokens_exact": true,
+        "attempt_count": 1,
+        "fallback": false,
+        "tokens_include_all_attempts": true,
+        "incoming_message_ids": [
+          "dba0c41d64c9"
+        ]
+      }
+    },
+    {
+      "sender": "verifier",
+      "content": "ACCEPT",
+      "receiver": "solver",
+      "round": 0,
+      "role": "assistant",
+      "prompt_tokens": 651,
+      "completion_tokens": 2,
+      "id": "6eaa00c62edb",
+      "ts": 1793170274.581514,
+      "meta": {
+        "fields": {
+          "CHK": "ACCEPT"
+        },
+        "communication_tokens": 2,
+        "communication_tokens_exact": true,
+        "attempt_count": 1,
+        "fallback": false,
+        "tokens_include_all_attempts": true,
+        "incoming_message_ids": [
+          "1b6c492e221a"
+        ]
+      }
+    }
+  ],
+  "calls": 3,
+  "usage_complete": true,
+  "known_input_tokens": 1126,
+  "known_output_tokens": 100,
+  "model_input_tokens": 1126,
+  "model_output_tokens": 100,
+  "format_failed_calls": 0,
+  "transport_failed_calls": 0,
+  "fallback_calls": 0,
+  "sum_model_latency_s": 3.5061938762664795
+}

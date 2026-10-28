@@ -1,0 +1,95 @@
+{
+  "task_id": "gsm8k:test:seed42:T:00129",
+  "mode": "nl",
+  "benchmark": "gsm8k",
+  "status": "completed",
+  "error": null,
+  "prediction": "10000",
+  "gold": "10000",
+  "wall_time_s": 4.397012899979018,
+  "communication_tokens": 171,
+  "communication_tokens_exact": true,
+  "revision_rounds": 0,
+  "verification_decision": "ACCEPT",
+  "verified": true,
+  "messages": [
+    {
+      "sender": "planner",
+      "content": "Goal: find the hospital's total profit from a day's patient visits.\n\nPlan: Compute total patient-hours per day from 500 patients at 24 minutes each. Compute the hospital's revenue using the $200/hour patient charge. Compute the doctors' cost using the $150/hour rate. Profit is revenue minus doctor cost.\n\nConstraints: Use the same total hours for both revenue and cost; keep units consistent (convert minutes to hours). Do not round unless necessary.",
+      "receiver": "solver",
+      "round": 0,
+      "role": "assistant",
+      "prompt_tokens": 209,
+      "completion_tokens": 93,
+      "id": "964cb220ac0b",
+      "ts": 1793170039.9487665,
+      "meta": {
+        "fields": {},
+        "communication_tokens": 93,
+        "communication_tokens_exact": true,
+        "attempt_count": 1,
+        "fallback": false,
+        "tokens_include_all_attempts": true,
+        "incoming_message_ids": []
+      }
+    },
+    {
+      "sender": "solver",
+      "content": "Total patient-hours: 500 × 24 minutes = 12,000 minutes = 200 hours.\n\nRevenue: 200 hours × $200/hour = $40,000.\nDoctor cost: 200 hours × $150/hour = $30,000.\n\nProfit: $40,000 − $30,000 = $10,000.\n\n\\boxed{10000}",
+      "receiver": "verifier",
+      "round": 0,
+      "role": "assistant",
+      "prompt_tokens": 314,
+      "completion_tokens": 76,
+      "id": "da7666342adf",
+      "ts": 1793170041.4316099,
+      "meta": {
+        "fields": {
+          "R": "10000"
+        },
+        "communication_tokens": 76,
+        "communication_tokens_exact": true,
+        "attempt_count": 1,
+        "fallback": false,
+        "tokens_include_all_attempts": true,
+        "incoming_message_ids": [
+          "964cb220ac0b"
+        ]
+      }
+    },
+    {
+      "sender": "verifier",
+      "content": "ACCEPT",
+      "receiver": "solver",
+      "round": 0,
+      "role": "assistant",
+      "prompt_tokens": 674,
+      "completion_tokens": 2,
+      "id": "b660901a3970",
+      "ts": 1793170042.5298808,
+      "meta": {
+        "fields": {
+          "CHK": "ACCEPT"
+        },
+        "communication_tokens": 2,
+        "communication_tokens_exact": true,
+        "attempt_count": 1,
+        "fallback": false,
+        "tokens_include_all_attempts": true,
+        "incoming_message_ids": [
+          "da7666342adf"
+        ]
+      }
+    }
+  ],
+  "calls": 3,
+  "usage_complete": true,
+  "known_input_tokens": 1197,
+  "known_output_tokens": 171,
+  "model_input_tokens": 1197,
+  "model_output_tokens": 171,
+  "format_failed_calls": 0,
+  "transport_failed_calls": 0,
+  "fallback_calls": 0,
+  "sum_model_latency_s": 4.363929986953735
+}

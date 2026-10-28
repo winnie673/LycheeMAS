@@ -1,0 +1,153 @@
+{
+  "task_id": "gsm8k:train:seed42:V:00089",
+  "status": "completed",
+  "error": null,
+  "prediction": "3",
+  "messages": [
+    {
+      "sender": "planner",
+      "content": "G:touchdowns_per_game_needed_in_final_two_games;P:richard_so_far=6*14,needed_total=89+1,remaining=needed_total-richard_so_far,rate=remaining/2;NL:To beat the record he must exceed 89 so use at least 90 total touchdowns.",
+      "receiver": "solver",
+      "round": 0,
+      "role": "assistant",
+      "prompt_tokens": 805,
+      "completion_tokens": 75,
+      "id": "b116aed02356",
+      "ts": 1793168603.287261,
+      "meta": {
+        "sender": "planner",
+        "receiver": "solver",
+        "message_id": "b116aed02356",
+        "protocol_edge": "planner_to_solver",
+        "protocol_version": "CARD-3-gsm8k",
+        "protocol_hash": "fb1a4acb6e591ac96544876aedd912b27a6f9d3154c76112e1da0f43407d27b2",
+        "contract_hash": "ab4b736240365db5d0ce2caea032f40a3b7fc9c189db42d5ebcd28cac0fac22b",
+        "fields": {
+          "G": "touchdowns_per_game_needed_in_final_two_games",
+          "P": "richard_so_far=6*14,needed_total=89+1,remaining=needed_total-richard_so_far,rate=remaining/2",
+          "NL": "To beat the record he must exceed 89 so use at least 90 total touchdowns."
+        },
+        "communication_tokens": 75,
+        "communication_tokens_exact": true,
+        "attempt_count": 1,
+        "fallback": false,
+        "tokens_include_all_attempts": true,
+        "incoming_message_ids": []
+      }
+    },
+    {
+      "sender": "solver",
+      "content": "IR:richard_so_far=6*14=84,needed_total=89+1=90,remaining=90-84=6,rate=6/2=3;R:3;NL:To beat the record he must exceed 89 so use at least 90 total touchdowns.",
+      "receiver": "verifier",
+      "round": 0,
+      "role": "assistant",
+      "prompt_tokens": 780,
+      "completion_tokens": 65,
+      "id": "6b451cc70df7",
+      "ts": 1793168604.5116868,
+      "meta": {
+        "sender": "solver",
+        "receiver": "verifier",
+        "message_id": "6b451cc70df7",
+        "protocol_edge": "solver_to_verifier",
+        "protocol_version": "CARD-3-gsm8k",
+        "protocol_hash": "fb1a4acb6e591ac96544876aedd912b27a6f9d3154c76112e1da0f43407d27b2",
+        "contract_hash": "ab4b736240365db5d0ce2caea032f40a3b7fc9c189db42d5ebcd28cac0fac22b",
+        "fields": {
+          "IR": "richard_so_far=6*14=84,needed_total=89+1=90,remaining=90-84=6,rate=6/2=3",
+          "R": "3",
+          "NL": "To beat the record he must exceed 89 so use at least 90 total touchdowns."
+        },
+        "communication_tokens": 65,
+        "communication_tokens_exact": true,
+        "attempt_count": 1,
+        "fallback": false,
+        "tokens_include_all_attempts": true,
+        "incoming_message_ids": [
+          "b116aed02356"
+        ]
+      }
+    },
+    {
+      "sender": "verifier",
+      "content": "CHK:ACCEPT",
+      "receiver": "solver",
+      "round": 0,
+      "role": "assistant",
+      "prompt_tokens": 1136,
+      "completion_tokens": 5,
+      "id": "df17922fb9a4",
+      "ts": 1793168605.4998095,
+      "meta": {
+        "sender": "verifier",
+        "receiver": "solver",
+        "message_id": "df17922fb9a4",
+        "protocol_edge": "verifier_to_solver",
+        "protocol_version": "CARD-3-gsm8k",
+        "protocol_hash": "fb1a4acb6e591ac96544876aedd912b27a6f9d3154c76112e1da0f43407d27b2",
+        "contract_hash": "ab4b736240365db5d0ce2caea032f40a3b7fc9c189db42d5ebcd28cac0fac22b",
+        "fields": {
+          "CHK": "ACCEPT"
+        },
+        "communication_tokens": 5,
+        "communication_tokens_exact": true,
+        "attempt_count": 1,
+        "fallback": false,
+        "tokens_include_all_attempts": true,
+        "incoming_message_ids": [
+          "6b451cc70df7"
+        ]
+      }
+    }
+  ],
+  "communication_tokens": 145,
+  "wall_time_s": 3.6261598001001403,
+  "verified": true,
+  "revision_rounds": 0,
+  "model_calls": [
+    {
+      "role": "planner",
+      "attempt": 0,
+      "status": "delivered",
+      "error": "",
+      "raw_output": "G:touchdowns_per_game_needed_in_final_two_games;P:richard_so_far=6*14,needed_total=89+1,remaining=needed_total-richard_so_far,rate=remaining/2;NL:To beat the record he must exceed 89 so use at least 90 total touchdowns.",
+      "finish_reason": "stop",
+      "output_tokens": 75,
+      "usage_available": true
+    },
+    {
+      "role": "solver",
+      "attempt": 0,
+      "status": "delivered",
+      "error": "",
+      "raw_output": "IR:richard_so_far=6*14=84,needed_total=89+1=90,remaining=90-84=6,rate=6/2=3;R:3;NL:To beat the record he must exceed 89 so use at least 90 total touchdowns.",
+      "finish_reason": "stop",
+      "output_tokens": 65,
+      "usage_available": true
+    },
+    {
+      "role": "verifier",
+      "attempt": 0,
+      "status": "delivered",
+      "error": "",
+      "raw_output": "CHK:ACCEPT",
+      "finish_reason": "stop",
+      "output_tokens": 5,
+      "usage_available": true
+    }
+  ],
+  "failed_attempts": [],
+  "calls": 3,
+  "usage_complete": true,
+  "known_input_tokens": 2721,
+  "known_output_tokens": 145,
+  "model_input_tokens": 2721,
+  "model_output_tokens": 145,
+  "format_failed_calls": 0,
+  "transport_failed_calls": 0,
+  "fallback_calls": 0,
+  "sum_model_latency_s": 3.547276496887207,
+  "gold": "3",
+  "score": 1.0,
+  "question": "Archie holds the school record for most touchdown passes with 89 in a season of 16 games. Richard is close to breaking the record, having averaged 6 touchdowns a game in the first 14 games. How many touchdowns per game must he average in the final two games to beat Archie's record?\nGive the final numeric answer."
+}

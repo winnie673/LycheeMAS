@@ -1,0 +1,95 @@
+{
+  "task_id": "gsm8k:test:seed42:T:00168",
+  "mode": "nl",
+  "benchmark": "gsm8k",
+  "status": "completed",
+  "error": null,
+  "prediction": "18",
+  "gold": "18",
+  "wall_time_s": 3.612738600000739,
+  "communication_tokens": 82,
+  "communication_tokens_exact": true,
+  "revision_rounds": 0,
+  "verification_decision": "ACCEPT",
+  "verified": true,
+  "messages": [
+    {
+      "sender": "planner",
+      "content": "Goal: find how much money Jimmy has.\n\nPlan: Use Ethel’s amount of $8. Compute twice Ethel’s money, then add $2 more to get Jimmy’s amount.\n\nConstraint: Provide the final numeric answer only.",
+      "receiver": "solver",
+      "round": 0,
+      "role": "assistant",
+      "prompt_tokens": 181,
+      "completion_tokens": 50,
+      "id": "a6c0832926b5",
+      "ts": 1793170336.563737,
+      "meta": {
+        "fields": {},
+        "communication_tokens": 50,
+        "communication_tokens_exact": true,
+        "attempt_count": 1,
+        "fallback": false,
+        "tokens_include_all_attempts": true,
+        "incoming_message_ids": []
+      }
+    },
+    {
+      "sender": "solver",
+      "content": "Ethel has $8. Twice that is $16. Jimmy has $2 more, so $18.  \n\\boxed{18}",
+      "receiver": "verifier",
+      "round": 0,
+      "role": "assistant",
+      "prompt_tokens": 243,
+      "completion_tokens": 30,
+      "id": "a9e773965be0",
+      "ts": 1793170337.6563027,
+      "meta": {
+        "fields": {
+          "R": "18"
+        },
+        "communication_tokens": 30,
+        "communication_tokens_exact": true,
+        "attempt_count": 1,
+        "fallback": false,
+        "tokens_include_all_attempts": true,
+        "incoming_message_ids": [
+          "a6c0832926b5"
+        ]
+      }
+    },
+    {
+      "sender": "verifier",
+      "content": "ACCEPT",
+      "receiver": "solver",
+      "round": 0,
+      "role": "assistant",
+      "prompt_tokens": 600,
+      "completion_tokens": 2,
+      "id": "a9a8427bfce1",
+      "ts": 1793170338.8952568,
+      "meta": {
+        "fields": {
+          "CHK": "ACCEPT"
+        },
+        "communication_tokens": 2,
+        "communication_tokens_exact": true,
+        "attempt_count": 1,
+        "fallback": false,
+        "tokens_include_all_attempts": true,
+        "incoming_message_ids": [
+          "a9e773965be0"
+        ]
+      }
+    }
+  ],
+  "calls": 3,
+  "usage_complete": true,
+  "known_input_tokens": 1024,
+  "known_output_tokens": 82,
+  "model_input_tokens": 1024,
+  "model_output_tokens": 82,
+  "format_failed_calls": 0,
+  "transport_failed_calls": 0,
+  "fallback_calls": 0,
+  "sum_model_latency_s": 3.5540738105773926
+}

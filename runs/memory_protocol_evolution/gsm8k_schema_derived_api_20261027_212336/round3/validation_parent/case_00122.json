@@ -1,0 +1,152 @@
+{
+  "task_id": "gsm8k:train:seed42:V:00122",
+  "status": "completed",
+  "error": null,
+  "prediction": "54",
+  "messages": [
+    {
+      "sender": "planner",
+      "content": "K:quiche=15,quiches=2,croissant=3,croissants=6,biscuit=2,biscuits=6,discount=10%;G:discounted_total;P:subtotal=2*15+6*3+6*2,discounted_total=subtotal*(1-0.10)",
+      "receiver": "solver",
+      "round": 0,
+      "role": "assistant",
+      "prompt_tokens": 770,
+      "completion_tokens": 73,
+      "id": "fca4ed0175aa",
+      "ts": 1793112892.4023492,
+      "meta": {
+        "sender": "planner",
+        "receiver": "solver",
+        "message_id": "fca4ed0175aa",
+        "protocol_edge": "planner_to_solver",
+        "protocol_version": "CARD-0-gsm8k",
+        "protocol_hash": "4bcdae885cc464e0a51977368e4bc06650c0326dbdcb182ce0327477c1d32daa",
+        "contract_hash": "ab4b736240365db5d0ce2caea032f40a3b7fc9c189db42d5ebcd28cac0fac22b",
+        "fields": {
+          "K": "quiche=15,quiches=2,croissant=3,croissants=6,biscuit=2,biscuits=6,discount=10%",
+          "G": "discounted_total",
+          "P": "subtotal=2*15+6*3+6*2,discounted_total=subtotal*(1-0.10)"
+        },
+        "communication_tokens": 73,
+        "communication_tokens_exact": true,
+        "attempt_count": 1,
+        "fallback": false,
+        "tokens_include_all_attempts": true,
+        "incoming_message_ids": []
+      }
+    },
+    {
+      "sender": "solver",
+      "content": "IR:subtotal=2*15+6*3+6*2=60,discount_amount=0.10*60=6,total=60-6=54;R:54",
+      "receiver": "verifier",
+      "round": 0,
+      "role": "assistant",
+      "prompt_tokens": 785,
+      "completion_tokens": 41,
+      "id": "997ba3c239c5",
+      "ts": 1793112893.4409301,
+      "meta": {
+        "sender": "solver",
+        "receiver": "verifier",
+        "message_id": "997ba3c239c5",
+        "protocol_edge": "solver_to_verifier",
+        "protocol_version": "CARD-0-gsm8k",
+        "protocol_hash": "4bcdae885cc464e0a51977368e4bc06650c0326dbdcb182ce0327477c1d32daa",
+        "contract_hash": "ab4b736240365db5d0ce2caea032f40a3b7fc9c189db42d5ebcd28cac0fac22b",
+        "fields": {
+          "IR": "subtotal=2*15+6*3+6*2=60,discount_amount=0.10*60=6,total=60-6=54",
+          "R": "54"
+        },
+        "communication_tokens": 41,
+        "communication_tokens_exact": true,
+        "attempt_count": 1,
+        "fallback": false,
+        "tokens_include_all_attempts": true,
+        "incoming_message_ids": [
+          "fca4ed0175aa"
+        ]
+      }
+    },
+    {
+      "sender": "verifier",
+      "content": "CHK:ACCEPT",
+      "receiver": "solver",
+      "round": 0,
+      "role": "assistant",
+      "prompt_tokens": 1119,
+      "completion_tokens": 5,
+      "id": "ed6127d47979",
+      "ts": 1793112894.635682,
+      "meta": {
+        "sender": "verifier",
+        "receiver": "solver",
+        "message_id": "ed6127d47979",
+        "protocol_edge": "verifier_to_solver",
+        "protocol_version": "CARD-0-gsm8k",
+        "protocol_hash": "4bcdae885cc464e0a51977368e4bc06650c0326dbdcb182ce0327477c1d32daa",
+        "contract_hash": "ab4b736240365db5d0ce2caea032f40a3b7fc9c189db42d5ebcd28cac0fac22b",
+        "fields": {
+          "CHK": "ACCEPT"
+        },
+        "communication_tokens": 5,
+        "communication_tokens_exact": true,
+        "attempt_count": 1,
+        "fallback": false,
+        "tokens_include_all_attempts": true,
+        "incoming_message_ids": [
+          "997ba3c239c5"
+        ]
+      }
+    }
+  ],
+  "communication_tokens": 119,
+  "wall_time_s": 4.177685800008476,
+  "verified": true,
+  "revision_rounds": 0,
+  "model_calls": [
+    {
+      "role": "planner",
+      "attempt": 0,
+      "status": "delivered",
+      "error": "",
+      "raw_output": "K:quiche=15,quiches=2,croissant=3,croissants=6,biscuit=2,biscuits=6,discount=10%;G:discounted_total;P:subtotal=2*15+6*3+6*2,discounted_total=subtotal*(1-0.10)",
+      "finish_reason": "stop",
+      "output_tokens": 73,
+      "usage_available": true
+    },
+    {
+      "role": "solver",
+      "attempt": 0,
+      "status": "delivered",
+      "error": "",
+      "raw_output": "IR:subtotal=2*15+6*3+6*2=60,discount_amount=0.10*60=6,total=60-6=54;R:54",
+      "finish_reason": "stop",
+      "output_tokens": 41,
+      "usage_available": true
+    },
+    {
+      "role": "verifier",
+      "attempt": 0,
+      "status": "delivered",
+      "error": "",
+      "raw_output": "CHK:ACCEPT",
+      "finish_reason": "stop",
+      "output_tokens": 5,
+      "usage_available": true
+    }
+  ],
+  "failed_attempts": [],
+  "calls": 3,
+  "usage_complete": true,
+  "known_input_tokens": 2674,
+  "known_output_tokens": 119,
+  "model_input_tokens": 2674,
+  "model_output_tokens": 119,
+  "format_failed_calls": 0,
+  "transport_failed_calls": 0,
+  "fallback_calls": 0,
+  "sum_model_latency_s": 4.039401531219482,
+  "gold": "54",
+  "score": 1.0,
+  "question": "Silvia’s bakery is offering 10% on advanced orders over $50.00.  She orders 2 quiches for $15.00 each, 6 croissants at $3.00 each and 6 buttermilk biscuits for $2.00 each.  How much will her order be with the discount?\nGive the final numeric answer."
+}

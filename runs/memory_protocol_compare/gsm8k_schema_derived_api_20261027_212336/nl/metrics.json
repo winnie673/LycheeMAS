@@ -1,0 +1,20 @@
+{
+  "n": 200,
+  "correct": 196,
+  "accuracy": 0.98,
+  "failed_cases": 0,
+  "failure_rate": 0.0,
+  "unverified_cases": 0,
+  "revision_rate": 0.0,
+  "avg_communication_tokens": 156.24,
+  "avg_model_output_tokens": 156.24,
+  "avg_model_input_tokens": 1191.45,
+  "known_output_tokens_total": 31248,
+  "usage_incomplete_cases": 0,
+  "avg_calls": 3.0,
+  "avg_wall_time_s": 3.843855070998543,
+  "avg_sum_model_latency_s": 3.7887551379203797,
+  "format_failed_calls": 0,
+  "fallback_calls": 0,
+  "transport_failed_calls": 0
+}

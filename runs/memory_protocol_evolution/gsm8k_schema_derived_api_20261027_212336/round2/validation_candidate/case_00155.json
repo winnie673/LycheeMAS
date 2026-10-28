@@ -1,0 +1,151 @@
+{
+  "task_id": "gsm8k:train:seed42:V:00155",
+  "status": "completed",
+  "error": null,
+  "prediction": "2",
+  "messages": [
+    {
+      "sender": "planner",
+      "content": "G:fuel_efficiency_miles_per_gallon;P:distance=2*5+2+2+6,used=12-2,fuel_efficiency=distance/used",
+      "receiver": "solver",
+      "round": 0,
+      "role": "assistant",
+      "prompt_tokens": 928,
+      "completion_tokens": 38,
+      "id": "d22806fc0214",
+      "ts": 1793111768.8687255,
+      "meta": {
+        "sender": "planner",
+        "receiver": "solver",
+        "message_id": "d22806fc0214",
+        "protocol_edge": "planner_to_solver",
+        "protocol_version": "CARD-2-gsm8k",
+        "protocol_hash": "aec703067bbfeee6aa1e642a2a319658f1d33f2eff00c8701de19347f616ed6d",
+        "contract_hash": "ab4b736240365db5d0ce2caea032f40a3b7fc9c189db42d5ebcd28cac0fac22b",
+        "fields": {
+          "G": "fuel_efficiency_miles_per_gallon",
+          "P": "distance=2*5+2+2+6,used=12-2,fuel_efficiency=distance/used"
+        },
+        "communication_tokens": 38,
+        "communication_tokens_exact": true,
+        "attempt_count": 1,
+        "fallback": false,
+        "tokens_include_all_attempts": true,
+        "incoming_message_ids": []
+      }
+    },
+    {
+      "sender": "solver",
+      "content": "IR:distance=2*5+2+2+6=20,used=12-2=10,fuel_efficiency=20/10=2;R:2",
+      "receiver": "verifier",
+      "round": 0,
+      "role": "assistant",
+      "prompt_tokens": 784,
+      "completion_tokens": 37,
+      "id": "49103f40832a",
+      "ts": 1793111770.1077263,
+      "meta": {
+        "sender": "solver",
+        "receiver": "verifier",
+        "message_id": "49103f40832a",
+        "protocol_edge": "solver_to_verifier",
+        "protocol_version": "CARD-2-gsm8k",
+        "protocol_hash": "aec703067bbfeee6aa1e642a2a319658f1d33f2eff00c8701de19347f616ed6d",
+        "contract_hash": "ab4b736240365db5d0ce2caea032f40a3b7fc9c189db42d5ebcd28cac0fac22b",
+        "fields": {
+          "IR": "distance=2*5+2+2+6=20,used=12-2=10,fuel_efficiency=20/10=2",
+          "R": "2"
+        },
+        "communication_tokens": 37,
+        "communication_tokens_exact": true,
+        "attempt_count": 1,
+        "fallback": false,
+        "tokens_include_all_attempts": true,
+        "incoming_message_ids": [
+          "d22806fc0214"
+        ]
+      }
+    },
+    {
+      "sender": "verifier",
+      "content": "CHK:ACCEPT",
+      "receiver": "solver",
+      "round": 0,
+      "role": "assistant",
+      "prompt_tokens": 1149,
+      "completion_tokens": 5,
+      "id": "cd3bc13060fb",
+      "ts": 1793111771.532979,
+      "meta": {
+        "sender": "verifier",
+        "receiver": "solver",
+        "message_id": "cd3bc13060fb",
+        "protocol_edge": "verifier_to_solver",
+        "protocol_version": "CARD-2-gsm8k",
+        "protocol_hash": "aec703067bbfeee6aa1e642a2a319658f1d33f2eff00c8701de19347f616ed6d",
+        "contract_hash": "ab4b736240365db5d0ce2caea032f40a3b7fc9c189db42d5ebcd28cac0fac22b",
+        "fields": {
+          "CHK": "ACCEPT"
+        },
+        "communication_tokens": 5,
+        "communication_tokens_exact": true,
+        "attempt_count": 1,
+        "fallback": false,
+        "tokens_include_all_attempts": true,
+        "incoming_message_ids": [
+          "49103f40832a"
+        ]
+      }
+    }
+  ],
+  "communication_tokens": 80,
+  "wall_time_s": 4.14680230000522,
+  "verified": true,
+  "revision_rounds": 0,
+  "model_calls": [
+    {
+      "role": "planner",
+      "attempt": 0,
+      "status": "delivered",
+      "error": "",
+      "raw_output": "G:fuel_efficiency_miles_per_gallon;P:distance=2*5+2+2+6,used=12-2,fuel_efficiency=distance/used",
+      "finish_reason": "stop",
+      "output_tokens": 38,
+      "usage_available": true
+    },
+    {
+      "role": "solver",
+      "attempt": 0,
+      "status": "delivered",
+      "error": "",
+      "raw_output": "IR:distance=2*5+2+2+6=20,used=12-2=10,fuel_efficiency=20/10=2;R:2",
+      "finish_reason": "stop",
+      "output_tokens": 37,
+      "usage_available": true
+    },
+    {
+      "role": "verifier",
+      "attempt": 0,
+      "status": "delivered",
+      "error": "",
+      "raw_output": "CHK:ACCEPT",
+      "finish_reason": "stop",
+      "output_tokens": 5,
+      "usage_available": true
+    }
+  ],
+  "failed_attempts": [],
+  "calls": 3,
+  "usage_complete": true,
+  "known_input_tokens": 2861,
+  "known_output_tokens": 80,
+  "model_input_tokens": 2861,
+  "model_output_tokens": 80,
+  "format_failed_calls": 0,
+  "transport_failed_calls": 0,
+  "fallback_calls": 0,
+  "sum_model_latency_s": 3.999473810195923,
+  "gold": "2",
+  "score": 1.0,
+  "question": "Bobby needed to make some trips with his truck and had only 12 gallons of gasoline. He drives to a supermarket 5 miles away and then drives back home. Then he headed to his farm which was 6 miles away. Two miles into the journey, he turned around and drove back home to retrieve some farming tools he forgot to take earlier and drove down to the farm. If he now has exactly 2 gallons of gasoline left, at what rate in miles per gallon has his truck been consuming gasoline?\nGive the final numeric answer."
+}

@@ -1,0 +1,152 @@
+{
+  "task_id": "gsm8k:train:seed42:V:00070",
+  "status": "completed",
+  "error": null,
+  "prediction": "6",
+  "messages": [
+    {
+      "sender": "planner",
+      "content": "K:magnet=3,magnet=3*sticker,magnet=(1/4)*two_stuffed;G:single_stuffed_price;P:sticker=magnet/3,two_stuffed=4*magnet,single_stuffed=two_stuffed/2",
+      "receiver": "solver",
+      "round": 0,
+      "role": "assistant",
+      "prompt_tokens": 786,
+      "completion_tokens": 56,
+      "id": "d43222bd5c64",
+      "ts": 1793110588.1343043,
+      "meta": {
+        "sender": "planner",
+        "receiver": "solver",
+        "message_id": "d43222bd5c64",
+        "protocol_edge": "planner_to_solver",
+        "protocol_version": "CARD-0-gsm8k",
+        "protocol_hash": "4bcdae885cc464e0a51977368e4bc06650c0326dbdcb182ce0327477c1d32daa",
+        "contract_hash": "ab4b736240365db5d0ce2caea032f40a3b7fc9c189db42d5ebcd28cac0fac22b",
+        "fields": {
+          "K": "magnet=3,magnet=3*sticker,magnet=(1/4)*two_stuffed",
+          "G": "single_stuffed_price",
+          "P": "sticker=magnet/3,two_stuffed=4*magnet,single_stuffed=two_stuffed/2"
+        },
+        "communication_tokens": 56,
+        "communication_tokens_exact": true,
+        "attempt_count": 1,
+        "fallback": false,
+        "tokens_include_all_attempts": true,
+        "incoming_message_ids": []
+      }
+    },
+    {
+      "sender": "solver",
+      "content": "IR:sticker=3/3=1,two_stuffed=4*3=12,single_stuffed=12/2=6;R:6",
+      "receiver": "verifier",
+      "round": 0,
+      "role": "assistant",
+      "prompt_tokens": 784,
+      "completion_tokens": 34,
+      "id": "df731455a7b7",
+      "ts": 1793110589.5692718,
+      "meta": {
+        "sender": "solver",
+        "receiver": "verifier",
+        "message_id": "df731455a7b7",
+        "protocol_edge": "solver_to_verifier",
+        "protocol_version": "CARD-0-gsm8k",
+        "protocol_hash": "4bcdae885cc464e0a51977368e4bc06650c0326dbdcb182ce0327477c1d32daa",
+        "contract_hash": "ab4b736240365db5d0ce2caea032f40a3b7fc9c189db42d5ebcd28cac0fac22b",
+        "fields": {
+          "IR": "sticker=3/3=1,two_stuffed=4*3=12,single_stuffed=12/2=6",
+          "R": "6"
+        },
+        "communication_tokens": 34,
+        "communication_tokens_exact": true,
+        "attempt_count": 1,
+        "fallback": false,
+        "tokens_include_all_attempts": true,
+        "incoming_message_ids": [
+          "d43222bd5c64"
+        ]
+      }
+    },
+    {
+      "sender": "verifier",
+      "content": "CHK:ACCEPT",
+      "receiver": "solver",
+      "round": 0,
+      "role": "assistant",
+      "prompt_tokens": 1128,
+      "completion_tokens": 5,
+      "id": "2b954acdf8fb",
+      "ts": 1793110590.6955593,
+      "meta": {
+        "sender": "verifier",
+        "receiver": "solver",
+        "message_id": "2b954acdf8fb",
+        "protocol_edge": "verifier_to_solver",
+        "protocol_version": "CARD-0-gsm8k",
+        "protocol_hash": "4bcdae885cc464e0a51977368e4bc06650c0326dbdcb182ce0327477c1d32daa",
+        "contract_hash": "ab4b736240365db5d0ce2caea032f40a3b7fc9c189db42d5ebcd28cac0fac22b",
+        "fields": {
+          "CHK": "ACCEPT"
+        },
+        "communication_tokens": 5,
+        "communication_tokens_exact": true,
+        "attempt_count": 1,
+        "fallback": false,
+        "tokens_include_all_attempts": true,
+        "incoming_message_ids": [
+          "df731455a7b7"
+        ]
+      }
+    }
+  ],
+  "communication_tokens": 95,
+  "wall_time_s": 4.097250699996948,
+  "verified": true,
+  "revision_rounds": 0,
+  "model_calls": [
+    {
+      "role": "planner",
+      "attempt": 0,
+      "status": "delivered",
+      "error": "",
+      "raw_output": "K:magnet=3,magnet=3*sticker,magnet=(1/4)*two_stuffed;G:single_stuffed_price;P:sticker=magnet/3,two_stuffed=4*magnet,single_stuffed=two_stuffed/2",
+      "finish_reason": "stop",
+      "output_tokens": 56,
+      "usage_available": true
+    },
+    {
+      "role": "solver",
+      "attempt": 0,
+      "status": "delivered",
+      "error": "",
+      "raw_output": "IR:sticker=3/3=1,two_stuffed=4*3=12,single_stuffed=12/2=6;R:6",
+      "finish_reason": "stop",
+      "output_tokens": 34,
+      "usage_available": true
+    },
+    {
+      "role": "verifier",
+      "attempt": 0,
+      "status": "delivered",
+      "error": "",
+      "raw_output": "CHK:ACCEPT",
+      "finish_reason": "stop",
+      "output_tokens": 5,
+      "usage_available": true
+    }
+  ],
+  "failed_attempts": [],
+  "calls": 3,
+  "usage_complete": true,
+  "known_input_tokens": 2698,
+  "known_output_tokens": 95,
+  "model_input_tokens": 2698,
+  "model_output_tokens": 95,
+  "format_failed_calls": 0,
+  "transport_failed_calls": 0,
+  "fallback_calls": 0,
+  "sum_model_latency_s": 3.955038547515869,
+  "gold": "6",
+  "score": 1.0,
+  "question": "At a garage sale, Tish bought 4 items: a red horseshoe magnet, two stuffed animals, and a large sticker which read, \"Why can't teachers solve their own math problems?\"  The magnet cost three times more than the sticker, but only one quarter the price of the two stuffed animals combined.  If the Magnet cost $3, how much, in dollars, did a single stuffed animal cost?\nGive the final numeric answer."
+}

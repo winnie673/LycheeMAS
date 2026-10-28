@@ -1,0 +1,151 @@
+{
+  "task_id": "gsm8k:train:seed42:V:00172",
+  "status": "completed",
+  "error": null,
+  "prediction": "33",
+  "messages": [
+    {
+      "sender": "planner",
+      "content": "G:total_ounces;P:box1=14,box2=box1/2,box3=box2+5,total=box1+box2+box3",
+      "receiver": "solver",
+      "round": 0,
+      "role": "assistant",
+      "prompt_tokens": 809,
+      "completion_tokens": 39,
+      "id": "f430b3fb28c9",
+      "ts": 1793109725.050752,
+      "meta": {
+        "sender": "planner",
+        "receiver": "solver",
+        "message_id": "f430b3fb28c9",
+        "protocol_edge": "planner_to_solver",
+        "protocol_version": "CARD-1-gsm8k",
+        "protocol_hash": "2a663f41d251a442e680de67a231e516a8fe5e31629bc25d021c8c0eb1354cff",
+        "contract_hash": "ab4b736240365db5d0ce2caea032f40a3b7fc9c189db42d5ebcd28cac0fac22b",
+        "fields": {
+          "G": "total_ounces",
+          "P": "box1=14,box2=box1/2,box3=box2+5,total=box1+box2+box3"
+        },
+        "communication_tokens": 39,
+        "communication_tokens_exact": true,
+        "attempt_count": 1,
+        "fallback": false,
+        "tokens_include_all_attempts": true,
+        "incoming_message_ids": []
+      }
+    },
+    {
+      "sender": "solver",
+      "content": "IR:box2=14/2=7,box3=7+5=12,total=14+7+12=33;R:33",
+      "receiver": "verifier",
+      "round": 0,
+      "role": "assistant",
+      "prompt_tokens": 731,
+      "completion_tokens": 33,
+      "id": "fef57834b81d",
+      "ts": 1793109726.585263,
+      "meta": {
+        "sender": "solver",
+        "receiver": "verifier",
+        "message_id": "fef57834b81d",
+        "protocol_edge": "solver_to_verifier",
+        "protocol_version": "CARD-1-gsm8k",
+        "protocol_hash": "2a663f41d251a442e680de67a231e516a8fe5e31629bc25d021c8c0eb1354cff",
+        "contract_hash": "ab4b736240365db5d0ce2caea032f40a3b7fc9c189db42d5ebcd28cac0fac22b",
+        "fields": {
+          "IR": "box2=14/2=7,box3=7+5=12,total=14+7+12=33",
+          "R": "33"
+        },
+        "communication_tokens": 33,
+        "communication_tokens_exact": true,
+        "attempt_count": 1,
+        "fallback": false,
+        "tokens_include_all_attempts": true,
+        "incoming_message_ids": [
+          "f430b3fb28c9"
+        ]
+      }
+    },
+    {
+      "sender": "verifier",
+      "content": "CHK:ACCEPT",
+      "receiver": "solver",
+      "round": 0,
+      "role": "assistant",
+      "prompt_tokens": 1091,
+      "completion_tokens": 5,
+      "id": "8aacbf4a3c72",
+      "ts": 1793109728.5210207,
+      "meta": {
+        "sender": "verifier",
+        "receiver": "solver",
+        "message_id": "8aacbf4a3c72",
+        "protocol_edge": "verifier_to_solver",
+        "protocol_version": "CARD-1-gsm8k",
+        "protocol_hash": "2a663f41d251a442e680de67a231e516a8fe5e31629bc25d021c8c0eb1354cff",
+        "contract_hash": "ab4b736240365db5d0ce2caea032f40a3b7fc9c189db42d5ebcd28cac0fac22b",
+        "fields": {
+          "CHK": "ACCEPT"
+        },
+        "communication_tokens": 5,
+        "communication_tokens_exact": true,
+        "attempt_count": 1,
+        "fallback": false,
+        "tokens_include_all_attempts": true,
+        "incoming_message_ids": [
+          "fef57834b81d"
+        ]
+      }
+    }
+  ],
+  "communication_tokens": 77,
+  "wall_time_s": 5.647273099981248,
+  "verified": true,
+  "revision_rounds": 0,
+  "model_calls": [
+    {
+      "role": "planner",
+      "attempt": 0,
+      "status": "delivered",
+      "error": "",
+      "raw_output": "G:total_ounces;P:box1=14,box2=box1/2,box3=box2+5,total=box1+box2+box3",
+      "finish_reason": "stop",
+      "output_tokens": 39,
+      "usage_available": true
+    },
+    {
+      "role": "solver",
+      "attempt": 0,
+      "status": "delivered",
+      "error": "",
+      "raw_output": "IR:box2=14/2=7,box3=7+5=12,total=14+7+12=33;R:33",
+      "finish_reason": "stop",
+      "output_tokens": 33,
+      "usage_available": true
+    },
+    {
+      "role": "verifier",
+      "attempt": 0,
+      "status": "delivered",
+      "error": "",
+      "raw_output": "CHK:ACCEPT",
+      "finish_reason": "stop",
+      "output_tokens": 5,
+      "usage_available": true
+    }
+  ],
+  "failed_attempts": [],
+  "calls": 3,
+  "usage_complete": true,
+  "known_input_tokens": 2631,
+  "known_output_tokens": 77,
+  "model_input_tokens": 2631,
+  "model_output_tokens": 77,
+  "format_failed_calls": 0,
+  "transport_failed_calls": 0,
+  "fallback_calls": 0,
+  "sum_model_latency_s": 5.4894139766693115,
+  "gold": "33",
+  "score": 1.0,
+  "question": "There are 3 boxes of cereal. One box holds 14 ounces of cereal. Another box holds half the amount of the first box and 5 ounces less than the third box. How much cereal is there in all 3 cereal boxes?\nGive the final numeric answer."
+}

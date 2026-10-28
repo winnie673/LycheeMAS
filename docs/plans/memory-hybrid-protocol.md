@@ -2,6 +2,23 @@
 
 ## Current: complete core/experiment separation (2026-10-27)
 
+2026-10-28 final promotion/cleanup: publish the v5 final Card-0 as the user's
+gsm8k_psv_hybrid_card_20261028.yaml, preserving all learned content and contract.
+Remove two obsolete configuration cards; legacy tests use synthetic temporary
+cards. Keep latest runs AND older completed real API results/functional checks,
+including old MATH-500 results without restoring MATH-500 implementation.
+Remove only failed/incomplete/fake runs. Deleted material is recoverable in the
+external cleanup ZIP with a SHA256 manifest; never depend on that archive at runtime.
+
+Schema single-source update: YAML owns field interfaces, per-edge meanings,
+enums, placeholder guards and conditional requirements/prohibitions. Existing
+base.py now compiles these operations; spec.py adds only task/roles/receive-only
+aliases and presentation. Design shares the same loaded schema. Frozen contracts
+are never rewritten: known historical fingerprints require explicit runtime
+predicate compatibility; unknown or drifted contracts fail. Empty new forbidden
+attributes are omitted from old serialization. No new module, API call or push.
+New runtime/evolution records use v5-schema-derived; historical records remain.
+
 This section supersedes earlier PSV-specific core descriptions below, which are
 retained as historical implementation notes. Core ProtocolArchitecture and
 ProtocolContract contain no shipped role/benchmark/field constants. Core evolution
@@ -9,8 +26,8 @@ receives a contract and EvolutionSchedule; binary scoring, execution and proposa
 generation are callbacks. No hard-coded numeric gold preflight or D0/G1-G3/V/T names.
 The existing script is still the GSM8K entry, with matching data/scorer preflight.
 
-`scripts/hybrid_gsm8k_spec.py` is the single experiment specification. It owns PSV
-roles, fields, error categories, conditional guards, example-only numeric guards,
+`scripts/hybrid_gsm8k_spec.py` is the experiment assembler. YAML owns field
+definitions; the spec adds PSV roles, task requirements, receive-only aliases,
 generation guidance and the GSM8K split schedule. Shared example execution remains
 PSV-specific by design; no additional graph builder, backend or runner is added.
 The channel evaluates safe declarative operations, not Python from cards.

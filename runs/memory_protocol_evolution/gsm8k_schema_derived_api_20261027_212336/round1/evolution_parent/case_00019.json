@@ -1,0 +1,151 @@
+{
+  "task_id": "gsm8k:train:seed42:G1:00019",
+  "status": "completed",
+  "error": null,
+  "prediction": "82",
+  "messages": [
+    {
+      "sender": "planner",
+      "content": "G:total_time;P:mac=10,win=3*mac,audio=2*4,video=6,glitch=audio+video,clear=2*glitch,total_time=mac+win+glitch+clear",
+      "receiver": "solver",
+      "round": 0,
+      "role": "assistant",
+      "prompt_tokens": 795,
+      "completion_tokens": 52,
+      "id": "5e25e4a42acf",
+      "ts": 1793107650.7983284,
+      "meta": {
+        "sender": "planner",
+        "receiver": "solver",
+        "message_id": "5e25e4a42acf",
+        "protocol_edge": "planner_to_solver",
+        "protocol_version": "CARD-0-gsm8k",
+        "protocol_hash": "4bcdae885cc464e0a51977368e4bc06650c0326dbdcb182ce0327477c1d32daa",
+        "contract_hash": "ab4b736240365db5d0ce2caea032f40a3b7fc9c189db42d5ebcd28cac0fac22b",
+        "fields": {
+          "G": "total_time",
+          "P": "mac=10,win=3*mac,audio=2*4,video=6,glitch=audio+video,clear=2*glitch,total_time=mac+win+glitch+clear"
+        },
+        "communication_tokens": 52,
+        "communication_tokens_exact": true,
+        "attempt_count": 1,
+        "fallback": false,
+        "tokens_include_all_attempts": true,
+        "incoming_message_ids": []
+      }
+    },
+    {
+      "sender": "solver",
+      "content": "IR:win=3*10=30,glitch=2*4+6=14,clear=2*14=28,total=10+30+14+28=82;R:82",
+      "receiver": "verifier",
+      "round": 0,
+      "role": "assistant",
+      "prompt_tokens": 789,
+      "completion_tokens": 44,
+      "id": "f95db64b829d",
+      "ts": 1793107653.008327,
+      "meta": {
+        "sender": "solver",
+        "receiver": "verifier",
+        "message_id": "f95db64b829d",
+        "protocol_edge": "solver_to_verifier",
+        "protocol_version": "CARD-0-gsm8k",
+        "protocol_hash": "4bcdae885cc464e0a51977368e4bc06650c0326dbdcb182ce0327477c1d32daa",
+        "contract_hash": "ab4b736240365db5d0ce2caea032f40a3b7fc9c189db42d5ebcd28cac0fac22b",
+        "fields": {
+          "IR": "win=3*10=30,glitch=2*4+6=14,clear=2*14=28,total=10+30+14+28=82",
+          "R": "82"
+        },
+        "communication_tokens": 44,
+        "communication_tokens_exact": true,
+        "attempt_count": 1,
+        "fallback": false,
+        "tokens_include_all_attempts": true,
+        "incoming_message_ids": [
+          "5e25e4a42acf"
+        ]
+      }
+    },
+    {
+      "sender": "verifier",
+      "content": "CHK:ACCEPT",
+      "receiver": "solver",
+      "round": 0,
+      "role": "assistant",
+      "prompt_tokens": 1147,
+      "completion_tokens": 5,
+      "id": "7913221da9ca",
+      "ts": 1793107654.2399056,
+      "meta": {
+        "sender": "verifier",
+        "receiver": "solver",
+        "message_id": "7913221da9ca",
+        "protocol_edge": "verifier_to_solver",
+        "protocol_version": "CARD-0-gsm8k",
+        "protocol_hash": "4bcdae885cc464e0a51977368e4bc06650c0326dbdcb182ce0327477c1d32daa",
+        "contract_hash": "ab4b736240365db5d0ce2caea032f40a3b7fc9c189db42d5ebcd28cac0fac22b",
+        "fields": {
+          "CHK": "ACCEPT"
+        },
+        "communication_tokens": 5,
+        "communication_tokens_exact": true,
+        "attempt_count": 1,
+        "fallback": false,
+        "tokens_include_all_attempts": true,
+        "incoming_message_ids": [
+          "f95db64b829d"
+        ]
+      }
+    }
+  ],
+  "communication_tokens": 101,
+  "wall_time_s": 4.875820099958219,
+  "verified": true,
+  "revision_rounds": 0,
+  "model_calls": [
+    {
+      "role": "planner",
+      "attempt": 0,
+      "status": "delivered",
+      "error": "",
+      "raw_output": "G:total_time;P:mac=10,win=3*mac,audio=2*4,video=6,glitch=audio+video,clear=2*glitch,total_time=mac+win+glitch+clear",
+      "finish_reason": "stop",
+      "output_tokens": 52,
+      "usage_available": true
+    },
+    {
+      "role": "solver",
+      "attempt": 0,
+      "status": "delivered",
+      "error": "",
+      "raw_output": "IR:win=3*10=30,glitch=2*4+6=14,clear=2*14=28,total=10+30+14+28=82;R:82",
+      "finish_reason": "stop",
+      "output_tokens": 44,
+      "usage_available": true
+    },
+    {
+      "role": "verifier",
+      "attempt": 0,
+      "status": "delivered",
+      "error": "",
+      "raw_output": "CHK:ACCEPT",
+      "finish_reason": "stop",
+      "output_tokens": 5,
+      "usage_available": true
+    }
+  ],
+  "failed_attempts": [],
+  "calls": 3,
+  "usage_complete": true,
+  "known_input_tokens": 2731,
+  "known_output_tokens": 101,
+  "model_input_tokens": 2731,
+  "model_output_tokens": 101,
+  "format_failed_calls": 0,
+  "transport_failed_calls": 0,
+  "fallback_calls": 0,
+  "sum_model_latency_s": 4.73491358757019,
+  "gold": "82",
+  "score": 1.0,
+  "question": "Mary is trying to get Zoom set up for the first time. She spent 10 minutes downloading the Mac version, only to realize she needed the Windows version, which took three times as long to download. During her first call, the audio glitched twice for 4 minutes each time and the video glitched once for 6 minutes. She spent twice as long talking without glitches as with glitches. How much time did Mary spend downloading Zoom and talking total?\nGive the final numeric answer."
+}

@@ -1,0 +1,153 @@
+{
+  "task_id": "gsm8k:train:seed42:G1:00044",
+  "status": "completed",
+  "error": null,
+  "prediction": "20",
+  "messages": [
+    {
+      "sender": "planner",
+      "content": "G:percentage_chance_catches_either;P:malaria_infected=0.4,zika_infected=0.2,base_infection=0.5,malaria_risk=malaria_infected*base_infection*0.5,zika_risk=zika_infected*base_infection,total_risk=malaria_risk+zika_risk;NL:Assume the two infections are mutually exclusive for the \"either\" event and the vaccine only affects malaria.",
+      "receiver": "solver",
+      "round": 0,
+      "role": "assistant",
+      "prompt_tokens": 797,
+      "completion_tokens": 107,
+      "id": "d755f5072d4f",
+      "ts": 1793107764.5453622,
+      "meta": {
+        "sender": "planner",
+        "receiver": "solver",
+        "message_id": "d755f5072d4f",
+        "protocol_edge": "planner_to_solver",
+        "protocol_version": "CARD-0-gsm8k",
+        "protocol_hash": "4bcdae885cc464e0a51977368e4bc06650c0326dbdcb182ce0327477c1d32daa",
+        "contract_hash": "ab4b736240365db5d0ce2caea032f40a3b7fc9c189db42d5ebcd28cac0fac22b",
+        "fields": {
+          "G": "percentage_chance_catches_either",
+          "P": "malaria_infected=0.4,zika_infected=0.2,base_infection=0.5,malaria_risk=malaria_infected*base_infection*0.5,zika_risk=zika_infected*base_infection,total_risk=malaria_risk+zika_risk",
+          "NL": "Assume the two infections are mutually exclusive for the \"either\" event and the vaccine only affects malaria."
+        },
+        "communication_tokens": 107,
+        "communication_tokens_exact": true,
+        "attempt_count": 1,
+        "fallback": false,
+        "tokens_include_all_attempts": true,
+        "incoming_message_ids": []
+      }
+    },
+    {
+      "sender": "solver",
+      "content": "IR:malaria_risk=0.4*0.5*0.5=0.1,zika_risk=0.2*0.5=0.1,total_risk=0.1+0.1=0.2;R:20;NL:Assume the two infections are mutually exclusive for the \"either\" event and the vaccine only affects malaria.",
+      "receiver": "verifier",
+      "round": 0,
+      "role": "assistant",
+      "prompt_tokens": 846,
+      "completion_tokens": 81,
+      "id": "5512c13c536d",
+      "ts": 1793107766.2650824,
+      "meta": {
+        "sender": "solver",
+        "receiver": "verifier",
+        "message_id": "5512c13c536d",
+        "protocol_edge": "solver_to_verifier",
+        "protocol_version": "CARD-0-gsm8k",
+        "protocol_hash": "4bcdae885cc464e0a51977368e4bc06650c0326dbdcb182ce0327477c1d32daa",
+        "contract_hash": "ab4b736240365db5d0ce2caea032f40a3b7fc9c189db42d5ebcd28cac0fac22b",
+        "fields": {
+          "IR": "malaria_risk=0.4*0.5*0.5=0.1,zika_risk=0.2*0.5=0.1,total_risk=0.1+0.1=0.2",
+          "R": "20",
+          "NL": "Assume the two infections are mutually exclusive for the \"either\" event and the vaccine only affects malaria."
+        },
+        "communication_tokens": 81,
+        "communication_tokens_exact": true,
+        "attempt_count": 1,
+        "fallback": false,
+        "tokens_include_all_attempts": true,
+        "incoming_message_ids": [
+          "d755f5072d4f"
+        ]
+      }
+    },
+    {
+      "sender": "verifier",
+      "content": "CHK:ACCEPT",
+      "receiver": "solver",
+      "round": 0,
+      "role": "assistant",
+      "prompt_tokens": 1186,
+      "completion_tokens": 5,
+      "id": "ff733323cf5c",
+      "ts": 1793107767.9041662,
+      "meta": {
+        "sender": "verifier",
+        "receiver": "solver",
+        "message_id": "ff733323cf5c",
+        "protocol_edge": "verifier_to_solver",
+        "protocol_version": "CARD-0-gsm8k",
+        "protocol_hash": "4bcdae885cc464e0a51977368e4bc06650c0326dbdcb182ce0327477c1d32daa",
+        "contract_hash": "ab4b736240365db5d0ce2caea032f40a3b7fc9c189db42d5ebcd28cac0fac22b",
+        "fields": {
+          "CHK": "ACCEPT"
+        },
+        "communication_tokens": 5,
+        "communication_tokens_exact": true,
+        "attempt_count": 1,
+        "fallback": false,
+        "tokens_include_all_attempts": true,
+        "incoming_message_ids": [
+          "5512c13c536d"
+        ]
+      }
+    }
+  ],
+  "communication_tokens": 193,
+  "wall_time_s": 5.077924599987455,
+  "verified": true,
+  "revision_rounds": 0,
+  "model_calls": [
+    {
+      "role": "planner",
+      "attempt": 0,
+      "status": "delivered",
+      "error": "",
+      "raw_output": "G:percentage_chance_catches_either;P:malaria_infected=0.4,zika_infected=0.2,base_infection=0.5,malaria_risk=malaria_infected*base_infection*0.5,zika_risk=zika_infected*base_infection,total_risk=malaria_risk+zika_risk;NL:Assume the two infections are mutually exclusive for the \"either\" event and the vaccine only affects malaria.",
+      "finish_reason": "stop",
+      "output_tokens": 107,
+      "usage_available": true
+    },
+    {
+      "role": "solver",
+      "attempt": 0,
+      "status": "delivered",
+      "error": "",
+      "raw_output": "IR:malaria_risk=0.4*0.5*0.5=0.1,zika_risk=0.2*0.5=0.1,total_risk=0.1+0.1=0.2;R:20;NL:Assume the two infections are mutually exclusive for the \"either\" event and the vaccine only affects malaria.",
+      "finish_reason": "stop",
+      "output_tokens": 81,
+      "usage_available": true
+    },
+    {
+      "role": "verifier",
+      "attempt": 0,
+      "status": "delivered",
+      "error": "",
+      "raw_output": "CHK:ACCEPT",
+      "finish_reason": "stop",
+      "output_tokens": 5,
+      "usage_available": true
+    }
+  ],
+  "failed_attempts": [],
+  "calls": 3,
+  "usage_complete": true,
+  "known_input_tokens": 2829,
+  "known_output_tokens": 193,
+  "model_input_tokens": 2829,
+  "model_output_tokens": 193,
+  "format_failed_calls": 0,
+  "transport_failed_calls": 0,
+  "fallback_calls": 0,
+  "sum_model_latency_s": 4.92292594909668,
+  "gold": "15",
+  "score": 0.0,
+  "question": "40% of the mosquitos in Jack's area are infected with malaria. 20% of the mosquitos are infected with Zika virus. Without a vaccine, the chances of getting infected with either virus after getting bitten by an infected mosquito are 50%. Jack is taking an experimental malaria vaccine that reduces the chances of getting infected after getting bitten by 50%. If Jack gets bitten by a random mosquito, what is the percentage chance he catches either Zika virus or malaria?\nGive the final numeric answer."
+}

@@ -1,0 +1,123 @@
+{
+  "task_id": "gsm8k:train:seed42:G1:00025",
+  "status": "completed",
+  "error": null,
+  "prediction": "574",
+  "messages": [
+    {
+      "sender": "planner",
+      "content": "Goal: find the predicted number of customers for Saturday.\n\nPlan: Add Friday’s customers across breakfast, lunch, and dinner: 73 + 127 + 87. Then double that total, since Saturday is predicted to have twice Friday’s amount.\n\nConstraints: Use all three Friday customer counts; the final result should be a single number.",
+      "receiver": "solver",
+      "round": 0,
+      "role": "assistant",
+      "prompt_tokens": 234,
+      "completion_tokens": 70,
+      "id": "86ed4d9d9528",
+      "ts": 1793107912.5760205,
+      "meta": {
+        "fields": {},
+        "communication_tokens": 70,
+        "communication_tokens_exact": true,
+        "attempt_count": 1,
+        "fallback": false,
+        "tokens_include_all_attempts": true,
+        "incoming_message_ids": []
+      }
+    },
+    {
+      "sender": "solver",
+      "content": "First add Friday’s customers: 73 + 127 + 87 = 287. Then double it for Saturday: 287 × 2 = 574.\n\n\\boxed{574}",
+      "receiver": "verifier",
+      "round": 0,
+      "role": "assistant",
+      "prompt_tokens": 316,
+      "completion_tokens": 40,
+      "id": "bfb55c0f19aa",
+      "ts": 1793107914.7446895,
+      "meta": {
+        "fields": {
+          "R": "574"
+        },
+        "communication_tokens": 40,
+        "communication_tokens_exact": true,
+        "attempt_count": 1,
+        "fallback": false,
+        "tokens_include_all_attempts": true,
+        "incoming_message_ids": [
+          "86ed4d9d9528"
+        ]
+      }
+    },
+    {
+      "sender": "verifier",
+      "content": "ACCEPT",
+      "receiver": "solver",
+      "round": 0,
+      "role": "assistant",
+      "prompt_tokens": 663,
+      "completion_tokens": 2,
+      "id": "96b64b3837c8",
+      "ts": 1793107916.0071685,
+      "meta": {
+        "fields": {
+          "CHK": "ACCEPT"
+        },
+        "communication_tokens": 2,
+        "communication_tokens_exact": true,
+        "attempt_count": 1,
+        "fallback": false,
+        "tokens_include_all_attempts": true,
+        "incoming_message_ids": [
+          "bfb55c0f19aa"
+        ]
+      }
+    }
+  ],
+  "communication_tokens": 112,
+  "wall_time_s": 4.892451799940318,
+  "verified": true,
+  "revision_rounds": 0,
+  "model_calls": [
+    {
+      "role": "planner",
+      "attempt": 0,
+      "status": "delivered",
+      "error": "",
+      "raw_output": "Goal: find the predicted number of customers for Saturday.\n\nPlan: Add Friday’s customers across breakfast, lunch, and dinner: 73 + 127 + 87. Then double that total, since Saturday is predicted to have twice Friday’s amount.\n\nConstraints: Use all three Friday customer counts; the final result should be a single number.",
+      "finish_reason": "stop",
+      "output_tokens": 70,
+      "usage_available": true
+    },
+    {
+      "role": "solver",
+      "attempt": 0,
+      "status": "delivered",
+      "error": "",
+      "raw_output": "First add Friday’s customers: 73 + 127 + 87 = 287. Then double it for Saturday: 287 × 2 = 574.\n\n\\boxed{574}",
+      "finish_reason": "stop",
+      "output_tokens": 40,
+      "usage_available": true
+    },
+    {
+      "role": "verifier",
+      "attempt": 0,
+      "status": "delivered",
+      "error": "",
+      "raw_output": "ACCEPT",
+      "finish_reason": "stop",
+      "output_tokens": 2,
+      "usage_available": true
+    }
+  ],
+  "failed_attempts": [],
+  "calls": 3,
+  "usage_complete": true,
+  "known_input_tokens": 1213,
+  "known_output_tokens": 112,
+  "model_input_tokens": 1213,
+  "model_output_tokens": 112,
+  "format_failed_calls": 0,
+  "transport_failed_calls": 0,
+  "fallback_calls": 0,
+  "sum_model_latency_s": 4.829674959182739
+}

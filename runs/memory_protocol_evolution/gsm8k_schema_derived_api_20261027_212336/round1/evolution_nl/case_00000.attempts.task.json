@@ -1,0 +1,123 @@
+{
+  "task_id": "gsm8k:train:seed42:G1:00000",
+  "status": "completed",
+  "error": null,
+  "prediction": "56",
+  "messages": [
+    {
+      "sender": "planner",
+      "content": "Goal: find Rebecca’s hours.\n\nPlan: Let Thomas’s hours be x. Express Toby’s hours as 2x - 10. Express Rebecca’s hours as Toby’s hours minus 8, so (2x - 10) - 8 = 2x - 18. Use the total-hours equation x + (2x - 10) + (2x - 18) = 157, solve for x, then compute Rebecca’s hours as 2x - 18.\n\nConstraints: Keep track that the total is 157 hours and that Rebecca is 8 hours less than Toby, not less than Thomas.",
+      "receiver": "solver",
+      "round": 0,
+      "role": "assistant",
+      "prompt_tokens": 207,
+      "completion_tokens": 135,
+      "id": "74e591cdc28f",
+      "ts": 1793107790.431052,
+      "meta": {
+        "fields": {},
+        "communication_tokens": 135,
+        "communication_tokens_exact": true,
+        "attempt_count": 1,
+        "fallback": false,
+        "tokens_include_all_attempts": true,
+        "incoming_message_ids": []
+      }
+    },
+    {
+      "sender": "solver",
+      "content": "Let Thomas work \\(x\\) hours. Then Toby worked \\(2x-10\\), and Rebecca worked \\((2x-10)-8=2x-18\\).\n\nThe total is:\n\\[\nx+(2x-10)+(2x-18)=157\n\\]\n\\[\n5x-28=157\n\\]\n\\[\n5x=185\n\\]\n\\[\nx=37\n\\]\n\nRebecca worked:\n\\[\n2(37)-18=74-18=56\n\\]\n\n\\boxed{56}",
+      "receiver": "verifier",
+      "round": 0,
+      "role": "assistant",
+      "prompt_tokens": 354,
+      "completion_tokens": 108,
+      "id": "e64b82138bf3",
+      "ts": 1793107791.8641498,
+      "meta": {
+        "fields": {
+          "R": "56"
+        },
+        "communication_tokens": 108,
+        "communication_tokens_exact": true,
+        "attempt_count": 1,
+        "fallback": false,
+        "tokens_include_all_attempts": true,
+        "incoming_message_ids": [
+          "74e591cdc28f"
+        ]
+      }
+    },
+    {
+      "sender": "verifier",
+      "content": "ACCEPT",
+      "receiver": "solver",
+      "round": 0,
+      "role": "assistant",
+      "prompt_tokens": 704,
+      "completion_tokens": 2,
+      "id": "9ccb32446b5c",
+      "ts": 1793107792.7219994,
+      "meta": {
+        "fields": {
+          "CHK": "ACCEPT"
+        },
+        "communication_tokens": 2,
+        "communication_tokens_exact": true,
+        "attempt_count": 1,
+        "fallback": false,
+        "tokens_include_all_attempts": true,
+        "incoming_message_ids": [
+          "e64b82138bf3"
+        ]
+      }
+    }
+  ],
+  "communication_tokens": 245,
+  "wall_time_s": 4.290181800024584,
+  "verified": true,
+  "revision_rounds": 0,
+  "model_calls": [
+    {
+      "role": "planner",
+      "attempt": 0,
+      "status": "delivered",
+      "error": "",
+      "raw_output": "Goal: find Rebecca’s hours.\n\nPlan: Let Thomas’s hours be x. Express Toby’s hours as 2x - 10. Express Rebecca’s hours as Toby’s hours minus 8, so (2x - 10) - 8 = 2x - 18. Use the total-hours equation x + (2x - 10) + (2x - 18) = 157, solve for x, then compute Rebecca’s hours as 2x - 18.\n\nConstraints: Keep track that the total is 157 hours and that Rebecca is 8 hours less than Toby, not less than Thomas.",
+      "finish_reason": "stop",
+      "output_tokens": 135,
+      "usage_available": true
+    },
+    {
+      "role": "solver",
+      "attempt": 0,
+      "status": "delivered",
+      "error": "",
+      "raw_output": "Let Thomas work \\(x\\) hours. Then Toby worked \\(2x-10\\), and Rebecca worked \\((2x-10)-8=2x-18\\).\n\nThe total is:\n\\[\nx+(2x-10)+(2x-18)=157\n\\]\n\\[\n5x-28=157\n\\]\n\\[\n5x=185\n\\]\n\\[\nx=37\n\\]\n\nRebecca worked:\n\\[\n2(37)-18=74-18=56\n\\]\n\n\\boxed{56}",
+      "finish_reason": "stop",
+      "output_tokens": 108,
+      "usage_available": true
+    },
+    {
+      "role": "verifier",
+      "attempt": 0,
+      "status": "delivered",
+      "error": "",
+      "raw_output": "ACCEPT",
+      "finish_reason": "stop",
+      "output_tokens": 2,
+      "usage_available": true
+    }
+  ],
+  "failed_attempts": [],
+  "calls": 3,
+  "usage_complete": true,
+  "known_input_tokens": 1265,
+  "known_output_tokens": 245,
+  "model_input_tokens": 1265,
+  "model_output_tokens": 245,
+  "format_failed_calls": 0,
+  "transport_failed_calls": 0,
+  "fallback_calls": 0,
+  "sum_model_latency_s": 4.21854567527771
+}

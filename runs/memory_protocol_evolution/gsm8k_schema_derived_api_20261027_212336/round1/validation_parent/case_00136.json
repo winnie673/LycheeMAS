@@ -1,0 +1,151 @@
+{
+  "task_id": "gsm8k:train:seed42:V:00136",
+  "status": "completed",
+  "error": null,
+  "prediction": "6",
+  "messages": [
+    {
+      "sender": "planner",
+      "content": "G:uneaten_eggs_per_week;P:weekly_eaten=(2+4)*7,weekly_bought=2*24,uneaten=weekly_bought-weekly_eaten",
+      "receiver": "solver",
+      "round": 0,
+      "role": "assistant",
+      "prompt_tokens": 757,
+      "completion_tokens": 41,
+      "id": "2137a6cf86ae",
+      "ts": 1793108669.3067086,
+      "meta": {
+        "sender": "planner",
+        "receiver": "solver",
+        "message_id": "2137a6cf86ae",
+        "protocol_edge": "planner_to_solver",
+        "protocol_version": "CARD-0-gsm8k",
+        "protocol_hash": "4bcdae885cc464e0a51977368e4bc06650c0326dbdcb182ce0327477c1d32daa",
+        "contract_hash": "ab4b736240365db5d0ce2caea032f40a3b7fc9c189db42d5ebcd28cac0fac22b",
+        "fields": {
+          "G": "uneaten_eggs_per_week",
+          "P": "weekly_eaten=(2+4)*7,weekly_bought=2*24,uneaten=weekly_bought-weekly_eaten"
+        },
+        "communication_tokens": 41,
+        "communication_tokens_exact": true,
+        "attempt_count": 1,
+        "fallback": false,
+        "tokens_include_all_attempts": true,
+        "incoming_message_ids": []
+      }
+    },
+    {
+      "sender": "solver",
+      "content": "IR:weekly_eaten=(2+4)*7=42,weekly_bought=2*24=48,uneaten=48-42=6;R:6",
+      "receiver": "verifier",
+      "round": 0,
+      "role": "assistant",
+      "prompt_tokens": 740,
+      "completion_tokens": 36,
+      "id": "05e6598df31e",
+      "ts": 1793108670.4561188,
+      "meta": {
+        "sender": "solver",
+        "receiver": "verifier",
+        "message_id": "05e6598df31e",
+        "protocol_edge": "solver_to_verifier",
+        "protocol_version": "CARD-0-gsm8k",
+        "protocol_hash": "4bcdae885cc464e0a51977368e4bc06650c0326dbdcb182ce0327477c1d32daa",
+        "contract_hash": "ab4b736240365db5d0ce2caea032f40a3b7fc9c189db42d5ebcd28cac0fac22b",
+        "fields": {
+          "IR": "weekly_eaten=(2+4)*7=42,weekly_bought=2*24=48,uneaten=48-42=6",
+          "R": "6"
+        },
+        "communication_tokens": 36,
+        "communication_tokens_exact": true,
+        "attempt_count": 1,
+        "fallback": false,
+        "tokens_include_all_attempts": true,
+        "incoming_message_ids": [
+          "2137a6cf86ae"
+        ]
+      }
+    },
+    {
+      "sender": "verifier",
+      "content": "CHK:ACCEPT",
+      "receiver": "solver",
+      "round": 0,
+      "role": "assistant",
+      "prompt_tokens": 1101,
+      "completion_tokens": 5,
+      "id": "9f3cacbd89ea",
+      "ts": 1793108671.6846733,
+      "meta": {
+        "sender": "verifier",
+        "receiver": "solver",
+        "message_id": "9f3cacbd89ea",
+        "protocol_edge": "verifier_to_solver",
+        "protocol_version": "CARD-0-gsm8k",
+        "protocol_hash": "4bcdae885cc464e0a51977368e4bc06650c0326dbdcb182ce0327477c1d32daa",
+        "contract_hash": "ab4b736240365db5d0ce2caea032f40a3b7fc9c189db42d5ebcd28cac0fac22b",
+        "fields": {
+          "CHK": "ACCEPT"
+        },
+        "communication_tokens": 5,
+        "communication_tokens_exact": true,
+        "attempt_count": 1,
+        "fallback": false,
+        "tokens_include_all_attempts": true,
+        "incoming_message_ids": [
+          "05e6598df31e"
+        ]
+      }
+    }
+  ],
+  "communication_tokens": 82,
+  "wall_time_s": 4.469746599905193,
+  "verified": true,
+  "revision_rounds": 0,
+  "model_calls": [
+    {
+      "role": "planner",
+      "attempt": 0,
+      "status": "delivered",
+      "error": "",
+      "raw_output": "G:uneaten_eggs_per_week;P:weekly_eaten=(2+4)*7,weekly_bought=2*24,uneaten=weekly_bought-weekly_eaten",
+      "finish_reason": "stop",
+      "output_tokens": 41,
+      "usage_available": true
+    },
+    {
+      "role": "solver",
+      "attempt": 0,
+      "status": "delivered",
+      "error": "",
+      "raw_output": "IR:weekly_eaten=(2+4)*7=42,weekly_bought=2*24=48,uneaten=48-42=6;R:6",
+      "finish_reason": "stop",
+      "output_tokens": 36,
+      "usage_available": true
+    },
+    {
+      "role": "verifier",
+      "attempt": 0,
+      "status": "delivered",
+      "error": "",
+      "raw_output": "CHK:ACCEPT",
+      "finish_reason": "stop",
+      "output_tokens": 5,
+      "usage_available": true
+    }
+  ],
+  "failed_attempts": [],
+  "calls": 3,
+  "usage_complete": true,
+  "known_input_tokens": 2598,
+  "known_output_tokens": 82,
+  "model_input_tokens": 2598,
+  "model_output_tokens": 82,
+  "format_failed_calls": 0,
+  "transport_failed_calls": 0,
+  "fallback_calls": 0,
+  "sum_model_latency_s": 3.5160694122314453,
+  "gold": "6",
+  "score": 1.0,
+  "question": "Rhea buys 2 trays of eggs every week for her family. Her son and daughter eat 2 eggs every morning, and Rhea and her husband eat 4 eggs every night. If each tray has 24 eggs, how many eggs are not being eaten every week?\nGive the final numeric answer."
+}

@@ -1,0 +1,152 @@
+{
+  "task_id": "gsm8k:train:seed42:V:00062",
+  "status": "completed",
+  "error": null,
+  "prediction": "40",
+  "messages": [
+    {
+      "sender": "planner",
+      "content": "G:first_pack_weight;P:total_miles=2.5*8*5,total_supplies=0.5*total_miles,first_pack=total_supplies/1.25;NL:The 25% resupply is 25% as large as the first pack, so total supplies equal 1.25 times the first pack.",
+      "receiver": "solver",
+      "round": 0,
+      "role": "assistant",
+      "prompt_tokens": 934,
+      "completion_tokens": 79,
+      "id": "1abd63de4c45",
+      "ts": 1793111382.413746,
+      "meta": {
+        "sender": "planner",
+        "receiver": "solver",
+        "message_id": "1abd63de4c45",
+        "protocol_edge": "planner_to_solver",
+        "protocol_version": "CARD-2-gsm8k",
+        "protocol_hash": "aec703067bbfeee6aa1e642a2a319658f1d33f2eff00c8701de19347f616ed6d",
+        "contract_hash": "ab4b736240365db5d0ce2caea032f40a3b7fc9c189db42d5ebcd28cac0fac22b",
+        "fields": {
+          "G": "first_pack_weight",
+          "P": "total_miles=2.5*8*5,total_supplies=0.5*total_miles,first_pack=total_supplies/1.25",
+          "NL": "The 25% resupply is 25% as large as the first pack, so total supplies equal 1.25 times the first pack."
+        },
+        "communication_tokens": 79,
+        "communication_tokens_exact": true,
+        "attempt_count": 1,
+        "fallback": false,
+        "tokens_include_all_attempts": true,
+        "incoming_message_ids": []
+      }
+    },
+    {
+      "sender": "solver",
+      "content": "IR:total_miles=2.5*8*5=100,total_supplies=0.5*100=50,first_pack=50/1.25=40;R:40",
+      "receiver": "verifier",
+      "round": 0,
+      "role": "assistant",
+      "prompt_tokens": 831,
+      "completion_tokens": 44,
+      "id": "6229a45744f3",
+      "ts": 1793111383.658719,
+      "meta": {
+        "sender": "solver",
+        "receiver": "verifier",
+        "message_id": "6229a45744f3",
+        "protocol_edge": "solver_to_verifier",
+        "protocol_version": "CARD-2-gsm8k",
+        "protocol_hash": "aec703067bbfeee6aa1e642a2a319658f1d33f2eff00c8701de19347f616ed6d",
+        "contract_hash": "ab4b736240365db5d0ce2caea032f40a3b7fc9c189db42d5ebcd28cac0fac22b",
+        "fields": {
+          "IR": "total_miles=2.5*8*5=100,total_supplies=0.5*100=50,first_pack=50/1.25=40",
+          "R": "40"
+        },
+        "communication_tokens": 44,
+        "communication_tokens_exact": true,
+        "attempt_count": 1,
+        "fallback": false,
+        "tokens_include_all_attempts": true,
+        "incoming_message_ids": [
+          "1abd63de4c45"
+        ]
+      }
+    },
+    {
+      "sender": "verifier",
+      "content": "CHK:ACCEPT",
+      "receiver": "solver",
+      "round": 0,
+      "role": "assistant",
+      "prompt_tokens": 1162,
+      "completion_tokens": 5,
+      "id": "bfdd4f606bf6",
+      "ts": 1793111384.867409,
+      "meta": {
+        "sender": "verifier",
+        "receiver": "solver",
+        "message_id": "bfdd4f606bf6",
+        "protocol_edge": "verifier_to_solver",
+        "protocol_version": "CARD-2-gsm8k",
+        "protocol_hash": "aec703067bbfeee6aa1e642a2a319658f1d33f2eff00c8701de19347f616ed6d",
+        "contract_hash": "ab4b736240365db5d0ce2caea032f40a3b7fc9c189db42d5ebcd28cac0fac22b",
+        "fields": {
+          "CHK": "ACCEPT"
+        },
+        "communication_tokens": 5,
+        "communication_tokens_exact": true,
+        "attempt_count": 1,
+        "fallback": false,
+        "tokens_include_all_attempts": true,
+        "incoming_message_ids": [
+          "6229a45744f3"
+        ]
+      }
+    }
+  ],
+  "communication_tokens": 128,
+  "wall_time_s": 3.877127700019628,
+  "verified": true,
+  "revision_rounds": 0,
+  "model_calls": [
+    {
+      "role": "planner",
+      "attempt": 0,
+      "status": "delivered",
+      "error": "",
+      "raw_output": "G:first_pack_weight;P:total_miles=2.5*8*5,total_supplies=0.5*total_miles,first_pack=total_supplies/1.25;NL:The 25% resupply is 25% as large as the first pack, so total supplies equal 1.25 times the first pack.",
+      "finish_reason": "stop",
+      "output_tokens": 79,
+      "usage_available": true
+    },
+    {
+      "role": "solver",
+      "attempt": 0,
+      "status": "delivered",
+      "error": "",
+      "raw_output": "IR:total_miles=2.5*8*5=100,total_supplies=0.5*100=50,first_pack=50/1.25=40;R:40",
+      "finish_reason": "stop",
+      "output_tokens": 44,
+      "usage_available": true
+    },
+    {
+      "role": "verifier",
+      "attempt": 0,
+      "status": "delivered",
+      "error": "",
+      "raw_output": "CHK:ACCEPT",
+      "finish_reason": "stop",
+      "output_tokens": 5,
+      "usage_available": true
+    }
+  ],
+  "failed_attempts": [],
+  "calls": 3,
+  "usage_complete": true,
+  "known_input_tokens": 2927,
+  "known_output_tokens": 128,
+  "model_input_tokens": 2927,
+  "model_output_tokens": 128,
+  "format_failed_calls": 0,
+  "transport_failed_calls": 0,
+  "fallback_calls": 0,
+  "sum_model_latency_s": 3.795867681503296,
+  "gold": "40",
+  "score": 1.0,
+  "question": "A man loves to go hiking.  He knows that he has to pack about .5 pounds of supplies for every mile he hikes.  He plans to go for a very long hike.  He knows that he can get 1 resupply during the hike that will be 25% as large as his first pack.  He can hike at a rate of 2.5 mph.  He is going to hike 8 hours a day for 5 days.  How much does he need to bring with his first pack?\nGive the final numeric answer."
+}

@@ -1,0 +1,95 @@
+{
+  "task_id": "gsm8k:test:seed42:T:00017",
+  "mode": "nl",
+  "benchmark": "gsm8k",
+  "status": "completed",
+  "error": null,
+  "prediction": "57500",
+  "gold": "57500",
+  "wall_time_s": 3.350052800029516,
+  "communication_tokens": 137,
+  "communication_tokens_exact": true,
+  "revision_rounds": 0,
+  "verification_decision": "ACCEPT",
+  "verified": true,
+  "messages": [
+    {
+      "sender": "planner",
+      "content": "Goal: find Jill's total annual salary from both jobs.\n\nPlan: Compute her weekly earnings from teaching (35 hours × $20/hour) and from coaching (15 hours × $30/hour), add them to get weekly total, then multiply by 50 weeks.\n\nConstraints: Use the given hourly rates and weekly hours; assume she works all 50 weeks at both jobs. Provide the final numeric answer.",
+      "receiver": "solver",
+      "round": 0,
+      "role": "assistant",
+      "prompt_tokens": 206,
+      "completion_tokens": 81,
+      "id": "372c6a1884c1",
+      "ts": 1793169107.1590347,
+      "meta": {
+        "fields": {},
+        "communication_tokens": 81,
+        "communication_tokens_exact": true,
+        "attempt_count": 1,
+        "fallback": false,
+        "tokens_include_all_attempts": true,
+        "incoming_message_ids": []
+      }
+    },
+    {
+      "sender": "solver",
+      "content": "Teaching: 35 × $20 = $700/week. Coaching: 15 × $30 = $450/week. Weekly total = $1,150. Annual = $1,150 × 50 = $57,500.\n\n\\boxed{57500}",
+      "receiver": "verifier",
+      "round": 0,
+      "role": "assistant",
+      "prompt_tokens": 299,
+      "completion_tokens": 54,
+      "id": "24690c422829",
+      "ts": 1793169108.4125447,
+      "meta": {
+        "fields": {
+          "R": "57500"
+        },
+        "communication_tokens": 54,
+        "communication_tokens_exact": true,
+        "attempt_count": 1,
+        "fallback": false,
+        "tokens_include_all_attempts": true,
+        "incoming_message_ids": [
+          "372c6a1884c1"
+        ]
+      }
+    },
+    {
+      "sender": "verifier",
+      "content": "ACCEPT",
+      "receiver": "solver",
+      "round": 0,
+      "role": "assistant",
+      "prompt_tokens": 649,
+      "completion_tokens": 2,
+      "id": "2497891d886c",
+      "ts": 1793169109.226367,
+      "meta": {
+        "fields": {
+          "CHK": "ACCEPT"
+        },
+        "communication_tokens": 2,
+        "communication_tokens_exact": true,
+        "attempt_count": 1,
+        "fallback": false,
+        "tokens_include_all_attempts": true,
+        "incoming_message_ids": [
+          "24690c422829"
+        ]
+      }
+    }
+  ],
+  "calls": 3,
+  "usage_complete": true,
+  "known_input_tokens": 1154,
+  "known_output_tokens": 137,
+  "model_input_tokens": 1154,
+  "model_output_tokens": 137,
+  "format_failed_calls": 0,
+  "transport_failed_calls": 0,
+  "fallback_calls": 0,
+  "sum_model_latency_s": 3.315416097640991
+}

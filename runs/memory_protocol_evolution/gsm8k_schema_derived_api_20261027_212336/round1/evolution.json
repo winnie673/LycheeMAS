@@ -1,0 +1,17 @@
+{
+  "decision": "UPDATE",
+  "reason": "Diagnosed evidence shows the symbolic P plan can silently drop a bundle multiplicity (00016: 'four times as much profit for two pairs' encoded as per-pair multiplier, yielding 301 vs 175), while the NL path preserved it. The current P rule only says 'concise symbolic relations and operation direction' and does not require preserving the quantity a stated multiple/rate applies to. A minimal tightening of the P rule to require explicit multiplicity/denominator for stated multiples/rates addresses the root cause without adding fields or edges. The prose-overhead cases (00022/00023/00041/00043) confirm symbolic P is sufficient and should be kept, so no change to NL or examples is warranted.",
+  "changed_paths": [
+    "planner_to_solver.field_rules.P"
+  ],
+  "eligible_case_ids": [
+    "gsm8k:train:seed42:G1:00016",
+    "gsm8k:train:seed42:G1:00019",
+    "gsm8k:train:seed42:G1:00022",
+    "gsm8k:train:seed42:G1:00023",
+    "gsm8k:train:seed42:G1:00031",
+    "gsm8k:train:seed42:G1:00041",
+    "gsm8k:train:seed42:G1:00043",
+    "gsm8k:train:seed42:G1:00044"
+  ]
+}

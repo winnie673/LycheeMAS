@@ -1,0 +1,149 @@
+{
+  "task_id": "gsm8k:train:seed42:V:00193",
+  "status": "completed",
+  "error": null,
+  "prediction": "33",
+  "messages": [
+    {
+      "sender": "planner",
+      "content": "K:goats=66,chickens=2*goats,ducks=(goats+chickens)/2,pigs=ducks/3;G:goats_minus_pigs;P:chickens=2*66,ducks=(66+chickens)/2,pigs=ducks/3,difference=66-pigs",
+      "receiver": "solver",
+      "round": 0,
+      "role": "assistant",
+      "prompt_tokens": 754,
+      "completion_tokens": 77,
+      "id": "034eaa3f1b7a",
+      "ts": 1793111091.8451219,
+      "meta": {
+        "sender": "planner",
+        "receiver": "solver",
+        "message_id": "034eaa3f1b7a",
+        "protocol_edge": "planner_to_solver",
+        "protocol_version": "CARD-0-gsm8k",
+        "protocol_hash": "4bcdae885cc464e0a51977368e4bc06650c0326dbdcb182ce0327477c1d32daa",
+        "contract_hash": "ab4b736240365db5d0ce2caea032f40a3b7fc9c189db42d5ebcd28cac0fac22b",
+        "fields": {
+          "K": "goats=66,chickens=2*goats,ducks=(goats+chickens)/2,pigs=ducks/3",
+          "G": "goats_minus_pigs",
+          "P": "chickens=2*66,ducks=(66+chickens)/2,pigs=ducks/3,difference=66-pigs"
+        },
+        "communication_tokens": 77,
+        "communication_tokens_exact": true,
+        "attempt_count": 1,
+        "fallback": false,
+        "tokens_include_all_attempts": true,
+        "incoming_message_ids": []
+      }
+    },
+    {
+      "sender": "solver",
+      "content": "IR:chickens=2*66=132,ducks=(66+132)/2=99,pigs=99/3=33,difference=66-33=33;R:33",
+      "receiver": "verifier",
+      "round": 0,
+      "role": "assistant",
+      "prompt_tokens": 773,
+      "completion_tokens": 42,
+      "id": "e35fa8194711",
+      "ts": 1793111093.0344076,
+      "meta": {
+        "sender": "solver",
+        "receiver": "verifier",
+        "message_id": "e35fa8194711",
+        "protocol_edge": "solver_to_verifier",
+        "protocol_version": "CARD-0-gsm8k",
+        "protocol_hash": "4bcdae885cc464e0a51977368e4bc06650c0326dbdcb182ce0327477c1d32daa",
+        "contract_hash": "ab4b736240365db5d0ce2caea032f40a3b7fc9c189db42d5ebcd28cac0fac22b",
+        "fields": {
+          "IR": "chickens=2*66=132,ducks=(66+132)/2=99,pigs=99/3=33,difference=66-33=33",
+          "R": "33"
+        },
+        "communication_tokens": 42,
+        "communication_tokens_exact": true,
+        "attempt_count": 1,
+        "fallback": false,
+        "tokens_include_all_attempts": true,
+        "incoming_message_ids": [
+          "034eaa3f1b7a"
+        ]
+      }
+    },
+    {
+      "sender": "verifier",
+      "content": "CHK:ACCEPT",
+      "receiver": "solver",
+      "round": 0,
+      "role": "assistant",
+      "prompt_tokens": 1104,
+      "completion_tokens": 5,
+      "id": "f64c1e757fe8",
+      "ts": 1793111094.2679937,
+      "meta": {
+        "sender": "verifier",
+        "receiver": "solver",
+        "message_id": "f64c1e757fe8",
+        "protocol_edge": "verifier_to_solver",
+        "protocol_version": "CARD-0-gsm8k",
+        "protocol_hash": "4bcdae885cc464e0a51977368e4bc06650c0326dbdcb182ce0327477c1d32daa",
+        "contract_hash": "ab4b736240365db5d0ce2caea032f40a3b7fc9c189db42d5ebcd28cac0fac22b",
+        "fields": {
+          "CHK": "ACCEPT"
+        },
+        "communication_tokens": 5,
+        "communication_tokens_exact": true,
+        "attempt_count": 1,
+        "fallback": false,
+        "tokens_include_all_attempts": true,
+        "incoming_message_ids": [
+          "e35fa8194711"
+        ]
+      }
+    }
+  ],
+  "communication_tokens": 124,
+  "wall_time_s": 3.7978102000197396,
+  "verified": true,
+  "revision_rounds": 0,
+  "model_calls": [
+    {
+      "role": "planner",
+      "attempt": 0,
+      "status": "delivered",
+      "error": "",
+      "raw_output": "K:goats=66,chickens=2*goats,ducks=(goats+chickens)/2,pigs=ducks/3;G:goats_minus_pigs;P:chickens=2*66,ducks=(66+chickens)/2,pigs=ducks/3,difference=66-pigs",
+      "finish_reason": "stop",
+      "output_tokens": 77,
+      "usage_available": true
+    },
+    {
+      "role": "solver",
+      "attempt": 0,
+      "status": "delivered",
+      "error": "",
+      "raw_output": "IR:chickens=2*66=132,ducks=(66+132)/2=99,pigs=99/3=33,difference=66-33=33;R:33",
+      "finish_reason": "stop",
+      "output_tokens": 42,
+      "usage_available": true
+    },
+    {
+      "role": "verifier",
+      "attempt": 0,
+      "status": "delivered",
+      "error": "",
+      "raw_output": "CHK:ACCEPT",
+      "finish_reason": "stop",
+      "output_tokens": 5,
+      "usage_available": true
+    }
+  ],
+  "failed_attempts": [],
+  "calls": 3,
+  "usage_complete": true,
+  "known_input_tokens": 2631,
+  "known_output_tokens": 124,
+  "model_input_tokens": 2631,
+  "model_output_tokens": 124,
+  "format_failed_calls": 0,
+  "transport_failed_calls": 0,
+  "fallback_calls": 0,
+  "sum_model_latency_s": 3.725219249725342
+}

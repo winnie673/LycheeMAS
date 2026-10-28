@@ -1,0 +1,121 @@
+{
+  "task_id": "gsm8k:test:seed42:T:00020",
+  "mode": "hybrid",
+  "benchmark": "gsm8k",
+  "status": "completed",
+  "error": null,
+  "prediction": "15",
+  "gold": "15",
+  "wall_time_s": 3.622135999961756,
+  "communication_tokens": 142,
+  "communication_tokens_exact": true,
+  "revision_rounds": 0,
+  "verification_decision": "ACCEPT",
+  "verified": true,
+  "messages": [
+    {
+      "sender": "planner",
+      "content": "K:orange_initial=10,orange_water_fraction=2/3,pineapple=15,pineapple_water_fraction=3/5,spilled_orange=1;G:water_in_remaining_24_liters;P:orange_remaining=orange_initial-spilled_orange,water=orange_remaining*orange_water_fraction+pineapple*pineapple_water_fraction",
+      "receiver": "solver",
+      "round": 0,
+      "role": "assistant",
+      "prompt_tokens": 761,
+      "completion_tokens": 87,
+      "id": "59a3ffec88cc",
+      "ts": 1793169127.4168112,
+      "meta": {
+        "sender": "planner",
+        "receiver": "solver",
+        "message_id": "59a3ffec88cc",
+        "protocol_edge": "planner_to_solver",
+        "protocol_version": "CARD-0-gsm8k",
+        "protocol_hash": "4bcdae885cc464e0a51977368e4bc06650c0326dbdcb182ce0327477c1d32daa",
+        "contract_hash": "ab4b736240365db5d0ce2caea032f40a3b7fc9c189db42d5ebcd28cac0fac22b",
+        "fields": {
+          "K": "orange_initial=10,orange_water_fraction=2/3,pineapple=15,pineapple_water_fraction=3/5,spilled_orange=1",
+          "G": "water_in_remaining_24_liters",
+          "P": "orange_remaining=orange_initial-spilled_orange,water=orange_remaining*orange_water_fraction+pineapple*pineapple_water_fraction"
+        },
+        "communication_tokens": 87,
+        "communication_tokens_exact": true,
+        "attempt_count": 1,
+        "fallback": false,
+        "tokens_include_all_attempts": true,
+        "incoming_message_ids": []
+      }
+    },
+    {
+      "sender": "solver",
+      "content": "IR:orange_remaining=10-1=9,orange_water=9*2/3=6,pineapple_water=15*3/5=9,total_water=6+9=15;R:15",
+      "receiver": "verifier",
+      "round": 0,
+      "role": "assistant",
+      "prompt_tokens": 790,
+      "completion_tokens": 50,
+      "id": "673dc83e452a",
+      "ts": 1793169128.4466126,
+      "meta": {
+        "sender": "solver",
+        "receiver": "verifier",
+        "message_id": "673dc83e452a",
+        "protocol_edge": "solver_to_verifier",
+        "protocol_version": "CARD-0-gsm8k",
+        "protocol_hash": "4bcdae885cc464e0a51977368e4bc06650c0326dbdcb182ce0327477c1d32daa",
+        "contract_hash": "ab4b736240365db5d0ce2caea032f40a3b7fc9c189db42d5ebcd28cac0fac22b",
+        "fields": {
+          "IR": "orange_remaining=10-1=9,orange_water=9*2/3=6,pineapple_water=15*3/5=9,total_water=6+9=15",
+          "R": "15"
+        },
+        "communication_tokens": 50,
+        "communication_tokens_exact": true,
+        "attempt_count": 1,
+        "fallback": false,
+        "tokens_include_all_attempts": true,
+        "incoming_message_ids": [
+          "59a3ffec88cc"
+        ]
+      }
+    },
+    {
+      "sender": "verifier",
+      "content": "CHK:ACCEPT",
+      "receiver": "solver",
+      "round": 0,
+      "role": "assistant",
+      "prompt_tokens": 1119,
+      "completion_tokens": 5,
+      "id": "fe55bffd5920",
+      "ts": 1793169129.7681808,
+      "meta": {
+        "sender": "verifier",
+        "receiver": "solver",
+        "message_id": "fe55bffd5920",
+        "protocol_edge": "verifier_to_solver",
+        "protocol_version": "CARD-0-gsm8k",
+        "protocol_hash": "4bcdae885cc464e0a51977368e4bc06650c0326dbdcb182ce0327477c1d32daa",
+        "contract_hash": "ab4b736240365db5d0ce2caea032f40a3b7fc9c189db42d5ebcd28cac0fac22b",
+        "fields": {
+          "CHK": "ACCEPT"
+        },
+        "communication_tokens": 5,
+        "communication_tokens_exact": true,
+        "attempt_count": 1,
+        "fallback": false,
+        "tokens_include_all_attempts": true,
+        "incoming_message_ids": [
+          "673dc83e452a"
+        ]
+      }
+    }
+  ],
+  "calls": 3,
+  "usage_complete": true,
+  "known_input_tokens": 2670,
+  "known_output_tokens": 142,
+  "model_input_tokens": 2670,
+  "model_output_tokens": 142,
+  "format_failed_calls": 0,
+  "transport_failed_calls": 0,
+  "fallback_calls": 0,
+  "sum_model_latency_s": 3.523623466491699
+}

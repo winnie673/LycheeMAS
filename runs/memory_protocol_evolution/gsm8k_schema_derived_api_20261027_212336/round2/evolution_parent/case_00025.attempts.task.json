@@ -1,0 +1,148 @@
+{
+  "task_id": "gsm8k:train:seed42:G2:00025",
+  "status": "completed",
+  "error": null,
+  "prediction": "50",
+  "messages": [
+    {
+      "sender": "planner",
+      "content": "G:number_of_students;P:gift_cards=50/10,thank_you_cards=gift_cards/(1/3),number_of_students=thank_you_cards/0.30",
+      "receiver": "solver",
+      "round": 0,
+      "role": "assistant",
+      "prompt_tokens": 747,
+      "completion_tokens": 48,
+      "id": "d1eb2477de4c",
+      "ts": 1793109937.9051561,
+      "meta": {
+        "sender": "planner",
+        "receiver": "solver",
+        "message_id": "d1eb2477de4c",
+        "protocol_edge": "planner_to_solver",
+        "protocol_version": "CARD-0-gsm8k",
+        "protocol_hash": "4bcdae885cc464e0a51977368e4bc06650c0326dbdcb182ce0327477c1d32daa",
+        "contract_hash": "ab4b736240365db5d0ce2caea032f40a3b7fc9c189db42d5ebcd28cac0fac22b",
+        "fields": {
+          "G": "number_of_students",
+          "P": "gift_cards=50/10,thank_you_cards=gift_cards/(1/3),number_of_students=thank_you_cards/0.30"
+        },
+        "communication_tokens": 48,
+        "communication_tokens_exact": true,
+        "attempt_count": 1,
+        "fallback": false,
+        "tokens_include_all_attempts": true,
+        "incoming_message_ids": []
+      }
+    },
+    {
+      "sender": "solver",
+      "content": "IR:gift_cards=50/10=5,thank_you_cards=5/(1/3)=15,number_of_students=15/0.30=50;R:50",
+      "receiver": "verifier",
+      "round": 0,
+      "role": "assistant",
+      "prompt_tokens": 737,
+      "completion_tokens": 44,
+      "id": "c8a00c890447",
+      "ts": 1793109938.894927,
+      "meta": {
+        "sender": "solver",
+        "receiver": "verifier",
+        "message_id": "c8a00c890447",
+        "protocol_edge": "solver_to_verifier",
+        "protocol_version": "CARD-0-gsm8k",
+        "protocol_hash": "4bcdae885cc464e0a51977368e4bc06650c0326dbdcb182ce0327477c1d32daa",
+        "contract_hash": "ab4b736240365db5d0ce2caea032f40a3b7fc9c189db42d5ebcd28cac0fac22b",
+        "fields": {
+          "IR": "gift_cards=50/10=5,thank_you_cards=5/(1/3)=15,number_of_students=15/0.30=50",
+          "R": "50"
+        },
+        "communication_tokens": 44,
+        "communication_tokens_exact": true,
+        "attempt_count": 1,
+        "fallback": false,
+        "tokens_include_all_attempts": true,
+        "incoming_message_ids": [
+          "d1eb2477de4c"
+        ]
+      }
+    },
+    {
+      "sender": "verifier",
+      "content": "CHK:ACCEPT",
+      "receiver": "solver",
+      "round": 0,
+      "role": "assistant",
+      "prompt_tokens": 1099,
+      "completion_tokens": 5,
+      "id": "bedd63a79b72",
+      "ts": 1793109939.8505898,
+      "meta": {
+        "sender": "verifier",
+        "receiver": "solver",
+        "message_id": "bedd63a79b72",
+        "protocol_edge": "verifier_to_solver",
+        "protocol_version": "CARD-0-gsm8k",
+        "protocol_hash": "4bcdae885cc464e0a51977368e4bc06650c0326dbdcb182ce0327477c1d32daa",
+        "contract_hash": "ab4b736240365db5d0ce2caea032f40a3b7fc9c189db42d5ebcd28cac0fac22b",
+        "fields": {
+          "CHK": "ACCEPT"
+        },
+        "communication_tokens": 5,
+        "communication_tokens_exact": true,
+        "attempt_count": 1,
+        "fallback": false,
+        "tokens_include_all_attempts": true,
+        "incoming_message_ids": [
+          "c8a00c890447"
+        ]
+      }
+    }
+  ],
+  "communication_tokens": 97,
+  "wall_time_s": 3.496323800063692,
+  "verified": true,
+  "revision_rounds": 0,
+  "model_calls": [
+    {
+      "role": "planner",
+      "attempt": 0,
+      "status": "delivered",
+      "error": "",
+      "raw_output": "G:number_of_students;P:gift_cards=50/10,thank_you_cards=gift_cards/(1/3),number_of_students=thank_you_cards/0.30",
+      "finish_reason": "stop",
+      "output_tokens": 48,
+      "usage_available": true
+    },
+    {
+      "role": "solver",
+      "attempt": 0,
+      "status": "delivered",
+      "error": "",
+      "raw_output": "IR:gift_cards=50/10=5,thank_you_cards=5/(1/3)=15,number_of_students=15/0.30=50;R:50",
+      "finish_reason": "stop",
+      "output_tokens": 44,
+      "usage_available": true
+    },
+    {
+      "role": "verifier",
+      "attempt": 0,
+      "status": "delivered",
+      "error": "",
+      "raw_output": "CHK:ACCEPT",
+      "finish_reason": "stop",
+      "output_tokens": 5,
+      "usage_available": true
+    }
+  ],
+  "failed_attempts": [],
+  "calls": 3,
+  "usage_complete": true,
+  "known_input_tokens": 2583,
+  "known_output_tokens": 97,
+  "model_input_tokens": 2583,
+  "model_output_tokens": 97,
+  "format_failed_calls": 0,
+  "transport_failed_calls": 0,
+  "fallback_calls": 0,
+  "sum_model_latency_s": 3.3001186847686768
+}

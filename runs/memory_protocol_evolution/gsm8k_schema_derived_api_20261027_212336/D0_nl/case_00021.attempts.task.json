@@ -1,0 +1,123 @@
+{
+  "task_id": "gsm8k:test:seed42:D0_NL:00001",
+  "status": "completed",
+  "error": null,
+  "prediction": "25000",
+  "messages": [
+    {
+      "sender": "planner",
+      "content": "Goal: find Marcy’s annual pension if she quits after 30 years.\n\nPlan: Use the rule that after 20 years she earns 5% of the full $50,000 pension for each year beyond 20. Determine how many years past 20 she has worked at 30 years, multiply that number by 5% of $50,000, and report the resulting annual pension amount.\n\nConstraints: Do not count the first 20 years as earning any percentage; apply the 5% per year only to the years after 20.",
+      "receiver": "solver",
+      "round": 0,
+      "role": "assistant",
+      "prompt_tokens": 216,
+      "completion_tokens": 114,
+      "id": "57d78bee013f",
+      "ts": 1793107535.1719089,
+      "meta": {
+        "fields": {},
+        "communication_tokens": 114,
+        "communication_tokens_exact": true,
+        "attempt_count": 1,
+        "fallback": false,
+        "tokens_include_all_attempts": true,
+        "incoming_message_ids": []
+      }
+    },
+    {
+      "sender": "solver",
+      "content": "She works 10 years beyond the 20-year threshold. Each year gives 5% of $50,000, which is $2,500. So 10 × $2,500 = $25,000.\n\n\\boxed{25000}",
+      "receiver": "verifier",
+      "round": 0,
+      "role": "assistant",
+      "prompt_tokens": 342,
+      "completion_tokens": 52,
+      "id": "994d64b50985",
+      "ts": 1793107536.1061468,
+      "meta": {
+        "fields": {
+          "R": "25000"
+        },
+        "communication_tokens": 52,
+        "communication_tokens_exact": true,
+        "attempt_count": 1,
+        "fallback": false,
+        "tokens_include_all_attempts": true,
+        "incoming_message_ids": [
+          "57d78bee013f"
+        ]
+      }
+    },
+    {
+      "sender": "verifier",
+      "content": "ACCEPT",
+      "receiver": "solver",
+      "round": 0,
+      "role": "assistant",
+      "prompt_tokens": 657,
+      "completion_tokens": 2,
+      "id": "27648f0bae9f",
+      "ts": 1793107537.912588,
+      "meta": {
+        "fields": {
+          "CHK": "ACCEPT"
+        },
+        "communication_tokens": 2,
+        "communication_tokens_exact": true,
+        "attempt_count": 1,
+        "fallback": false,
+        "tokens_include_all_attempts": true,
+        "incoming_message_ids": [
+          "994d64b50985"
+        ]
+      }
+    }
+  ],
+  "communication_tokens": 168,
+  "wall_time_s": 4.387956099933945,
+  "verified": true,
+  "revision_rounds": 0,
+  "model_calls": [
+    {
+      "role": "planner",
+      "attempt": 0,
+      "status": "delivered",
+      "error": "",
+      "raw_output": "Goal: find Marcy’s annual pension if she quits after 30 years.\n\nPlan: Use the rule that after 20 years she earns 5% of the full $50,000 pension for each year beyond 20. Determine how many years past 20 she has worked at 30 years, multiply that number by 5% of $50,000, and report the resulting annual pension amount.\n\nConstraints: Do not count the first 20 years as earning any percentage; apply the 5% per year only to the years after 20.",
+      "finish_reason": "stop",
+      "output_tokens": 114,
+      "usage_available": true
+    },
+    {
+      "role": "solver",
+      "attempt": 0,
+      "status": "delivered",
+      "error": "",
+      "raw_output": "She works 10 years beyond the 20-year threshold. Each year gives 5% of $50,000, which is $2,500. So 10 × $2,500 = $25,000.\n\n\\boxed{25000}",
+      "finish_reason": "stop",
+      "output_tokens": 52,
+      "usage_available": true
+    },
+    {
+      "role": "verifier",
+      "attempt": 0,
+      "status": "delivered",
+      "error": "",
+      "raw_output": "ACCEPT",
+      "finish_reason": "stop",
+      "output_tokens": 2,
+      "usage_available": true
+    }
+  ],
+  "failed_attempts": [],
+  "calls": 3,
+  "usage_complete": true,
+  "known_input_tokens": 1215,
+  "known_output_tokens": 168,
+  "model_input_tokens": 1215,
+  "model_output_tokens": 168,
+  "format_failed_calls": 0,
+  "transport_failed_calls": 0,
+  "fallback_calls": 0,
+  "sum_model_latency_s": 4.321983575820923
+}

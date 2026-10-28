@@ -1,0 +1,123 @@
+{
+  "task_id": "gsm8k:train:seed42:G1:00014",
+  "status": "completed",
+  "error": null,
+  "prediction": "550",
+  "messages": [
+    {
+      "sender": "planner",
+      "content": "Goal: find Meghan’s total amount of money.\n\nPlan: Multiply the number of each bill by its denomination, then add the three amounts together.\n\nConstraints: Use the given counts: 2 bills of $100, 5 bills of $50, and 10 bills of $10. Provide the final total as a numeric amount.",
+      "receiver": "solver",
+      "round": 0,
+      "role": "assistant",
+      "prompt_tokens": 189,
+      "completion_tokens": 69,
+      "id": "ecc6eec96660",
+      "ts": 1793107857.8678133,
+      "meta": {
+        "fields": {},
+        "communication_tokens": 69,
+        "communication_tokens_exact": true,
+        "attempt_count": 1,
+        "fallback": false,
+        "tokens_include_all_attempts": true,
+        "incoming_message_ids": []
+      }
+    },
+    {
+      "sender": "solver",
+      "content": "2 × $100 = $200; 5 × $50 = $250; 10 × $10 = $100. Total: $200 + $250 + $100 = $550.\n\n\\boxed{550}",
+      "receiver": "verifier",
+      "round": 0,
+      "role": "assistant",
+      "prompt_tokens": 270,
+      "completion_tokens": 46,
+      "id": "5e69e8c9eaad",
+      "ts": 1793107860.0631945,
+      "meta": {
+        "fields": {
+          "R": "550"
+        },
+        "communication_tokens": 46,
+        "communication_tokens_exact": true,
+        "attempt_count": 1,
+        "fallback": false,
+        "tokens_include_all_attempts": true,
+        "incoming_message_ids": [
+          "ecc6eec96660"
+        ]
+      }
+    },
+    {
+      "sender": "verifier",
+      "content": "ACCEPT",
+      "receiver": "solver",
+      "round": 0,
+      "role": "assistant",
+      "prompt_tokens": 624,
+      "completion_tokens": 2,
+      "id": "4a9d2bf3d4af",
+      "ts": 1793107861.7760386,
+      "meta": {
+        "fields": {
+          "CHK": "ACCEPT"
+        },
+        "communication_tokens": 2,
+        "communication_tokens_exact": true,
+        "attempt_count": 1,
+        "fallback": false,
+        "tokens_include_all_attempts": true,
+        "incoming_message_ids": [
+          "5e69e8c9eaad"
+        ]
+      }
+    }
+  ],
+  "communication_tokens": 117,
+  "wall_time_s": 5.56480160006322,
+  "verified": true,
+  "revision_rounds": 0,
+  "model_calls": [
+    {
+      "role": "planner",
+      "attempt": 0,
+      "status": "delivered",
+      "error": "",
+      "raw_output": "Goal: find Meghan’s total amount of money.\n\nPlan: Multiply the number of each bill by its denomination, then add the three amounts together.\n\nConstraints: Use the given counts: 2 bills of $100, 5 bills of $50, and 10 bills of $10. Provide the final total as a numeric amount.",
+      "finish_reason": "stop",
+      "output_tokens": 69,
+      "usage_available": true
+    },
+    {
+      "role": "solver",
+      "attempt": 0,
+      "status": "delivered",
+      "error": "",
+      "raw_output": "2 × $100 = $200; 5 × $50 = $250; 10 × $10 = $100. Total: $200 + $250 + $100 = $550.\n\n\\boxed{550}",
+      "finish_reason": "stop",
+      "output_tokens": 46,
+      "usage_available": true
+    },
+    {
+      "role": "verifier",
+      "attempt": 0,
+      "status": "delivered",
+      "error": "",
+      "raw_output": "ACCEPT",
+      "finish_reason": "stop",
+      "output_tokens": 2,
+      "usage_available": true
+    }
+  ],
+  "failed_attempts": [],
+  "calls": 3,
+  "usage_complete": true,
+  "known_input_tokens": 1083,
+  "known_output_tokens": 117,
+  "model_input_tokens": 1083,
+  "model_output_tokens": 117,
+  "format_failed_calls": 0,
+  "transport_failed_calls": 0,
+  "fallback_calls": 0,
+  "sum_model_latency_s": 5.495190382003784
+}

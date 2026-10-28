@@ -13,7 +13,7 @@ from importlib.metadata import PackageNotFoundError, version
 from pathlib import Path
 
 from hybrid_gsm8k_design import GSM8KDesign
-from hybrid_gsm8k_spec import FIELD_MEANINGS, GSM8K_PROTOCOL, GSM8K_SCHEDULE, PSV_V1
+from hybrid_gsm8k_spec import FIELD_MEANINGS, GSM8K_PROTOCOL, GSM8K_SCHEDULE, GSM8K_SCHEMA, PSV_V1
 from lychee_mas.methods.memory.protocol import ProtocolEvolution
 from run_memory_protocol_compare import ROOT, attempt_usage, executor, load_cases, score_answer
 
@@ -292,7 +292,7 @@ def main(argv: list[str] | None = None) -> None:
         gold_passed_to_executor=False,
     )
     algorithm = ProtocolEvolution(
-        design=GSM8KDesign(),
+        design=GSM8KDesign(schema=GSM8K_SCHEMA),
         contract=GSM8K_PROTOCOL,
         schedule=GSM8K_SCHEDULE,
         generate=propose,

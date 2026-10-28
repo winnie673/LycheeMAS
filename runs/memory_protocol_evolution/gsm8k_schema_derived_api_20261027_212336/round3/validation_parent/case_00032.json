@@ -1,0 +1,152 @@
+{
+  "task_id": "gsm8k:train:seed42:V:00032",
+  "status": "completed",
+  "error": null,
+  "prediction": "1",
+  "messages": [
+    {
+      "sender": "planner",
+      "content": "G:deer_per_wolf;K:total_wolves=4+16,meat_per_wolf_day=8,days=5,meat_per_deer=200;P:total_meat=total_wolves*meat_per_wolf_day*days,deer_total=total_meat/meat_per_deer,deer_per_wolf=deer_total/4",
+      "receiver": "solver",
+      "round": 0,
+      "role": "assistant",
+      "prompt_tokens": 763,
+      "completion_tokens": 85,
+      "id": "1027455b1ebc",
+      "ts": 1793112526.4349446,
+      "meta": {
+        "sender": "planner",
+        "receiver": "solver",
+        "message_id": "1027455b1ebc",
+        "protocol_edge": "planner_to_solver",
+        "protocol_version": "CARD-0-gsm8k",
+        "protocol_hash": "4bcdae885cc464e0a51977368e4bc06650c0326dbdcb182ce0327477c1d32daa",
+        "contract_hash": "ab4b736240365db5d0ce2caea032f40a3b7fc9c189db42d5ebcd28cac0fac22b",
+        "fields": {
+          "G": "deer_per_wolf",
+          "K": "total_wolves=4+16,meat_per_wolf_day=8,days=5,meat_per_deer=200",
+          "P": "total_meat=total_wolves*meat_per_wolf_day*days,deer_total=total_meat/meat_per_deer,deer_per_wolf=deer_total/4"
+        },
+        "communication_tokens": 85,
+        "communication_tokens_exact": true,
+        "attempt_count": 1,
+        "fallback": false,
+        "tokens_include_all_attempts": true,
+        "incoming_message_ids": []
+      }
+    },
+    {
+      "sender": "solver",
+      "content": "IR:total_wolves=4+16=20,total_meat=20*8*5=800,deer_total=800/200=4,deer_per_wolf=4/4=1;R:1",
+      "receiver": "verifier",
+      "round": 0,
+      "role": "assistant",
+      "prompt_tokens": 790,
+      "completion_tokens": 50,
+      "id": "3c16e7c31e03",
+      "ts": 1793112527.653461,
+      "meta": {
+        "sender": "solver",
+        "receiver": "verifier",
+        "message_id": "3c16e7c31e03",
+        "protocol_edge": "solver_to_verifier",
+        "protocol_version": "CARD-0-gsm8k",
+        "protocol_hash": "4bcdae885cc464e0a51977368e4bc06650c0326dbdcb182ce0327477c1d32daa",
+        "contract_hash": "ab4b736240365db5d0ce2caea032f40a3b7fc9c189db42d5ebcd28cac0fac22b",
+        "fields": {
+          "IR": "total_wolves=4+16=20,total_meat=20*8*5=800,deer_total=800/200=4,deer_per_wolf=4/4=1",
+          "R": "1"
+        },
+        "communication_tokens": 50,
+        "communication_tokens_exact": true,
+        "attempt_count": 1,
+        "fallback": false,
+        "tokens_include_all_attempts": true,
+        "incoming_message_ids": [
+          "1027455b1ebc"
+        ]
+      }
+    },
+    {
+      "sender": "verifier",
+      "content": "CHK:ACCEPT",
+      "receiver": "solver",
+      "round": 0,
+      "role": "assistant",
+      "prompt_tokens": 1121,
+      "completion_tokens": 5,
+      "id": "12fbbd8d90e8",
+      "ts": 1793112528.7130966,
+      "meta": {
+        "sender": "verifier",
+        "receiver": "solver",
+        "message_id": "12fbbd8d90e8",
+        "protocol_edge": "verifier_to_solver",
+        "protocol_version": "CARD-0-gsm8k",
+        "protocol_hash": "4bcdae885cc464e0a51977368e4bc06650c0326dbdcb182ce0327477c1d32daa",
+        "contract_hash": "ab4b736240365db5d0ce2caea032f40a3b7fc9c189db42d5ebcd28cac0fac22b",
+        "fields": {
+          "CHK": "ACCEPT"
+        },
+        "communication_tokens": 5,
+        "communication_tokens_exact": true,
+        "attempt_count": 1,
+        "fallback": false,
+        "tokens_include_all_attempts": true,
+        "incoming_message_ids": [
+          "3c16e7c31e03"
+        ]
+      }
+    }
+  ],
+  "communication_tokens": 140,
+  "wall_time_s": 3.842840100056492,
+  "verified": true,
+  "revision_rounds": 0,
+  "model_calls": [
+    {
+      "role": "planner",
+      "attempt": 0,
+      "status": "delivered",
+      "error": "",
+      "raw_output": "G:deer_per_wolf;K:total_wolves=4+16,meat_per_wolf_day=8,days=5,meat_per_deer=200;P:total_meat=total_wolves*meat_per_wolf_day*days,deer_total=total_meat/meat_per_deer,deer_per_wolf=deer_total/4",
+      "finish_reason": "stop",
+      "output_tokens": 85,
+      "usage_available": true
+    },
+    {
+      "role": "solver",
+      "attempt": 0,
+      "status": "delivered",
+      "error": "",
+      "raw_output": "IR:total_wolves=4+16=20,total_meat=20*8*5=800,deer_total=800/200=4,deer_per_wolf=4/4=1;R:1",
+      "finish_reason": "stop",
+      "output_tokens": 50,
+      "usage_available": true
+    },
+    {
+      "role": "verifier",
+      "attempt": 0,
+      "status": "delivered",
+      "error": "",
+      "raw_output": "CHK:ACCEPT",
+      "finish_reason": "stop",
+      "output_tokens": 5,
+      "usage_available": true
+    }
+  ],
+  "failed_attempts": [],
+  "calls": 3,
+  "usage_complete": true,
+  "known_input_tokens": 2674,
+  "known_output_tokens": 140,
+  "model_input_tokens": 2674,
+  "model_output_tokens": 140,
+  "format_failed_calls": 0,
+  "transport_failed_calls": 0,
+  "fallback_calls": 0,
+  "sum_model_latency_s": 3.685152292251587,
+  "gold": "1",
+  "score": 1.0,
+  "question": "There are 4 wolves out hunting for the pack. The pack contains 16 additional wolves. Each wolf needs to eat 8 pounds of meat a day and the wolves won't hunt again for five days. If each deer contains 200 pounds of meat, how many deer does each wolf need to kill?\nGive the final numeric answer."
+}

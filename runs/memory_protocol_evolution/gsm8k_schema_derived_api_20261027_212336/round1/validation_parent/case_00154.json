@@ -1,0 +1,151 @@
+{
+  "task_id": "gsm8k:train:seed42:V:00154",
+  "status": "completed",
+  "error": null,
+  "prediction": "12100",
+  "messages": [
+    {
+      "sender": "planner",
+      "content": "G:total_screens_Jan_to_Mar;P:feb=8800/4,jan=feb/2,total=jan+feb+8800",
+      "receiver": "solver",
+      "round": 0,
+      "role": "assistant",
+      "prompt_tokens": 759,
+      "completion_tokens": 34,
+      "id": "98014ec3c8c3",
+      "ts": 1793108754.0961304,
+      "meta": {
+        "sender": "planner",
+        "receiver": "solver",
+        "message_id": "98014ec3c8c3",
+        "protocol_edge": "planner_to_solver",
+        "protocol_version": "CARD-0-gsm8k",
+        "protocol_hash": "4bcdae885cc464e0a51977368e4bc06650c0326dbdcb182ce0327477c1d32daa",
+        "contract_hash": "ab4b736240365db5d0ce2caea032f40a3b7fc9c189db42d5ebcd28cac0fac22b",
+        "fields": {
+          "G": "total_screens_Jan_to_Mar",
+          "P": "feb=8800/4,jan=feb/2,total=jan+feb+8800"
+        },
+        "communication_tokens": 34,
+        "communication_tokens_exact": true,
+        "attempt_count": 1,
+        "fallback": false,
+        "tokens_include_all_attempts": true,
+        "incoming_message_ids": []
+      }
+    },
+    {
+      "sender": "solver",
+      "content": "IR:feb=8800/4=2200,jan=2200/2=1100,total=1100+2200+8800=12100;R:12100",
+      "receiver": "verifier",
+      "round": 0,
+      "role": "assistant",
+      "prompt_tokens": 735,
+      "completion_tokens": 40,
+      "id": "a2145b9c13e0",
+      "ts": 1793108755.6504114,
+      "meta": {
+        "sender": "solver",
+        "receiver": "verifier",
+        "message_id": "a2145b9c13e0",
+        "protocol_edge": "solver_to_verifier",
+        "protocol_version": "CARD-0-gsm8k",
+        "protocol_hash": "4bcdae885cc464e0a51977368e4bc06650c0326dbdcb182ce0327477c1d32daa",
+        "contract_hash": "ab4b736240365db5d0ce2caea032f40a3b7fc9c189db42d5ebcd28cac0fac22b",
+        "fields": {
+          "IR": "feb=8800/4=2200,jan=2200/2=1100,total=1100+2200+8800=12100",
+          "R": "12100"
+        },
+        "communication_tokens": 40,
+        "communication_tokens_exact": true,
+        "attempt_count": 1,
+        "fallback": false,
+        "tokens_include_all_attempts": true,
+        "incoming_message_ids": [
+          "98014ec3c8c3"
+        ]
+      }
+    },
+    {
+      "sender": "verifier",
+      "content": "CHK:ACCEPT",
+      "receiver": "solver",
+      "round": 0,
+      "role": "assistant",
+      "prompt_tokens": 1107,
+      "completion_tokens": 5,
+      "id": "7677f3142add",
+      "ts": 1793108756.7159216,
+      "meta": {
+        "sender": "verifier",
+        "receiver": "solver",
+        "message_id": "7677f3142add",
+        "protocol_edge": "verifier_to_solver",
+        "protocol_version": "CARD-0-gsm8k",
+        "protocol_hash": "4bcdae885cc464e0a51977368e4bc06650c0326dbdcb182ce0327477c1d32daa",
+        "contract_hash": "ab4b736240365db5d0ce2caea032f40a3b7fc9c189db42d5ebcd28cac0fac22b",
+        "fields": {
+          "CHK": "ACCEPT"
+        },
+        "communication_tokens": 5,
+        "communication_tokens_exact": true,
+        "attempt_count": 1,
+        "fallback": false,
+        "tokens_include_all_attempts": true,
+        "incoming_message_ids": [
+          "a2145b9c13e0"
+        ]
+      }
+    }
+  ],
+  "communication_tokens": 79,
+  "wall_time_s": 4.713125999900512,
+  "verified": true,
+  "revision_rounds": 0,
+  "model_calls": [
+    {
+      "role": "planner",
+      "attempt": 0,
+      "status": "delivered",
+      "error": "",
+      "raw_output": "G:total_screens_Jan_to_Mar;P:feb=8800/4,jan=feb/2,total=jan+feb+8800",
+      "finish_reason": "stop",
+      "output_tokens": 34,
+      "usage_available": true
+    },
+    {
+      "role": "solver",
+      "attempt": 0,
+      "status": "delivered",
+      "error": "",
+      "raw_output": "IR:feb=8800/4=2200,jan=2200/2=1100,total=1100+2200+8800=12100;R:12100",
+      "finish_reason": "stop",
+      "output_tokens": 40,
+      "usage_available": true
+    },
+    {
+      "role": "verifier",
+      "attempt": 0,
+      "status": "delivered",
+      "error": "",
+      "raw_output": "CHK:ACCEPT",
+      "finish_reason": "stop",
+      "output_tokens": 5,
+      "usage_available": true
+    }
+  ],
+  "failed_attempts": [],
+  "calls": 3,
+  "usage_complete": true,
+  "known_input_tokens": 2601,
+  "known_output_tokens": 79,
+  "model_input_tokens": 2601,
+  "model_output_tokens": 79,
+  "format_failed_calls": 0,
+  "transport_failed_calls": 0,
+  "fallback_calls": 0,
+  "sum_model_latency_s": 4.577619314193726,
+  "gold": "12100",
+  "score": 1.0,
+  "question": "Bennett sells window screens. He sold twice as many window screens in February as he sold last month. In February, Bennett sold a fourth of what he sold in March. If Bennet sold 8800 window screens in March, how many screens did Bennett sell from January to March?\nGive the final numeric answer."
+}

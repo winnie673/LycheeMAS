@@ -1,0 +1,151 @@
+{
+  "task_id": "gsm8k:train:seed42:G3:00033",
+  "status": "completed",
+  "error": null,
+  "prediction": "47",
+  "messages": [
+    {
+      "sender": "planner",
+      "content": "G:sum_of_current_ages_Alex_Allison;P:diane_at_30=30,alex_at_30=2*30,allison_at_30=30/2,alex_now=alex_at_30-(30-16),allison_now=allison_at_30-(30-16),sum=alex_now+allison_now",
+      "receiver": "solver",
+      "round": 0,
+      "role": "assistant",
+      "prompt_tokens": 743,
+      "completion_tokens": 79,
+      "id": "2ec67786e4eb",
+      "ts": 1793112085.9291756,
+      "meta": {
+        "sender": "planner",
+        "receiver": "solver",
+        "message_id": "2ec67786e4eb",
+        "protocol_edge": "planner_to_solver",
+        "protocol_version": "CARD-0-gsm8k",
+        "protocol_hash": "4bcdae885cc464e0a51977368e4bc06650c0326dbdcb182ce0327477c1d32daa",
+        "contract_hash": "ab4b736240365db5d0ce2caea032f40a3b7fc9c189db42d5ebcd28cac0fac22b",
+        "fields": {
+          "G": "sum_of_current_ages_Alex_Allison",
+          "P": "diane_at_30=30,alex_at_30=2*30,allison_at_30=30/2,alex_now=alex_at_30-(30-16),allison_now=allison_at_30-(30-16),sum=alex_now+allison_now"
+        },
+        "communication_tokens": 79,
+        "communication_tokens_exact": true,
+        "attempt_count": 1,
+        "fallback": false,
+        "tokens_include_all_attempts": true,
+        "incoming_message_ids": []
+      }
+    },
+    {
+      "sender": "solver",
+      "content": "IR:alex_at_30=60,allison_at_30=15,alex_now=60-14=46,allison_now=15-14=1,sum=46+1=47;R:47",
+      "receiver": "verifier",
+      "round": 0,
+      "role": "assistant",
+      "prompt_tokens": 764,
+      "completion_tokens": 49,
+      "id": "b9e293d55cca",
+      "ts": 1793112087.3774076,
+      "meta": {
+        "sender": "solver",
+        "receiver": "verifier",
+        "message_id": "b9e293d55cca",
+        "protocol_edge": "solver_to_verifier",
+        "protocol_version": "CARD-0-gsm8k",
+        "protocol_hash": "4bcdae885cc464e0a51977368e4bc06650c0326dbdcb182ce0327477c1d32daa",
+        "contract_hash": "ab4b736240365db5d0ce2caea032f40a3b7fc9c189db42d5ebcd28cac0fac22b",
+        "fields": {
+          "IR": "alex_at_30=60,allison_at_30=15,alex_now=60-14=46,allison_now=15-14=1,sum=46+1=47",
+          "R": "47"
+        },
+        "communication_tokens": 49,
+        "communication_tokens_exact": true,
+        "attempt_count": 1,
+        "fallback": false,
+        "tokens_include_all_attempts": true,
+        "incoming_message_ids": [
+          "2ec67786e4eb"
+        ]
+      }
+    },
+    {
+      "sender": "verifier",
+      "content": "CHK:ACCEPT",
+      "receiver": "solver",
+      "round": 0,
+      "role": "assistant",
+      "prompt_tokens": 1100,
+      "completion_tokens": 5,
+      "id": "574c380d6f75",
+      "ts": 1793112088.6089308,
+      "meta": {
+        "sender": "verifier",
+        "receiver": "solver",
+        "message_id": "574c380d6f75",
+        "protocol_edge": "verifier_to_solver",
+        "protocol_version": "CARD-0-gsm8k",
+        "protocol_hash": "4bcdae885cc464e0a51977368e4bc06650c0326dbdcb182ce0327477c1d32daa",
+        "contract_hash": "ab4b736240365db5d0ce2caea032f40a3b7fc9c189db42d5ebcd28cac0fac22b",
+        "fields": {
+          "CHK": "ACCEPT"
+        },
+        "communication_tokens": 5,
+        "communication_tokens_exact": true,
+        "attempt_count": 1,
+        "fallback": false,
+        "tokens_include_all_attempts": true,
+        "incoming_message_ids": [
+          "b9e293d55cca"
+        ]
+      }
+    }
+  ],
+  "communication_tokens": 133,
+  "wall_time_s": 4.115977099980228,
+  "verified": true,
+  "revision_rounds": 0,
+  "model_calls": [
+    {
+      "role": "planner",
+      "attempt": 0,
+      "status": "delivered",
+      "error": "",
+      "raw_output": "G:sum_of_current_ages_Alex_Allison;P:diane_at_30=30,alex_at_30=2*30,allison_at_30=30/2,alex_now=alex_at_30-(30-16),allison_now=allison_at_30-(30-16),sum=alex_now+allison_now",
+      "finish_reason": "stop",
+      "output_tokens": 79,
+      "usage_available": true
+    },
+    {
+      "role": "solver",
+      "attempt": 0,
+      "status": "delivered",
+      "error": "",
+      "raw_output": "IR:alex_at_30=60,allison_at_30=15,alex_now=60-14=46,allison_now=15-14=1,sum=46+1=47;R:47",
+      "finish_reason": "stop",
+      "output_tokens": 49,
+      "usage_available": true
+    },
+    {
+      "role": "verifier",
+      "attempt": 0,
+      "status": "delivered",
+      "error": "",
+      "raw_output": "CHK:ACCEPT",
+      "finish_reason": "stop",
+      "output_tokens": 5,
+      "usage_available": true
+    }
+  ],
+  "failed_attempts": [],
+  "calls": 3,
+  "usage_complete": true,
+  "known_input_tokens": 2607,
+  "known_output_tokens": 133,
+  "model_input_tokens": 2607,
+  "model_output_tokens": 133,
+  "format_failed_calls": 0,
+  "transport_failed_calls": 0,
+  "fallback_calls": 0,
+  "sum_model_latency_s": 4.0306479930877686,
+  "gold": "47",
+  "score": 1.0,
+  "question": "When Diane turns 30, she will be half the age of Alex and twice as old as Allison. Diane is 16 years old now. What is the sum of the ages of Alex and Allison now?\nGive the final numeric answer."
+}

@@ -465,12 +465,13 @@ def test_default_promoted_card_preserves_source_and_loads_embedded_contract(entr
     module = entry.executor()
     config = module.load_memory_config("gsm8k", "hybrid")
     path = Path(config["protocol_path"])
-    assert path.name == "gsm8k_psv_nl_field_card2_20261027.yaml"
+    assert path.name == "gsm8k_psv_hybrid_card_20261028.yaml"
+    assert sorted(p.name for p in path.parent.glob("*.yaml")) == [path.name]
     raw = yaml.safe_load(path.read_text(encoding="utf-8"))
     metadata = raw["task_card"]
     assert metadata["name"] == path.stem
     assert metadata["promoted_source_sha256"] == (
-        "3a6400982e83557cc72c2d6c99f1adfc3145400ae7a02bba6c16eb4e1c07a141"
+        "7f15911ee23835cae50f21617115981ca97ff599e8a4c9fb11d1c38065504233"
     )
     source = Path(metadata["promoted_from"])
     if source.exists():
@@ -480,10 +481,11 @@ def test_default_promoted_card_preserves_source_and_loads_embedded_contract(entr
             k: v for k, v in original.items() if k != "task_card"
         }
     channel = HybridProtocolMemory(str(path), "gsm8k")  # No external contract required.
-    assert channel.contract.fingerprint == GSM8K_PROTOCOL.fingerprint
-    assert channel.version == "CARD-2-gsm8k"
+    assert channel.contract.fingerprint == config["protocol_contract"].fingerprint
+    assert channel.contract.fingerprint == metadata["contract_sha256"]
+    assert channel.version == "CARD-0-gsm8k"
     assert channel.protocol_hash == (
-        "c152278e4a24181b874bd88cbf3adef79479b79f6539931bcd89721fa5a8a7a9"
+        "4bcdae885cc464e0a51977368e4bc06650c0326dbdcb182ce0327477c1d32daa"
     )
     result = module.run_demo(module.scripted_generate)
     assert result.final_answer.content == "18"
@@ -502,8 +504,21 @@ def test_optional_original_function_and_role_parity():
         if isinstance(n, ast.FunctionDef)
     }
     current_source = current.read_text(encoding="utf-8")
-    # Only the two approved field-boundary clarifications differ from the source.
+    # Approved deviations: field-boundary clarifications and schema-derived enum text.
     clarifications = [
+        (
+            '    error_values = schema["verifier_to_solver"]'
+            '["value_constraints"]["E"]["allowed_values"]\n'
+            '    error_example, error_list = error_values[0], ", ".join(error_values)\n',
+            "",
+        ),
+        ("such as `{error_example}`.", "such as `ARITH`."),
+        (
+            "The only valid E values are {error_list}. Diagnostic issue labels",
+            "The only valid E values are ARITH, RELATION, MISSING_FACT, "
+            "MISSING_UNIT, WRONG_TARGET,\n"
+            "INSUFFICIENT_INFO, and OTHER. Diagnostic issue labels",
+        ),
         (
             "   For missing essential evidence use "
             "CHK:REVISE;E:INSUFFICIENT_INFO;REQ:the missing relation.\n"

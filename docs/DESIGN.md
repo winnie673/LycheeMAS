@@ -88,10 +88,15 @@ sg.add_node(name, node_fn, metadata={"agent_spec": spec})   # spec: core.types.A
 
 ### 4.3 memory（运行时记忆，`plugins/memory/` × `methods/memory/`）
 
-混合协议核心与实验配置已解耦（当前 memory-compare-v4-restored）：
+混合协议核心与实验配置已解耦（当前 memory-compare-v5-schema-derived）：
 `protocol/base.py` 定义通用架构、契约、声明式校验和数据日程；进化器接受这些对象及
 生成/执行/评分回调，不包含具体任务或角色。`scripts/hybrid_gsm8k_spec.py` 在实验侧
 实例化 GSM8K + PSV；现有示例和脚本共同装配它。核心禁止导入实验脚本。
+字段基础定义仅来自 gsm8k_protocol_schema.yaml，spec 加载后使用通用转换函数
+派生字段、枚举及条件约束，只补充角色、任务要求和接收端别名。条件禁止列表
+有独立的 forbidden 操作，不等同于 only；逐边字段语义不覆盖丢失。
+当前冻结卡片保留原指纹，须通过历史指纹白名单及校验谓词兼容检查才可加载；
+新卡片内嵌派生契约。不迁移历史卡片或放宽核心指纹检查。
 通道执行契约声明的字段与条件约束，不识别具体字段语义。旧卡片要求调用方显式注入
 契约，新卡片内嵌契约并核对指纹；不修改既有冻结卡片或静默降低校验强度。
 架构通用性经第二种合成架构/非数值任务离线测试，不意味着通用 attach_memory 已完成。
@@ -114,9 +119,10 @@ T 评测独立启动；不覆盖旧卡、不扩展 registry。在线示例与评
 
 文本通道现支持 `nl_strategy="hybrid_protocol"`：作为 NLMemory 内部策略，由现有
 `memory_manager/cdm` 的 observe/recall/reset 驱动，复用 MemoryBundle 和 core.Message。
-默认冻结的 GSM8K Card-2 为
-`configs/memory/task_cards/gsm8k_psv_nl_field_card2_20261027.yaml`，由 2026-10-27
-review-boundary 流程的 V 集胜出卡显式发布；旧 gsm8k_card2.yaml 仅保留作历史兼容。
+默认冻结的 GSM8K 卡片为
+`configs/memory/task_cards/gsm8k_psv_hybrid_card_20261028.yaml`，由 v5-schema-derived
+流程的 V 集胜出 Card-0 显式发布；三轮候选均未晋级。两张旧配置卡已获准清理，
+兼容性测试使用临时合成卡片，不再依赖已删除的文件。
 发布不改变源卡规则与 wire 版本，内嵌契约与来源 SHA256 随卡保存。发送节点从
 `memory.nl.output_instructions(sender, receiver)` 获取约束，在原模型调用后投递消息。
 不改变插件接口或路由种类，不引入独立 runner/后端/任务图；通用 attach_memory 仍为

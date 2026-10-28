@@ -1,0 +1,238 @@
+{
+  "task_id": "gsm8k:train:seed42:V:00129",
+  "status": "completed",
+  "error": null,
+  "prediction": "50",
+  "messages": [
+    {
+      "sender": "planner",
+      "content": "G:milligrams_per_part;P:total_ml=5*30,ml_per_part=total_ml/3,mg_per_part=ml_per_part;NL:Assume 1 ml of medicine corresponds to 1 mg for the requested milligram amount.",
+      "receiver": "solver",
+      "round": 0,
+      "role": "assistant",
+      "prompt_tokens": 830,
+      "completion_tokens": 55,
+      "id": "97128c9503e5",
+      "ts": 1793168739.3953867,
+      "meta": {
+        "sender": "planner",
+        "receiver": "solver",
+        "message_id": "97128c9503e5",
+        "protocol_edge": "planner_to_solver",
+        "protocol_version": "CARD-3-gsm8k",
+        "protocol_hash": "fb1a4acb6e591ac96544876aedd912b27a6f9d3154c76112e1da0f43407d27b2",
+        "contract_hash": "ab4b736240365db5d0ce2caea032f40a3b7fc9c189db42d5ebcd28cac0fac22b",
+        "fields": {
+          "G": "milligrams_per_part",
+          "P": "total_ml=5*30,ml_per_part=total_ml/3,mg_per_part=ml_per_part",
+          "NL": "Assume 1 ml of medicine corresponds to 1 mg for the requested milligram amount."
+        },
+        "communication_tokens": 55,
+        "communication_tokens_exact": true,
+        "attempt_count": 1,
+        "fallback": false,
+        "tokens_include_all_attempts": true,
+        "incoming_message_ids": []
+      }
+    },
+    {
+      "sender": "solver",
+      "content": "IR:total_ml=5*30=150,ml_per_part=150/3=50,mg_per_part=50;R:50;NL:Assume 1 ml of medicine corresponds to 1 mg for the requested milligram amount.",
+      "receiver": "verifier",
+      "round": 0,
+      "role": "assistant",
+      "prompt_tokens": 785,
+      "completion_tokens": 52,
+      "id": "84532e698bb1",
+      "ts": 1793168740.5424998,
+      "meta": {
+        "sender": "solver",
+        "receiver": "verifier",
+        "message_id": "84532e698bb1",
+        "protocol_edge": "solver_to_verifier",
+        "protocol_version": "CARD-3-gsm8k",
+        "protocol_hash": "fb1a4acb6e591ac96544876aedd912b27a6f9d3154c76112e1da0f43407d27b2",
+        "contract_hash": "ab4b736240365db5d0ce2caea032f40a3b7fc9c189db42d5ebcd28cac0fac22b",
+        "fields": {
+          "IR": "total_ml=5*30=150,ml_per_part=150/3=50,mg_per_part=50",
+          "R": "50",
+          "NL": "Assume 1 ml of medicine corresponds to 1 mg for the requested milligram amount."
+        },
+        "communication_tokens": 52,
+        "communication_tokens_exact": true,
+        "attempt_count": 1,
+        "fallback": false,
+        "tokens_include_all_attempts": true,
+        "incoming_message_ids": [
+          "97128c9503e5"
+        ]
+      }
+    },
+    {
+      "sender": "verifier",
+      "content": "CHK:REVISE;E:MISSING_UNIT;REQ:Provide the conversion between milliliters and milligrams or state the assumption explicitly as part of the answer derivation.",
+      "receiver": "solver",
+      "round": 0,
+      "role": "assistant",
+      "prompt_tokens": 1148,
+      "completion_tokens": 36,
+      "id": "dfff2f81e17a",
+      "ts": 1793168741.7527518,
+      "meta": {
+        "sender": "verifier",
+        "receiver": "solver",
+        "message_id": "dfff2f81e17a",
+        "protocol_edge": "verifier_to_solver",
+        "protocol_version": "CARD-3-gsm8k",
+        "protocol_hash": "fb1a4acb6e591ac96544876aedd912b27a6f9d3154c76112e1da0f43407d27b2",
+        "contract_hash": "ab4b736240365db5d0ce2caea032f40a3b7fc9c189db42d5ebcd28cac0fac22b",
+        "fields": {
+          "CHK": "REVISE",
+          "E": "MISSING_UNIT",
+          "REQ": "Provide the conversion between milliliters and milligrams or state the assumption explicitly as part of the answer derivation."
+        },
+        "communication_tokens": 36,
+        "communication_tokens_exact": true,
+        "attempt_count": 1,
+        "fallback": false,
+        "tokens_include_all_attempts": true,
+        "incoming_message_ids": [
+          "84532e698bb1"
+        ]
+      }
+    },
+    {
+      "sender": "solver",
+      "content": "IR:total_ml=5*30=150,ml_per_part=150/3=50,mg_per_part=50;R:50;NL:Assumes 1 ml of medicine equals 1 mg since no density or conversion is given.",
+      "receiver": "verifier",
+      "round": 1,
+      "role": "assistant",
+      "prompt_tokens": 899,
+      "completion_tokens": 53,
+      "id": "7acb799162f5",
+      "ts": 1793168742.9756265,
+      "meta": {
+        "sender": "solver",
+        "receiver": "verifier",
+        "message_id": "7acb799162f5",
+        "protocol_edge": "solver_to_verifier",
+        "protocol_version": "CARD-3-gsm8k",
+        "protocol_hash": "fb1a4acb6e591ac96544876aedd912b27a6f9d3154c76112e1da0f43407d27b2",
+        "contract_hash": "ab4b736240365db5d0ce2caea032f40a3b7fc9c189db42d5ebcd28cac0fac22b",
+        "fields": {
+          "IR": "total_ml=5*30=150,ml_per_part=150/3=50,mg_per_part=50",
+          "R": "50",
+          "NL": "Assumes 1 ml of medicine equals 1 mg since no density or conversion is given."
+        },
+        "communication_tokens": 53,
+        "communication_tokens_exact": true,
+        "attempt_count": 1,
+        "fallback": false,
+        "tokens_include_all_attempts": true,
+        "incoming_message_ids": [
+          "97128c9503e5",
+          "84532e698bb1",
+          "dfff2f81e17a"
+        ]
+      }
+    },
+    {
+      "sender": "verifier",
+      "content": "CHK:ACCEPT",
+      "receiver": "solver",
+      "round": 1,
+      "role": "assistant",
+      "prompt_tokens": 1161,
+      "completion_tokens": 5,
+      "id": "f60591999a01",
+      "ts": 1793168743.9530978,
+      "meta": {
+        "sender": "verifier",
+        "receiver": "solver",
+        "message_id": "f60591999a01",
+        "protocol_edge": "verifier_to_solver",
+        "protocol_version": "CARD-3-gsm8k",
+        "protocol_hash": "fb1a4acb6e591ac96544876aedd912b27a6f9d3154c76112e1da0f43407d27b2",
+        "contract_hash": "ab4b736240365db5d0ce2caea032f40a3b7fc9c189db42d5ebcd28cac0fac22b",
+        "fields": {
+          "CHK": "ACCEPT"
+        },
+        "communication_tokens": 5,
+        "communication_tokens_exact": true,
+        "attempt_count": 1,
+        "fallback": false,
+        "tokens_include_all_attempts": true,
+        "incoming_message_ids": [
+          "7acb799162f5"
+        ]
+      }
+    }
+  ],
+  "communication_tokens": 201,
+  "wall_time_s": 6.069825800019316,
+  "verified": true,
+  "revision_rounds": 1,
+  "model_calls": [
+    {
+      "role": "planner",
+      "attempt": 0,
+      "status": "delivered",
+      "error": "",
+      "raw_output": "G:milligrams_per_part;P:total_ml=5*30,ml_per_part=total_ml/3,mg_per_part=ml_per_part;NL:Assume 1 ml of medicine corresponds to 1 mg for the requested milligram amount.",
+      "finish_reason": "stop",
+      "output_tokens": 55,
+      "usage_available": true
+    },
+    {
+      "role": "solver",
+      "attempt": 0,
+      "status": "delivered",
+      "error": "",
+      "raw_output": "IR:total_ml=5*30=150,ml_per_part=150/3=50,mg_per_part=50;R:50;NL:Assume 1 ml of medicine corresponds to 1 mg for the requested milligram amount.",
+      "finish_reason": "stop",
+      "output_tokens": 52,
+      "usage_available": true
+    },
+    {
+      "role": "verifier",
+      "attempt": 0,
+      "status": "delivered",
+      "error": "",
+      "raw_output": "CHK:REVISE;E:MISSING_UNIT;REQ:Provide the conversion between milliliters and milligrams or state the assumption explicitly as part of the answer derivation.",
+      "finish_reason": "stop",
+      "output_tokens": 36,
+      "usage_available": true
+    },
+    {
+      "role": "solver",
+      "attempt": 0,
+      "status": "delivered",
+      "error": "",
+      "raw_output": "IR:total_ml=5*30=150,ml_per_part=150/3=50,mg_per_part=50;R:50;NL:Assumes 1 ml of medicine equals 1 mg since no density or conversion is given.",
+      "finish_reason": "stop",
+      "output_tokens": 53,
+      "usage_available": true
+    },
+    {
+      "role": "verifier",
+      "attempt": 0,
+      "status": "delivered",
+      "error": "",
+      "raw_output": "CHK:ACCEPT",
+      "finish_reason": "stop",
+      "output_tokens": 5,
+      "usage_available": true
+    }
+  ],
+  "failed_attempts": [],
+  "calls": 5,
+  "usage_complete": true,
+  "known_input_tokens": 4823,
+  "known_output_tokens": 201,
+  "model_input_tokens": 4823,
+  "model_output_tokens": 201,
+  "format_failed_calls": 0,
+  "transport_failed_calls": 0,
+  "fallback_calls": 0,
+  "sum_model_latency_s": 5.880656719207764
+}

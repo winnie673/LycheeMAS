@@ -1,0 +1,151 @@
+{
+  "task_id": "gsm8k:train:seed42:V:00127",
+  "status": "completed",
+  "error": null,
+  "prediction": "3",
+  "messages": [
+    {
+      "sender": "planner",
+      "content": "G:hours_left_for_nap;P:total=11+20/60,used=2+4+30/60+40/60+1+10/60,hours_left_for_nap=total-used",
+      "receiver": "solver",
+      "round": 0,
+      "role": "assistant",
+      "prompt_tokens": 815,
+      "completion_tokens": 46,
+      "id": "97e271464142",
+      "ts": 1793168731.7190816,
+      "meta": {
+        "sender": "planner",
+        "receiver": "solver",
+        "message_id": "97e271464142",
+        "protocol_edge": "planner_to_solver",
+        "protocol_version": "CARD-3-gsm8k",
+        "protocol_hash": "fb1a4acb6e591ac96544876aedd912b27a6f9d3154c76112e1da0f43407d27b2",
+        "contract_hash": "ab4b736240365db5d0ce2caea032f40a3b7fc9c189db42d5ebcd28cac0fac22b",
+        "fields": {
+          "G": "hours_left_for_nap",
+          "P": "total=11+20/60,used=2+4+30/60+40/60+1+10/60,hours_left_for_nap=total-used"
+        },
+        "communication_tokens": 46,
+        "communication_tokens_exact": true,
+        "attempt_count": 1,
+        "fallback": false,
+        "tokens_include_all_attempts": true,
+        "incoming_message_ids": []
+      }
+    },
+    {
+      "sender": "solver",
+      "content": "IR:total=11+20/60=11.3333,used=2+4+0.5+0.6667+1+0.1667=8.3333,hours_left_for_nap=11.3333-8.3333=3;R:3",
+      "receiver": "verifier",
+      "round": 0,
+      "role": "assistant",
+      "prompt_tokens": 761,
+      "completion_tokens": 63,
+      "id": "c090996e3b67",
+      "ts": 1793168732.8718235,
+      "meta": {
+        "sender": "solver",
+        "receiver": "verifier",
+        "message_id": "c090996e3b67",
+        "protocol_edge": "solver_to_verifier",
+        "protocol_version": "CARD-3-gsm8k",
+        "protocol_hash": "fb1a4acb6e591ac96544876aedd912b27a6f9d3154c76112e1da0f43407d27b2",
+        "contract_hash": "ab4b736240365db5d0ce2caea032f40a3b7fc9c189db42d5ebcd28cac0fac22b",
+        "fields": {
+          "IR": "total=11+20/60=11.3333,used=2+4+0.5+0.6667+1+0.1667=8.3333,hours_left_for_nap=11.3333-8.3333=3",
+          "R": "3"
+        },
+        "communication_tokens": 63,
+        "communication_tokens_exact": true,
+        "attempt_count": 1,
+        "fallback": false,
+        "tokens_include_all_attempts": true,
+        "incoming_message_ids": [
+          "97e271464142"
+        ]
+      }
+    },
+    {
+      "sender": "verifier",
+      "content": "CHK:ACCEPT",
+      "receiver": "solver",
+      "round": 0,
+      "role": "assistant",
+      "prompt_tokens": 1144,
+      "completion_tokens": 5,
+      "id": "73f16ee2b353",
+      "ts": 1793168734.0116045,
+      "meta": {
+        "sender": "verifier",
+        "receiver": "solver",
+        "message_id": "73f16ee2b353",
+        "protocol_edge": "verifier_to_solver",
+        "protocol_version": "CARD-3-gsm8k",
+        "protocol_hash": "fb1a4acb6e591ac96544876aedd912b27a6f9d3154c76112e1da0f43407d27b2",
+        "contract_hash": "ab4b736240365db5d0ce2caea032f40a3b7fc9c189db42d5ebcd28cac0fac22b",
+        "fields": {
+          "CHK": "ACCEPT"
+        },
+        "communication_tokens": 5,
+        "communication_tokens_exact": true,
+        "attempt_count": 1,
+        "fallback": false,
+        "tokens_include_all_attempts": true,
+        "incoming_message_ids": [
+          "c090996e3b67"
+        ]
+      }
+    }
+  ],
+  "communication_tokens": 114,
+  "wall_time_s": 3.617472300073132,
+  "verified": true,
+  "revision_rounds": 0,
+  "model_calls": [
+    {
+      "role": "planner",
+      "attempt": 0,
+      "status": "delivered",
+      "error": "",
+      "raw_output": "G:hours_left_for_nap;P:total=11+20/60,used=2+4+30/60+40/60+1+10/60,hours_left_for_nap=total-used",
+      "finish_reason": "stop",
+      "output_tokens": 46,
+      "usage_available": true
+    },
+    {
+      "role": "solver",
+      "attempt": 0,
+      "status": "delivered",
+      "error": "",
+      "raw_output": "IR:total=11+20/60=11.3333,used=2+4+0.5+0.6667+1+0.1667=8.3333,hours_left_for_nap=11.3333-8.3333=3;R:3",
+      "finish_reason": "stop",
+      "output_tokens": 63,
+      "usage_available": true
+    },
+    {
+      "role": "verifier",
+      "attempt": 0,
+      "status": "delivered",
+      "error": "",
+      "raw_output": "CHK:ACCEPT",
+      "finish_reason": "stop",
+      "output_tokens": 5,
+      "usage_available": true
+    }
+  ],
+  "failed_attempts": [],
+  "calls": 3,
+  "usage_complete": true,
+  "known_input_tokens": 2720,
+  "known_output_tokens": 114,
+  "model_input_tokens": 2720,
+  "model_output_tokens": 114,
+  "format_failed_calls": 0,
+  "transport_failed_calls": 0,
+  "fallback_calls": 0,
+  "sum_model_latency_s": 3.454033851623535,
+  "gold": "3",
+  "score": 1.0,
+  "question": "Aren’s flight from New York to Hawaii will take 11 hours 20 minutes.  He spends 2 hours reading, 4 hours watching two movies, 30 minutes eating his dinner, 40 minutes listening to the radio, and 1 hour 10 minutes playing games.  How many hours does he have left to take a nap?\nGive the final numeric answer."
+}

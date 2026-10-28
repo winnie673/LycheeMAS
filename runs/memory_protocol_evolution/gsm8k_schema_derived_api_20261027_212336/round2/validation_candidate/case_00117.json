@@ -1,0 +1,151 @@
+{
+  "task_id": "gsm8k:train:seed42:V:00117",
+  "status": "completed",
+  "error": null,
+  "prediction": "1670",
+  "messages": [
+    {
+      "sender": "planner",
+      "content": "G:total_revenue;P:ticket_revenue=32*5+40*7+58*10,popcorn_buyers=(32+40+58)/2,popcorn_revenue=popcorn_buyers*10,total_revenue=ticket_revenue+popcorn_revenue",
+      "receiver": "solver",
+      "round": 0,
+      "role": "assistant",
+      "prompt_tokens": 907,
+      "completion_tokens": 63,
+      "id": "812b7afe101b",
+      "ts": 1793111607.1272738,
+      "meta": {
+        "sender": "planner",
+        "receiver": "solver",
+        "message_id": "812b7afe101b",
+        "protocol_edge": "planner_to_solver",
+        "protocol_version": "CARD-2-gsm8k",
+        "protocol_hash": "aec703067bbfeee6aa1e642a2a319658f1d33f2eff00c8701de19347f616ed6d",
+        "contract_hash": "ab4b736240365db5d0ce2caea032f40a3b7fc9c189db42d5ebcd28cac0fac22b",
+        "fields": {
+          "G": "total_revenue",
+          "P": "ticket_revenue=32*5+40*7+58*10,popcorn_buyers=(32+40+58)/2,popcorn_revenue=popcorn_buyers*10,total_revenue=ticket_revenue+popcorn_revenue"
+        },
+        "communication_tokens": 63,
+        "communication_tokens_exact": true,
+        "attempt_count": 1,
+        "fallback": false,
+        "tokens_include_all_attempts": true,
+        "incoming_message_ids": []
+      }
+    },
+    {
+      "sender": "solver",
+      "content": "IR:ticket_revenue=32*5+40*7+58*10=1020,popcorn_buyers=(32+40+58)/2=65,popcorn_revenue=65*10=650,total_revenue=1020+650=1670;R:1670",
+      "receiver": "verifier",
+      "round": 0,
+      "role": "assistant",
+      "prompt_tokens": 788,
+      "completion_tokens": 64,
+      "id": "d1de7aa7609c",
+      "ts": 1793111608.3080456,
+      "meta": {
+        "sender": "solver",
+        "receiver": "verifier",
+        "message_id": "d1de7aa7609c",
+        "protocol_edge": "solver_to_verifier",
+        "protocol_version": "CARD-2-gsm8k",
+        "protocol_hash": "aec703067bbfeee6aa1e642a2a319658f1d33f2eff00c8701de19347f616ed6d",
+        "contract_hash": "ab4b736240365db5d0ce2caea032f40a3b7fc9c189db42d5ebcd28cac0fac22b",
+        "fields": {
+          "IR": "ticket_revenue=32*5+40*7+58*10=1020,popcorn_buyers=(32+40+58)/2=65,popcorn_revenue=65*10=650,total_revenue=1020+650=1670",
+          "R": "1670"
+        },
+        "communication_tokens": 64,
+        "communication_tokens_exact": true,
+        "attempt_count": 1,
+        "fallback": false,
+        "tokens_include_all_attempts": true,
+        "incoming_message_ids": [
+          "812b7afe101b"
+        ]
+      }
+    },
+    {
+      "sender": "verifier",
+      "content": "CHK:ACCEPT",
+      "receiver": "solver",
+      "round": 0,
+      "role": "assistant",
+      "prompt_tokens": 1155,
+      "completion_tokens": 5,
+      "id": "7e552381169b",
+      "ts": 1793111609.41849,
+      "meta": {
+        "sender": "verifier",
+        "receiver": "solver",
+        "message_id": "7e552381169b",
+        "protocol_edge": "verifier_to_solver",
+        "protocol_version": "CARD-2-gsm8k",
+        "protocol_hash": "aec703067bbfeee6aa1e642a2a319658f1d33f2eff00c8701de19347f616ed6d",
+        "contract_hash": "ab4b736240365db5d0ce2caea032f40a3b7fc9c189db42d5ebcd28cac0fac22b",
+        "fields": {
+          "CHK": "ACCEPT"
+        },
+        "communication_tokens": 5,
+        "communication_tokens_exact": true,
+        "attempt_count": 1,
+        "fallback": false,
+        "tokens_include_all_attempts": true,
+        "incoming_message_ids": [
+          "d1de7aa7609c"
+        ]
+      }
+    }
+  ],
+  "communication_tokens": 132,
+  "wall_time_s": 3.8956713000079617,
+  "verified": true,
+  "revision_rounds": 0,
+  "model_calls": [
+    {
+      "role": "planner",
+      "attempt": 0,
+      "status": "delivered",
+      "error": "",
+      "raw_output": "G:total_revenue;P:ticket_revenue=32*5+40*7+58*10,popcorn_buyers=(32+40+58)/2,popcorn_revenue=popcorn_buyers*10,total_revenue=ticket_revenue+popcorn_revenue",
+      "finish_reason": "stop",
+      "output_tokens": 63,
+      "usage_available": true
+    },
+    {
+      "role": "solver",
+      "attempt": 0,
+      "status": "delivered",
+      "error": "",
+      "raw_output": "IR:ticket_revenue=32*5+40*7+58*10=1020,popcorn_buyers=(32+40+58)/2=65,popcorn_revenue=65*10=650,total_revenue=1020+650=1670;R:1670",
+      "finish_reason": "stop",
+      "output_tokens": 64,
+      "usage_available": true
+    },
+    {
+      "role": "verifier",
+      "attempt": 0,
+      "status": "delivered",
+      "error": "",
+      "raw_output": "CHK:ACCEPT",
+      "finish_reason": "stop",
+      "output_tokens": 5,
+      "usage_available": true
+    }
+  ],
+  "failed_attempts": [],
+  "calls": 3,
+  "usage_complete": true,
+  "known_input_tokens": 2850,
+  "known_output_tokens": 132,
+  "model_input_tokens": 2850,
+  "model_output_tokens": 132,
+  "format_failed_calls": 0,
+  "transport_failed_calls": 0,
+  "fallback_calls": 0,
+  "sum_model_latency_s": 3.7141201496124268,
+  "gold": "1670",
+  "score": 1.0,
+  "question": "A movie theater charges $5 for matinee tickets, $7 for evening tickets, and $10 for opening night tickets. A bucket of popcorn costs $10. On Friday, they had 32 matinee customers, 40 evening customers, and 58 customers for an opening night showing of a movie. If half the customers bought popcorn, how much money in dollars did the theater make on Friday night?\nGive the final numeric answer."
+}

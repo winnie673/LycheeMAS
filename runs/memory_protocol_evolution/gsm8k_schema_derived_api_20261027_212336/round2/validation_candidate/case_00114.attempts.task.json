@@ -1,0 +1,148 @@
+{
+  "task_id": "gsm8k:train:seed42:V:00114",
+  "status": "completed",
+  "error": null,
+  "prediction": "45",
+  "messages": [
+    {
+      "sender": "planner",
+      "content": "G:flower_charge;P:mow_pay=15,mow_hours=1,flower_hours=2,target_total=20*(mow_hours+flower_hours),flower_charge=target_total-mow_pay",
+      "receiver": "solver",
+      "round": 0,
+      "role": "assistant",
+      "prompt_tokens": 894,
+      "completion_tokens": 50,
+      "id": "0cdd2391e18b",
+      "ts": 1793111595.263869,
+      "meta": {
+        "sender": "planner",
+        "receiver": "solver",
+        "message_id": "0cdd2391e18b",
+        "protocol_edge": "planner_to_solver",
+        "protocol_version": "CARD-2-gsm8k",
+        "protocol_hash": "aec703067bbfeee6aa1e642a2a319658f1d33f2eff00c8701de19347f616ed6d",
+        "contract_hash": "ab4b736240365db5d0ce2caea032f40a3b7fc9c189db42d5ebcd28cac0fac22b",
+        "fields": {
+          "G": "flower_charge",
+          "P": "mow_pay=15,mow_hours=1,flower_hours=2,target_total=20*(mow_hours+flower_hours),flower_charge=target_total-mow_pay"
+        },
+        "communication_tokens": 50,
+        "communication_tokens_exact": true,
+        "attempt_count": 1,
+        "fallback": false,
+        "tokens_include_all_attempts": true,
+        "incoming_message_ids": []
+      }
+    },
+    {
+      "sender": "solver",
+      "content": "IR:target_total=20*(1+2)=60,flower_charge=60-15=45;R:45",
+      "receiver": "verifier",
+      "round": 0,
+      "role": "assistant",
+      "prompt_tokens": 762,
+      "completion_tokens": 26,
+      "id": "4192bab7de19",
+      "ts": 1793111596.6278722,
+      "meta": {
+        "sender": "solver",
+        "receiver": "verifier",
+        "message_id": "4192bab7de19",
+        "protocol_edge": "solver_to_verifier",
+        "protocol_version": "CARD-2-gsm8k",
+        "protocol_hash": "aec703067bbfeee6aa1e642a2a319658f1d33f2eff00c8701de19347f616ed6d",
+        "contract_hash": "ab4b736240365db5d0ce2caea032f40a3b7fc9c189db42d5ebcd28cac0fac22b",
+        "fields": {
+          "IR": "target_total=20*(1+2)=60,flower_charge=60-15=45",
+          "R": "45"
+        },
+        "communication_tokens": 26,
+        "communication_tokens_exact": true,
+        "attempt_count": 1,
+        "fallback": false,
+        "tokens_include_all_attempts": true,
+        "incoming_message_ids": [
+          "0cdd2391e18b"
+        ]
+      }
+    },
+    {
+      "sender": "verifier",
+      "content": "CHK:ACCEPT",
+      "receiver": "solver",
+      "round": 0,
+      "role": "assistant",
+      "prompt_tokens": 1104,
+      "completion_tokens": 5,
+      "id": "c2a37a543668",
+      "ts": 1793111597.7348866,
+      "meta": {
+        "sender": "verifier",
+        "receiver": "solver",
+        "message_id": "c2a37a543668",
+        "protocol_edge": "verifier_to_solver",
+        "protocol_version": "CARD-2-gsm8k",
+        "protocol_hash": "aec703067bbfeee6aa1e642a2a319658f1d33f2eff00c8701de19347f616ed6d",
+        "contract_hash": "ab4b736240365db5d0ce2caea032f40a3b7fc9c189db42d5ebcd28cac0fac22b",
+        "fields": {
+          "CHK": "ACCEPT"
+        },
+        "communication_tokens": 5,
+        "communication_tokens_exact": true,
+        "attempt_count": 1,
+        "fallback": false,
+        "tokens_include_all_attempts": true,
+        "incoming_message_ids": [
+          "4192bab7de19"
+        ]
+      }
+    }
+  ],
+  "communication_tokens": 81,
+  "wall_time_s": 4.3223650000290945,
+  "verified": true,
+  "revision_rounds": 0,
+  "model_calls": [
+    {
+      "role": "planner",
+      "attempt": 0,
+      "status": "delivered",
+      "error": "",
+      "raw_output": "G:flower_charge;P:mow_pay=15,mow_hours=1,flower_hours=2,target_total=20*(mow_hours+flower_hours),flower_charge=target_total-mow_pay",
+      "finish_reason": "stop",
+      "output_tokens": 50,
+      "usage_available": true
+    },
+    {
+      "role": "solver",
+      "attempt": 0,
+      "status": "delivered",
+      "error": "",
+      "raw_output": "IR:target_total=20*(1+2)=60,flower_charge=60-15=45;R:45",
+      "finish_reason": "stop",
+      "output_tokens": 26,
+      "usage_available": true
+    },
+    {
+      "role": "verifier",
+      "attempt": 0,
+      "status": "delivered",
+      "error": "",
+      "raw_output": "CHK:ACCEPT",
+      "finish_reason": "stop",
+      "output_tokens": 5,
+      "usage_available": true
+    }
+  ],
+  "failed_attempts": [],
+  "calls": 3,
+  "usage_complete": true,
+  "known_input_tokens": 2760,
+  "known_output_tokens": 81,
+  "model_input_tokens": 2760,
+  "model_output_tokens": 81,
+  "format_failed_calls": 0,
+  "transport_failed_calls": 0,
+  "fallback_calls": 0,
+  "sum_model_latency_s": 4.136721611022949
+}

@@ -1,0 +1,151 @@
+{
+  "task_id": "gsm8k:train:seed42:V:00190",
+  "status": "completed",
+  "error": null,
+  "prediction": "35",
+  "messages": [
+    {
+      "sender": "planner",
+      "content": "G:extra_this_week;P:first=80-20,third=80+15,this_week=first+80+third,extra_this_week=this_week-200",
+      "receiver": "solver",
+      "round": 0,
+      "role": "assistant",
+      "prompt_tokens": 829,
+      "completion_tokens": 43,
+      "id": "ee5d7fb62fae",
+      "ts": 1793109798.5270061,
+      "meta": {
+        "sender": "planner",
+        "receiver": "solver",
+        "message_id": "ee5d7fb62fae",
+        "protocol_edge": "planner_to_solver",
+        "protocol_version": "CARD-1-gsm8k",
+        "protocol_hash": "2a663f41d251a442e680de67a231e516a8fe5e31629bc25d021c8c0eb1354cff",
+        "contract_hash": "ab4b736240365db5d0ce2caea032f40a3b7fc9c189db42d5ebcd28cac0fac22b",
+        "fields": {
+          "G": "extra_this_week",
+          "P": "first=80-20,third=80+15,this_week=first+80+third,extra_this_week=this_week-200"
+        },
+        "communication_tokens": 43,
+        "communication_tokens_exact": true,
+        "attempt_count": 1,
+        "fallback": false,
+        "tokens_include_all_attempts": true,
+        "incoming_message_ids": []
+      }
+    },
+    {
+      "sender": "solver",
+      "content": "IR:first=80-20=60,third=80+15=95,this_week=60+80+95=235,extra=235-200=35;R:35",
+      "receiver": "verifier",
+      "round": 0,
+      "role": "assistant",
+      "prompt_tokens": 755,
+      "completion_tokens": 41,
+      "id": "8af0c1d02181",
+      "ts": 1793109799.9260213,
+      "meta": {
+        "sender": "solver",
+        "receiver": "verifier",
+        "message_id": "8af0c1d02181",
+        "protocol_edge": "solver_to_verifier",
+        "protocol_version": "CARD-1-gsm8k",
+        "protocol_hash": "2a663f41d251a442e680de67a231e516a8fe5e31629bc25d021c8c0eb1354cff",
+        "contract_hash": "ab4b736240365db5d0ce2caea032f40a3b7fc9c189db42d5ebcd28cac0fac22b",
+        "fields": {
+          "IR": "first=80-20=60,third=80+15=95,this_week=60+80+95=235,extra=235-200=35",
+          "R": "35"
+        },
+        "communication_tokens": 41,
+        "communication_tokens_exact": true,
+        "attempt_count": 1,
+        "fallback": false,
+        "tokens_include_all_attempts": true,
+        "incoming_message_ids": [
+          "ee5d7fb62fae"
+        ]
+      }
+    },
+    {
+      "sender": "verifier",
+      "content": "CHK:ACCEPT",
+      "receiver": "solver",
+      "round": 0,
+      "role": "assistant",
+      "prompt_tokens": 1119,
+      "completion_tokens": 5,
+      "id": "5458173c81ac",
+      "ts": 1793109801.406729,
+      "meta": {
+        "sender": "verifier",
+        "receiver": "solver",
+        "message_id": "5458173c81ac",
+        "protocol_edge": "verifier_to_solver",
+        "protocol_version": "CARD-1-gsm8k",
+        "protocol_hash": "2a663f41d251a442e680de67a231e516a8fe5e31629bc25d021c8c0eb1354cff",
+        "contract_hash": "ab4b736240365db5d0ce2caea032f40a3b7fc9c189db42d5ebcd28cac0fac22b",
+        "fields": {
+          "CHK": "ACCEPT"
+        },
+        "communication_tokens": 5,
+        "communication_tokens_exact": true,
+        "attempt_count": 1,
+        "fallback": false,
+        "tokens_include_all_attempts": true,
+        "incoming_message_ids": [
+          "8af0c1d02181"
+        ]
+      }
+    }
+  ],
+  "communication_tokens": 89,
+  "wall_time_s": 4.443430299987085,
+  "verified": true,
+  "revision_rounds": 0,
+  "model_calls": [
+    {
+      "role": "planner",
+      "attempt": 0,
+      "status": "delivered",
+      "error": "",
+      "raw_output": "G:extra_this_week;P:first=80-20,third=80+15,this_week=first+80+third,extra_this_week=this_week-200",
+      "finish_reason": "stop",
+      "output_tokens": 43,
+      "usage_available": true
+    },
+    {
+      "role": "solver",
+      "attempt": 0,
+      "status": "delivered",
+      "error": "",
+      "raw_output": "IR:first=80-20=60,third=80+15=95,this_week=60+80+95=235,extra=235-200=35;R:35",
+      "finish_reason": "stop",
+      "output_tokens": 41,
+      "usage_available": true
+    },
+    {
+      "role": "verifier",
+      "attempt": 0,
+      "status": "delivered",
+      "error": "",
+      "raw_output": "CHK:ACCEPT",
+      "finish_reason": "stop",
+      "output_tokens": 5,
+      "usage_available": true
+    }
+  ],
+  "failed_attempts": [],
+  "calls": 3,
+  "usage_complete": true,
+  "known_input_tokens": 2703,
+  "known_output_tokens": 89,
+  "model_input_tokens": 2703,
+  "model_output_tokens": 89,
+  "format_failed_calls": 0,
+  "transport_failed_calls": 0,
+  "fallback_calls": 0,
+  "sum_model_latency_s": 4.2856528759002686,
+  "gold": "35",
+  "score": 1.0,
+  "question": "In three baseball games this week, eighty people watched the second game while 20 fewer people watched the first game than the second game. Then 15 more people watched the third than the second game. If there were a total of 200 people who watched the games last week, how many more people watched the games this week than last week?\nGive the final numeric answer."
+}

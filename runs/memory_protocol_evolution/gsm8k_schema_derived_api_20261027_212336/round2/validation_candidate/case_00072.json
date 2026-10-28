@@ -1,0 +1,152 @@
+{
+  "task_id": "gsm8k:train:seed42:V:00072",
+  "status": "completed",
+  "error": null,
+  "prediction": "43",
+  "messages": [
+    {
+      "sender": "planner",
+      "content": "G:total_chairs;P:yellow=4*red,blue=yellow-2,total=red+yellow+blue;K:red=5",
+      "receiver": "solver",
+      "round": 0,
+      "role": "assistant",
+      "prompt_tokens": 886,
+      "completion_tokens": 33,
+      "id": "78bff09f2b30",
+      "ts": 1793111424.4949431,
+      "meta": {
+        "sender": "planner",
+        "receiver": "solver",
+        "message_id": "78bff09f2b30",
+        "protocol_edge": "planner_to_solver",
+        "protocol_version": "CARD-2-gsm8k",
+        "protocol_hash": "aec703067bbfeee6aa1e642a2a319658f1d33f2eff00c8701de19347f616ed6d",
+        "contract_hash": "ab4b736240365db5d0ce2caea032f40a3b7fc9c189db42d5ebcd28cac0fac22b",
+        "fields": {
+          "G": "total_chairs",
+          "P": "yellow=4*red,blue=yellow-2,total=red+yellow+blue",
+          "K": "red=5"
+        },
+        "communication_tokens": 33,
+        "communication_tokens_exact": true,
+        "attempt_count": 1,
+        "fallback": false,
+        "tokens_include_all_attempts": true,
+        "incoming_message_ids": []
+      }
+    },
+    {
+      "sender": "solver",
+      "content": "IR:yellow=4*5=20,blue=20-2=18,total=5+20+18=43;R:43",
+      "receiver": "verifier",
+      "round": 0,
+      "role": "assistant",
+      "prompt_tokens": 737,
+      "completion_tokens": 31,
+      "id": "100bd9dc58b8",
+      "ts": 1793111425.6805022,
+      "meta": {
+        "sender": "solver",
+        "receiver": "verifier",
+        "message_id": "100bd9dc58b8",
+        "protocol_edge": "solver_to_verifier",
+        "protocol_version": "CARD-2-gsm8k",
+        "protocol_hash": "aec703067bbfeee6aa1e642a2a319658f1d33f2eff00c8701de19347f616ed6d",
+        "contract_hash": "ab4b736240365db5d0ce2caea032f40a3b7fc9c189db42d5ebcd28cac0fac22b",
+        "fields": {
+          "IR": "yellow=4*5=20,blue=20-2=18,total=5+20+18=43",
+          "R": "43"
+        },
+        "communication_tokens": 31,
+        "communication_tokens_exact": true,
+        "attempt_count": 1,
+        "fallback": false,
+        "tokens_include_all_attempts": true,
+        "incoming_message_ids": [
+          "78bff09f2b30"
+        ]
+      }
+    },
+    {
+      "sender": "verifier",
+      "content": "CHK:ACCEPT",
+      "receiver": "solver",
+      "round": 0,
+      "role": "assistant",
+      "prompt_tokens": 1101,
+      "completion_tokens": 5,
+      "id": "d2736a5203ed",
+      "ts": 1793111426.935149,
+      "meta": {
+        "sender": "verifier",
+        "receiver": "solver",
+        "message_id": "d2736a5203ed",
+        "protocol_edge": "verifier_to_solver",
+        "protocol_version": "CARD-2-gsm8k",
+        "protocol_hash": "aec703067bbfeee6aa1e642a2a319658f1d33f2eff00c8701de19347f616ed6d",
+        "contract_hash": "ab4b736240365db5d0ce2caea032f40a3b7fc9c189db42d5ebcd28cac0fac22b",
+        "fields": {
+          "CHK": "ACCEPT"
+        },
+        "communication_tokens": 5,
+        "communication_tokens_exact": true,
+        "attempt_count": 1,
+        "fallback": false,
+        "tokens_include_all_attempts": true,
+        "incoming_message_ids": [
+          "100bd9dc58b8"
+        ]
+      }
+    }
+  ],
+  "communication_tokens": 69,
+  "wall_time_s": 4.356293500051834,
+  "verified": true,
+  "revision_rounds": 0,
+  "model_calls": [
+    {
+      "role": "planner",
+      "attempt": 0,
+      "status": "delivered",
+      "error": "",
+      "raw_output": "G:total_chairs;P:yellow=4*red,blue=yellow-2,total=red+yellow+blue;K:red=5",
+      "finish_reason": "stop",
+      "output_tokens": 33,
+      "usage_available": true
+    },
+    {
+      "role": "solver",
+      "attempt": 0,
+      "status": "delivered",
+      "error": "",
+      "raw_output": "IR:yellow=4*5=20,blue=20-2=18,total=5+20+18=43;R:43",
+      "finish_reason": "stop",
+      "output_tokens": 31,
+      "usage_available": true
+    },
+    {
+      "role": "verifier",
+      "attempt": 0,
+      "status": "delivered",
+      "error": "",
+      "raw_output": "CHK:ACCEPT",
+      "finish_reason": "stop",
+      "output_tokens": 5,
+      "usage_available": true
+    }
+  ],
+  "failed_attempts": [],
+  "calls": 3,
+  "usage_complete": true,
+  "known_input_tokens": 2724,
+  "known_output_tokens": 69,
+  "model_input_tokens": 2724,
+  "model_output_tokens": 69,
+  "format_failed_calls": 0,
+  "transport_failed_calls": 0,
+  "fallback_calls": 0,
+  "sum_model_latency_s": 4.277015209197998,
+  "gold": "43",
+  "score": 1.0,
+  "question": "Susan loves chairs. In her house there are red chairs, yellow chairs, and blue chairs. There are 5 red chairs. There are 4 times as many yellow chairs as red chairs, and there are 2 fewer blue chairs than yellow chairs. How many chairs are there in Susan's house?\nGive the final numeric answer."
+}

@@ -1,0 +1,148 @@
+{
+  "task_id": "gsm8k:train:seed42:V:00183",
+  "status": "completed",
+  "error": null,
+  "prediction": "240",
+  "messages": [
+    {
+      "sender": "planner",
+      "content": "G:grill_run_minutes;P:coals_burned=3*60,minutes_per_coal=20/15,grill_run_minutes=coals_burned*minutes_per_coal",
+      "receiver": "solver",
+      "round": 0,
+      "role": "assistant",
+      "prompt_tokens": 807,
+      "completion_tokens": 43,
+      "id": "b9668f7407a5",
+      "ts": 1793109769.8766196,
+      "meta": {
+        "sender": "planner",
+        "receiver": "solver",
+        "message_id": "b9668f7407a5",
+        "protocol_edge": "planner_to_solver",
+        "protocol_version": "CARD-1-gsm8k",
+        "protocol_hash": "2a663f41d251a442e680de67a231e516a8fe5e31629bc25d021c8c0eb1354cff",
+        "contract_hash": "ab4b736240365db5d0ce2caea032f40a3b7fc9c189db42d5ebcd28cac0fac22b",
+        "fields": {
+          "G": "grill_run_minutes",
+          "P": "coals_burned=3*60,minutes_per_coal=20/15,grill_run_minutes=coals_burned*minutes_per_coal"
+        },
+        "communication_tokens": 43,
+        "communication_tokens_exact": true,
+        "attempt_count": 1,
+        "fallback": false,
+        "tokens_include_all_attempts": true,
+        "incoming_message_ids": []
+      }
+    },
+    {
+      "sender": "solver",
+      "content": "IR:coals_burned=3*60=180,minutes_per_coal=20/15=1.3333,grill_run_minutes=180*1.3333=240;R:240",
+      "receiver": "verifier",
+      "round": 0,
+      "role": "assistant",
+      "prompt_tokens": 733,
+      "completion_tokens": 45,
+      "id": "deab6e034a65",
+      "ts": 1793109771.254063,
+      "meta": {
+        "sender": "solver",
+        "receiver": "verifier",
+        "message_id": "deab6e034a65",
+        "protocol_edge": "solver_to_verifier",
+        "protocol_version": "CARD-1-gsm8k",
+        "protocol_hash": "2a663f41d251a442e680de67a231e516a8fe5e31629bc25d021c8c0eb1354cff",
+        "contract_hash": "ab4b736240365db5d0ce2caea032f40a3b7fc9c189db42d5ebcd28cac0fac22b",
+        "fields": {
+          "IR": "coals_burned=3*60=180,minutes_per_coal=20/15=1.3333,grill_run_minutes=180*1.3333=240",
+          "R": "240"
+        },
+        "communication_tokens": 45,
+        "communication_tokens_exact": true,
+        "attempt_count": 1,
+        "fallback": false,
+        "tokens_include_all_attempts": true,
+        "incoming_message_ids": [
+          "b9668f7407a5"
+        ]
+      }
+    },
+    {
+      "sender": "verifier",
+      "content": "CHK:ACCEPT",
+      "receiver": "solver",
+      "round": 0,
+      "role": "assistant",
+      "prompt_tokens": 1101,
+      "completion_tokens": 5,
+      "id": "f2d66139b33c",
+      "ts": 1793109772.489513,
+      "meta": {
+        "sender": "verifier",
+        "receiver": "solver",
+        "message_id": "f2d66139b33c",
+        "protocol_edge": "verifier_to_solver",
+        "protocol_version": "CARD-1-gsm8k",
+        "protocol_hash": "2a663f41d251a442e680de67a231e516a8fe5e31629bc25d021c8c0eb1354cff",
+        "contract_hash": "ab4b736240365db5d0ce2caea032f40a3b7fc9c189db42d5ebcd28cac0fac22b",
+        "fields": {
+          "CHK": "ACCEPT"
+        },
+        "communication_tokens": 5,
+        "communication_tokens_exact": true,
+        "attempt_count": 1,
+        "fallback": false,
+        "tokens_include_all_attempts": true,
+        "incoming_message_ids": [
+          "deab6e034a65"
+        ]
+      }
+    }
+  ],
+  "communication_tokens": 93,
+  "wall_time_s": 3.963723099906929,
+  "verified": true,
+  "revision_rounds": 0,
+  "model_calls": [
+    {
+      "role": "planner",
+      "attempt": 0,
+      "status": "delivered",
+      "error": "",
+      "raw_output": "G:grill_run_minutes;P:coals_burned=3*60,minutes_per_coal=20/15,grill_run_minutes=coals_burned*minutes_per_coal",
+      "finish_reason": "stop",
+      "output_tokens": 43,
+      "usage_available": true
+    },
+    {
+      "role": "solver",
+      "attempt": 0,
+      "status": "delivered",
+      "error": "",
+      "raw_output": "IR:coals_burned=3*60=180,minutes_per_coal=20/15=1.3333,grill_run_minutes=180*1.3333=240;R:240",
+      "finish_reason": "stop",
+      "output_tokens": 45,
+      "usage_available": true
+    },
+    {
+      "role": "verifier",
+      "attempt": 0,
+      "status": "delivered",
+      "error": "",
+      "raw_output": "CHK:ACCEPT",
+      "finish_reason": "stop",
+      "output_tokens": 5,
+      "usage_available": true
+    }
+  ],
+  "failed_attempts": [],
+  "calls": 3,
+  "usage_complete": true,
+  "known_input_tokens": 2641,
+  "known_output_tokens": 93,
+  "model_input_tokens": 2641,
+  "model_output_tokens": 93,
+  "format_failed_calls": 0,
+  "transport_failed_calls": 0,
+  "fallback_calls": 0,
+  "sum_model_latency_s": 3.7979013919830322
+}

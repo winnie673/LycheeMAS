@@ -1,0 +1,120 @@
+{
+  "task_id": "gsm8k:test:seed42:T:00107",
+  "mode": "hybrid",
+  "benchmark": "gsm8k",
+  "status": "completed",
+  "error": null,
+  "prediction": "3",
+  "gold": "3",
+  "wall_time_s": 3.7120330999605358,
+  "communication_tokens": 105,
+  "communication_tokens_exact": true,
+  "revision_rounds": 0,
+  "verification_decision": "ACCEPT",
+  "verified": true,
+  "messages": [
+    {
+      "sender": "planner",
+      "content": "G:number_of_30-minute_episodes_on_Wednesday;P:total_minutes=7*60,known_minutes=2*60+60+30+2*60,wed_minutes=total_minutes-known_minutes,wed_episodes=wed_minutes/30",
+      "receiver": "solver",
+      "round": 0,
+      "role": "assistant",
+      "prompt_tokens": 813,
+      "completion_tokens": 62,
+      "id": "e182b67ff649",
+      "ts": 1793169881.040409,
+      "meta": {
+        "sender": "planner",
+        "receiver": "solver",
+        "message_id": "e182b67ff649",
+        "protocol_edge": "planner_to_solver",
+        "protocol_version": "CARD-0-gsm8k",
+        "protocol_hash": "4bcdae885cc464e0a51977368e4bc06650c0326dbdcb182ce0327477c1d32daa",
+        "contract_hash": "ab4b736240365db5d0ce2caea032f40a3b7fc9c189db42d5ebcd28cac0fac22b",
+        "fields": {
+          "G": "number_of_30-minute_episodes_on_Wednesday",
+          "P": "total_minutes=7*60,known_minutes=2*60+60+30+2*60,wed_minutes=total_minutes-known_minutes,wed_episodes=wed_minutes/30"
+        },
+        "communication_tokens": 62,
+        "communication_tokens_exact": true,
+        "attempt_count": 1,
+        "fallback": false,
+        "tokens_include_all_attempts": true,
+        "incoming_message_ids": []
+      }
+    },
+    {
+      "sender": "solver",
+      "content": "IR:total=420,known=120+60+30+120=330,wed=420-330=90,episodes=90/30=3;R:3",
+      "receiver": "verifier",
+      "round": 0,
+      "role": "assistant",
+      "prompt_tokens": 817,
+      "completion_tokens": 38,
+      "id": "4d815188afd6",
+      "ts": 1793169882.3648145,
+      "meta": {
+        "sender": "solver",
+        "receiver": "verifier",
+        "message_id": "4d815188afd6",
+        "protocol_edge": "solver_to_verifier",
+        "protocol_version": "CARD-0-gsm8k",
+        "protocol_hash": "4bcdae885cc464e0a51977368e4bc06650c0326dbdcb182ce0327477c1d32daa",
+        "contract_hash": "ab4b736240365db5d0ce2caea032f40a3b7fc9c189db42d5ebcd28cac0fac22b",
+        "fields": {
+          "IR": "total=420,known=120+60+30+120=330,wed=420-330=90,episodes=90/30=3",
+          "R": "3"
+        },
+        "communication_tokens": 38,
+        "communication_tokens_exact": true,
+        "attempt_count": 1,
+        "fallback": false,
+        "tokens_include_all_attempts": true,
+        "incoming_message_ids": [
+          "e182b67ff649"
+        ]
+      }
+    },
+    {
+      "sender": "verifier",
+      "content": "CHK:ACCEPT",
+      "receiver": "solver",
+      "round": 0,
+      "role": "assistant",
+      "prompt_tokens": 1159,
+      "completion_tokens": 5,
+      "id": "003245a7a8d8",
+      "ts": 1793169883.320024,
+      "meta": {
+        "sender": "verifier",
+        "receiver": "solver",
+        "message_id": "003245a7a8d8",
+        "protocol_edge": "verifier_to_solver",
+        "protocol_version": "CARD-0-gsm8k",
+        "protocol_hash": "4bcdae885cc464e0a51977368e4bc06650c0326dbdcb182ce0327477c1d32daa",
+        "contract_hash": "ab4b736240365db5d0ce2caea032f40a3b7fc9c189db42d5ebcd28cac0fac22b",
+        "fields": {
+          "CHK": "ACCEPT"
+        },
+        "communication_tokens": 5,
+        "communication_tokens_exact": true,
+        "attempt_count": 1,
+        "fallback": false,
+        "tokens_include_all_attempts": true,
+        "incoming_message_ids": [
+          "4d815188afd6"
+        ]
+      }
+    }
+  ],
+  "calls": 3,
+  "usage_complete": true,
+  "known_input_tokens": 2789,
+  "known_output_tokens": 105,
+  "model_input_tokens": 2789,
+  "model_output_tokens": 105,
+  "format_failed_calls": 0,
+  "transport_failed_calls": 0,
+  "fallback_calls": 0,
+  "sum_model_latency_s": 3.6353681087493896
+}

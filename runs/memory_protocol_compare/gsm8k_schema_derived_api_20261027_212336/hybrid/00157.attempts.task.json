@@ -1,0 +1,187 @@
+{
+  "task_id": "gsm8k:test:seed42:T:00161",
+  "mode": "hybrid",
+  "benchmark": "gsm8k",
+  "status": "completed",
+  "error": null,
+  "prediction": "32",
+  "gold": "32",
+  "wall_time_s": 5.805265200091526,
+  "communication_tokens": 210,
+  "communication_tokens_exact": true,
+  "revision_rounds": 1,
+  "verification_decision": "ACCEPT",
+  "verified": true,
+  "messages": [
+    {
+      "sender": "planner",
+      "content": "G:total_fish;P:anakin=10+6+3,locsin=(10-5)+(6-3)+(3+2),total=anakin+locsin",
+      "receiver": "solver",
+      "round": 0,
+      "role": "assistant",
+      "prompt_tokens": 772,
+      "completion_tokens": 39,
+      "id": "ea9e5ebab848",
+      "ts": 1793170283.182192,
+      "meta": {
+        "sender": "planner",
+        "receiver": "solver",
+        "message_id": "ea9e5ebab848",
+        "protocol_edge": "planner_to_solver",
+        "protocol_version": "CARD-0-gsm8k",
+        "protocol_hash": "4bcdae885cc464e0a51977368e4bc06650c0326dbdcb182ce0327477c1d32daa",
+        "contract_hash": "ab4b736240365db5d0ce2caea032f40a3b7fc9c189db42d5ebcd28cac0fac22b",
+        "fields": {
+          "G": "total_fish",
+          "P": "anakin=10+6+3,locsin=(10-5)+(6-3)+(3+2),total=anakin+locsin"
+        },
+        "communication_tokens": 39,
+        "communication_tokens_exact": true,
+        "attempt_count": 1,
+        "fallback": false,
+        "tokens_include_all_attempts": true,
+        "incoming_message_ids": []
+      }
+    },
+    {
+      "sender": "solver",
+      "content": "IR:anakin=10+6+3=19,locsin=5+3+5=13,total=19+13=32;R:32",
+      "receiver": "verifier",
+      "round": 0,
+      "role": "assistant",
+      "prompt_tokens": 753,
+      "completion_tokens": 35,
+      "id": "93de68f83c2b",
+      "ts": 1793170284.3126922,
+      "meta": {
+        "sender": "solver",
+        "receiver": "verifier",
+        "message_id": "93de68f83c2b",
+        "protocol_edge": "solver_to_verifier",
+        "protocol_version": "CARD-0-gsm8k",
+        "protocol_hash": "4bcdae885cc464e0a51977368e4bc06650c0326dbdcb182ce0327477c1d32daa",
+        "contract_hash": "ab4b736240365db5d0ce2caea032f40a3b7fc9c189db42d5ebcd28cac0fac22b",
+        "fields": {
+          "IR": "anakin=10+6+3=19,locsin=5+3+5=13,total=19+13=32",
+          "R": "32"
+        },
+        "communication_tokens": 35,
+        "communication_tokens_exact": true,
+        "attempt_count": 1,
+        "fallback": false,
+        "tokens_include_all_attempts": true,
+        "incoming_message_ids": [
+          "ea9e5ebab848"
+        ]
+      }
+    },
+    {
+      "sender": "verifier",
+      "content": "CHK:REVISE;E:RELATION;REQ:Recompute Locsin's counts from the stated comparisons: starfish 10-5=5, sea horses 6-3=3, clownfish 3+2=5, then sum both totals.",
+      "receiver": "solver",
+      "round": 0,
+      "role": "assistant",
+      "prompt_tokens": 1115,
+      "completion_tokens": 58,
+      "id": "94c50e706f79",
+      "ts": 1793170285.5330203,
+      "meta": {
+        "sender": "verifier",
+        "receiver": "solver",
+        "message_id": "94c50e706f79",
+        "protocol_edge": "verifier_to_solver",
+        "protocol_version": "CARD-0-gsm8k",
+        "protocol_hash": "4bcdae885cc464e0a51977368e4bc06650c0326dbdcb182ce0327477c1d32daa",
+        "contract_hash": "ab4b736240365db5d0ce2caea032f40a3b7fc9c189db42d5ebcd28cac0fac22b",
+        "fields": {
+          "CHK": "REVISE",
+          "E": "RELATION",
+          "REQ": "Recompute Locsin's counts from the stated comparisons: starfish 10-5=5, sea horses 6-3=3, clownfish 3+2=5, then sum both totals."
+        },
+        "communication_tokens": 58,
+        "communication_tokens_exact": true,
+        "attempt_count": 1,
+        "fallback": false,
+        "tokens_include_all_attempts": true,
+        "incoming_message_ids": [
+          "93de68f83c2b"
+        ]
+      }
+    },
+    {
+      "sender": "solver",
+      "content": "IR:locsin_starfish=10-5=5,locsin_seahorses=6-3=3,locsin_clownfish=3+2=5,locsin_total=5+3+5=13,anakin_total=10+6+3=19,total=19+13=32;R:32",
+      "receiver": "verifier",
+      "round": 1,
+      "role": "assistant",
+      "prompt_tokens": 874,
+      "completion_tokens": 73,
+      "id": "4a2a06ce4b34",
+      "ts": 1793170286.656796,
+      "meta": {
+        "sender": "solver",
+        "receiver": "verifier",
+        "message_id": "4a2a06ce4b34",
+        "protocol_edge": "solver_to_verifier",
+        "protocol_version": "CARD-0-gsm8k",
+        "protocol_hash": "4bcdae885cc464e0a51977368e4bc06650c0326dbdcb182ce0327477c1d32daa",
+        "contract_hash": "ab4b736240365db5d0ce2caea032f40a3b7fc9c189db42d5ebcd28cac0fac22b",
+        "fields": {
+          "IR": "locsin_starfish=10-5=5,locsin_seahorses=6-3=3,locsin_clownfish=3+2=5,locsin_total=5+3+5=13,anakin_total=10+6+3=19,total=19+13=32",
+          "R": "32"
+        },
+        "communication_tokens": 73,
+        "communication_tokens_exact": true,
+        "attempt_count": 1,
+        "fallback": false,
+        "tokens_include_all_attempts": true,
+        "incoming_message_ids": [
+          "ea9e5ebab848",
+          "93de68f83c2b",
+          "94c50e706f79"
+        ]
+      }
+    },
+    {
+      "sender": "verifier",
+      "content": "CHK:ACCEPT",
+      "receiver": "solver",
+      "round": 1,
+      "role": "assistant",
+      "prompt_tokens": 1165,
+      "completion_tokens": 5,
+      "id": "b8203b0a83e9",
+      "ts": 1793170287.73578,
+      "meta": {
+        "sender": "verifier",
+        "receiver": "solver",
+        "message_id": "b8203b0a83e9",
+        "protocol_edge": "verifier_to_solver",
+        "protocol_version": "CARD-0-gsm8k",
+        "protocol_hash": "4bcdae885cc464e0a51977368e4bc06650c0326dbdcb182ce0327477c1d32daa",
+        "contract_hash": "ab4b736240365db5d0ce2caea032f40a3b7fc9c189db42d5ebcd28cac0fac22b",
+        "fields": {
+          "CHK": "ACCEPT"
+        },
+        "communication_tokens": 5,
+        "communication_tokens_exact": true,
+        "attempt_count": 1,
+        "fallback": false,
+        "tokens_include_all_attempts": true,
+        "incoming_message_ids": [
+          "4a2a06ce4b34"
+        ]
+      }
+    }
+  ],
+  "calls": 5,
+  "usage_complete": true,
+  "known_input_tokens": 4679,
+  "known_output_tokens": 210,
+  "model_input_tokens": 4679,
+  "model_output_tokens": 210,
+  "format_failed_calls": 0,
+  "transport_failed_calls": 0,
+  "fallback_calls": 0,
+  "sum_model_latency_s": 5.63567328453064
+}

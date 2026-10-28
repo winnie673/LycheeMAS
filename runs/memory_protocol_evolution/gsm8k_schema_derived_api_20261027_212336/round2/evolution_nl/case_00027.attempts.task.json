@@ -1,0 +1,123 @@
+{
+  "task_id": "gsm8k:train:seed42:G2:00027",
+  "status": "completed",
+  "error": null,
+  "prediction": "305",
+  "messages": [
+    {
+      "sender": "planner",
+      "content": "Goal: find Polly’s total cooking time for one week.\n\nPlan: Treat breakfast and lunch as daily tasks, then calculate dinner separately for the two types of days. For dinner, identify how many days she cooks for 10 minutes and how many days she cooks for 30 minutes, then add all cooking times together.\n\nConstraints: Use 7 days in the week. Do not omit breakfast or lunch. Be careful that “4 days this week” refers only to the 10-minute dinner days.",
+      "receiver": "solver",
+      "round": 0,
+      "role": "assistant",
+      "prompt_tokens": 209,
+      "completion_tokens": 101,
+      "id": "cf7541360332",
+      "ts": 1793110172.1327946,
+      "meta": {
+        "fields": {},
+        "communication_tokens": 101,
+        "communication_tokens_exact": true,
+        "attempt_count": 1,
+        "fallback": false,
+        "tokens_include_all_attempts": true,
+        "incoming_message_ids": []
+      }
+    },
+    {
+      "sender": "solver",
+      "content": "Breakfast: 20 minutes × 7 days = 140 minutes.  \nLunch: 5 minutes × 7 days = 35 minutes.  \nDinner: 10 minutes × 4 days = 40 minutes, plus 30 minutes × 3 days = 90 minutes, totaling 130 minutes.  \nTotal: 140 + 35 + 130 = 305 minutes.\n\n\\boxed{305}",
+      "receiver": "verifier",
+      "round": 0,
+      "role": "assistant",
+      "prompt_tokens": 322,
+      "completion_tokens": 87,
+      "id": "543127f58413",
+      "ts": 1793110173.4810777,
+      "meta": {
+        "fields": {
+          "R": "305"
+        },
+        "communication_tokens": 87,
+        "communication_tokens_exact": true,
+        "attempt_count": 1,
+        "fallback": false,
+        "tokens_include_all_attempts": true,
+        "incoming_message_ids": [
+          "cf7541360332"
+        ]
+      }
+    },
+    {
+      "sender": "verifier",
+      "content": "ACCEPT",
+      "receiver": "solver",
+      "round": 0,
+      "role": "assistant",
+      "prompt_tokens": 685,
+      "completion_tokens": 2,
+      "id": "1684fbfee1f5",
+      "ts": 1793110174.7855232,
+      "meta": {
+        "fields": {
+          "CHK": "ACCEPT"
+        },
+        "communication_tokens": 2,
+        "communication_tokens_exact": true,
+        "attempt_count": 1,
+        "fallback": false,
+        "tokens_include_all_attempts": true,
+        "incoming_message_ids": [
+          "543127f58413"
+        ]
+      }
+    }
+  ],
+  "communication_tokens": 190,
+  "wall_time_s": 4.763068699976429,
+  "verified": true,
+  "revision_rounds": 0,
+  "model_calls": [
+    {
+      "role": "planner",
+      "attempt": 0,
+      "status": "delivered",
+      "error": "",
+      "raw_output": "Goal: find Polly’s total cooking time for one week.\n\nPlan: Treat breakfast and lunch as daily tasks, then calculate dinner separately for the two types of days. For dinner, identify how many days she cooks for 10 minutes and how many days she cooks for 30 minutes, then add all cooking times together.\n\nConstraints: Use 7 days in the week. Do not omit breakfast or lunch. Be careful that “4 days this week” refers only to the 10-minute dinner days.",
+      "finish_reason": "stop",
+      "output_tokens": 101,
+      "usage_available": true
+    },
+    {
+      "role": "solver",
+      "attempt": 0,
+      "status": "delivered",
+      "error": "",
+      "raw_output": "Breakfast: 20 minutes × 7 days = 140 minutes.  \nLunch: 5 minutes × 7 days = 35 minutes.  \nDinner: 10 minutes × 4 days = 40 minutes, plus 30 minutes × 3 days = 90 minutes, totaling 130 minutes.  \nTotal: 140 + 35 + 130 = 305 minutes.\n\n\\boxed{305}",
+      "finish_reason": "stop",
+      "output_tokens": 87,
+      "usage_available": true
+    },
+    {
+      "role": "verifier",
+      "attempt": 0,
+      "status": "delivered",
+      "error": "",
+      "raw_output": "ACCEPT",
+      "finish_reason": "stop",
+      "output_tokens": 2,
+      "usage_available": true
+    }
+  ],
+  "failed_attempts": [],
+  "calls": 3,
+  "usage_complete": true,
+  "known_input_tokens": 1216,
+  "known_output_tokens": 190,
+  "model_input_tokens": 1216,
+  "model_output_tokens": 190,
+  "format_failed_calls": 0,
+  "transport_failed_calls": 0,
+  "fallback_calls": 0,
+  "sum_model_latency_s": 4.698648452758789
+}

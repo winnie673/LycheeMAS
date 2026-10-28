@@ -1,0 +1,148 @@
+{
+  "task_id": "gsm8k:train:seed42:V:00170",
+  "status": "completed",
+  "error": null,
+  "prediction": "11",
+  "messages": [
+    {
+      "sender": "planner",
+      "content": "G:total_race_time_hours;P:lake_races=10/2,ocean_races=10/2,lake_time=3/3,ocean_time=3/2.5,total_race_time_hours=lake_races*lake_time+ocean_races*ocean_time",
+      "receiver": "solver",
+      "round": 0,
+      "role": "assistant",
+      "prompt_tokens": 829,
+      "completion_tokens": 70,
+      "id": "b7d6d389ce94",
+      "ts": 1793109716.2508454,
+      "meta": {
+        "sender": "planner",
+        "receiver": "solver",
+        "message_id": "b7d6d389ce94",
+        "protocol_edge": "planner_to_solver",
+        "protocol_version": "CARD-1-gsm8k",
+        "protocol_hash": "2a663f41d251a442e680de67a231e516a8fe5e31629bc25d021c8c0eb1354cff",
+        "contract_hash": "ab4b736240365db5d0ce2caea032f40a3b7fc9c189db42d5ebcd28cac0fac22b",
+        "fields": {
+          "G": "total_race_time_hours",
+          "P": "lake_races=10/2,ocean_races=10/2,lake_time=3/3,ocean_time=3/2.5,total_race_time_hours=lake_races*lake_time+ocean_races*ocean_time"
+        },
+        "communication_tokens": 70,
+        "communication_tokens_exact": true,
+        "attempt_count": 1,
+        "fallback": false,
+        "tokens_include_all_attempts": true,
+        "incoming_message_ids": []
+      }
+    },
+    {
+      "sender": "solver",
+      "content": "IR:lake_races=5,ocean_races=5,lake_time=3/3=1,ocean_time=3/2.5=1.2,total=5*1+5*1.2=11;R:11",
+      "receiver": "verifier",
+      "round": 0,
+      "role": "assistant",
+      "prompt_tokens": 782,
+      "completion_tokens": 57,
+      "id": "4aed21825011",
+      "ts": 1793109717.6001227,
+      "meta": {
+        "sender": "solver",
+        "receiver": "verifier",
+        "message_id": "4aed21825011",
+        "protocol_edge": "solver_to_verifier",
+        "protocol_version": "CARD-1-gsm8k",
+        "protocol_hash": "2a663f41d251a442e680de67a231e516a8fe5e31629bc25d021c8c0eb1354cff",
+        "contract_hash": "ab4b736240365db5d0ce2caea032f40a3b7fc9c189db42d5ebcd28cac0fac22b",
+        "fields": {
+          "IR": "lake_races=5,ocean_races=5,lake_time=3/3=1,ocean_time=3/2.5=1.2,total=5*1+5*1.2=11",
+          "R": "11"
+        },
+        "communication_tokens": 57,
+        "communication_tokens_exact": true,
+        "attempt_count": 1,
+        "fallback": false,
+        "tokens_include_all_attempts": true,
+        "incoming_message_ids": [
+          "b7d6d389ce94"
+        ]
+      }
+    },
+    {
+      "sender": "verifier",
+      "content": "CHK:ACCEPT",
+      "receiver": "solver",
+      "round": 0,
+      "role": "assistant",
+      "prompt_tokens": 1135,
+      "completion_tokens": 5,
+      "id": "822c18546fbd",
+      "ts": 1793109718.8279955,
+      "meta": {
+        "sender": "verifier",
+        "receiver": "solver",
+        "message_id": "822c18546fbd",
+        "protocol_edge": "verifier_to_solver",
+        "protocol_version": "CARD-1-gsm8k",
+        "protocol_hash": "2a663f41d251a442e680de67a231e516a8fe5e31629bc25d021c8c0eb1354cff",
+        "contract_hash": "ab4b736240365db5d0ce2caea032f40a3b7fc9c189db42d5ebcd28cac0fac22b",
+        "fields": {
+          "CHK": "ACCEPT"
+        },
+        "communication_tokens": 5,
+        "communication_tokens_exact": true,
+        "attempt_count": 1,
+        "fallback": false,
+        "tokens_include_all_attempts": true,
+        "incoming_message_ids": [
+          "4aed21825011"
+        ]
+      }
+    }
+  ],
+  "communication_tokens": 132,
+  "wall_time_s": 4.038798499968834,
+  "verified": true,
+  "revision_rounds": 0,
+  "model_calls": [
+    {
+      "role": "planner",
+      "attempt": 0,
+      "status": "delivered",
+      "error": "",
+      "raw_output": "G:total_race_time_hours;P:lake_races=10/2,ocean_races=10/2,lake_time=3/3,ocean_time=3/2.5,total_race_time_hours=lake_races*lake_time+ocean_races*ocean_time",
+      "finish_reason": "stop",
+      "output_tokens": 70,
+      "usage_available": true
+    },
+    {
+      "role": "solver",
+      "attempt": 0,
+      "status": "delivered",
+      "error": "",
+      "raw_output": "IR:lake_races=5,ocean_races=5,lake_time=3/3=1,ocean_time=3/2.5=1.2,total=5*1+5*1.2=11;R:11",
+      "finish_reason": "stop",
+      "output_tokens": 57,
+      "usage_available": true
+    },
+    {
+      "role": "verifier",
+      "attempt": 0,
+      "status": "delivered",
+      "error": "",
+      "raw_output": "CHK:ACCEPT",
+      "finish_reason": "stop",
+      "output_tokens": 5,
+      "usage_available": true
+    }
+  ],
+  "failed_attempts": [],
+  "calls": 3,
+  "usage_complete": true,
+  "known_input_tokens": 2746,
+  "known_output_tokens": 132,
+  "model_input_tokens": 2746,
+  "model_output_tokens": 132,
+  "format_failed_calls": 0,
+  "transport_failed_calls": 0,
+  "fallback_calls": 0,
+  "sum_model_latency_s": 3.8986928462982178
+}

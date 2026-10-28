@@ -1,0 +1,151 @@
+{
+  "task_id": "gsm8k:train:seed42:G3:00019",
+  "status": "completed",
+  "error": null,
+  "prediction": "6",
+  "messages": [
+    {
+      "sender": "planner",
+      "content": "G:total_weekly_time;P:time_mon=6/2,time_wed=6/3,time_fri=6/6,total_weekly_time=time_mon+time_wed+time_fri",
+      "receiver": "solver",
+      "round": 0,
+      "role": "assistant",
+      "prompt_tokens": 790,
+      "completion_tokens": 47,
+      "id": "3beea4e6ff86",
+      "ts": 1793112032.6663253,
+      "meta": {
+        "sender": "planner",
+        "receiver": "solver",
+        "message_id": "3beea4e6ff86",
+        "protocol_edge": "planner_to_solver",
+        "protocol_version": "CARD-0-gsm8k",
+        "protocol_hash": "4bcdae885cc464e0a51977368e4bc06650c0326dbdcb182ce0327477c1d32daa",
+        "contract_hash": "ab4b736240365db5d0ce2caea032f40a3b7fc9c189db42d5ebcd28cac0fac22b",
+        "fields": {
+          "G": "total_weekly_time",
+          "P": "time_mon=6/2,time_wed=6/3,time_fri=6/6,total_weekly_time=time_mon+time_wed+time_fri"
+        },
+        "communication_tokens": 47,
+        "communication_tokens_exact": true,
+        "attempt_count": 1,
+        "fallback": false,
+        "tokens_include_all_attempts": true,
+        "incoming_message_ids": []
+      }
+    },
+    {
+      "sender": "solver",
+      "content": "IR:time_mon=6/2=3,time_wed=6/3=2,time_fri=6/6=1,total=3+2+1=6;R:6",
+      "receiver": "verifier",
+      "round": 0,
+      "role": "assistant",
+      "prompt_tokens": 779,
+      "completion_tokens": 44,
+      "id": "0a1c0d49a003",
+      "ts": 1793112033.747031,
+      "meta": {
+        "sender": "solver",
+        "receiver": "verifier",
+        "message_id": "0a1c0d49a003",
+        "protocol_edge": "solver_to_verifier",
+        "protocol_version": "CARD-0-gsm8k",
+        "protocol_hash": "4bcdae885cc464e0a51977368e4bc06650c0326dbdcb182ce0327477c1d32daa",
+        "contract_hash": "ab4b736240365db5d0ce2caea032f40a3b7fc9c189db42d5ebcd28cac0fac22b",
+        "fields": {
+          "IR": "time_mon=6/2=3,time_wed=6/3=2,time_fri=6/6=1,total=3+2+1=6",
+          "R": "6"
+        },
+        "communication_tokens": 44,
+        "communication_tokens_exact": true,
+        "attempt_count": 1,
+        "fallback": false,
+        "tokens_include_all_attempts": true,
+        "incoming_message_ids": [
+          "3beea4e6ff86"
+        ]
+      }
+    },
+    {
+      "sender": "verifier",
+      "content": "CHK:ACCEPT",
+      "receiver": "solver",
+      "round": 0,
+      "role": "assistant",
+      "prompt_tokens": 1142,
+      "completion_tokens": 5,
+      "id": "da8461f35b80",
+      "ts": 1793112035.130525,
+      "meta": {
+        "sender": "verifier",
+        "receiver": "solver",
+        "message_id": "da8461f35b80",
+        "protocol_edge": "verifier_to_solver",
+        "protocol_version": "CARD-0-gsm8k",
+        "protocol_hash": "4bcdae885cc464e0a51977368e4bc06650c0326dbdcb182ce0327477c1d32daa",
+        "contract_hash": "ab4b736240365db5d0ce2caea032f40a3b7fc9c189db42d5ebcd28cac0fac22b",
+        "fields": {
+          "CHK": "ACCEPT"
+        },
+        "communication_tokens": 5,
+        "communication_tokens_exact": true,
+        "attempt_count": 1,
+        "fallback": false,
+        "tokens_include_all_attempts": true,
+        "incoming_message_ids": [
+          "0a1c0d49a003"
+        ]
+      }
+    }
+  ],
+  "communication_tokens": 96,
+  "wall_time_s": 4.089594200020656,
+  "verified": true,
+  "revision_rounds": 0,
+  "model_calls": [
+    {
+      "role": "planner",
+      "attempt": 0,
+      "status": "delivered",
+      "error": "",
+      "raw_output": "G:total_weekly_time;P:time_mon=6/2,time_wed=6/3,time_fri=6/6,total_weekly_time=time_mon+time_wed+time_fri",
+      "finish_reason": "stop",
+      "output_tokens": 47,
+      "usage_available": true
+    },
+    {
+      "role": "solver",
+      "attempt": 0,
+      "status": "delivered",
+      "error": "",
+      "raw_output": "IR:time_mon=6/2=3,time_wed=6/3=2,time_fri=6/6=1,total=3+2+1=6;R:6",
+      "finish_reason": "stop",
+      "output_tokens": 44,
+      "usage_available": true
+    },
+    {
+      "role": "verifier",
+      "attempt": 0,
+      "status": "delivered",
+      "error": "",
+      "raw_output": "CHK:ACCEPT",
+      "finish_reason": "stop",
+      "output_tokens": 5,
+      "usage_available": true
+    }
+  ],
+  "failed_attempts": [],
+  "calls": 3,
+  "usage_complete": true,
+  "known_input_tokens": 2711,
+  "known_output_tokens": 96,
+  "model_input_tokens": 2711,
+  "model_output_tokens": 96,
+  "format_failed_calls": 0,
+  "transport_failed_calls": 0,
+  "fallback_calls": 0,
+  "sum_model_latency_s": 4.004828453063965,
+  "gold": "6",
+  "score": 1.0,
+  "question": "Jonathan enjoys walking and running for exercise, and he has three different exercise routines.  On Mondays, he walks at 2 miles per hour.  On Wednesdays, he walks at 3 miles per hour.  And on Fridays, he runs at 6 miles per hour.  On each exercise day, he travels 6 miles.  What is the combined total time, in hours, he spends exercising in a week?\nGive the final numeric answer."
+}

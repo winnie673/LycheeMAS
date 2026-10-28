@@ -1,0 +1,153 @@
+{
+  "task_id": "gsm8k:train:seed42:G2:00033",
+  "status": "completed",
+  "error": null,
+  "prediction": "1000",
+  "messages": [
+    {
+      "sender": "planner",
+      "content": "G:number_of_jumps_before_cleaning;K:pool_capacity=2000 L,loss_per_jump=400 ml,clean_threshold=80% full;P:capacity_ml=2000*1000,min_water=0.8*capacity_ml,allowed_loss=capacity_ml-min_water,number_of_jumps_before_cleaning=allowed_loss/loss_per_jump;NL:Convert liters to milliliters before dividing by the per-jump loss.",
+      "receiver": "solver",
+      "round": 0,
+      "role": "assistant",
+      "prompt_tokens": 784,
+      "completion_tokens": 105,
+      "id": "a76ba8cc3338",
+      "ts": 1793109969.70618,
+      "meta": {
+        "sender": "planner",
+        "receiver": "solver",
+        "message_id": "a76ba8cc3338",
+        "protocol_edge": "planner_to_solver",
+        "protocol_version": "CARD-0-gsm8k",
+        "protocol_hash": "4bcdae885cc464e0a51977368e4bc06650c0326dbdcb182ce0327477c1d32daa",
+        "contract_hash": "ab4b736240365db5d0ce2caea032f40a3b7fc9c189db42d5ebcd28cac0fac22b",
+        "fields": {
+          "G": "number_of_jumps_before_cleaning",
+          "K": "pool_capacity=2000 L,loss_per_jump=400 ml,clean_threshold=80% full",
+          "P": "capacity_ml=2000*1000,min_water=0.8*capacity_ml,allowed_loss=capacity_ml-min_water,number_of_jumps_before_cleaning=allowed_loss/loss_per_jump",
+          "NL": "Convert liters to milliliters before dividing by the per-jump loss."
+        },
+        "communication_tokens": 105,
+        "communication_tokens_exact": true,
+        "attempt_count": 1,
+        "fallback": false,
+        "tokens_include_all_attempts": true,
+        "incoming_message_ids": []
+      }
+    },
+    {
+      "sender": "solver",
+      "content": "IR:capacity_ml=2000*1000=2000000,min_water=0.8*2000000=1600000,allowed_loss=2000000-1600000=400000,jumps=400000/400=1000;R:1000",
+      "receiver": "verifier",
+      "round": 0,
+      "role": "assistant",
+      "prompt_tokens": 831,
+      "completion_tokens": 60,
+      "id": "f0385c5f2b8e",
+      "ts": 1793109970.9785998,
+      "meta": {
+        "sender": "solver",
+        "receiver": "verifier",
+        "message_id": "f0385c5f2b8e",
+        "protocol_edge": "solver_to_verifier",
+        "protocol_version": "CARD-0-gsm8k",
+        "protocol_hash": "4bcdae885cc464e0a51977368e4bc06650c0326dbdcb182ce0327477c1d32daa",
+        "contract_hash": "ab4b736240365db5d0ce2caea032f40a3b7fc9c189db42d5ebcd28cac0fac22b",
+        "fields": {
+          "IR": "capacity_ml=2000*1000=2000000,min_water=0.8*2000000=1600000,allowed_loss=2000000-1600000=400000,jumps=400000/400=1000",
+          "R": "1000"
+        },
+        "communication_tokens": 60,
+        "communication_tokens_exact": true,
+        "attempt_count": 1,
+        "fallback": false,
+        "tokens_include_all_attempts": true,
+        "incoming_message_ids": [
+          "a76ba8cc3338"
+        ]
+      }
+    },
+    {
+      "sender": "verifier",
+      "content": "CHK:ACCEPT",
+      "receiver": "solver",
+      "round": 0,
+      "role": "assistant",
+      "prompt_tokens": 1152,
+      "completion_tokens": 5,
+      "id": "ed1e900b7be7",
+      "ts": 1793109972.2820385,
+      "meta": {
+        "sender": "verifier",
+        "receiver": "solver",
+        "message_id": "ed1e900b7be7",
+        "protocol_edge": "verifier_to_solver",
+        "protocol_version": "CARD-0-gsm8k",
+        "protocol_hash": "4bcdae885cc464e0a51977368e4bc06650c0326dbdcb182ce0327477c1d32daa",
+        "contract_hash": "ab4b736240365db5d0ce2caea032f40a3b7fc9c189db42d5ebcd28cac0fac22b",
+        "fields": {
+          "CHK": "ACCEPT"
+        },
+        "communication_tokens": 5,
+        "communication_tokens_exact": true,
+        "attempt_count": 1,
+        "fallback": false,
+        "tokens_include_all_attempts": true,
+        "incoming_message_ids": [
+          "f0385c5f2b8e"
+        ]
+      }
+    }
+  ],
+  "communication_tokens": 170,
+  "wall_time_s": 4.586097399936989,
+  "verified": true,
+  "revision_rounds": 0,
+  "model_calls": [
+    {
+      "role": "planner",
+      "attempt": 0,
+      "status": "delivered",
+      "error": "",
+      "raw_output": "G:number_of_jumps_before_cleaning;K:pool_capacity=2000 L,loss_per_jump=400 ml,clean_threshold=80% full;P:capacity_ml=2000*1000,min_water=0.8*capacity_ml,allowed_loss=capacity_ml-min_water,number_of_jumps_before_cleaning=allowed_loss/loss_per_jump;NL:Convert liters to milliliters before dividing by the per-jump loss.",
+      "finish_reason": "stop",
+      "output_tokens": 105,
+      "usage_available": true
+    },
+    {
+      "role": "solver",
+      "attempt": 0,
+      "status": "delivered",
+      "error": "",
+      "raw_output": "IR:capacity_ml=2000*1000=2000000,min_water=0.8*2000000=1600000,allowed_loss=2000000-1600000=400000,jumps=400000/400=1000;R:1000",
+      "finish_reason": "stop",
+      "output_tokens": 60,
+      "usage_available": true
+    },
+    {
+      "role": "verifier",
+      "attempt": 0,
+      "status": "delivered",
+      "error": "",
+      "raw_output": "CHK:ACCEPT",
+      "finish_reason": "stop",
+      "output_tokens": 5,
+      "usage_available": true
+    }
+  ],
+  "failed_attempts": [],
+  "calls": 3,
+  "usage_complete": true,
+  "known_input_tokens": 2767,
+  "known_output_tokens": 170,
+  "model_input_tokens": 2767,
+  "model_output_tokens": 170,
+  "format_failed_calls": 0,
+  "transport_failed_calls": 0,
+  "fallback_calls": 0,
+  "sum_model_latency_s": 4.431936502456665,
+  "gold": "1000",
+  "score": 1.0,
+  "question": "Jim is a maintenance worker at a pool. Every time someone jumps in the pool, they cause 400 ml of water to splash out and evaporate. Jim has to get everyone out of the pool, clean, and refill it when it gets below 80% full. If the pool holds 2000 L of water, how many times can people jump in the pool before Jim has to clean it?\nGive the final numeric answer."
+}

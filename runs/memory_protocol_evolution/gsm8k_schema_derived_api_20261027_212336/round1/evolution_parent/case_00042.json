@@ -1,0 +1,151 @@
+{
+  "task_id": "gsm8k:train:seed42:G1:00042",
+  "status": "completed",
+  "error": null,
+  "prediction": "280",
+  "messages": [
+    {
+      "sender": "planner",
+      "content": "G:amount_lower_than_budget;P:offered=1000-100,discount=0.2*offered,price=offered-discount,amount_lower_than_budget=1000-price",
+      "receiver": "solver",
+      "round": 0,
+      "role": "assistant",
+      "prompt_tokens": 761,
+      "completion_tokens": 47,
+      "id": "b0eca417972f",
+      "ts": 1793107755.207157,
+      "meta": {
+        "sender": "planner",
+        "receiver": "solver",
+        "message_id": "b0eca417972f",
+        "protocol_edge": "planner_to_solver",
+        "protocol_version": "CARD-0-gsm8k",
+        "protocol_hash": "4bcdae885cc464e0a51977368e4bc06650c0326dbdcb182ce0327477c1d32daa",
+        "contract_hash": "ab4b736240365db5d0ce2caea032f40a3b7fc9c189db42d5ebcd28cac0fac22b",
+        "fields": {
+          "G": "amount_lower_than_budget",
+          "P": "offered=1000-100,discount=0.2*offered,price=offered-discount,amount_lower_than_budget=1000-price"
+        },
+        "communication_tokens": 47,
+        "communication_tokens_exact": true,
+        "attempt_count": 1,
+        "fallback": false,
+        "tokens_include_all_attempts": true,
+        "incoming_message_ids": []
+      }
+    },
+    {
+      "sender": "solver",
+      "content": "IR:offered=1000-100=900,discount=0.2*900=180,price=900-180=720,lower=1000-720=280;R:280",
+      "receiver": "verifier",
+      "round": 0,
+      "role": "assistant",
+      "prompt_tokens": 750,
+      "completion_tokens": 42,
+      "id": "295689850f5e",
+      "ts": 1793107756.2314134,
+      "meta": {
+        "sender": "solver",
+        "receiver": "verifier",
+        "message_id": "295689850f5e",
+        "protocol_edge": "solver_to_verifier",
+        "protocol_version": "CARD-0-gsm8k",
+        "protocol_hash": "4bcdae885cc464e0a51977368e4bc06650c0326dbdcb182ce0327477c1d32daa",
+        "contract_hash": "ab4b736240365db5d0ce2caea032f40a3b7fc9c189db42d5ebcd28cac0fac22b",
+        "fields": {
+          "IR": "offered=1000-100=900,discount=0.2*900=180,price=900-180=720,lower=1000-720=280",
+          "R": "280"
+        },
+        "communication_tokens": 42,
+        "communication_tokens_exact": true,
+        "attempt_count": 1,
+        "fallback": false,
+        "tokens_include_all_attempts": true,
+        "incoming_message_ids": [
+          "b0eca417972f"
+        ]
+      }
+    },
+    {
+      "sender": "verifier",
+      "content": "CHK:ACCEPT",
+      "receiver": "solver",
+      "round": 0,
+      "role": "assistant",
+      "prompt_tokens": 1111,
+      "completion_tokens": 5,
+      "id": "5981eaa680f2",
+      "ts": 1793107757.5418785,
+      "meta": {
+        "sender": "verifier",
+        "receiver": "solver",
+        "message_id": "5981eaa680f2",
+        "protocol_edge": "verifier_to_solver",
+        "protocol_version": "CARD-0-gsm8k",
+        "protocol_hash": "4bcdae885cc464e0a51977368e4bc06650c0326dbdcb182ce0327477c1d32daa",
+        "contract_hash": "ab4b736240365db5d0ce2caea032f40a3b7fc9c189db42d5ebcd28cac0fac22b",
+        "fields": {
+          "CHK": "ACCEPT"
+        },
+        "communication_tokens": 5,
+        "communication_tokens_exact": true,
+        "attempt_count": 1,
+        "fallback": false,
+        "tokens_include_all_attempts": true,
+        "incoming_message_ids": [
+          "295689850f5e"
+        ]
+      }
+    }
+  ],
+  "communication_tokens": 94,
+  "wall_time_s": 4.817933299927972,
+  "verified": true,
+  "revision_rounds": 0,
+  "model_calls": [
+    {
+      "role": "planner",
+      "attempt": 0,
+      "status": "delivered",
+      "error": "",
+      "raw_output": "G:amount_lower_than_budget;P:offered=1000-100,discount=0.2*offered,price=offered-discount,amount_lower_than_budget=1000-price",
+      "finish_reason": "stop",
+      "output_tokens": 47,
+      "usage_available": true
+    },
+    {
+      "role": "solver",
+      "attempt": 0,
+      "status": "delivered",
+      "error": "",
+      "raw_output": "IR:offered=1000-100=900,discount=0.2*900=180,price=900-180=720,lower=1000-720=280;R:280",
+      "finish_reason": "stop",
+      "output_tokens": 42,
+      "usage_available": true
+    },
+    {
+      "role": "verifier",
+      "attempt": 0,
+      "status": "delivered",
+      "error": "",
+      "raw_output": "CHK:ACCEPT",
+      "finish_reason": "stop",
+      "output_tokens": 5,
+      "usage_available": true
+    }
+  ],
+  "failed_attempts": [],
+  "calls": 3,
+  "usage_complete": true,
+  "known_input_tokens": 2622,
+  "known_output_tokens": 94,
+  "model_input_tokens": 2622,
+  "model_output_tokens": 94,
+  "format_failed_calls": 0,
+  "transport_failed_calls": 0,
+  "fallback_calls": 0,
+  "sum_model_latency_s": 4.664190292358398,
+  "gold": "280",
+  "score": 1.0,
+  "question": "Martin went to a store to buy a new television set. He decided to spend no more than $1,000 and the sales clerk offered him the TV for $100 less and an additional 20% off. How much lower was the price of the television than the amount Martin decided to spend?\nGive the final numeric answer."
+}

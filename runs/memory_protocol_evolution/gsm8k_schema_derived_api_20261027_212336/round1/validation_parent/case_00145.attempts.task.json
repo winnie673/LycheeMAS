@@ -1,0 +1,148 @@
+{
+  "task_id": "gsm8k:train:seed42:V:00145",
+  "status": "completed",
+  "error": null,
+  "prediction": "68000",
+  "messages": [
+    {
+      "sender": "planner",
+      "content": "G:total_daily_food_pounds;P:side1_soldiers=4000,side2_soldiers=side1_soldiers-500,side1_food_per=10,side2_food_per=side1_food_per-2,total_daily_food_pounds=side1_soldiers*side1_food_per+side2_soldiers*side2_food_per",
+      "receiver": "solver",
+      "round": 0,
+      "role": "assistant",
+      "prompt_tokens": 784,
+      "completion_tokens": 88,
+      "id": "35b0d8722d0b",
+      "ts": 1793108710.3932765,
+      "meta": {
+        "sender": "planner",
+        "receiver": "solver",
+        "message_id": "35b0d8722d0b",
+        "protocol_edge": "planner_to_solver",
+        "protocol_version": "CARD-0-gsm8k",
+        "protocol_hash": "4bcdae885cc464e0a51977368e4bc06650c0326dbdcb182ce0327477c1d32daa",
+        "contract_hash": "ab4b736240365db5d0ce2caea032f40a3b7fc9c189db42d5ebcd28cac0fac22b",
+        "fields": {
+          "G": "total_daily_food_pounds",
+          "P": "side1_soldiers=4000,side2_soldiers=side1_soldiers-500,side1_food_per=10,side2_food_per=side1_food_per-2,total_daily_food_pounds=side1_soldiers*side1_food_per+side2_soldiers*side2_food_per"
+        },
+        "communication_tokens": 88,
+        "communication_tokens_exact": true,
+        "attempt_count": 1,
+        "fallback": false,
+        "tokens_include_all_attempts": true,
+        "incoming_message_ids": []
+      }
+    },
+    {
+      "sender": "solver",
+      "content": "IR:side2_soldiers=4000-500=3500,side2_food_per=10-2=8,side1_food=4000*10=40000,side2_food=3500*8=28000,total=40000+28000=68000;R:68000",
+      "receiver": "verifier",
+      "round": 0,
+      "role": "assistant",
+      "prompt_tokens": 814,
+      "completion_tokens": 69,
+      "id": "b39453184c45",
+      "ts": 1793108711.6744297,
+      "meta": {
+        "sender": "solver",
+        "receiver": "verifier",
+        "message_id": "b39453184c45",
+        "protocol_edge": "solver_to_verifier",
+        "protocol_version": "CARD-0-gsm8k",
+        "protocol_hash": "4bcdae885cc464e0a51977368e4bc06650c0326dbdcb182ce0327477c1d32daa",
+        "contract_hash": "ab4b736240365db5d0ce2caea032f40a3b7fc9c189db42d5ebcd28cac0fac22b",
+        "fields": {
+          "IR": "side2_soldiers=4000-500=3500,side2_food_per=10-2=8,side1_food=4000*10=40000,side2_food=3500*8=28000,total=40000+28000=68000",
+          "R": "68000"
+        },
+        "communication_tokens": 69,
+        "communication_tokens_exact": true,
+        "attempt_count": 1,
+        "fallback": false,
+        "tokens_include_all_attempts": true,
+        "incoming_message_ids": [
+          "35b0d8722d0b"
+        ]
+      }
+    },
+    {
+      "sender": "verifier",
+      "content": "CHK:ACCEPT",
+      "receiver": "solver",
+      "round": 0,
+      "role": "assistant",
+      "prompt_tokens": 1161,
+      "completion_tokens": 5,
+      "id": "dc4905eed6be",
+      "ts": 1793108713.6685202,
+      "meta": {
+        "sender": "verifier",
+        "receiver": "solver",
+        "message_id": "dc4905eed6be",
+        "protocol_edge": "verifier_to_solver",
+        "protocol_version": "CARD-0-gsm8k",
+        "protocol_hash": "4bcdae885cc464e0a51977368e4bc06650c0326dbdcb182ce0327477c1d32daa",
+        "contract_hash": "ab4b736240365db5d0ce2caea032f40a3b7fc9c189db42d5ebcd28cac0fac22b",
+        "fields": {
+          "CHK": "ACCEPT"
+        },
+        "communication_tokens": 5,
+        "communication_tokens_exact": true,
+        "attempt_count": 1,
+        "fallback": false,
+        "tokens_include_all_attempts": true,
+        "incoming_message_ids": [
+          "b39453184c45"
+        ]
+      }
+    }
+  ],
+  "communication_tokens": 162,
+  "wall_time_s": 4.875568800023757,
+  "verified": true,
+  "revision_rounds": 0,
+  "model_calls": [
+    {
+      "role": "planner",
+      "attempt": 0,
+      "status": "delivered",
+      "error": "",
+      "raw_output": "G:total_daily_food_pounds;P:side1_soldiers=4000,side2_soldiers=side1_soldiers-500,side1_food_per=10,side2_food_per=side1_food_per-2,total_daily_food_pounds=side1_soldiers*side1_food_per+side2_soldiers*side2_food_per",
+      "finish_reason": "stop",
+      "output_tokens": 88,
+      "usage_available": true
+    },
+    {
+      "role": "solver",
+      "attempt": 0,
+      "status": "delivered",
+      "error": "",
+      "raw_output": "IR:side2_soldiers=4000-500=3500,side2_food_per=10-2=8,side1_food=4000*10=40000,side2_food=3500*8=28000,total=40000+28000=68000;R:68000",
+      "finish_reason": "stop",
+      "output_tokens": 69,
+      "usage_available": true
+    },
+    {
+      "role": "verifier",
+      "attempt": 0,
+      "status": "delivered",
+      "error": "",
+      "raw_output": "CHK:ACCEPT",
+      "finish_reason": "stop",
+      "output_tokens": 5,
+      "usage_available": true
+    }
+  ],
+  "failed_attempts": [],
+  "calls": 3,
+  "usage_complete": true,
+  "known_input_tokens": 2759,
+  "known_output_tokens": 162,
+  "model_input_tokens": 2759,
+  "model_output_tokens": 162,
+  "format_failed_calls": 0,
+  "transport_failed_calls": 0,
+  "fallback_calls": 0,
+  "sum_model_latency_s": 4.710649251937866
+}

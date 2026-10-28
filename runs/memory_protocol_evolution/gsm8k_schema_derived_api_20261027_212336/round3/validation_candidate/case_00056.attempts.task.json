@@ -1,0 +1,148 @@
+{
+  "task_id": "gsm8k:train:seed42:V:00056",
+  "status": "completed",
+  "error": null,
+  "prediction": "6",
+  "messages": [
+    {
+      "sender": "planner",
+      "content": "G:cleo_marbles_day3;P:day2_taken=30*3/5,remaining_after_day2=30-day2_taken,cleo_day3=remaining_after_day2*1/2",
+      "receiver": "solver",
+      "round": 0,
+      "role": "assistant",
+      "prompt_tokens": 813,
+      "completion_tokens": 49,
+      "id": "f4e5551d856d",
+      "ts": 1793168483.612103,
+      "meta": {
+        "sender": "planner",
+        "receiver": "solver",
+        "message_id": "f4e5551d856d",
+        "protocol_edge": "planner_to_solver",
+        "protocol_version": "CARD-3-gsm8k",
+        "protocol_hash": "fb1a4acb6e591ac96544876aedd912b27a6f9d3154c76112e1da0f43407d27b2",
+        "contract_hash": "ab4b736240365db5d0ce2caea032f40a3b7fc9c189db42d5ebcd28cac0fac22b",
+        "fields": {
+          "G": "cleo_marbles_day3",
+          "P": "day2_taken=30*3/5,remaining_after_day2=30-day2_taken,cleo_day3=remaining_after_day2*1/2"
+        },
+        "communication_tokens": 49,
+        "communication_tokens_exact": true,
+        "attempt_count": 1,
+        "fallback": false,
+        "tokens_include_all_attempts": true,
+        "incoming_message_ids": []
+      }
+    },
+    {
+      "sender": "solver",
+      "content": "IR:day2_taken=30*3/5=18,remaining_after_day2=30-18=12,cleo_day3=12*1/2=6;R:6",
+      "receiver": "verifier",
+      "round": 0,
+      "role": "assistant",
+      "prompt_tokens": 762,
+      "completion_tokens": 43,
+      "id": "c775581439e7",
+      "ts": 1793168484.7319083,
+      "meta": {
+        "sender": "solver",
+        "receiver": "verifier",
+        "message_id": "c775581439e7",
+        "protocol_edge": "solver_to_verifier",
+        "protocol_version": "CARD-3-gsm8k",
+        "protocol_hash": "fb1a4acb6e591ac96544876aedd912b27a6f9d3154c76112e1da0f43407d27b2",
+        "contract_hash": "ab4b736240365db5d0ce2caea032f40a3b7fc9c189db42d5ebcd28cac0fac22b",
+        "fields": {
+          "IR": "day2_taken=30*3/5=18,remaining_after_day2=30-18=12,cleo_day3=12*1/2=6",
+          "R": "6"
+        },
+        "communication_tokens": 43,
+        "communication_tokens_exact": true,
+        "attempt_count": 1,
+        "fallback": false,
+        "tokens_include_all_attempts": true,
+        "incoming_message_ids": [
+          "f4e5551d856d"
+        ]
+      }
+    },
+    {
+      "sender": "verifier",
+      "content": "CHK:ACCEPT",
+      "receiver": "solver",
+      "round": 0,
+      "role": "assistant",
+      "prompt_tokens": 1122,
+      "completion_tokens": 5,
+      "id": "b51212501bf4",
+      "ts": 1793168485.5659575,
+      "meta": {
+        "sender": "verifier",
+        "receiver": "solver",
+        "message_id": "b51212501bf4",
+        "protocol_edge": "verifier_to_solver",
+        "protocol_version": "CARD-3-gsm8k",
+        "protocol_hash": "fb1a4acb6e591ac96544876aedd912b27a6f9d3154c76112e1da0f43407d27b2",
+        "contract_hash": "ab4b736240365db5d0ce2caea032f40a3b7fc9c189db42d5ebcd28cac0fac22b",
+        "fields": {
+          "CHK": "ACCEPT"
+        },
+        "communication_tokens": 5,
+        "communication_tokens_exact": true,
+        "attempt_count": 1,
+        "fallback": false,
+        "tokens_include_all_attempts": true,
+        "incoming_message_ids": [
+          "c775581439e7"
+        ]
+      }
+    }
+  ],
+  "communication_tokens": 97,
+  "wall_time_s": 3.2600920000113547,
+  "verified": true,
+  "revision_rounds": 0,
+  "model_calls": [
+    {
+      "role": "planner",
+      "attempt": 0,
+      "status": "delivered",
+      "error": "",
+      "raw_output": "G:cleo_marbles_day3;P:day2_taken=30*3/5,remaining_after_day2=30-day2_taken,cleo_day3=remaining_after_day2*1/2",
+      "finish_reason": "stop",
+      "output_tokens": 49,
+      "usage_available": true
+    },
+    {
+      "role": "solver",
+      "attempt": 0,
+      "status": "delivered",
+      "error": "",
+      "raw_output": "IR:day2_taken=30*3/5=18,remaining_after_day2=30-18=12,cleo_day3=12*1/2=6;R:6",
+      "finish_reason": "stop",
+      "output_tokens": 43,
+      "usage_available": true
+    },
+    {
+      "role": "verifier",
+      "attempt": 0,
+      "status": "delivered",
+      "error": "",
+      "raw_output": "CHK:ACCEPT",
+      "finish_reason": "stop",
+      "output_tokens": 5,
+      "usage_available": true
+    }
+  ],
+  "failed_attempts": [],
+  "calls": 3,
+  "usage_complete": true,
+  "known_input_tokens": 2697,
+  "known_output_tokens": 97,
+  "model_input_tokens": 2697,
+  "model_output_tokens": 97,
+  "format_failed_calls": 0,
+  "transport_failed_calls": 0,
+  "fallback_calls": 0,
+  "sum_model_latency_s": 3.18030047416687
+}

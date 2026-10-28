@@ -1,0 +1,148 @@
+{
+  "task_id": "gsm8k:train:seed42:V:00169",
+  "status": "completed",
+  "error": null,
+  "prediction": "11",
+  "messages": [
+    {
+      "sender": "planner",
+      "content": "G:number_of_suckers_Jen_ate;P:taylor_received=1+5,harmony_received=taylor_received+3,molly_received=harmony_received+2,jen_received=2*molly_received,jen_ate=jen_received/2",
+      "receiver": "solver",
+      "round": 0,
+      "role": "assistant",
+      "prompt_tokens": 764,
+      "completion_tokens": 63,
+      "id": "092720ff799a",
+      "ts": 1793108816.549608,
+      "meta": {
+        "sender": "planner",
+        "receiver": "solver",
+        "message_id": "092720ff799a",
+        "protocol_edge": "planner_to_solver",
+        "protocol_version": "CARD-0-gsm8k",
+        "protocol_hash": "4bcdae885cc464e0a51977368e4bc06650c0326dbdcb182ce0327477c1d32daa",
+        "contract_hash": "ab4b736240365db5d0ce2caea032f40a3b7fc9c189db42d5ebcd28cac0fac22b",
+        "fields": {
+          "G": "number_of_suckers_Jen_ate",
+          "P": "taylor_received=1+5,harmony_received=taylor_received+3,molly_received=harmony_received+2,jen_received=2*molly_received,jen_ate=jen_received/2"
+        },
+        "communication_tokens": 63,
+        "communication_tokens_exact": true,
+        "attempt_count": 1,
+        "fallback": false,
+        "tokens_include_all_attempts": true,
+        "incoming_message_ids": []
+      }
+    },
+    {
+      "sender": "solver",
+      "content": "IR:taylor_received=1+5=6,harmony_received=6+3=9,molly_received=9+2=11,jen_received=2*11=22,jen_ate=22/2=11;R:11",
+      "receiver": "verifier",
+      "round": 0,
+      "role": "assistant",
+      "prompt_tokens": 769,
+      "completion_tokens": 56,
+      "id": "34e48344dcd2",
+      "ts": 1793108818.1571362,
+      "meta": {
+        "sender": "solver",
+        "receiver": "verifier",
+        "message_id": "34e48344dcd2",
+        "protocol_edge": "solver_to_verifier",
+        "protocol_version": "CARD-0-gsm8k",
+        "protocol_hash": "4bcdae885cc464e0a51977368e4bc06650c0326dbdcb182ce0327477c1d32daa",
+        "contract_hash": "ab4b736240365db5d0ce2caea032f40a3b7fc9c189db42d5ebcd28cac0fac22b",
+        "fields": {
+          "IR": "taylor_received=1+5=6,harmony_received=6+3=9,molly_received=9+2=11,jen_received=2*11=22,jen_ate=22/2=11",
+          "R": "11"
+        },
+        "communication_tokens": 56,
+        "communication_tokens_exact": true,
+        "attempt_count": 1,
+        "fallback": false,
+        "tokens_include_all_attempts": true,
+        "incoming_message_ids": [
+          "092720ff799a"
+        ]
+      }
+    },
+    {
+      "sender": "verifier",
+      "content": "CHK:ACCEPT",
+      "receiver": "solver",
+      "round": 0,
+      "role": "assistant",
+      "prompt_tokens": 1128,
+      "completion_tokens": 5,
+      "id": "5e23e2d62c31",
+      "ts": 1793108819.5524435,
+      "meta": {
+        "sender": "verifier",
+        "receiver": "solver",
+        "message_id": "5e23e2d62c31",
+        "protocol_edge": "verifier_to_solver",
+        "protocol_version": "CARD-0-gsm8k",
+        "protocol_hash": "4bcdae885cc464e0a51977368e4bc06650c0326dbdcb182ce0327477c1d32daa",
+        "contract_hash": "ab4b736240365db5d0ce2caea032f40a3b7fc9c189db42d5ebcd28cac0fac22b",
+        "fields": {
+          "CHK": "ACCEPT"
+        },
+        "communication_tokens": 5,
+        "communication_tokens_exact": true,
+        "attempt_count": 1,
+        "fallback": false,
+        "tokens_include_all_attempts": true,
+        "incoming_message_ids": [
+          "34e48344dcd2"
+        ]
+      }
+    }
+  ],
+  "communication_tokens": 124,
+  "wall_time_s": 4.481363500002772,
+  "verified": true,
+  "revision_rounds": 0,
+  "model_calls": [
+    {
+      "role": "planner",
+      "attempt": 0,
+      "status": "delivered",
+      "error": "",
+      "raw_output": "G:number_of_suckers_Jen_ate;P:taylor_received=1+5,harmony_received=taylor_received+3,molly_received=harmony_received+2,jen_received=2*molly_received,jen_ate=jen_received/2",
+      "finish_reason": "stop",
+      "output_tokens": 63,
+      "usage_available": true
+    },
+    {
+      "role": "solver",
+      "attempt": 0,
+      "status": "delivered",
+      "error": "",
+      "raw_output": "IR:taylor_received=1+5=6,harmony_received=6+3=9,molly_received=9+2=11,jen_received=2*11=22,jen_ate=22/2=11;R:11",
+      "finish_reason": "stop",
+      "output_tokens": 56,
+      "usage_available": true
+    },
+    {
+      "role": "verifier",
+      "attempt": 0,
+      "status": "delivered",
+      "error": "",
+      "raw_output": "CHK:ACCEPT",
+      "finish_reason": "stop",
+      "output_tokens": 5,
+      "usage_available": true
+    }
+  ],
+  "failed_attempts": [],
+  "calls": 3,
+  "usage_complete": true,
+  "known_input_tokens": 2661,
+  "known_output_tokens": 124,
+  "model_input_tokens": 2661,
+  "model_output_tokens": 124,
+  "format_failed_calls": 0,
+  "transport_failed_calls": 0,
+  "fallback_calls": 0,
+  "sum_model_latency_s": 4.396968364715576
+}

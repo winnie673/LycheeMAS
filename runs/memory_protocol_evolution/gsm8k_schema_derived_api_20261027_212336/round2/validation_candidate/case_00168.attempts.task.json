@@ -1,0 +1,149 @@
+{
+  "task_id": "gsm8k:train:seed42:V:00168",
+  "status": "completed",
+  "error": null,
+  "prediction": "72",
+  "messages": [
+    {
+      "sender": "planner",
+      "content": "G:total_money;P:crabs_per_week=3*4,total_crabs=2*crabs_per_week,total_money=total_crabs*3;NL:He collects twice a week so multiply the weekly basket total by 2.",
+      "receiver": "solver",
+      "round": 0,
+      "role": "assistant",
+      "prompt_tokens": 868,
+      "completion_tokens": 59,
+      "id": "8b8cf8ac5b7a",
+      "ts": 1793111821.3033595,
+      "meta": {
+        "sender": "planner",
+        "receiver": "solver",
+        "message_id": "8b8cf8ac5b7a",
+        "protocol_edge": "planner_to_solver",
+        "protocol_version": "CARD-2-gsm8k",
+        "protocol_hash": "aec703067bbfeee6aa1e642a2a319658f1d33f2eff00c8701de19347f616ed6d",
+        "contract_hash": "ab4b736240365db5d0ce2caea032f40a3b7fc9c189db42d5ebcd28cac0fac22b",
+        "fields": {
+          "G": "total_money",
+          "P": "crabs_per_week=3*4,total_crabs=2*crabs_per_week,total_money=total_crabs*3",
+          "NL": "He collects twice a week so multiply the weekly basket total by 2."
+        },
+        "communication_tokens": 59,
+        "communication_tokens_exact": true,
+        "attempt_count": 1,
+        "fallback": false,
+        "tokens_include_all_attempts": true,
+        "incoming_message_ids": []
+      }
+    },
+    {
+      "sender": "solver",
+      "content": "IR:crabs_per_week=3*4=12,total_crabs=2*12=24,total_money=24*3=72;R:72",
+      "receiver": "verifier",
+      "round": 0,
+      "role": "assistant",
+      "prompt_tokens": 745,
+      "completion_tokens": 38,
+      "id": "1fe8927e9c84",
+      "ts": 1793111822.546465,
+      "meta": {
+        "sender": "solver",
+        "receiver": "verifier",
+        "message_id": "1fe8927e9c84",
+        "protocol_edge": "solver_to_verifier",
+        "protocol_version": "CARD-2-gsm8k",
+        "protocol_hash": "aec703067bbfeee6aa1e642a2a319658f1d33f2eff00c8701de19347f616ed6d",
+        "contract_hash": "ab4b736240365db5d0ce2caea032f40a3b7fc9c189db42d5ebcd28cac0fac22b",
+        "fields": {
+          "IR": "crabs_per_week=3*4=12,total_crabs=2*12=24,total_money=24*3=72",
+          "R": "72"
+        },
+        "communication_tokens": 38,
+        "communication_tokens_exact": true,
+        "attempt_count": 1,
+        "fallback": false,
+        "tokens_include_all_attempts": true,
+        "incoming_message_ids": [
+          "8b8cf8ac5b7a"
+        ]
+      }
+    },
+    {
+      "sender": "verifier",
+      "content": "CHK:ACCEPT",
+      "receiver": "solver",
+      "round": 0,
+      "role": "assistant",
+      "prompt_tokens": 1090,
+      "completion_tokens": 5,
+      "id": "26adfc55f798",
+      "ts": 1793111823.620818,
+      "meta": {
+        "sender": "verifier",
+        "receiver": "solver",
+        "message_id": "26adfc55f798",
+        "protocol_edge": "verifier_to_solver",
+        "protocol_version": "CARD-2-gsm8k",
+        "protocol_hash": "aec703067bbfeee6aa1e642a2a319658f1d33f2eff00c8701de19347f616ed6d",
+        "contract_hash": "ab4b736240365db5d0ce2caea032f40a3b7fc9c189db42d5ebcd28cac0fac22b",
+        "fields": {
+          "CHK": "ACCEPT"
+        },
+        "communication_tokens": 5,
+        "communication_tokens_exact": true,
+        "attempt_count": 1,
+        "fallback": false,
+        "tokens_include_all_attempts": true,
+        "incoming_message_ids": [
+          "1fe8927e9c84"
+        ]
+      }
+    }
+  ],
+  "communication_tokens": 102,
+  "wall_time_s": 4.393380300025456,
+  "verified": true,
+  "revision_rounds": 0,
+  "model_calls": [
+    {
+      "role": "planner",
+      "attempt": 0,
+      "status": "delivered",
+      "error": "",
+      "raw_output": "G:total_money;P:crabs_per_week=3*4,total_crabs=2*crabs_per_week,total_money=total_crabs*3;NL:He collects twice a week so multiply the weekly basket total by 2.",
+      "finish_reason": "stop",
+      "output_tokens": 59,
+      "usage_available": true
+    },
+    {
+      "role": "solver",
+      "attempt": 0,
+      "status": "delivered",
+      "error": "",
+      "raw_output": "IR:crabs_per_week=3*4=12,total_crabs=2*12=24,total_money=24*3=72;R:72",
+      "finish_reason": "stop",
+      "output_tokens": 38,
+      "usage_available": true
+    },
+    {
+      "role": "verifier",
+      "attempt": 0,
+      "status": "delivered",
+      "error": "",
+      "raw_output": "CHK:ACCEPT",
+      "finish_reason": "stop",
+      "output_tokens": 5,
+      "usage_available": true
+    }
+  ],
+  "failed_attempts": [],
+  "calls": 3,
+  "usage_complete": true,
+  "known_input_tokens": 2703,
+  "known_output_tokens": 102,
+  "model_input_tokens": 2703,
+  "model_output_tokens": 102,
+  "format_failed_calls": 0,
+  "transport_failed_calls": 0,
+  "fallback_calls": 0,
+  "sum_model_latency_s": 4.210025072097778
+}

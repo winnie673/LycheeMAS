@@ -1,0 +1,151 @@
+{
+  "task_id": "gsm8k:train:seed42:V:00074",
+  "status": "completed",
+  "error": null,
+  "prediction": "130",
+  "messages": [
+    {
+      "sender": "planner",
+      "content": "G:distance_remaining;P:traveled=50*3+80*4,distance_remaining=600-traveled",
+      "receiver": "solver",
+      "round": 0,
+      "role": "assistant",
+      "prompt_tokens": 769,
+      "completion_tokens": 27,
+      "id": "79cea3772244",
+      "ts": 1793108392.3370223,
+      "meta": {
+        "sender": "planner",
+        "receiver": "solver",
+        "message_id": "79cea3772244",
+        "protocol_edge": "planner_to_solver",
+        "protocol_version": "CARD-0-gsm8k",
+        "protocol_hash": "4bcdae885cc464e0a51977368e4bc06650c0326dbdcb182ce0327477c1d32daa",
+        "contract_hash": "ab4b736240365db5d0ce2caea032f40a3b7fc9c189db42d5ebcd28cac0fac22b",
+        "fields": {
+          "G": "distance_remaining",
+          "P": "traveled=50*3+80*4,distance_remaining=600-traveled"
+        },
+        "communication_tokens": 27,
+        "communication_tokens_exact": true,
+        "attempt_count": 1,
+        "fallback": false,
+        "tokens_include_all_attempts": true,
+        "incoming_message_ids": []
+      }
+    },
+    {
+      "sender": "solver",
+      "content": "IR:traveled=50*3+80*4=470,distance_remaining=600-470=130;R:130",
+      "receiver": "verifier",
+      "round": 0,
+      "role": "assistant",
+      "prompt_tokens": 738,
+      "completion_tokens": 28,
+      "id": "6edb5b854609",
+      "ts": 1793108393.5743213,
+      "meta": {
+        "sender": "solver",
+        "receiver": "verifier",
+        "message_id": "6edb5b854609",
+        "protocol_edge": "solver_to_verifier",
+        "protocol_version": "CARD-0-gsm8k",
+        "protocol_hash": "4bcdae885cc464e0a51977368e4bc06650c0326dbdcb182ce0327477c1d32daa",
+        "contract_hash": "ab4b736240365db5d0ce2caea032f40a3b7fc9c189db42d5ebcd28cac0fac22b",
+        "fields": {
+          "IR": "traveled=50*3+80*4=470,distance_remaining=600-470=130",
+          "R": "130"
+        },
+        "communication_tokens": 28,
+        "communication_tokens_exact": true,
+        "attempt_count": 1,
+        "fallback": false,
+        "tokens_include_all_attempts": true,
+        "incoming_message_ids": [
+          "79cea3772244"
+        ]
+      }
+    },
+    {
+      "sender": "verifier",
+      "content": "CHK:ACCEPT",
+      "receiver": "solver",
+      "round": 0,
+      "role": "assistant",
+      "prompt_tokens": 1105,
+      "completion_tokens": 5,
+      "id": "2e8a9264e7ed",
+      "ts": 1793108394.8167503,
+      "meta": {
+        "sender": "verifier",
+        "receiver": "solver",
+        "message_id": "2e8a9264e7ed",
+        "protocol_edge": "verifier_to_solver",
+        "protocol_version": "CARD-0-gsm8k",
+        "protocol_hash": "4bcdae885cc464e0a51977368e4bc06650c0326dbdcb182ce0327477c1d32daa",
+        "contract_hash": "ab4b736240365db5d0ce2caea032f40a3b7fc9c189db42d5ebcd28cac0fac22b",
+        "fields": {
+          "CHK": "ACCEPT"
+        },
+        "communication_tokens": 5,
+        "communication_tokens_exact": true,
+        "attempt_count": 1,
+        "fallback": false,
+        "tokens_include_all_attempts": true,
+        "incoming_message_ids": [
+          "6edb5b854609"
+        ]
+      }
+    }
+  ],
+  "communication_tokens": 60,
+  "wall_time_s": 3.996102500008419,
+  "verified": true,
+  "revision_rounds": 0,
+  "model_calls": [
+    {
+      "role": "planner",
+      "attempt": 0,
+      "status": "delivered",
+      "error": "",
+      "raw_output": "G:distance_remaining;P:traveled=50*3+80*4,distance_remaining=600-traveled",
+      "finish_reason": "stop",
+      "output_tokens": 27,
+      "usage_available": true
+    },
+    {
+      "role": "solver",
+      "attempt": 0,
+      "status": "delivered",
+      "error": "",
+      "raw_output": "IR:traveled=50*3+80*4=470,distance_remaining=600-470=130;R:130",
+      "finish_reason": "stop",
+      "output_tokens": 28,
+      "usage_available": true
+    },
+    {
+      "role": "verifier",
+      "attempt": 0,
+      "status": "delivered",
+      "error": "",
+      "raw_output": "CHK:ACCEPT",
+      "finish_reason": "stop",
+      "output_tokens": 5,
+      "usage_available": true
+    }
+  ],
+  "failed_attempts": [],
+  "calls": 3,
+  "usage_complete": true,
+  "known_input_tokens": 2612,
+  "known_output_tokens": 60,
+  "model_input_tokens": 2612,
+  "model_output_tokens": 60,
+  "format_failed_calls": 0,
+  "transport_failed_calls": 0,
+  "fallback_calls": 0,
+  "sum_model_latency_s": 3.8315353393554688,
+  "gold": "130",
+  "score": 1.0,
+  "question": "Samuel is driving to San Francisco’s Comic-Con in his car and he needs to travel 600 miles to the hotel where he made a reservation. At first, he drives at 50 miles/hour for 3 hours straight, then he speeds up to 80 miles/hour for 4 hours. How far is he from the hotel?\nGive the final numeric answer."
+}

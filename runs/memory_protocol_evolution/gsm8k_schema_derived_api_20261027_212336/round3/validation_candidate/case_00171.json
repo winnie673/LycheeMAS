@@ -1,0 +1,153 @@
+{
+  "task_id": "gsm8k:train:seed42:V:00171",
+  "status": "completed",
+  "error": null,
+  "prediction": "51",
+  "messages": [
+    {
+      "sender": "planner",
+      "content": "G:total_mascots;P:bunnies=3*5,total=5+bunnies+1+2*bunnies;NL:Interpret \"3 times more bunnies\" as 3 times as many bunnies as teddies.",
+      "receiver": "solver",
+      "round": 0,
+      "role": "assistant",
+      "prompt_tokens": 801,
+      "completion_tokens": 55,
+      "id": "938a6b8d76ff",
+      "ts": 1793168883.2423203,
+      "meta": {
+        "sender": "planner",
+        "receiver": "solver",
+        "message_id": "938a6b8d76ff",
+        "protocol_edge": "planner_to_solver",
+        "protocol_version": "CARD-3-gsm8k",
+        "protocol_hash": "fb1a4acb6e591ac96544876aedd912b27a6f9d3154c76112e1da0f43407d27b2",
+        "contract_hash": "ab4b736240365db5d0ce2caea032f40a3b7fc9c189db42d5ebcd28cac0fac22b",
+        "fields": {
+          "G": "total_mascots",
+          "P": "bunnies=3*5,total=5+bunnies+1+2*bunnies",
+          "NL": "Interpret \"3 times more bunnies\" as 3 times as many bunnies as teddies."
+        },
+        "communication_tokens": 55,
+        "communication_tokens_exact": true,
+        "attempt_count": 1,
+        "fallback": false,
+        "tokens_include_all_attempts": true,
+        "incoming_message_ids": []
+      }
+    },
+    {
+      "sender": "solver",
+      "content": "IR:teddies=5,bunnies=3*5=15,koala=1,extra_teddies=2*15=30,total=5+15+1+30=51;R:51;NL:Interpret \"3 times more bunnies\" as 3 times as many bunnies as teddies.",
+      "receiver": "verifier",
+      "round": 0,
+      "role": "assistant",
+      "prompt_tokens": 756,
+      "completion_tokens": 73,
+      "id": "e7b6c226fabb",
+      "ts": 1793168884.265653,
+      "meta": {
+        "sender": "solver",
+        "receiver": "verifier",
+        "message_id": "e7b6c226fabb",
+        "protocol_edge": "solver_to_verifier",
+        "protocol_version": "CARD-3-gsm8k",
+        "protocol_hash": "fb1a4acb6e591ac96544876aedd912b27a6f9d3154c76112e1da0f43407d27b2",
+        "contract_hash": "ab4b736240365db5d0ce2caea032f40a3b7fc9c189db42d5ebcd28cac0fac22b",
+        "fields": {
+          "IR": "teddies=5,bunnies=3*5=15,koala=1,extra_teddies=2*15=30,total=5+15+1+30=51",
+          "R": "51",
+          "NL": "Interpret \"3 times more bunnies\" as 3 times as many bunnies as teddies."
+        },
+        "communication_tokens": 73,
+        "communication_tokens_exact": true,
+        "attempt_count": 1,
+        "fallback": false,
+        "tokens_include_all_attempts": true,
+        "incoming_message_ids": [
+          "938a6b8d76ff"
+        ]
+      }
+    },
+    {
+      "sender": "verifier",
+      "content": "CHK:ACCEPT",
+      "receiver": "solver",
+      "round": 0,
+      "role": "assistant",
+      "prompt_tokens": 1140,
+      "completion_tokens": 5,
+      "id": "0265fc988435",
+      "ts": 1793168885.2888138,
+      "meta": {
+        "sender": "verifier",
+        "receiver": "solver",
+        "message_id": "0265fc988435",
+        "protocol_edge": "verifier_to_solver",
+        "protocol_version": "CARD-3-gsm8k",
+        "protocol_hash": "fb1a4acb6e591ac96544876aedd912b27a6f9d3154c76112e1da0f43407d27b2",
+        "contract_hash": "ab4b736240365db5d0ce2caea032f40a3b7fc9c189db42d5ebcd28cac0fac22b",
+        "fields": {
+          "CHK": "ACCEPT"
+        },
+        "communication_tokens": 5,
+        "communication_tokens_exact": true,
+        "attempt_count": 1,
+        "fallback": false,
+        "tokens_include_all_attempts": true,
+        "incoming_message_ids": [
+          "e7b6c226fabb"
+        ]
+      }
+    }
+  ],
+  "communication_tokens": 133,
+  "wall_time_s": 3.3705050999997184,
+  "verified": true,
+  "revision_rounds": 0,
+  "model_calls": [
+    {
+      "role": "planner",
+      "attempt": 0,
+      "status": "delivered",
+      "error": "",
+      "raw_output": "G:total_mascots;P:bunnies=3*5,total=5+bunnies+1+2*bunnies;NL:Interpret \"3 times more bunnies\" as 3 times as many bunnies as teddies.",
+      "finish_reason": "stop",
+      "output_tokens": 55,
+      "usage_available": true
+    },
+    {
+      "role": "solver",
+      "attempt": 0,
+      "status": "delivered",
+      "error": "",
+      "raw_output": "IR:teddies=5,bunnies=3*5=15,koala=1,extra_teddies=2*15=30,total=5+15+1+30=51;R:51;NL:Interpret \"3 times more bunnies\" as 3 times as many bunnies as teddies.",
+      "finish_reason": "stop",
+      "output_tokens": 73,
+      "usage_available": true
+    },
+    {
+      "role": "verifier",
+      "attempt": 0,
+      "status": "delivered",
+      "error": "",
+      "raw_output": "CHK:ACCEPT",
+      "finish_reason": "stop",
+      "output_tokens": 5,
+      "usage_available": true
+    }
+  ],
+  "failed_attempts": [],
+  "calls": 3,
+  "usage_complete": true,
+  "known_input_tokens": 2697,
+  "known_output_tokens": 133,
+  "model_input_tokens": 2697,
+  "model_output_tokens": 133,
+  "format_failed_calls": 0,
+  "transport_failed_calls": 0,
+  "fallback_calls": 0,
+  "sum_model_latency_s": 3.284876585006714,
+  "gold": "51",
+  "score": 1.0,
+  "question": "Jina likes to collect mascots. She has 5 teddies, 3 times more bunnies, and a koala bear. Her mom decided to give her two additional teddies for every bunny she has. How many mascots Jina has in total?\nGive the final numeric answer."
+}

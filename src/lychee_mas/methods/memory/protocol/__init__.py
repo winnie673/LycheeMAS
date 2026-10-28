@@ -7,6 +7,9 @@ from .base import (
     FieldConstraint,
     ProtocolArchitecture,
     ProtocolContract,
+    assert_runtime_compatible,
+    build_contract_from_schema,
+    load_protocol_schema,
 )
 from .evolution import ProtocolEvolution
 
@@ -18,4 +21,7 @@ __all__ = [
     "EdgeValidation",
     "EvolutionSchedule",
     "ProtocolEvolution",
+    "build_contract_from_schema",
+    "load_protocol_schema",
+    "assert_runtime_compatible",
 ]

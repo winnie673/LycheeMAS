@@ -1,0 +1,148 @@
+{
+  "task_id": "gsm8k:train:seed42:V:00027",
+  "status": "completed",
+  "error": null,
+  "prediction": "1040",
+  "messages": [
+    {
+      "sender": "planner",
+      "content": "G:difference_in_annual_cost;P:clarinet_annual=40*3*52,piano_annual=28*5*52,difference_in_annual_cost=piano_annual-clarinet_annual",
+      "receiver": "solver",
+      "round": 0,
+      "role": "assistant",
+      "prompt_tokens": 790,
+      "completion_tokens": 45,
+      "id": "06a63dfb5f5a",
+      "ts": 1793113318.0353506,
+      "meta": {
+        "sender": "planner",
+        "receiver": "solver",
+        "message_id": "06a63dfb5f5a",
+        "protocol_edge": "planner_to_solver",
+        "protocol_version": "CARD-3-gsm8k",
+        "protocol_hash": "fb1a4acb6e591ac96544876aedd912b27a6f9d3154c76112e1da0f43407d27b2",
+        "contract_hash": "ab4b736240365db5d0ce2caea032f40a3b7fc9c189db42d5ebcd28cac0fac22b",
+        "fields": {
+          "G": "difference_in_annual_cost",
+          "P": "clarinet_annual=40*3*52,piano_annual=28*5*52,difference_in_annual_cost=piano_annual-clarinet_annual"
+        },
+        "communication_tokens": 45,
+        "communication_tokens_exact": true,
+        "attempt_count": 1,
+        "fallback": false,
+        "tokens_include_all_attempts": true,
+        "incoming_message_ids": []
+      }
+    },
+    {
+      "sender": "solver",
+      "content": "IR:clarinet_annual=40*3*52=6240,piano_annual=28*5*52=7280,difference=7280-6240=1040;R:1040",
+      "receiver": "verifier",
+      "round": 0,
+      "role": "assistant",
+      "prompt_tokens": 735,
+      "completion_tokens": 44,
+      "id": "552ca1ccd074",
+      "ts": 1793113319.6144469,
+      "meta": {
+        "sender": "solver",
+        "receiver": "verifier",
+        "message_id": "552ca1ccd074",
+        "protocol_edge": "solver_to_verifier",
+        "protocol_version": "CARD-3-gsm8k",
+        "protocol_hash": "fb1a4acb6e591ac96544876aedd912b27a6f9d3154c76112e1da0f43407d27b2",
+        "contract_hash": "ab4b736240365db5d0ce2caea032f40a3b7fc9c189db42d5ebcd28cac0fac22b",
+        "fields": {
+          "IR": "clarinet_annual=40*3*52=6240,piano_annual=28*5*52=7280,difference=7280-6240=1040",
+          "R": "1040"
+        },
+        "communication_tokens": 44,
+        "communication_tokens_exact": true,
+        "attempt_count": 1,
+        "fallback": false,
+        "tokens_include_all_attempts": true,
+        "incoming_message_ids": [
+          "06a63dfb5f5a"
+        ]
+      }
+    },
+    {
+      "sender": "verifier",
+      "content": "CHK:ACCEPT",
+      "receiver": "solver",
+      "round": 0,
+      "role": "assistant",
+      "prompt_tokens": 1100,
+      "completion_tokens": 5,
+      "id": "9a7ad4abdcd2",
+      "ts": 1793113320.844626,
+      "meta": {
+        "sender": "verifier",
+        "receiver": "solver",
+        "message_id": "9a7ad4abdcd2",
+        "protocol_edge": "verifier_to_solver",
+        "protocol_version": "CARD-3-gsm8k",
+        "protocol_hash": "fb1a4acb6e591ac96544876aedd912b27a6f9d3154c76112e1da0f43407d27b2",
+        "contract_hash": "ab4b736240365db5d0ce2caea032f40a3b7fc9c189db42d5ebcd28cac0fac22b",
+        "fields": {
+          "CHK": "ACCEPT"
+        },
+        "communication_tokens": 5,
+        "communication_tokens_exact": true,
+        "attempt_count": 1,
+        "fallback": false,
+        "tokens_include_all_attempts": true,
+        "incoming_message_ids": [
+          "552ca1ccd074"
+        ]
+      }
+    }
+  ],
+  "communication_tokens": 94,
+  "wall_time_s": 4.224570699967444,
+  "verified": true,
+  "revision_rounds": 0,
+  "model_calls": [
+    {
+      "role": "planner",
+      "attempt": 0,
+      "status": "delivered",
+      "error": "",
+      "raw_output": "G:difference_in_annual_cost;P:clarinet_annual=40*3*52,piano_annual=28*5*52,difference_in_annual_cost=piano_annual-clarinet_annual",
+      "finish_reason": "stop",
+      "output_tokens": 45,
+      "usage_available": true
+    },
+    {
+      "role": "solver",
+      "attempt": 0,
+      "status": "delivered",
+      "error": "",
+      "raw_output": "IR:clarinet_annual=40*3*52=6240,piano_annual=28*5*52=7280,difference=7280-6240=1040;R:1040",
+      "finish_reason": "stop",
+      "output_tokens": 44,
+      "usage_available": true
+    },
+    {
+      "role": "verifier",
+      "attempt": 0,
+      "status": "delivered",
+      "error": "",
+      "raw_output": "CHK:ACCEPT",
+      "finish_reason": "stop",
+      "output_tokens": 5,
+      "usage_available": true
+    }
+  ],
+  "failed_attempts": [],
+  "calls": 3,
+  "usage_complete": true,
+  "known_input_tokens": 2625,
+  "known_output_tokens": 94,
+  "model_input_tokens": 2625,
+  "model_output_tokens": 94,
+  "format_failed_calls": 0,
+  "transport_failed_calls": 0,
+  "fallback_calls": 0,
+  "sum_model_latency_s": 4.0800065994262695
+}

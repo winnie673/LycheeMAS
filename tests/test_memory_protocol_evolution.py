@@ -6,6 +6,7 @@ import copy
 import hashlib
 import importlib
 import json
+from dataclasses import replace
 from pathlib import Path
 from types import SimpleNamespace
 
@@ -19,8 +20,17 @@ from lychee_mas.methods.memory.protocol import (
     ProtocolArchitecture,
     ProtocolContract,
     ProtocolEvolution,
+    assert_runtime_compatible,
+    build_contract_from_schema,
 )
-from scripts.hybrid_gsm8k_spec import GSM8K_PROTOCOL, GSM8K_SCHEDULE, PSV_V1
+from scripts.hybrid_gsm8k_spec import (
+    GSM8K_PROTOCOL,
+    GSM8K_SCHEDULE,
+    GSM8K_SCHEMA,
+    PSV_V1,
+    build_gsm8k_contract,
+    protocol_contract_for_card,
+)
 
 
 @pytest.fixture
@@ -60,8 +70,190 @@ def write_card(path, card):
     return path
 
 
-def test_legacy_frozen_card_compatible_and_no_mutation():
-    path = Path("configs/memory/task_cards/gsm8k_card2.yaml")
+def test_schema_is_shared_by_design_and_runtime_without_receive_alias_leakage():
+    from scripts.hybrid_gsm8k_design import GSM8KDesign
+
+    design = GSM8KDesign()
+    assert design.schema == GSM8K_SCHEMA
+    design.schema["description"] = "local copy"
+    assert GSM8K_SCHEMA["description"] != "local copy"
+    for edge, allowed, required in PSV_V1.edges:
+        assert allowed == tuple(GSM8K_SCHEMA[edge]["allowed_fields"])
+        assert required == tuple(GSM8K_SCHEMA[edge]["required_fields"])
+    enum = GSM8K_SCHEMA["verifier_to_solver"]["value_constraints"]["CHK"]["allowed_values"]
+    assert enum == ["ACCEPT", "REVISE"]
+    check = GSM8K_PROTOCOL.validation_for("verifier_to_solver").fields[0]
+    assert set(check.choices) == {*enum, "FAIL", "INSUFFICIENT"}
+
+
+def test_schema_changes_drive_enum_guards_meanings_and_required_fields():
+    from scripts.hybrid_gsm8k_design import GSM8KDesign
+
+    schema = copy.deepcopy(GSM8K_SCHEMA)
+    schema["verifier_to_solver"]["value_constraints"]["E"]["allowed_values"].append("NEW_ERROR")
+    schema["planner_to_solver"]["required_fields"].append("P")
+    schema["planner_to_solver"]["optional_field_policy"]["NL"][
+        "forbidden_placeholder_values"
+    ].append("unused")
+    schema["planner_to_solver"]["field_semantics"]["NL"] = "Planning-only clarification"
+    before = copy.deepcopy(schema)
+    contract = build_gsm8k_contract(schema)
+    assert "P" in contract.architecture.edges[0][2]
+    edge = contract.validation_for("planner_to_solver")
+    with pytest.raises(ValueError):
+        next(r for r in edge.fields if r.name == "NL").check({"NL": "unused"})
+    errors = contract.validation_for("verifier_to_solver").fields[1]
+    assert "NEW_ERROR" in errors.choices
+    prompt = GSM8KDesign(schema=schema).initialize([], "test executor")
+    assert "NEW_ERROR" in prompt.split("The only valid E values are ", 1)[1].split(".\n", 1)[0]
+    meaning = dict(contract.field_meanings)["NL"]
+    assert "planner_to_solver: Planning-only clarification" in meaning
+    assert GSM8K_SCHEMA["solver_to_verifier"]["field_semantics"]["NL"] in meaning
+    assert schema == before  # Alias expansion/compilation never changes design data.
+
+
+def test_schema_forbidden_is_not_an_exclusive_field_set_and_roundtrips():
+    schema = {
+        "message_format": {
+            "structure": "fields_only",
+            "wire_syntax": "direct",
+            "field_separator": ";",
+        },
+        "author_to_editor": {
+            "allowed_fields": ["STATE", "TEXT", "NOTE"],
+            "required_fields": ["STATE"],
+            "field_semantics": {"STATE": "Status", "TEXT": "A color", "NOTE": "Explanation"},
+            "value_constraints": {"STATE": {"allowed_values": ["PASS", "EDIT"]}},
+            "optional_field_policy": {"NOTE": {"forbidden_placeholder_values": ["none"]}},
+            "conditional_required": {"EDIT": ["TEXT"]},
+            "conditional_forbidden": {"PASS": ["NOTE"]},
+        },
+    }
+    contract = build_contract_from_schema(
+        schema,
+        task="toy_colors",
+        architecture_name="pair",
+        roles=(("author", "Write a color"), ("editor", "Check the color")),
+        edges=("author_to_editor",),
+        control_fields={"author_to_editor": "STATE"},
+        runtime_aliases={"author_to_editor": {"RETRY": "EDIT"}},
+    )
+    restored = ProtocolContract.from_dict(json.loads(json.dumps(contract.as_dict())))
+    assert restored.fingerprint == contract.fingerprint
+    rules = restored.validation_for("author_to_editor")
+    for condition in rules.conditions:
+        condition.check({"STATE": "PASS", "TEXT": "blue"})  # TEXT is not forbidden.
+    with pytest.raises(ValueError):
+        for condition in rules.conditions:
+            condition.check({"STATE": "PASS", "NOTE": "explanation"})
+    with pytest.raises(ValueError):
+        for condition in rules.conditions:
+            condition.check({"STATE": "RETRY"})
+
+
+@pytest.mark.parametrize("change", ["unknown_field", "bad_enum", "unknown_operation", "conflict"])
+def test_schema_conversion_rejects_unsupported_or_inconsistent_rules(change):
+    schema = copy.deepcopy(GSM8K_SCHEMA)
+    edge = schema["verifier_to_solver"]
+    if change == "unknown_field":
+        edge["conditional_required"]["REVISE"].append("UNKNOWN")
+    elif change == "bad_enum":
+        edge["value_constraints"]["E"]["allowed_values"] = []
+    elif change == "unknown_operation":
+        edge["value_constraints"]["E"]["execute_python"] = "not allowed"
+    else:
+        edge["conditional_forbidden"]["REVISE"] = ["E"]
+    with pytest.raises(ValueError):
+        build_gsm8k_contract(schema)
+
+
+def synthetic_legacy_contract():
+    """Old serialization shape, without depending on a removed historical card."""
+    allowed = {edge: fields for edge, fields, _ in GSM8K_PROTOCOL.architecture.edges}
+    return replace(
+        GSM8K_PROTOCOL,
+        edge_validation=tuple(
+            replace(
+                rule,
+                conditions=tuple(
+                    replace(
+                        condition,
+                        forbidden=(),
+                        only=tuple(
+                            field
+                            for field in allowed[rule.edge]
+                            if field not in condition.forbidden
+                        ),
+                    )
+                    if condition.forbidden
+                    else condition
+                    for condition in rule.conditions
+                ),
+            )
+            for rule in GSM8K_PROTOCOL.edge_validation
+        ),
+    )
+
+
+def synthetic_legacy_card(entry):
+    raw = fixture_card(entry)
+    raw.pop("validation_contract", None)
+    raw["task_card"] = {
+        "task": "gsm8k",
+        "roles": list(dict(PSV_V1.roles)),
+        "edges": [edge for edge, _, _ in PSV_V1.edges],
+    }
+    return raw
+
+
+def test_frozen_contract_fingerprint_and_validation_are_preserved():
+    path = Path("configs/memory/task_cards/gsm8k_psv_hybrid_card_20261028.yaml")
+    before = path.read_bytes()
+    frozen = protocol_contract_for_card(path)
+    assert frozen.fingerprint == GSM8K_PROTOCOL.fingerprint
+    assert_runtime_compatible(GSM8K_PROTOCOL, frozen)
+    legacy = synthetic_legacy_contract()
+    assert_runtime_compatible(GSM8K_PROTOCOL, legacy)
+    assert ProtocolContract.from_dict(legacy.as_dict()).fingerprint == legacy.fingerprint
+    assert all(
+        "forbidden" not in c
+        for rule in legacy.as_dict()["edge_validation"]
+        for c in rule["conditions"]
+    )
+    assert path.read_bytes() == before
+
+
+def test_frozen_compatibility_rejects_guard_drift_and_unknown_fingerprints(monkeypatch, tmp_path):
+    import yaml
+    from scripts import hybrid_gsm8k_spec as spec
+
+    source = Path("configs/memory/task_cards/gsm8k_psv_hybrid_card_20261028.yaml")
+    legacy = synthetic_legacy_contract()
+    raw = yaml.safe_load(source.read_text(encoding="utf-8"))
+    raw["validation_contract"] = legacy.as_dict()
+    raw["task_card"]["contract_sha256"] = legacy.fingerprint
+    path = write_card(tmp_path / "historical.yaml", raw)
+    monkeypatch.setattr(spec, "HISTORICAL_CONTRACT_SHA256", frozenset({legacy.fingerprint}))
+    assert spec.protocol_contract_for_card(path).fingerprint == legacy.fingerprint
+    schema = copy.deepcopy(GSM8K_SCHEMA)
+    schema["planner_to_solver"]["optional_field_policy"]["NL"][
+        "forbidden_placeholder_values"
+    ].append("unused")
+    with monkeypatch.context() as patch:
+        patch.setattr(spec, "GSM8K_PROTOCOL", build_gsm8k_contract(schema))
+        with pytest.raises(ValueError, match="incompatible"):
+            spec.protocol_contract_for_card(path)
+    raw = yaml.safe_load(path.read_text(encoding="utf-8"))
+    raw["validation_contract"]["generation_guidance"] += " changed"
+    changed = ProtocolContract.from_dict(raw["validation_contract"])
+    raw["task_card"]["contract_sha256"] = changed.fingerprint
+    candidate = write_card(tmp_path / "unrecognized.yaml", raw)
+    with pytest.raises(ValueError, match="unrecognized historical"):
+        spec.protocol_contract_for_card(candidate)
+
+
+def test_legacy_frozen_card_compatible_and_no_mutation(entry, tmp_path):
+    path = write_card(tmp_path / "legacy.yaml", synthetic_legacy_card(entry))
     before = hashlib.sha256(path.read_bytes()).hexdigest()
     channel = HybridProtocolMemory(str(path), "gsm8k", contract=GSM8K_PROTOCOL)
     channel.check_architecture(PSV_V1)
@@ -509,8 +701,8 @@ def test_non_psv_non_numeric_lineage_and_cdm_without_core_changes(tmp_path, name
     assert channel.validate("STATE:EDIT;FEEDBACK:Check hue", "editor", "author")["STATE"] == "EDIT"
 
 
-def test_legacy_card_requires_explicit_contract_and_never_silently_weakens():
-    card = "configs/memory/task_cards/gsm8k_card2.yaml"
+def test_legacy_card_requires_explicit_contract_and_never_silently_weakens(entry, tmp_path):
+    card = str(write_card(tmp_path / "legacy.yaml", synthetic_legacy_card(entry)))
     with pytest.raises(ValueError, match="explicit protocol contract"):
         HybridProtocolMemory(card, "gsm8k")
     channel = HybridProtocolMemory(card, "gsm8k", contract=GSM8K_PROTOCOL)

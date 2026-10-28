@@ -572,7 +572,7 @@ class ProtocolEvolution:
         self._write(
             out / "config.json",
             {
-                "version": "memory-evolution-v4-review-boundary",
+                "version": "memory-evolution-v5-schema-derived",
                 "task": self.contract.task,
                 "architecture": self.architecture.as_dict(),
                 "contract": self.contract.as_dict(),

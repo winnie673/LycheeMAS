@@ -1,0 +1,151 @@
+{
+  "task_id": "gsm8k:train:seed42:V:00031",
+  "status": "completed",
+  "error": null,
+  "prediction": "12",
+  "messages": [
+    {
+      "sender": "planner",
+      "content": "G:weekly_earnings_dollars;P:day1=10,day_n=day1+4*(n-1),weekly_bars=sum_{n=1..6} day_n,weekly_earnings_dollars=weekly_bars*0.10",
+      "receiver": "solver",
+      "round": 0,
+      "role": "assistant",
+      "prompt_tokens": 825,
+      "completion_tokens": 59,
+      "id": "301d4bc7f401",
+      "ts": 1793109097.708502,
+      "meta": {
+        "sender": "planner",
+        "receiver": "solver",
+        "message_id": "301d4bc7f401",
+        "protocol_edge": "planner_to_solver",
+        "protocol_version": "CARD-1-gsm8k",
+        "protocol_hash": "2a663f41d251a442e680de67a231e516a8fe5e31629bc25d021c8c0eb1354cff",
+        "contract_hash": "ab4b736240365db5d0ce2caea032f40a3b7fc9c189db42d5ebcd28cac0fac22b",
+        "fields": {
+          "G": "weekly_earnings_dollars",
+          "P": "day1=10,day_n=day1+4*(n-1),weekly_bars=sum_{n=1..6} day_n,weekly_earnings_dollars=weekly_bars*0.10"
+        },
+        "communication_tokens": 59,
+        "communication_tokens_exact": true,
+        "attempt_count": 1,
+        "fallback": false,
+        "tokens_include_all_attempts": true,
+        "incoming_message_ids": []
+      }
+    },
+    {
+      "sender": "solver",
+      "content": "IR:bars=10+14+18+22+26+30=120,earnings=120*0.10=12;R:12",
+      "receiver": "verifier",
+      "round": 0,
+      "role": "assistant",
+      "prompt_tokens": 767,
+      "completion_tokens": 32,
+      "id": "549f6d678537",
+      "ts": 1793109099.2289603,
+      "meta": {
+        "sender": "solver",
+        "receiver": "verifier",
+        "message_id": "549f6d678537",
+        "protocol_edge": "solver_to_verifier",
+        "protocol_version": "CARD-1-gsm8k",
+        "protocol_hash": "2a663f41d251a442e680de67a231e516a8fe5e31629bc25d021c8c0eb1354cff",
+        "contract_hash": "ab4b736240365db5d0ce2caea032f40a3b7fc9c189db42d5ebcd28cac0fac22b",
+        "fields": {
+          "IR": "bars=10+14+18+22+26+30=120,earnings=120*0.10=12",
+          "R": "12"
+        },
+        "communication_tokens": 32,
+        "communication_tokens_exact": true,
+        "attempt_count": 1,
+        "fallback": false,
+        "tokens_include_all_attempts": true,
+        "incoming_message_ids": [
+          "301d4bc7f401"
+        ]
+      }
+    },
+    {
+      "sender": "verifier",
+      "content": "CHK:ACCEPT",
+      "receiver": "solver",
+      "round": 0,
+      "role": "assistant",
+      "prompt_tokens": 1106,
+      "completion_tokens": 5,
+      "id": "190a6f8ca0e5",
+      "ts": 1793109100.6838934,
+      "meta": {
+        "sender": "verifier",
+        "receiver": "solver",
+        "message_id": "190a6f8ca0e5",
+        "protocol_edge": "verifier_to_solver",
+        "protocol_version": "CARD-1-gsm8k",
+        "protocol_hash": "2a663f41d251a442e680de67a231e516a8fe5e31629bc25d021c8c0eb1354cff",
+        "contract_hash": "ab4b736240365db5d0ce2caea032f40a3b7fc9c189db42d5ebcd28cac0fac22b",
+        "fields": {
+          "CHK": "ACCEPT"
+        },
+        "communication_tokens": 5,
+        "communication_tokens_exact": true,
+        "attempt_count": 1,
+        "fallback": false,
+        "tokens_include_all_attempts": true,
+        "incoming_message_ids": [
+          "549f6d678537"
+        ]
+      }
+    }
+  ],
+  "communication_tokens": 96,
+  "wall_time_s": 5.029197999974713,
+  "verified": true,
+  "revision_rounds": 0,
+  "model_calls": [
+    {
+      "role": "planner",
+      "attempt": 0,
+      "status": "delivered",
+      "error": "",
+      "raw_output": "G:weekly_earnings_dollars;P:day1=10,day_n=day1+4*(n-1),weekly_bars=sum_{n=1..6} day_n,weekly_earnings_dollars=weekly_bars*0.10",
+      "finish_reason": "stop",
+      "output_tokens": 59,
+      "usage_available": true
+    },
+    {
+      "role": "solver",
+      "attempt": 0,
+      "status": "delivered",
+      "error": "",
+      "raw_output": "IR:bars=10+14+18+22+26+30=120,earnings=120*0.10=12;R:12",
+      "finish_reason": "stop",
+      "output_tokens": 32,
+      "usage_available": true
+    },
+    {
+      "role": "verifier",
+      "attempt": 0,
+      "status": "delivered",
+      "error": "",
+      "raw_output": "CHK:ACCEPT",
+      "finish_reason": "stop",
+      "output_tokens": 5,
+      "usage_available": true
+    }
+  ],
+  "failed_attempts": [],
+  "calls": 3,
+  "usage_complete": true,
+  "known_input_tokens": 2698,
+  "known_output_tokens": 96,
+  "model_input_tokens": 2698,
+  "model_output_tokens": 96,
+  "format_failed_calls": 0,
+  "transport_failed_calls": 0,
+  "fallback_calls": 0,
+  "sum_model_latency_s": 4.949552774429321,
+  "gold": "12",
+  "score": 1.0,
+  "question": "Sol sells candy bars to raise money for her softball team. On the first day, she sells ten candy bars and sells four more candy bars than she sold the previous day each day afterward. If she sells six days a week and each candy bar costs 10 cents, how much will she earn in a week in dollars?\nGive the final numeric answer."
+}

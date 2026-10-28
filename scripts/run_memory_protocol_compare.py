@@ -21,7 +21,7 @@ from typing import Any
 
 ROOT = Path(__file__).resolve().parents[1]
 sys.path.insert(0, str(ROOT / "src"))
-RUNTIME_VERSION = "memory-compare-v4-restored"
+RUNTIME_VERSION = "memory-compare-v5-schema-derived"
 SCORERS = {"gsm8k": "strict_numeric_decimal_v1"}
 
 
@@ -300,6 +300,7 @@ def run_evaluation(
         ROOT / "src/lychee_mas/backends/openai_api_backend.py",
         ROOT / "src/lychee_mas/methods/memory/protocol/base.py",
         ROOT / "scripts/hybrid_gsm8k_spec.py",
+        ROOT / "configs/memory/gsm8k_protocol_schema.yaml",
     ]
     git = subprocess.run(["git", "rev-parse", "HEAD"], cwd=ROOT, capture_output=True, text=True)
     dirty = subprocess.run(

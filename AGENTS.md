@@ -139,6 +139,67 @@ branches. Preserve the framework's original math500 benchmark, MASPO, shared
 math parser and all historical runs. Keep a recoverable copy of the five removed
 files outside this checkout. Do not interpret this as permission for other deletes.
 
+Approved schema single-source refactor: load the fixed YAML once in the experiment
+spec and derive edge interfaces, field semantics, enums, optional-value guards and
+conditional requirements through generic pure helpers in protocol/base.py. Keep
+roles, task-specific answer guidance and receive-only aliases in the experiment.
+Preserve edge-specific meanings, do not flatten by overwriting. Add a real forbidden
+condition rather than treating every forbidden list as an exclusive field set.
+Old serialized contracts/cards must keep their fingerprints: omit new empty rule
+attributes from legacy serialization. Frozen embedded contracts may be selected
+only by explicit historical fingerprint and runtime compatibility checks; new
+cards use the derived contract. No frozen card/run edits, deletions, live API,
+commit or push are authorized for this refactor. Reuse existing files/tests.
+
+Approved post-refactor API experiment: user requests full GSM8K generation,
+evolution and evaluation on v5-schema-derived. Use deepseek-chat and the same
+frozen D0/G1-G3/V/T manifest, cached tokenizer and process-only credential as
+the earlier authorized live runs. Start fresh output directories, run T paired
+NL/Hybrid only after successful V selection, and stop downstream on failure.
+Do not replace the published default card, edit splits, publish or push results
+as part of this experiment. Record source hashes and retain prior artifacts.
+
 Previous drafts are preserved in separate branches/checkouts; do not copy or
 delete them. Preserve unrelated files. Verify full tests, lint, dependency
 selfcheck, registry snapshot and both offline examples before reporting.
+
+Approved final promotion/cleanup (2026-10-28, supersedes older retention rules):
+publish the final v5-schema-derived V-selected Card-0 as
+configs/memory/task_cards/gsm8k_psv_hybrid_card_20261028.yaml, keeping source wire
+version/rules/examples/contract unchanged and adding only provenance metadata.
+Keep only the two successful run directories named
+gsm8k_schema_derived_api_20261027_212336 under memory_protocol_evolution and
+memory_protocol_compare, plus the matching launcher log. User explicitly approved
+deleting the other 22 inventoried run directories, their seven old launcher logs,
+gsm8k_card2.yaml and gsm8k_psv_nl_field_card2_20261027.yaml. Preserve schema and
+original framework memory configs. Archive exact deletion targets outside this
+checkout in E:/毕设/cleanup_archives with a verified per-file SHA256 manifest before
+deleting. Validate absolute targets remain inside this checkout, reject reparse
+points and any additions beyond the approved inventory. Adapt legacy tests to
+synthetic temporary cards instead of retaining obsolete configuration cards.
+Do not modify kept raw run records, Git history, credentials, or push changes.
+
+Retention correction (latest user instruction, 2026-10-28): do NOT remove older
+successful results. Restore from the verified cleanup archive the completed real
+API GSM8K comparison 20261025_162017, review-boundary evolution/comparison
+20261027_173531, MATH500 v2 comparison 20261025_192422, successful review preflight
+and wire-v2 functional smoke records, with their corresponding launcher logs.
+Keep old card snapshots INSIDE those result directories for audit, but retain
+only the new published YAML in configs/memory/task_cards. Failed/incomplete and
+fake/offline runs remain removed. This overrides the earlier blanket 22-run
+deletion approval. Preserve successful records byte-for-byte after restoration.
+
+Approved upload after cleanup (2026-10-28): user confirmed commit and push to
+winnie673/LycheeMAS, existing memory_hybrid_gsm8k_20261027 branch. Include current
+code/tests/docs, the sole new default card, latest two successful runs and the
+six retained successful older result/validation directories plus their four
+combined launcher logs. Old success records must not be deleted on GitHub.
+Exclude external archives, credentials, caches, failed/offline runs and unrelated
+uv.lock. Scan actual staged blobs, verify tests and push without force or rebase.
+
+Latest upload-scope correction: keep older successful results on the local disk,
+but publish ONLY the two gsm8k_schema_derived_api_20261027_212336 run directories
+and matching evolution launcher log in the branch snapshot. Remove older result
+paths from the Git index with --cached only, never from disk. Existing commits
+remain recoverable; do not rewrite Git history. This supersedes the broader
+eight-directory upload scope above, not the local preservation requirement.

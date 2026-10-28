@@ -1,0 +1,151 @@
+{
+  "task_id": "gsm8k:train:seed42:V:00160",
+  "status": "completed",
+  "error": null,
+  "prediction": "900",
+  "messages": [
+    {
+      "sender": "planner",
+      "content": "G:students_attending;P:accepted=0.05*20000,students_attending=0.9*accepted",
+      "receiver": "solver",
+      "round": 0,
+      "role": "assistant",
+      "prompt_tokens": 901,
+      "completion_tokens": 30,
+      "id": "65bfbb4276ca",
+      "ts": 1793111790.2347124,
+      "meta": {
+        "sender": "planner",
+        "receiver": "solver",
+        "message_id": "65bfbb4276ca",
+        "protocol_edge": "planner_to_solver",
+        "protocol_version": "CARD-2-gsm8k",
+        "protocol_hash": "aec703067bbfeee6aa1e642a2a319658f1d33f2eff00c8701de19347f616ed6d",
+        "contract_hash": "ab4b736240365db5d0ce2caea032f40a3b7fc9c189db42d5ebcd28cac0fac22b",
+        "fields": {
+          "G": "students_attending",
+          "P": "accepted=0.05*20000,students_attending=0.9*accepted"
+        },
+        "communication_tokens": 30,
+        "communication_tokens_exact": true,
+        "attempt_count": 1,
+        "fallback": false,
+        "tokens_include_all_attempts": true,
+        "incoming_message_ids": []
+      }
+    },
+    {
+      "sender": "solver",
+      "content": "IR:accepted=0.05*20000=1000,attend=0.9*1000=900;R:900",
+      "receiver": "verifier",
+      "round": 0,
+      "role": "assistant",
+      "prompt_tokens": 749,
+      "completion_tokens": 29,
+      "id": "123ddb76af60",
+      "ts": 1793111791.6058958,
+      "meta": {
+        "sender": "solver",
+        "receiver": "verifier",
+        "message_id": "123ddb76af60",
+        "protocol_edge": "solver_to_verifier",
+        "protocol_version": "CARD-2-gsm8k",
+        "protocol_hash": "aec703067bbfeee6aa1e642a2a319658f1d33f2eff00c8701de19347f616ed6d",
+        "contract_hash": "ab4b736240365db5d0ce2caea032f40a3b7fc9c189db42d5ebcd28cac0fac22b",
+        "fields": {
+          "IR": "accepted=0.05*20000=1000,attend=0.9*1000=900",
+          "R": "900"
+        },
+        "communication_tokens": 29,
+        "communication_tokens_exact": true,
+        "attempt_count": 1,
+        "fallback": false,
+        "tokens_include_all_attempts": true,
+        "incoming_message_ids": [
+          "65bfbb4276ca"
+        ]
+      }
+    },
+    {
+      "sender": "verifier",
+      "content": "CHK:ACCEPT",
+      "receiver": "solver",
+      "round": 0,
+      "role": "assistant",
+      "prompt_tokens": 1114,
+      "completion_tokens": 5,
+      "id": "83c61f09c90b",
+      "ts": 1793111792.6185226,
+      "meta": {
+        "sender": "verifier",
+        "receiver": "solver",
+        "message_id": "83c61f09c90b",
+        "protocol_edge": "verifier_to_solver",
+        "protocol_version": "CARD-2-gsm8k",
+        "protocol_hash": "aec703067bbfeee6aa1e642a2a319658f1d33f2eff00c8701de19347f616ed6d",
+        "contract_hash": "ab4b736240365db5d0ce2caea032f40a3b7fc9c189db42d5ebcd28cac0fac22b",
+        "fields": {
+          "CHK": "ACCEPT"
+        },
+        "communication_tokens": 5,
+        "communication_tokens_exact": true,
+        "attempt_count": 1,
+        "fallback": false,
+        "tokens_include_all_attempts": true,
+        "incoming_message_ids": [
+          "123ddb76af60"
+        ]
+      }
+    }
+  ],
+  "communication_tokens": 64,
+  "wall_time_s": 3.4161333000520244,
+  "verified": true,
+  "revision_rounds": 0,
+  "model_calls": [
+    {
+      "role": "planner",
+      "attempt": 0,
+      "status": "delivered",
+      "error": "",
+      "raw_output": "G:students_attending;P:accepted=0.05*20000,students_attending=0.9*accepted",
+      "finish_reason": "stop",
+      "output_tokens": 30,
+      "usage_available": true
+    },
+    {
+      "role": "solver",
+      "attempt": 0,
+      "status": "delivered",
+      "error": "",
+      "raw_output": "IR:accepted=0.05*20000=1000,attend=0.9*1000=900;R:900",
+      "finish_reason": "stop",
+      "output_tokens": 29,
+      "usage_available": true
+    },
+    {
+      "role": "verifier",
+      "attempt": 0,
+      "status": "delivered",
+      "error": "",
+      "raw_output": "CHK:ACCEPT",
+      "finish_reason": "stop",
+      "output_tokens": 5,
+      "usage_available": true
+    }
+  ],
+  "failed_attempts": [],
+  "calls": 3,
+  "usage_complete": true,
+  "known_input_tokens": 2764,
+  "known_output_tokens": 64,
+  "model_input_tokens": 2764,
+  "model_output_tokens": 64,
+  "format_failed_calls": 0,
+  "transport_failed_calls": 0,
+  "fallback_calls": 0,
+  "sum_model_latency_s": 3.23710036277771,
+  "gold": "900",
+  "score": 1.0,
+  "question": "In the fall, 20,000 high school students apply to Harvard University for college. In the spring, 5% of those 20,000 students are accepted to the university. Of the students who are accepted, 90% choose to attend the university, and the other 10% choose to go to other schools. How many students choose to attend Harvard University?\nGive the final numeric answer."
+}

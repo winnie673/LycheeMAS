@@ -1,0 +1,151 @@
+{
+  "task_id": "gsm8k:train:seed42:V:00158",
+  "status": "completed",
+  "error": null,
+  "prediction": "3000",
+  "messages": [
+    {
+      "sender": "planner",
+      "content": "G:annual_health_insurance_cost;P:monthly_income=25*30*4,subsidy_rate=0.5,monthly_cost=500*(1-subsidy_rate),annual_cost=monthly_cost*12",
+      "receiver": "solver",
+      "round": 0,
+      "role": "assistant",
+      "prompt_tokens": 853,
+      "completion_tokens": 51,
+      "id": "6aba071b40bb",
+      "ts": 1793168839.723186,
+      "meta": {
+        "sender": "planner",
+        "receiver": "solver",
+        "message_id": "6aba071b40bb",
+        "protocol_edge": "planner_to_solver",
+        "protocol_version": "CARD-3-gsm8k",
+        "protocol_hash": "fb1a4acb6e591ac96544876aedd912b27a6f9d3154c76112e1da0f43407d27b2",
+        "contract_hash": "ab4b736240365db5d0ce2caea032f40a3b7fc9c189db42d5ebcd28cac0fac22b",
+        "fields": {
+          "G": "annual_health_insurance_cost",
+          "P": "monthly_income=25*30*4,subsidy_rate=0.5,monthly_cost=500*(1-subsidy_rate),annual_cost=monthly_cost*12"
+        },
+        "communication_tokens": 51,
+        "communication_tokens_exact": true,
+        "attempt_count": 1,
+        "fallback": false,
+        "tokens_include_all_attempts": true,
+        "incoming_message_ids": []
+      }
+    },
+    {
+      "sender": "solver",
+      "content": "IR:monthly_income=25*30*4=3000,subsidy_rate=0.5,monthly_cost=500*(1-0.5)=250,annual_cost=250*12=3000;R:3000",
+      "receiver": "verifier",
+      "round": 0,
+      "role": "assistant",
+      "prompt_tokens": 804,
+      "completion_tokens": 53,
+      "id": "92442b04d6a5",
+      "ts": 1793168840.7548852,
+      "meta": {
+        "sender": "solver",
+        "receiver": "verifier",
+        "message_id": "92442b04d6a5",
+        "protocol_edge": "solver_to_verifier",
+        "protocol_version": "CARD-3-gsm8k",
+        "protocol_hash": "fb1a4acb6e591ac96544876aedd912b27a6f9d3154c76112e1da0f43407d27b2",
+        "contract_hash": "ab4b736240365db5d0ce2caea032f40a3b7fc9c189db42d5ebcd28cac0fac22b",
+        "fields": {
+          "IR": "monthly_income=25*30*4=3000,subsidy_rate=0.5,monthly_cost=500*(1-0.5)=250,annual_cost=250*12=3000",
+          "R": "3000"
+        },
+        "communication_tokens": 53,
+        "communication_tokens_exact": true,
+        "attempt_count": 1,
+        "fallback": false,
+        "tokens_include_all_attempts": true,
+        "incoming_message_ids": [
+          "6aba071b40bb"
+        ]
+      }
+    },
+    {
+      "sender": "verifier",
+      "content": "CHK:ACCEPT",
+      "receiver": "solver",
+      "round": 0,
+      "role": "assistant",
+      "prompt_tokens": 1172,
+      "completion_tokens": 5,
+      "id": "11be3539735b",
+      "ts": 1793168841.7083302,
+      "meta": {
+        "sender": "verifier",
+        "receiver": "solver",
+        "message_id": "11be3539735b",
+        "protocol_edge": "verifier_to_solver",
+        "protocol_version": "CARD-3-gsm8k",
+        "protocol_hash": "fb1a4acb6e591ac96544876aedd912b27a6f9d3154c76112e1da0f43407d27b2",
+        "contract_hash": "ab4b736240365db5d0ce2caea032f40a3b7fc9c189db42d5ebcd28cac0fac22b",
+        "fields": {
+          "CHK": "ACCEPT"
+        },
+        "communication_tokens": 5,
+        "communication_tokens_exact": true,
+        "attempt_count": 1,
+        "fallback": false,
+        "tokens_include_all_attempts": true,
+        "incoming_message_ids": [
+          "92442b04d6a5"
+        ]
+      }
+    }
+  ],
+  "communication_tokens": 109,
+  "wall_time_s": 3.542469899985008,
+  "verified": true,
+  "revision_rounds": 0,
+  "model_calls": [
+    {
+      "role": "planner",
+      "attempt": 0,
+      "status": "delivered",
+      "error": "",
+      "raw_output": "G:annual_health_insurance_cost;P:monthly_income=25*30*4,subsidy_rate=0.5,monthly_cost=500*(1-subsidy_rate),annual_cost=monthly_cost*12",
+      "finish_reason": "stop",
+      "output_tokens": 51,
+      "usage_available": true
+    },
+    {
+      "role": "solver",
+      "attempt": 0,
+      "status": "delivered",
+      "error": "",
+      "raw_output": "IR:monthly_income=25*30*4=3000,subsidy_rate=0.5,monthly_cost=500*(1-0.5)=250,annual_cost=250*12=3000;R:3000",
+      "finish_reason": "stop",
+      "output_tokens": 53,
+      "usage_available": true
+    },
+    {
+      "role": "verifier",
+      "attempt": 0,
+      "status": "delivered",
+      "error": "",
+      "raw_output": "CHK:ACCEPT",
+      "finish_reason": "stop",
+      "output_tokens": 5,
+      "usage_available": true
+    }
+  ],
+  "failed_attempts": [],
+  "calls": 3,
+  "usage_complete": true,
+  "known_input_tokens": 2829,
+  "known_output_tokens": 109,
+  "model_input_tokens": 2829,
+  "model_output_tokens": 109,
+  "format_failed_calls": 0,
+  "transport_failed_calls": 0,
+  "fallback_calls": 0,
+  "sum_model_latency_s": 3.4656779766082764,
+  "gold": "3000",
+  "score": 1.0,
+  "question": "Bill is buying healthcare on an exchange. The normal monthly price of the plan he wants is $500. The government will pay for part of this cost depending on Bill's income: 90% if he makes less than $10,000, 50% if he makes between $10,001 and $40,000, and 20% if he makes more than $50,000. Bill earns $25/hour and works 30 hours per week, four weeks per month. How much will Bill spend for health insurance in a year?\nGive the final numeric answer."
+}

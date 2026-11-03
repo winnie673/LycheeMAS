@@ -297,7 +297,7 @@ def test_two_transport_errors_do_not_force_format_fallback(entry):
 
 
 @pytest.mark.parametrize("usage", [None, SimpleNamespace(prompt_tokens=10, completion_tokens=2)])
-def test_api_metadata_is_preserved_without_network(usage):
+def test_original_api_backend_contract_without_network(usage):
     response = SimpleNamespace(
         choices=[SimpleNamespace(message=SimpleNamespace(content="R:18"), finish_reason="length")],
         usage=usage,
@@ -309,7 +309,11 @@ def test_api_metadata_is_preserved_without_network(usage):
         chat=SimpleNamespace(completions=SimpleNamespace(create=lambda **kwargs: response))
     )
     result = backend.generate_chat([{"role": "user", "content": "test"}])
-    assert result.finish_reason == "length" and result.usage_unknown is (usage is None)
+    assert result.text == "R:18"
+    assert result.n_prompt_pos == (10 if usage is not None else 0)
+    assert result.n_gen_tokens == (2 if usage is not None else 0)
+    assert not hasattr(result, "finish_reason")
+    assert not hasattr(result, "usage_unknown")
 
 
 def test_role_bodies_are_shared_and_complete(entry):

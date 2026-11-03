@@ -1,0 +1,120 @@
+{
+  "task_id": "gsm8k:test:seed42:T:00129",
+  "mode": "hybrid",
+  "benchmark": "gsm8k",
+  "status": "completed",
+  "error": null,
+  "prediction": "10000",
+  "gold": "10000",
+  "wall_time_s": 2.8361189999850467,
+  "communication_tokens": 120,
+  "communication_tokens_exact": true,
+  "revision_rounds": 0,
+  "verification_decision": "ACCEPT",
+  "verified": true,
+  "messages": [
+    {
+      "sender": "planner",
+      "content": "G:hospital_profit_per_day;P:total_minutes=500*24,total_hours=total_minutes/60,doctor_cost=total_hours*150,patient_revenue=total_hours*200,profit=patient_revenue-doctor_cost",
+      "receiver": "solver",
+      "round": 0,
+      "role": "assistant",
+      "prompt_tokens": 757,
+      "completion_tokens": 55,
+      "id": "8cead0f0420e",
+      "ts": 1793625930.0469708,
+      "meta": {
+        "sender": "planner",
+        "receiver": "solver",
+        "message_id": "8cead0f0420e",
+        "protocol_edge": "planner_to_solver",
+        "protocol_version": "CARD-0-gsm8k",
+        "protocol_hash": "4bcdae885cc464e0a51977368e4bc06650c0326dbdcb182ce0327477c1d32daa",
+        "contract_hash": "ab4b736240365db5d0ce2caea032f40a3b7fc9c189db42d5ebcd28cac0fac22b",
+        "fields": {
+          "G": "hospital_profit_per_day",
+          "P": "total_minutes=500*24,total_hours=total_minutes/60,doctor_cost=total_hours*150,patient_revenue=total_hours*200,profit=patient_revenue-doctor_cost"
+        },
+        "communication_tokens": 55,
+        "communication_tokens_exact": true,
+        "attempt_count": 1,
+        "fallback": false,
+        "tokens_include_all_attempts": true,
+        "incoming_message_ids": []
+      }
+    },
+    {
+      "sender": "solver",
+      "content": "IR:total_minutes=500*24=12000,total_hours=12000/60=200,doctor_cost=200*150=30000,patient_revenue=200*200=40000,profit=40000-30000=10000;R:10000",
+      "receiver": "verifier",
+      "round": 0,
+      "role": "assistant",
+      "prompt_tokens": 754,
+      "completion_tokens": 60,
+      "id": "81876725c156",
+      "ts": 1793625931.0713453,
+      "meta": {
+        "sender": "solver",
+        "receiver": "verifier",
+        "message_id": "81876725c156",
+        "protocol_edge": "solver_to_verifier",
+        "protocol_version": "CARD-0-gsm8k",
+        "protocol_hash": "4bcdae885cc464e0a51977368e4bc06650c0326dbdcb182ce0327477c1d32daa",
+        "contract_hash": "ab4b736240365db5d0ce2caea032f40a3b7fc9c189db42d5ebcd28cac0fac22b",
+        "fields": {
+          "IR": "total_minutes=500*24=12000,total_hours=12000/60=200,doctor_cost=200*150=30000,patient_revenue=200*200=40000,profit=40000-30000=10000",
+          "R": "10000"
+        },
+        "communication_tokens": 60,
+        "communication_tokens_exact": true,
+        "attempt_count": 1,
+        "fallback": false,
+        "tokens_include_all_attempts": true,
+        "incoming_message_ids": [
+          "8cead0f0420e"
+        ]
+      }
+    },
+    {
+      "sender": "verifier",
+      "content": "CHK:ACCEPT",
+      "receiver": "solver",
+      "round": 0,
+      "role": "assistant",
+      "prompt_tokens": 1125,
+      "completion_tokens": 5,
+      "id": "b46a01e14506",
+      "ts": 1793625931.6862893,
+      "meta": {
+        "sender": "verifier",
+        "receiver": "solver",
+        "message_id": "b46a01e14506",
+        "protocol_edge": "verifier_to_solver",
+        "protocol_version": "CARD-0-gsm8k",
+        "protocol_hash": "4bcdae885cc464e0a51977368e4bc06650c0326dbdcb182ce0327477c1d32daa",
+        "contract_hash": "ab4b736240365db5d0ce2caea032f40a3b7fc9c189db42d5ebcd28cac0fac22b",
+        "fields": {
+          "CHK": "ACCEPT"
+        },
+        "communication_tokens": 5,
+        "communication_tokens_exact": true,
+        "attempt_count": 1,
+        "fallback": false,
+        "tokens_include_all_attempts": true,
+        "incoming_message_ids": [
+          "81876725c156"
+        ]
+      }
+    }
+  ],
+  "calls": 3,
+  "usage_complete": true,
+  "known_input_tokens": 2636,
+  "known_output_tokens": 120,
+  "model_input_tokens": 2636,
+  "model_output_tokens": 120,
+  "format_failed_calls": 0,
+  "transport_failed_calls": 0,
+  "fallback_calls": 0,
+  "sum_model_latency_s": 2.579040288925171
+}

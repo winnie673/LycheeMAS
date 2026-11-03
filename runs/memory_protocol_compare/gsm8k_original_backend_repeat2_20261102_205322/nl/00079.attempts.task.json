@@ -1,0 +1,95 @@
+{
+  "task_id": "gsm8k:test:seed42:T:00081",
+  "mode": "nl",
+  "benchmark": "gsm8k",
+  "status": "completed",
+  "error": null,
+  "prediction": "17",
+  "gold": "17",
+  "wall_time_s": 3.130327799997758,
+  "communication_tokens": 125,
+  "communication_tokens_exact": true,
+  "revision_rounds": 0,
+  "verification_decision": "ACCEPT",
+  "verified": true,
+  "messages": [
+    {
+      "sender": "planner",
+      "content": "Goal: find how many stickers Charlie has left after all changes.\n\nPlan: Start with his initial 10 stickers. Add the 21 he bought and the 23 he received for his birthday. Then subtract the 9 he gave to his sister and the 28 he used on the greeting card. Compute the result carefully in that order.\n\nConstraints: Use all given quantities exactly once; the final answer should be a single number of stickers remaining.",
+      "receiver": "solver",
+      "round": 0,
+      "role": "assistant",
+      "prompt_tokens": 208,
+      "completion_tokens": 89,
+      "id": "80541706dce9",
+      "ts": 1793624505.662784,
+      "meta": {
+        "fields": {},
+        "communication_tokens": 89,
+        "communication_tokens_exact": true,
+        "attempt_count": 1,
+        "fallback": false,
+        "tokens_include_all_attempts": true,
+        "incoming_message_ids": []
+      }
+    },
+    {
+      "sender": "solver",
+      "content": "Start with 10, add 21 and 23 to get 54, then subtract 9 and 28 to get 17.\n\n\\boxed{17}",
+      "receiver": "verifier",
+      "round": 0,
+      "role": "assistant",
+      "prompt_tokens": 309,
+      "completion_tokens": 34,
+      "id": "2d4a1ca32c89",
+      "ts": 1793624506.6863897,
+      "meta": {
+        "fields": {
+          "R": "17"
+        },
+        "communication_tokens": 34,
+        "communication_tokens_exact": true,
+        "attempt_count": 1,
+        "fallback": false,
+        "tokens_include_all_attempts": true,
+        "incoming_message_ids": [
+          "80541706dce9"
+        ]
+      }
+    },
+    {
+      "sender": "verifier",
+      "content": "ACCEPT",
+      "receiver": "solver",
+      "round": 0,
+      "role": "assistant",
+      "prompt_tokens": 631,
+      "completion_tokens": 2,
+      "id": "bd27d6525aa3",
+      "ts": 1793624507.183283,
+      "meta": {
+        "fields": {
+          "CHK": "ACCEPT"
+        },
+        "communication_tokens": 2,
+        "communication_tokens_exact": true,
+        "attempt_count": 1,
+        "fallback": false,
+        "tokens_include_all_attempts": true,
+        "incoming_message_ids": [
+          "2d4a1ca32c89"
+        ]
+      }
+    }
+  ],
+  "calls": 3,
+  "usage_complete": true,
+  "known_input_tokens": 1148,
+  "known_output_tokens": 125,
+  "model_input_tokens": 1148,
+  "model_output_tokens": 125,
+  "format_failed_calls": 0,
+  "transport_failed_calls": 0,
+  "fallback_calls": 0,
+  "sum_model_latency_s": 3.0298290252685547
+}

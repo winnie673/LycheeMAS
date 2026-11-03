@@ -46,7 +46,18 @@ V 集筛选和在线显式选卡入口，复用同一 CDM/static 图执行链路
 默认 GSM8K 卡片为 [gsm8k_psv_hybrid_card_20261028.yaml](configs/memory/task_cards/gsm8k_psv_hybrid_card_20261028.yaml)，
 由 v5-schema-derived 流程的 V 集胜出 Card-0 显式发布；生成器不会自动覆盖默认配置。
 
-默认卡对应的最新完整成功结果（2026-10-28 完成）：
+当前 API 后端已恢复为原框架版本，不再扩展 `APIGenResult`。
+最新三次成功评测（2026-11-02）均使用此原始后端、相同冻结卡片及 T 集各200题：
+
+- `runs/memory_protocol_compare/gsm8k_original_backend_restart_20261102_202427`
+- `runs/memory_protocol_compare/gsm8k_original_backend_repeat2_20261102_205322`
+- `runs/memory_protocol_compare/gsm8k_original_backend_repeat3_20261102_205322`
+
+三次平均正确率 NL/Hybrid 均为98.17%，通信 token 分别为155.818/84.408，
+平均调用次数3.003/3.027，每题墙钟时间3.012/2.634秒，无格式或传输重试。
+重复使用同一200题用于观察波动，不视为600道独立测试题。
+
+以下为本地保留的历史生成进化及单次结果，GitHub当前快照不再包含这些旧运行目录：
 
 - [协议生成、三轮进化与 V 集筛选](runs/memory_protocol_evolution/gsm8k_schema_derived_api_20261027_212336/result.json)
 - [T 集 NL/Hybrid 对比](runs/memory_protocol_compare/gsm8k_schema_derived_api_20261027_212336/comparison.json)：

@@ -1,0 +1,95 @@
+{
+  "task_id": "gsm8k:test:seed42:T:00025",
+  "mode": "nl",
+  "benchmark": "gsm8k",
+  "status": "completed",
+  "error": null,
+  "prediction": "2",
+  "gold": "2",
+  "wall_time_s": 3.070994299952872,
+  "communication_tokens": 173,
+  "communication_tokens_exact": true,
+  "revision_rounds": 0,
+  "verification_decision": "ACCEPT",
+  "verified": true,
+  "messages": [
+    {
+      "sender": "planner",
+      "content": "Goal: find the number of pizza boxes Marie ordered.\n\nPlan: Compute the cost of the chicken meal, milk packs, and apples. Subtract those known costs from the $50 total to get the amount spent on pizza. Then divide that remaining amount by the cost per pizza box ($8.50).\n\nConstraints: Each milk pack costs $3, each apple costs $1.50, chicken meal is $12, total paid is $50, and each pizza box is $8.50. Report only the final numeric count of pizza boxes.",
+      "receiver": "solver",
+      "round": 0,
+      "role": "assistant",
+      "prompt_tokens": 216,
+      "completion_tokens": 109,
+      "id": "366a7d121119",
+      "ts": 1793624170.4049478,
+      "meta": {
+        "fields": {},
+        "communication_tokens": 109,
+        "communication_tokens_exact": true,
+        "attempt_count": 1,
+        "fallback": false,
+        "tokens_include_all_attempts": true,
+        "incoming_message_ids": []
+      }
+    },
+    {
+      "sender": "solver",
+      "content": "The known costs are: chicken $12, milk 5×$3=$15, apples 4×$1.50=$6, totaling $33. The pizza cost is $50−$33=$17. Dividing by $8.50 gives 2 boxes.\n\n\\boxed{2}",
+      "receiver": "verifier",
+      "round": 0,
+      "role": "assistant",
+      "prompt_tokens": 337,
+      "completion_tokens": 62,
+      "id": "244aeaf3e200",
+      "ts": 1793624171.311712,
+      "meta": {
+        "fields": {
+          "R": "2"
+        },
+        "communication_tokens": 62,
+        "communication_tokens_exact": true,
+        "attempt_count": 1,
+        "fallback": false,
+        "tokens_include_all_attempts": true,
+        "incoming_message_ids": [
+          "366a7d121119"
+        ]
+      }
+    },
+    {
+      "sender": "verifier",
+      "content": "ACCEPT",
+      "receiver": "solver",
+      "round": 0,
+      "role": "assistant",
+      "prompt_tokens": 667,
+      "completion_tokens": 2,
+      "id": "d8b0bf555e1c",
+      "ts": 1793624172.1302764,
+      "meta": {
+        "fields": {
+          "CHK": "ACCEPT"
+        },
+        "communication_tokens": 2,
+        "communication_tokens_exact": true,
+        "attempt_count": 1,
+        "fallback": false,
+        "tokens_include_all_attempts": true,
+        "incoming_message_ids": [
+          "244aeaf3e200"
+        ]
+      }
+    }
+  ],
+  "calls": 3,
+  "usage_complete": true,
+  "known_input_tokens": 1220,
+  "known_output_tokens": 173,
+  "model_input_tokens": 1220,
+  "model_output_tokens": 173,
+  "format_failed_calls": 0,
+  "transport_failed_calls": 0,
+  "fallback_calls": 0,
+  "sum_model_latency_s": 3.0148158073425293
+}

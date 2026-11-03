@@ -1,0 +1,187 @@
+{
+  "task_id": "gsm8k:test:seed42:T:00428",
+  "mode": "hybrid",
+  "benchmark": "gsm8k",
+  "status": "completed",
+  "error": null,
+  "prediction": "26",
+  "gold": "26",
+  "wall_time_s": 4.880674700019881,
+  "communication_tokens": 199,
+  "communication_tokens_exact": true,
+  "revision_rounds": 1,
+  "verification_decision": "ACCEPT",
+  "verified": true,
+  "messages": [
+    {
+      "sender": "planner",
+      "content": "G:guests_without_second_hotdog;P:prepared=36+36/2,needed_second=40,served_second=prepared-40,without_second=needed_second-served_second",
+      "receiver": "solver",
+      "round": 0,
+      "role": "assistant",
+      "prompt_tokens": 772,
+      "completion_tokens": 52,
+      "id": "e31e49a064f8",
+      "ts": 1793623368.3877244,
+      "meta": {
+        "sender": "planner",
+        "receiver": "solver",
+        "message_id": "e31e49a064f8",
+        "protocol_edge": "planner_to_solver",
+        "protocol_version": "CARD-0-gsm8k",
+        "protocol_hash": "4bcdae885cc464e0a51977368e4bc06650c0326dbdcb182ce0327477c1d32daa",
+        "contract_hash": "ab4b736240365db5d0ce2caea032f40a3b7fc9c189db42d5ebcd28cac0fac22b",
+        "fields": {
+          "G": "guests_without_second_hotdog",
+          "P": "prepared=36+36/2,needed_second=40,served_second=prepared-40,without_second=needed_second-served_second"
+        },
+        "communication_tokens": 52,
+        "communication_tokens_exact": true,
+        "attempt_count": 1,
+        "fallback": false,
+        "tokens_include_all_attempts": true,
+        "incoming_message_ids": []
+      }
+    },
+    {
+      "sender": "solver",
+      "content": "IR:prepared=36+18=54,served_second=54-40=14,without_second=40-14=26;R:26",
+      "receiver": "verifier",
+      "round": 0,
+      "role": "assistant",
+      "prompt_tokens": 766,
+      "completion_tokens": 35,
+      "id": "9bd25861e1a1",
+      "ts": 1793623369.6360161,
+      "meta": {
+        "sender": "solver",
+        "receiver": "verifier",
+        "message_id": "9bd25861e1a1",
+        "protocol_edge": "solver_to_verifier",
+        "protocol_version": "CARD-0-gsm8k",
+        "protocol_hash": "4bcdae885cc464e0a51977368e4bc06650c0326dbdcb182ce0327477c1d32daa",
+        "contract_hash": "ab4b736240365db5d0ce2caea032f40a3b7fc9c189db42d5ebcd28cac0fac22b",
+        "fields": {
+          "IR": "prepared=36+18=54,served_second=54-40=14,without_second=40-14=26",
+          "R": "26"
+        },
+        "communication_tokens": 35,
+        "communication_tokens_exact": true,
+        "attempt_count": 1,
+        "fallback": false,
+        "tokens_include_all_attempts": true,
+        "incoming_message_ids": [
+          "e31e49a064f8"
+        ]
+      }
+    },
+    {
+      "sender": "verifier",
+      "content": "CHK:REVISE;E:RELATION;REQ:Recompute the number of guests who did not get a second hotdog as the number of guests minus the number of second hotdogs available, using prepared hotdogs 54 and first hotdogs 40 to get 14 second hotdogs.",
+      "receiver": "solver",
+      "round": 0,
+      "role": "assistant",
+      "prompt_tokens": 1115,
+      "completion_tokens": 63,
+      "id": "917a0ad14104",
+      "ts": 1793623370.5290716,
+      "meta": {
+        "sender": "verifier",
+        "receiver": "solver",
+        "message_id": "917a0ad14104",
+        "protocol_edge": "verifier_to_solver",
+        "protocol_version": "CARD-0-gsm8k",
+        "protocol_hash": "4bcdae885cc464e0a51977368e4bc06650c0326dbdcb182ce0327477c1d32daa",
+        "contract_hash": "ab4b736240365db5d0ce2caea032f40a3b7fc9c189db42d5ebcd28cac0fac22b",
+        "fields": {
+          "CHK": "REVISE",
+          "E": "RELATION",
+          "REQ": "Recompute the number of guests who did not get a second hotdog as the number of guests minus the number of second hotdogs available, using prepared hotdogs 54 and first hotdogs 40 to get 14 second hotdogs."
+        },
+        "communication_tokens": 63,
+        "communication_tokens_exact": true,
+        "attempt_count": 1,
+        "fallback": false,
+        "tokens_include_all_attempts": true,
+        "incoming_message_ids": [
+          "9bd25861e1a1"
+        ]
+      }
+    },
+    {
+      "sender": "solver",
+      "content": "IR:prepared=36+36/2=54,first_hotdogs=40,second_hotdogs=54-40=14,without_second=40-14=26;R:26",
+      "receiver": "verifier",
+      "round": 1,
+      "role": "assistant",
+      "prompt_tokens": 892,
+      "completion_tokens": 44,
+      "id": "be7fa34dbc44",
+      "ts": 1793623371.5314314,
+      "meta": {
+        "sender": "solver",
+        "receiver": "verifier",
+        "message_id": "be7fa34dbc44",
+        "protocol_edge": "solver_to_verifier",
+        "protocol_version": "CARD-0-gsm8k",
+        "protocol_hash": "4bcdae885cc464e0a51977368e4bc06650c0326dbdcb182ce0327477c1d32daa",
+        "contract_hash": "ab4b736240365db5d0ce2caea032f40a3b7fc9c189db42d5ebcd28cac0fac22b",
+        "fields": {
+          "IR": "prepared=36+36/2=54,first_hotdogs=40,second_hotdogs=54-40=14,without_second=40-14=26",
+          "R": "26"
+        },
+        "communication_tokens": 44,
+        "communication_tokens_exact": true,
+        "attempt_count": 1,
+        "fallback": false,
+        "tokens_include_all_attempts": true,
+        "incoming_message_ids": [
+          "e31e49a064f8",
+          "9bd25861e1a1",
+          "917a0ad14104"
+        ]
+      }
+    },
+    {
+      "sender": "verifier",
+      "content": "CHK:ACCEPT",
+      "receiver": "solver",
+      "round": 1,
+      "role": "assistant",
+      "prompt_tokens": 1136,
+      "completion_tokens": 5,
+      "id": "fc24233eefc9",
+      "ts": 1793623372.1872878,
+      "meta": {
+        "sender": "verifier",
+        "receiver": "solver",
+        "message_id": "fc24233eefc9",
+        "protocol_edge": "verifier_to_solver",
+        "protocol_version": "CARD-0-gsm8k",
+        "protocol_hash": "4bcdae885cc464e0a51977368e4bc06650c0326dbdcb182ce0327477c1d32daa",
+        "contract_hash": "ab4b736240365db5d0ce2caea032f40a3b7fc9c189db42d5ebcd28cac0fac22b",
+        "fields": {
+          "CHK": "ACCEPT"
+        },
+        "communication_tokens": 5,
+        "communication_tokens_exact": true,
+        "attempt_count": 1,
+        "fallback": false,
+        "tokens_include_all_attempts": true,
+        "incoming_message_ids": [
+          "be7fa34dbc44"
+        ]
+      }
+    }
+  ],
+  "calls": 5,
+  "usage_complete": true,
+  "known_input_tokens": 4681,
+  "known_output_tokens": 199,
+  "model_input_tokens": 4681,
+  "model_output_tokens": 199,
+  "format_failed_calls": 0,
+  "transport_failed_calls": 0,
+  "fallback_calls": 0,
+  "sum_model_latency_s": 4.666245937347412
+}

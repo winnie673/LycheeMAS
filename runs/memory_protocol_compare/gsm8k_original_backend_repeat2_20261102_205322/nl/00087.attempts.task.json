@@ -1,0 +1,95 @@
+{
+  "task_id": "gsm8k:test:seed42:T:00090",
+  "mode": "nl",
+  "benchmark": "gsm8k",
+  "status": "completed",
+  "error": null,
+  "prediction": "225",
+  "gold": "225",
+  "wall_time_s": 2.819078999978956,
+  "communication_tokens": 149,
+  "communication_tokens_exact": true,
+  "revision_rounds": 0,
+  "verification_decision": "ACCEPT",
+  "verified": true,
+  "messages": [
+    {
+      "sender": "planner",
+      "content": "Goal: find total pounds of potato salad needed for 20 adults and 5 children.\n\nPlan: Use the given adult amount, determine the child amount as half of an adult portion, then compute total consumption by multiplying each group size by its per-dinosaur amount and adding the two results.\n\nConstraints: Keep track of units in pounds; do not omit either group.",
+      "receiver": "solver",
+      "round": 0,
+      "role": "assistant",
+      "prompt_tokens": 237,
+      "completion_tokens": 73,
+      "id": "53c0c4450ffe",
+      "ts": 1793624552.9735677,
+      "meta": {
+        "fields": {},
+        "communication_tokens": 73,
+        "communication_tokens_exact": true,
+        "attempt_count": 1,
+        "fallback": false,
+        "tokens_include_all_attempts": true,
+        "incoming_message_ids": []
+      }
+    },
+    {
+      "sender": "solver",
+      "content": "An adult eats 10 lbs, so a child eats half of that, or 5 lbs. For 20 adults: \\(20 \\times 10 = 200\\) lbs. For 5 children: \\(5 \\times 5 = 25\\) lbs. Total needed is \\(200 + 25 = 225\\) lbs.\n\n\\boxed{225}",
+      "receiver": "verifier",
+      "round": 0,
+      "role": "assistant",
+      "prompt_tokens": 322,
+      "completion_tokens": 74,
+      "id": "b48094bfe332",
+      "ts": 1793624553.811928,
+      "meta": {
+        "fields": {
+          "R": "225"
+        },
+        "communication_tokens": 74,
+        "communication_tokens_exact": true,
+        "attempt_count": 1,
+        "fallback": false,
+        "tokens_include_all_attempts": true,
+        "incoming_message_ids": [
+          "53c0c4450ffe"
+        ]
+      }
+    },
+    {
+      "sender": "verifier",
+      "content": "ACCEPT",
+      "receiver": "solver",
+      "round": 0,
+      "role": "assistant",
+      "prompt_tokens": 700,
+      "completion_tokens": 2,
+      "id": "238c2e1a81ef",
+      "ts": 1793624554.3981817,
+      "meta": {
+        "fields": {
+          "CHK": "ACCEPT"
+        },
+        "communication_tokens": 2,
+        "communication_tokens_exact": true,
+        "attempt_count": 1,
+        "fallback": false,
+        "tokens_include_all_attempts": true,
+        "incoming_message_ids": [
+          "b48094bfe332"
+        ]
+      }
+    }
+  ],
+  "calls": 3,
+  "usage_complete": true,
+  "known_input_tokens": 1259,
+  "known_output_tokens": 149,
+  "model_input_tokens": 1259,
+  "model_output_tokens": 149,
+  "format_failed_calls": 0,
+  "transport_failed_calls": 0,
+  "fallback_calls": 0,
+  "sum_model_latency_s": 2.7113547325134277
+}

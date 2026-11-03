@@ -1,0 +1,95 @@
+{
+  "task_id": "gsm8k:test:seed42:T:00077",
+  "mode": "nl",
+  "benchmark": "gsm8k",
+  "status": "completed",
+  "error": null,
+  "prediction": "100",
+  "gold": "100",
+  "wall_time_s": 3.058454999991227,
+  "communication_tokens": 167,
+  "communication_tokens_exact": true,
+  "revision_rounds": 0,
+  "verification_decision": "ACCEPT",
+  "verified": true,
+  "messages": [
+    {
+      "sender": "planner",
+      "content": "Goal: find the difference between the pounds of laundry Raymond does and the pounds David does.\n\nPlan: Use Sarah’s 400 pounds as the reference. Determine David’s amount from the fact that Sarah does 4 times as much as David. Determine Raymond’s amount from the fact that Raymond does half as much as Sarah. Then compare Raymond’s amount to David’s amount and report the positive difference.\n\nConstraints: Keep track of which person is being scaled from which reference; do not confuse “half as much as Sarah” with “half as much as David.”",
+      "receiver": "solver",
+      "round": 0,
+      "role": "assistant",
+      "prompt_tokens": 196,
+      "completion_tokens": 116,
+      "id": "ed5d21546ec3",
+      "ts": 1793625649.5589683,
+      "meta": {
+        "fields": {},
+        "communication_tokens": 116,
+        "communication_tokens_exact": true,
+        "attempt_count": 1,
+        "fallback": false,
+        "tokens_include_all_attempts": true,
+        "incoming_message_ids": []
+      }
+    },
+    {
+      "sender": "solver",
+      "content": "Sarah does 400 pounds. David does 400 ÷ 4 = 100 pounds. Raymond does 400 ÷ 2 = 200 pounds. The difference is 200 − 100 = 100 pounds.\n\n\\boxed{100}",
+      "receiver": "verifier",
+      "round": 0,
+      "role": "assistant",
+      "prompt_tokens": 324,
+      "completion_tokens": 49,
+      "id": "f33d9d13b0e8",
+      "ts": 1793625650.471946,
+      "meta": {
+        "fields": {
+          "R": "100"
+        },
+        "communication_tokens": 49,
+        "communication_tokens_exact": true,
+        "attempt_count": 1,
+        "fallback": false,
+        "tokens_include_all_attempts": true,
+        "incoming_message_ids": [
+          "ed5d21546ec3"
+        ]
+      }
+    },
+    {
+      "sender": "verifier",
+      "content": "ACCEPT",
+      "receiver": "solver",
+      "round": 0,
+      "role": "assistant",
+      "prompt_tokens": 634,
+      "completion_tokens": 2,
+      "id": "c3ce58a6eaf6",
+      "ts": 1793625651.3208005,
+      "meta": {
+        "fields": {
+          "CHK": "ACCEPT"
+        },
+        "communication_tokens": 2,
+        "communication_tokens_exact": true,
+        "attempt_count": 1,
+        "fallback": false,
+        "tokens_include_all_attempts": true,
+        "incoming_message_ids": [
+          "f33d9d13b0e8"
+        ]
+      }
+    }
+  ],
+  "calls": 3,
+  "usage_complete": true,
+  "known_input_tokens": 1154,
+  "known_output_tokens": 167,
+  "model_input_tokens": 1154,
+  "model_output_tokens": 167,
+  "format_failed_calls": 0,
+  "transport_failed_calls": 0,
+  "fallback_calls": 0,
+  "sum_model_latency_s": 2.989840507507324
+}

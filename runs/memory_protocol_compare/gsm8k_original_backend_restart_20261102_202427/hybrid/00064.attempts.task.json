@@ -1,0 +1,120 @@
+{
+  "task_id": "gsm8k:test:seed42:T:00066",
+  "mode": "hybrid",
+  "benchmark": "gsm8k",
+  "status": "completed",
+  "error": null,
+  "prediction": "48",
+  "gold": "48",
+  "wall_time_s": 2.801906800013967,
+  "communication_tokens": 117,
+  "communication_tokens_exact": true,
+  "revision_rounds": 0,
+  "verification_decision": "ACCEPT",
+  "verified": true,
+  "messages": [
+    {
+      "sender": "planner",
+      "content": "G:total_people;P:teams_per_school=2,players_per_school=teams_per_school*5,coaches_per_school=teams_per_school,people_per_school=players_per_school+coaches_per_school,total_people=4*people_per_school",
+      "receiver": "solver",
+      "round": 0,
+      "role": "assistant",
+      "prompt_tokens": 759,
+      "completion_tokens": 67,
+      "id": "2cb90680ded8",
+      "ts": 1793622645.2595265,
+      "meta": {
+        "sender": "planner",
+        "receiver": "solver",
+        "message_id": "2cb90680ded8",
+        "protocol_edge": "planner_to_solver",
+        "protocol_version": "CARD-0-gsm8k",
+        "protocol_hash": "4bcdae885cc464e0a51977368e4bc06650c0326dbdcb182ce0327477c1d32daa",
+        "contract_hash": "ab4b736240365db5d0ce2caea032f40a3b7fc9c189db42d5ebcd28cac0fac22b",
+        "fields": {
+          "G": "total_people",
+          "P": "teams_per_school=2,players_per_school=teams_per_school*5,coaches_per_school=teams_per_school,people_per_school=players_per_school+coaches_per_school,total_people=4*people_per_school"
+        },
+        "communication_tokens": 67,
+        "communication_tokens_exact": true,
+        "attempt_count": 1,
+        "fallback": false,
+        "tokens_include_all_attempts": true,
+        "incoming_message_ids": []
+      }
+    },
+    {
+      "sender": "solver",
+      "content": "IR:players_per_school=2*5=10,coaches_per_school=2,people_per_school=10+2=12,total_people=4*12=48;R:48",
+      "receiver": "verifier",
+      "round": 0,
+      "role": "assistant",
+      "prompt_tokens": 768,
+      "completion_tokens": 45,
+      "id": "a4eef48f2064",
+      "ts": 1793622646.1520174,
+      "meta": {
+        "sender": "solver",
+        "receiver": "verifier",
+        "message_id": "a4eef48f2064",
+        "protocol_edge": "solver_to_verifier",
+        "protocol_version": "CARD-0-gsm8k",
+        "protocol_hash": "4bcdae885cc464e0a51977368e4bc06650c0326dbdcb182ce0327477c1d32daa",
+        "contract_hash": "ab4b736240365db5d0ce2caea032f40a3b7fc9c189db42d5ebcd28cac0fac22b",
+        "fields": {
+          "IR": "players_per_school=2*5=10,coaches_per_school=2,people_per_school=10+2=12,total_people=4*12=48",
+          "R": "48"
+        },
+        "communication_tokens": 45,
+        "communication_tokens_exact": true,
+        "attempt_count": 1,
+        "fallback": false,
+        "tokens_include_all_attempts": true,
+        "incoming_message_ids": [
+          "2cb90680ded8"
+        ]
+      }
+    },
+    {
+      "sender": "verifier",
+      "content": "CHK:ACCEPT",
+      "receiver": "solver",
+      "round": 0,
+      "role": "assistant",
+      "prompt_tokens": 1112,
+      "completion_tokens": 5,
+      "id": "a97efcb45c8a",
+      "ts": 1793622646.9435635,
+      "meta": {
+        "sender": "verifier",
+        "receiver": "solver",
+        "message_id": "a97efcb45c8a",
+        "protocol_edge": "verifier_to_solver",
+        "protocol_version": "CARD-0-gsm8k",
+        "protocol_hash": "4bcdae885cc464e0a51977368e4bc06650c0326dbdcb182ce0327477c1d32daa",
+        "contract_hash": "ab4b736240365db5d0ce2caea032f40a3b7fc9c189db42d5ebcd28cac0fac22b",
+        "fields": {
+          "CHK": "ACCEPT"
+        },
+        "communication_tokens": 5,
+        "communication_tokens_exact": true,
+        "attempt_count": 1,
+        "fallback": false,
+        "tokens_include_all_attempts": true,
+        "incoming_message_ids": [
+          "a4eef48f2064"
+        ]
+      }
+    }
+  ],
+  "calls": 3,
+  "usage_complete": true,
+  "known_input_tokens": 2639,
+  "known_output_tokens": 117,
+  "model_input_tokens": 2639,
+  "model_output_tokens": 117,
+  "format_failed_calls": 0,
+  "transport_failed_calls": 0,
+  "fallback_calls": 0,
+  "sum_model_latency_s": 2.6166186332702637
+}

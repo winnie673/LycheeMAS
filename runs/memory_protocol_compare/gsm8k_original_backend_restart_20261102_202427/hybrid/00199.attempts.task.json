@@ -1,0 +1,121 @@
+{
+  "task_id": "gsm8k:test:seed42:T:00657",
+  "mode": "hybrid",
+  "benchmark": "gsm8k",
+  "status": "completed",
+  "error": null,
+  "prediction": "330000",
+  "gold": "330000",
+  "wall_time_s": 3.1825261999620125,
+  "communication_tokens": 136,
+  "communication_tokens_exact": true,
+  "revision_rounds": 0,
+  "verification_decision": "ACCEPT",
+  "verified": true,
+  "messages": [
+    {
+      "sender": "planner",
+      "content": "K:plane_cost=150000,hangar_monthly=5000,fuel_monthly=2*hangar_monthly,months=12;G:total_first_year_cost;P:monthly_maintenance=hangar_monthly+fuel_monthly,year_maintenance=monthly_maintenance*months,total_first_year_cost=plane_cost+year_maintenance",
+      "receiver": "solver",
+      "round": 0,
+      "role": "assistant",
+      "prompt_tokens": 765,
+      "completion_tokens": 76,
+      "id": "a5a1431ae3e3",
+      "ts": 1793623393.8043747,
+      "meta": {
+        "sender": "planner",
+        "receiver": "solver",
+        "message_id": "a5a1431ae3e3",
+        "protocol_edge": "planner_to_solver",
+        "protocol_version": "CARD-0-gsm8k",
+        "protocol_hash": "4bcdae885cc464e0a51977368e4bc06650c0326dbdcb182ce0327477c1d32daa",
+        "contract_hash": "ab4b736240365db5d0ce2caea032f40a3b7fc9c189db42d5ebcd28cac0fac22b",
+        "fields": {
+          "K": "plane_cost=150000,hangar_monthly=5000,fuel_monthly=2*hangar_monthly,months=12",
+          "G": "total_first_year_cost",
+          "P": "monthly_maintenance=hangar_monthly+fuel_monthly,year_maintenance=monthly_maintenance*months,total_first_year_cost=plane_cost+year_maintenance"
+        },
+        "communication_tokens": 76,
+        "communication_tokens_exact": true,
+        "attempt_count": 1,
+        "fallback": false,
+        "tokens_include_all_attempts": true,
+        "incoming_message_ids": []
+      }
+    },
+    {
+      "sender": "solver",
+      "content": "IR:fuel_monthly=2*5000=10000,monthly_maintenance=5000+10000=15000,year_maintenance=15000*12=180000,total=150000+180000=330000;R:330000",
+      "receiver": "verifier",
+      "round": 0,
+      "role": "assistant",
+      "prompt_tokens": 783,
+      "completion_tokens": 55,
+      "id": "5efb2862a64b",
+      "ts": 1793623394.8263388,
+      "meta": {
+        "sender": "solver",
+        "receiver": "verifier",
+        "message_id": "5efb2862a64b",
+        "protocol_edge": "solver_to_verifier",
+        "protocol_version": "CARD-0-gsm8k",
+        "protocol_hash": "4bcdae885cc464e0a51977368e4bc06650c0326dbdcb182ce0327477c1d32daa",
+        "contract_hash": "ab4b736240365db5d0ce2caea032f40a3b7fc9c189db42d5ebcd28cac0fac22b",
+        "fields": {
+          "IR": "fuel_monthly=2*5000=10000,monthly_maintenance=5000+10000=15000,year_maintenance=15000*12=180000,total=150000+180000=330000",
+          "R": "330000"
+        },
+        "communication_tokens": 55,
+        "communication_tokens_exact": true,
+        "attempt_count": 1,
+        "fallback": false,
+        "tokens_include_all_attempts": true,
+        "incoming_message_ids": [
+          "a5a1431ae3e3"
+        ]
+      }
+    },
+    {
+      "sender": "verifier",
+      "content": "CHK:ACCEPT",
+      "receiver": "solver",
+      "round": 0,
+      "role": "assistant",
+      "prompt_tokens": 1128,
+      "completion_tokens": 5,
+      "id": "bba7a53e5015",
+      "ts": 1793623395.646282,
+      "meta": {
+        "sender": "verifier",
+        "receiver": "solver",
+        "message_id": "bba7a53e5015",
+        "protocol_edge": "verifier_to_solver",
+        "protocol_version": "CARD-0-gsm8k",
+        "protocol_hash": "4bcdae885cc464e0a51977368e4bc06650c0326dbdcb182ce0327477c1d32daa",
+        "contract_hash": "ab4b736240365db5d0ce2caea032f40a3b7fc9c189db42d5ebcd28cac0fac22b",
+        "fields": {
+          "CHK": "ACCEPT"
+        },
+        "communication_tokens": 5,
+        "communication_tokens_exact": true,
+        "attempt_count": 1,
+        "fallback": false,
+        "tokens_include_all_attempts": true,
+        "incoming_message_ids": [
+          "5efb2862a64b"
+        ]
+      }
+    }
+  ],
+  "calls": 3,
+  "usage_complete": true,
+  "known_input_tokens": 2676,
+  "known_output_tokens": 136,
+  "model_input_tokens": 2676,
+  "model_output_tokens": 136,
+  "format_failed_calls": 0,
+  "transport_failed_calls": 0,
+  "fallback_calls": 0,
+  "sum_model_latency_s": 3.0092902183532715
+}

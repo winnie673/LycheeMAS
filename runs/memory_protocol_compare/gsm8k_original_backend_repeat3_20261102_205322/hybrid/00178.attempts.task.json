@@ -1,0 +1,120 @@
+{
+  "task_id": "gsm8k:test:seed42:T:00183",
+  "mode": "hybrid",
+  "benchmark": "gsm8k",
+  "status": "completed",
+  "error": null,
+  "prediction": "2",
+  "gold": "2",
+  "wall_time_s": 2.918232000025455,
+  "communication_tokens": 93,
+  "communication_tokens_exact": true,
+  "revision_rounds": 0,
+  "verification_decision": "ACCEPT",
+  "verified": true,
+  "messages": [
+    {
+      "sender": "planner",
+      "content": "G:win_margin_seconds;P:well_rounded_total=4*55,other_times=60+57+54+51,other_total=sum(other_times),win_margin=other_total-well_rounded_total",
+      "receiver": "solver",
+      "round": 0,
+      "role": "assistant",
+      "prompt_tokens": 825,
+      "completion_tokens": 49,
+      "id": "0f3e55b31150",
+      "ts": 1793626239.2959068,
+      "meta": {
+        "sender": "planner",
+        "receiver": "solver",
+        "message_id": "0f3e55b31150",
+        "protocol_edge": "planner_to_solver",
+        "protocol_version": "CARD-0-gsm8k",
+        "protocol_hash": "4bcdae885cc464e0a51977368e4bc06650c0326dbdcb182ce0327477c1d32daa",
+        "contract_hash": "ab4b736240365db5d0ce2caea032f40a3b7fc9c189db42d5ebcd28cac0fac22b",
+        "fields": {
+          "G": "win_margin_seconds",
+          "P": "well_rounded_total=4*55,other_times=60+57+54+51,other_total=sum(other_times),win_margin=other_total-well_rounded_total"
+        },
+        "communication_tokens": 49,
+        "communication_tokens_exact": true,
+        "attempt_count": 1,
+        "fallback": false,
+        "tokens_include_all_attempts": true,
+        "incoming_message_ids": []
+      }
+    },
+    {
+      "sender": "solver",
+      "content": "IR:well_rounded_total=4*55=220,other_total=60+57+54+51=222,win_margin=222-220=2;R:2",
+      "receiver": "verifier",
+      "round": 0,
+      "role": "assistant",
+      "prompt_tokens": 816,
+      "completion_tokens": 39,
+      "id": "42efeb84e582",
+      "ts": 1793626240.202913,
+      "meta": {
+        "sender": "solver",
+        "receiver": "verifier",
+        "message_id": "42efeb84e582",
+        "protocol_edge": "solver_to_verifier",
+        "protocol_version": "CARD-0-gsm8k",
+        "protocol_hash": "4bcdae885cc464e0a51977368e4bc06650c0326dbdcb182ce0327477c1d32daa",
+        "contract_hash": "ab4b736240365db5d0ce2caea032f40a3b7fc9c189db42d5ebcd28cac0fac22b",
+        "fields": {
+          "IR": "well_rounded_total=4*55=220,other_total=60+57+54+51=222,win_margin=222-220=2",
+          "R": "2"
+        },
+        "communication_tokens": 39,
+        "communication_tokens_exact": true,
+        "attempt_count": 1,
+        "fallback": false,
+        "tokens_include_all_attempts": true,
+        "incoming_message_ids": [
+          "0f3e55b31150"
+        ]
+      }
+    },
+    {
+      "sender": "verifier",
+      "content": "CHK:ACCEPT",
+      "receiver": "solver",
+      "round": 0,
+      "role": "assistant",
+      "prompt_tokens": 1172,
+      "completion_tokens": 5,
+      "id": "ac10f735881f",
+      "ts": 1793626241.0031006,
+      "meta": {
+        "sender": "verifier",
+        "receiver": "solver",
+        "message_id": "ac10f735881f",
+        "protocol_edge": "verifier_to_solver",
+        "protocol_version": "CARD-0-gsm8k",
+        "protocol_hash": "4bcdae885cc464e0a51977368e4bc06650c0326dbdcb182ce0327477c1d32daa",
+        "contract_hash": "ab4b736240365db5d0ce2caea032f40a3b7fc9c189db42d5ebcd28cac0fac22b",
+        "fields": {
+          "CHK": "ACCEPT"
+        },
+        "communication_tokens": 5,
+        "communication_tokens_exact": true,
+        "attempt_count": 1,
+        "fallback": false,
+        "tokens_include_all_attempts": true,
+        "incoming_message_ids": [
+          "42efeb84e582"
+        ]
+      }
+    }
+  ],
+  "calls": 3,
+  "usage_complete": true,
+  "known_input_tokens": 2813,
+  "known_output_tokens": 93,
+  "model_input_tokens": 2813,
+  "model_output_tokens": 93,
+  "format_failed_calls": 0,
+  "transport_failed_calls": 0,
+  "fallback_calls": 0,
+  "sum_model_latency_s": 2.727659225463867
+}

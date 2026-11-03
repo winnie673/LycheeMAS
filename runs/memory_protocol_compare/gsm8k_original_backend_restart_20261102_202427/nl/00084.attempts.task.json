@@ -1,0 +1,95 @@
+{
+  "task_id": "gsm8k:test:seed42:T:00087",
+  "mode": "nl",
+  "benchmark": "gsm8k",
+  "status": "completed",
+  "error": null,
+  "prediction": "9360",
+  "gold": "9360",
+  "wall_time_s": 2.8086659000255167,
+  "communication_tokens": 183,
+  "communication_tokens_exact": true,
+  "revision_rounds": 0,
+  "verification_decision": "ACCEPT",
+  "verified": true,
+  "messages": [
+    {
+      "sender": "planner",
+      "content": "Goal: find Sylvie’s annual salary after three more years of service.\n\nPlan: Start with her initial monthly salary of $600. Since she has just reached 5 years of service, apply the company policy: each year, her salary increases by 10% of the initial salary. Calculate the monthly increase, apply it for three additional years, then convert the resulting monthly salary to an annual salary.\n\nConstraints: The 10% increase is based on the initial salary, not compounded. Give the final result as a numeric amount.",
+      "receiver": "solver",
+      "round": 0,
+      "role": "assistant",
+      "prompt_tokens": 229,
+      "completion_tokens": 108,
+      "id": "77a359d8532d",
+      "ts": 1793622751.5491757,
+      "meta": {
+        "fields": {},
+        "communication_tokens": 108,
+        "communication_tokens_exact": true,
+        "attempt_count": 1,
+        "fallback": false,
+        "tokens_include_all_attempts": true,
+        "incoming_message_ids": []
+      }
+    },
+    {
+      "sender": "solver",
+      "content": "The annual raise is 10% of the initial monthly salary: \\(0.10 \\times 600 = 60\\) per month per year. After three more years, her monthly salary is \\(600 + 3 \\times 60 = 780\\). Annual salary is \\(780 \\times 12 = 9360\\).\n\n\\boxed{9360}",
+      "receiver": "verifier",
+      "round": 0,
+      "role": "assistant",
+      "prompt_tokens": 349,
+      "completion_tokens": 73,
+      "id": "aa5d634607f8",
+      "ts": 1793622752.370771,
+      "meta": {
+        "fields": {
+          "R": "9360"
+        },
+        "communication_tokens": 73,
+        "communication_tokens_exact": true,
+        "attempt_count": 1,
+        "fallback": false,
+        "tokens_include_all_attempts": true,
+        "incoming_message_ids": [
+          "77a359d8532d"
+        ]
+      }
+    },
+    {
+      "sender": "verifier",
+      "content": "ACCEPT",
+      "receiver": "solver",
+      "round": 0,
+      "role": "assistant",
+      "prompt_tokens": 691,
+      "completion_tokens": 2,
+      "id": "fb71326b4bab",
+      "ts": 1793622752.8051245,
+      "meta": {
+        "fields": {
+          "CHK": "ACCEPT"
+        },
+        "communication_tokens": 2,
+        "communication_tokens_exact": true,
+        "attempt_count": 1,
+        "fallback": false,
+        "tokens_include_all_attempts": true,
+        "incoming_message_ids": [
+          "aa5d634607f8"
+        ]
+      }
+    }
+  ],
+  "calls": 3,
+  "usage_complete": true,
+  "known_input_tokens": 1269,
+  "known_output_tokens": 183,
+  "model_input_tokens": 1269,
+  "model_output_tokens": 183,
+  "format_failed_calls": 0,
+  "transport_failed_calls": 0,
+  "fallback_calls": 0,
+  "sum_model_latency_s": 2.7525699138641357
+}

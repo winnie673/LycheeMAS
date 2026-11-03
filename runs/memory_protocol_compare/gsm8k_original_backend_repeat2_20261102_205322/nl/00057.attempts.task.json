@@ -1,0 +1,95 @@
+{
+  "task_id": "gsm8k:test:seed42:T:00058",
+  "mode": "nl",
+  "benchmark": "gsm8k",
+  "status": "completed",
+  "error": null,
+  "prediction": "57.00",
+  "gold": "57",
+  "wall_time_s": 2.8381577000254765,
+  "communication_tokens": 130,
+  "communication_tokens_exact": true,
+  "revision_rounds": 0,
+  "verification_decision": "ACCEPT",
+  "verified": true,
+  "messages": [
+    {
+      "sender": "planner",
+      "content": "Goal: find the final price of Stephen’s groceries after the extra fees.\n\nPlan: Start with the $40.00 bill. Apply the 25% fee to that amount, then add the $3.00 delivery fee and the $4.00 tip. Compute the resulting total.\n\nBe careful to apply the percentage fee to the original bill before adding the flat fees and tip.",
+      "receiver": "solver",
+      "round": 0,
+      "role": "assistant",
+      "prompt_tokens": 232,
+      "completion_tokens": 78,
+      "id": "94021d9c18a1",
+      "ts": 1793624362.9176397,
+      "meta": {
+        "fields": {},
+        "communication_tokens": 78,
+        "communication_tokens_exact": true,
+        "attempt_count": 1,
+        "fallback": false,
+        "tokens_include_all_attempts": true,
+        "incoming_message_ids": []
+      }
+    },
+    {
+      "sender": "solver",
+      "content": "The 25% fee on $40.00 is $10.00, giving $50.00. Adding the $3.00 delivery fee and $4.00 tip gives $57.00.\n\n\\boxed{57.00}",
+      "receiver": "verifier",
+      "round": 0,
+      "role": "assistant",
+      "prompt_tokens": 322,
+      "completion_tokens": 50,
+      "id": "d4849b885bb0",
+      "ts": 1793624363.7219079,
+      "meta": {
+        "fields": {
+          "R": "57.00"
+        },
+        "communication_tokens": 50,
+        "communication_tokens_exact": true,
+        "attempt_count": 1,
+        "fallback": false,
+        "tokens_include_all_attempts": true,
+        "incoming_message_ids": [
+          "94021d9c18a1"
+        ]
+      }
+    },
+    {
+      "sender": "verifier",
+      "content": "ACCEPT",
+      "receiver": "solver",
+      "round": 0,
+      "role": "assistant",
+      "prompt_tokens": 671,
+      "completion_tokens": 2,
+      "id": "05c42938caf9",
+      "ts": 1793624364.3464391,
+      "meta": {
+        "fields": {
+          "CHK": "ACCEPT"
+        },
+        "communication_tokens": 2,
+        "communication_tokens_exact": true,
+        "attempt_count": 1,
+        "fallback": false,
+        "tokens_include_all_attempts": true,
+        "incoming_message_ids": [
+          "d4849b885bb0"
+        ]
+      }
+    }
+  ],
+  "calls": 3,
+  "usage_complete": true,
+  "known_input_tokens": 1225,
+  "known_output_tokens": 130,
+  "model_input_tokens": 1225,
+  "model_output_tokens": 130,
+  "format_failed_calls": 0,
+  "transport_failed_calls": 0,
+  "fallback_calls": 0,
+  "sum_model_latency_s": 2.7589311599731445
+}

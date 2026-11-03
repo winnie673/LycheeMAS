@@ -1,0 +1,95 @@
+{
+  "task_id": "gsm8k:test:seed42:T:00197",
+  "mode": "nl",
+  "benchmark": "gsm8k",
+  "status": "completed",
+  "error": null,
+  "prediction": "6277",
+  "gold": "6277",
+  "wall_time_s": 2.3224523999961093,
+  "communication_tokens": 107,
+  "communication_tokens_exact": true,
+  "revision_rounds": 0,
+  "verification_decision": "ACCEPT",
+  "verified": true,
+  "messages": [
+    {
+      "sender": "planner",
+      "content": "Goal: find the number of children in Soda.\n\nPlan: Start with the total population, 23786. Subtract the number of men, 8417, and the number of women, 9092. The remaining amount is the number of children.\n\nConstraint: Use only the given population counts; do not provide the final numeric answer in your message.",
+      "receiver": "solver",
+      "round": 0,
+      "role": "assistant",
+      "prompt_tokens": 200,
+      "completion_tokens": 72,
+      "id": "ba2142da3e40",
+      "ts": 1793625158.417412,
+      "meta": {
+        "fields": {},
+        "communication_tokens": 72,
+        "communication_tokens_exact": true,
+        "attempt_count": 1,
+        "fallback": false,
+        "tokens_include_all_attempts": true,
+        "incoming_message_ids": []
+      }
+    },
+    {
+      "sender": "solver",
+      "content": "Subtract the men and women from the total: 23786 − 8417 − 9092 = 6277.\n\n\\boxed{6277}",
+      "receiver": "verifier",
+      "round": 0,
+      "role": "assistant",
+      "prompt_tokens": 284,
+      "completion_tokens": 33,
+      "id": "7e4f9c0250da",
+      "ts": 1793625158.9372337,
+      "meta": {
+        "fields": {
+          "R": "6277"
+        },
+        "communication_tokens": 33,
+        "communication_tokens_exact": true,
+        "attempt_count": 1,
+        "fallback": false,
+        "tokens_include_all_attempts": true,
+        "incoming_message_ids": [
+          "ba2142da3e40"
+        ]
+      }
+    },
+    {
+      "sender": "verifier",
+      "content": "ACCEPT",
+      "receiver": "solver",
+      "round": 0,
+      "role": "assistant",
+      "prompt_tokens": 622,
+      "completion_tokens": 2,
+      "id": "c2ef73314b76",
+      "ts": 1793625159.676253,
+      "meta": {
+        "fields": {
+          "CHK": "ACCEPT"
+        },
+        "communication_tokens": 2,
+        "communication_tokens_exact": true,
+        "attempt_count": 1,
+        "fallback": false,
+        "tokens_include_all_attempts": true,
+        "incoming_message_ids": [
+          "7e4f9c0250da"
+        ]
+      }
+    }
+  ],
+  "calls": 3,
+  "usage_complete": true,
+  "known_input_tokens": 1106,
+  "known_output_tokens": 107,
+  "model_input_tokens": 1106,
+  "model_output_tokens": 107,
+  "format_failed_calls": 0,
+  "transport_failed_calls": 0,
+  "fallback_calls": 0,
+  "sum_model_latency_s": 2.2681779861450195
+}

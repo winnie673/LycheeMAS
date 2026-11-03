@@ -1,0 +1,95 @@
+{
+  "task_id": "gsm8k:test:seed42:T:00142",
+  "mode": "nl",
+  "benchmark": "gsm8k",
+  "status": "completed",
+  "error": null,
+  "prediction": "140",
+  "gold": "140",
+  "wall_time_s": 3.374425499991048,
+  "communication_tokens": 113,
+  "communication_tokens_exact": true,
+  "revision_rounds": 0,
+  "verification_decision": "ACCEPT",
+  "verified": true,
+  "messages": [
+    {
+      "sender": "planner",
+      "content": "Goal: find how much Jordan would earn in one week if his daily 2 hours of video game time were spent working at $10/hour.\n\nPlan: multiply 2 hours/day by 7 days to get weekly hours, then multiply by the hourly wage.\n\nConstraints: use the given daily video game time and hourly rate; report a single dollar amount.",
+      "receiver": "solver",
+      "round": 0,
+      "role": "assistant",
+      "prompt_tokens": 198,
+      "completion_tokens": 71,
+      "id": "ee966e282cfc",
+      "ts": 1793626004.8789675,
+      "meta": {
+        "fields": {},
+        "communication_tokens": 71,
+        "communication_tokens_exact": true,
+        "attempt_count": 1,
+        "fallback": false,
+        "tokens_include_all_attempts": true,
+        "incoming_message_ids": []
+      }
+    },
+    {
+      "sender": "solver",
+      "content": "Jordan would work 2 hours/day × 7 days = 14 hours per week. At $10/hour, that is 14 × 10 = $140.\n\n\\boxed{140}",
+      "receiver": "verifier",
+      "round": 0,
+      "role": "assistant",
+      "prompt_tokens": 281,
+      "completion_tokens": 40,
+      "id": "6ea71eadbf06",
+      "ts": 1793626005.822371,
+      "meta": {
+        "fields": {
+          "R": "140"
+        },
+        "communication_tokens": 40,
+        "communication_tokens_exact": true,
+        "attempt_count": 1,
+        "fallback": false,
+        "tokens_include_all_attempts": true,
+        "incoming_message_ids": [
+          "ee966e282cfc"
+        ]
+      }
+    },
+    {
+      "sender": "verifier",
+      "content": "ACCEPT",
+      "receiver": "solver",
+      "round": 0,
+      "role": "assistant",
+      "prompt_tokens": 627,
+      "completion_tokens": 2,
+      "id": "c1146b1aa18d",
+      "ts": 1793626006.642771,
+      "meta": {
+        "fields": {
+          "CHK": "ACCEPT"
+        },
+        "communication_tokens": 2,
+        "communication_tokens_exact": true,
+        "attempt_count": 1,
+        "fallback": false,
+        "tokens_include_all_attempts": true,
+        "incoming_message_ids": [
+          "6ea71eadbf06"
+        ]
+      }
+    }
+  ],
+  "calls": 3,
+  "usage_complete": true,
+  "known_input_tokens": 1106,
+  "known_output_tokens": 113,
+  "model_input_tokens": 1106,
+  "model_output_tokens": 113,
+  "format_failed_calls": 0,
+  "transport_failed_calls": 0,
+  "fallback_calls": 0,
+  "sum_model_latency_s": 3.271749973297119
+}

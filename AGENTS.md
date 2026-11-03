@@ -1,5 +1,12 @@
 # Minimal benchmark task-card text channel integration
 
+Latest backend boundary (2026-11-02): retain openai_api_backend.py byte-for-byte
+as origin/LycheeMASv0.3. Hybrid integration must not extend the original backend
+or APIGenResult. Callers may consume optional metadata from injected backends,
+but original API results have no finish_reason/usage_unknown; audit missing
+finish reasons as unavailable and non-positive usage conservatively as unknown.
+Historical runs retain their original metadata and must not be rewritten.
+
 Base: origin/LycheeMASv0.3 (9189cc27abc6f1440b45b36d90be1999aa9ab957).
 Branch: memory_gsm8k_channel. Use the LycheeMAS conda environment and
 PYTHONPATH=src for this checkout; do not import the old editable experiment tree.

@@ -1,0 +1,95 @@
+{
+  "task_id": "gsm8k:test:seed42:T:00090",
+  "mode": "nl",
+  "benchmark": "gsm8k",
+  "status": "completed",
+  "error": null,
+  "prediction": "225",
+  "gold": "225",
+  "wall_time_s": 2.6485632000258192,
+  "communication_tokens": 151,
+  "communication_tokens_exact": true,
+  "revision_rounds": 0,
+  "verification_decision": "ACCEPT",
+  "verified": true,
+  "messages": [
+    {
+      "sender": "planner",
+      "content": "Goal: find total pounds of potato salad needed for 20 adults and 5 children.\n\nPlan: Use the given adult amount of 10 lbs per adult. A child eats half an adult’s amount, so compute the child portion. Multiply adult count by adult portion and child count by child portion, then add the two totals.\n\nConstraints: Keep track of units in pounds and ensure everyone is fed.",
+      "receiver": "solver",
+      "round": 0,
+      "role": "assistant",
+      "prompt_tokens": 237,
+      "completion_tokens": 81,
+      "id": "f5dea2bdd8a2",
+      "ts": 1793625714.2745376,
+      "meta": {
+        "fields": {},
+        "communication_tokens": 81,
+        "communication_tokens_exact": true,
+        "attempt_count": 1,
+        "fallback": false,
+        "tokens_include_all_attempts": true,
+        "incoming_message_ids": []
+      }
+    },
+    {
+      "sender": "solver",
+      "content": "An adult eats 10 lbs, so a child eats half of that: 5 lbs. For 20 adults: 20 × 10 = 200 lbs. For 5 children: 5 × 5 = 25 lbs. Total needed: 200 + 25 = 225 lbs.\n\n\\boxed{225}",
+      "receiver": "verifier",
+      "round": 0,
+      "role": "assistant",
+      "prompt_tokens": 330,
+      "completion_tokens": 68,
+      "id": "41fa4551c06d",
+      "ts": 1793625715.19568,
+      "meta": {
+        "fields": {
+          "R": "225"
+        },
+        "communication_tokens": 68,
+        "communication_tokens_exact": true,
+        "attempt_count": 1,
+        "fallback": false,
+        "tokens_include_all_attempts": true,
+        "incoming_message_ids": [
+          "f5dea2bdd8a2"
+        ]
+      }
+    },
+    {
+      "sender": "verifier",
+      "content": "ACCEPT",
+      "receiver": "solver",
+      "round": 0,
+      "role": "assistant",
+      "prompt_tokens": 694,
+      "completion_tokens": 2,
+      "id": "46d27bc35818",
+      "ts": 1793625715.825435,
+      "meta": {
+        "fields": {
+          "CHK": "ACCEPT"
+        },
+        "communication_tokens": 2,
+        "communication_tokens_exact": true,
+        "attempt_count": 1,
+        "fallback": false,
+        "tokens_include_all_attempts": true,
+        "incoming_message_ids": [
+          "41fa4551c06d"
+        ]
+      }
+    }
+  ],
+  "calls": 3,
+  "usage_complete": true,
+  "known_input_tokens": 1261,
+  "known_output_tokens": 151,
+  "model_input_tokens": 1261,
+  "model_output_tokens": 151,
+  "format_failed_calls": 0,
+  "transport_failed_calls": 0,
+  "fallback_calls": 0,
+  "sum_model_latency_s": 2.5814225673675537
+}

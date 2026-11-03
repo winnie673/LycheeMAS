@@ -1,0 +1,95 @@
+{
+  "task_id": "gsm8k:test:seed42:T:00176",
+  "mode": "nl",
+  "benchmark": "gsm8k",
+  "status": "completed",
+  "error": null,
+  "prediction": "100",
+  "gold": "100",
+  "wall_time_s": 2.4609589999890886,
+  "communication_tokens": 121,
+  "communication_tokens_exact": true,
+  "revision_rounds": 0,
+  "verification_decision": "ACCEPT",
+  "verified": true,
+  "messages": [
+    {
+      "sender": "planner",
+      "content": "Goal: Find the number of girls on the Chinese team.\n\nPlan: Start with 240 total Asians. Subtract the 80 Japanese to get the number of Chinese. Then use the given number of Chinese boys (60) to find the Chinese girls by subtracting boys from the total Chinese.\n\nConstraints: Do not compute beyond what is needed; report only the final number of Chinese girls.",
+      "receiver": "solver",
+      "round": 0,
+      "role": "assistant",
+      "prompt_tokens": 194,
+      "completion_tokens": 76,
+      "id": "7fae3d59682a",
+      "ts": 1793626196.0680714,
+      "meta": {
+        "fields": {},
+        "communication_tokens": 76,
+        "communication_tokens_exact": true,
+        "attempt_count": 1,
+        "fallback": false,
+        "tokens_include_all_attempts": true,
+        "incoming_message_ids": []
+      }
+    },
+    {
+      "sender": "solver",
+      "content": "There were 240 − 80 = 160 Chinese runners. Of these, 60 were boys, so the number of Chinese girls was 160 − 60 = 100.\n\n\\boxed{100}",
+      "receiver": "verifier",
+      "round": 0,
+      "role": "assistant",
+      "prompt_tokens": 282,
+      "completion_tokens": 43,
+      "id": "47f27df4aa64",
+      "ts": 1793626196.9268792,
+      "meta": {
+        "fields": {
+          "R": "100"
+        },
+        "communication_tokens": 43,
+        "communication_tokens_exact": true,
+        "attempt_count": 1,
+        "fallback": false,
+        "tokens_include_all_attempts": true,
+        "incoming_message_ids": [
+          "7fae3d59682a"
+        ]
+      }
+    },
+    {
+      "sender": "verifier",
+      "content": "ACCEPT",
+      "receiver": "solver",
+      "round": 0,
+      "role": "assistant",
+      "prompt_tokens": 626,
+      "completion_tokens": 2,
+      "id": "5de1a19dd3f2",
+      "ts": 1793626197.2799299,
+      "meta": {
+        "fields": {
+          "CHK": "ACCEPT"
+        },
+        "communication_tokens": 2,
+        "communication_tokens_exact": true,
+        "attempt_count": 1,
+        "fallback": false,
+        "tokens_include_all_attempts": true,
+        "incoming_message_ids": [
+          "47f27df4aa64"
+        ]
+      }
+    }
+  ],
+  "calls": 3,
+  "usage_complete": true,
+  "known_input_tokens": 1102,
+  "known_output_tokens": 121,
+  "model_input_tokens": 1102,
+  "model_output_tokens": 121,
+  "format_failed_calls": 0,
+  "transport_failed_calls": 0,
+  "fallback_calls": 0,
+  "sum_model_latency_s": 2.3678274154663086
+}

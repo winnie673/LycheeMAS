@@ -1,0 +1,120 @@
+{
+  "task_id": "gsm8k:test:seed42:T:00052",
+  "mode": "hybrid",
+  "benchmark": "gsm8k",
+  "status": "completed",
+  "error": null,
+  "prediction": "15",
+  "gold": "15",
+  "wall_time_s": 2.4804783999570645,
+  "communication_tokens": 108,
+  "communication_tokens_exact": true,
+  "revision_rounds": 0,
+  "verification_decision": "ACCEPT",
+  "verified": true,
+  "messages": [
+    {
+      "sender": "planner",
+      "content": "G:number_of_toys_to_remove;P:comic_weight_removed=30*(1/4),remaining_weight_to_remove=15-comic_weight_removed,toys=remaining_weight_to_remove/(1/2)",
+      "receiver": "solver",
+      "round": 0,
+      "role": "assistant",
+      "prompt_tokens": 761,
+      "completion_tokens": 52,
+      "id": "b91b456f77a6",
+      "ts": 1793624327.486014,
+      "meta": {
+        "sender": "planner",
+        "receiver": "solver",
+        "message_id": "b91b456f77a6",
+        "protocol_edge": "planner_to_solver",
+        "protocol_version": "CARD-0-gsm8k",
+        "protocol_hash": "4bcdae885cc464e0a51977368e4bc06650c0326dbdcb182ce0327477c1d32daa",
+        "contract_hash": "ab4b736240365db5d0ce2caea032f40a3b7fc9c189db42d5ebcd28cac0fac22b",
+        "fields": {
+          "G": "number_of_toys_to_remove",
+          "P": "comic_weight_removed=30*(1/4),remaining_weight_to_remove=15-comic_weight_removed,toys=remaining_weight_to_remove/(1/2)"
+        },
+        "communication_tokens": 52,
+        "communication_tokens_exact": true,
+        "attempt_count": 1,
+        "fallback": false,
+        "tokens_include_all_attempts": true,
+        "incoming_message_ids": []
+      }
+    },
+    {
+      "sender": "solver",
+      "content": "IR:comic_weight_removed=30*0.25=7.5,remaining_weight_to_remove=15-7.5=7.5,toys=7.5/0.5=15;R:15",
+      "receiver": "verifier",
+      "round": 0,
+      "role": "assistant",
+      "prompt_tokens": 755,
+      "completion_tokens": 51,
+      "id": "248f10e0fc68",
+      "ts": 1793624328.305569,
+      "meta": {
+        "sender": "solver",
+        "receiver": "verifier",
+        "message_id": "248f10e0fc68",
+        "protocol_edge": "solver_to_verifier",
+        "protocol_version": "CARD-0-gsm8k",
+        "protocol_hash": "4bcdae885cc464e0a51977368e4bc06650c0326dbdcb182ce0327477c1d32daa",
+        "contract_hash": "ab4b736240365db5d0ce2caea032f40a3b7fc9c189db42d5ebcd28cac0fac22b",
+        "fields": {
+          "IR": "comic_weight_removed=30*0.25=7.5,remaining_weight_to_remove=15-7.5=7.5,toys=7.5/0.5=15",
+          "R": "15"
+        },
+        "communication_tokens": 51,
+        "communication_tokens_exact": true,
+        "attempt_count": 1,
+        "fallback": false,
+        "tokens_include_all_attempts": true,
+        "incoming_message_ids": [
+          "b91b456f77a6"
+        ]
+      }
+    },
+    {
+      "sender": "verifier",
+      "content": "CHK:ACCEPT",
+      "receiver": "solver",
+      "round": 0,
+      "role": "assistant",
+      "prompt_tokens": 1120,
+      "completion_tokens": 5,
+      "id": "dc96d5465a35",
+      "ts": 1793624328.787982,
+      "meta": {
+        "sender": "verifier",
+        "receiver": "solver",
+        "message_id": "dc96d5465a35",
+        "protocol_edge": "verifier_to_solver",
+        "protocol_version": "CARD-0-gsm8k",
+        "protocol_hash": "4bcdae885cc464e0a51977368e4bc06650c0326dbdcb182ce0327477c1d32daa",
+        "contract_hash": "ab4b736240365db5d0ce2caea032f40a3b7fc9c189db42d5ebcd28cac0fac22b",
+        "fields": {
+          "CHK": "ACCEPT"
+        },
+        "communication_tokens": 5,
+        "communication_tokens_exact": true,
+        "attempt_count": 1,
+        "fallback": false,
+        "tokens_include_all_attempts": true,
+        "incoming_message_ids": [
+          "248f10e0fc68"
+        ]
+      }
+    }
+  ],
+  "calls": 3,
+  "usage_complete": true,
+  "known_input_tokens": 2636,
+  "known_output_tokens": 108,
+  "model_input_tokens": 2636,
+  "model_output_tokens": 108,
+  "format_failed_calls": 0,
+  "transport_failed_calls": 0,
+  "fallback_calls": 0,
+  "sum_model_latency_s": 2.3017666339874268
+}

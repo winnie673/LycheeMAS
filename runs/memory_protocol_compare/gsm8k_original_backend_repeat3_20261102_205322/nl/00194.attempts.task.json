@@ -1,0 +1,95 @@
+{
+  "task_id": "gsm8k:test:seed42:T:00199",
+  "mode": "nl",
+  "benchmark": "gsm8k",
+  "status": "completed",
+  "error": null,
+  "prediction": "7500",
+  "gold": "7500",
+  "wall_time_s": 2.8568906000000425,
+  "communication_tokens": 177,
+  "communication_tokens_exact": true,
+  "revision_rounds": 0,
+  "verification_decision": "ACCEPT",
+  "verified": true,
+  "messages": [
+    {
+      "sender": "planner",
+      "content": "Goal: find Mark’s total weekly pay in cents.\n\nPlan: Let Publisher A’s rate be 5 cents per sentence. Publisher B pays twice that rate. Since Mark edits an equal number of sentences for each publisher and edits 1000 total sentences per week, determine how many sentences go to each publisher, then compute pay from each publisher and add them.\n\nConstraints: Keep all amounts in cents; do not use dollars.",
+      "receiver": "solver",
+      "round": 0,
+      "role": "assistant",
+      "prompt_tokens": 230,
+      "completion_tokens": 87,
+      "id": "b8584b72a0e5",
+      "ts": 1793626330.5721605,
+      "meta": {
+        "fields": {},
+        "communication_tokens": 87,
+        "communication_tokens_exact": true,
+        "attempt_count": 1,
+        "fallback": false,
+        "tokens_include_all_attempts": true,
+        "incoming_message_ids": []
+      }
+    },
+    {
+      "sender": "solver",
+      "content": "Publisher A pays 5 cents per sentence, so Publisher B pays 10 cents per sentence. Mark edits an equal number for each publisher, so 500 sentences each.\n\nPublisher A pay: 500 × 5 = 2500 cents.  \nPublisher B pay: 500 × 10 = 5000 cents.  \nTotal: 2500 + 5000 = 7500 cents.\n\n\\boxed{7500}",
+      "receiver": "verifier",
+      "round": 0,
+      "role": "assistant",
+      "prompt_tokens": 329,
+      "completion_tokens": 88,
+      "id": "4349fd8de6b0",
+      "ts": 1793626331.6594856,
+      "meta": {
+        "fields": {
+          "R": "7500"
+        },
+        "communication_tokens": 88,
+        "communication_tokens_exact": true,
+        "attempt_count": 1,
+        "fallback": false,
+        "tokens_include_all_attempts": true,
+        "incoming_message_ids": [
+          "b8584b72a0e5"
+        ]
+      }
+    },
+    {
+      "sender": "verifier",
+      "content": "ACCEPT",
+      "receiver": "solver",
+      "round": 0,
+      "role": "assistant",
+      "prompt_tokens": 707,
+      "completion_tokens": 2,
+      "id": "3bd7b0b623a0",
+      "ts": 1793626332.518223,
+      "meta": {
+        "fields": {
+          "CHK": "ACCEPT"
+        },
+        "communication_tokens": 2,
+        "communication_tokens_exact": true,
+        "attempt_count": 1,
+        "fallback": false,
+        "tokens_include_all_attempts": true,
+        "incoming_message_ids": [
+          "4349fd8de6b0"
+        ]
+      }
+    }
+  ],
+  "calls": 3,
+  "usage_complete": true,
+  "known_input_tokens": 1266,
+  "known_output_tokens": 177,
+  "model_input_tokens": 1266,
+  "model_output_tokens": 177,
+  "format_failed_calls": 0,
+  "transport_failed_calls": 0,
+  "fallback_calls": 0,
+  "sum_model_latency_s": 2.7709720134735107
+}

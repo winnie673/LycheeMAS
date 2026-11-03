@@ -1,0 +1,95 @@
+{
+  "task_id": "gsm8k:test:seed42:T:00251",
+  "mode": "nl",
+  "benchmark": "gsm8k",
+  "status": "completed",
+  "error": null,
+  "prediction": "70",
+  "gold": "70",
+  "wall_time_s": 3.3737924000015482,
+  "communication_tokens": 117,
+  "communication_tokens_exact": true,
+  "revision_rounds": 0,
+  "verification_decision": "ACCEPT",
+  "verified": true,
+  "messages": [
+    {
+      "sender": "planner",
+      "content": "Goal: Find the number of apps on Travis’s tablet after deleting some and downloading more.\n\nPlan: Start with the original number of apps, subtract the apps deleted, then add the apps downloaded. Compute the result in that order.\n\nConstraints: Use only the given numbers: 61, 9, and 18. Provide the final count as a single number.",
+      "receiver": "solver",
+      "round": 0,
+      "role": "assistant",
+      "prompt_tokens": 188,
+      "completion_tokens": 74,
+      "id": "4eb27049c2ab",
+      "ts": 1793625183.3503065,
+      "meta": {
+        "fields": {},
+        "communication_tokens": 74,
+        "communication_tokens_exact": true,
+        "attempt_count": 1,
+        "fallback": false,
+        "tokens_include_all_attempts": true,
+        "incoming_message_ids": []
+      }
+    },
+    {
+      "sender": "solver",
+      "content": "Start with 61 apps, subtract 9 deleted: 61 − 9 = 52. Then add 18 downloaded: 52 + 18 = 70.\n\n\\boxed{70}",
+      "receiver": "verifier",
+      "round": 0,
+      "role": "assistant",
+      "prompt_tokens": 274,
+      "completion_tokens": 41,
+      "id": "4ec8dade4655",
+      "ts": 1793625184.2637045,
+      "meta": {
+        "fields": {
+          "R": "70"
+        },
+        "communication_tokens": 41,
+        "communication_tokens_exact": true,
+        "attempt_count": 1,
+        "fallback": false,
+        "tokens_include_all_attempts": true,
+        "incoming_message_ids": [
+          "4eb27049c2ab"
+        ]
+      }
+    },
+    {
+      "sender": "verifier",
+      "content": "ACCEPT",
+      "receiver": "solver",
+      "round": 0,
+      "role": "assistant",
+      "prompt_tokens": 618,
+      "completion_tokens": 2,
+      "id": "7db7643dd2f2",
+      "ts": 1793625184.683366,
+      "meta": {
+        "fields": {
+          "CHK": "ACCEPT"
+        },
+        "communication_tokens": 2,
+        "communication_tokens_exact": true,
+        "attempt_count": 1,
+        "fallback": false,
+        "tokens_include_all_attempts": true,
+        "incoming_message_ids": [
+          "4ec8dade4655"
+        ]
+      }
+    }
+  ],
+  "calls": 3,
+  "usage_complete": true,
+  "known_input_tokens": 1080,
+  "known_output_tokens": 117,
+  "model_input_tokens": 1080,
+  "model_output_tokens": 117,
+  "format_failed_calls": 0,
+  "transport_failed_calls": 0,
+  "fallback_calls": 0,
+  "sum_model_latency_s": 3.295819044113159
+}

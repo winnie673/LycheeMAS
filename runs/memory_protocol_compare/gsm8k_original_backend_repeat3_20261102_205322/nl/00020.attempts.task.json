@@ -1,0 +1,95 @@
+{
+  "task_id": "gsm8k:test:seed42:T:00021",
+  "mode": "nl",
+  "benchmark": "gsm8k",
+  "status": "completed",
+  "error": null,
+  "prediction": "14",
+  "gold": "14",
+  "wall_time_s": 2.8344066999852657,
+  "communication_tokens": 177,
+  "communication_tokens_exact": true,
+  "revision_rounds": 0,
+  "verification_decision": "ACCEPT",
+  "verified": true,
+  "messages": [
+    {
+      "sender": "planner",
+      "content": "Goal: find how many years ago Raymond’s son was born.\n\nPlan: Use Samantha’s current age to determine Raymond’s current age, since Raymond is 6 years older than Samantha. Then use the fact that Raymond had his son at age 23 to determine the son’s current age. Finally, convert the son’s current age into “years ago” for his birth.\n\nConstraints: Keep track of the age difference and the birth timing carefully; do not confuse Raymond’s age at his son’s birth with the son’s current age.",
+      "receiver": "solver",
+      "round": 0,
+      "role": "assistant",
+      "prompt_tokens": 197,
+      "completion_tokens": 115,
+      "id": "bbefa08bd5e0",
+      "ts": 1793625345.9896688,
+      "meta": {
+        "fields": {},
+        "communication_tokens": 115,
+        "communication_tokens_exact": true,
+        "attempt_count": 1,
+        "fallback": false,
+        "tokens_include_all_attempts": true,
+        "incoming_message_ids": []
+      }
+    },
+    {
+      "sender": "solver",
+      "content": "Samantha is 31, so Raymond is 31 + 6 = 37. Raymond had his son at age 23, so his son is 37 − 23 = 14 years old. Therefore, the son was born 14 years ago.\n\n\\boxed{14}",
+      "receiver": "verifier",
+      "round": 0,
+      "role": "assistant",
+      "prompt_tokens": 324,
+      "completion_tokens": 60,
+      "id": "d5cd2719a726",
+      "ts": 1793625346.8643706,
+      "meta": {
+        "fields": {
+          "R": "14"
+        },
+        "communication_tokens": 60,
+        "communication_tokens_exact": true,
+        "attempt_count": 1,
+        "fallback": false,
+        "tokens_include_all_attempts": true,
+        "incoming_message_ids": [
+          "bbefa08bd5e0"
+        ]
+      }
+    },
+    {
+      "sender": "verifier",
+      "content": "ACCEPT",
+      "receiver": "solver",
+      "round": 0,
+      "role": "assistant",
+      "prompt_tokens": 646,
+      "completion_tokens": 2,
+      "id": "2f0378d7c332",
+      "ts": 1793625347.584209,
+      "meta": {
+        "fields": {
+          "CHK": "ACCEPT"
+        },
+        "communication_tokens": 2,
+        "communication_tokens_exact": true,
+        "attempt_count": 1,
+        "fallback": false,
+        "tokens_include_all_attempts": true,
+        "incoming_message_ids": [
+          "d5cd2719a726"
+        ]
+      }
+    }
+  ],
+  "calls": 3,
+  "usage_complete": true,
+  "known_input_tokens": 1167,
+  "known_output_tokens": 177,
+  "model_input_tokens": 1167,
+  "model_output_tokens": 177,
+  "format_failed_calls": 0,
+  "transport_failed_calls": 0,
+  "fallback_calls": 0,
+  "sum_model_latency_s": 2.7724106311798096
+}

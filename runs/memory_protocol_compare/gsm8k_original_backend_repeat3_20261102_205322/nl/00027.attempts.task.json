@@ -1,0 +1,95 @@
+{
+  "task_id": "gsm8k:test:seed42:T:00028",
+  "mode": "nl",
+  "benchmark": "gsm8k",
+  "status": "completed",
+  "error": null,
+  "prediction": "25",
+  "gold": "25",
+  "wall_time_s": 3.4740869000088423,
+  "communication_tokens": 171,
+  "communication_tokens_exact": true,
+  "revision_rounds": 0,
+  "verification_decision": "ACCEPT",
+  "verified": true,
+  "messages": [
+    {
+      "sender": "planner",
+      "content": "Goal: find the distance Henry traveled between his first and second stops on a 60-mile trip.\n\nPlan: Use the total trip length and the given stop locations. The first stop is after 20 miles. The second stop is 15 miles before the end, so determine its mile marker from the total distance. Then subtract the first stop’s mile marker from the second stop’s mile marker.\n\nConstraints: Keep track that both stops are measured along the same 60-mile route from the start; do not add the 20 and 15 directly without accounting for their positions relative to the trip’s end.",
+      "receiver": "solver",
+      "round": 0,
+      "role": "assistant",
+      "prompt_tokens": 200,
+      "completion_tokens": 124,
+      "id": "2cf2124b3029",
+      "ts": 1793625386.787981,
+      "meta": {
+        "fields": {},
+        "communication_tokens": 124,
+        "communication_tokens_exact": true,
+        "attempt_count": 1,
+        "fallback": false,
+        "tokens_include_all_attempts": true,
+        "incoming_message_ids": []
+      }
+    },
+    {
+      "sender": "solver",
+      "content": "The second stop is at mile 60 − 15 = 45. The first stop is at mile 20. The distance between them is 45 − 20 = 25 miles.\n\n\\boxed{25}",
+      "receiver": "verifier",
+      "round": 0,
+      "role": "assistant",
+      "prompt_tokens": 336,
+      "completion_tokens": 45,
+      "id": "0ad2f505ffae",
+      "ts": 1793625387.578759,
+      "meta": {
+        "fields": {
+          "R": "25"
+        },
+        "communication_tokens": 45,
+        "communication_tokens_exact": true,
+        "attempt_count": 1,
+        "fallback": false,
+        "tokens_include_all_attempts": true,
+        "incoming_message_ids": [
+          "2cf2124b3029"
+        ]
+      }
+    },
+    {
+      "sender": "verifier",
+      "content": "ACCEPT",
+      "receiver": "solver",
+      "round": 0,
+      "role": "assistant",
+      "prompt_tokens": 634,
+      "completion_tokens": 2,
+      "id": "34725c039ff3",
+      "ts": 1793625388.4043334,
+      "meta": {
+        "fields": {
+          "CHK": "ACCEPT"
+        },
+        "communication_tokens": 2,
+        "communication_tokens_exact": true,
+        "attempt_count": 1,
+        "fallback": false,
+        "tokens_include_all_attempts": true,
+        "incoming_message_ids": [
+          "0ad2f505ffae"
+        ]
+      }
+    }
+  ],
+  "calls": 3,
+  "usage_complete": true,
+  "known_input_tokens": 1170,
+  "known_output_tokens": 171,
+  "model_input_tokens": 1170,
+  "model_output_tokens": 171,
+  "format_failed_calls": 0,
+  "transport_failed_calls": 0,
+  "fallback_calls": 0,
+  "sum_model_latency_s": 3.3873069286346436
+}

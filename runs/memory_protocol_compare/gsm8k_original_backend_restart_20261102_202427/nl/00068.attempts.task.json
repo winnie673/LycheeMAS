@@ -1,0 +1,95 @@
+{
+  "task_id": "gsm8k:test:seed42:T:00070",
+  "mode": "nl",
+  "benchmark": "gsm8k",
+  "status": "completed",
+  "error": null,
+  "prediction": "7425",
+  "gold": "7425",
+  "wall_time_s": 3.6786537000443786,
+  "communication_tokens": 164,
+  "communication_tokens_exact": true,
+  "revision_rounds": 0,
+  "verification_decision": "ACCEPT",
+  "verified": true,
+  "messages": [
+    {
+      "sender": "planner",
+      "content": "Goal: Find Judy’s total weekly earnings.\n\nPlan: Calculate the number of classes she teaches in a week: 5 classes per weekday for 5 weekdays, plus 8 classes on Saturday. Then multiply total weekly classes by 15 students per class, and multiply that by $15 per student.\n\nConstraints: Treat weekdays as Monday through Friday only; no Sunday classes are mentioned. Provide the final numeric dollar amount.",
+      "receiver": "solver",
+      "round": 0,
+      "role": "assistant",
+      "prompt_tokens": 204,
+      "completion_tokens": 86,
+      "id": "3e506a4f0b43",
+      "ts": 1793622665.6148453,
+      "meta": {
+        "fields": {},
+        "communication_tokens": 86,
+        "communication_tokens_exact": true,
+        "attempt_count": 1,
+        "fallback": false,
+        "tokens_include_all_attempts": true,
+        "incoming_message_ids": []
+      }
+    },
+    {
+      "sender": "solver",
+      "content": "Judy teaches 5 classes on each of 5 weekdays, so 25 weekday classes, plus 8 on Saturday, for 33 classes total. With 15 students per class, that is 33 × 15 = 495 students. At $15 each, she earns 495 × 15 = $7,425.\n\n\\boxed{7425}",
+      "receiver": "verifier",
+      "round": 0,
+      "role": "assistant",
+      "prompt_tokens": 302,
+      "completion_tokens": 76,
+      "id": "86c4c2860051",
+      "ts": 1793622666.9661825,
+      "meta": {
+        "fields": {
+          "R": "7425"
+        },
+        "communication_tokens": 76,
+        "communication_tokens_exact": true,
+        "attempt_count": 1,
+        "fallback": false,
+        "tokens_include_all_attempts": true,
+        "incoming_message_ids": [
+          "3e506a4f0b43"
+        ]
+      }
+    },
+    {
+      "sender": "verifier",
+      "content": "ACCEPT",
+      "receiver": "solver",
+      "round": 0,
+      "role": "assistant",
+      "prompt_tokens": 669,
+      "completion_tokens": 2,
+      "id": "39869200c028",
+      "ts": 1793622667.9911733,
+      "meta": {
+        "fields": {
+          "CHK": "ACCEPT"
+        },
+        "communication_tokens": 2,
+        "communication_tokens_exact": true,
+        "attempt_count": 1,
+        "fallback": false,
+        "tokens_include_all_attempts": true,
+        "incoming_message_ids": [
+          "86c4c2860051"
+        ]
+      }
+    }
+  ],
+  "calls": 3,
+  "usage_complete": true,
+  "known_input_tokens": 1175,
+  "known_output_tokens": 164,
+  "model_input_tokens": 1175,
+  "model_output_tokens": 164,
+  "format_failed_calls": 0,
+  "transport_failed_calls": 0,
+  "fallback_calls": 0,
+  "sum_model_latency_s": 3.589060068130493
+}

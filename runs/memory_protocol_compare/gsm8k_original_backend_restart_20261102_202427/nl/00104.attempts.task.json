@@ -1,0 +1,95 @@
+{
+  "task_id": "gsm8k:test:seed42:T:00107",
+  "mode": "nl",
+  "benchmark": "gsm8k",
+  "status": "completed",
+  "error": null,
+  "prediction": "3",
+  "gold": "3",
+  "wall_time_s": 3.342064800031949,
+  "communication_tokens": 235,
+  "communication_tokens_exact": true,
+  "revision_rounds": 0,
+  "verification_decision": "ACCEPT",
+  "verified": true,
+  "messages": [
+    {
+      "sender": "planner",
+      "content": "Goal: find how many 30-minute episodes Frankie watched on Wednesday.\n\nPlan: Convert all viewing to hours. Monday and Tuesday: 1 hour each. Thursday: 1 hour + 0.5 hour. Friday: two 1-hour episodes. Let Wednesday’s number of 30-minute episodes be the unknown. Add the known hours, subtract from the total 7 hours, then divide by 0.5 to get the number of Wednesday episodes.\n\nConstraints: Use the given total of 7 hours; treat each 30-minute show as 0.5 hour; do not count any other viewing.",
+      "receiver": "solver",
+      "round": 0,
+      "role": "assistant",
+      "prompt_tokens": 265,
+      "completion_tokens": 125,
+      "id": "eca906aea8e9",
+      "ts": 1793622862.0304654,
+      "meta": {
+        "fields": {},
+        "communication_tokens": 125,
+        "communication_tokens_exact": true,
+        "attempt_count": 1,
+        "fallback": false,
+        "tokens_include_all_attempts": true,
+        "incoming_message_ids": []
+      }
+    },
+    {
+      "sender": "solver",
+      "content": "Monday and Tuesday: 1 + 1 = 2 hours. Thursday: 1 + 0.5 = 1.5 hours. Friday: 2 hours. Known total = 2 + 1.5 + 2 = 5.5 hours. Remaining for Wednesday = 7 − 5.5 = 1.5 hours. Each 30-minute episode is 0.5 hour, so 1.5 ÷ 0.5 = 3 episodes.\n\n\\boxed{3}",
+      "receiver": "verifier",
+      "round": 0,
+      "role": "assistant",
+      "prompt_tokens": 402,
+      "completion_tokens": 108,
+      "id": "0f4857d6d08f",
+      "ts": 1793622863.165626,
+      "meta": {
+        "fields": {
+          "R": "3"
+        },
+        "communication_tokens": 108,
+        "communication_tokens_exact": true,
+        "attempt_count": 1,
+        "fallback": false,
+        "tokens_include_all_attempts": true,
+        "incoming_message_ids": [
+          "eca906aea8e9"
+        ]
+      }
+    },
+    {
+      "sender": "verifier",
+      "content": "ACCEPT",
+      "receiver": "solver",
+      "round": 0,
+      "role": "assistant",
+      "prompt_tokens": 762,
+      "completion_tokens": 2,
+      "id": "35d591d58898",
+      "ts": 1793622863.8675728,
+      "meta": {
+        "fields": {
+          "CHK": "ACCEPT"
+        },
+        "communication_tokens": 2,
+        "communication_tokens_exact": true,
+        "attempt_count": 1,
+        "fallback": false,
+        "tokens_include_all_attempts": true,
+        "incoming_message_ids": [
+          "0f4857d6d08f"
+        ]
+      }
+    }
+  ],
+  "calls": 3,
+  "usage_complete": true,
+  "known_input_tokens": 1429,
+  "known_output_tokens": 235,
+  "model_input_tokens": 1429,
+  "model_output_tokens": 235,
+  "format_failed_calls": 0,
+  "transport_failed_calls": 0,
+  "fallback_calls": 0,
+  "sum_model_latency_s": 3.2812583446502686
+}
